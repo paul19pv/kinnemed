@@ -5,10 +5,10 @@
 }
 <script>
     $(document).ajaxStart(function () {
-        $('.div_loading').show();
+        $('#div_loading').show();
     });
     $(document).ajaxStop(function () {
-        $('.div_loading').hide();
+        $('#div_loading').hide();
     });
     $(function () {
         $.ajax({
@@ -156,7 +156,7 @@
             
         </div>
         <div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
-            <div class="progress-bar" style="width: 45%"></div>
+            <div class="progress-bar" style="width: 0%"></div>
         </div>
     </div>
     <div class="panel panel-default">
