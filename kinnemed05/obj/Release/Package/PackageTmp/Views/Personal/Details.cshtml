@@ -3,11 +3,131 @@
 @{
     ViewBag.Title = "Details";
 }
+<script>
+    $(function () {
+        //if ($('#per_patologicas').is(':checked')) {
+        //    $("#div_patologicas").show();
+        //}
+        //else {
+        //    $("#div_patologicas").hide();
+        //}
+        //if ($("#per_quirurgicas").is(':checked')) {
+        //    $("#div_quirurgicas").show();
+        //}
+        //else {
+        //    $("#div_quirurgicas").hide();
+        //}
+        //if ($('#per_traumaticos').is(':checked')) {
+        //    $("#div_traumaticos").show();
+        //}
+        //else {
+        //    $("#div_traumaticos").hide();
+        //}
+        //if ($('#per_alergias').is(':checked')) {
+        //    $("#div_alergias").show();
+        //}
+        //else {
+        //    $("#div_alergias").hide();
+        //}
+        //if ($('#per_vacunas').is(':checked')) {
+        //    $("#div_vacunas").show();
+        //}
+        //else {
+        //    $("#div_vacunas").hide();
+        //}
+        //if ($('#per_otros').is(':checked')) {
+        //    $("#div_otros").show();
+        //}
+        //else {
+        //    $("#div_otros").hide();
+        //}
 
-<div class="col-lg-12" style="clear:both">
+    })
+</script>
+<div class="col-lg-4">
     <div class="form-group">
-        @Html.TextAreaFor(model => model.per_observacion, new { @class = "form-control", @rows = "3", @readonly="readonly" })
+        <label>
+            @Html.CheckBoxFor(model => model.per_patologicas, new { @disabled="disabled"})
+            Patológicas
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.per_quirurgicas, new { @disabled="disabled"})
+            Quirúrgicas
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.per_traumaticos, new { @disabled="disabled"})
+            Traumáticas
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_patologicas" class="form-group" style="display:block;">
+        @Html.TextBoxFor(model => model.per_pat_txt, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.per_pat_txt)
     </div>
 </div>
 
+<div class="col-lg-4">
+    <div id="div_quirurgicas" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.per_qui_txt, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.per_qui_txt)
+    </div>
+</div>
 
+<div class="col-lg-4">
+    <div id="div_traumaticos" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.per_tra_txt, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.per_tra_txt)
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.per_alergias, new { @disabled = "disabled" })
+            Alergias
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.per_vacunas, new { @disabled = "disabled" })
+            Vacunas
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.per_otros, new { @disabled = "disabled" })
+            Otros
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear: both">
+    <div id="div_alergias" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.per_ale_txt, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.per_ale_txt)
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_vacunas" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.per_vac_txt, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.per_vac_txt)
+    </div>
+</div>
+
+<div class="col-lg-4">
+    <div id="div_otros" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.per_otr_txt, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.per_otr_txt)
+    </div>
+</div>

@@ -3,370 +3,367 @@
 @{
     ViewBag.Title = "Details";
 }
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_piel, new { @disabled = "disabled" })
+            (CP/SP) 1R Piel y Fanreas
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_axilas, new { @disabled = "disabled" })
+            (CP/SP) 9R Axilas - Mamas
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_organos, new { @disabled = "disabled" })
+            (CP/SP) 1S Organos de los sentidos
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_piel" class="form-garoup" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_pie_txt, new { @class = "form-control",@readonly="readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_axilas" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_axi_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_organos" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_org_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-<h2>Details</h2>
 
-<fieldset>
-    <legend>fisico</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.historia.his_motivo)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_cabeza, new { @disabled = "disabled" })
+            (CP/SP) 2R Cabeza
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.historia.his_motivo)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_torax, new { @disabled = "disabled" })
+            (CP/SP) 10R Torax
+        </label>
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_respiratorio, new { @disabled = "disabled" })
+            (CP/SP) 2S Respiratorio
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_cabeza" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_cab_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_torax" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_tor_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_respiratorio" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_res_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_ojos, new { @disabled = "disabled" })
+            (CP/SP) 3R Ojos
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_abdomen, new { @disabled = "disabled" })
+            (CP/SP) 11R Abdomen
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_cardiovascular, new { @disabled = "disabled" })
+            (CP/SP) 3S Cardio Vascular
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_ojos" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_ojo_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_abdomen" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_abd_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_cardiovascular" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_car_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_oidos, new { @disabled = "disabled" })
+            (CP/SP) 4R Oidos
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_columna, new { @disabled = "disabled" })
+            (CP/SP) 12R Columna Vertebral
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_digestivo, new { @disabled = "disabled" })
+            (CP/SP) 4S Disgestivo
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear: both">
+    <div id="div_oidos" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_oid_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_columna" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_col_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_digestivo" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_dig_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_piel)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_nariz, new { @disabled = "disabled" })
+            (CP/SP) 5R Nariz
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_piel)
+</div>
+<div class="col-lg-4">
+    <div class="form-group" style="clear:both">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_ingle, new { @disabled = "disabled" })
+            (CP/SP) 13R Ingle-Perine
+        </label>
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_genital, new { @disabled = "disabled" })
+            (CP/SP) 5S Genital
+        </label>
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_pie_txt)
+<div class="col-lg-4" style="clear:both">
+    <div id="div_nariz" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_nar_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_pie_txt)
+</div>
+<div class="col-lg-4">
+    <div id="div_ingle" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_ing_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_genital" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_fen_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_cabeza)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_boca, new { @disabled = "disabled" })
+            (CP/SP) 6R Boca
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_cabeza)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_mie_sup, new { @disabled = "disabled" })
+            (CP/SP) 14R Miembros Superiores
+        </label>
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_urinario, new { @disabled = "disabled" })
+            (CP/SP) 6S Urinario
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_boca" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_boc_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_mie_sup" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_msp_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_urinario" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_uri_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_faringe, new { @disabled = "disabled" })
+            (CP/SP) 7R Oro Faringe
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_mie_inf, new { @disabled = "disabled" })
+            (CP/SP) 15R Miembros Inferiores
+        </label>
+    </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_esqueletico, new { @disabled = "disabled" })
+            (CP/SP) 7S Músculo Esquelético
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear: both">
+    <div id="div_faringe" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_far_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_mie_inf" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_mif_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_esqueletico" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_esq_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_cab_txt)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_cuello, new { @disabled = "disabled" })
+            (CP/SP) 8R Cuello
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_cab_txt)
-    </div>
+</div>
+<div class="col-lg-4">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_ojos)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_endocrino, new { @disabled = "disabled" })
+            (CP/SP) 8S Endocrino
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_ojos)
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_cuello" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_cue_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
+</div>
+<div class="col-lg-4">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_ojo_txt)
+</div>
+<div class="col-lg-4">
+    <div id="div_endocrino" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_end_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_ojo_txt)
-    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_oidos)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_oidos)
-    </div>
+</div>
+<div class="col-lg-4">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_oid_txt)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_linfatico, new { @disabled = "disabled" })
+            (CP/SP) 9S Hemo Linfático
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_oid_txt)
-    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_nariz)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_nariz)
-    </div>
+</div>
+<div class="col-lg-4">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_nar_txt)
+</div>
+<div class="col-lg-4">
+    <div id="div_linfatico" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_lin_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_nar_txt)
-    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_boca)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_boca)
-    </div>
+</div>
+<div class="col-lg-4">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_boc_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_boc_txt)
-    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_faringe)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_faringe)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_far_txt)
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.fis_neurologico, new { @disabled = "disabled" })
+            (CP/SP) 10s Neurológico
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_far_txt)
-    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_cuello)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_cuello)
-    </div>
+</div>
+<div class="col-lg-4">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_cue_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_cue_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_axilas)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_axilas)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_axi_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_axi_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_torax)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_torax)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_tor_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_tor_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_abdomen)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_abdomen)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_abd_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_abd_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_columna)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_columna)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_col_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_col_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_ingle)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_ingle)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_ing_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_ing_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_mie_sup)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_mie_sup)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_msp_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_msp_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_mie_inf)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_mie_inf)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_mif_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_mif_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_organos)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_organos)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_org_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_org_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_respiratorio)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_respiratorio)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_res_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_res_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_cardiovascular)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_cardiovascular)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_car_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_car_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_digestivo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_digestivo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_dig_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_dig_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_genital)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_genital)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_fen_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_fen_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_urinario)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_urinario)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_uri_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_uri_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_esqueletico)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_esqueletico)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_esq_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_esq_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_endocrino)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_endocrino)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_end_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_end_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_linfatico)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_linfatico)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_lin_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_lin_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_neurologico)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_neurologico)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.fis_neu_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.fis_neu_txt)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
+<div class="col-lg-4">
+    <div id="div_neurologico" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.fis_neu_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>

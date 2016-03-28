@@ -3,160 +3,205 @@
 @{
     ViewBag.Title = "Details";
 }
+<script>
 
-<h2>Details</h2>
+    //if ($('#revision_rev_organos').is(':checked')) {
+    //    $("#div_organos").show();
+    //}
+    //else {
+    //    $("#div_organos").hide();
+    //}
+    //if ($('#revision_rev_respiratorio').is(':checked')) {
+    //    $("#div_respiratorio").show();
+    //}
+    //else {
+    //    $("#div_respiratorio").hide();
+    //}
+    //if ($('#revision_rev_cardiovascular').is(':checked')) {
+    //    $("#div_cardiovascular").show();
+    //}
+    //else {
+    //    $("#div_cardiovascular").hide();
+    //}
+    //if ($('#revision_rev_digestivo').is(':checked')) {
+    //    $("#div_digestivo").show();
+    //}
+    //else {
+    //    $("#div_digestivo").hide();
+    //}
+    //if ($('#revision_rev_genital').is(':checked')) {
+    //    $("#div_genital").show();
+    //}
+    //else {
+    //    $("#div_genital").hide();
+    //}
+    //if ($('#revision_rev_urinario').is(':checked')) {
+    //    $("#div_urinario").show();
+    //}
+    //else {
+    //    $("#div_urinario").hide();
+    //}
+    //if ($('#revision_rev_musculo').is(':checked')) {
+    //    $("#div_musculo").show();
+    //}
+    //else {
+    //    $("#div_musculo").hide();
+    //}
+    //if ($('#revision_rev_endocrino').is(':checked')) {
+    //    $("#div_endocrino").show();
+    //}
+    //else {
+    //    $("#div_endocrino").hide();
+    //}
+    //if ($('#revision_rev_linfatico').is(':checked')) {
+    //    $("#div_linfatico").show();
+    //}
+    //else {
+    //    $("#div_linfatico").hide();
+    //}
+    //if ($('#revision_rev_nervioso').is(':checked')) {
+    //    $("#div_nervioso").show();
+    //}
+    //else {
+    //    $("#div_nervioso").hide();
+    //}
 
-<fieldset>
-    <legend>revision</legend>
+</script>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.historia.his_motivo)
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_organos, new { @disabled = "disabled" })
+            (CP/SP) Organos de los Sentidos
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.historia.his_motivo)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_respiratorio, new { @disabled = "disabled" })
+            (CP/SP) Respiratorio
+        </label>
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_cardiovascular, new { @disabled = "disabled" })
+            (CP/SP) Cardio Vascular
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div id="div_organos" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_org_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_organos)
+<div class="col-lg-4">
+    <div id="div_respiratorio" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_res_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_organos)
-    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_org_txt)
+<div class="col-lg-4">
+    <div id="div_cardiovascular" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_car_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_org_txt)
-    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_respiratorio)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_digestivo, new { @disabled = "disabled" })
+            (CP/SP) Digestivo
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_respiratorio)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_genital, new { @disabled = "disabled" })
+            (CP/SP) Genital
+        </label>
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_urinario, new { @disabled = "disabled" })
+            (CP/SP) Urinario
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear: both">
+    <div id="div_digestivo" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_dig_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_genital" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_gen_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_res_txt)
+<div class="col-lg-4">
+    <div id="div_urinario" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_uri_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_res_txt)
-    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_cardiovascular)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_musculo, new { @disabled = "disabled" })
+            (CP/SP) Músculo Esquelético
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_cardiovascular)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_endocrino, new { @disabled = "disabled" })
+            (CP/SP) Endocrino
+        </label>
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_linfatico, new { @disabled = "disabled" })
+            (CP/SP) Emo Linfático
+        </label>
+    </div>
+</div>
+<div class="col-lg-4" style="clear: both">
+    <div id="div_musculo" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_mus_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="col-lg-4">
+    <div id="div_endocrino" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_end_txt, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_car_txt)
+<div class="col-lg-4">
+    <div id="div_linfatico" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_lin_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_car_txt)
-    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_disgestivo)
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        <label>
+            @Html.CheckBoxFor(model => model.rev_nervioso, new { @disabled = "disabled" })
+            (CP/SP) Nervioso
+        </label>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_disgestivo)
+</div>
+<div class="col-lg-4" style="clear: both">
+    <div id="div_nervioso" class="form-group" style="display: block;">
+        @Html.TextBoxFor(model => model.rev_ner_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_dig_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_dig_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_genital)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_genital)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_gen_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_gen_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_urinario)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_urinario)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_uri_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_uri_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_musculo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_musculo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_mus_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_mus_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_endocrino)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_endocrino)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_end_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_end_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_linfatico)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_linfatico)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_lin_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_lin_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_nervioso)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_nervioso)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.rev_nev_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.rev_nev_txt)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

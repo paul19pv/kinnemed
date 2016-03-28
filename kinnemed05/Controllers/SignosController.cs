@@ -32,7 +32,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            return View(signos);
+            return PartialView(signos);
         }
 
         //
@@ -103,7 +103,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            return View(signos);
+            return PartialView(signos);
         }
 
         //

@@ -5,66 +5,66 @@
 }
 <script>
     $(function () {
-        if ($('#fam_cardiopatia').is(':checked')) {
-            $("#div_cardiopatia").show();
-        }
-        else {
-            $("#div_cardiopatia").hide();
-        }
-        if ($('#fam_diabetes').is(':checked')) {
-            $("#div_diabetes").show();
-        }
-        else {
-            $("#div_diabetes").hide();
-        }
-        if ($('#fam_cardiovascular').is(':checked')) {
-            $("#div_cardiovascular").show();
-        }
-        else {
-            $("#div_cardiovascular").hide();
-        }
-        if ($('#fam_hipertension').is(':checked')) {
-            $("#div_hipertension").show();
-        }
-        else {
-            $("#div_hipertension").hide();
-        }
-        if ($('#fam_cancer').is(':checked')) {
-            $("#div_cancer").show();
-        }
-        else {
-            $("#div_cancer").hide();
-        }
-        if ($('#div_tuberculosis').is(':checked')) {
-            $("#div_tuberculosis").show();
-        }
-        else {
-            $("#div_tuberculosis").hide();
-        }
-        if ($('#fam_mental').is(':checked')) {
-            $("#div_mental").show();
-        }
-        else {
-            $("#div_mental").hide();
-        }
-        if ($('#fam_infecciosa').is(':checked')) {
-            $("#div_infecciosa").show();
-        }
-        else {
-            $("#div_infecciosa").hide();
-        }
-        if ($('#fam_malformacion').is(':checked')) {
-            $("#div_malformacion").show();
-        }
-        else {
-            $("#div_malformacion").hide();
-        }
-        if ($('#fam_otro').is(':checked')) {
-            $("#div_otro").show();
-        }
-        else {
-            $("#div_otro").hide();
-        }
+        //if ($('#fam_cardiopatia').is(':checked')) {
+        //    $("#div_cardiopatia").show();
+        //}
+        //else {
+        //    $("#div_cardiopatia").hide();
+        //}
+        //if ($('#fam_diabetes').is(':checked')) {
+        //    $("#div_diabetes").show();
+        //}
+        //else {
+        //    $("#div_diabetes").hide();
+        //}
+        //if ($('#fam_cardiovascular').is(':checked')) {
+        //    $("#div_cardiovascular").show();
+        //}
+        //else {
+        //    $("#div_cardiovascular").hide();
+        //}
+        //if ($('#fam_hipertension').is(':checked')) {
+        //    $("#div_hipertension").show();
+        //}
+        //else {
+        //    $("#div_hipertension").hide();
+        //}
+        //if ($('#fam_cancer').is(':checked')) {
+        //    $("#div_cancer").show();
+        //}
+        //else {
+        //    $("#div_cancer").hide();
+        //}
+        //if ($('#div_tuberculosis').is(':checked')) {
+        //    $("#div_tuberculosis").show();
+        //}
+        //else {
+        //    $("#div_tuberculosis").hide();
+        //}
+        //if ($('#fam_mental').is(':checked')) {
+        //    $("#div_mental").show();
+        //}
+        //else {
+        //    $("#div_mental").hide();
+        //}
+        //if ($('#fam_infecciosa').is(':checked')) {
+        //    $("#div_infecciosa").show();
+        //}
+        //else {
+        //    $("#div_infecciosa").hide();
+        //}
+        //if ($('#fam_malformacion').is(':checked')) {
+        //    $("#div_malformacion").show();
+        //}
+        //else {
+        //    $("#div_malformacion").hide();
+        //}
+        //if ($('#fam_otro').is(':checked')) {
+        //    $("#div_otro").show();
+        //}
+        //else {
+        //    $("#div_otro").hide();
+        //}
     });
 </script>
 <div class="col-lg-4">
@@ -92,20 +92,20 @@
     </div>
 </div>
 <div class="col-lg-4" style="clear:both">
-    <div id="div_cardiopatia" class="form-group" style="display: none;">
+    <div id="div_cardiopatia" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_car_txt, new { @class = "form-control", @readonly="readonly" })
     </div>
 </div>
 
 <div class="col-lg-4">
-    <div id="div_diabetes" class="form-group" style="display: none;">
+    <div id="div_diabetes" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_dia_txt, new { @class = "form-control", @readonly = "readonly" })
         @Html.ValidationMessageFor(model => model.fam_dia_txt)
     </div>
 </div>
 
 <div class="col-lg-4">
-    <div id="div_cardiovascular" class="form-group" style="display: none;">
+    <div id="div_cardiovascular" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_vas_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
@@ -134,18 +134,18 @@
     </div>
 </div>
 <div class="col-lg-4" style="clear: both">
-    <div id="div_hipertension" class="form-group" style="display: none;">
+    <div id="div_hipertension" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_hip_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
 <div class="col-lg-4">
-    <div id="div_cancer" class="form-group" style="display: none;">
+    <div id="div_cancer" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_can_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
 
 <div class="col-lg-4">
-    <div id="div_tuberculosis" class="form-group" style="display: none;">
+    <div id="div_tuberculosis" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_tub_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
@@ -175,18 +175,18 @@
     </div>
 </div>
 <div class="col-lg-4" style="clear: both">
-    <div id="div_mental" class="form-group" style="display: none;">
+    <div id="div_mental" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_men_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
 <div class="col-lg-4">
-    <div id="div_infecciosa" class="form-group" style="display: none;">
+    <div id="div_infecciosa" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_inf_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
 
 <div class="col-lg-4">
-    <div id="div_malformacion" class="form-group" style="display: none;">
+    <div id="div_malformacion" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_mal_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>
@@ -200,7 +200,7 @@
     </div>
 </div>
 <div class="col-lg-4" style="clear: both">
-    <div id="div_otro" class="form-group" style="display: none;">
+    <div id="div_otro" class="form-group" style="display: block;">
         @Html.TextBoxFor(model => model.fam_otr_txt, new { @class = "form-control", @readonly = "readonly" })
     </div>
 </div>

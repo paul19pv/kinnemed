@@ -32,7 +32,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            return View(fisico);
+            return PartialView(fisico);
         }
 
         //
