@@ -1,0 +1,333 @@
+﻿@model IEnumerable<kinnemed05.Models.fisico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.historia.his_motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_piel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_pie_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_cabeza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_cab_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_ojos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_ojo_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_oidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_oid_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_nariz)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_nar_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_boca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_boc_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_faringe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_far_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_cuello)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_cue_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_axilas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_axi_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_torax)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_tor_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_abdomen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_abd_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_columna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_col_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_ingle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_ing_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_mie_sup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_msp_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_mie_inf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_mif_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_organos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_org_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_respiratorio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_res_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_cardiovascular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_car_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_digestivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_dig_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_genital)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_fen_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_urinario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_uri_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_esqueletico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_esq_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_endocrino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_end_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_linfatico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_lin_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_neurologico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fis_neu_txt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.historia.his_motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_piel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_pie_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_cabeza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_cab_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_ojos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_ojo_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_oidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_oid_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_nariz)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_nar_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_boca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_boc_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_faringe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_far_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_cuello)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_cue_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_axilas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_axi_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_torax)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_tor_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_abdomen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_abd_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_columna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_col_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_ingle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_ing_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_mie_sup)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_msp_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_mie_inf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_mif_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_organos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_org_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_respiratorio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_res_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_cardiovascular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_car_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_digestivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_dig_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_genital)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_fen_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_urinario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_uri_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_esqueletico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_esq_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_endocrino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_end_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_linfatico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_lin_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_neurologico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fis_neu_txt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

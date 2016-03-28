@@ -1,0 +1,102 @@
+﻿@model kinnemed05.Models.registro
+<script>
+    $(function () {
+        $('#txt_paciente').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_paciente").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_paciente").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pac_nombres + " " + item.pac_apellidos,
+                                id: item.pac_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#reg_paciente").val(ui.item.id);
+                //fillCombo("res_id");
+            },
+            minLength: 2
+        });
+
+        $("#reg_fecha").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+
+    });
+
+</script>
+
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Registro</h3>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="col-lg-3">
+                    <div class="form-group">
+
+                        @Html.TextBoxFor(model => model.reg_paciente, new { @class = "form-control", @type = "hidden" })
+                        @Html.LabelFor(model => model.reg_paciente, new { @class = "control-label", @for = "inputDefault" })
+
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.reg_paciente)
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.reg_fecha, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.reg_fecha, new { @class = "form-control", Value = @ViewBag.fecha })
+                        @Html.ValidationMessageFor(model => model.reg_fecha)
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3">
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Filtrar" class="btn btn-primary" />
+                        @Html.ActionLink("Regresar", "Index", "Registro", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/GetLista")" id="link_registro"></a>
+
+<div id="div_list" style="clear:both">
+
+</div>
+<div id="div_form" style="clear:both">
+
+</div>
+
+<div id="div_index" style="clear:both">
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/jqueryui")*@
+    
+
+    
+    
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    @Scripts.Render("~/bundles/funciones")
+
+    <script src="@Url.Content("~/Scripts/bootstrap.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/themes/base/css")
+</head>
+<body>
+    @Html.Partial("_NavBar")
+    <div class="container">
+        <div id="banner" class="page-header">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-6">
+                    @*<h1>Kinnemed</h1>
+                    <p>Rehabilitación Física - Laboratorio Clínico - Salud Preocupacional</p>*@
+                </div>
+            </div>
+        </div>
+        <div class="bs-docs-section">
+            <div id="content" class="row">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<!--
+<div class="col-lg-9">
+    <div class="bs-component col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datos del Exámen</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    detail
+
+-->
+
+
+@*<div class="bs-component col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datos del Exámen</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.muestra.mue_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.muestra.mue_nombre, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+
+@*<div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datos del Exámen</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.reg_color, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.reg_color, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.reg_color)
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>*@

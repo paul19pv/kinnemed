@@ -1,0 +1,166 @@
+﻿@model kinnemed05.Models.familiar
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>familiar</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.historia.his_motivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.historia.his_motivo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_cardiopatia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_cardiopatia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_car_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_car_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_diabetes)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_diabetes)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_dia_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_dia_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_cardiovascular)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_cardiovascular)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_vas_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_vas_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_hipertension)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_hipertension)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_hip_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_hip_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_cancer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_cancer)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_can_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_can_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_tuberculosis)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_tuberculosis)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_tub_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_tub_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_mental)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_mental)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_men_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_men_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_infecciosa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_infecciosa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_inf_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_inf_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_malformacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_malformacion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_mal_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_mal_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fam_otro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fam_otro)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fa_otr_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fa_otr_txt)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

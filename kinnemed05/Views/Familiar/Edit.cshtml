@@ -1,0 +1,380 @@
+﻿@model kinnemed05.Models.familiar
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+    $(function () {
+        $("#fam_cardiopatia").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cardiopatia").show();
+                $("#fam_car_txt").val("");
+            } else {
+                $("#div_cardiopatia").hide();
+                $("#fam_car_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_diabetes").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_diabetes").show();
+                $("#fam_dia_txt").val("");
+            } else {
+                $("#div_diabetes").hide();
+                $("#fam_dia_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_cardiovascular").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cardiovascular").show();
+                $("#fam_vas_txt").val("");
+            } else {
+                $("#div_cardiovascular").hide();
+                $("#fam_vas_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_hipertension").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_hipertension").show();
+                $("#fam_hip_txt").val("");
+            } else {
+                $("#div_hipertension").hide();
+                $("#fam_hip_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_cancer").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cancer").show();
+                $("#fam_can_txt").val("");
+            } else {
+                $("#div_cancer").hide();
+                $("#fam_can_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_tuberculosis").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_tuberculosis").show();
+                $("#fam_tub_txt").val("");
+            } else {
+                $("#div_tuberculosis").hide();
+                $("#fam_tub_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_mental").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_mental").show();
+                $("#fam_men_txt").val("");
+            } else {
+                $("#div_mental").hide();
+                $("#fam_men_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_infecciosa").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_infecciosa").show();
+                $("#fam_inf_txt").val("");
+            } else {
+                $("#div_infecciosa").hide();
+                $("#fam_inf_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_malformacion").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_malformacion").show();
+                $("#fam_mal_txt").val("");
+            } else {
+                $("#div_malformacion").hide();
+                $("#fam_mal_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_hipotiroidismo").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_hipotiroidismo").show();
+                $("#fam_hit_txt").val("");
+            } else {
+                $("#div_hipotiroidismo").hide();
+                $("#fam_hit_txt").val("NO REFIERE");
+            }
+        });
+        $("#fam_otro").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_otro").show();
+                $("#fam_otr_txt").val("");
+            } else {
+                $("#div_otro").hide();
+                $("#fam_otr_txt").val("NO REFIERE");
+            }
+        });
+
+        if ($('#fam_cardiopatia').is(':checked')) {
+            $("#div_cardiopatia").show();
+        }
+        else {
+            $("#div_cardiopatia").hide();
+        }
+        if ($('#fam_diabetes').is(':checked')) {
+            $("#div_diabetes").show();
+        }
+        else {
+            $("#div_diabetes").hide();
+        }
+        if ($('#fam_cardiovascular').is(':checked')) {
+            $("#div_cardiovascular").show();
+        }
+        else {
+            $("#div_cardiovascular").hide();
+        }
+        if ($('#fam_hipertension').is(':checked')) {
+            $("#div_hipertension").show();
+        }
+        else {
+            $("#div_hipertension").hide();
+        }
+        if ($('#fam_cancer').is(':checked')) {
+            $("#div_cancer").show();
+        }
+        else {
+            $("#div_cancer").hide();
+        }
+        if ($('#fam_tuberculosis').is(':checked')) {
+            $("#div_tuberculosis").show();
+        }
+        else {
+            $("#div_tuberculosis").hide();
+        }
+        if ($('#fam_mental').is(':checked')) {
+            $("#div_mental").show();
+        }
+        else {
+            $("#div_mental").hide();
+        }
+        if ($('#fam_infecciosa').is(':checked')) {
+            $("#div_infecciosa").show();
+        }
+        else {
+            $("#div_infecciosa").hide();
+        }
+        if ($('#fam_malformacion').is(':checked')) {
+            $("#div_malformacion").show();
+        }
+        else {
+            $("#div_malformacion").hide();
+        }
+        if ($('#fam_hipotiroidismo').is(':checked')) {
+            $("#div_hipotiroidismo").show();
+        }
+        else {
+            $("#div_hipotiroidismo").hide();
+        }
+        if ($('#fam_otro').is(':checked')) {
+            $("#div_otro").show();
+        }
+        else {
+            $("#div_otro").hide();
+        }
+    });
+</script>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">3 Antecedentes Familiares @ViewBag.valor</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.fam_id, new { Value = @ViewBag.fam_id })
+
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_cardiopatia)
+                            Cardiopatía
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_cardiopatia)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_diabetes)
+                            Diabetes
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_diabetes)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_cardiovascular)
+                            Enf. C. Vascular
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_cardiovascular)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_cardiopatia" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_car_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fam_car_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_diabetes" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_dia_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_dia_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_cardiovascular" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_vas_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_vas_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_hipertension)
+                            Hipertensión
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_hipertension)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_cancer)
+                            Cancer
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_cancer)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_tuberculosis)
+                            Tubercolosis
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_tuberculosis)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_hipertension" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_hip_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fam_hip_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_cancer" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_can_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_can_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_tuberculosis" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_tub_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fam_tub_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear: both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_mental)
+                            Enf. Mental
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_mental)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_infecciosa)
+                            Enf. Infecciosa
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_infecciosa)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_malformacion)
+                            Malformación
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_malformacion)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_mental" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_men_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_men_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_infecciosa" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_inf_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_inf_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_malformacion" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_mal_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fam_mal_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_hipotiroidismo)
+                            Hipotiroidismo
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_hipotiroidismo)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_otro)
+                            Otro
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_otro)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both;">
+                    <div id="div_hipotiroidismo" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_hit_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_hit_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_otro" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_otr_txt, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.fam_otr_txt)
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3" style="clear:both; float:right">
+                    <div class="form-group">
+                        @Ajax.ActionLink("Anterior", "Edit", "Ginecologico", new { id = ViewBag.fam_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                        <input type="submit" value="Siguiente" class="btn btn-primary" />
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

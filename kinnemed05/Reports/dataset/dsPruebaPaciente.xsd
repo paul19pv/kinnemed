@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPruebaPaciente" targetNamespace="http://tempuri.org/dsPruebaPaciente.xsd" xmlns:mstns="http://tempuri.org/dsPruebaPaciente.xsd" xmlns="http://tempuri.org/dsPruebaPaciente.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_prueba_pacienteTableAdapter" GeneratorDataComponentClassName="view_prueba_pacienteTableAdapter" Name="view_prueba_paciente" UserDataComponentName="view_prueba_pacienteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="bd_kinnemed02.dbo.view_prueba_paciente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, reg_paciente, reg_fecha, pru_valor FROM dbo.view_prueba_paciente</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pru_id" DataSetColumn="pru_id" />
+              <Mapping SourceColumn="exa_nombre" DataSetColumn="exa_nombre" />
+              <Mapping SourceColumn="pru_resultado" DataSetColumn="pru_resultado" />
+              <Mapping SourceColumn="exa_unidad" DataSetColumn="exa_unidad" />
+              <Mapping SourceColumn="exa_valores" DataSetColumn="exa_valores" />
+              <Mapping SourceColumn="are_nombre" DataSetColumn="are_nombre" />
+              <Mapping SourceColumn="reg_paciente" DataSetColumn="reg_paciente" />
+              <Mapping SourceColumn="reg_fecha" DataSetColumn="reg_fecha" />
+              <Mapping SourceColumn="pru_valor" DataSetColumn="pru_valor" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPruebaPaciente" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsPruebaPaciente" msprop:Generator_UserDSName="dsPruebaPaciente">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_prueba_paciente" msprop:Generator_TableClassName="view_prueba_pacienteDataTable" msprop:Generator_TableVarName="tableview_prueba_paciente" msprop:Generator_TablePropName="view_prueba_paciente" msprop:Generator_RowDeletingName="view_prueba_pacienteRowDeleting" msprop:Generator_RowChangingName="view_prueba_pacienteRowChanging" msprop:Generator_RowEvHandlerName="view_prueba_pacienteRowChangeEventHandler" msprop:Generator_RowDeletedName="view_prueba_pacienteRowDeleted" msprop:Generator_UserTableName="view_prueba_paciente" msprop:Generator_RowChangedName="view_prueba_pacienteRowChanged" msprop:Generator_RowEvArgName="view_prueba_pacienteRowChangeEvent" msprop:Generator_RowClassName="view_prueba_pacienteRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pru_id" msprop:Generator_ColumnVarNameInTable="columnpru_id" msprop:Generator_ColumnPropNameInRow="pru_id" msprop:Generator_ColumnPropNameInTable="pru_idColumn" msprop:Generator_UserColumnName="pru_id" type="xs:int" />
+              <xs:element name="exa_nombre" msprop:Generator_ColumnVarNameInTable="columnexa_nombre" msprop:Generator_ColumnPropNameInRow="exa_nombre" msprop:Generator_ColumnPropNameInTable="exa_nombreColumn" msprop:Generator_UserColumnName="exa_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pru_resultado" msprop:Generator_ColumnVarNameInTable="columnpru_resultado" msprop:Generator_ColumnPropNameInRow="pru_resultado" msprop:Generator_ColumnPropNameInTable="pru_resultadoColumn" msprop:Generator_UserColumnName="pru_resultado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="exa_unidad" msprop:Generator_ColumnVarNameInTable="columnexa_unidad" msprop:Generator_ColumnPropNameInRow="exa_unidad" msprop:Generator_ColumnPropNameInTable="exa_unidadColumn" msprop:Generator_UserColumnName="exa_unidad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="exa_valores" msprop:Generator_ColumnVarNameInTable="columnexa_valores" msprop:Generator_ColumnPropNameInRow="exa_valores" msprop:Generator_ColumnPropNameInTable="exa_valoresColumn" msprop:Generator_UserColumnName="exa_valores" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="are_nombre" msprop:Generator_ColumnVarNameInTable="columnare_nombre" msprop:Generator_ColumnPropNameInRow="are_nombre" msprop:Generator_ColumnPropNameInTable="are_nombreColumn" msprop:Generator_UserColumnName="are_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="reg_paciente" msprop:Generator_ColumnVarNameInTable="columnreg_paciente" msprop:Generator_ColumnPropNameInRow="reg_paciente" msprop:Generator_ColumnPropNameInTable="reg_pacienteColumn" msprop:Generator_UserColumnName="reg_paciente" type="xs:int" />
+              <xs:element name="reg_fecha" msprop:Generator_ColumnVarNameInTable="columnreg_fecha" msprop:Generator_ColumnPropNameInRow="reg_fecha" msprop:Generator_ColumnPropNameInTable="reg_fechaColumn" msprop:Generator_UserColumnName="reg_fecha">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pru_valor" msprop:Generator_ColumnVarNameInTable="columnpru_valor" msprop:Generator_ColumnPropNameInRow="pru_valor" msprop:Generator_ColumnPropNameInTable="pru_valorColumn" msprop:Generator_UserColumnName="pru_valor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_prueba_paciente" />
+      <xs:field xpath="mstns:pru_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

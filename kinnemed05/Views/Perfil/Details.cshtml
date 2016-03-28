@@ -1,0 +1,36 @@
+﻿@model kinnemed05.Models.perfil
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>perfil</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.per_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.per_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.per_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.per_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.per_descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.per_descripcion)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

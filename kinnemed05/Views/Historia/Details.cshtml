@@ -1,0 +1,905 @@
+﻿@model kinnemed05.Models.historia
+
+@{
+    ViewBag.Title = "Details";
+}
+<script>
+    $(function () {
+        if ($('#revision_rev_organos').is(':checked')) {
+            $("#div_organos").show();
+        }
+        else {
+            $("#div_organos").hide();
+        }
+        if ($('#revision_rev_respiratorio').is(':checked')) {
+            $("#div_respiratorio").show();
+        }
+        else {
+            $("#div_respiratorio").hide();
+        }
+        if ($('#revision_rev_cardiovascular').is(':checked')) {
+            $("#div_cardiovascular").show();
+        }
+        else {
+            $("#div_cardiovascular").hide();
+        }
+        if ($('#revision_rev_digestivo').is(':checked')) {
+            $("#div_digestivo").show();
+        }
+        else {
+            $("#div_digestivo").hide();
+        }
+        if ($('#revision_rev_genital').is(':checked')) {
+            $("#div_genital").show();
+        }
+        else {
+            $("#div_genital").hide();
+        }
+        if ($('#revision_rev_urinario').is(':checked')) {
+            $("#div_urinario").show();
+        }
+        else {
+            $("#div_urinario").hide();
+        }
+        if ($('#revision_rev_musculo').is(':checked')) {
+            $("#div_musculo").show();
+        }
+        else {
+            $("#div_musculo").hide();
+        }
+        if ($('#revision_rev_endocrino').is(':checked')) {
+            $("#div_endocrino").show();
+        }
+        else {
+            $("#div_endocrino").hide();
+        }
+        if ($('#revision_rev_linfatico').is(':checked')) {
+            $("#div_linfatico").show();
+        }
+        else {
+            $("#div_linfatico").hide();
+        }
+        if ($('#revision_rev_nervioso').is(':checked')) {
+            $("#div_nervioso").show();
+        }
+        else {
+            $("#div_nervioso").hide();
+        }
+
+
+
+        if ($('#fisico_fis_piel').is(':checked')) {
+            $("#div_piel").show();
+        }
+        else {
+            $("#div_piel").hide();
+        }
+        if ($('#fisico_fis_cabeza').is(':checked')) {
+            $("#div_cabeza").show();
+        }
+        else {
+            $("#div_cabeza").hide();
+        }
+        if ($('#fisico_fis_ojos').is(':checked')) {
+            $("#div_ojos").show();
+        }
+        else {
+            $("#div_ojos").hide();
+        }
+        if ($('#fisico_fis_oidos').is(':checked')) {
+            $("#div_oidos").show();
+        }
+        else {
+            $("#div_oidos").hide();
+        }
+        if ($('#fisico_fis_nariz').is(':checked')) {
+            $("#div_nariz").show();
+        }
+        else {
+            $("#div_nariz").hide();
+        }
+        if ($('#fisico_fis_boca').is(':checked')) {
+            $("#div_boca").show();
+        }
+        else {
+            $("#div_boca").hide();
+        }
+        if ($('#fisico_fis_faringe').is(':checked')) {
+            $("#div_faringe").show();
+        }
+        else {
+            $("#div_faringe").hide();
+        }
+        if ($('#fisico_fis_cuello').is(':checked')) {
+            $("#div_cuello").show();
+        }
+        else {
+            $("#div_cuello").hide();
+        }
+        if ($('#fisico_fis_axilas').is(':checked')) {
+            $("#div_axilas").show();
+        }
+        else {
+            $("#div_axilas").hide();
+        }
+        if ($('#fisico_fis_torax').is(':checked')) {
+            $("#div_torax").show();
+        }
+        else {
+            $("#div_torax").hide();
+        }
+
+        if ($('#fisico_fis_abdomen').is(':checked')) {
+            $("#div_abdomen").show();
+        }
+        else {
+            $("#div_abdomen").hide();
+        }
+        if ($('#fisico_fis_columna').is(':checked')) {
+            $("#div_columna").show();
+        }
+        else {
+            $("#div_columna").hide();
+        }
+        if ($('#fisico_fis_ingle').is(':checked')) {
+            $("#div_ingle").show();
+        }
+        else {
+            $("#div_ingle").hide();
+        }
+        if ($('#fisico_fis_mie_sup').is(':checked')) {
+            $("#div_mie_sup").show();
+        }
+        else {
+            $("#div_mie_sup").hide();
+        }
+        if ($('#fisico_fis_mie_inf').is(':checked')) {
+            $("#div_mie_inf").show();
+        }
+        else {
+            $("#div_mie_inf").hide();
+        }
+        if ($('#fisico_fis_organos').is(':checked')) {
+            $("#div_organos").show();
+        }
+        else {
+            $("#div_organos").hide();
+        }
+        if ($('#fisico_fis_respiratorio').is(':checked')) {
+            $("#div_respiratorio").show();
+        }
+        else {
+            $("#div_respiratorio").hide();
+        }
+        if ($('#fisico_fis_cardiovascular').is(':checked')) {
+            $("#div_cardiovascular").show();
+        }
+        else {
+            $("#div_cardiovascular").hide();
+        }
+        if ($('#fisico_fis_digestivo').is(':checked')) {
+            $("#div_digestivo").show();
+        }
+        else {
+            $("#div_digestivo").hide();
+        }
+        if ($('#fisico_fis_genital').is(':checked')) {
+            $("#div_genital").show();
+        }
+        else {
+            $("#div_genital").hide();
+        }
+        if ($('#fisico_fis_urinario').is(':checked')) {
+            $("#div_urinario").show();
+        }
+        else {
+            $("#div_urinario").hide();
+        }
+        if ($('#fisico_fis_esqueletico').is(':checked')) {
+            $("#div_esqueletico").show();
+        }
+        else {
+            $("#div_esqueletico").hide();
+        }
+        if ($('#fisico_fis_endocrino').is(':checked')) {
+            $("#div_endocrino").show();
+        }
+        else {
+            $("#div_endocrino").hide();
+        }
+        if ($('#fisico_fis_linfatico').is(':checked')) {
+            $("#div_linfatico").show();
+        }
+        else {
+            $("#div_linfatico").hide();
+        }
+        if ($('#fisico_fis_neurologico').is(':checked')) {
+            $("#div_neurologico").show();
+        }
+        else {
+            $("#div_neurologico").hide();
+        }
+
+        $.ajax({
+            url: $("#link_index").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_id').val() },
+            success: function (data) {
+                $('#div_index').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        });
+
+        $.ajax({
+            url: $("#link_personal").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val() },
+            success: function (data) {
+                $('#div_personal').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        });
+
+        $.ajax({
+            url: $("#link_familiar").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val() },
+            success: function (data) {
+                $('#div_familiar').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        });
+
+    });
+</script>
+@Html.HiddenFor(model => model.his_id)
+@Html.HiddenFor(model => model.his_paciente)
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">Información del Paciente</div>
+        <div class="panel-body">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.Label("Cedula", new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBox("txt_nombres", Model.paciente.pac_cedula, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.Label("Nombres", new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBox("txt_nombres", Model.paciente.pac_nombres, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.Label("Apellidos", new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBox("txt_apellidos", Model.paciente.pac_apellidos, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.Label("Edad", new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBox("txt_edad", Model.paciente.pac_edad, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">1 MOTIVO DE LA CONSULTA</div>
+        <div class="panel-body">
+            <div class="col-lg-12" style="clear:both">
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.his_motivo, new { @class = "form-control", @rows = "5",@readonly="readonly" })
+                    @Html.ValidationMessageFor(model => model.his_motivo)
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">2 ANTECEDENTES PERSONALES</div>
+        <div id="div_personal" class="panel-body">
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">3 ANTECEDENTES FAMILIARES</div>
+        <div id="div_familiar" class="panel-body">
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">4 ENFERMEDAD O PROBLEMA ACTUAL</div>
+        <div class="panel-body">
+            <div class="col-lg-12" style="clear:both">
+                <div class="form-group">
+                    @Html.TextAreaFor(model => model.his_problema, new { @class = "form-control", @rows = "5",@readonly="readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">5 REVISION ACTUAL DE ORGANOS Y SISTEMAS</div>
+        <div class="panel-body">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_organos, new { @disabled = "disabled" })
+                        (CP/SP) Organos de los Sentidos
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_respiratorio, new {@disabled="disabled" })
+                        (CP/SP) Respiratorio
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_cardiovascular, new { @disabled = "disabled" })
+                        (CP/SP) Cardio Vascular
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear:both">
+                <div id="div_organos" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_org_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div id="div_respiratorio" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_res_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div id="div_cardiovascular" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_car_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_digestivo, new { @disabled = "disabled" })
+                        (CP/SP) Digestivo
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_genital, new { @disabled = "disabled" })
+                        (CP/SP) Genital
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_urinario, new { @disabled = "disabled" })
+                        (CP/SP) Urinario
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_digestivo" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_dig_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_genital" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_gen_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div id="div_urinario" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_uri_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_musculo, new { @disabled = "disabled" })
+                        (CP/SP) Músculo Esquelético
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_endocrino, new { @disabled = "disabled" })
+                        (CP/SP) Endocrino
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_linfatico, new { @disabled = "disabled" })
+                        (CP/SP) Emo Linfático
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_musculo" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_mus_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_endocrino" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_end_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div id="div_linfatico" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_lin_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.revision.rev_nervioso, new { @disabled = "disabled" })
+                        (CP/SP) Nervioso
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_nervioso" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.revision.rev_ner_txt, new { @class = "form-control", @readonly="readonly" })
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">6 SIGNOS VITALES Y MEDICIONES</div>
+        <div class="panel-body">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_presion, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_presion, new { @class = "form-control", @readonly="readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_cardiaca, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_cardiaca, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_respiratoria, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_respiratoria, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_tem_bucal, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_tem_bucal, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_tem_axilar, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_tem_axilar, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_peso, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_peso, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_talla, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_talla, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_masa, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_masa, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.signos.sig_perimetro, new { @class = "control-label", @for = "inputDefault" })
+                    @Html.TextBoxFor(model => model.signos.sig_perimetro, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">7 EXAMEN FISICO</div>
+        <div class="panel-body">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_piel, new { @disabled = "disabled" })
+                        (CP/SP) 1R Piel y Fanreas
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_cabeza, new { @disabled = "disabled" })
+                        (CP/SP) 2R Cabeza
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_ojos, new { @disabled = "disabled" })
+                        (CP/SP) 3R Ojos
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear:both">
+                <div id="div_piel" class="form-garoup" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_pie_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_cabeza" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_cab_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_ojos" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_ojo_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_oidos, new { @disabled = "disabled" })
+                        (CP/SP) 4R Oidos
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_nariz, new { @disabled = "disabled" })
+                        (CP/SP) 5R Nariz
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_boca, new { @disabled = "disabled" })
+                        (CP/SP) 6R Boca
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_oidos" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_oid_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_nariz" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_nar_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_boca" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_boc_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_faringe, new { @disabled = "disabled" })
+                        (CP/SP) 7R Oro Faringe
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_cuello, new { @disabled = "disabled" })
+                        (CP/SP) 8R Cuello
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_axilas, new { @disabled = "disabled" })
+                        (CP/SP) 9R Axilas - Mamas
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_faringe" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_far_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_cuello" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_cue_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_axilas" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_axi_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_torax, new { @disabled = "disabled" })
+                        (CP/SP) 10R Torax
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_abdomen, new { @disabled = "disabled" })
+                        (CP/SP) 11R Abdomen
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_columna, new { @disabled = "disabled" })
+                        (CP/SP) 12R Columna Vertebral
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_torax" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_tor_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_abdomen" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_abd_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_columna" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_col_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div class="form-group" style="clear:both">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_ingle, new { @disabled = "disabled" })
+                        (CP/SP) 13R Ingle-Perine
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_mie_sup, new { @disabled = "disabled" })
+                        (CP/SP) 14R Miembros Superiores
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_mie_inf, new { @disabled = "disabled" })
+                        (CP/SP) 15R Miembros Inferiores
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_ingle" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_ing_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_mie_sup" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_msp_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_mie_inf" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_mif_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-4" style="clear: both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_organos, new { @disabled = "disabled" })
+                        (CP/SP) 1S Organos de los sentidos
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_respiratorio, new { @disabled = "disabled" })
+                        (CP/SP) 2S Respiratorio
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_cardiovascular, new { @disabled = "disabled" })
+                        (CP/SP) 3S Cardio Vascular
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_organos" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_org_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div id="div_respiratorio" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_res_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_cardiovascular" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_car_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_digestivo, new { @disabled = "disabled" })
+                        (CP/SP) 4S Disgestivo
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_genital, new { @disabled = "disabled" })
+                        (CP/SP) 5S Genital
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_urinario, new { @disabled = "disabled" })
+                        (CP/SP) 6S Urinario
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_digestivo" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_dig_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div id="div_genital" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_fen_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_urinario" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_uri_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="col-lg-4" style="clear: both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_esqueletico, new { @disabled = "disabled" })
+                        (CP/SP) 7S Músculo Esquelético
+                    </label>
+                </div>
+            </div>
+
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_endocrino, new { @disabled = "disabled" })
+                        (CP/SP) 8S Endocrino
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_linfatico)
+                        (CP/SP) 9S Hemo Linfático
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_esqueletico" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_esq_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_endocrino" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_end_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="div_linfatico" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_lin_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+
+            <div class="col-lg-4" style="clear:both">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBoxFor(model => model.fisico.fis_neurologico, new { @disabled = "disabled" })
+                        (CP/SP) 10s Neurológico
+                    </label>
+                </div>
+            </div>
+            <div class="col-lg-4" style="clear: both">
+                <div id="div_neurologico" class="form-group" style="display: none;">
+                    @Html.TextBoxFor(model => model.fisico.fis_neu_txt, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">8 DIAGNOSTICOS</div>
+        <div id="div_index" class="panel-body">
+            
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">9 PLANES</div>
+        <div class="panel-body">
+            <div class="col-lg-12" style="clear:both">
+                <div class="form-group">
+                    <label>Planes de Tratamiento Farmacologico</label>
+                    @Html.TextAreaFor(model => model.plan.pla_texto1, new { @class = "form-control", @rows = "10", @readonly="readonly" })
+                </div>
+            </div>
+            <div class="col-lg-12" style="clear:both">
+                <div class="form-group">
+                    <label>Planes de Tratamiento No Farmacologico</label>
+                    @Html.TextAreaFor(model => model.plan.pla_texto2, new { @class = "form-control", @rows = "10", @readonly = "readonly" })
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<a href="@Url.Content("~/Diagnostico/Consulta")" id="link_index"></a>
+<a href="@Url.Content("~/Personal/Details")" id="link_personal"></a>
+<a href="@Url.Content("~/Familiar/Details")" id="link_familiar"></a>

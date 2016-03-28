@@ -1,0 +1,354 @@
+﻿@model kinnemed05.Models.revision
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+    $(function () {
+        $("#rev_organos").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_organos").show();
+                $("#rev_org_txt").val("");
+            } else {
+                $("#div_organos").hide();
+                $("#rev_org_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_respiratorio").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_respiratorio").show();
+                $("#rev_res_txt").val("");
+            } else {
+                $("#div_respiratorio").hide();
+                $("#rev_res_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_cardiovascular").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cardiovascular").show();
+                $("#rev_car_txt").val("");
+            } else {
+                $("#div_cardiovascular").hide();
+                $("#rev_car_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_digestivo").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_digestivo").show();
+                $("#rev_dig_txt").val("");
+            } else {
+                $("#div_digestivo").hide();
+                $("#rev_dig_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_genital").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_genital").show();
+                $("#rev_gen_txt").val("");
+            } else {
+                $("#div_genital").hide();
+                $("#rev_gen_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_urinario").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_urinario").show();
+                $("#rev_uri_txt").val("");
+            } else {
+                $("#div_urinario").hide();
+                $("#rev_uri_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_musculo").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_musculo").show();
+                $("#rev_mus_txt").val("");
+            } else {
+                $("#div_musculo").hide();
+                $("#rev_mus_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_endocrino").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_endocrino").show();
+                $("#rev_end_txt").val("");
+            } else {
+                $("#div_endocrino").hide();
+                $("#rev_end_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_linfatico").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_linfatico").show();
+                $("#rev_lin_txt").val("");
+            } else {
+                $("#div_linfatico").hide();
+                $("#rev_lin_txt").val("SIN PATOLOGÍA");
+            }
+        });
+        $("#rev_nervioso").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_nervioso").show();
+                $("#rev_ner_txt").val("");
+            } else {
+                $("#div_nervioso").hide();
+                $("#rev_ner_txt").val("SIN PATOLOGÍA");
+            }
+        });
+
+        if ($('#rev_organos').is(':checked')) {
+            $("#div_organos").show();
+        }
+        else {
+            $("#div_organos").hide();
+        }
+        if ($('#rev_respiratorio').is(':checked')) {
+            $("#div_respiratorio").show();
+        }
+        else {
+            $("#div_respiratorio").hide();
+        }
+        if ($('#rev_cardiovascular').is(':checked')) {
+            $("#div_cardiovascular").show();
+        }
+        else {
+            $("#div_cardiovascular").hide();
+        }
+        if ($('#rev_digestivo').is(':checked')) {
+            $("#div_digestivo").show();
+        }
+        else {
+            $("#div_digestivo").hide();
+        }
+        if ($('#rev_genital').is(':checked')) {
+            $("#div_genital").show();
+        }
+        else {
+            $("#div_genital").hide();
+        }
+        if ($('#rev_urinario').is(':checked')) {
+            $("#div_urinario").show();
+        }
+        else {
+            $("#div_urinario").hide();
+        }
+        if ($('#rev_musculo').is(':checked')) {
+            $("#div_musculo").show();
+        }
+        else {
+            $("#div_musculo").hide();
+        }
+        if ($('#rev_endocrino').is(':checked')) {
+            $("#div_endocrino").show();
+        }
+        else {
+            $("#div_endocrino").hide();
+        }
+        if ($('#rev_linfatico').is(':checked')) {
+            $("#div_linfatico").show();
+        }
+        else {
+            $("#div_linfatico").hide();
+        }
+        if ($('#rev_nervioso').is(':checked')) {
+            $("#div_nervioso").show();
+        }
+        else {
+            $("#div_nervioso").hide();
+        }
+    });
+</script>
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">5 Revisión Actual de Órganos y Sentidos</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.rev_id, new { Value = ViewBag.rev_id })
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_organos)
+                            Organos de los Sentidos CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_organos)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_respiratorio)
+                            Respiratorio CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_respiratorio)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_cardiovascular)
+                            Cardio Vascular CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_cardiovascular)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_organos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_org_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_org_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_respiratorio" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_res_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_res_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_cardiovascular" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_car_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_car_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_digestivo)
+                            Digestivo CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_digestivo)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_genital)
+                            Genital CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_genital)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_urinario)
+                            Urinario CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_urinario)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_digestivo" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_dig_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_dig_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_genital" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_gen_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_gen_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_urinario" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_uri_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_uri_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_musculo)
+                            Músculo Esquelético CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_musculo)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_endocrino)
+                            Endocrino CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_endocrino)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_linfatico)
+                            Emo Linfático CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_linfatico)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_musculo" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_mus_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_mus_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_endocrino" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_end_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_end_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_linfatico" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_lin_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_lin_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.rev_nervioso)
+                            Nervioso CP/SP
+                        </label>
+                        @Html.ValidationMessageFor(model => model.rev_nervioso)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_nervioso" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.rev_ner_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.rev_ner_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="clear:both; float:right">
+                    <div class="form-group">
+                        @Ajax.ActionLink("Anterior", "Problema", "Historia", new { id = ViewBag.rev_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                        <input type="submit" value="Siguiente" class="btn btn-primary" />
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

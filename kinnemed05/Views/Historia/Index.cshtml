@@ -1,0 +1,58 @@
+﻿@model IEnumerable<kinnemed05.Models.historia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Historias Generales</h2>
+
+<p>
+    @Html.ActionLink("Nueva Historia", "Create", "", new { @class = "btn btn-default" })
+</p>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover ">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.his_id)
+                </th>
+                <th>
+                   Paciente
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.his_motivo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.his_problema)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.his_id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.his_motivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.his_problema)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                        @Html.ActionLink("Details", "Details", new { id = item.his_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.his_id }, new { @class = "iconb icon-delete", @title = "Borrar" })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

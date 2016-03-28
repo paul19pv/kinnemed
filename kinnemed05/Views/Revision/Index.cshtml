@@ -1,0 +1,153 @@
+﻿@model IEnumerable<kinnemed05.Models.revision>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.historia.his_motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_organos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_org_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_respiratorio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_res_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_cardiovascular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_car_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_disgestivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_dig_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_genital)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_gen_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_urinario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_uri_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_musculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_mus_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_endocrino)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_end_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_linfatico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_lin_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_nervioso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rev_nev_txt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.historia.his_motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_organos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_org_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_respiratorio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_res_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_cardiovascular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_car_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_disgestivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_dig_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_genital)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_gen_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_urinario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_uri_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_musculo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_mus_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_endocrino)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_end_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_linfatico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_lin_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_nervioso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rev_nev_txt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

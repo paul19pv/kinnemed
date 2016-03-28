@@ -1,0 +1,165 @@
+﻿@model kinnemed05.Models.signos
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script>
+    $(function () {
+        $("#sig_talla").change(function () {
+            calcular_imc();
+        });
+        $("#sig_peso").change(function () {
+            calcular_imc();
+        });
+
+    });
+    function calcular_imc() {
+        var talla = $("#sig_talla").val();
+        var peso = $("#sig_peso").val();
+        var imc = 0;
+        if ((talla != "") && (peso != "")) {
+            imc = parseFloat(peso) / (parseFloat(talla, 2) * parseFloat(talla, 2));
+        }
+        else {
+            imc = 0;
+        }
+        $("#sig_masa").val(imc.toFixed(2));
+    }
+
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+
+</script>
+<div id="div_form">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">6 Signos Vitales y Mediciones</h3>
+            </div>
+            <div class="panel-body">
+                @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.sig_id, new { Value = ViewBag.sig_id })
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_presion, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_presion, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_presion)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_cardiaca, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_cardiaca, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_cardiaca)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_respiratoria, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_respiratoria, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_respiratoria)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_temperatura, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_temperatura, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_temperatura)
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_peso, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_peso, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_peso)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_talla, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_talla, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_presion)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_masa, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_masa, new { @class = "form-control", Value = 0 })
+                            @Html.ValidationMessageFor(model => model.sig_masa)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_perimetro, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_perimetro, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.sig_perimetro)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_viceral, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_viceral, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.sig_viceral)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_corporal, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_corporal, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.sig_corporal)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_kilocalorias, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_kilocalorias, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.sig_kilocalorias)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_edadpeso, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_edadpeso, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.sig_edadpeso)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_corporal, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_corporal, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.sig_corporal)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.sig_masamuscular, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.sig_masamuscular, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.sig_masamuscular)
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3" style="clear:both;float:right;">
+                        <br />
+                        <div class="form-group">
+                            @Ajax.ActionLink("Anterior", "Edit", "Revision", new { id = ViewBag.sig_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                            <input type="submit" value="Siguiente" class="btn btn-primary" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

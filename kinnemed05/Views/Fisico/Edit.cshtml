@@ -1,0 +1,803 @@
+﻿@model kinnemed05.Models.fisico
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+    $(function () {
+        $("#fis_piel").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_piel").show();
+            } else {
+                $("#div_piel").hide();
+            }
+        });
+        $("#fis_cabeza").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cabeza").show();
+            } else {
+                $("#div_cabeza").hide();
+            }
+        });
+        $("#fis_ojos").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_ojos").show();
+            } else {
+                $("#div_ojos").hide();
+            }
+        });
+        $("#fis_oidos").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_oidos").show();
+            } else {
+                $("#div_oidos").hide();
+            }
+        });
+        $("#fis_nariz").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_nariz").show();
+            } else {
+                $("#div_nariz").hide();
+            }
+        });
+        $("#fis_boca").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_boca").show();
+            } else {
+                $("#div_boca").hide();
+            }
+        });
+        $("#fis_faringe").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_faringe").show();
+            } else {
+                $("#div_faringe").hide();
+            }
+        });
+        $("#fis_cuello").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cuello").show();
+            } else {
+                $("#div_cuello").hide();
+            }
+        });
+        $("#fis_axilas").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_axilas").show();
+            } else {
+                $("#div_axilas").hide();
+            }
+        });
+        $("#fis_torax").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_torax").show();
+            } else {
+                $("#div_torax").hide();
+            }
+        });
+
+        $("#fis_abdomen").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_abdomen").show();
+            } else {
+                $("#div_abdomen").hide();
+            }
+        });
+        $("#fis_columna").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_columna").show();
+            } else {
+                $("#div_columna").hide();
+            }
+        });
+
+        $("#fis_ingle").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_ingle").show();
+            } else {
+                $("#div_ingle").hide();
+            }
+        });
+        $("#fis_mie_sup").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_mie_sup").show();
+            } else {
+                $("#div_mie_sup").hide();
+            }
+        });
+        $("#fis_mie_inf").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_mie_inf").show();
+            } else {
+                $("#div_mie_inf").hide();
+            }
+        });
+        $("#fis_organos").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_organos").show();
+            } else {
+                $("#div_organos").hide();
+            }
+        });
+        $("#fis_respiratorio").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_respiratorio").show();
+            } else {
+                $("#div_respiratorio").hide();
+            }
+        });
+        $("#fis_cardiovascular").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_cardiovascular").show();
+            } else {
+                $("#div_cardiovascular").hide();
+            }
+        });
+        $("#fis_digestivo").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_digestivo").show();
+            } else {
+                $("#div_digestivo").hide();
+            }
+        });
+        $("#fis_genital").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_genital").show();
+            } else {
+                $("#div_genital").hide();
+            }
+        });
+        $("#fis_urinario").change(function () {
+            if ($(this).is(':checked')) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $("#div_urinario").show();
+            } else {
+                // Hacer algo si el checkbox ha sido deseleccionado
+                $("#div_urinario").hide();
+            }
+        });
+        $("#fis_esqueletico").change(function () {
+            if ($(this).is(':checked')) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $("#div_esqueletico").show();
+            } else {
+                // Hacer algo si el checkbox ha sido deseleccionado
+                $("#div_esqueletico").hide();
+            }
+        });
+        $("#fis_endocrino").change(function () {
+            if ($(this).is(':checked')) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $("#div_endocrino").show();
+            } else {
+                // Hacer algo si el checkbox ha sido deseleccionado
+                $("#div_endocrino").hide();
+            }
+        });
+        $("#fis_linfatico").change(function () {
+            if ($(this).is(':checked')) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $("#div_linfatico").show();
+            } else {
+                // Hacer algo si el checkbox ha sido deseleccionado
+                $("#div_linfatico").hide();
+            }
+        });
+        $("#fis_neurologico").change(function () {
+            if ($(this).is(':checked')) {
+                // Hacer algo si el checkbox ha sido seleccionado
+                $("#div_neurologico").show();
+            } else {
+                // Hacer algo si el checkbox ha sido deseleccionado
+                $("#div_neurologico").hide();
+            }
+        });
+
+
+        if ($('#fis_piel').is(':checked')) {
+            $("#div_piel").show();
+        }
+        else {
+            $("#div_piel").hide();
+        }
+        if ($('#fis_cabeza').is(':checked')) {
+            $("#div_cabeza").show();
+        }
+        else {
+            $("#div_cabeza").hide();
+        }
+        if ($('#fis_ojos').is(':checked')) {
+            $("#div_ojos").show();
+        }
+        else {
+            $("#div_ojos").hide();
+        }
+        if ($('#fis_oidos').is(':checked')) {
+            $("#div_oidos").show();
+        }
+        else {
+            $("#div_oidos").hide();
+        }
+        if ($('#fis_nariz').is(':checked')) {
+            $("#div_nariz").show();
+        }
+        else {
+            $("#div_nariz").hide();
+        }
+        if ($('#fis_boca').is(':checked')) {
+            $("#div_boca").show();
+        }
+        else {
+            $("#div_boca").hide();
+        }
+        if ($('#fis_faringe').is(':checked')) {
+            $("#div_faringe").show();
+        }
+        else {
+            $("#div_faringe").hide();
+        }
+        if ($('#fis_cuello').is(':checked')) {
+            $("#div_cuello").show();
+        }
+        else {
+            $("#div_cuello").hide();
+        }
+        if ($('#fis_axilas').is(':checked')) {
+            $("#div_axilas").show();
+        }
+        else {
+            $("#div_axilas").hide();
+        }
+        if ($('#fis_torax').is(':checked')) {
+            $("#div_torax").show();
+        }
+        else {
+            $("#div_torax").hide();
+        }
+
+        if ($('#fis_abdomen').is(':checked')) {
+            $("#div_abdomen").show();
+        }
+        else {
+            $("#div_abdomen").hide();
+        }
+        if ($('#fis_columna').is(':checked')) {
+            $("#div_columna").show();
+        }
+        else {
+            $("#div_columna").hide();
+        }
+        if ($('#fis_ingle').is(':checked')) {
+            $("#div_ingle").show();
+        }
+        else {
+            $("#div_ingle").hide();
+        }
+        if ($('#fis_mie_sup').is(':checked')) {
+            $("#div_mie_sup").show();
+        }
+        else {
+            $("#div_mie_sup").hide();
+        }
+        if ($('#fis_mie_inf').is(':checked')) {
+            $("#div_mie_inf").show();
+        }
+        else {
+            $("#div_mie_inf").hide();
+        }
+        if ($('#fis_organos').is(':checked')) {
+            $("#div_organos").show();
+        }
+        else {
+            $("#div_organos").hide();
+        }
+        if ($('#fis_respiratorio').is(':checked')) {
+            $("#div_respiratorio").show();
+        }
+        else {
+            $("#div_respiratorio").hide();
+        }
+        if ($('#fis_cardiovascular').is(':checked')) {
+            $("#div_cardiovascular").show();
+        }
+        else {
+            $("#div_cardiovascular").hide();
+        }
+        if ($('#fis_digestivo').is(':checked')) {
+            $("#div_digestivo").show();
+        }
+        else {
+            $("#div_digestivo").hide();
+        }
+        if ($('#fis_genital').is(':checked')) {
+            $("#div_genital").show();
+        }
+        else {
+            $("#div_genital").hide();
+        }
+        if ($('#fis_urinario').is(':checked')) {
+            $("#div_urinario").show();
+        }
+        else {
+            $("#div_urinario").hide();
+        }
+        if ($('#fis_esqueletico').is(':checked')) {
+            $("#div_esqueletico").show();
+        }
+        else {
+            $("#div_esqueletico").hide();
+        }
+        if ($('#fis_endocrino').is(':checked')) {
+            $("#div_endocrino").show();
+        }
+        else {
+            $("#div_endocrino").hide();
+        }
+        if ($('#fis_linfatico').is(':checked')) {
+            $("#div_linfatico").show();
+        }
+        else {
+            $("#div_linfatico").hide();
+        }
+        if ($('#fis_neurologico').is(':checked')) {
+            $("#div_neurologico").show();
+        }
+        else {
+            $("#div_neurologico").hide();
+        }
+    });
+</script>
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">7 Exámen Físico</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.fis_id, new { Value = ViewBag.fis_id })
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_piel)
+                            (CP/SP) 1R Piel y Fanreas
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_piel)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_axilas)
+                            (CP/SP) 9R Axilas - Mamas
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_axilas)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_organos)
+                            (CP/SP) 1S Organos de los sentidos
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_organos)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_piel" class="form-garoup" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_pie_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_pie_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_axilas" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_axi_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_axi_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" >
+                    <div id="div_organos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_org_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_org_txt)
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_cabeza)
+                            (CP/SP) 2R Cabeza
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_cabeza)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_torax)
+                            (CP/SP) 10R Torax
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_torax)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_respiratorio)
+                            (CP/SP) 2S Respiratorio
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_respiratorio)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_cabeza" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_cab_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_cab_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_torax" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_tor_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_tor_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_respiratorio" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_res_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_res_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_ojos)
+                            (CP/SP) 3R Ojos
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_ojos)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_abdomen)
+                            (CP/SP) 11R Abdomen
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_abdomen)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_cardiovascular)
+                            (CP/SP) 3S Cardio Vascular
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_cardiovascular)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_ojos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_ojo_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_ojo_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_abdomen" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_abd_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_abd_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_cardiovascular" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_car_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_car_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_oidos)
+                            (CP/SP) 4R Oidos
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_oidos)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_columna)
+                            (CP/SP) 12R Columna Vertebral
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_columna)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_digestivo)
+                            (CP/SP) 4S Disgestivo
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_digestivo)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_oidos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_oid_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_oid_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_columna" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_col_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_col_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_digestivo" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_dig_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_dig_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_nariz)
+                            (CP/SP) 5R Nariz
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_nariz)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group" style="clear:both">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_ingle)
+                            (CP/SP) 13R Ingle-Perine
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_ingle)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_genital)
+                            (CP/SP) 5S Genital
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_genital)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_nariz" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_nar_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_nar_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_ingle" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_ing_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_ing_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_genital" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_fen_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_fen_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_boca)
+                            (CP/SP) 6R Boca
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_boca)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_mie_sup)
+                            (CP/SP) 14R Miembros Superiores
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_mie_sup)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_urinario)
+                            (CP/SP) 6S Urinario
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_urinario)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_boca" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_boc_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_boc_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_mie_sup" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_msp_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_msp_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_urinario" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_uri_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_uri_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_faringe)
+                            (CP/SP) 7R Oro Faringe
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_faringe)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_mie_inf)
+                            (CP/SP) 15R Miembros Inferiores
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_mie_inf)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_esqueletico)
+                            (CP/SP) 7S Músculo Esquelético
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_esqueletico)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_faringe" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_far_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_far_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_mie_inf" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_mif_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_mif_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_esqueletico" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_esq_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_esq_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_cuello)
+                            (CP/SP) 8R Cuello
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_cuello)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_endocrino)
+                            (CP/SP) 8S Endocrino
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_endocrino)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_cuello" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_cue_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_cue_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_endocrino" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_end_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_res_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_linfatico)
+                            (CP/SP) 9S Hemo Linfático
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_linfatico)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_linfatico" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_lin_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_car_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_neurologico)
+                            (CP/SP) 10s Neurológico
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_neurologico)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_neurologico" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_neu_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_neu_txt)
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-3" style="clear:both; float:right">
+                    <div class="form-group">
+                        @Ajax.ActionLink("Anterior", "Edit", "Signos", new { id = ViewBag.fis_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                        <input type="submit" value="Siguiente" class="btn btn-primary" />
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

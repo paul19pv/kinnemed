@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "IndexCSV";
+}
+
+<h2>IndexCSV</h2>
+@model System.Data.DataTable
+@using System.Data;
+
+<h2>Columns to include</h2>
+<label>@ViewBag.prueba</label>
+@*@foreach (string item in ViewBag.prueba)
+{
+    <label>a @item f</label> <br />   
+}*@
+@*@using (Html.BeginForm())*@
+<table>
+    <thead>
+        <tr>
+            <th>Column name</th>
+            <th>Select database column name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (DataRow dtRow in Model.Rows)
+        {
+            // On all tables' columns
+            <tr>
+
+                @foreach (DataColumn dc in Model.Columns)
+                {
+                    
+                    <td>
+                        @dtRow[dc]
+                    </td>
+
+                }
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+

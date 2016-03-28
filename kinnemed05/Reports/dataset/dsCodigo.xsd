@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCodigo" targetNamespace="http://tempuri.org/dsCodigo.xsd" xmlns:mstns="http://tempuri.org/dsCodigo.xsd" xmlns="http://tempuri.org/dsCodigo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_codigoTableAdapter" GeneratorDataComponentClassName="view_codigoTableAdapter" Name="view_codigo" UserDataComponentName="view_codigoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="bd_kinnemed02.dbo.view_codigo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT pru_codigo, pru_imagen, pac_apellidos, pac_nombres, reg_id FROM dbo.view_codigo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="pru_codigo" DataSetColumn="pru_codigo" />
+              <Mapping SourceColumn="pru_imagen" DataSetColumn="pru_imagen" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="reg_id" DataSetColumn="reg_id" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCodigo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCodigo" msprop:Generator_UserDSName="dsCodigo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_codigo" msprop:Generator_TableClassName="view_codigoDataTable" msprop:Generator_TableVarName="tableview_codigo" msprop:Generator_TablePropName="view_codigo" msprop:Generator_RowDeletingName="view_codigoRowDeleting" msprop:Generator_RowChangingName="view_codigoRowChanging" msprop:Generator_RowEvHandlerName="view_codigoRowChangeEventHandler" msprop:Generator_RowDeletedName="view_codigoRowDeleted" msprop:Generator_UserTableName="view_codigo" msprop:Generator_RowChangedName="view_codigoRowChanged" msprop:Generator_RowEvArgName="view_codigoRowChangeEvent" msprop:Generator_RowClassName="view_codigoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="pru_codigo" msprop:Generator_ColumnVarNameInTable="columnpru_codigo" msprop:Generator_ColumnPropNameInRow="pru_codigo" msprop:Generator_ColumnPropNameInTable="pru_codigoColumn" msprop:Generator_UserColumnName="pru_codigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pru_imagen" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpru_imagen" msprop:Generator_ColumnPropNameInRow="pru_imagen" msprop:Generator_ColumnPropNameInTable="pru_imagenColumn" msprop:Generator_UserColumnName="pru_imagen" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="reg_id" msprop:Generator_ColumnVarNameInTable="columnreg_id" msprop:Generator_ColumnPropNameInRow="reg_id" msprop:Generator_ColumnPropNameInTable="reg_idColumn" msprop:Generator_UserColumnName="reg_id" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_codigo" />
+      <xs:field xpath="mstns:reg_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

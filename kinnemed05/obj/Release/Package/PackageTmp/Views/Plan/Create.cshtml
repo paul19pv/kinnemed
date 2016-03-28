@@ -1,0 +1,60 @@
+﻿@model kinnemed05.Models.plan
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+</script>
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">9 Planes</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.pla_id, new { Value=ViewBag.pla_id})
+
+
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        <label>Planes de Tratamiento Farmacologico</label>
+                        @Html.TextAreaFor(model => model.pla_texto1, new { @class = "form-control", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.pla_texto1)
+                    </div>
+                </div>
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        <label>Planes de Tratamiento No Farmacologico</label>
+                        @Html.TextAreaFor(model => model.pla_texto2, new { @class = "form-control", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.pla_texto2)
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="clear:both; float:right">
+                    <div class="form-group">
+                        @Ajax.ActionLink("Anterior", "Create", "Diagnostico", new { id = ViewBag.pla_id}, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,223 @@
+﻿@model kinnemed05.Models.diagnostico
+
+@{
+    ViewBag.Title = "Create";
+}
+<script>
+    $(function () {
+        $('.form-group select').addClass('form-control');
+        $('#txt_categoria').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_categoria").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_categoria").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.cie_codigo,
+                                label: item.cie_codigo + " " + item.cie_descripcion,
+                                id: item.cie_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#cat_id").val(ui.item.id)
+                fillCombo("dro_subcategoria", ui.item.id);
+            },
+            minLength: 2
+        });
+
+        $('#txt_subcategoria').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_subcategoria").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_subcategoria").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.sub_codigo + " " + item.sub_descripcion,
+                                id: item.sub_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#dia_subcie10").val(ui.item.id);
+
+            },
+            minLength: 2
+        });
+
+        $("#dro_subcategoria").change(function () {
+            $("#dia_subcie10").val($(this).val());
+        });
+
+        $.ajax({
+            url: $("#link_index").attr('href'),
+            type: 'GET',
+            data: { id: $('#dia_historia').val() },
+            success: function (data) {
+                $('#div_index').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        });
+
+
+    });
+
+
+
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+        
+
+    });
+
+
+    function fillCombo(updateId, value) {
+        $.ajax({
+            type: "POST",
+            url: $("#link_combo").attr('href'),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "id": value }),
+            success: function (resultado) {
+                $("#" + updateId).empty();
+                $.each(resultado, function (i, item) {
+                    $("#" + updateId).append("<option value='"
+                       + item.Value + "'>" + item.Text
+                       + "</option>");
+                });
+
+            },
+            error: function () {
+                alert('Ocurrió un error al acceder a la información');
+            }
+        });
+    }
+    function clean_txt(result, status, xhr) {
+        //Salert("llego");
+        $("#dia_descripcion").val("");
+        $("#txt_categoria").val("");
+        $("#dro_subcategoria").val("");
+        $("#txt_subcategoria").val("");
+        $("#dia_tipo").val("");
+    }
+</script>
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">8 Diagnosticos</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnComplete = "clean_txt" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.dia_historia, new { Value = @ViewBag.dia_historia })
+                @Html.HiddenFor(model=>model.dia_subcie10)
+                @Html.Hidden("cat_id")
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.Label("Categoria CIE 10", new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_categoria", "", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.Label("Subcategoria CIE 10", new { @class = "control-label", @for = "inputDefault" })
+                        @Html.DropDownList("dro_subcategoria", Enumerable.Empty<SelectListItem>(), "--Seleccione--")
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.Label("Busqueda directa", new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_subcategoria","" ,new { @class = "form-control" })
+                    </div>
+                </div>
+                
+                
+                
+                
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        @Html.Label("Observación", new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.dia_descripcion, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.dia_descripcion)
+                    </div>
+                </div>
+                
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.Label("Tipo", new { @class = "control-label", @for = "inputDefault" })
+                        @Html.DropDownList("dia_tipo",String.Empty)
+                        @Html.ValidationMessageFor(model => model.dia_tipo)
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <br />
+                    <div class="form-group">
+                        
+                        <input type="submit" value="Agregar" class="btn btn-primary" />
+                    </div>
+                </div>
+
+                
+            }
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Diagnostico/AutocompleteCategoria")" id="link_categoria"></a>
+<a href="@Url.Content("~/Diagnostico/AutocompleteSubcategoria")" id="link_subcategoria"></a>
+<a href="@Url.Content("~/Diagnostico/GetSubPorCat")" id="link_combo"></a>
+<a href="@Url.Content("~/Diagnostico/Index")" id="link_index"></a>
+
+<div id="div_index" style="clear:both">
+
+</div>
+<div class="col-lg-12" style="clear:both">
+    <div class="col-lg-3">
+        <div class="form-group">
+            @Ajax.ActionLink("Anterior", "Edit", "Fisico", new { id = ViewBag.dia_historia }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+            @Ajax.ActionLink("Siguiente", "Create", "Plan", new { id = ViewBag.dia_historia }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+</div>
+
+<div id="div_loading" class="progress progress-striped active" style="display:none">
+    <div class="progress-bar" style="width: 45%"></div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

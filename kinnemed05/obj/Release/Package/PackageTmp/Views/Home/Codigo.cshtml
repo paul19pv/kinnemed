@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Codigo";
+}
+
+<h2>Codigo</h2>
+@Html.TextBox("txtFuentes")
+
+<input type="button" id="btnImagen" value="clik" />
+<img id="imgCodeBar" alt="codeBar" />
+@Html.ActionLink("Codigo", "GetCodeBar", new { code = "123" })
+@Html.ActionLink("Codigo2", "BarCode", new { code = "123" })
+@Html.ActionLink("Codigo2", "Test", new { code = "123" })
+@Html.ActionLink("Codigo3", "GetCodeBar39", new { code = "123" }, new {@target="_blank" })
+@ViewBag.algo
+<script>
+    $(document).ready(function () {
+
+        var img = $("#imgCodeBar");
+        if (img) img.hide();
+
+        $("#btnImagen").click(cargarCodeBar);
+
+        function cargarCodeBar() {
+            var btn = $("#btnImagen");
+
+            if (img) {
+                var code = $("#txtFuentes");
+                var fonts = $("#ddlFuentes");
+
+                if (code && fonts) {
+
+                    img[0].src = "/kinnemed01/Home/GetCodeBar?code=" +
+                    code.val();
+                    //"&format=" + fonts.val() +
+                    //"&width=400&height=60&size=50";
+                    img.show();
+                }
+            }
+        }
+    });
+</script>

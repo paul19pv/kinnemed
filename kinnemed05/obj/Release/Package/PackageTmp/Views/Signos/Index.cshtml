@@ -1,0 +1,87 @@
+﻿@model IEnumerable<kinnemed05.Models.signos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.historia.his_motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_presion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_cardiaca)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_respiratoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_tem_bucal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_tem_axilar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_talla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_masa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sig_perimetro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.historia.his_motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_presion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_cardiaca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_respiratoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_tem_bucal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_tem_axilar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_talla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_masa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sig_perimetro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

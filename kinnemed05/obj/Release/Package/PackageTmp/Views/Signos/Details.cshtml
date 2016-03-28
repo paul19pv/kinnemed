@@ -1,0 +1,85 @@
+﻿@model kinnemed05.Models.signos
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>signos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.historia.his_motivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.historia.his_motivo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_presion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_presion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_cardiaca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_cardiaca)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_respiratoria)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_respiratoria)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_tem_bucal)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_tem_bucal)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_tem_axilar)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_tem_axilar)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_peso)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_peso)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_talla)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_talla)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_masa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_masa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sig_perimetro)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sig_perimetro)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

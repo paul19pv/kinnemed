@@ -1,0 +1,43 @@
+﻿@model kinnemed05.Models.empresa
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-lg-9">
+    <div class="bs-component">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Detalle Empresa</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.emp_cedula, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.emp_cedula, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.emp_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.emp_nombre, new { @class = "form-control", @readonly = "readonly" })
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.emp_direccion, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.emp_direccion, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.emp_telefono, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.emp_telefono, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.emp_mail, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.emp_mail, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Empresa", new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

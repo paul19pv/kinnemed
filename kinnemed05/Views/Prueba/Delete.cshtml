@@ -1,0 +1,75 @@
+﻿@model kinnemed05.Models.prueba
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>prueba</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.examen.exa_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.examen.exa_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.registro.reg_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.registro.reg_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_cuan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_cuan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_cual)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_cual)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_codigo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_codigo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_fuera)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_fuera)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_valor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_valor)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

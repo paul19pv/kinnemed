@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bd_kinnemed02ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="canton">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.canton">
+        <MappingFragment StoreEntitySet="canton">
+          <ScalarProperty Name="can_id" ColumnName="can_id" />
+          <ScalarProperty Name="can_nombre" ColumnName="can_nombre" />
+          <ScalarProperty Name="can_provincia" ColumnName="can_provincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.empresa">
+        <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="emp_cedula" ColumnName="emp_cedula" />
+          <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+          <ScalarProperty Name="emp_direccion" ColumnName="emp_direccion" />
+          <ScalarProperty Name="emp_telefono" ColumnName="emp_telefono" />
+          <ScalarProperty Name="emp_mail" ColumnName="emp_mail" />
+          <ScalarProperty Name="emp_estado" ColumnName="emp_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="especialidad">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.especialidad">
+        <MappingFragment StoreEntitySet="especialidad">
+          <ScalarProperty Name="esp_id" ColumnName="esp_id" />
+          <ScalarProperty Name="esp_nombre" ColumnName="esp_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="medico">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.medico">
+        <MappingFragment StoreEntitySet="medico">
+          <ScalarProperty Name="med_id" ColumnName="med_id" />
+          <ScalarProperty Name="med_cedula" ColumnName="med_cedula" />
+          <ScalarProperty Name="med_nombres" ColumnName="med_nombres" />
+          <ScalarProperty Name="med_apellidos" ColumnName="med_apellidos" />
+          <ScalarProperty Name="med_ci" ColumnName="med_ci" />
+          <ScalarProperty Name="med_codigo" ColumnName="med_codigo" />
+          <ScalarProperty Name="med_especialidad" ColumnName="med_especialidad" />
+          <ScalarProperty Name="med_correo" ColumnName="med_correo" />
+          <ScalarProperty Name="med_estado" ColumnName="med_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paciente">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.paciente">
+        <MappingFragment StoreEntitySet="paciente">
+          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+          <ScalarProperty Name="pac_cedula" ColumnName="pac_cedula" />
+          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+          <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
+          <ScalarProperty Name="pac_estadocivil" ColumnName="pac_estadocivil" />
+          <ScalarProperty Name="pac_pais" ColumnName="pac_pais" />
+          <ScalarProperty Name="pac_fechanacimiento" ColumnName="pac_fechanacimiento" />
+          <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
+          <ScalarProperty Name="pac_telefono" ColumnName="pac_telefono" />
+          <ScalarProperty Name="pac_celular" ColumnName="pac_celular" />
+          <ScalarProperty Name="pac_correo" ColumnName="pac_correo" />
+          <ScalarProperty Name="pac_provincia" ColumnName="pac_provincia" />
+          <ScalarProperty Name="pac_canton" ColumnName="pac_canton" />
+          <ScalarProperty Name="pac_direccion" ColumnName="pac_direccion" />
+          <ScalarProperty Name="pac_instruccion" ColumnName="pac_instruccion" />
+          <ScalarProperty Name="pac_profesion" ColumnName="pac_profesion" />
+          <ScalarProperty Name="pac_tipodiscapacidad" ColumnName="pac_tipodiscapacidad" />
+          <ScalarProperty Name="pac_porcentajediscapacidad" ColumnName="pac_porcentajediscapacidad" />
+          <ScalarProperty Name="pac_empresa" ColumnName="pac_empresa" />
+          <ScalarProperty Name="pac_estado" ColumnName="pac_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.pais">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="pais_id" ColumnName="pais_id" />
+          <ScalarProperty Name="pais_nombre" ColumnName="pais_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profesion">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.profesion">
+        <MappingFragment StoreEntitySet="profesion">
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+          <ScalarProperty Name="pro_nombre" ColumnName="pro_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.provincia">
+        <MappingFragment StoreEntitySet="provincia">
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+          <ScalarProperty Name="pro_nombre" ColumnName="pro_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupo">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.grupo">
+        <MappingFragment StoreEntitySet="grupo">
+          <ScalarProperty Name="gru_prefijo" ColumnName="gru_prefijo" />
+          <ScalarProperty Name="gru_nombre" ColumnName="gru_nombre" />
+          <ScalarProperty Name="gru_id" ColumnName="gru_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="quimico_sanguineo">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.quimico_sanguineo">
+        <MappingFragment StoreEntitySet="quimico_sanguineo">
+          <ScalarProperty Name="qui_examen" ColumnName="qui_examen" />
+          <ScalarProperty Name="qui_fuerarango" ColumnName="qui_fuerarango" />
+          <ScalarProperty Name="qui_resultado" ColumnName="qui_resultado" />
+          <ScalarProperty Name="qui_prueba" ColumnName="qui_prueba" />
+          <ScalarProperty Name="qui_id" ColumnName="qui_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unidad">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.unidad">
+        <MappingFragment StoreEntitySet="unidad">
+          <ScalarProperty Name="uni_nombre" ColumnName="uni_nombre" />
+          <ScalarProperty Name="uni_id" ColumnName="uni_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="biometria">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.biometria">
+        <MappingFragment StoreEntitySet="biometria">
+          <ScalarProperty Name="bio_examen" ColumnName="bio_examen" />
+          <ScalarProperty Name="bio_fuerarango" ColumnName="bio_fuerarango" />
+          <ScalarProperty Name="bio_resultado" ColumnName="bio_resultado" />
+          <ScalarProperty Name="bio_prueba" ColumnName="bio_prueba" />
+          <ScalarProperty Name="bio_id" ColumnName="bio_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="componente">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.componente">
+        <MappingFragment StoreEntitySet="componente">
+          <ScalarProperty Name="com_nombre" ColumnName="com_nombre" />
+          <ScalarProperty Name="com_id" ColumnName="com_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="microbiologia">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.microbiologia">
+        <MappingFragment StoreEntitySet="microbiologia">
+          <ScalarProperty Name="mic_examen" ColumnName="mic_examen" />
+          <ScalarProperty Name="mic_observacion" ColumnName="mic_observacion" />
+          <ScalarProperty Name="mic_componente" ColumnName="mic_componente" />
+          <ScalarProperty Name="mic_id" ColumnName="mic_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="copro">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.copro">
+        <MappingFragment StoreEntitySet="copro">
+          <ScalarProperty Name="cop_examen" ColumnName="cop_examen" />
+          <ScalarProperty Name="cop_valor" ColumnName="cop_valor" />
+          <ScalarProperty Name="cop_prueba" ColumnName="cop_prueba" />
+          <ScalarProperty Name="cop_id" ColumnName="cop_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="emo">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.emo">
+        <MappingFragment StoreEntitySet="emo">
+          <ScalarProperty Name="emo_examen" ColumnName="emo_examen" />
+          <ScalarProperty Name="emo_valor" ColumnName="emo_valor" />
+          <ScalarProperty Name="emo_prueba" ColumnName="emo_prueba" />
+          <ScalarProperty Name="emo_id" ColumnName="emo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reg_copro">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.reg_copro">
+        <MappingFragment StoreEntitySet="reg_copro">
+          <ScalarProperty Name="reg_concentracion" ColumnName="reg_concentracion" />
+          <ScalarProperty Name="reg_rotavirus" ColumnName="reg_rotavirus" />
+          <ScalarProperty Name="reg_polimorfonucleares" ColumnName="reg_polimorfonucleares" />
+          <ScalarProperty Name="reg_sangre" ColumnName="reg_sangre" />
+          <ScalarProperty Name="reg_ph" ColumnName="reg_ph" />
+          <ScalarProperty Name="reg_consistencia" ColumnName="reg_consistencia" />
+          <ScalarProperty Name="reg_aspecto" ColumnName="reg_aspecto" />
+          <ScalarProperty Name="reg_color" ColumnName="reg_color" />
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reg_emo">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.reg_emo">
+        <MappingFragment StoreEntitySet="reg_emo">
+          <ScalarProperty Name="reg_hemoglobina" ColumnName="reg_hemoglobina" />
+          <ScalarProperty Name="reg_sangre" ColumnName="reg_sangre" />
+          <ScalarProperty Name="reg_bilirrubinas" ColumnName="reg_bilirrubinas" />
+          <ScalarProperty Name="reg_urobilinogeno" ColumnName="reg_urobilinogeno" />
+          <ScalarProperty Name="reg_cetonas" ColumnName="reg_cetonas" />
+          <ScalarProperty Name="reg_glucosa" ColumnName="reg_glucosa" />
+          <ScalarProperty Name="reg_proteinas" ColumnName="reg_proteinas" />
+          <ScalarProperty Name="reg_nitritos" ColumnName="reg_nitritos" />
+          <ScalarProperty Name="reg_leucocitos" ColumnName="reg_leucocitos" />
+          <ScalarProperty Name="reg_ph" ColumnName="reg_ph" />
+          <ScalarProperty Name="reg_densidad" ColumnName="reg_densidad" />
+          <ScalarProperty Name="reg_aspecto" ColumnName="reg_aspecto" />
+          <ScalarProperty Name="reg_color" ColumnName="reg_color" />
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="betaHCG">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.betaHCG">
+        <MappingFragment StoreEntitySet="betaHCG">
+          <ScalarProperty Name="hcg_resultado" ColumnName="hcg_resultado" />
+          <ScalarProperty Name="hcg_fum" ColumnName="hcg_fum" />
+          <ScalarProperty Name="hcg_muestra" ColumnName="hcg_muestra" />
+          <ScalarProperty Name="hcg_tipo" ColumnName="hcg_tipo" />
+          <ScalarProperty Name="hcg_id" ColumnName="hcg_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hormonal">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.hormonal">
+        <MappingFragment StoreEntitySet="hormonal">
+          <ScalarProperty Name="hor_examen" ColumnName="hor_examen" />
+          <ScalarProperty Name="hor_fuerarango" ColumnName="hor_fuerarango" />
+          <ScalarProperty Name="hor_resultado" ColumnName="hor_resultado" />
+          <ScalarProperty Name="hor_prueba" ColumnName="hor_prueba" />
+          <ScalarProperty Name="hor_id" ColumnName="hor_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inmunologia">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.inmunologia">
+        <MappingFragment StoreEntitySet="inmunologia">
+          <ScalarProperty Name="inm_resultado" ColumnName="inm_resultado" />
+          <ScalarProperty Name="inm_id" ColumnName="inm_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pro_especifico">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.pro_especifico">
+        <MappingFragment StoreEntitySet="pro_especifico">
+          <ScalarProperty Name="pro_resultado" ColumnName="pro_resultado" />
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proteina">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.proteina">
+        <MappingFragment StoreEntitySet="proteina">
+          <ScalarProperty Name="pro_resultado" ColumnName="pro_resultado" />
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prueba">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.prueba">
+        <MappingFragment StoreEntitySet="prueba">
+          <ScalarProperty Name="pru_item" ColumnName="pru_item" />
+          <ScalarProperty Name="pru_grupo" ColumnName="pru_grupo" />
+          <ScalarProperty Name="pru_maximo" ColumnName="pru_maximo" />
+          <ScalarProperty Name="pru_minimo" ColumnName="pru_minimo" />
+          <ScalarProperty Name="pru_unidad" ColumnName="pru_unidad" />
+          <ScalarProperty Name="pru_nombre" ColumnName="pru_nombre" />
+          <ScalarProperty Name="pru_id" ColumnName="pru_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reg_mic">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.reg_mic">
+        <MappingFragment StoreEntitySet="reg_mic">
+          <ScalarProperty Name="reg_observacion" ColumnName="reg_observacion" />
+          <ScalarProperty Name="reg_cuantitativo" ColumnName="reg_cuantitativo" />
+          <ScalarProperty Name="reg_germen" ColumnName="reg_germen" />
+          <ScalarProperty Name="reg_fecha" ColumnName="reg_fecha" />
+          <ScalarProperty Name="reg_muestra" ColumnName="reg_muestra" />
+          <ScalarProperty Name="reg_origen" ColumnName="reg_origen" />
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="examen">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.examen">
+        <MappingFragment StoreEntitySet="examen">
+          <ScalarProperty Name="exa_imagen" ColumnName="exa_imagen" />
+          <ScalarProperty Name="exa_grupo" ColumnName="exa_grupo" />
+          <ScalarProperty Name="exa_medico" ColumnName="exa_medico" />
+          <ScalarProperty Name="exa_paciente" ColumnName="exa_paciente" />
+          <ScalarProperty Name="exa_orden" ColumnName="exa_orden" />
+          <ScalarProperty Name="exa_hc" ColumnName="exa_hc" />
+          <ScalarProperty Name="exa_fecha" ColumnName="exa_fecha" />
+          <ScalarProperty Name="exa_codigo" ColumnName="exa_codigo" />
+          <ScalarProperty Name="exa_id" ColumnName="exa_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="creatinina">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.creatinina">
+        <MappingFragment StoreEntitySet="creatinina">
+          <ScalarProperty Name="cre_resultado" ColumnName="cre_resultado" />
+          <ScalarProperty Name="cre_minutos" ColumnName="cre_minutos" />
+          <ScalarProperty Name="cre_sangre" ColumnName="cre_sangre" />
+          <ScalarProperty Name="cre_factor" ColumnName="cre_factor" />
+          <ScalarProperty Name="cre_orina" ColumnName="cre_orina" />
+          <ScalarProperty Name="cre_volumen" ColumnName="cre_volumen" />
+          <ScalarProperty Name="cre_id" ColumnName="cre_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pro_libre">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.pro_libre">
+        <MappingFragment StoreEntitySet="pro_libre">
+          <ScalarProperty Name="pro_examen" ColumnName="pro_examen" />
+          <ScalarProperty Name="pro_fuerarango" ColumnName="pro_fuerarango" />
+          <ScalarProperty Name="pro_resultado" ColumnName="pro_resultado" />
+          <ScalarProperty Name="pro_prueba" ColumnName="pro_prueba" />
+          <ScalarProperty Name="pro_id" ColumnName="pro_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aglutinacion">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.aglutinacion">
+        <MappingFragment StoreEntitySet="aglutinacion">
+          <ScalarProperty Name="agl_examen" ColumnName="agl_examen" />
+          <ScalarProperty Name="agl_resultado" ColumnName="agl_resultado" />
+          <ScalarProperty Name="agl_prueba" ColumnName="agl_prueba" />
+          <ScalarProperty Name="agl_id" ColumnName="agl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vih">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.vih">
+        <MappingFragment StoreEntitySet="vih">
+          <ScalarProperty Name="vih_antigenos" ColumnName="vih_antigenos" />
+          <ScalarProperty Name="vih_anticuerpos" ColumnName="vih_anticuerpos" />
+          <ScalarProperty Name="vih_id" ColumnName="vih_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mic_neg">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.mic_neg">
+        <MappingFragment StoreEntitySet="mic_neg">
+          <ScalarProperty Name="mic_negativo" ColumnName="mic_negativo" />
+          <ScalarProperty Name="mic_cuantitativo" ColumnName="mic_cuantitativo" />
+          <ScalarProperty Name="mic_germen" ColumnName="mic_germen" />
+          <ScalarProperty Name="mic_fecha" ColumnName="mic_fecha" />
+          <ScalarProperty Name="mic_muestra" ColumnName="mic_muestra" />
+          <ScalarProperty Name="mic_origen" ColumnName="mic_origen" />
+          <ScalarProperty Name="mic_id" ColumnName="mic_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="serologia">
+      <EntityTypeMapping TypeName="bd_kinnemed02Model.serologia">
+        <MappingFragment StoreEntitySet="serologia">
+          <ScalarProperty Name="ser_examen" ColumnName="ser_examen" />
+          <ScalarProperty Name="ser_fuerarango" ColumnName="ser_fuerarango" />
+          <ScalarProperty Name="ser_resultado" ColumnName="ser_resultado" />
+          <ScalarProperty Name="ser_prueba" ColumnName="ser_prueba" />
+          <ScalarProperty Name="ser_id" ColumnName="ser_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

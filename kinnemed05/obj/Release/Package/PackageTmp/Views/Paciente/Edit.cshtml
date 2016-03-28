@@ -1,0 +1,269 @@
+﻿@model kinnemed05.Models.paciente
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(document).ready(function () {
+        $("#pac_provincia").change(function () {
+            fillCombo("pac_canton", $("#pac_provincia").val());
+        });
+
+        $("#pac_tipodiscapacidad").change(function () {
+            var valor = $(this).val();
+            if (valor !== "No Aplica") {
+                $("#div_porcentaje").show();
+            }
+            else {
+                $("#div_porcentaje").hide();
+            }
+        });
+
+        $('#txt_profesion').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_profesion").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_profesion").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pro_nombre,
+                                id: item.pro_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#pac_profesion").val(ui.item.id)
+            },
+            minLength: 2
+        });
+
+        $("#anio").change(function () {
+            fecha($("#dia").val(), $("#mes").val(), $("#anio").val());
+        });
+        $("#mes").change(function () {
+            fecha($("#dia").val(), $("#mes").val(), $("#anio").val());
+        });
+        $("#dia").change(function () {
+            fecha($("#dia").val(), $("#mes").val(), $("#anio").val());
+        });
+    });
+
+    function fillCombo(updateId, value) {
+        $.ajax({
+            type: "POST",
+            url: $("#link_provincia").attr('href'),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ "id": value }),
+            success: function (resultado) {
+                $("#" + updateId).empty();
+                $.each(resultado, function (i, item) {
+                    $("#" + updateId).append("<option value='"
+                       + item.Value + "'>" + item.Text
+                       + "</option>");
+                });
+
+            },
+            error: function () {
+                alert('Ocurrió un error al acceder a la información');
+            }
+        });
+    }
+    function fecha(dia, mes, anio) {
+        var fecha_nac = dia + "/" + mes + "/" + anio;
+        $("#pac_fechanacimiento").val(fecha_nac);
+        if ((dia.length > 0) && (mes.length > 0) && (anio.length > 0)) {
+            var f = new Date();
+            $("#pac_edad").val(restaFechas(fecha_nac, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
+        }
+    }
+    restaFechas = function (f1, f2) {
+        var aFecha1 = f1.split('/');
+        var aFecha2 = f2.split('/');
+        var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+        var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+        var dif = fFecha2 - fFecha1;
+        var dias = Math.floor(dif / (1000 * 60 * 60 * 24 * 365));
+        return dias;
+    }
+</script>
+
+
+<div class="col-lg-12">
+    <div class="bs-component">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Modificar Paciente</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.pac_id)
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_cedula, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_cedula, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_cedula)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_nombres, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_nombres, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_nombres)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_apellidos, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_apellidos, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_apellidos)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_genero, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_genero", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_genero)
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_estadocivil, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_estadocivil", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_estadocivil)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_pais, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_pais", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_pais)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_instruccion, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_instruccion", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_instruccion)
+                        </div>
+                        
+
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_fechanacimiento, new { @class = "col-lg-12 control-label", @for = "inputDefault", @style="padding-left:0" })
+                            @Html.HiddenFor(model=>model.pac_fechanacimiento)
+                            
+                            <div class="col-lg-4" style="padding-left:0;padding-right:10px;">
+                                <div class="form-group">
+                                    @Html.DropDownList("anio", String.Empty)
+                                </div>
+                            </div>
+                            <div class="col-lg-4" style="padding-left:0;padding-right:10px;">
+                                @Html.DropDownList("mes", String.Empty)
+                            </div>
+                            <div class="col-lg-4" style="padding-left:0;padding-right:0;">
+                                @Html.DropDownList("dia", String.Empty)
+                            </div>
+                            @Html.ValidationMessageFor(model => model.pac_fechanacimiento)
+                        </div>
+                        <div class="form-group" style="clear:both">
+                            @Html.LabelFor(model => model.pac_edad, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_edad, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(model => model.pac_edad)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_telefono, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_telefono, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_telefono)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_celular, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_celular, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_celular)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_provincia, "Provincia", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_provincia", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_provincia)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_canton, "Canton", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_canton", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_canton)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_direccion, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_direccion, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_direccion)
+                        </div>
+
+                    </div> 
+                    
+                    <div class="col-lg-4">
+                        
+                        
+                        
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_profesion, "Profesion", new { @class = "control-label", @for = "inputDefault" })
+                            @if (Model.pac_profesion != null)
+                            {
+                                @Html.TextBox("txt_profesion", "", new { @class = "form-control", @placeholder = Model.profesion.pro_nombre })
+                            }
+                            else
+                            {
+                                @Html.TextBox("txt_profesion","", new { @class = "form-control" })
+                            }
+                            
+                            @Html.TextBoxFor(model => model.pac_profesion, new { @type = "hidden" })
+                            @Html.ValidationMessageFor(model => model.pac_profesion)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_tipodiscapacidad, new { @class = "control-label", @for = "inputDefault" })
+                            @*@Html.TextBoxFor(model => model.pac_tipodiscapacidad, new { @class = "form-control" })*@
+                            @Html.DropDownList("pac_tipodiscapacidad", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_tipodiscapacidad)
+                        </div>
+                        <div id="div_porcentaje" class="form-group" style="display:none">
+                            @Html.LabelFor(model => model.pac_porcentajediscapacidad, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_porcentajediscapacidad", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_porcentajediscapacidad)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_empresa, "Empresa", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_empresa", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_empresa)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_correo, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.pac_correo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.pac_correo)
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.pac_estado, new { @class = "form-control", Value = "activo", @type = "hidden" })
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4" style="clear:both">
+                        <div class="form-group">
+                            @Html.ActionLink("Regresar", "Index", "Paciente", new { @class = "btn btn-default" })
+                            <input type="submit" value="Moodificar" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Paciente/GetCantonesPorProvincia")" id="link_provincia"></a>
+<a href="@Url.Content("~/Paciente/AutocompleteProfesion")" id="link_profesion"></a>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

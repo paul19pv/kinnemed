@@ -1,0 +1,108 @@
+﻿@model IEnumerable<kinnemed05.Models.paciente>
+
+@{
+    ViewBag.Title = "Pacientes";
+}
+<h2>Pacientes</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", "Paciente", new { @class = "btn btn-default" })
+    @Html.ActionLink("Cargar CSV", "Cargar", "Paciente", new { @class = "btn btn-default" })
+</p>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.Label("Filtro", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("searchString", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
+                </div>
+                @Html.Label("Empresa", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-2">
+                    @Html.DropDownList("empresa", String.Empty)
+                </div>
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+                <input type="submit" id="exportar" name="exportar" value="Exportar" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pac_cedula)
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.pac_nombres)*@
+                        @Html.ActionLink("Nombres", "Index", new { sortOrder = ViewBag.NombreSort })
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.pac_apellidos)*@
+                        @Html.ActionLink("Apellidos", "Index", new { sortOrder = ViewBag.NombreSort })
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pac_edad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pac_canton)
+                    </th>
+                    
+                    <th>
+                        @Html.DisplayNameFor(model => model.pac_telefono)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pac_profesion)
+                    </th>
+                   
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pac_cedula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pac_nombres)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pac_apellidos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pac_edad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.canton.can_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pac_telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.profesion.pro_nombre)
+                        </td>
+                        
+                        
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.pac_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            @Html.ActionLink("Details", "Details", new { id = item.pac_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.pac_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+        
+    </div>
+</div>
+

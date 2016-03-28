@@ -1,0 +1,24 @@
+﻿$(document).ready(function () {
+    $('.iconb').tooltip()
+    $('.btn-img').tooltip()
+    $('.form-group select').addClass('form-control');
+    $("#pac_fechanacimiento").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat:"dd/mm/yy",
+        onClose: function (selectedDate) {
+            var f = new Date();
+            $("#pac_edad").val(restaFechas(selectedDate, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
+        }
+    });
+});
+
+restaFechas = function (f1, f2) {
+    var aFecha1 = f1.split('/');
+    var aFecha2 = f2.split('/');
+    var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+    var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+    var dif = fFecha2 - fFecha1;
+    var dias = Math.floor(dif / (1000 * 60 * 60 * 24*365));
+    return dias;
+}

@@ -1,0 +1,193 @@
+﻿@model kinnemed05.Models.SetPrueba
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(function () {
+
+        $(".textedit").change(function () {
+            var res_id = $(this).attr("id");
+            var res_cuan = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: $("#link_resultado").attr('href'),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ "id": res_id, "valor": res_cuan }),
+                success: function (data) {
+                    $("#div_mensaje").html(data.mensaje);
+                },
+                error: function () {
+                    alert('Ocurrió un error al acceder a la información');
+                }
+            })
+
+        });
+
+        $(".valedit").change(function () {
+            var res_id = $(this).attr("id");
+            var res_cuan = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: $("#link_valor").attr('href'),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ "id": res_id, "valor": res_cuan }),
+                success: function (data) {
+                    $("#div_mensaje").html(data.mensaje);
+                },
+                error: function () {
+                    alert('Ocurrió un error al acceder a la información');
+                }
+            })
+
+        });
+
+        $(".val_cual").change(function () {
+            var valor = $(this).val();
+            if (valor == 'POSITIVO') {
+                $(".div_doble").show();
+            }
+            else {
+                $(".div_doble").hide();
+
+            }
+        });
+
+    });
+</script>
+
+
+@{
+    int area_inicial = 0;
+    string linea1 = "<div class=\"panel panel-default\">";
+    string linea2 = "<div class=\"panel-body\">";
+    string linea3 = "</div>";
+    int num_reg = Model.prueba.Count();
+    int index = 0;
+    foreach (var item in Model.prueba)
+    {
+        if (area_inicial == 0)
+        {
+            area_inicial = item.examen.exa_area;
+            @Html.Raw(linea1)
+            @Html.Raw(linea2)
+        }
+        if (area_inicial != item.examen.exa_area)
+        {
+            area_inicial = item.examen.exa_area;
+            @Html.Raw(linea3)
+            @Html.Raw(linea3)
+            <div style="clear:both"></div>
+            @Html.Raw(linea1)
+            @Html.Raw(linea2)
+        }
+
+        <div class="col-lg-3">
+            <div class="form-group">
+
+                @if (item.examen.exa_tipo == "CUALITATIVO")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.valores(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "COL_COP")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.col_cop(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "ASP_COP")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.asp_cop(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "CON_COP")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.con_cop(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "FLO_COP")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.flo_cop(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "VAL_ESC")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.val_esc(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "VAL_NEG")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.val_neg(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "VAL_CUAL")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.valores(item.pru_resultado), new { @class = "form-control textedit val_cual", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "DOBLE")
+                {
+                    <div class="div_doble" style="display:none">
+                        <label class="control-label">@item.examen.exa_nombre</label>
+                        @Html.DropDownList(item.pru_id + "", Model.val_forma(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                        @Html.DropDownList(item.pru_id + "", Model.val_cantidad(item.pru_resultado), new { @class = "form-control valedit", @id = item.pru_id })
+                    </div>
+                    
+                }
+                else if (item.examen.exa_tipo == "COL_EMO")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.col_emo(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "ASP_EMO")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.asp_emo(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "DEN_EMO")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.den_emo(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "PH_EMO")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.ph_emo(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else if (item.examen.exa_tipo == "CRI_EMO")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.cri_emo(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
+                else
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.TextBox(item.pru_id + "", item.pru_resultado, new { @class = "form-control textedit", @id = item.pru_id })
+                }
+
+
+
+            </div>
+        </div>
+                index++;
+                if (index == num_reg)
+                {
+                    @Html.Raw(linea3)
+                    @Html.Raw(linea3)
+                }
+    }
+}
+
+
+
+<a href="@Url.Content("~/Prueba/Modificar")" id="link_resultado"></a>
+<a href="@Url.Content("~/Prueba/Valor")" id="link_valor"></a>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

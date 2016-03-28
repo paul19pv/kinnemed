@@ -1,0 +1,40 @@
+﻿@model kinnemed05.Models.control
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>control</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.con_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.con_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.perfil.per_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.perfil.per_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.examen.exa_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.examen.exa_nombre)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

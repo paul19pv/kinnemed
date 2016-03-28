@@ -1,0 +1,95 @@
+﻿<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">Kinnemed</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            @if (Request.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administracion<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Registrar Medico", "Create", "Medico")</li>
+                            <li>@Html.ActionLink("Registrar Empresa", "Create", "Empresa")</li>
+                            <li>@Html.ActionLink("Registrar Paciente", "Create", "Paciente")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Perfiles", "Index", "Perfil")</li>
+                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Historias Clinicas<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("General", "Index", "Historia")</li>
+                            <li>@Html.ActionLink("Preocupacional", "Index", "Historia")</li>
+                            <li>@Html.ActionLink("Periodicas", "Index", "Historia")</li>
+                            <li>@Html.ActionLink("De Retiro", "Index", "Historia")</li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exámenes<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Laboratorio", "Index", "Registro")</li>
+                            <li>@Html.ActionLink("Rayos X", "Index", "Examen")</li>
+                            <li>@Html.ActionLink("Audiometría", "Index", "Examen")</li>
+                            <li>@Html.ActionLink("Espirometría", "Index", "Examen")</li>
+                            <li>@Html.ActionLink("Oftalmologia", "Index", "Examen")</li>
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Historias", "Index", "Examen")</li>
+                            <li>@Html.ActionLink("Examenes", "Index", "Examen")</li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+            }
+            else { 
+                <ul class="nav navbar-nav"></ul>
+                
+            }
+            
+            <!--
+            <form class="navbar-form navbar-left">
+                <input type="text" class="form-control col-lg-8" placeholder="Search">
+            </form>
+                -->
+
+            <ul class="nav navbar-nav navbar-right">
+                @if (Request.IsAuthenticated)
+                {
+
+
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <br />
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    }
+
+                }
+                else
+                {
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                }
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>

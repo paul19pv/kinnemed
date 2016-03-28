@@ -1,0 +1,94 @@
+﻿@model kinnemed05.Models.perfil
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(function () {
+        $.ajax({
+            url: $("#link_form").attr('href'),
+            type: 'GET',
+            data: { id: $('#per_id').val() },
+            success: function (data) {
+                $('#div_form').html(data);
+            },
+            error: function (xhr, status, error) {
+                alert(error);
+            }
+        });
+
+        $.ajax({
+            url: $("#link_index").attr('href'),
+            type: 'GET',
+            data: { id: $('#per_id').val() },
+            success: function (data) {
+                $('#div_index').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        });
+    });
+
+</script>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Registro</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_message", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.HiddenFor(model => model.per_id)
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                
+                <div id="div_message">
+                </div>
+                
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.per_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.per_nombre, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.per_nombre)
+                    </div>
+
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.per_descripcion, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.per_descripcion, new { @class = "form-control"})
+                        @Html.ValidationMessageFor(model => model.per_descripcion)
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3">
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Modificar"class="btn btn-primary" />
+                        @Html.ActionLink("Regresar", "Index", "Perfil", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div id="div_form" style="clear: both">
+
+
+</div>
+<div id="div_index" style="clear:both">
+
+</div>
+
+<div id="div_loading" class="progress progress-striped active" style="display:none">
+    <div class="progress-bar" style="width: 45%"></div>
+</div>
+
+<a href="@Url.Content("~/Control/Create")" id="link_form"></a>
+<a href="@Url.Content("~/Control/Index")" id="link_index"></a>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

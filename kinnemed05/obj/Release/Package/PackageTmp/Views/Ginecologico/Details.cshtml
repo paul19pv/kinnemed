@@ -1,0 +1,92 @@
+﻿@model kinnemed05.Models.ginecologico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ginecologico</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_fum)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_fum)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_ciclos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_ciclos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_gestas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_gestas)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_partos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_partos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_cesarea)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_cesarea)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_abortos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_abortos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_hijos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_hijos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_planificacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_planificacion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_pla_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_pla_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.gin_paptest)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.gin_paptest)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

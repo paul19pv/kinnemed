@@ -1,0 +1,13 @@
+﻿
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+
+        var img = $("#imgCodeBar");
+        var code = $("#txtFuentes");
+        img[0].src = "/kinnemed01/Home/GetCodeBar?code=" + code.val();
+    });
+</script>
+
+<img id="imgCodeBar" alt="codeBar" />
+@Html.Hidden("txtFuentes",(object)ViewBag.code)

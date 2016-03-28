@@ -1,0 +1,117 @@
+﻿/*body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+    */
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+/*
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+*/
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+ 
+.iconb{
+    
+    display: block;
+    width: 24px;
+    height: 24px;
+    text-indent: -9999px;
+    float:left;
+    margin-right:5px;
+}
+.icon-new {
+    background: url(img/new-icon.png) no-repeat center right;
+}
+.icon-edit {
+    /*background: url(img/iconos/edit-icon.png) no-repeat center right;*/
+    background: url(img/edit-icon.png) no-repeat center right;
+}
+.icon-detail {
+    /*background: url(img/iconos/search-icon.png) no-repeat center right;*/
+    background: url(img/search-icon.png) no-repeat center right;
+}
+.icon-delete {
+    /*background: url(img/iconos/delete-icon.png) no-repeat center right;*/
+    background: url(img/delete-icon.png) no-repeat center right;
+}
+.icon-table {
+    /*background: url(img/iconos/delete-icon.png) no-repeat center right;*/
+    background: url(img/table-icon.png) no-repeat center right;
+}
+.icon-pdf {
+    background: url(img/pdf-icon.png) no-repeat center right;
+}
+.icon-barcode {
+    background: url(img/barcode-icon.png) no-repeat center right;
+}
+
+a.btn-img > img {
+    margin-left:auto;margin-right:auto;display:block;
+}
+a.btn-img > label {
+    margin-left:auto;margin-right:auto;display:block;
+}
+
+#login {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:100px;
+    width:300px;
+}
+.out_margin {
+    padding-left:0;
+    padding-right:0;
+}

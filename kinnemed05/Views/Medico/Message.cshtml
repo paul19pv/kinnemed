@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Message";
+}
+
+@Html.ActionLink("Regresar", "Index", "Examen", "", new { @class = "btn btn-default" })
+<div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">X</button>
+    <h4>Aviso!</h4>
+    <p>@ViewBag.mensaje</p>
+
+</div>

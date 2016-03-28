@@ -1,0 +1,50 @@
+﻿@model kinnemed05.Models.diagnostico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>diagnostico</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dia_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dia_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.historia.his_motivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.historia.his_motivo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dia_descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dia_descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.sub_cie10.sub_codigo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.sub_cie10.sub_codigo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dia_tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dia_tipo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

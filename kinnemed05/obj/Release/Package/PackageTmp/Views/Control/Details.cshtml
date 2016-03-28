@@ -1,0 +1,36 @@
+﻿@model kinnemed05.Models.control
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>control</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.con_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.con_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.perfil.per_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.perfil.per_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.examen.exa_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.examen.exa_nombre)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<kinnemed05.Models.ginecologico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_fum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_ciclos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_gestas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_partos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_cesarea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_abortos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_hijos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_planificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_pla_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gin_paptest)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.pac_cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_fum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_ciclos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_gestas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_partos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_cesarea)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_abortos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_hijos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_planificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_pla_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gin_paptest)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

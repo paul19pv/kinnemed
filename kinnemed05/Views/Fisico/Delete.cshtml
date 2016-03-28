@@ -1,0 +1,376 @@
+﻿@model kinnemed05.Models.fisico
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>fisico</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.historia.his_motivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.historia.his_motivo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_piel)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_piel)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_pie_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_pie_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_cabeza)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_cabeza)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_cab_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_cab_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_ojos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_ojos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_ojo_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_ojo_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_oidos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_oidos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_oid_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_oid_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_nariz)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_nariz)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_nar_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_nar_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_boca)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_boca)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_boc_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_boc_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_faringe)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_faringe)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_far_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_far_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_cuello)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_cuello)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_cue_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_cue_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_axilas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_axilas)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_axi_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_axi_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_torax)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_torax)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_tor_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_tor_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_abdomen)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_abdomen)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_abd_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_abd_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_columna)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_columna)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_col_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_col_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_ingle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_ingle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_ing_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_ing_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_mie_sup)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_mie_sup)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_msp_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_msp_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_mie_inf)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_mie_inf)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_mif_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_mif_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_organos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_organos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_org_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_org_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_respiratorio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_respiratorio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_res_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_res_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_cardiovascular)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_cardiovascular)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_car_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_car_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_digestivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_digestivo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_dig_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_dig_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_genital)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_genital)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_fen_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_fen_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_urinario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_urinario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_uri_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_uri_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_esqueletico)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_esqueletico)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_esq_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_esq_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_endocrino)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_endocrino)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_end_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_end_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_linfatico)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_linfatico)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_lin_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_lin_txt)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_neurologico)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_neurologico)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.fis_neu_txt)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.fis_neu_txt)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

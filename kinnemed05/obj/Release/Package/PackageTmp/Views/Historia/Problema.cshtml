@@ -1,0 +1,54 @@
+﻿@model kinnemed05.Models.historia
+@{
+    ViewBag.Title = "Problema";
+}
+
+<script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+</script>
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">4 Enfermedad o Problema Actual</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Problema", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.his_id)
+                @Html.HiddenFor(model => model.his_paciente)
+                @Html.HiddenFor(model => model.his_motivo)
+                
+
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        
+                        @Html.TextAreaFor(model => model.his_problema, new { @class = "form-control", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.his_problema)
+                        @Html.ValidationMessageFor(model => model.his_id)
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="clear:both; float:right">
+                    <div class="form-group">
+                        @Ajax.ActionLink("Anterior", "Edit", "Familiar", new { id = Model.his_paciente }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                        <input type="submit" value="Siguiente" class="btn btn-primary" />
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

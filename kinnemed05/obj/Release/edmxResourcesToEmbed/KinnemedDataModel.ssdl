@@ -1,0 +1,1057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bd_kinnemed02Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="aglutinacion">
+    <Key>
+      <PropertyRef Name="agl_id" />
+    </Key>
+    <Property Name="agl_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="agl_prueba" Type="int" Nullable="false" />
+    <Property Name="agl_resultado" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="agl_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="betaHCG">
+    <Key>
+      <PropertyRef Name="hcg_id" />
+    </Key>
+    <Property Name="hcg_id" Type="int" Nullable="false" />
+    <Property Name="hcg_tipo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="hcg_muestra" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="hcg_fum" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="hcg_resultado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="biometria">
+    <Key>
+      <PropertyRef Name="bio_id" />
+    </Key>
+    <Property Name="bio_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bio_prueba" Type="int" Nullable="false" />
+    <Property Name="bio_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="bio_fuerarango" Type="varchar" MaxLength="2" />
+    <Property Name="bio_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="canton">
+    <Key>
+      <PropertyRef Name="can_id" />
+    </Key>
+    <Property Name="can_id" Type="int" Nullable="false" />
+    <Property Name="can_nombre" Type="varchar" MaxLength="150" />
+    <Property Name="can_provincia" Type="int" />
+  </EntityType>
+  <EntityType Name="componente">
+    <Key>
+      <PropertyRef Name="com_id" />
+    </Key>
+    <Property Name="com_id" Type="int" Nullable="false" />
+    <Property Name="com_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="copro">
+    <Key>
+      <PropertyRef Name="cop_id" />
+    </Key>
+    <Property Name="cop_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cop_prueba" Type="int" Nullable="false" />
+    <Property Name="cop_valor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cop_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="creatinina">
+    <Key>
+      <PropertyRef Name="cre_id" />
+    </Key>
+    <Property Name="cre_id" Type="int" Nullable="false" />
+    <Property Name="cre_volumen" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cre_orina" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cre_factor" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cre_sangre" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cre_minutos" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="cre_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="emo">
+    <Key>
+      <PropertyRef Name="emo_id" />
+    </Key>
+    <Property Name="emo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emo_prueba" Type="int" Nullable="false" />
+    <Property Name="emo_valor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="emo_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_cedula" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="emp_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="emp_direccion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="emp_telefono" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="emp_mail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="emp_estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="esp_id" />
+    </Key>
+    <Property Name="esp_id" Type="int" Nullable="false" />
+    <Property Name="esp_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="examen">
+    <Key>
+      <PropertyRef Name="exa_id" />
+    </Key>
+    <Property Name="exa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="exa_codigo" Type="varchar" MaxLength="15" />
+    <Property Name="exa_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="exa_hc" Type="varchar" MaxLength="10" />
+    <Property Name="exa_orden" Type="int" Nullable="false" />
+    <Property Name="exa_paciente" Type="int" Nullable="false" />
+    <Property Name="exa_medico" Type="int" />
+    <Property Name="exa_grupo" Type="int" Nullable="false" />
+    <Property Name="exa_imagen" Type="image" />
+  </EntityType>
+  <EntityType Name="grupo">
+    <Key>
+      <PropertyRef Name="gru_id" />
+    </Key>
+    <Property Name="gru_id" Type="int" Nullable="false" />
+    <Property Name="gru_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="gru_prefijo" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="hormonal">
+    <Key>
+      <PropertyRef Name="hor_id" />
+    </Key>
+    <Property Name="hor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hor_prueba" Type="int" Nullable="false" />
+    <Property Name="hor_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="hor_fuerarango" Type="varchar" MaxLength="2" />
+    <Property Name="hor_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inmunologia">
+    <Key>
+      <PropertyRef Name="inm_id" />
+    </Key>
+    <Property Name="inm_id" Type="int" Nullable="false" />
+    <Property Name="inm_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="medico">
+    <Key>
+      <PropertyRef Name="med_id" />
+    </Key>
+    <Property Name="med_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="med_cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="med_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="med_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="med_ci" Type="varchar" MaxLength="50" />
+    <Property Name="med_codigo" Type="varchar" MaxLength="50" />
+    <Property Name="med_especialidad" Type="int" Nullable="false" />
+    <Property Name="med_correo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="med_estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mic_neg">
+    <Key>
+      <PropertyRef Name="mic_id" />
+    </Key>
+    <Property Name="mic_id" Type="int" Nullable="false" />
+    <Property Name="mic_origen" Type="varchar" MaxLength="50" />
+    <Property Name="mic_muestra" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="mic_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="mic_germen" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="mic_cuantitativo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="mic_negativo" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="microbiologia">
+    <Key>
+      <PropertyRef Name="mic_id" />
+    </Key>
+    <Property Name="mic_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mic_componente" Type="int" Nullable="false" />
+    <Property Name="mic_observacion" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="mic_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="paciente">
+    <Key>
+      <PropertyRef Name="pac_id" />
+    </Key>
+    <Property Name="pac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pac_cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="pac_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="pac_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="pac_genero" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pac_estadocivil" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pac_pais" Type="int" Nullable="false" />
+    <Property Name="pac_fechanacimiento" Type="date" Nullable="false" />
+    <Property Name="pac_edad" Type="int" Nullable="false" />
+    <Property Name="pac_telefono" Type="varchar" MaxLength="15" />
+    <Property Name="pac_celular" Type="varchar" MaxLength="15" />
+    <Property Name="pac_correo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="pac_provincia" Type="int" Nullable="false" />
+    <Property Name="pac_canton" Type="int" Nullable="false" />
+    <Property Name="pac_direccion" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="pac_instruccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pac_profesion" Type="int" Nullable="false" />
+    <Property Name="pac_tipodiscapacidad" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pac_porcentajediscapacidad" Type="int" />
+    <Property Name="pac_empresa" Type="int" />
+    <Property Name="pac_estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="pais_id" />
+    </Key>
+    <Property Name="pais_id" Type="int" Nullable="false" />
+    <Property Name="pais_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pro_especifico">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pro_libre">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pro_prueba" Type="int" Nullable="false" />
+    <Property Name="pro_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="pro_fuerarango" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="pro_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="profesion">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="proteina">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_resultado" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="prueba">
+    <Key>
+      <PropertyRef Name="pru_id" />
+    </Key>
+    <Property Name="pru_id" Type="int" Nullable="false" />
+    <Property Name="pru_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pru_unidad" Type="int" />
+    <Property Name="pru_minimo" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="pru_maximo" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="pru_grupo" Type="int" Nullable="false" />
+    <Property Name="pru_item" Type="int" />
+  </EntityType>
+  <EntityType Name="quimico_sanguineo">
+    <Key>
+      <PropertyRef Name="qui_id" />
+    </Key>
+    <Property Name="qui_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="qui_prueba" Type="int" Nullable="false" />
+    <Property Name="qui_resultado" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="qui_fuerarango" Type="varchar" MaxLength="2" />
+    <Property Name="qui_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reg_copro">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="int" Nullable="false" />
+    <Property Name="reg_color" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="reg_aspecto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="reg_consistencia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="reg_ph" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="reg_sangre" Type="varchar" MaxLength="50" />
+    <Property Name="reg_polimorfonucleares" Type="varchar" MaxLength="50" />
+    <Property Name="reg_rotavirus" Type="varchar" MaxLength="50" />
+    <Property Name="reg_concentracion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="reg_emo">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="int" Nullable="false" />
+    <Property Name="reg_color" Type="varchar" MaxLength="50" />
+    <Property Name="reg_aspecto" Type="varchar" MaxLength="50" />
+    <Property Name="reg_densidad" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="reg_ph" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="reg_leucocitos" Type="varchar" MaxLength="10" />
+    <Property Name="reg_nitritos" Type="varchar" MaxLength="10" />
+    <Property Name="reg_proteinas" Type="varchar" MaxLength="10" />
+    <Property Name="reg_glucosa" Type="varchar" MaxLength="10" />
+    <Property Name="reg_cetonas" Type="varchar" MaxLength="10" />
+    <Property Name="reg_urobilinogeno" Type="varchar" MaxLength="10" />
+    <Property Name="reg_bilirrubinas" Type="varchar" MaxLength="10" />
+    <Property Name="reg_sangre" Type="varchar" MaxLength="10" />
+    <Property Name="reg_hemoglobina" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="reg_mic">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="int" Nullable="false" />
+    <Property Name="reg_origen" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="reg_muestra" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="reg_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="reg_germen" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="reg_cuantitativo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="reg_observacion" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="serologia">
+    <Key>
+      <PropertyRef Name="ser_id" />
+    </Key>
+    <Property Name="ser_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ser_prueba" Type="int" Nullable="false" />
+    <Property Name="ser_resultado" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ser_fuerarango" Type="varchar" MaxLength="2" />
+    <Property Name="ser_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="unidad">
+    <Key>
+      <PropertyRef Name="uni_id" />
+    </Key>
+    <Property Name="uni_id" Type="int" Nullable="false" />
+    <Property Name="uni_nombre" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="vih">
+    <Key>
+      <PropertyRef Name="vih_id" />
+    </Key>
+    <Property Name="vih_id" Type="int" Nullable="false" />
+    <Property Name="vih_anticuerpos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vih_antigenos" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_aglutinacion_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aglutinacion" Type="Self.aglutinacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="aglutinacion">
+        <PropertyRef Name="agl_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_aglutinacion_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="aglutinacion" Type="Self.aglutinacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="aglutinacion">
+        <PropertyRef Name="agl_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_betaHCG_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="betaHCG" Type="Self.betaHCG" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="betaHCG">
+        <PropertyRef Name="hcg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_biometria_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="biometria" Type="Self.biometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="biometria">
+        <PropertyRef Name="bio_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_biometria_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1" />
+    <End Role="biometria" Type="Self.biometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="biometria">
+        <PropertyRef Name="bio_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_canton_provincia">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="canton" Type="Self.canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="canton">
+        <PropertyRef Name="can_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_copro_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="copro" Type="Self.copro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="copro">
+        <PropertyRef Name="cop_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_copro_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="copro" Type="Self.copro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="copro">
+        <PropertyRef Name="cop_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_creatinina_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="creatinina" Type="Self.creatinina" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="creatinina">
+        <PropertyRef Name="cre_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_emo_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="emo" Type="Self.emo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="emo">
+        <PropertyRef Name="emo_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_emo_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="emo" Type="Self.emo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="emo">
+        <PropertyRef Name="emo_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_examen_grupo">
+    <End Role="grupo" Type="Self.grupo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="examen" Type="Self.examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grupo">
+        <PropertyRef Name="gru_id" />
+      </Principal>
+      <Dependent Role="examen">
+        <PropertyRef Name="exa_grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_examen_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="0..1" />
+    <End Role="examen" Type="Self.examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="examen">
+        <PropertyRef Name="exa_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_examen_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1" />
+    <End Role="examen" Type="Self.examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="examen">
+        <PropertyRef Name="exa_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_hormonal_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="hormonal" Type="Self.hormonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="hormonal">
+        <PropertyRef Name="hor_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_hormonal_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="hormonal" Type="Self.hormonal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="hormonal">
+        <PropertyRef Name="hor_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inmunologia_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="inmunologia" Type="Self.inmunologia" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="inmunologia">
+        <PropertyRef Name="inm_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medico_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="medico" Type="Self.medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="esp_id" />
+      </Principal>
+      <Dependent Role="medico">
+        <PropertyRef Name="med_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mic_neg_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="mic_neg" Type="Self.mic_neg" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="mic_neg">
+        <PropertyRef Name="mic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_microbiologia_componente">
+    <End Role="componente" Type="Self.componente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="microbiologia" Type="Self.microbiologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componente">
+        <PropertyRef Name="com_id" />
+      </Principal>
+      <Dependent Role="microbiologia">
+        <PropertyRef Name="mic_componente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_microbiologia_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="microbiologia" Type="Self.microbiologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="microbiologia">
+        <PropertyRef Name="mic_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_canton">
+    <End Role="canton" Type="Self.canton" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="canton">
+        <PropertyRef Name="can_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_pais">
+    <End Role="pais" Type="Self.pais" Multiplicity="1" />
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="pais_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_profesion">
+    <End Role="profesion" Type="Self.profesion" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesion">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_profesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_provincia">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="1" />
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pro_especifico_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="pro_especifico" Type="Self.pro_especifico" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="pro_especifico">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pro_libre_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="pro_libre" Type="Self.pro_libre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="pro_libre">
+        <PropertyRef Name="pro_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pro_libre_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="pro_libre" Type="Self.pro_libre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="pro_libre">
+        <PropertyRef Name="pro_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proteina_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="proteina" Type="Self.proteina" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="proteina">
+        <PropertyRef Name="pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prueba_unidad">
+    <End Role="unidad" Type="Self.unidad" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="prueba" Type="Self.prueba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidad">
+        <PropertyRef Name="uni_id" />
+      </Principal>
+      <Dependent Role="prueba">
+        <PropertyRef Name="pru_unidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_quimico_sanguineo_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="quimico_sanguineo" Type="Self.quimico_sanguineo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="quimico_sanguineo">
+        <PropertyRef Name="qui_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_quimico_sanguineo_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="quimico_sanguineo" Type="Self.quimico_sanguineo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="quimico_sanguineo">
+        <PropertyRef Name="qui_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reg_copro_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reg_copro" Type="Self.reg_copro" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="reg_copro">
+        <PropertyRef Name="reg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reg_emo_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reg_emo" Type="Self.reg_emo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="reg_emo">
+        <PropertyRef Name="reg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reg_mic_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reg_mic" Type="Self.reg_mic" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="reg_mic">
+        <PropertyRef Name="reg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_serologia_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="serologia" Type="Self.serologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="serologia">
+        <PropertyRef Name="ser_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_serologia_prueba">
+    <End Role="prueba" Type="Self.prueba" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="serologia" Type="Self.serologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="prueba">
+        <PropertyRef Name="pru_id" />
+      </Principal>
+      <Dependent Role="serologia">
+        <PropertyRef Name="ser_prueba" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vih_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="vih" Type="Self.vih" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="vih">
+        <PropertyRef Name="vih_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bd_kinnemed02ModelStoreContainer">
+    <EntitySet Name="aglutinacion" EntityType="Self.aglutinacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="betaHCG" EntityType="Self.betaHCG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="biometria" EntityType="Self.biometria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="copro" EntityType="Self.copro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="creatinina" EntityType="Self.creatinina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="emo" EntityType="Self.emo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="examen" EntityType="Self.examen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="grupo" EntityType="Self.grupo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hormonal" EntityType="Self.hormonal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inmunologia" EntityType="Self.inmunologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mic_neg" EntityType="Self.mic_neg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="microbiologia" EntityType="Self.microbiologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pro_especifico" EntityType="Self.pro_especifico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pro_libre" EntityType="Self.pro_libre" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profesion" EntityType="Self.profesion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="proteina" EntityType="Self.proteina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="prueba" EntityType="Self.prueba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="quimico_sanguineo" EntityType="Self.quimico_sanguineo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_copro" EntityType="Self.reg_copro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_emo" EntityType="Self.reg_emo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reg_mic" EntityType="Self.reg_mic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="serologia" EntityType="Self.serologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="unidad" EntityType="Self.unidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vih" EntityType="Self.vih" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_aglutinacion_examen" Association="Self.FK_aglutinacion_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="aglutinacion" EntitySet="aglutinacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_aglutinacion_prueba" Association="Self.FK_aglutinacion_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="aglutinacion" EntitySet="aglutinacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_betaHCG_examen" Association="Self.FK_betaHCG_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="betaHCG" EntitySet="betaHCG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_biometria_examen" Association="Self.FK_biometria_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="biometria" EntitySet="biometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_biometria_prueba" Association="Self.FK_biometria_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="biometria" EntitySet="biometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_copro_examen" Association="Self.FK_copro_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="copro" EntitySet="copro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_copro_prueba" Association="Self.FK_copro_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="copro" EntitySet="copro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_creatinina_examen" Association="Self.FK_creatinina_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="creatinina" EntitySet="creatinina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_emo_examen" Association="Self.FK_emo_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="emo" EntitySet="emo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_emo_prueba" Association="Self.FK_emo_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="emo" EntitySet="emo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_examen_grupo" Association="Self.FK_examen_grupo">
+      <End Role="grupo" EntitySet="grupo" />
+      <End Role="examen" EntitySet="examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_examen_medico" Association="Self.FK_examen_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="examen" EntitySet="examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_examen_paciente" Association="Self.FK_examen_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="examen" EntitySet="examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_hormonal_examen" Association="Self.FK_hormonal_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="hormonal" EntitySet="hormonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_hormonal_prueba" Association="Self.FK_hormonal_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="hormonal" EntitySet="hormonal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inmunologia_examen" Association="Self.FK_inmunologia_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="inmunologia" EntitySet="inmunologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medico_especialidad" Association="Self.FK_medico_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="medico" EntitySet="medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mic_neg_examen" Association="Self.FK_mic_neg_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="mic_neg" EntitySet="mic_neg" />
+    </AssociationSet>
+    <AssociationSet Name="FK_microbiologia_componente" Association="Self.FK_microbiologia_componente">
+      <End Role="componente" EntitySet="componente" />
+      <End Role="microbiologia" EntitySet="microbiologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_microbiologia_examen" Association="Self.FK_microbiologia_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="microbiologia" EntitySet="microbiologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_canton" Association="Self.FK_paciente_canton">
+      <End Role="canton" EntitySet="canton" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_empresa" Association="Self.FK_paciente_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_pais" Association="Self.FK_paciente_pais">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_profesion" Association="Self.FK_paciente_profesion">
+      <End Role="profesion" EntitySet="profesion" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_provincia" Association="Self.FK_paciente_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pro_especifico_examen" Association="Self.FK_pro_especifico_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="pro_especifico" EntitySet="pro_especifico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pro_libre_examen" Association="Self.FK_pro_libre_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="pro_libre" EntitySet="pro_libre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pro_libre_prueba" Association="Self.FK_pro_libre_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="pro_libre" EntitySet="pro_libre" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proteina_examen" Association="Self.FK_proteina_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="proteina" EntitySet="proteina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prueba_unidad" Association="Self.FK_prueba_unidad">
+      <End Role="unidad" EntitySet="unidad" />
+      <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_quimico_sanguineo_examen" Association="Self.FK_quimico_sanguineo_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="quimico_sanguineo" EntitySet="quimico_sanguineo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_quimico_sanguineo_prueba" Association="Self.FK_quimico_sanguineo_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="quimico_sanguineo" EntitySet="quimico_sanguineo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reg_copro_examen" Association="Self.FK_reg_copro_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="reg_copro" EntitySet="reg_copro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reg_emo_examen" Association="Self.FK_reg_emo_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="reg_emo" EntitySet="reg_emo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reg_mic_examen" Association="Self.FK_reg_mic_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="reg_mic" EntitySet="reg_mic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_serologia_examen" Association="Self.FK_serologia_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="serologia" EntitySet="serologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_serologia_prueba" Association="Self.FK_serologia_prueba">
+      <End Role="prueba" EntitySet="prueba" />
+      <End Role="serologia" EntitySet="serologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vih_examen" Association="Self.FK_vih_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="vih" EntitySet="vih" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

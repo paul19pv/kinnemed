@@ -1,0 +1,71 @@
+﻿@model kinnemed05.Models.prueba
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>prueba</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.examen.exa_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.examen.exa_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.registro.reg_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.registro.reg_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_cuan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_cuan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_cual)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_cual)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_codigo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_codigo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_fuera)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_fuera)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pru_valor)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pru_valor)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

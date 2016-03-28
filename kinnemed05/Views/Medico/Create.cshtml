@@ -1,0 +1,71 @@
+﻿@model kinnemed05.Models.medico
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="col-lg-9">
+    <div class="bs-component">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Crear Medico</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_cedula, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.med_cedula, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.med_cedula)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_nombres, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.med_nombres, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.med_nombres)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_apellidos, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.med_apellidos, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.med_apellidos)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_ci, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.med_ci, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.med_ci)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_codigo, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.med_codigo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.med_codigo)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_especialidad, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("med_especialidad", String.Empty)
+                            @Html.ValidationMessageFor(model => model.med_especialidad)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.med_correo, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.med_correo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.med_correo)
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.med_estado, new { @class = "form-control", Value = "activo", @type = "hidden" })
+                        </div>
+                        <div class="form-group">
+                            @Html.ActionLink("Regresar", "Index", "Medico", new { @class = "btn btn-default" })
+                            <input type="submit" value="Crear" class="btn btn-primary" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

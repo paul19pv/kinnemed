@@ -1,0 +1,44 @@
+﻿@model kinnemed05.Models.paciente
+@{
+    ViewBag.Title = "Cargar";
+}
+<div class="col-lg-12">
+    <div class="bs-component">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Subir Archivo de Pacientes</h3>
+            </div>
+            <div class="panel-body">
+
+
+                @using (Html.BeginForm("Cargar", "Paciente", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_empresa, "Empresa", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.DropDownList("pac_empresa", String.Empty)
+                            @Html.ValidationMessageFor(model => model.pac_empresa)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="exampleInputFile">Archivo</label>
+                            <input type="file" name="FileUpload" id="exampleInputFile">
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-3">
+                        <br />
+                        <div class="form-group">
+                            <input type="submit" id="upload" value="Cargar Archivo" class="btn btn-default btn-sm" />
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

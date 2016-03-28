@@ -1,0 +1,66 @@
+﻿@model kinnemed05.Models.empresa
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="col-lg-9">
+    <div class="bs-component">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Editar Empresa</h3>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            @Html.HiddenFor(model => model.emp_id)
+                            @Html.LabelFor(model => model.emp_cedula, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.emp_cedula, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.emp_cedula)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.emp_nombre, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.emp_nombre, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.emp_nombre)
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.emp_direccion, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.emp_direccion, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.emp_direccion)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.emp_telefono, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.emp_telefono, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.emp_telefono)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.emp_mail, new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBoxFor(model => model.emp_mail, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.emp_mail)
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.emp_estado, new { @class = "form-control", Value = "activo", @type = "hidden" })
+                        </div>
+                        <div class="form-group">
+                            @Html.ActionLink("Regresar", "Index", "Empresa", new { @class = "btn btn-default" })
+                            <input type="submit" value="Editar" class="btn btn-primary" />
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

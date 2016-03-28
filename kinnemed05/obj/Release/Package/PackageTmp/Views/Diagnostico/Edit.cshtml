@@ -1,0 +1,68 @@
+﻿@model kinnemed05.Models.diagnostico
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>diagnostico</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dia_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dia_id)
+            @Html.ValidationMessageFor(model => model.dia_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dia_historia, "historia")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("dia_historia", String.Empty)
+            @Html.ValidationMessageFor(model => model.dia_historia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dia_descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dia_descripcion)
+            @Html.ValidationMessageFor(model => model.dia_descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dia_subcie10, "sub_cie10")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("dia_subcie10", String.Empty)
+            @Html.ValidationMessageFor(model => model.dia_subcie10)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.dia_tipo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.dia_tipo)
+            @Html.ValidationMessageFor(model => model.dia_tipo)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

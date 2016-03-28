@@ -1,0 +1,153 @@
+﻿@model IEnumerable<kinnemed05.Models.familiar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.historia.his_motivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_cardiopatia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_car_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_diabetes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_dia_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_cardiovascular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_vas_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_hipertension)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_hip_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_cancer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_can_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_tuberculosis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_tub_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_mental)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_men_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_infecciosa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_inf_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_malformacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_mal_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fam_otro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fa_otr_txt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.historia.his_motivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_cardiopatia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_car_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_diabetes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_dia_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_cardiovascular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_vas_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_hipertension)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_hip_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_cancer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_can_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_tuberculosis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_tub_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_mental)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_men_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_infecciosa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_inf_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_malformacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_mal_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fam_otro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fa_otr_txt)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
