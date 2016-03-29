@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kinnemedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="canton">
+    <Key>
+      <PropertyRef Name="can_id" />
+    </Key>
+    <Property Name="can_id" Type="Int32" Nullable="false" />
+    <Property Name="can_nombre" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="can_provincia" Type="Int32" />
+    <NavigationProperty Name="provincia" Relationship="Self.FK_canton_provincia" FromRole="canton" ToRole="provincia" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_paciente_canton" FromRole="canton" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="componente">
+    <Key>
+      <PropertyRef Name="com_id" />
+    </Key>
+    <Property Name="com_id" Type="Int32" Nullable="false" />
+    <Property Name="com_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emp_cedula" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_estado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_paciente_empresa" FromRole="empresa" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="esp_id" />
+    </Key>
+    <Property Name="esp_id" Type="Int32" Nullable="false" />
+    <Property Name="esp_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="medico" Relationship="Self.FK_medico_especialidad" FromRole="especialidad" ToRole="medico" />
+  </EntityType>
+  <EntityType Name="medico">
+    <Key>
+      <PropertyRef Name="med_id" />
+    </Key>
+    <Property Name="med_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="med_cedula" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="med_nombres" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="med_apellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="med_ci" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="med_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="med_especialidad" Type="Int32" Nullable="false" />
+    <Property Name="med_correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="med_estado" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="especialidad" Relationship="Self.FK_medico_especialidad" FromRole="medico" ToRole="especialidad" />
+    <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_medico" FromRole="medico" ToRole="registro" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="pais_id" />
+    </Key>
+    <Property Name="pais_id" Type="Int32" Nullable="false" />
+    <Property Name="pais_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_paciente_pais" FromRole="pais" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="profesion">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="Int32" Nullable="false" />
+    <Property Name="pro_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_paciente_profesion" FromRole="profesion" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="Int32" Nullable="false" />
+    <Property Name="pro_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="canton" Relationship="Self.FK_canton_provincia" FromRole="provincia" ToRole="canton" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_paciente_provincia" FromRole="provincia" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="valores">
+    <Key>
+      <PropertyRef Name="val_id" />
+    </Key>
+    <Property Name="val_id" Type="Int32" Nullable="false" />
+    <Property Name="val_minimo" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="val_maximo" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="val_categoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="val_examen" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_valores_examen" FromRole="valores" ToRole="examen" />
+  </EntityType>
+  <Association Name="FK_canton_provincia">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="canton" Type="Self.canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="canton">
+        <PropertyRef Name="can_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medico_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="medico" Type="Self.medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="esp_id" />
+      </Principal>
+      <Dependent Role="medico">
+        <PropertyRef Name="med_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bd_kinnemed02Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="canton" EntityType="Self.canton" />
+    <EntitySet Name="componente" EntityType="Self.componente" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" />
+    <EntitySet Name="medico" EntityType="Self.medico" />
+    <EntitySet Name="pais" EntityType="Self.pais" />
+    <EntitySet Name="profesion" EntityType="Self.profesion" />
+    <EntitySet Name="provincia" EntityType="Self.provincia" />
+    <EntitySet Name="valores" EntityType="Self.valores" />
+    <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medico_especialidad" Association="Self.FK_medico_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="medico" EntitySet="medico" />
+    </AssociationSet>
+    <EntitySet Name="area" EntityType="kinnemedModel.area" />
+    <EntitySet Name="registro" EntityType="kinnemedModel.registro" />
+    <AssociationSet Name="FK_registro_medico" Association="kinnemedModel.FK_registro_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <EntitySet Name="control" EntityType="kinnemedModel.control" />
+    <EntitySet Name="perfil" EntityType="kinnemedModel.perfil" />
+    <AssociationSet Name="FK_control_perfil" Association="kinnemedModel.FK_control_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="control" EntitySet="control" />
+    </AssociationSet>
+    <EntitySet Name="examen" EntityType="kinnemedModel.examen" />
+    <AssociationSet Name="FK_examen_area" Association="kinnemedModel.FK_examen_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="examen" EntitySet="examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_control_examen" Association="kinnemedModel.FK_control_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="control" EntitySet="control" />
+    </AssociationSet>
+    <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="valores" EntitySet="valores" />
+    </AssociationSet>
+    <EntitySet Name="prueba" EntityType="kinnemedModel.prueba" />
+    <AssociationSet Name="FK_prueba_examen" Association="kinnemedModel.FK_prueba_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prueba_registro" Association="kinnemedModel.FK_prueba_registro">
+      <End Role="registro" EntitySet="registro" />
+      <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <EntitySet Name="paciente" EntityType="kinnemedModel.paciente" />
+    <AssociationSet Name="FK_paciente_canton" Association="kinnemedModel.FK_paciente_canton">
+      <End Role="canton" EntitySet="canton" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_empresa" Association="kinnemedModel.FK_paciente_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_pais" Association="kinnemedModel.FK_paciente_pais">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_profesion" Association="kinnemedModel.FK_paciente_profesion">
+      <End Role="profesion" EntitySet="profesion" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_provincia" Association="kinnemedModel.FK_paciente_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_paciente" Association="kinnemedModel.FK_registro_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <EntitySet Name="fisico" EntityType="kinnemedModel.fisico" />
+    <EntitySet Name="revision" EntityType="kinnemedModel.revision" />
+    <EntitySet Name="cie10" EntityType="kinnemedModel.cie10" />
+    <EntitySet Name="diagnostico" EntityType="kinnemedModel.diagnostico" />
+    <EntitySet Name="sub_cie10" EntityType="kinnemedModel.sub_cie10" />
+    <AssociationSet Name="FK_sub_cie10_cie10" Association="kinnemedModel.FK_sub_cie10_cie10">
+      <End Role="cie10" EntitySet="cie10" />
+      <End Role="sub_cie10" EntitySet="sub_cie10" />
+    </AssociationSet>
+    <AssociationSet Name="FK_diagnostico_sub_cie10" Association="kinnemedModel.FK_diagnostico_sub_cie10">
+      <End Role="sub_cie10" EntitySet="sub_cie10" />
+      <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <EntitySet Name="plan" EntityType="kinnemedModel.plan" />
+    <EntitySet Name="familiar" EntityType="kinnemedModel.familiar" />
+    <EntitySet Name="historia" EntityType="kinnemedModel.historia" />
+    <EntitySet Name="personal" EntityType="kinnemedModel.personal" />
+    <EntitySet Name="signos" EntityType="kinnemedModel.signos" />
+    <EntitySet Name="subsecuente" EntityType="kinnemedModel.subsecuente" />
+    <AssociationSet Name="FK_diagnostico_historia" Association="kinnemedModel.FK_diagnostico_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_familiar_paciente" Association="kinnemedModel.FK_familiar_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="familiar" EntitySet="familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fisico_historia" Association="kinnemedModel.FK_fisico_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="fisico" EntitySet="fisico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_historia_paciente" Association="kinnemedModel.FK_historia_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="historia" EntitySet="historia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_plan_historia" Association="kinnemedModel.FK_plan_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="plan" EntitySet="plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_revision_historia" Association="kinnemedModel.FK_revision_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="revision" EntitySet="revision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_signos_historia" Association="kinnemedModel.FK_signos_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="signos" EntitySet="signos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subsecuente_historia" Association="kinnemedModel.FK_subsecuente_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="subsecuente" EntitySet="subsecuente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personal_paciente" Association="kinnemedModel.FK_personal_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="personal" EntitySet="personal" />
+    </AssociationSet>
+    <EntitySet Name="ginecologico" EntityType="kinnemedModel.ginecologico" />
+    <AssociationSet Name="FK_ginecologico_paciente" Association="kinnemedModel.FK_ginecologico_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="ginecologico" EntitySet="ginecologico" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="are_id" />
+    </Key>
+    <Property Name="are_id" Type="Int32" Nullable="false" />
+    <Property Name="are_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_examen_area" FromRole="area" ToRole="examen" />
+  </EntityType>
+  <EntityType Name="registro">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reg_paciente" Type="Int32" Nullable="false" />
+    <Property Name="reg_orden" Type="Int32" Nullable="false" />
+    <Property Name="reg_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="reg_medico" Type="Int32" />
+    <Property Name="reg_estado" Type="Boolean" />
+    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_registro_medico" FromRole="registro" ToRole="medico" />
+    <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_registro" FromRole="registro" ToRole="prueba" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_registro_paciente" FromRole="registro" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_registro_medico">
+    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.registro" Role="registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="reg_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="control">
+    <Key>
+      <PropertyRef Name="con_id" />
+    </Key>
+    <Property Name="con_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="con_perfil" Type="Int32" Nullable="false" />
+    <Property Name="con_examen" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="perfil" Relationship="kinnemedModel.FK_control_perfil" FromRole="control" ToRole="perfil" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_control_examen" FromRole="control" ToRole="examen" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="per_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="per_descripcion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_perfil" FromRole="perfil" ToRole="control" />
+  </EntityType>
+  <Association Name="FK_control_perfil">
+    <End Type="kinnemedModel.perfil" Role="perfil" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.control" Role="control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="per_id" />
+      </Principal>
+      <Dependent Role="control">
+        <PropertyRef Name="con_perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="examen">
+    <Key>
+      <PropertyRef Name="exa_id" />
+    </Key>
+    <Property Name="exa_id" Type="Int32" Nullable="false" />
+    <Property Name="exa_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="exa_unidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="exa_tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="exa_area" Type="Int32" Nullable="false" />
+    <Property Name="exa_item" Type="Int32" />
+    <Property Name="exa_valores" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="exa_inicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="exa_estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="area" Relationship="kinnemedModel.FK_examen_area" FromRole="examen" ToRole="area" />
+    <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_examen" FromRole="examen" ToRole="control" />
+    <NavigationProperty Name="valores" Relationship="kinnemedModel.FK_valores_examen" FromRole="examen" ToRole="valores" />
+    <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
+  </EntityType>
+  <Association Name="FK_examen_area">
+    <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="are_id" />
+      </Principal>
+      <Dependent Role="examen">
+        <PropertyRef Name="exa_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_control_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.control" Role="control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="control">
+        <PropertyRef Name="con_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_valores_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.valores" Role="valores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="valores">
+        <PropertyRef Name="val_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="prueba">
+    <Key>
+      <PropertyRef Name="pru_id" />
+    </Key>
+    <Property Name="pru_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pru_examen" Type="Int32" Nullable="false" />
+    <Property Name="pru_registro" Type="Int32" Nullable="false" />
+    <Property Name="pru_resultado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pru_valor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="pru_codigo" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="pru_imagen" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="pru_fuera" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_prueba_examen" FromRole="prueba" ToRole="examen" />
+    <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_prueba_registro" FromRole="prueba" ToRole="registro" />
+  </EntityType>
+  <Association Name="FK_prueba_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.prueba" Role="prueba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="prueba">
+        <PropertyRef Name="pru_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prueba_registro">
+    <End Type="kinnemedModel.registro" Role="registro" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.prueba" Role="prueba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro">
+        <PropertyRef Name="reg_id" />
+      </Principal>
+      <Dependent Role="prueba">
+        <PropertyRef Name="pru_registro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="paciente">
+    <Key>
+      <PropertyRef Name="pac_id" />
+    </Key>
+    <Property Name="pac_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pac_cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="pac_nombres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="pac_apellidos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="pac_genero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pac_estadocivil" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pac_pais" Type="Int32" />
+    <Property Name="pac_fechanacimiento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="pac_edad" Type="Int32" Nullable="false" />
+    <Property Name="pac_telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="pac_celular" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="pac_correo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="pac_provincia" Type="Int32" />
+    <Property Name="pac_canton" Type="Int32" />
+    <Property Name="pac_direccion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="pac_instruccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pac_profesion" Type="Int32" />
+    <Property Name="pac_tipodiscapacidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pac_porcentajediscapacidad" Type="Int32" />
+    <Property Name="pac_empresa" Type="Int32" />
+    <Property Name="pac_estado" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="canton" Relationship="kinnemedModel.FK_paciente_canton" FromRole="paciente" ToRole="canton" />
+    <NavigationProperty Name="empresa" Relationship="kinnemedModel.FK_paciente_empresa" FromRole="paciente" ToRole="empresa" />
+    <NavigationProperty Name="pais" Relationship="kinnemedModel.FK_paciente_pais" FromRole="paciente" ToRole="pais" />
+    <NavigationProperty Name="profesion" Relationship="kinnemedModel.FK_paciente_profesion" FromRole="paciente" ToRole="profesion" />
+    <NavigationProperty Name="provincia" Relationship="kinnemedModel.FK_paciente_provincia" FromRole="paciente" ToRole="provincia" />
+    <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_paciente" FromRole="paciente" ToRole="registro" />
+    <NavigationProperty Name="familiar" Relationship="kinnemedModel.FK_familiar_paciente" FromRole="paciente" ToRole="familiar" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_paciente" FromRole="paciente" ToRole="historia" />
+    <NavigationProperty Name="personal" Relationship="kinnemedModel.FK_personal_paciente" FromRole="paciente" ToRole="personal" />
+    <NavigationProperty Name="ginecologico" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="paciente" ToRole="ginecologico" />
+  </EntityType>
+  <Association Name="FK_paciente_canton">
+    <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="canton">
+        <PropertyRef Name="can_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_empresa">
+    <End Type="kinnemedModel.empresa" Role="empresa" Multiplicity="0..1" />
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_pais">
+    <End Type="kinnemedModel.pais" Role="pais" Multiplicity="0..1" />
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="pais_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_profesion">
+    <End Type="kinnemedModel.profesion" Role="profesion" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesion">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_profesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_provincia">
+    <End Type="kinnemedModel.provincia" Role="provincia" Multiplicity="0..1" />
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.registro" Role="registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="reg_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="fisico">
+    <Key>
+      <PropertyRef Name="fis_id" />
+    </Key>
+    <Property Name="fis_id" Type="Int32" Nullable="false" />
+    <Property Name="fis_piel" Type="Boolean" Nullable="false" />
+    <Property Name="fis_pie_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_cabeza" Type="Boolean" Nullable="false" />
+    <Property Name="fis_cab_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_ojos" Type="Boolean" Nullable="false" />
+    <Property Name="fis_ojo_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_oidos" Type="Boolean" Nullable="false" />
+    <Property Name="fis_oid_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_nariz" Type="Boolean" Nullable="false" />
+    <Property Name="fis_nar_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_boca" Type="Boolean" Nullable="false" />
+    <Property Name="fis_boc_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_faringe" Type="Boolean" Nullable="false" />
+    <Property Name="fis_far_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_cuello" Type="Boolean" Nullable="false" />
+    <Property Name="fis_cue_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_axilas" Type="Boolean" Nullable="false" />
+    <Property Name="fis_axi_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_torax" Type="Boolean" Nullable="false" />
+    <Property Name="fis_tor_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_abdomen" Type="Boolean" Nullable="false" />
+    <Property Name="fis_abd_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_columna" Type="Boolean" Nullable="false" />
+    <Property Name="fis_col_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_ingle" Type="Boolean" Nullable="false" />
+    <Property Name="fis_ing_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_mie_sup" Type="Boolean" Nullable="false" />
+    <Property Name="fis_msp_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_mie_inf" Type="Boolean" Nullable="false" />
+    <Property Name="fis_mif_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_organos" Type="Boolean" Nullable="false" />
+    <Property Name="fis_org_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_respiratorio" Type="Boolean" Nullable="false" />
+    <Property Name="fis_res_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_cardiovascular" Type="Boolean" Nullable="false" />
+    <Property Name="fis_car_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_digestivo" Type="Boolean" Nullable="false" />
+    <Property Name="fis_dig_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_genital" Type="Boolean" Nullable="false" />
+    <Property Name="fis_fen_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_urinario" Type="Boolean" Nullable="false" />
+    <Property Name="fis_uri_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_esqueletico" Type="Boolean" Nullable="false" />
+    <Property Name="fis_esq_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_endocrino" Type="Boolean" Nullable="false" />
+    <Property Name="fis_end_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_linfatico" Type="Boolean" Nullable="false" />
+    <Property Name="fis_lin_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fis_neurologico" Type="Boolean" Nullable="false" />
+    <Property Name="fis_neu_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_fisico_historia" FromRole="fisico" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="revision">
+    <Key>
+      <PropertyRef Name="rev_id" />
+    </Key>
+    <Property Name="rev_id" Type="Int32" Nullable="false" />
+    <Property Name="rev_organos" Type="Boolean" Nullable="false" />
+    <Property Name="rev_org_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_respiratorio" Type="Boolean" Nullable="false" />
+    <Property Name="rev_res_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_cardiovascular" Type="Boolean" Nullable="false" />
+    <Property Name="rev_car_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_digestivo" Type="Boolean" Nullable="false" />
+    <Property Name="rev_dig_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_genital" Type="Boolean" Nullable="false" />
+    <Property Name="rev_gen_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_urinario" Type="Boolean" Nullable="false" />
+    <Property Name="rev_uri_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_musculo" Type="Boolean" Nullable="false" />
+    <Property Name="rev_mus_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_endocrino" Type="Boolean" Nullable="false" />
+    <Property Name="rev_end_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_linfatico" Type="Boolean" Nullable="false" />
+    <Property Name="rev_lin_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="rev_nervioso" Type="Boolean" Nullable="false" />
+    <Property Name="rev_ner_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_revision_historia" FromRole="revision" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="cie10">
+    <Key>
+      <PropertyRef Name="cie_id" />
+    </Key>
+    <Property Name="cie_id" Type="Int32" Nullable="false" />
+    <Property Name="cie_codigo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="cie_descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="sub_cie10" Relationship="kinnemedModel.FK_sub_cie10_cie10" FromRole="cie10" ToRole="sub_cie10" />
+  </EntityType>
+  <EntityType Name="diagnostico">
+    <Key>
+      <PropertyRef Name="dia_id" />
+    </Key>
+    <Property Name="dia_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dia_historia" Type="Int32" Nullable="false" />
+    <Property Name="dia_descripcion" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dia_subcie10" Type="Int32" Nullable="false" />
+    <Property Name="dia_tipo" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="sub_cie10" Relationship="kinnemedModel.FK_diagnostico_sub_cie10" FromRole="diagnostico" ToRole="sub_cie10" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_diagnostico_historia" FromRole="diagnostico" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="sub_cie10">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="Int32" Nullable="false" />
+    <Property Name="sub_codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="sub_descripcion" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="sub_cie101" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cie10" Relationship="kinnemedModel.FK_sub_cie10_cie10" FromRole="sub_cie10" ToRole="cie10" />
+    <NavigationProperty Name="diagnostico" Relationship="kinnemedModel.FK_diagnostico_sub_cie10" FromRole="sub_cie10" ToRole="diagnostico" />
+  </EntityType>
+  <Association Name="FK_sub_cie10_cie10">
+    <End Type="kinnemedModel.cie10" Role="cie10" Multiplicity="1" />
+    <End Type="kinnemedModel.sub_cie10" Role="sub_cie10" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cie10">
+        <PropertyRef Name="cie_id" />
+      </Principal>
+      <Dependent Role="sub_cie10">
+        <PropertyRef Name="sub_cie101" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_diagnostico_sub_cie10">
+    <End Type="kinnemedModel.sub_cie10" Role="sub_cie10" Multiplicity="1" />
+    <End Type="kinnemedModel.diagnostico" Role="diagnostico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sub_cie10">
+        <PropertyRef Name="sub_id" />
+      </Principal>
+      <Dependent Role="diagnostico">
+        <PropertyRef Name="dia_subcie10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="pla_id" />
+    </Key>
+    <Property Name="pla_id" Type="Int32" Nullable="false" />
+    <Property Name="pla_texto1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="pla_texto2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_plan_historia" FromRole="plan" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="familiar">
+    <Key>
+      <PropertyRef Name="fam_id" />
+    </Key>
+    <Property Name="fam_id" Type="Int32" Nullable="false" />
+    <Property Name="fam_cardiopatia" Type="Boolean" Nullable="false" />
+    <Property Name="fam_car_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_diabetes" Type="Boolean" Nullable="false" />
+    <Property Name="fam_dia_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_cardiovascular" Type="Boolean" Nullable="false" />
+    <Property Name="fam_vas_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_hipertension" Type="Boolean" Nullable="false" />
+    <Property Name="fam_hip_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_cancer" Type="Boolean" Nullable="false" />
+    <Property Name="fam_can_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_tuberculosis" Type="Boolean" Nullable="false" />
+    <Property Name="fam_tub_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_mental" Type="Boolean" Nullable="false" />
+    <Property Name="fam_men_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_infecciosa" Type="Boolean" Nullable="false" />
+    <Property Name="fam_inf_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_malformacion" Type="Boolean" Nullable="false" />
+    <Property Name="fam_mal_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_otro" Type="Boolean" Nullable="false" />
+    <Property Name="fam_otr_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fam_hipotiroidismo" Type="Boolean" Nullable="false" />
+    <Property Name="fam_hit_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_familiar_paciente" FromRole="familiar" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="historia">
+    <Key>
+      <PropertyRef Name="his_id" />
+    </Key>
+    <Property Name="his_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="his_paciente" Type="Int32" Nullable="false" />
+    <Property Name="his_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="his_problema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="his_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="diagnostico" Relationship="kinnemedModel.FK_diagnostico_historia" FromRole="historia" ToRole="diagnostico" />
+    <NavigationProperty Name="fisico" Relationship="kinnemedModel.FK_fisico_historia" FromRole="historia" ToRole="fisico" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_historia_paciente" FromRole="historia" ToRole="paciente" />
+    <NavigationProperty Name="plan" Relationship="kinnemedModel.FK_plan_historia" FromRole="historia" ToRole="plan" />
+    <NavigationProperty Name="revision" Relationship="kinnemedModel.FK_revision_historia" FromRole="historia" ToRole="revision" />
+    <NavigationProperty Name="signos" Relationship="kinnemedModel.FK_signos_historia" FromRole="historia" ToRole="signos" />
+    <NavigationProperty Name="subsecuente" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="historia" ToRole="subsecuente" />
+  </EntityType>
+  <EntityType Name="personal">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="Int32" Nullable="false" />
+    <Property Name="per_patologicas" Type="Boolean" Nullable="false" />
+    <Property Name="per_pat_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_quirurgicas" Type="Boolean" Nullable="false" />
+    <Property Name="per_qui_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_traumaticos" Type="Boolean" Nullable="false" />
+    <Property Name="per_tra_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_alergias" Type="Boolean" Nullable="false" />
+    <Property Name="per_ale_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_vacunas" Type="Boolean" Nullable="false" />
+    <Property Name="per_vac_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_otros" Type="Boolean" Nullable="false" />
+    <Property Name="per_otr_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_personal_paciente" FromRole="personal" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="signos">
+    <Key>
+      <PropertyRef Name="sig_id" />
+    </Key>
+    <Property Name="sig_id" Type="Int32" Nullable="false" />
+    <Property Name="sig_presion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="sig_cardiaca" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_respiratoria" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_temperatura" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_peso" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_talla" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_masa" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_perimetro" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_viceral" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_corporal" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_kilocalorias" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="sig_edadpeso" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="sig_masamuscular" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_signos_historia" FromRole="signos" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="subsecuente">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sub_historia" Type="Int32" Nullable="false" />
+    <Property Name="sub_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sub_hora" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sub_subjetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sub_objetivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sub_analisis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sub_plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="subsecuente" ToRole="historia" />
+  </EntityType>
+  <Association Name="FK_diagnostico_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.diagnostico" Role="diagnostico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="diagnostico">
+        <PropertyRef Name="dia_historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_familiar_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.familiar" Role="familiar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="familiar">
+        <PropertyRef Name="fam_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fisico_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.fisico" Role="fisico" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="fisico">
+        <PropertyRef Name="fis_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_historia_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="historia">
+        <PropertyRef Name="his_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_plan_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.plan" Role="plan" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="plan">
+        <PropertyRef Name="pla_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_revision_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.revision" Role="revision" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="revision">
+        <PropertyRef Name="rev_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_signos_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.signos" Role="signos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="signos">
+        <PropertyRef Name="sig_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subsecuente_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.subsecuente" Role="subsecuente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="subsecuente">
+        <PropertyRef Name="sub_historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personal_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.personal" Role="personal" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="personal">
+        <PropertyRef Name="per_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ginecologico">
+    <Key>
+      <PropertyRef Name="gin_id" />
+    </Key>
+    <Property Name="gin_id" Type="Int32" Nullable="false" />
+    <Property Name="gin_fum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="gin_ciclos" Type="Int32" />
+    <Property Name="gin_gestas" Type="Int32" />
+    <Property Name="gin_partos" Type="Int32" />
+    <Property Name="gin_cesarea" Type="Int32" />
+    <Property Name="gin_abortos" Type="Int32" />
+    <Property Name="gin_hijos" Type="Int32" />
+    <Property Name="gin_planificacion" Type="Boolean" Nullable="false" />
+    <Property Name="gin_pla_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="gin_paptest" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="ginecologico" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_ginecologico_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.ginecologico" Role="ginecologico" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="ginecologico">
+        <PropertyRef Name="gin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
