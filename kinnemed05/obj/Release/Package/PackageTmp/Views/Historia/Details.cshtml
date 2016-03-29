@@ -4,6 +4,12 @@
     ViewBag.Title = "Details";
 }
 <script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
     $(function () {
         $.ajax({
             url: $("#link_index").attr('href'),
@@ -149,12 +155,16 @@
             
             
         </div>
+        <div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
+            <div class="progress-bar" style="width: 0%"></div>
+        </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">6 SIGNOS VITALES Y MEDICIONES</div>
         <div id="div_signos" class="panel-body">
             
         </div>
+
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">7 EXAMEN FISICO</div>

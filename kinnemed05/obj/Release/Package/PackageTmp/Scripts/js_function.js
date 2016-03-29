@@ -2,15 +2,40 @@
     $('.iconb').tooltip()
     $('.btn-img').tooltip()
     $('.form-group select').addClass('form-control');
-    $("#pac_fechanacimiento").datepicker({
-        changeMonth: true,
-        changeYear: true,
-        dateFormat:"dd/mm/yy",
-        onClose: function (selectedDate) {
-            var f = new Date();
-            $("#pac_edad").val(restaFechas(selectedDate, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
+    //$("#pac_fechanacimiento").datepicker({
+    //    changeMonth: true,
+    //    changeYear: true,
+    //    dateFormat:"dd/mm/yy",
+    //    onClose: function (selectedDate) {
+    //        var f = new Date();
+    //        $("#pac_edad").val(restaFechas(selectedDate, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
+    //    }
+    //});
+    var progressbar = $("#div_loading"), progressLabel = $("#div_loading.progress-bar");
+
+    progressbar.progressbar({
+        value: false,
+        change: function () {
+            progressLabel.css("width",progressbar.progressbar("value") + "%");
+        },
+        complete: function () {
+            progressLabel.text("Complete!");
         }
     });
+
+    function progress() {
+        var val = progressbar.progressbar("value") || 0;
+
+        progressbar.progressbar("value", val + 2);
+
+        if (val < 99) {
+            setTimeout(progress, 2000);
+        }
+    }
+
+
+    setTimeout(progress, 2000);
+
 });
 
 restaFechas = function (f1, f2) {
