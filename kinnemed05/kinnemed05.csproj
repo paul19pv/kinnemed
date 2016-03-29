@@ -193,12 +193,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\diagnostico.cs" />
     <Compile Include="Context\empresa.cs" />
+    <Compile Include="Context\espirometria.cs" />
     <Compile Include="Context\ginecologico.cs" />
     <Compile Include="Context\historia.cs" />
     <Compile Include="Context\paciente.cs" />
     <Compile Include="Context\signos.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\DiagnosticoController.cs" />
+    <Compile Include="Controllers\EspirometriaController.cs" />
     <Compile Include="Controllers\FamiliarController.cs" />
     <Compile Include="Controllers\FisicoController.cs" />
     <Compile Include="Controllers\GinecologicoController.cs" />
@@ -447,6 +449,7 @@
     <Content Include="Content\img\iconos\historia05-icon.png" />
     <Content Include="Content\img\iconos\historia06-icon.png" />
     <Content Include="Content\img\iconos\historia07-icon.png" />
+    <Content Include="Content\img\iconos\lungs-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />
     <Content Include="Content\img\iconos\search-icon.png" />
     <Content Include="Content\img\logo-small.png" />
@@ -771,6 +774,11 @@
     <Content Include="Views\Ginecologico\Details.cshtml" />
     <Content Include="Views\Ginecologico\Edit.cshtml" />
     <Content Include="Views\Ginecologico\Index.cshtml" />
+    <Content Include="Views\Espirometria\Index.cshtml" />
+    <Content Include="Views\Espirometria\Details.cshtml" />
+    <Content Include="Views\Espirometria\Create.cshtml" />
+    <Content Include="Views\Espirometria\Edit.cshtml" />
+    <Content Include="Views\Espirometria\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

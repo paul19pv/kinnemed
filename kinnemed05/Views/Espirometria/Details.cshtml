@@ -1,0 +1,43 @@
+﻿@model kinnemed05.Models.espirometria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>espirometria</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.esp_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.esp_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.esp_archivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.esp_archivo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.esp_observacion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.esp_observacion)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,92 @@
+﻿@model kinnemed05.Models.espirometria
+
+@{
+    ViewBag.Title = "Create";
+}
+<script>
+    $(function () {
+        $('#txt_paciente').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_paciente").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_paciente").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pac_nombres + " " + item.pac_apellidos,
+                                id: item.pac_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#esp_paciente").val(ui.item.id)
+            },
+            minLength: 2
+        });
+
+    });
+</script>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Registrar Exámen Espirometría</h3>
+        </div>
+        <div class="panel-body">
+
+
+            @using (Html.BeginForm("Create", "Espirometria", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.esp_paciente, new { @class = "form-control", @type = "hidden" })
+                        @Html.LabelFor(model => model.esp_paciente, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.esp_paciente)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="exampleInputFile">Archivo</label>
+                        <input type="file" name="Create" id="Create">
+                    </div>
+                </div>
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.esp_observacion, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextAreaFor(model => model.esp_observacion, new { @class = "form-control", @rows = "3" })
+                        @Html.ValidationMessageFor(model => model.esp_observacion)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <input type="submit" id="upload" value="Guardar" class="btn btn-default" />
+                        @Html.ActionLink("Regresar", "Index", "Espirometria", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
