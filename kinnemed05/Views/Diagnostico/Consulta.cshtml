@@ -7,7 +7,10 @@
             @Html.DisplayNameFor(model => model.dia_descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.dia_subcie10)
+            CIE10
+        </th>
+        <th>
+            Código
         </th>
         <th>
             @Html.DisplayNameFor(model => model.dia_tipo)
@@ -19,6 +22,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.dia_descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sub_cie10.cie10.cie_codigo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.sub_cie10.sub_codigo)

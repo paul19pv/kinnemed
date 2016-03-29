@@ -4,82 +4,81 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>signos</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.historia.his_motivo)
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_presion, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_presion, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.historia.his_motivo)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_cardiaca, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_cardiaca, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_presion)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_respiratoria, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_respiratoria, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_presion)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_temperatura, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_temperatura, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_cardiaca)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_peso, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_peso, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_cardiaca)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_talla, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_talla, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_respiratoria)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_masa, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_masa, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_respiratoria)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_perimetro, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_perimetro, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_tem_bucal)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_viceral, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_viceral, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_tem_bucal)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_corporal, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_corporal, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_tem_axilar)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_kilocalorias, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_kilocalorias, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_tem_axilar)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_edadpeso, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_edadpeso, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_peso)
+</div>
+<div class="col-lg-3">
+    <div class="form-group">
+        @Html.LabelFor(model => model.sig_masamuscular, new { @class = "control-label", @for = "inputDefault" })
+        @Html.TextBoxFor(model => model.sig_masamuscular, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_peso)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_talla)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_talla)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_masa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_masa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.sig_perimetro)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.sig_perimetro)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
