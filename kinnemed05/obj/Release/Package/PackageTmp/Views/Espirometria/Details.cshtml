@@ -1,0 +1,43 @@
+﻿@model kinnemed05.Models.espirometria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Detalle Exámen Espirometría</h3>
+        </div>
+        <div class="panel-body">
+
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.esp_paciente, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = @ViewBag.paciente, @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.esp_archivo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.esp_archivo, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.esp_observacion, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextAreaFor(model => model.esp_observacion, new { @class = "form-control", @rows = "3",@readonly="readonly" })
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Espirometria", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
