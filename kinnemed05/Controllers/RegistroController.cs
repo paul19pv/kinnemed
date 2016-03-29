@@ -201,7 +201,7 @@ namespace kinnemed05.Controllers
                 string fileName = Path.GetFileName(FileUpload.FileName);
                 if (fileName != "")
                 {
-                    string path = Path.Combine(Server.MapPath("~/Content/img"), fileName);
+                    string path = Path.Combine(Server.MapPath("~/Content/biometria"), fileName);
                     FileUpload.SaveAs(path);
                     dt = Process_CSV(path);
                     ViewBag.mensaje = ProcessData(dt);

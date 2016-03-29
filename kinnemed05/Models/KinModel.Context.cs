@@ -53,5 +53,8 @@ namespace kinnemed05.Models
         public DbSet<signos> signos { get; set; }
         public DbSet<subsecuente> subsecuente { get; set; }
         public DbSet<ginecologico> ginecologico { get; set; }
+        public DbSet<audiometria> audiometria { get; set; }
+        public DbSet<espirometria> espirometria { get; set; }
+        public DbSet<rayos> rayos { get; set; }
     }
 }

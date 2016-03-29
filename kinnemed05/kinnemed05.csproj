@@ -214,6 +214,9 @@
     <Compile Include="Models\area.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\audiometria.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\barcode.cs" />
     <Compile Include="Models\BarCode39.cs" />
     <Compile Include="Models\canton.cs">
@@ -235,6 +238,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\especialidad.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\espirometria.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\examen.cs">
@@ -292,6 +298,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\prueba.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\rayos.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\registro.cs">
@@ -765,7 +774,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\uploads\" />
+    <Folder Include="Content\audiometria\" />
+    <Folder Include="Content\biometria\" />
+    <Folder Include="Content\espirometria\" />
+    <Folder Include="Content\rayos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

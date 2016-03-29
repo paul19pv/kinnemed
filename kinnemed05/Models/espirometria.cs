@@ -12,9 +12,12 @@ namespace kinnemed05.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ginecologico
+    public partial class espirometria
     {
-        public int gin_id { get; set; }
+        public int esp_id { get; set; }
+        public int esp_paciente { get; set; }
+        public string esp_archivo { get; set; }
+        public string esp_observacion { get; set; }
     
         public virtual paciente paciente { get; set; }
     }
