@@ -15,7 +15,6 @@ namespace kinnemed05.Models
     public partial class ginecologico
     {
         public int gin_id { get; set; }
-        
     
         public virtual paciente paciente { get; set; }
     }

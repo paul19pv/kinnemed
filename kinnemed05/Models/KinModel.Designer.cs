@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Paul Chicaiza\Documents\Visual Studio 2013\Projects\kinnemed05\kinnemed05\Models\KinModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models\KinModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

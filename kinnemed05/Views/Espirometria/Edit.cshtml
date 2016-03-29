@@ -1,0 +1,108 @@
+﻿@model kinnemed05.Models.espirometria
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(function () {
+        $('#txt_paciente').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_paciente").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_paciente").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pac_nombres + " " + item.pac_apellidos,
+                                id: item.pac_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#esp_paciente").val(ui.item.id)
+            },
+            minLength: 2
+        });
+
+        $("#btn_upload").click(function () {
+            $("#div_upload").show();
+            $("#div_download").hide();
+        });
+        $("#btn_download").click(function () {
+            $("#div_upload").hide();
+            $("#div_download").show();
+        });
+
+    });
+</script>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Modificar Exámen Espirometría</h3>
+        </div>
+        <div class="panel-body">
+
+
+            @using (Html.BeginForm("Edit", "Espirometria", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model=>model.esp_id)
+                @Html.HiddenFor(model=>model.esp_archivo)
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.esp_paciente, new { @class = "form-control", @type = "hidden" })
+                        @Html.LabelFor(model => model.esp_paciente, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = @ViewBag.paciente })
+                        @Html.ValidationMessageFor(model => model.esp_paciente)
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div id="div_download" class="form-group">
+                        @Html.LabelFor(model => model.esp_archivo, new { @class = "control-label", @for = "inputDefault", @style = "float:left;" })
+                        
+                        @Html.ActionLink("Descargar", "Download", new { id = Model.esp_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @style="display:block;" })
+                        <br />
+                        <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />
+                    </div>
+                    <div id="div_upload" class="form-group" style="display:none;">
+                        <label for="exampleInputFile" style="display:block;">Archivo</label>
+                        <input type="file" name="Edit" id="Edit" style="display:inline">
+                        <input type="button" id="btn_download" value="Mantener" class="btn btn-default" />
+                        @Html.ValidationMessageFor(model => model.esp_archivo)
+                        @Html.ValidationMessage("ext")
+                    </div>
+                </div>
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.esp_observacion, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextAreaFor(model => model.esp_observacion, new { @class = "form-control", @rows = "3" })
+                        @Html.ValidationMessageFor(model => model.esp_observacion)
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <input type="submit" value="Modificar" class="btn btn-default" />
+                        @Html.ActionLink("Regresar", "Index", "Espirometria", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>

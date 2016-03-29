@@ -7,6 +7,15 @@
     <Property Name="are_id" Type="int" Nullable="false" />
     <Property Name="are_nombre" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="audiometria">
+    <Key>
+      <PropertyRef Name="aud_id" />
+    </Key>
+    <Property Name="aud_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aud_paciente" Type="int" Nullable="false" />
+    <Property Name="aud_archivo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="aud_observacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="canton">
     <Key>
       <PropertyRef Name="can_id" />
@@ -66,6 +75,15 @@
     </Key>
     <Property Name="esp_id" Type="int" Nullable="false" />
     <Property Name="esp_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="espirometria">
+    <Key>
+      <PropertyRef Name="esp_id" />
+    </Key>
+    <Property Name="esp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="esp_paciente" Type="int" Nullable="false" />
+    <Property Name="esp_archivo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="esp_observacion" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="examen">
     <Key>
@@ -299,6 +317,15 @@
     <Property Name="pru_imagen" Type="image" Nullable="false" />
     <Property Name="pru_fuera" Type="varchar" MaxLength="2" />
   </EntityType>
+  <EntityType Name="rayos">
+    <Key>
+      <PropertyRef Name="ray_id" />
+    </Key>
+    <Property Name="ray_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ray_paciente" Type="int" Nullable="false" />
+    <Property Name="ray_imagen" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="ray_observacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="registro">
     <Key>
       <PropertyRef Name="reg_id" />
@@ -387,6 +414,20 @@
     <Property Name="val_categoria" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="val_examen" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_audiometria_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="audiometria" Type="Self.audiometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="audiometria">
+        <PropertyRef Name="aud_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_canton_provincia">
     <End Role="provincia" Type="Self.provincia" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -452,6 +493,20 @@
       </Principal>
       <Dependent Role="diagnostico">
         <PropertyRef Name="dia_subcie10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_espirometria_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="espirometria" Type="Self.espirometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="espirometria">
+        <PropertyRef Name="esp_paciente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -647,6 +702,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_rayos_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="rayos" Type="Self.rayos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="rayos">
+        <PropertyRef Name="ray_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_registro_medico">
     <End Role="medico" Type="Self.medico" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -745,6 +814,7 @@
   </Association>
   <EntityContainer Name="kinnemedModelStoreContainer">
     <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cie10" EntityType="Self.cie10" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
@@ -752,6 +822,7 @@
     <EntitySet Name="diagnostico" EntityType="Self.diagnostico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="espirometria" EntityType="Self.espirometria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="examen" EntityType="Self.examen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="familiar" EntityType="Self.familiar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="fisico" EntityType="Self.fisico" Schema="dbo" store:Type="Tables" />
@@ -766,12 +837,17 @@
     <EntitySet Name="profesion" EntityType="Self.profesion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="prueba" EntityType="Self.prueba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rayos" EntityType="Self.rayos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="registro" EntityType="Self.registro" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="revision" EntityType="Self.revision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sub_cie10" EntityType="Self.sub_cie10" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subsecuente" EntityType="Self.subsecuente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="audiometria" EntitySet="audiometria" />
+    </AssociationSet>
     <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
       <End Role="provincia" EntitySet="provincia" />
       <End Role="canton" EntitySet="canton" />
@@ -791,6 +867,10 @@
     <AssociationSet Name="FK_diagnostico_sub_cie10" Association="Self.FK_diagnostico_sub_cie10">
       <End Role="sub_cie10" EntitySet="sub_cie10" />
       <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_espirometria_paciente" Association="Self.FK_espirometria_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="espirometria" EntitySet="espirometria" />
     </AssociationSet>
     <AssociationSet Name="FK_examen_area" Association="Self.FK_examen_area">
       <End Role="area" EntitySet="area" />
@@ -847,6 +927,10 @@
     <AssociationSet Name="FK_prueba_registro" Association="Self.FK_prueba_registro">
       <End Role="registro" EntitySet="registro" />
       <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rayos_paciente" Association="Self.FK_rayos_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="rayos" EntitySet="rayos" />
     </AssociationSet>
     <AssociationSet Name="FK_registro_medico" Association="Self.FK_registro_medico">
       <End Role="medico" EntitySet="medico" />

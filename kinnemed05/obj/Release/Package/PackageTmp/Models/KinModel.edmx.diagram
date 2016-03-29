@@ -60,6 +60,12 @@
         <AssociationConnector Association="kinnemedModel.FK_personal_paciente" />
         <EntityTypeShape EntityType="kinnemedModel.ginecologico" Width="1.5" PointX="7.5" PointY="23.875" />
         <AssociationConnector Association="kinnemedModel.FK_ginecologico_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="7.5" PointY="28.75" />
+        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="7.5" PointY="8" />
+        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="7.5" PointY="31.5" />
+        <AssociationConnector Association="kinnemedModel.FK_audiometria_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_espirometria_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

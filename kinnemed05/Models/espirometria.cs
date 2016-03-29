@@ -12,10 +12,10 @@ namespace kinnemed05.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class diagnostico
+    public partial class espirometria
     {
-        public int dia_id { get; set; }
-        public virtual sub_cie10 sub_cie10 { get; set; }
-        public virtual historia historia { get; set; }
+        public int esp_id { get; set; }
+    
+        public virtual paciente paciente { get; set; }
     }
 }
