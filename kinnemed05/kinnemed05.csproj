@@ -210,6 +210,7 @@
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\RayosController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
     <Compile Include="Controllers\SignosController.cs" />
@@ -786,6 +787,11 @@
     <Content Include="Views\Audiometria\Create.cshtml" />
     <Content Include="Views\Audiometria\Edit.cshtml" />
     <Content Include="Views\Audiometria\Delete.cshtml" />
+    <Content Include="Views\Rayos\Index.cshtml" />
+    <Content Include="Views\Rayos\Details.cshtml" />
+    <Content Include="Views\Rayos\Create.cshtml" />
+    <Content Include="Views\Rayos\Edit.cshtml" />
+    <Content Include="Views\Rayos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
