@@ -15,7 +15,6 @@ namespace kinnemed05.Models
     public partial class espirometria
     {
         public int esp_id { get; set; }
-        
     
         public virtual paciente paciente { get; set; }
     }

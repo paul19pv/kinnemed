@@ -15,7 +15,6 @@ namespace kinnemed05.Models
     public partial class diagnostico
     {
         public int dia_id { get; set; }
-    
         public virtual sub_cie10 sub_cie10 { get; set; }
         public virtual historia historia { get; set; }
     }

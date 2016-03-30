@@ -9,10 +9,12 @@ namespace kinnemed05.Models
     public partial class espirometria
     {
         [Display(Name="Paciente")]
+        [Required(ErrorMessage="El campo Paciente es requerido")]
         public int esp_paciente { get; set; }
         [Display(Name = "Archivo")]
         public string esp_archivo { get; set; }
         [Display(Name = "Observación")]
+        [Required(ErrorMessage = "El campo Observación es requerido")]
         public string esp_observacion { get; set; }
     }
 }

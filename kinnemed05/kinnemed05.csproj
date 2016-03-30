@@ -198,6 +198,7 @@
     <Compile Include="Context\historia.cs" />
     <Compile Include="Context\paciente.cs" />
     <Compile Include="Context\signos.cs" />
+    <Compile Include="Controllers\AudiometriaController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\DiagnosticoController.cs" />
     <Compile Include="Controllers\EspirometriaController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\RayosController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
     <Compile Include="Controllers\SignosController.cs" />
@@ -452,6 +454,7 @@
     <Content Include="Content\img\iconos\lungs-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />
     <Content Include="Content\img\iconos\search-icon.png" />
+    <Content Include="Content\img\iconos\sound-icon.png" />
     <Content Include="Content\img\logo-small.png" />
     <Content Include="Content\img\new-icon.png" />
     <Content Include="Content\img\pdf-icon.png" />
@@ -779,6 +782,16 @@
     <Content Include="Views\Espirometria\Create.cshtml" />
     <Content Include="Views\Espirometria\Edit.cshtml" />
     <Content Include="Views\Espirometria\Delete.cshtml" />
+    <Content Include="Views\Audiometria\Index.cshtml" />
+    <Content Include="Views\Audiometria\Details.cshtml" />
+    <Content Include="Views\Audiometria\Create.cshtml" />
+    <Content Include="Views\Audiometria\Edit.cshtml" />
+    <Content Include="Views\Audiometria\Delete.cshtml" />
+    <Content Include="Views\Rayos\Index.cshtml" />
+    <Content Include="Views\Rayos\Details.cshtml" />
+    <Content Include="Views\Rayos\Create.cshtml" />
+    <Content Include="Views\Rayos\Edit.cshtml" />
+    <Content Include="Views\Rayos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
