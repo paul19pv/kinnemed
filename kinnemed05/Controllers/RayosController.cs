@@ -182,7 +182,26 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            paciente paciente = db.paciente.Find(rayos.ray_paciente);
+            string nom_pac = String.Empty;
+            if (paciente != null)
+                nom_pac = paciente.pac_nombres + " " + paciente.pac_apellidos;
+            else
+                nom_pac = "";
+            @ViewBag.paciente = nom_pac;
             return View(rayos);
+        }
+
+        public ActionResult Download(int id = 0)
+        {
+            string contentType = "application/pdf";
+            rayos rayos = db.rayos.Find(id);
+            if (rayos == null)
+            {
+                return HttpNotFound();
+            }
+            return File(Server.MapPath("~/Content/rayos/") + rayos.ray_imagen, contentType, rayos.ray_imagen);
+
         }
 
         //
