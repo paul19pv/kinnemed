@@ -453,6 +453,7 @@
     <Content Include="Content\img\iconos\historia07-icon.png" />
     <Content Include="Content\img\iconos\lungs-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />
+    <Content Include="Content\img\iconos\ray-icon.png" />
     <Content Include="Content\img\iconos\search-icon.png" />
     <Content Include="Content\img\iconos\sound-icon.png" />
     <Content Include="Content\img\logo-small.png" />
