@@ -15,13 +15,6 @@ namespace kinnemed05.Models
     public partial class prueba
     {
         public int pru_id { get; set; }
-        public int pru_examen { get; set; }
-        public int pru_registro { get; set; }
-        public string pru_resultado { get; set; }
-        public string pru_valor { get; set; }
-        public string pru_codigo { get; set; }
-        public byte[] pru_imagen { get; set; }
-        public string pru_fuera { get; set; }
     
         public virtual examen examen { get; set; }
         public virtual registro registro { get; set; }

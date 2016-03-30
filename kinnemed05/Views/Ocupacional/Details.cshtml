@@ -1,0 +1,127 @@
+﻿@model kinnemed05.Models.ocupacional
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ocupacional</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_empresa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_empresa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_seccion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_seccion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_cargo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_cargo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_jornada)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_jornada)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_inicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_inicio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_fin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_fin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_tiempo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_tiempo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_maquinaria)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_maquinaria)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_materiales)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_materiales)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_sustancias)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_sustancias)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_equipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_equipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_tipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocu_estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocu_estado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

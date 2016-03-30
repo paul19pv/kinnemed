@@ -12,11 +12,15 @@ namespace kinnemed05.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class diagnostico
+    public partial class inmunizacion
     {
-        public int dia_id { get; set; }
+        public int inm_id { get; set; }
+        public int inm_vacuna { get; set; }
+        public string inm_fecha { get; set; }
+        public string inm_tipo { get; set; }
+        public int inm_paciente { get; set; }
     
-        public virtual sub_cie10 sub_cie10 { get; set; }
-        public virtual historia historia { get; set; }
+        public virtual paciente paciente { get; set; }
+        public virtual vacuna vacuna { get; set; }
     }
 }

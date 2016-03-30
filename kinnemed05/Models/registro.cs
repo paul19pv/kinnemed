@@ -20,11 +20,6 @@ namespace kinnemed05.Models
         }
     
         public int reg_id { get; set; }
-        public int reg_paciente { get; set; }
-        public int reg_orden { get; set; }
-        public string reg_fecha { get; set; }
-        public Nullable<int> reg_medico { get; set; }
-        public Nullable<bool> reg_estado { get; set; }
     
         public virtual medico medico { get; set; }
         public virtual ICollection<prueba> prueba { get; set; }

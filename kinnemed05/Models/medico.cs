@@ -20,14 +20,6 @@ namespace kinnemed05.Models
         }
     
         public int med_id { get; set; }
-        public string med_cedula { get; set; }
-        public string med_nombres { get; set; }
-        public string med_apellidos { get; set; }
-        public string med_ci { get; set; }
-        public string med_codigo { get; set; }
-        public int med_especialidad { get; set; }
-        public string med_correo { get; set; }
-        public string med_estado { get; set; }
     
         public virtual especialidad especialidad { get; set; }
         public virtual ICollection<registro> registro { get; set; }

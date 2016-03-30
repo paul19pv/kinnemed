@@ -17,5 +17,11 @@ namespace kinnemed05.Models
         public string his_problema { get; set; }
         [Display(Name = "Observacion")]
         public string his_observacion { get; set; }
+        
+        public int his_tipo { get; set; }
+        [Display(Name = "fecha")]
+        public string his_fecha { get; set; }
+        [Display(Name = "Número")]
+        public int his_numero { get; set; }
     }
 }
