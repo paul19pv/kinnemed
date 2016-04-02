@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Edit";
 }
-
 <script>
     $(function () {
         $('#txt_paciente').autocomplete({
@@ -44,6 +43,7 @@
             minLength: 2
         });
     });
+
     $(document).ajaxStart(function () {
         $('#div_loading').show();
     });
@@ -52,20 +52,20 @@
     });
 
 </script>
-
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">1 Motivo de la Consulta</h3>
+            <h3 class="panel-title">1 Datos del Paciente</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            @using (Ajax.BeginForm("Edit02", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
+                
                 @Html.HiddenFor(model => model.his_id);
+                @Html.HiddenFor(model => model.his_motivo, new { Value = "Historia Laboral" })
                 @Html.HiddenFor(model => model.his_problema);
-                @Html.HiddenFor(model => model.his_tipo);
                 @Html.HiddenFor(model => model.his_fecha);
                 @Html.HiddenFor(model => model.his_numero);
                 <div class="col-lg-3">
@@ -74,35 +74,36 @@
                         @Html.TextBoxFor(model => model.his_paciente, new { @class = "form-control", @type = "hidden" })
                         @Html.LabelFor(model => model.his_paciente, new { @class = "control-label", @for = "inputDefault" })
 
-                        @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = Model.paciente.pac_cedula })
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.his_paciente)
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.Label("Nombres", new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_nombres", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_nombres })
+                        @Html.TextBox("txt_nombres", "", new { @class = "form-control", @readonly = "readonly" })
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.Label("Apellidos", new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_apellidos", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_apellidos })
+                        @Html.TextBox("txt_apellidos", "", new { @class = "form-control", @readonly = "readonly" })
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.Label("Edad", new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_edad", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_edad })
+                        @Html.TextBox("txt_edad", "", new { @class = "form-control", @readonly = "readonly" })
                     </div>
                 </div>
-                <div class="col-lg-12" style="clear:both">
+                <div class="col-lg-3">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.his_motivo, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextAreaFor(model => model.his_motivo, new { @class = "form-control", @rows = "3" })
-                        @Html.ValidationMessageFor(model => model.his_motivo)
+                        @Html.LabelFor(model => model.his_tipo, new { @class = "control-label" })
+                        @Html.DropDownList("his_tipo", String.Empty)
+                        @Html.ValidationMessageFor(model => model.his_tipo)
                     </div>
                 </div>
+
 
                 <div class="col-lg-3" style="clear:both;float:right;">
                     <br />
@@ -115,7 +116,16 @@
         </div>
     </div>
 </div>
+<a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
+
+<div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
+    <div class="progress-bar" style="width: 45%"></div>
+</div>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

@@ -56,5 +56,10 @@ namespace kinnemed05.Models
         public DbSet<audiometria> audiometria { get; set; }
         public DbSet<espirometria> espirometria { get; set; }
         public DbSet<rayos> rayos { get; set; }
+        public DbSet<inmunizacion> inmunizacion { get; set; }
+        public DbSet<riesgo> riesgo { get; set; }
+        public DbSet<vacuna> vacuna { get; set; }
+        public DbSet<laboral> laboral { get; set; }
+        public DbSet<ocupacional> ocupacional { get; set; }
     }
 }

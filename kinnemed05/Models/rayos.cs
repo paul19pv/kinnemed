@@ -15,9 +15,6 @@ namespace kinnemed05.Models
     public partial class rayos
     {
         public int ray_id { get; set; }
-        public int ray_paciente { get; set; }
-        public string ray_imagen { get; set; }
-        public string ray_observacion { get; set; }
     
         public virtual paciente paciente { get; set; }
     }

@@ -21,6 +21,8 @@ namespace kinnemed05.Models
             this.audiometria = new HashSet<audiometria>();
             this.espirometria = new HashSet<espirometria>();
             this.rayos = new HashSet<rayos>();
+            this.inmunizacion = new HashSet<inmunizacion>();
+            this.ocupacional = new HashSet<ocupacional>();
         }
     
         public int pac_id { get; set; }
@@ -38,5 +40,7 @@ namespace kinnemed05.Models
         public virtual ICollection<audiometria> audiometria { get; set; }
         public virtual ICollection<espirometria> espirometria { get; set; }
         public virtual ICollection<rayos> rayos { get; set; }
+        public virtual ICollection<inmunizacion> inmunizacion { get; set; }
+        public virtual ICollection<ocupacional> ocupacional { get; set; }
     }
 }

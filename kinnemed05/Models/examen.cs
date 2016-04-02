@@ -22,14 +22,6 @@ namespace kinnemed05.Models
         }
     
         public int exa_id { get; set; }
-        public string exa_nombre { get; set; }
-        public string exa_unidad { get; set; }
-        public string exa_tipo { get; set; }
-        public int exa_area { get; set; }
-        public Nullable<int> exa_item { get; set; }
-        public string exa_valores { get; set; }
-        public string exa_inicial { get; set; }
-        public string exa_estado { get; set; }
     
         public virtual area area { get; set; }
         public virtual ICollection<control> control { get; set; }

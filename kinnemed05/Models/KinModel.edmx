@@ -213,6 +213,27 @@
           <Property Name="his_motivo" Type="nvarchar(max)" />
           <Property Name="his_problema" Type="nvarchar(max)" />
           <Property Name="his_observacion" Type="nvarchar(max)" />
+          <Property Name="his_tipo" Type="int" Nullable="false" />
+          <Property Name="his_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="his_numero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inmunizacion">
+          <Key>
+            <PropertyRef Name="inm_id" />
+          </Key>
+          <Property Name="inm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inm_vacuna" Type="int" Nullable="false" />
+          <Property Name="inm_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="inm_tipo" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="inm_paciente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="laboral">
+          <Key>
+            <PropertyRef Name="lab_id" />
+          </Key>
+          <Property Name="lab_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="lab_ocupacional" Type="int" Nullable="false" />
+          <Property Name="lab_riesgo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="medico">
           <Key>
@@ -227,6 +248,27 @@
           <Property Name="med_especialidad" Type="int" Nullable="false" />
           <Property Name="med_correo" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="med_estado" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ocupacional">
+          <Key>
+            <PropertyRef Name="ocu_id" />
+          </Key>
+          <Property Name="ocu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ocu_empresa" Type="varchar" MaxLength="200" />
+          <Property Name="ocu_seccion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ocu_cargo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ocu_descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ocu_jornada" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ocu_inicio" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ocu_fin" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ocu_tiempo" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="ocu_maquinaria" Type="nvarchar(max)" />
+          <Property Name="ocu_materiales" Type="nvarchar(max)" />
+          <Property Name="ocu_sustancias" Type="nvarchar(max)" />
+          <Property Name="ocu_equipo" Type="nvarchar(max)" />
+          <Property Name="ocu_tipo" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ocu_estado" Type="bit" Nullable="false" />
+          <Property Name="ocu_paciente" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="paciente">
           <Key>
@@ -368,6 +410,14 @@
           <Property Name="rev_nervioso" Type="bit" Nullable="false" />
           <Property Name="rev_ner_txt" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="riesgo">
+          <Key>
+            <PropertyRef Name="rie_id" />
+          </Key>
+          <Property Name="rie_id" Type="int" Nullable="false" />
+          <Property Name="rie_grupo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="rie_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="signos">
           <Key>
             <PropertyRef Name="sig_id" />
@@ -408,6 +458,15 @@
           <Property Name="sub_objetivo" Type="nvarchar(max)" />
           <Property Name="sub_analisis" Type="nvarchar(max)" />
           <Property Name="sub_plan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="vacuna">
+          <Key>
+            <PropertyRef Name="vac_id" />
+          </Key>
+          <Property Name="vac_id" Type="int" Nullable="false" />
+          <Property Name="vac_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vac_dosis" Type="int" Nullable="false" />
+          <Property Name="vac_esquema" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="valores">
           <Key>
@@ -585,6 +644,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_inmunizacion_paciente">
+          <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="inmunizacion" Type="Self.inmunizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="inmunizacion">
+              <PropertyRef Name="inm_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inmunizacion_vacuna">
+          <End Role="vacuna" Type="Self.vacuna" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="inmunizacion" Type="Self.inmunizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacuna">
+              <PropertyRef Name="vac_id" />
+            </Principal>
+            <Dependent Role="inmunizacion">
+              <PropertyRef Name="inm_vacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_laboral_ocupacional">
+          <End Role="ocupacional" Type="Self.ocupacional" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="laboral" Type="Self.laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ocupacional">
+              <PropertyRef Name="ocu_id" />
+            </Principal>
+            <Dependent Role="laboral">
+              <PropertyRef Name="lab_ocupacional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_laboral_riesgo">
+          <End Role="riesgo" Type="Self.riesgo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="laboral" Type="Self.laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="riesgo">
+              <PropertyRef Name="rie_id" />
+            </Principal>
+            <Dependent Role="laboral">
+              <PropertyRef Name="lab_riesgo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_medico_especialidad">
           <End Role="especialidad" Type="Self.especialidad" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -596,6 +711,20 @@
             </Principal>
             <Dependent Role="medico">
               <PropertyRef Name="med_especialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ocupacional_paciente">
+          <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ocupacional" Type="Self.ocupacional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="ocupacional">
+              <PropertyRef Name="ocu_paciente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -833,7 +962,10 @@
           <EntitySet Name="fisico" EntityType="Self.fisico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ginecologico" EntityType="Self.ginecologico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="historia" EntityType="Self.historia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inmunizacion" EntityType="Self.inmunizacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="laboral" EntityType="Self.laboral" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ocupacional" EntityType="Self.ocupacional" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
@@ -845,9 +977,11 @@
           <EntitySet Name="rayos" EntityType="Self.rayos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="registro" EntityType="Self.registro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="revision" EntityType="Self.revision" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="riesgo" EntityType="Self.riesgo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sub_cie10" EntityType="Self.sub_cie10" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subsecuente" EntityType="Self.subsecuente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vacuna" EntityType="Self.vacuna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
             <End Role="paciente" EntitySet="paciente" />
@@ -897,9 +1031,29 @@
             <End Role="paciente" EntitySet="paciente" />
             <End Role="historia" EntitySet="historia" />
           </AssociationSet>
+          <AssociationSet Name="FK_inmunizacion_paciente" Association="Self.FK_inmunizacion_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="inmunizacion" EntitySet="inmunizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inmunizacion_vacuna" Association="Self.FK_inmunizacion_vacuna">
+            <End Role="vacuna" EntitySet="vacuna" />
+            <End Role="inmunizacion" EntitySet="inmunizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_laboral_ocupacional" Association="Self.FK_laboral_ocupacional">
+            <End Role="ocupacional" EntitySet="ocupacional" />
+            <End Role="laboral" EntitySet="laboral" />
+          </AssociationSet>
+          <AssociationSet Name="FK_laboral_riesgo" Association="Self.FK_laboral_riesgo">
+            <End Role="riesgo" EntitySet="riesgo" />
+            <End Role="laboral" EntitySet="laboral" />
+          </AssociationSet>
           <AssociationSet Name="FK_medico_especialidad" Association="Self.FK_medico_especialidad">
             <End Role="especialidad" EntitySet="especialidad" />
             <End Role="medico" EntitySet="medico" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ocupacional_paciente" Association="Self.FK_ocupacional_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="ocupacional" EntitySet="ocupacional" />
           </AssociationSet>
           <AssociationSet Name="FK_paciente_canton" Association="Self.FK_paciente_canton">
             <End Role="canton" EntitySet="canton" />
@@ -1240,6 +1394,31 @@
             <End Role="paciente" EntitySet="paciente" />
             <End Role="rayos" EntitySet="rayos" />
           </AssociationSet>
+          <EntitySet Name="inmunizacion" EntityType="kinnemedModel.inmunizacion" />
+          <EntitySet Name="riesgo" EntityType="kinnemedModel.riesgo" />
+          <EntitySet Name="vacuna" EntityType="kinnemedModel.vacuna" />
+          <AssociationSet Name="FK_inmunizacion_paciente" Association="kinnemedModel.FK_inmunizacion_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="inmunizacion" EntitySet="inmunizacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inmunizacion_vacuna" Association="kinnemedModel.FK_inmunizacion_vacuna">
+            <End Role="vacuna" EntitySet="vacuna" />
+            <End Role="inmunizacion" EntitySet="inmunizacion" />
+          </AssociationSet>
+          <EntitySet Name="laboral" EntityType="kinnemedModel.laboral" />
+          <EntitySet Name="ocupacional" EntityType="kinnemedModel.ocupacional" />
+          <AssociationSet Name="FK_laboral_ocupacional" Association="kinnemedModel.FK_laboral_ocupacional">
+            <End Role="ocupacional" EntitySet="ocupacional" />
+            <End Role="laboral" EntitySet="laboral" />
+          </AssociationSet>
+          <AssociationSet Name="FK_laboral_riesgo" Association="kinnemedModel.FK_laboral_riesgo">
+            <End Role="riesgo" EntitySet="riesgo" />
+            <End Role="laboral" EntitySet="laboral" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ocupacional_paciente" Association="kinnemedModel.FK_ocupacional_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="ocupacional" EntitySet="ocupacional" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="area">
           <Key>
@@ -1451,6 +1630,8 @@
           <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_paciente" FromRole="paciente" ToRole="audiometria" />
           <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="paciente" ToRole="espirometria" />
           <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
+          <NavigationProperty Name="inmunizacion" Relationship="kinnemedModel.FK_inmunizacion_paciente" FromRole="paciente" ToRole="inmunizacion" />
+          <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="paciente" ToRole="ocupacional" />
         </EntityType>
         <Association Name="FK_paciente_canton">
           <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
@@ -1724,6 +1905,9 @@
           <NavigationProperty Name="revision" Relationship="kinnemedModel.FK_revision_historia" FromRole="historia" ToRole="revision" />
           <NavigationProperty Name="signos" Relationship="kinnemedModel.FK_signos_historia" FromRole="historia" ToRole="signos" />
           <NavigationProperty Name="subsecuente" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="historia" ToRole="subsecuente" />
+          <Property Name="his_tipo" Type="Int32" Nullable="false" />
+          <Property Name="his_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="his_numero" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="personal">
           <Key>
@@ -2004,6 +2188,140 @@
             </Principal>
             <Dependent Role="rayos">
               <PropertyRef Name="ray_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="inmunizacion">
+          <Key>
+            <PropertyRef Name="inm_id" />
+          </Key>
+          <Property Name="inm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inm_vacuna" Type="Int32" Nullable="false" />
+          <Property Name="inm_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="inm_tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="inm_paciente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_inmunizacion_paciente" FromRole="inmunizacion" ToRole="paciente" />
+          <NavigationProperty Name="vacuna" Relationship="kinnemedModel.FK_inmunizacion_vacuna" FromRole="inmunizacion" ToRole="vacuna" />
+        </EntityType>
+        <EntityType Name="riesgo">
+          <Key>
+            <PropertyRef Name="rie_id" />
+          </Key>
+          <Property Name="rie_id" Type="Int32" Nullable="false" />
+          <Property Name="rie_grupo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="rie_nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="laboral" Relationship="kinnemedModel.FK_laboral_riesgo" FromRole="riesgo" ToRole="laboral" />
+        </EntityType>
+        <EntityType Name="vacuna">
+          <Key>
+            <PropertyRef Name="vac_id" />
+          </Key>
+          <Property Name="vac_id" Type="Int32" Nullable="false" />
+          <Property Name="vac_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vac_dosis" Type="Int32" Nullable="false" />
+          <Property Name="vac_esquema" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="inmunizacion" Relationship="kinnemedModel.FK_inmunizacion_vacuna" FromRole="vacuna" ToRole="inmunizacion" />
+        </EntityType>
+        <Association Name="FK_inmunizacion_paciente">
+          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.inmunizacion" Role="inmunizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="inmunizacion">
+              <PropertyRef Name="inm_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inmunizacion_vacuna">
+          <End Type="kinnemedModel.vacuna" Role="vacuna" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.inmunizacion" Role="inmunizacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vacuna">
+              <PropertyRef Name="vac_id" />
+            </Principal>
+            <Dependent Role="inmunizacion">
+              <PropertyRef Name="inm_vacuna" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="laboral">
+          <Key>
+            <PropertyRef Name="lab_id" />
+          </Key>
+          <Property Name="lab_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lab_ocupacional" Type="Int32" Nullable="false" />
+          <Property Name="lab_riesgo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_laboral_ocupacional" FromRole="laboral" ToRole="ocupacional" />
+          <NavigationProperty Name="riesgo" Relationship="kinnemedModel.FK_laboral_riesgo" FromRole="laboral" ToRole="riesgo" />
+        </EntityType>
+        <EntityType Name="ocupacional">
+          <Key>
+            <PropertyRef Name="ocu_id" />
+          </Key>
+          <Property Name="ocu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ocu_empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_seccion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_cargo" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ocu_jornada" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_inicio" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_fin" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_tiempo" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="ocu_maquinaria" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ocu_materiales" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ocu_sustancias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ocu_equipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ocu_tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ocu_estado" Type="Boolean" Nullable="false" />
+          <Property Name="ocu_paciente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="laboral" Relationship="kinnemedModel.FK_laboral_ocupacional" FromRole="ocupacional" ToRole="laboral" />
+          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="ocupacional" ToRole="paciente" />
+        </EntityType>
+        <Association Name="FK_laboral_ocupacional">
+          <End Type="kinnemedModel.ocupacional" Role="ocupacional" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.laboral" Role="laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ocupacional">
+              <PropertyRef Name="ocu_id" />
+            </Principal>
+            <Dependent Role="laboral">
+              <PropertyRef Name="lab_ocupacional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_laboral_riesgo">
+          <End Type="kinnemedModel.riesgo" Role="riesgo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.laboral" Role="laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="riesgo">
+              <PropertyRef Name="rie_id" />
+            </Principal>
+            <Dependent Role="laboral">
+              <PropertyRef Name="lab_riesgo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ocupacional_paciente">
+          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.ocupacional" Role="ocupacional" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="ocupacional">
+              <PropertyRef Name="ocu_paciente" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2350,6 +2668,9 @@
           <EntitySetMapping Name="historia">
             <EntityTypeMapping TypeName="kinnemedModel.historia">
               <MappingFragment StoreEntitySet="historia">
+                <ScalarProperty Name="his_numero" ColumnName="his_numero" />
+                <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
+                <ScalarProperty Name="his_tipo" ColumnName="his_tipo" />
                 <ScalarProperty Name="his_observacion" ColumnName="his_observacion" />
                 <ScalarProperty Name="his_problema" ColumnName="his_problema" />
                 <ScalarProperty Name="his_motivo" ColumnName="his_motivo" />
@@ -2455,6 +2776,67 @@
                 <ScalarProperty Name="ray_imagen" ColumnName="ray_imagen" />
                 <ScalarProperty Name="ray_paciente" ColumnName="ray_paciente" />
                 <ScalarProperty Name="ray_id" ColumnName="ray_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inmunizacion">
+            <EntityTypeMapping TypeName="kinnemedModel.inmunizacion">
+              <MappingFragment StoreEntitySet="inmunizacion">
+                <ScalarProperty Name="inm_paciente" ColumnName="inm_paciente" />
+                <ScalarProperty Name="inm_tipo" ColumnName="inm_tipo" />
+                <ScalarProperty Name="inm_fecha" ColumnName="inm_fecha" />
+                <ScalarProperty Name="inm_vacuna" ColumnName="inm_vacuna" />
+                <ScalarProperty Name="inm_id" ColumnName="inm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="riesgo">
+            <EntityTypeMapping TypeName="kinnemedModel.riesgo">
+              <MappingFragment StoreEntitySet="riesgo">
+                <ScalarProperty Name="rie_nombre" ColumnName="rie_nombre" />
+                <ScalarProperty Name="rie_grupo" ColumnName="rie_grupo" />
+                <ScalarProperty Name="rie_id" ColumnName="rie_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vacuna">
+            <EntityTypeMapping TypeName="kinnemedModel.vacuna">
+              <MappingFragment StoreEntitySet="vacuna">
+                <ScalarProperty Name="vac_esquema" ColumnName="vac_esquema" />
+                <ScalarProperty Name="vac_dosis" ColumnName="vac_dosis" />
+                <ScalarProperty Name="vac_nombre" ColumnName="vac_nombre" />
+                <ScalarProperty Name="vac_id" ColumnName="vac_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="laboral">
+            <EntityTypeMapping TypeName="kinnemedModel.laboral">
+              <MappingFragment StoreEntitySet="laboral">
+                <ScalarProperty Name="lab_riesgo" ColumnName="lab_riesgo" />
+                <ScalarProperty Name="lab_ocupacional" ColumnName="lab_ocupacional" />
+                <ScalarProperty Name="lab_id" ColumnName="lab_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ocupacional">
+            <EntityTypeMapping TypeName="kinnemedModel.ocupacional">
+              <MappingFragment StoreEntitySet="ocupacional">
+                <ScalarProperty Name="ocu_paciente" ColumnName="ocu_paciente" />
+                <ScalarProperty Name="ocu_estado" ColumnName="ocu_estado" />
+                <ScalarProperty Name="ocu_tipo" ColumnName="ocu_tipo" />
+                <ScalarProperty Name="ocu_equipo" ColumnName="ocu_equipo" />
+                <ScalarProperty Name="ocu_sustancias" ColumnName="ocu_sustancias" />
+                <ScalarProperty Name="ocu_materiales" ColumnName="ocu_materiales" />
+                <ScalarProperty Name="ocu_maquinaria" ColumnName="ocu_maquinaria" />
+                <ScalarProperty Name="ocu_tiempo" ColumnName="ocu_tiempo" />
+                <ScalarProperty Name="ocu_fin" ColumnName="ocu_fin" />
+                <ScalarProperty Name="ocu_inicio" ColumnName="ocu_inicio" />
+                <ScalarProperty Name="ocu_jornada" ColumnName="ocu_jornada" />
+                <ScalarProperty Name="ocu_descripcion" ColumnName="ocu_descripcion" />
+                <ScalarProperty Name="ocu_cargo" ColumnName="ocu_cargo" />
+                <ScalarProperty Name="ocu_seccion" ColumnName="ocu_seccion" />
+                <ScalarProperty Name="ocu_empresa" ColumnName="ocu_empresa" />
+                <ScalarProperty Name="ocu_id" ColumnName="ocu_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

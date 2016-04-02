@@ -4,51 +4,51 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="dc5b329c077e4fd7bb1f00c70a4179a5" Name="Diagram1" ZoomLevel="75">
-        <EntityTypeShape EntityType="kinnemedModel.canton" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.componente" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.empresa" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.especialidad" Width="1.5" PointX="11.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.medico" Width="1.5" PointX="17.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.pais" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.profesion" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.provincia" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="kinnemedModel.valores" Width="1.5" PointX="10.75" PointY="9.25" IsExpanded="true" />
+      <Diagram DiagramId="dc5b329c077e4fd7bb1f00c70a4179a5" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="kinnemedModel.canton" Width="1.5" PointX="3" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.componente" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.empresa" Width="1.5" PointX="3" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.especialidad" Width="1.5" PointX="3" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.medico" Width="1.5" PointX="5.25" PointY="41.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.pais" Width="1.5" PointX="3" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.profesion" Width="1.5" PointX="3" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.provincia" Width="1.5" PointX="0.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kinnemedModel.valores" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
         <AssociationConnector Association="kinnemedModel.FK_canton_provincia" ManuallyRouted="false" />
         <AssociationConnector Association="kinnemedModel.FK_medico_especialidad" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="kinnemedModel.area" Width="1.5" PointX="0.75" PointY="6.5" />
-        <EntityTypeShape EntityType="kinnemedModel.registro" Width="1.5" PointX="13.125" PointY="13.125" />
+        <EntityTypeShape EntityType="kinnemedModel.area" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="kinnemedModel.registro" Width="1.5" PointX="7.5" PointY="35.25" />
         <AssociationConnector Association="kinnemedModel.FK_registro_medico" />
-        <EntityTypeShape EntityType="kinnemedModel.control" Width="1.5" PointX="0.5" PointY="0.5" />
-        <EntityTypeShape EntityType="kinnemedModel.perfil" Width="1.5" PointX="0.5" PointY="18.5" />
+        <EntityTypeShape EntityType="kinnemedModel.control" Width="1.5" PointX="9.75" PointY="3.625" />
+        <EntityTypeShape EntityType="kinnemedModel.perfil" Width="1.5" PointX="7.5" PointY="0.75" />
         <AssociationConnector Association="kinnemedModel.FK_control_perfil" />
-        <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="15.5" PointY="8.25" />
+        <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="7.5" PointY="3.875" />
         <AssociationConnector Association="kinnemedModel.FK_examen_area" />
         <AssociationConnector Association="kinnemedModel.FK_control_examen" />
         <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
-        <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="17.75" PointY="10.625" />
+        <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="9.75" PointY="34.125" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_registro" />
-        <EntityTypeShape EntityType="kinnemedModel.paciente" Width="1.5" PointX="5.25" PointY="6" />
+        <EntityTypeShape EntityType="kinnemedModel.paciente" Width="1.5" PointX="5.25" PointY="29.875" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_canton" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_empresa" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_pais" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_profesion" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_provincia" />
         <AssociationConnector Association="kinnemedModel.FK_registro_paciente" />
-        <EntityTypeShape EntityType="kinnemedModel.fisico" Width="1.5" PointX="9.75" PointY="16.625" />
-        <EntityTypeShape EntityType="kinnemedModel.revision" Width="1.5" PointX="9.75" PointY="43.625" />
-        <EntityTypeShape EntityType="kinnemedModel.cie10" Width="1.5" PointX="7.375" PointY="5.25" />
-        <EntityTypeShape EntityType="kinnemedModel.diagnostico" Width="1.5" PointX="12.875" PointY="17.25" />
-        <EntityTypeShape EntityType="kinnemedModel.sub_cie10" Width="1.5" PointX="9.625" PointY="5" />
+        <EntityTypeShape EntityType="kinnemedModel.fisico" Width="1.5" PointX="9.75" PointY="38" />
+        <EntityTypeShape EntityType="kinnemedModel.revision" Width="1.5" PointX="9.75" PointY="52.25" />
+        <EntityTypeShape EntityType="kinnemedModel.cie10" Width="1.5" PointX="8.25" PointY="66.75" />
+        <EntityTypeShape EntityType="kinnemedModel.diagnostico" Width="1.5" PointX="12.75" PointY="47.5" />
+        <EntityTypeShape EntityType="kinnemedModel.sub_cie10" Width="1.5" PointX="10.5" PointY="66.625" />
         <AssociationConnector Association="kinnemedModel.FK_sub_cie10_cie10" />
         <AssociationConnector Association="kinnemedModel.FK_diagnostico_sub_cie10" />
-        <EntityTypeShape EntityType="kinnemedModel.plan" Width="1.5" PointX="9.75" PointY="35.5" />
-        <EntityTypeShape EntityType="kinnemedModel.familiar" Width="1.5" PointX="7.5" PointY="12.875" />
-        <EntityTypeShape EntityType="kinnemedModel.historia" Width="1.5" PointX="7.5" PointY="53.75" />
-        <EntityTypeShape EntityType="kinnemedModel.personal" Width="1.5" PointX="7.5" PointY="19.25" />
-        <EntityTypeShape EntityType="kinnemedModel.signos" Width="1.5" PointX="9.75" PointY="53.25" />
-        <EntityTypeShape EntityType="kinnemedModel.subsecuente" Width="1.5" PointX="9.75" PointY="49.75" />
+        <EntityTypeShape EntityType="kinnemedModel.plan" Width="1.5" PointX="9.75" PointY="49.75" />
+        <EntityTypeShape EntityType="kinnemedModel.familiar" Width="1.5" PointX="7.5" PointY="14.5" />
+        <EntityTypeShape EntityType="kinnemedModel.historia" Width="1.5" PointX="7.5" PointY="47" />
+        <EntityTypeShape EntityType="kinnemedModel.personal" Width="1.5" PointX="7.5" PointY="20.875" />
+        <EntityTypeShape EntityType="kinnemedModel.signos" Width="1.5" PointX="9.75" PointY="61.75" />
+        <EntityTypeShape EntityType="kinnemedModel.subsecuente" Width="1.5" PointX="9.75" PointY="58.25" />
         <AssociationConnector Association="kinnemedModel.FK_diagnostico_historia" />
         <AssociationConnector Association="kinnemedModel.FK_familiar_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_fisico_historia" />
@@ -58,14 +58,24 @@
         <AssociationConnector Association="kinnemedModel.FK_signos_historia" />
         <AssociationConnector Association="kinnemedModel.FK_subsecuente_historia" />
         <AssociationConnector Association="kinnemedModel.FK_personal_paciente" />
-        <EntityTypeShape EntityType="kinnemedModel.ginecologico" Width="1.5" PointX="7.5" PointY="23.875" />
+        <EntityTypeShape EntityType="kinnemedModel.ginecologico" Width="1.5" PointX="7.5" PointY="25.25" />
         <AssociationConnector Association="kinnemedModel.FK_ginecologico_paciente" />
-        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="7.5" PointY="28.75" />
-        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="7.5" PointY="8" />
-        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="7.5" PointY="31.5" />
+        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="7.5" PointY="29.375" />
+        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="7.5" PointY="8.25" />
+        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="7.5" PointY="32.125" />
         <AssociationConnector Association="kinnemedModel.FK_audiometria_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_espirometria_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.inmunizacion" Width="1.5" PointX="10.5" PointY="30.625" />
+        <EntityTypeShape EntityType="kinnemedModel.riesgo" Width="1.5" PointX="10.5" PointY="28.125" />
+        <EntityTypeShape EntityType="kinnemedModel.vacuna" Width="1.5" PointX="8.25" PointY="69.875" />
+        <AssociationConnector Association="kinnemedModel.FK_inmunizacion_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_inmunizacion_vacuna" />
+        <EntityTypeShape EntityType="kinnemedModel.laboral" Width="1.5" PointX="12.75" PointY="35.125" />
+        <EntityTypeShape EntityType="kinnemedModel.ocupacional" Width="1.5" PointX="7.5" PointY="39.625" />
+        <AssociationConnector Association="kinnemedModel.FK_laboral_ocupacional" />
+        <AssociationConnector Association="kinnemedModel.FK_laboral_riesgo" />
+        <AssociationConnector Association="kinnemedModel.FK_ocupacional_paciente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

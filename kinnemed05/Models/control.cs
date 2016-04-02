@@ -15,8 +15,6 @@ namespace kinnemed05.Models
     public partial class control
     {
         public int con_id { get; set; }
-        public int con_perfil { get; set; }
-        public int con_examen { get; set; }
     
         public virtual perfil perfil { get; set; }
         public virtual examen examen { get; set; }

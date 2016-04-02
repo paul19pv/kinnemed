@@ -49,6 +49,9 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(historia historia)
         {
+            DateTime dd = DateTime.Now;
+            historia.his_fecha = dd.Date.ToString("d");
+            historia.his_numero = numero_historia(historia);
             if (ModelState.IsValid)
             {
                 db.historia.Add(historia);
@@ -59,6 +62,30 @@ namespace kinnemed05.Controllers
 
             return PartialView(historia);
         }
+
+        //Historias preocupacionales, ocupaciones y retiro
+        public ActionResult Create01()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create01(historia historia)
+        {
+            DateTime dd = DateTime.Now;
+            historia.his_fecha = dd.Date.ToString("d");
+            historia.his_numero = numero_historia(historia);
+            if (ModelState.IsValid)
+            {
+                db.historia.Add(historia);
+                db.SaveChanges();
+                Session["his_id"] = historia.his_id;
+                return RedirectToAction("Create", "Ocupacional", new { id = historia.his_paciente });
+            }
+
+            return PartialView(historia);
+        }
+
 
         //
         // GET: /Historia/Edit/5
@@ -92,6 +119,40 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 Session["his_id"] = historia.his_id;
                 return RedirectToAction("Edit", "Personal", new { id = historia.his_paciente });
+            }
+            return PartialView(historia);
+        }
+
+
+        public ActionResult Edit02(int id = 0)
+        {
+            historia historia = db.historia.Find(id);
+            if (historia == null)
+            {
+                return HttpNotFound();
+            }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView(historia);
+            }
+            return View("Edit03", historia);
+        }
+
+
+
+        //
+        // POST: /Historia/Edit/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit02(historia historia)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(historia).State = EntityState.Modified;
+                db.SaveChanges();
+                Session["his_id"] = historia.his_id;
+                return RedirectToAction("Edit", "Ocupacional", new { id = historia.his_paciente });
             }
             return PartialView(historia);
         }
@@ -156,6 +217,13 @@ namespace kinnemed05.Controllers
             }
             return new JsonResult() { Data = result };
         }
+        public int numero_historia(historia historia) {
+            int num = 0;
+            num = db.historia.Where(h => h.his_tipo == historia.his_tipo && h.his_paciente == historia.his_paciente).Count();
+            num++;
+            return num;
+        }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

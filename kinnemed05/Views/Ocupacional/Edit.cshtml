@@ -1,0 +1,156 @@
+﻿@model kinnemed05.Models.ocupacional
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ocupacional</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_id)
+            @Html.ValidationMessageFor(model => model.ocu_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_empresa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_empresa)
+            @Html.ValidationMessageFor(model => model.ocu_empresa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_seccion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_seccion)
+            @Html.ValidationMessageFor(model => model.ocu_seccion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_cargo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_cargo)
+            @Html.ValidationMessageFor(model => model.ocu_cargo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_descripcion)
+            @Html.ValidationMessageFor(model => model.ocu_descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_jornada)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_jornada)
+            @Html.ValidationMessageFor(model => model.ocu_jornada)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_inicio)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_inicio)
+            @Html.ValidationMessageFor(model => model.ocu_inicio)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_fin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_fin)
+            @Html.ValidationMessageFor(model => model.ocu_fin)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_tiempo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_tiempo)
+            @Html.ValidationMessageFor(model => model.ocu_tiempo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_maquinaria)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_maquinaria)
+            @Html.ValidationMessageFor(model => model.ocu_maquinaria)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_materiales)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_materiales)
+            @Html.ValidationMessageFor(model => model.ocu_materiales)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_sustancias)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_sustancias)
+            @Html.ValidationMessageFor(model => model.ocu_sustancias)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_equipo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_equipo)
+            @Html.ValidationMessageFor(model => model.ocu_equipo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_tipo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_tipo)
+            @Html.ValidationMessageFor(model => model.ocu_tipo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_estado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ocu_estado)
+            @Html.ValidationMessageFor(model => model.ocu_estado)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ocu_paciente, "paciente")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ocu_paciente", String.Empty)
+            @Html.ValidationMessageFor(model => model.ocu_paciente)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

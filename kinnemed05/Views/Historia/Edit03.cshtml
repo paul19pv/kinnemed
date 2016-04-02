@@ -1,7 +1,7 @@
 ﻿@model kinnemed05.Models.historia
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 <script>
     $(function () {
@@ -35,7 +35,7 @@
             },
             select: function (event, ui) {
                 $("#his_paciente").val(ui.item.id);
-                
+
                 $("#txt_nombres").val(ui.item.nombres);
                 $("#txt_apellidos").val(ui.item.apellidos);
                 $("#txt_edad").val(ui.item.edad);
@@ -56,14 +56,19 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">1 Motivo de la Consulta</h3>
+                <h3 class="panel-title">1 Datos del Paciente</h3>
             </div>
             <div class="panel-body">
-                @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+                @using (Ajax.BeginForm("Edit02", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
-                    @Html.HiddenFor(model => model.his_tipo, new { Value="general"})
+
+                    @Html.HiddenFor(model => model.his_id);
+                    @Html.HiddenFor(model => model.his_motivo, new { Value = "Historia Laboral" })
+                    @Html.HiddenFor(model => model.his_problema);
+                    @Html.HiddenFor(model => model.his_fecha);
+                    @Html.HiddenFor(model => model.his_numero);
                     <div class="col-lg-3">
                         <div class="form-group">
 
@@ -92,13 +97,14 @@
                             @Html.TextBox("txt_edad", "", new { @class = "form-control", @readonly = "readonly" })
                         </div>
                     </div>
-                    <div class="col-lg-12" style="clear:both">
+                    <div class="col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.his_motivo, new { @class = "control-label", @for = "inputDefault" })
-                            @Html.TextAreaFor(model => model.his_motivo, new { @class = "form-control", @rows = "3" })
-                            @Html.ValidationMessageFor(model => model.his_motivo)
+                            @Html.LabelFor(model => model.his_tipo, new { @class = "control-label" })
+                            @Html.DropDownList("his_tipo", String.Empty)
+                            @Html.ValidationMessageFor(model => model.his_tipo)
                         </div>
                     </div>
+
 
                     <div class="col-lg-3" style="clear:both;float:right;">
                         <br />
@@ -123,3 +129,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+

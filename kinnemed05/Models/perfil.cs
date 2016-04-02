@@ -20,8 +20,6 @@ namespace kinnemed05.Models
         }
     
         public int per_id { get; set; }
-        public string per_nombre { get; set; }
-        public string per_descripcion { get; set; }
     
         public virtual ICollection<control> control { get; set; }
     }

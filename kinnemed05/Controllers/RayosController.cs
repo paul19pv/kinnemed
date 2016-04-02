@@ -132,9 +132,10 @@ namespace kinnemed05.Controllers
                 var file = Request.Files[0];
                 string fileName = Path.GetFileName(file.FileName);
                 string ext = Path.GetExtension(fileName);
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" };
                 if (fileName != "")
                 {
-                    if (ModelState.IsValid && ext == ".pdf")
+                    if (ModelState.IsValid && (Array.IndexOf(formatos, ext) > 0))
                     {
                         if (fileName != rayos.ray_imagen)
                         {
