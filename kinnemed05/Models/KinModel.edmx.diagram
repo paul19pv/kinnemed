@@ -22,12 +22,7 @@
         <EntityTypeShape EntityType="kinnemedModel.control" Width="1.5" PointX="9.75" PointY="3.625" />
         <EntityTypeShape EntityType="kinnemedModel.perfil" Width="1.5" PointX="7.5" PointY="0.75" />
         <AssociationConnector Association="kinnemedModel.FK_control_perfil" />
-        <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="7.5" PointY="3.875" />
-        <AssociationConnector Association="kinnemedModel.FK_examen_area" />
-        <AssociationConnector Association="kinnemedModel.FK_control_examen" />
-        <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
         <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="9.75" PointY="34.125" />
-        <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_registro" />
         <EntityTypeShape EntityType="kinnemedModel.paciente" Width="1.5" PointX="5.25" PointY="29.875" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_canton" />
@@ -76,6 +71,11 @@
         <AssociationConnector Association="kinnemedModel.FK_laboral_ocupacional" />
         <AssociationConnector Association="kinnemedModel.FK_laboral_riesgo" />
         <AssociationConnector Association="kinnemedModel.FK_ocupacional_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="7.5" PointY="3.875" />
+        <AssociationConnector Association="kinnemedModel.FK_examen_area" />
+        <AssociationConnector Association="kinnemedModel.FK_control_examen" />
+        <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
+        <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

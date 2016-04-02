@@ -1272,24 +1272,7 @@
             <End Role="perfil" EntitySet="perfil" />
             <End Role="control" EntitySet="control" />
           </AssociationSet>
-          <EntitySet Name="examen" EntityType="kinnemedModel.examen" />
-          <AssociationSet Name="FK_examen_area" Association="kinnemedModel.FK_examen_area">
-            <End Role="area" EntitySet="area" />
-            <End Role="examen" EntitySet="examen" />
-          </AssociationSet>
-          <AssociationSet Name="FK_control_examen" Association="kinnemedModel.FK_control_examen">
-            <End Role="examen" EntitySet="examen" />
-            <End Role="control" EntitySet="control" />
-          </AssociationSet>
-          <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
-            <End Role="examen" EntitySet="examen" />
-            <End Role="valores" EntitySet="valores" />
-          </AssociationSet>
           <EntitySet Name="prueba" EntityType="kinnemedModel.prueba" />
-          <AssociationSet Name="FK_prueba_examen" Association="kinnemedModel.FK_prueba_examen">
-            <End Role="examen" EntitySet="examen" />
-            <End Role="prueba" EntitySet="prueba" />
-          </AssociationSet>
           <AssociationSet Name="FK_prueba_registro" Association="kinnemedModel.FK_prueba_registro">
             <End Role="registro" EntitySet="registro" />
             <End Role="prueba" EntitySet="prueba" />
@@ -1419,6 +1402,23 @@
             <End Role="paciente" EntitySet="paciente" />
             <End Role="ocupacional" EntitySet="ocupacional" />
           </AssociationSet>
+          <EntitySet Name="examen" EntityType="kinnemedModel.examen" />
+          <AssociationSet Name="FK_examen_area" Association="kinnemedModel.FK_examen_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="examen" EntitySet="examen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_control_examen" Association="kinnemedModel.FK_control_examen">
+            <End Role="examen" EntitySet="examen" />
+            <End Role="control" EntitySet="control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_prueba_examen" Association="kinnemedModel.FK_prueba_examen">
+            <End Role="examen" EntitySet="examen" />
+            <End Role="prueba" EntitySet="prueba" />
+          </AssociationSet>
+          <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
+            <End Role="examen" EntitySet="examen" />
+            <End Role="valores" EntitySet="valores" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="area">
           <Key>
@@ -1489,66 +1489,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="examen">
-          <Key>
-            <PropertyRef Name="exa_id" />
-          </Key>
-          <Property Name="exa_id" Type="Int32" Nullable="false" />
-          <Property Name="exa_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="exa_unidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="exa_tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="exa_area" Type="Int32" Nullable="false" />
-          <Property Name="exa_item" Type="Int32" />
-          <Property Name="exa_valores" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="exa_inicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="exa_estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="area" Relationship="kinnemedModel.FK_examen_area" FromRole="examen" ToRole="area" />
-          <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_examen" FromRole="examen" ToRole="control" />
-          <NavigationProperty Name="valores" Relationship="kinnemedModel.FK_valores_examen" FromRole="examen" ToRole="valores" />
-          <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
-        </EntityType>
-        <Association Name="FK_examen_area">
-          <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="area">
-              <PropertyRef Name="are_id" />
-            </Principal>
-            <Dependent Role="examen">
-              <PropertyRef Name="exa_area" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_control_examen">
-          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.control" Role="control" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="examen">
-              <PropertyRef Name="exa_id" />
-            </Principal>
-            <Dependent Role="control">
-              <PropertyRef Name="con_examen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_valores_examen">
-          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.valores" Role="valores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="examen">
-              <PropertyRef Name="exa_id" />
-            </Principal>
-            <Dependent Role="valores">
-              <PropertyRef Name="val_examen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="prueba">
           <Key>
             <PropertyRef Name="pru_id" />
@@ -1561,23 +1501,9 @@
           <Property Name="pru_codigo" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="pru_imagen" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="pru_fuera" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_prueba_examen" FromRole="prueba" ToRole="examen" />
           <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_prueba_registro" FromRole="prueba" ToRole="registro" />
+          <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_prueba_examen" FromRole="prueba" ToRole="examen" />
         </EntityType>
-        <Association Name="FK_prueba_examen">
-          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.prueba" Role="prueba" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="examen">
-              <PropertyRef Name="exa_id" />
-            </Principal>
-            <Dependent Role="prueba">
-              <PropertyRef Name="pru_examen" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_prueba_registro">
           <End Type="kinnemedModel.registro" Role="registro" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2325,6 +2251,80 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="examen">
+          <Key>
+            <PropertyRef Name="exa_id" />
+          </Key>
+          <Property Name="exa_id" Type="Int32" Nullable="false" />
+          <Property Name="exa_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="exa_unidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="exa_tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="exa_area" Type="Int32" Nullable="false" />
+          <Property Name="exa_item" Type="Int32" />
+          <Property Name="exa_valores" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="exa_inicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="exa_estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="area" Relationship="kinnemedModel.FK_examen_area" FromRole="examen" ToRole="area" />
+          <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_examen" FromRole="examen" ToRole="control" />
+          <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
+          <NavigationProperty Name="valores" Relationship="kinnemedModel.FK_valores_examen" FromRole="examen" ToRole="valores" />
+        </EntityType>
+        <Association Name="FK_examen_area">
+          <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="are_id" />
+            </Principal>
+            <Dependent Role="examen">
+              <PropertyRef Name="exa_area" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_control_examen">
+          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.control" Role="control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="examen">
+              <PropertyRef Name="exa_id" />
+            </Principal>
+            <Dependent Role="control">
+              <PropertyRef Name="con_examen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_prueba_examen">
+          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.prueba" Role="prueba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="examen">
+              <PropertyRef Name="exa_id" />
+            </Principal>
+            <Dependent Role="prueba">
+              <PropertyRef Name="pru_examen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_valores_examen">
+          <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.valores" Role="valores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="examen">
+              <PropertyRef Name="exa_id" />
+            </Principal>
+            <Dependent Role="valores">
+              <PropertyRef Name="val_examen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2454,21 +2454,6 @@
                 <ScalarProperty Name="per_descripcion" ColumnName="per_descripcion" />
                 <ScalarProperty Name="per_nombre" ColumnName="per_nombre" />
                 <ScalarProperty Name="per_id" ColumnName="per_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="examen">
-            <EntityTypeMapping TypeName="kinnemedModel.examen">
-              <MappingFragment StoreEntitySet="examen">
-                <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
-                <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
-                <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
-                <ScalarProperty Name="exa_item" ColumnName="exa_item" />
-                <ScalarProperty Name="exa_area" ColumnName="exa_area" />
-                <ScalarProperty Name="exa_tipo" ColumnName="exa_tipo" />
-                <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
-                <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-                <ScalarProperty Name="exa_id" ColumnName="exa_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2837,6 +2822,21 @@
                 <ScalarProperty Name="ocu_seccion" ColumnName="ocu_seccion" />
                 <ScalarProperty Name="ocu_empresa" ColumnName="ocu_empresa" />
                 <ScalarProperty Name="ocu_id" ColumnName="ocu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="examen">
+            <EntityTypeMapping TypeName="kinnemedModel.examen">
+              <MappingFragment StoreEntitySet="examen">
+                <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
+                <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
+                <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
+                <ScalarProperty Name="exa_item" ColumnName="exa_item" />
+                <ScalarProperty Name="exa_area" ColumnName="exa_area" />
+                <ScalarProperty Name="exa_tipo" ColumnName="exa_tipo" />
+                <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
+                <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
+                <ScalarProperty Name="exa_id" ColumnName="exa_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

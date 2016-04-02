@@ -38,7 +38,6 @@ namespace kinnemed05.Models
         public DbSet<registro> registro { get; set; }
         public DbSet<control> control { get; set; }
         public DbSet<perfil> perfil { get; set; }
-        public DbSet<examen> examen { get; set; }
         public DbSet<prueba> prueba { get; set; }
         public DbSet<paciente> paciente { get; set; }
         public DbSet<fisico> fisico { get; set; }
@@ -61,5 +60,6 @@ namespace kinnemed05.Models
         public DbSet<vacuna> vacuna { get; set; }
         public DbSet<laboral> laboral { get; set; }
         public DbSet<ocupacional> ocupacional { get; set; }
+        public DbSet<examen> examen { get; set; }
     }
 }
