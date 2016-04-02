@@ -54,6 +54,7 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ocupacional ocupacional)
         {
+            ocupacional.ocu_estado = true;
             if (ModelState.IsValid)
             {
                 db.ocupacional.Add(ocupacional);
