@@ -208,6 +208,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.tipo = historia.his_tipo;
             return View(historia);
         }
 
@@ -221,7 +222,7 @@ namespace kinnemed05.Controllers
             historia historia = db.historia.Find(id);
             db.historia.Remove(historia);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new {tipo=historia.his_tipo });
         }
         public JsonResult AutocompletePaciente(string search)
         {

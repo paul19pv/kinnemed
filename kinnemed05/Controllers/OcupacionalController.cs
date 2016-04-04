@@ -40,6 +40,12 @@ namespace kinnemed05.Controllers
 
         public ActionResult Create(int id)
         {
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
+            //ocupacional ocupacional = db.ocupacional.Find(id);
+            if (consulta.Any())
+            {
+                return RedirectToAction("Edit", new { id = id });
+            }
             ViewBag.ocu_paciente = id;
             ViewBag.ocu_tipo = "actual";
             ViewBag.ocu_jornada = ocu_jornada();
