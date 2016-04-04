@@ -127,21 +127,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="examen">
-      <EntityTypeMapping TypeName="kinnemedModel.examen">
-        <MappingFragment StoreEntitySet="examen">
-          <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
-          <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
-          <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
-          <ScalarProperty Name="exa_item" ColumnName="exa_item" />
-          <ScalarProperty Name="exa_area" ColumnName="exa_area" />
-          <ScalarProperty Name="exa_tipo" ColumnName="exa_tipo" />
-          <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
-          <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-          <ScalarProperty Name="exa_id" ColumnName="exa_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="prueba">
       <EntityTypeMapping TypeName="kinnemedModel.prueba">
         <MappingFragment StoreEntitySet="prueba">
@@ -338,6 +323,9 @@
     <EntitySetMapping Name="historia">
       <EntityTypeMapping TypeName="kinnemedModel.historia">
         <MappingFragment StoreEntitySet="historia">
+          <ScalarProperty Name="his_numero" ColumnName="his_numero" />
+          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
+          <ScalarProperty Name="his_tipo" ColumnName="his_tipo" />
           <ScalarProperty Name="his_observacion" ColumnName="his_observacion" />
           <ScalarProperty Name="his_problema" ColumnName="his_problema" />
           <ScalarProperty Name="his_motivo" ColumnName="his_motivo" />
@@ -443,6 +431,83 @@
           <ScalarProperty Name="ray_imagen" ColumnName="ray_imagen" />
           <ScalarProperty Name="ray_paciente" ColumnName="ray_paciente" />
           <ScalarProperty Name="ray_id" ColumnName="ray_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inmunizacion">
+      <EntityTypeMapping TypeName="kinnemedModel.inmunizacion">
+        <MappingFragment StoreEntitySet="inmunizacion">
+          <ScalarProperty Name="inm_paciente" ColumnName="inm_paciente" />
+          <ScalarProperty Name="inm_tipo" ColumnName="inm_tipo" />
+          <ScalarProperty Name="inm_fecha" ColumnName="inm_fecha" />
+          <ScalarProperty Name="inm_vacuna" ColumnName="inm_vacuna" />
+          <ScalarProperty Name="inm_id" ColumnName="inm_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="riesgo">
+      <EntityTypeMapping TypeName="kinnemedModel.riesgo">
+        <MappingFragment StoreEntitySet="riesgo">
+          <ScalarProperty Name="rie_nombre" ColumnName="rie_nombre" />
+          <ScalarProperty Name="rie_grupo" ColumnName="rie_grupo" />
+          <ScalarProperty Name="rie_id" ColumnName="rie_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vacuna">
+      <EntityTypeMapping TypeName="kinnemedModel.vacuna">
+        <MappingFragment StoreEntitySet="vacuna">
+          <ScalarProperty Name="vac_esquema" ColumnName="vac_esquema" />
+          <ScalarProperty Name="vac_dosis" ColumnName="vac_dosis" />
+          <ScalarProperty Name="vac_nombre" ColumnName="vac_nombre" />
+          <ScalarProperty Name="vac_id" ColumnName="vac_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ocupacional">
+      <EntityTypeMapping TypeName="kinnemedModel.ocupacional">
+        <MappingFragment StoreEntitySet="ocupacional">
+          <ScalarProperty Name="ocu_paciente" ColumnName="ocu_paciente" />
+          <ScalarProperty Name="ocu_estado" ColumnName="ocu_estado" />
+          <ScalarProperty Name="ocu_tipo" ColumnName="ocu_tipo" />
+          <ScalarProperty Name="ocu_equipo" ColumnName="ocu_equipo" />
+          <ScalarProperty Name="ocu_sustancias" ColumnName="ocu_sustancias" />
+          <ScalarProperty Name="ocu_materiales" ColumnName="ocu_materiales" />
+          <ScalarProperty Name="ocu_maquinaria" ColumnName="ocu_maquinaria" />
+          <ScalarProperty Name="ocu_tiempo" ColumnName="ocu_tiempo" />
+          <ScalarProperty Name="ocu_fin" ColumnName="ocu_fin" />
+          <ScalarProperty Name="ocu_inicio" ColumnName="ocu_inicio" />
+          <ScalarProperty Name="ocu_jornada" ColumnName="ocu_jornada" />
+          <ScalarProperty Name="ocu_descripcion" ColumnName="ocu_descripcion" />
+          <ScalarProperty Name="ocu_cargo" ColumnName="ocu_cargo" />
+          <ScalarProperty Name="ocu_seccion" ColumnName="ocu_seccion" />
+          <ScalarProperty Name="ocu_empresa" ColumnName="ocu_empresa" />
+          <ScalarProperty Name="ocu_id" ColumnName="ocu_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="examen">
+      <EntityTypeMapping TypeName="kinnemedModel.examen">
+        <MappingFragment StoreEntitySet="examen">
+          <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
+          <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
+          <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
+          <ScalarProperty Name="exa_item" ColumnName="exa_item" />
+          <ScalarProperty Name="exa_area" ColumnName="exa_area" />
+          <ScalarProperty Name="exa_tipo" ColumnName="exa_tipo" />
+          <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
+          <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
+          <ScalarProperty Name="exa_id" ColumnName="exa_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="laboral">
+      <EntityTypeMapping TypeName="kinnemedModel.laboral">
+        <MappingFragment StoreEntitySet="laboral">
+          <ScalarProperty Name="lab_estado" ColumnName="lab_estado" />
+          <ScalarProperty Name="lab_riesgo" ColumnName="lab_riesgo" />
+          <ScalarProperty Name="lab_ocupacional" ColumnName="lab_ocupacional" />
+          <ScalarProperty Name="lab_id" ColumnName="lab_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -1,7 +1,7 @@
 ﻿@model kinnemed05.Models.ocupacional
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Create";
 }
 <script>
     $(function () {
@@ -40,20 +40,18 @@
     }
 </script>
 
-
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Información Ocupacional</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-                @Html.HiddenFor(model => model.ocu_id)
-                @Html.HiddenFor(model => model.ocu_paciente)
-                @Html.HiddenFor(model => model.ocu_tipo)
+                @Html.HiddenFor(model => model.ocu_paciente, new { Value = ViewBag.ocu_paciente })
+                @Html.HiddenFor(model => model.ocu_tipo, new { Value = ViewBag.ocu_tipo })
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.ocu_inicio, new { @class = "control-label" })
@@ -103,41 +101,22 @@
                         @Html.ValidationMessageFor(model => model.ocu_descripcion)
                     </div>
                 </div>
-
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_materiales, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_materiales, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_materiales)
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_maquinaria, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_maquinaria, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_maquinaria)
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_sustancias, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_sustancias, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_sustancias)
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_equipo, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_equipo, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_equipo)
-                    </div>
-                </div>
                 <div class="col-lg-3" style="clear:both;float:right;">
                     <div class="form-group">
-                        @Html.ActionLink("Regresar", "Edit02", "Historia", new { id = Session["his_id"] }, new { @class = "btn btn-default" })
-                        <input type="submit" value="Siguiente" class="btn btn-primary" />
+                        <input type="submit" value="Agregar" class="btn btn-primary" />
                     </div>
                 </div>
+                
+                <div class="col-lg-3" style="clear:both;float:right;">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Edit", "Laboral", new { id = ViewBag.his_id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Regresar", "Personal", "Create", new { id = ViewBag.ocu_paciente }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+
+
+
             }
         </div>
     </div>

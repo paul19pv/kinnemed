@@ -20,23 +20,8 @@ namespace kinnemed05.Models
         }
     
         public int ocu_id { get; set; }
-        public string ocu_empresa { get; set; }
-        public string ocu_seccion { get; set; }
-        public string ocu_cargo { get; set; }
-        public string ocu_descripcion { get; set; }
-        public string ocu_jornada { get; set; }
-        public string ocu_inicio { get; set; }
-        public string ocu_fin { get; set; }
-        public decimal ocu_tiempo { get; set; }
-        public string ocu_maquinaria { get; set; }
-        public string ocu_materiales { get; set; }
-        public string ocu_sustancias { get; set; }
-        public string ocu_equipo { get; set; }
-        public string ocu_tipo { get; set; }
-        public bool ocu_estado { get; set; }
-        public int ocu_paciente { get; set; }
     
-        public virtual ICollection<laboral> laboral { get; set; }
         public virtual paciente paciente { get; set; }
+        public virtual ICollection<laboral> laboral { get; set; }
     }
 }

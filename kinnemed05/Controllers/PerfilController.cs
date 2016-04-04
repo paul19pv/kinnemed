@@ -37,8 +37,9 @@ namespace kinnemed05.Controllers
         //
         // GET: /Perfil/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
+            var riesgo = db.riesgo.ToList();
             return View();
         }
 

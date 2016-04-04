@@ -17,6 +17,7 @@ namespace kinnemed05.Models
         public int lab_id { get; set; }
         public int lab_ocupacional { get; set; }
         public int lab_riesgo { get; set; }
+        public bool lab_estado { get; set; }
     
         public virtual ocupacional ocupacional { get; set; }
         public virtual riesgo riesgo { get; set; }

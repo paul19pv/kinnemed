@@ -199,6 +199,7 @@
     <Compile Include="Context\ginecologico.cs" />
     <Compile Include="Context\historia.cs" />
     <Compile Include="Context\medico.cs" />
+    <Compile Include="Context\ocupacional.cs" />
     <Compile Include="Context\paciente.cs" />
     <Compile Include="Context\perfil.cs" />
     <Compile Include="Context\prueba.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Controllers\FisicoController.cs" />
     <Compile Include="Controllers\GinecologicoController.cs" />
     <Compile Include="Controllers\HistoriaController.cs" />
+    <Compile Include="Controllers\LaboralController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
@@ -334,6 +336,7 @@
     <Compile Include="Models\riesgo.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SetLaboral.cs" />
     <Compile Include="Models\SetPrueba.cs" />
     <Compile Include="Models\signos.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
@@ -824,6 +827,12 @@
     <Content Include="Views\Ocupacional\Delete.cshtml" />
     <Content Include="Views\Historia\Edit02.cshtml" />
     <Content Include="Views\Historia\Edit03.cshtml" />
+    <Content Include="Views\Laboral\Index.cshtml" />
+    <Content Include="Views\Laboral\Details.cshtml" />
+    <Content Include="Views\Laboral\Create.cshtml" />
+    <Content Include="Views\Laboral\Edit.cshtml" />
+    <Content Include="Views\Laboral\Delete.cshtml" />
+    <Content Include="Views\Ocupacional\Historico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
