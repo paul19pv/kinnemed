@@ -1,0 +1,133 @@
+﻿@model kinnemed05.Models.historia
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(function () {
+        $('#txt_paciente').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_paciente").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_paciente").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pac_nombres + " " + item.pac_apellidos,
+                                id: item.pac_id,
+                                nombres: item.pac_nombres,
+                                apellidos: item.pac_apellidos,
+                                edad: item.pac_edad
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#his_paciente").val(ui.item.id);
+
+                $("#txt_nombres").val(ui.item.nombres);
+                $("#txt_apellidos").val(ui.item.apellidos);
+                $("#txt_edad").val(ui.item.edad);
+            },
+            minLength: 2
+        });
+    });
+
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+
+</script>
+<div id="div_form">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Datos del Paciente</h3>
+            </div>
+            <div class="panel-body">
+                @using (Ajax.BeginForm("Edit02", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    @Html.HiddenFor(model => model.his_id);
+                    @Html.HiddenFor(model => model.his_motivo, new { Value = "Historia Laboral" })
+                    @Html.HiddenFor(model => model.his_problema);
+                    @Html.HiddenFor(model => model.his_fecha);
+                    @Html.HiddenFor(model => model.his_numero);
+                    <div class="col-lg-3">
+                        <div class="form-group">
+
+                            @Html.TextBoxFor(model => model.his_paciente, new { @class = "form-control", @type = "hidden" })
+                            @Html.LabelFor(model => model.his_paciente, new { @class = "control-label", @for = "inputDefault" })
+
+                            @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = Model.paciente.pac_cedula })
+                            @Html.ValidationMessageFor(model => model.his_paciente)
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.Label("Nombres", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBox("txt_nombres", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_nombres })
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.Label("Apellidos", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBox("txt_apellidos", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_apellidos })
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.Label("Edad", new { @class = "control-label", @for = "inputDefault" })
+                            @Html.TextBox("txt_edad", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_edad })
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.his_tipo, new { @class = "control-label" })
+                            @Html.DropDownList("his_tipo", String.Empty)
+                            @Html.ValidationMessageFor(model => model.his_tipo)
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3" style="clear:both;float:right;">
+                        <br />
+                        <div class="form-group">
+                            @Html.ActionLink("Regresar", "Index", "Historia", new {tipo=ViewBag.tipo }, new { @class = "btn btn-default" })
+                            <input type="submit" value="Siguiente" class="btn btn-primary" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
+
+<div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
+    <div class="progress-bar" style="width: 45%"></div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

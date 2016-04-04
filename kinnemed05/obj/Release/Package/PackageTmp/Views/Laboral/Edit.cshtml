@@ -1,0 +1,181 @@
+﻿@model kinnemed05.Models.SetLaboral
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script>
+    $(function () {
+        $(".edit").change(function () {
+            var estado = false;
+            if ($(this).is(':checked')) {
+                estado = true;
+            } else {
+                estado = false;
+            }
+            var laboral = {
+                id: $(this).attr("id"),
+                estado: estado
+            }
+            
+            $.ajax({
+                type: 'POST',
+                url: $("#link_edit").attr('href'),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(laboral),
+                success: function (data) {
+                    $("#div_mensaje").html(data.mensaje);
+                },
+                error: function () {
+                    alert('Ocurrió un error al acceder a la información');
+                }
+
+            });
+        });
+    });
+</script>
+<div id="mensaje" style="display:none;">
+
+</div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Riesgos Laborales</h3>
+        </div>
+        <div class="panel-body">
+            @Html.Hidden("lab_ocupacional", "", new { Value=ViewBag.lab_ocupacional})
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Biológicos</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.biologicos)
+                    {
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id=item.lab_id })
+                                    @item.riesgo.rie_nombre
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Biomecánicas</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.biomecanicos)
+                    {
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
+                                    @item.riesgo.rie_nombre
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Físico</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.fisico)
+                    {
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
+                                    @item.riesgo.rie_nombre
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Mecánicos</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.mecanicos)
+                    {
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
+                                    @item.riesgo.rie_nombre
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Psicosociales</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.psicosociales)
+                    {
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
+                                    @item.riesgo.rie_nombre
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Químicos</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (var item in Model.quimicos)
+                    {
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label>
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
+                                    @item.riesgo.rie_nombre
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+            
+
+            <div class="col-lg-3" style="clear:both; float:right">
+                <div class="form-group">
+                    @Ajax.ActionLink("Anterior", "Edit", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                    @Ajax.ActionLink("Siguiente", "Historico", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-primary" })
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<a href="@Url.Content("~/Laboral/Edit")" id="link_edit"></a>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
