@@ -8,9 +8,9 @@
         $("#ocu_inicio").datepicker({
             changeMonth: true,
             changeYear: true,
-            dateFormat:"dd/mm/yy",
+            dateFormat: "dd/mm/yy",
             onClose: function (selectedDate) {;
-                $("#ocu_tiempo").val(restaFechas($("#ocu_fin").val(),selectedDate));
+                $("#ocu_tiempo").val(restaFechas($("#ocu_fin").val(), selectedDate));
             }
         });
         $("#ocu_fin").datepicker({
@@ -18,7 +18,7 @@
             changeYear: true,
             dateFormat: "dd/mm/yy",
             onClose: function (selectedDate) {
-                $("#ocu_tiempo").val(restaFechas(selectedDate,$("#ocu_inicio").val()));
+                $("#ocu_tiempo").val(restaFechas(selectedDate, $("#ocu_inicio").val()));
             }
         });
 
@@ -33,8 +33,8 @@
             var aFecha2 = f2.split('/');
             var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
             var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
-            var dif = fFecha1-fFecha2;
-            dias = Math.floor(dif / (1000 * 60 * 60 * 24*365));
+            var dif = fFecha1 - fFecha2;
+            dias = Math.floor(dif / (1000 * 60 * 60 * 24 * 365));
         }
         return dias;
     }
@@ -46,51 +46,51 @@
             <h3 class="panel-title">Información Ocupacional</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 })) 
-            { 
+            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.ocu_paciente, new { Value = ViewBag.ocu_paciente })
                 @Html.HiddenFor(model => model.ocu_tipo, new { Value = ViewBag.ocu_tipo })
                 <div class="col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_inicio, new { @class="control-label"})
-                        @Html.TextBoxFor(model => model.ocu_inicio, new { @class="form-control"})
-                        @Html.ValidationMessageFor(model=>model.ocu_inicio)
+                        @Html.LabelFor(model => model.ocu_inicio, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.ocu_inicio, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ocu_inicio)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_fin, new { @class="control-label"})
+                        @Html.LabelFor(model => model.ocu_fin, new { @class = "control-label" })
                         @Html.TextBoxFor(model => model.ocu_fin, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ocu_fin)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_tiempo, new { @class="control-label"})
+                        @Html.LabelFor(model => model.ocu_tiempo, new { @class = "control-label" })
                         @Html.TextBoxFor(model => model.ocu_tiempo, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ocu_tiempo)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_cargo, new { @class="control-label"})
+                        @Html.LabelFor(model => model.ocu_cargo, new { @class = "control-label" })
                         @Html.TextBoxFor(model => model.ocu_cargo, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ocu_cargo)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_seccion, new { @class="control-label"})
+                        @Html.LabelFor(model => model.ocu_seccion, new { @class = "control-label" })
                         @Html.TextBoxFor(model => model.ocu_seccion, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ocu_seccion)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_jornada, new { @class="control-label"})
-                        @Html.DropDownList("ocu_jornada",String.Empty)
+                        @Html.LabelFor(model => model.ocu_jornada, new { @class = "control-label" })
+                        @Html.DropDownList("ocu_jornada", String.Empty)
                         @Html.ValidationMessageFor(model => model.ocu_jornada)
                     </div>
                 </div>
@@ -101,45 +101,22 @@
                         @Html.ValidationMessageFor(model => model.ocu_descripcion)
                     </div>
                 </div>
-                
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_materiales, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_materiales, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_materiales)
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_maquinaria, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_maquinaria, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_maquinaria)
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_sustancias, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_sustancias, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_sustancias)
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_equipo, new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.ocu_equipo, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_equipo)
-                    </div>
-                </div>
                 <div class="col-lg-3" style="clear:both;float:right;">
-                        <div class="form-group">
-                            @Html.ActionLink("Regresar", "Edit02", "Historia", new {id=Session["his_id"] }, new { @class = "btn btn-default" })
-                            <input type="submit" value="Siguiente" class="btn btn-primary" />
-                        </div>
+                    <div class="form-group">
+                        <input type="submit" value="Agregar" class="btn btn-primary" />
                     </div>
+                </div>
                 
-                
-                
-                
+                <div class="col-lg-3" style="clear:both;float:right;">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Edit", "Laboral", new { id = ViewBag.his_id }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Regresar", "Personal", "Create", new { id = ViewBag.ocu_paciente }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+
+
+
+
             }
         </div>
     </div>

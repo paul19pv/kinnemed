@@ -58,8 +58,8 @@ namespace kinnemed05.Models
         public DbSet<inmunizacion> inmunizacion { get; set; }
         public DbSet<riesgo> riesgo { get; set; }
         public DbSet<vacuna> vacuna { get; set; }
-        public DbSet<laboral> laboral { get; set; }
         public DbSet<ocupacional> ocupacional { get; set; }
         public DbSet<examen> examen { get; set; }
+        public DbSet<laboral> laboral { get; set; }
     }
 }

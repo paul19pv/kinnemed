@@ -24,7 +24,7 @@ namespace kinnemed05.Models
         public Nullable<decimal> sig_masa { get; set; }
         [Display(Name = "Perímetro Cefalico cm")]
         public Nullable<decimal> sig_perimetro { get; set; }
-        [Display(Name = "% Grasa Viceral")]
+        [Display(Name = "% Grasa Visceral")]
         public Nullable<decimal> sig_viceral { get; set; }
         [Display(Name = "% Grasa Corporal")]
         public Nullable<decimal> sig_corporal { get; set; }

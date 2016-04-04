@@ -56,7 +56,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">1 Motivo de la Consulta</h3>
+                <h3 class="panel-title">1 Motivo de la Consulta @ViewBag.numero</h3>
             </div>
             <div class="panel-body">
                 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
@@ -100,9 +100,8 @@
                     </div>
 
                     <div class="col-lg-3" style="clear:both;float:right;">
-                        <br />
                         <div class="form-group">
-                            @Html.ActionLink("Regresar", "Index", "Historia", new { }, new { @class = "btn btn-default" })
+                            @Html.ActionLink("Regresar", "Index", "Historia", new {tipo=ViewBag.tipo }, new { @class = "btn btn-default" })
                             <input type="submit" value="Siguiente" class="btn btn-primary" />
                         </div>
                     </div>

@@ -66,16 +66,16 @@
         <EntityTypeShape EntityType="kinnemedModel.vacuna" Width="1.5" PointX="8.25" PointY="69.875" />
         <AssociationConnector Association="kinnemedModel.FK_inmunizacion_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_inmunizacion_vacuna" />
-        <EntityTypeShape EntityType="kinnemedModel.laboral" Width="1.5" PointX="12.75" PointY="35.125" />
         <EntityTypeShape EntityType="kinnemedModel.ocupacional" Width="1.5" PointX="7.5" PointY="39.625" />
-        <AssociationConnector Association="kinnemedModel.FK_laboral_ocupacional" />
-        <AssociationConnector Association="kinnemedModel.FK_laboral_riesgo" />
         <AssociationConnector Association="kinnemedModel.FK_ocupacional_paciente" />
         <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="7.5" PointY="3.875" />
         <AssociationConnector Association="kinnemedModel.FK_examen_area" />
         <AssociationConnector Association="kinnemedModel.FK_control_examen" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
+        <EntityTypeShape EntityType="kinnemedModel.laboral" Width="1.5" PointX="12.75" PointY="35" />
+        <AssociationConnector Association="kinnemedModel.FK_laboral_ocupacional" />
+        <AssociationConnector Association="kinnemedModel.FK_laboral_riesgo" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

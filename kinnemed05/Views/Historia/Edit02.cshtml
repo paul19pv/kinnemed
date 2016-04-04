@@ -74,26 +74,26 @@
                         @Html.TextBoxFor(model => model.his_paciente, new { @class = "form-control", @type = "hidden" })
                         @Html.LabelFor(model => model.his_paciente, new { @class = "control-label", @for = "inputDefault" })
 
-                        @Html.TextBox("txt_paciente", "", new { @class = "form-control" })
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = Model.paciente.pac_cedula })
                         @Html.ValidationMessageFor(model => model.his_paciente)
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.Label("Nombres", new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_nombres", "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.TextBox("txt_nombres", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_nombres })
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.Label("Apellidos", new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_apellidos", "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.TextBox("txt_apellidos", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_apellidos })
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.Label("Edad", new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_edad", "", new { @class = "form-control", @readonly = "readonly" })
+                        @Html.TextBox("txt_edad", "", new { @class = "form-control", @readonly = "readonly", Value = Model.paciente.pac_edad })
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -108,7 +108,7 @@
                 <div class="col-lg-3" style="clear:both;float:right;">
                     <br />
                     <div class="form-group">
-                        @Html.ActionLink("Regresar", "Index", "Historia", new { }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Regresar", "Index", "Historia", new {tipo=ViewBag.tipo }, new { @class = "btn btn-default" })
                         <input type="submit" value="Siguiente" class="btn btn-primary" />
                     </div>
                 </div>

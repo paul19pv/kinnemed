@@ -19,7 +19,7 @@ namespace kinnemed05.Controllers
         public ActionResult Index()
         {
             var ocupacional = db.ocupacional.Include(o => o.paciente);
-            return View(ocupacional.ToList());
+            return PartialView(ocupacional.ToList());
         }
 
         //
@@ -40,11 +40,10 @@ namespace kinnemed05.Controllers
 
         public ActionResult Create(int id)
         {
-            int his_id = Convert.ToInt32(Session["his_id"]);
-            historia historia = db.historia.Find(his_id);
             ViewBag.ocu_paciente = id;
-            ViewBag.ocu_tipo = historia.his_tipo;
-            return View();
+            ViewBag.ocu_tipo = "actual";
+            ViewBag.ocu_jornada = ocu_jornada();
+            return PartialView();
         }
 
         //
@@ -59,26 +58,31 @@ namespace kinnemed05.Controllers
             {
                 db.ocupacional.Add(ocupacional);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Laboral", new {id=ocupacional.ocu_id });
             }
-
-            ViewBag.ocu_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula", ocupacional.ocu_paciente);
-            return View(ocupacional);
+            ViewBag.ocu_paciente = ocupacional.ocu_paciente;
+            ViewBag.ocu_tipo = ocupacional.ocu_tipo;
+            ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            return PartialView(ocupacional);
         }
+
+
 
         //
         // GET: /Ocupacional/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(int id)
         {
-            ocupacional ocupacional = db.ocupacional.Find(id);
+            ocupacional ocupacional = db.ocupacional.Where(o=>o.ocu_paciente==id).First();
             if (ocupacional == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Create", new { id=id});
             }
-            ViewBag.ocu_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula", ocupacional.ocu_paciente);
-            return View(ocupacional);
+            ocupacional = db.ocupacional.Find(id);
+            ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            return PartialView(ocupacional);
         }
+
 
         //
         // POST: /Ocupacional/Edit/5
@@ -91,10 +95,10 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(ocupacional).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "Laboral", new { id = ocupacional.ocu_id });
             }
-            ViewBag.ocu_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula", ocupacional.ocu_paciente);
-            return View(ocupacional);
+            ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            return PartialView(ocupacional);
         }
 
         //
@@ -126,6 +130,19 @@ namespace kinnemed05.Controllers
         public string get_estado(int his_id) {
             string estado = String.Empty;
             return estado;
+        }
+        public SelectList ocu_jornada(string jornada = "")
+        {
+            List<SelectListItem> list_jornada = new List<SelectListItem>();
+            list_jornada.Add(new SelectListItem { Text = "Diurno", Value = "Diurno" });
+            list_jornada.Add(new SelectListItem { Text = "Nocturno", Value = "Nocturno" });
+            list_jornada.Add(new SelectListItem { Text = "Rotativo", Value = "Rotativo" });
+            SelectList jornadas;
+            if (jornada == "")
+                jornadas = new SelectList(list_jornada, "Value", "Text");
+            else
+                jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
+            return jornadas;
         }
 
         protected override void Dispose(bool disposing)

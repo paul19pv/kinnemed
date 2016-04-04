@@ -234,6 +234,7 @@
           <Property Name="lab_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="lab_ocupacional" Type="int" Nullable="false" />
           <Property Name="lab_riesgo" Type="int" Nullable="false" />
+          <Property Name="lab_estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="medico">
           <Key>
@@ -1388,16 +1389,7 @@
             <End Role="vacuna" EntitySet="vacuna" />
             <End Role="inmunizacion" EntitySet="inmunizacion" />
           </AssociationSet>
-          <EntitySet Name="laboral" EntityType="kinnemedModel.laboral" />
           <EntitySet Name="ocupacional" EntityType="kinnemedModel.ocupacional" />
-          <AssociationSet Name="FK_laboral_ocupacional" Association="kinnemedModel.FK_laboral_ocupacional">
-            <End Role="ocupacional" EntitySet="ocupacional" />
-            <End Role="laboral" EntitySet="laboral" />
-          </AssociationSet>
-          <AssociationSet Name="FK_laboral_riesgo" Association="kinnemedModel.FK_laboral_riesgo">
-            <End Role="riesgo" EntitySet="riesgo" />
-            <End Role="laboral" EntitySet="laboral" />
-          </AssociationSet>
           <AssociationSet Name="FK_ocupacional_paciente" Association="kinnemedModel.FK_ocupacional_paciente">
             <End Role="paciente" EntitySet="paciente" />
             <End Role="ocupacional" EntitySet="ocupacional" />
@@ -1418,6 +1410,15 @@
           <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
             <End Role="examen" EntitySet="examen" />
             <End Role="valores" EntitySet="valores" />
+          </AssociationSet>
+          <EntitySet Name="laboral" EntityType="kinnemedModel.laboral" />
+          <AssociationSet Name="FK_laboral_ocupacional" Association="kinnemedModel.FK_laboral_ocupacional">
+            <End Role="ocupacional" EntitySet="ocupacional" />
+            <End Role="laboral" EntitySet="laboral" />
+          </AssociationSet>
+          <AssociationSet Name="FK_laboral_riesgo" Association="kinnemedModel.FK_laboral_riesgo">
+            <End Role="riesgo" EntitySet="riesgo" />
+            <End Role="laboral" EntitySet="laboral" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="area">
@@ -2176,16 +2177,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="laboral">
-          <Key>
-            <PropertyRef Name="lab_id" />
-          </Key>
-          <Property Name="lab_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="lab_ocupacional" Type="Int32" Nullable="false" />
-          <Property Name="lab_riesgo" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_laboral_ocupacional" FromRole="laboral" ToRole="ocupacional" />
-          <NavigationProperty Name="riesgo" Relationship="kinnemedModel.FK_laboral_riesgo" FromRole="laboral" ToRole="riesgo" />
-        </EntityType>
         <EntityType Name="ocupacional">
           <Key>
             <PropertyRef Name="ocu_id" />
@@ -2206,37 +2197,9 @@
           <Property Name="ocu_tipo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ocu_estado" Type="Boolean" Nullable="false" />
           <Property Name="ocu_paciente" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="laboral" Relationship="kinnemedModel.FK_laboral_ocupacional" FromRole="ocupacional" ToRole="laboral" />
           <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="ocupacional" ToRole="paciente" />
+          <NavigationProperty Name="laboral" Relationship="kinnemedModel.FK_laboral_ocupacional" FromRole="ocupacional" ToRole="laboral" />
         </EntityType>
-        <Association Name="FK_laboral_ocupacional">
-          <End Type="kinnemedModel.ocupacional" Role="ocupacional" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.laboral" Role="laboral" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ocupacional">
-              <PropertyRef Name="ocu_id" />
-            </Principal>
-            <Dependent Role="laboral">
-              <PropertyRef Name="lab_ocupacional" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_laboral_riesgo">
-          <End Type="kinnemedModel.riesgo" Role="riesgo" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.laboral" Role="laboral" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="riesgo">
-              <PropertyRef Name="rie_id" />
-            </Principal>
-            <Dependent Role="laboral">
-              <PropertyRef Name="lab_riesgo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ocupacional_paciente">
           <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2322,6 +2285,45 @@
             </Principal>
             <Dependent Role="valores">
               <PropertyRef Name="val_examen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="laboral">
+          <Key>
+            <PropertyRef Name="lab_id" />
+          </Key>
+          <Property Name="lab_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="lab_ocupacional" Type="Int32" Nullable="false" />
+          <Property Name="lab_riesgo" Type="Int32" Nullable="false" />
+          <Property Name="lab_estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_laboral_ocupacional" FromRole="laboral" ToRole="ocupacional" />
+          <NavigationProperty Name="riesgo" Relationship="kinnemedModel.FK_laboral_riesgo" FromRole="laboral" ToRole="riesgo" />
+        </EntityType>
+        <Association Name="FK_laboral_ocupacional">
+          <End Type="kinnemedModel.ocupacional" Role="ocupacional" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.laboral" Role="laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ocupacional">
+              <PropertyRef Name="ocu_id" />
+            </Principal>
+            <Dependent Role="laboral">
+              <PropertyRef Name="lab_ocupacional" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_laboral_riesgo">
+          <End Type="kinnemedModel.riesgo" Role="riesgo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.laboral" Role="laboral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="riesgo">
+              <PropertyRef Name="rie_id" />
+            </Principal>
+            <Dependent Role="laboral">
+              <PropertyRef Name="lab_riesgo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2794,15 +2796,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="laboral">
-            <EntityTypeMapping TypeName="kinnemedModel.laboral">
-              <MappingFragment StoreEntitySet="laboral">
-                <ScalarProperty Name="lab_riesgo" ColumnName="lab_riesgo" />
-                <ScalarProperty Name="lab_ocupacional" ColumnName="lab_ocupacional" />
-                <ScalarProperty Name="lab_id" ColumnName="lab_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ocupacional">
             <EntityTypeMapping TypeName="kinnemedModel.ocupacional">
               <MappingFragment StoreEntitySet="ocupacional">
@@ -2837,6 +2830,16 @@
                 <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
                 <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
                 <ScalarProperty Name="exa_id" ColumnName="exa_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="laboral">
+            <EntityTypeMapping TypeName="kinnemedModel.laboral">
+              <MappingFragment StoreEntitySet="laboral">
+                <ScalarProperty Name="lab_estado" ColumnName="lab_estado" />
+                <ScalarProperty Name="lab_riesgo" ColumnName="lab_riesgo" />
+                <ScalarProperty Name="lab_ocupacional" ColumnName="lab_ocupacional" />
+                <ScalarProperty Name="lab_id" ColumnName="lab_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

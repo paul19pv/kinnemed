@@ -16,9 +16,11 @@ namespace kinnemed05.Controllers
         //
         // GET: /Historia/
 
-        public ActionResult Index()
+        public ActionResult Index(int tipo)
         {
-            return View(db.historia.ToList());
+            var historia = db.historia.Where(h => h.his_tipo == tipo);
+            ViewBag.tipo = tipo;
+            return View(historia.ToList());
         }
 
         //
@@ -37,8 +39,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Historia/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int tipo)
         {
+            ViewBag.tipo = tipo;
+            ViewBag.his_tipo = his_tipo(tipo);
+            if (tipo != 1) {
+                return View("Create01");
+            }
+                
             return View();
         }
 
@@ -52,6 +60,7 @@ namespace kinnemed05.Controllers
             DateTime dd = DateTime.Now;
             historia.his_fecha = dd.Date.ToString("d");
             historia.his_numero = numero_historia(historia);
+            historia.his_tipo = 1;
             if (ModelState.IsValid)
             {
                 db.historia.Add(historia);
@@ -59,13 +68,14 @@ namespace kinnemed05.Controllers
                 Session["his_id"] = historia.his_id;
                 return RedirectToAction("Create", "Personal", new { id = historia.his_paciente});
             }
-
+            ViewBag.numero = numero_historia(historia);
             return PartialView(historia);
         }
 
         //Historias preocupacionales, ocupaciones y retiro
         public ActionResult Create01()
         {
+            ViewBag.his_tipo = his_tipo();
             return View();
         }
         [HttpPost]
@@ -82,7 +92,7 @@ namespace kinnemed05.Controllers
                 Session["his_id"] = historia.his_id;
                 return RedirectToAction("Create", "Ocupacional", new { id = historia.his_paciente });
             }
-
+            ViewBag.his_tipo = his_tipo(historia.his_tipo);
             return PartialView(historia);
         }
 
@@ -93,6 +103,7 @@ namespace kinnemed05.Controllers
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
+            ViewBag.tipo = historia.his_tipo;
             if (historia == null)
             {
                 return HttpNotFound();
@@ -101,6 +112,7 @@ namespace kinnemed05.Controllers
             {
                 return PartialView(historia);
             }
+            
             return View("Edit01",historia);
         }
 
@@ -120,6 +132,7 @@ namespace kinnemed05.Controllers
                 Session["his_id"] = historia.his_id;
                 return RedirectToAction("Edit", "Personal", new { id = historia.his_paciente });
             }
+
             return PartialView(historia);
         }
 
@@ -127,6 +140,8 @@ namespace kinnemed05.Controllers
         public ActionResult Edit02(int id = 0)
         {
             historia historia = db.historia.Find(id);
+            ViewBag.his_tipo = his_tipo(historia.his_tipo);
+            ViewBag.tipo = historia.his_tipo;
             if (historia == null)
             {
                 return HttpNotFound();
@@ -154,6 +169,8 @@ namespace kinnemed05.Controllers
                 Session["his_id"] = historia.his_id;
                 return RedirectToAction("Edit", "Ocupacional", new { id = historia.his_paciente });
             }
+            ViewBag.his_tipo = his_tipo(historia.his_tipo);
+            ViewBag.tipo = historia.his_tipo;
             return PartialView(historia);
         }
 
@@ -222,6 +239,20 @@ namespace kinnemed05.Controllers
             num = db.historia.Where(h => h.his_tipo == historia.his_tipo && h.his_paciente == historia.his_paciente).Count();
             num++;
             return num;
+        }
+
+        public SelectList his_tipo(int? tipo=0)
+        {
+            List<SelectListItem> list_tipo = new List<SelectListItem>();
+            list_tipo.Add(new SelectListItem { Text = "Preocupacional", Value = "2" });
+            list_tipo.Add(new SelectListItem { Text = "Ocupacional", Value = "3" });
+            list_tipo.Add(new SelectListItem { Text = "Retiro", Value = "4" });
+            SelectList tipos;
+            if(tipo==0)
+                tipos= new SelectList(list_tipo, "Value", "Text");
+            else
+                tipos = new SelectList(list_tipo, "Value", "Text",tipo.ToString());
+            return tipos;
         }
 
         protected override void Dispose(bool disposing)
