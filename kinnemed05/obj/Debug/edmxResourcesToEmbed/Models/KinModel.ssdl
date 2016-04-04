@@ -229,6 +229,7 @@
     <Property Name="lab_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="lab_ocupacional" Type="int" Nullable="false" />
     <Property Name="lab_riesgo" Type="int" Nullable="false" />
+    <Property Name="lab_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="medico">
     <Key>
@@ -249,7 +250,7 @@
       <PropertyRef Name="ocu_id" />
     </Key>
     <Property Name="ocu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ocu_empresa" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ocu_empresa" Type="varchar" MaxLength="200" />
     <Property Name="ocu_seccion" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="ocu_cargo" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="ocu_descripcion" Type="nvarchar(max)" Nullable="false" />
@@ -262,7 +263,7 @@
     <Property Name="ocu_sustancias" Type="nvarchar(max)" />
     <Property Name="ocu_equipo" Type="nvarchar(max)" />
     <Property Name="ocu_tipo" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="ocu_estado" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ocu_estado" Type="bit" Nullable="false" />
     <Property Name="ocu_paciente" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="paciente">

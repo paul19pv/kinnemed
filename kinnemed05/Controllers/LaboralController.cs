@@ -84,10 +84,10 @@ namespace kinnemed05.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            laboral laboral = db.laboral.Find(id);
-            if (laboral == null)
+            var consulta = db.laboral.Where(l => l.lab_ocupacional == id);
+            //laboral laboral = db.laboral.Find(id);
+            if (!consulta.Any())
             {
-                //RedirectToAction("Create", new { id = id });
                 Create(id);
             }
             

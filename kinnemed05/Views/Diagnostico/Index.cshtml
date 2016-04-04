@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <div class="col-lg-12">
     <div class="panel panel-default" >
         <div class="panel-body">
@@ -28,9 +27,6 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dia_id)
-                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.dia_descripcion)
                         </td>

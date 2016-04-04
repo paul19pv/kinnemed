@@ -20,6 +20,7 @@ namespace kinnemed05.Controllers
         {
             var historia = db.historia.Where(h => h.his_tipo == tipo);
             ViewBag.tipo = tipo;
+            ViewBag.titulo = titulo(tipo);
             return View(historia.ToList());
         }
 
@@ -89,6 +90,8 @@ namespace kinnemed05.Controllers
             {
                 db.historia.Add(historia);
                 db.SaveChanges();
+                if (historia.his_tipo == 2)
+                    change_tipo(historia.his_paciente);
                 Session["his_id"] = historia.his_id;
                 return RedirectToAction("Create", "Ocupacional", new { id = historia.his_paciente });
             }
@@ -255,6 +258,42 @@ namespace kinnemed05.Controllers
             return tipos;
         }
 
+        public string change_tipo(int pac_id) {
+            string mensaje = String.Empty;
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual");
+            if (!consulta.Any())
+            {
+                mensaje = "El paciente no registra un trabajo actual";
+            }
+            else {
+                ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual").First();
+                ocupacional.ocu_tipo = "registro";
+                ocupacional.ocu_estado = false;
+                db.Entry(ocupacional).State = EntityState.Modified;
+                db.SaveChanges();
+                mensaje = "El trabajo actual anterior quedara como historico";
+            }
+            
+            return mensaje;
+        }
+        public string titulo(int tipo) {
+            string titulo = String.Empty;
+            switch (tipo) { 
+                case 1:
+                    titulo = "Generales";
+                    break;
+                case 2:
+                    titulo = "Preocupacionales";
+                    break;
+                case 3:
+                    titulo = "Periodicas";
+                    break;
+                case 4:
+                    titulo = "de Retiro";
+                    break;
+            }
+            return titulo;
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

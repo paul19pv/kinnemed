@@ -16,9 +16,9 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            var ocupacional = db.ocupacional.Include(o => o.paciente);
+            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o=>o.ocu_paciente==id && o.ocu_tipo=="historico");
             return PartialView(ocupacional.ToList());
         }
 
@@ -58,10 +58,45 @@ namespace kinnemed05.Controllers
             {
                 db.ocupacional.Add(ocupacional);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Laboral", new {id=ocupacional.ocu_id });
+                Session["pac_id"] = ocupacional.ocu_paciente;
+                return RedirectToAction("Edit", "Laboral", new {id=ocupacional.ocu_id });
             }
             ViewBag.ocu_paciente = ocupacional.ocu_paciente;
             ViewBag.ocu_tipo = ocupacional.ocu_tipo;
+            ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            return PartialView(ocupacional);
+        }
+
+
+        //
+        // GET: /Ocupacional/Create
+
+        public ActionResult Historico(int id)
+        {
+            ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
+            ViewBag.ocu_paciente = id;
+            ViewBag.ocu_tipo = "historico";
+            ViewBag.ocu_jornada = ocu_jornada();
+            ViewBag.ocu_id = ocupacional.ocu_id;
+            return PartialView();
+        }
+
+        //
+        // POST: /Ocupacional/Create
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Historico(ocupacional ocupacional)
+        {
+            ocupacional.ocu_estado = true;
+            if (ModelState.IsValid)
+            {
+                db.ocupacional.Add(ocupacional);
+                db.SaveChanges();
+                return RedirectToAction("Index", new { id = ocupacional.ocu_paciente });
+            }
+            ViewBag.ocu_paciente = ocupacional.ocu_paciente;
+            ViewBag.ocu_tipo = "historico";
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
             return PartialView(ocupacional);
         }
@@ -73,12 +108,13 @@ namespace kinnemed05.Controllers
 
         public ActionResult Edit(int id)
         {
-            ocupacional ocupacional = db.ocupacional.Where(o=>o.ocu_paciente==id).First();
-            if (ocupacional == null)
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
+            //ocupacional ocupacional = db.ocupacional.Find(id);
+            if (!consulta.Any())
             {
                 return RedirectToAction("Create", new { id=id});
             }
-            ocupacional = db.ocupacional.Find(id);
+            ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
             return PartialView(ocupacional);
         }
@@ -95,6 +131,7 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(ocupacional).State = EntityState.Modified;
                 db.SaveChanges();
+                Session["pac_id"] = ocupacional.ocu_paciente;
                 return RedirectToAction("Edit", "Laboral", new { id = ocupacional.ocu_id });
             }
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
@@ -104,14 +141,12 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int id)
         {
             ocupacional ocupacional = db.ocupacional.Find(id);
-            if (ocupacional == null)
-            {
-                return HttpNotFound();
-            }
-            return View(ocupacional);
+            db.ocupacional.Remove(ocupacional);
+            db.SaveChanges();
+            return RedirectToAction("Index", new { id=ocupacional.ocu_paciente});
         }
 
         //

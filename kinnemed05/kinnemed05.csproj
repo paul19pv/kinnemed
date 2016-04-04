@@ -831,7 +831,6 @@
     <Content Include="Views\Laboral\Details.cshtml" />
     <Content Include="Views\Laboral\Create.cshtml" />
     <Content Include="Views\Laboral\Edit.cshtml" />
-    <Content Include="Views\Laboral\Delete.cshtml" />
     <Content Include="Views\Ocupacional\Historico.cshtml" />
   </ItemGroup>
   <ItemGroup>
