@@ -26,15 +26,33 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Details/5
-
-        public ActionResult Details(int id = 0)
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Details(int reg_id)
         {
-            prueba prueba = db.prueba.Find(id);
-            if (prueba == null)
-            {
-                return HttpNotFound();
-            }
-            return View(prueba);
+            //var consulta = db.registro.Where(r => r.reg_paciente == paciente && r.reg_fecha == fecha);
+            //int reg_id = 0;
+            //if (!consulta.Any())
+                //return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+            //reg_id = consulta.First().reg_id;
+            List<prueba> resultado = db.prueba.Include(p => p.examen).Where(r => r.pru_registro == reg_id && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).ToList();
+            SetPrueba setprueba = new SetPrueba();
+            setprueba.prueba = resultado;
+            if(Request.IsAjaxRequest())
+                return PartialView(setprueba);
+            return View(setprueba);
+        }
+
+        public ActionResult Details(int paciente,string fecha)
+        {
+            var consulta = db.registro.Where(r => r.reg_paciente == paciente && r.reg_fecha == fecha);
+            int reg_id = 0;
+            if (!consulta.Any())
+                return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+            reg_id = consulta.First().reg_id;
+            List<prueba> resultado = db.prueba.Include(p => p.examen).Where(r => r.pru_registro == reg_id && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).ToList();
+            SetPrueba setprueba = new SetPrueba();
+            setprueba.prueba = resultado;
+            return PartialView(setprueba);
         }
 
         //

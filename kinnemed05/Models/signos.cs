@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class signos
     {
         public int sig_id { get; set; }
-    
+
         public virtual historia historia { get; set; }
     }
 }

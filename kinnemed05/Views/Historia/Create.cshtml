@@ -52,11 +52,12 @@
     });
 
 </script>
+
 <div id="div_form">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">1 Motivo de la Consulta @ViewBag.numero</h3>
+                <h3 class="panel-title">1 Motivo de la Consulta</h3>
             </div>
             <div class="panel-body">
                 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
@@ -112,8 +113,8 @@
 </div>
 <a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
 
-<div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
-    <div class="progress-bar" style="width: 45%"></div>
+<div id="div_loading" style="display:none;clear:both;">
+    <div class="progress-bar"></div>
 </div>
 
 

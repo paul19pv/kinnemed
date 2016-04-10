@@ -64,6 +64,8 @@
     string linea1 = "<div class=\"panel panel-default\">";
     string linea2 = "<div class=\"panel-body\">";
     string linea3 = "</div>";
+    string head1 = "<div class=\"panel-heading\">";
+    string head2 = "</div>";
     int num_reg = Model.prueba.Count();
     int index = 0;
     foreach (var item in Model.prueba)
@@ -72,6 +74,9 @@
         {
             area_inicial = item.examen.exa_area;
             @Html.Raw(linea1)
+    @Html.Raw(head1)
+            @item.examen.area.are_nombre
+            @Html.Raw(head2)
             @Html.Raw(linea2)
         }
         if (area_inicial != item.examen.exa_area)
@@ -81,6 +86,9 @@
             @Html.Raw(linea3)
             <div style="clear:both"></div>
             @Html.Raw(linea1)
+    @Html.Raw(head1)
+            @item.examen.area.are_nombre
+            @Html.Raw(head2)
             @Html.Raw(linea2)
         }
 

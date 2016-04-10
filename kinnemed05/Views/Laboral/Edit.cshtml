@@ -34,13 +34,13 @@
         });
     });
 </script>
-<div id="mensaje">
+<div id="mensaje" style="display:none;">
 
 </div>
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Riesgos Laborales</h3>
+            <h3 class="panel-title">RIESGOS LABORALES</h3>
         </div>
         <div class="panel-body">
             @Html.Hidden("lab_ocupacional", "", new { Value=ViewBag.lab_ocupacional})
@@ -74,7 +74,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>
-                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_riesgo })
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
                                     @item.riesgo.rie_nombre
                                 </label>
                             </div>
@@ -93,7 +93,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>
-                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_riesgo })
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
                                     @item.riesgo.rie_nombre
                                 </label>
                             </div>
@@ -113,7 +113,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>
-                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_riesgo })
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
                                     @item.riesgo.rie_nombre
                                 </label>
                             </div>
@@ -132,7 +132,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>
-                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_riesgo })
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
                                     @item.riesgo.rie_nombre
                                 </label>
                             </div>
@@ -152,7 +152,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label>
-                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_riesgo })
+                                    @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @class = "edit", @id = item.lab_id })
                                     @item.riesgo.rie_nombre
                                 </label>
                             </div>
@@ -165,8 +165,8 @@
 
             <div class="col-lg-3" style="clear:both; float:right">
                 <div class="form-group">
-                    @Ajax.ActionLink("Anterior", "Edit", "Ocupacional", new { id = ViewBag.lab_ocupacional }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
-                    @Ajax.ActionLink("Siguiente", "Edit", "Signos", new { id = Session["his_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-primary" })
+                    @Ajax.ActionLink("Anterior", "Edit", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                    @Ajax.ActionLink("Siguiente", "Historico", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-primary" })
 
                 </div>
             </div>

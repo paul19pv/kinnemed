@@ -52,11 +52,13 @@
     });
 
 </script>
+
 <div id="div_form">
     <div class="col-lg-12">
+        <h2></h2>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">1 Datos del Paciente</h3>
+                <h3 class="panel-title">Datos del Paciente</h3>
             </div>
             <div class="panel-body">
                 @using (Ajax.BeginForm("Create01", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))

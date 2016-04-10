@@ -19,7 +19,7 @@
                 $('#div_index').html(data)
             },
             error: function (xhr, status, error) {
-                alert(error)
+                $('#div_index').html("Sin Información")
             }
         });
 
@@ -31,7 +31,7 @@
                 $('#div_personal').html(data)
             },
             error: function (xhr, status, error) {
-                alert(error)
+                $('#div_index').html("Sin Información")
             }
         });
 
@@ -43,7 +43,7 @@
                 $('#div_familiar').html(data)
             },
             error: function (xhr, status, error) {
-                alert(error)
+                $('#div_index').html("Sin Información")
             }
         });
 
@@ -55,7 +55,7 @@
                 $('#div_revision').html(data)
             },
             error: function (xhr, status, error) {
-                alert(error)
+                $('#div_index').html("Sin Información")
             }
         });
 
@@ -67,7 +67,7 @@
                 $('#div_signos').html(data)
             },
             error: function (xhr, status, error) {
-                alert(error)
+                $('#div_index').html("Sin Información")
             }
         });
 
@@ -79,7 +79,7 @@
                 $('#div_fisico').html(data)
             },
             error: function (xhr, status, error) {
-                alert(error)
+                $('#div_index').html("Sin Información")
             }
         });
 
@@ -87,9 +87,10 @@
 </script>
 @Html.HiddenFor(model => model.his_id)
 @Html.HiddenFor(model => model.his_paciente)
+@Html.HiddenFor(model=>model.his_tipo)
 <div class="col-lg-12">
     <div class="panel panel-default">
-        <div class="panel-heading">Información del Paciente</div>
+        <div class="panel-heading">INFORMACIÓN DEL PACIENTE</div>
         <div class="panel-body">
             <div class="col-lg-3">
                 <div class="form-group">
@@ -118,7 +119,7 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">1 MOTIVO DE LA CONSULTA</div>
+        <div class="panel-heading">MOTIVO DE LA CONSULTA</div>
         <div class="panel-body">
             <div class="col-lg-12" style="clear:both">
                 <div class="form-group">
@@ -129,18 +130,38 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">2 ANTECEDENTES PERSONALES</div>
+        <div class="panel-heading">ANTECEDENTES PERSONALES</div>
         <div id="div_personal" class="panel-body">
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">3 ANTECEDENTES FAMILIARES</div>
+        <div class="panel-heading">ANTECEDENTES FAMILIARES</div>
         <div id="div_familiar" class="panel-body">
 
         </div>
     </div>
+    @if (Model.his_tipo != 1) { 
+        <div class="panel panel-default">
+        <div class="panel-heading">INFORMACIÓN OCUPACIONAL</div>
+        <div id="div_ocupacional" class="panel-body">
+
+        </div>
+    </div>
+        <div class="panel panel-default">
+        <div class="panel-heading">RIESGOS LABORALES</div>
+        <div id="div_ocupacional" class="panel-body">
+
+        </div>
+    </div>
+        <div class="panel panel-default">
+        <div class="panel-heading">TRABAJOS ANTERIORES</div>
+        <div id="div_ocupacional" class="panel-body">
+
+        </div>
+    </div>    
+    }
     <div class="panel panel-default">
-        <div class="panel-heading">4 ENFERMEDAD O PROBLEMA ACTUAL</div>
+        <div class="panel-heading">ENFERMEDAD O PROBLEMA ACTUAL</div>
         <div class="panel-body">
             <div class="col-lg-12" style="clear:both">
                 <div class="form-group">
@@ -150,7 +171,7 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">5 REVISION ACTUAL DE ORGANOS Y SISTEMAS</div>
+        <div class="panel-heading">REVISION ACTUAL DE ORGANOS Y SISTEMAS</div>
         <div id="div_revision" class="panel-body">
             
             
@@ -160,26 +181,26 @@
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">6 SIGNOS VITALES Y MEDICIONES</div>
+        <div class="panel-heading">SIGNOS VITALES Y MEDICIONES</div>
         <div id="div_signos" class="panel-body">
             
         </div>
 
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">7 EXAMEN FISICO</div>
+        <div class="panel-heading">EXAMEN FISICO</div>
         <div id="div_fisico" class="panel-body">
 
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">8 DIAGNOSTICOS</div>
+        <div class="panel-heading">DIAGNOSTICOS</div>
         <div id="div_index" class="panel-body">
             
         </div>
     </div>
     <div class="panel panel-default">
-        <div class="panel-heading">9 PLANES</div>
+        <div class="panel-heading">PLANES</div>
         <div class="panel-body">
             <div class="col-lg-12" style="clear:both">
                 <div class="form-group">

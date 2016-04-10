@@ -1,71 +1,120 @@
-﻿@model kinnemed05.Models.prueba
+﻿@model kinnemed05.Models.SetPrueba
 
 @{
     ViewBag.Title = "Details";
 }
+<script>
+    $(function () {
 
-<h2>Details</h2>
+        $(".textedit").change(function () {
+            var res_id = $(this).attr("id");
+            var res_cuan = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: $("#link_resultado").attr('href'),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ "id": res_id, "valor": res_cuan }),
+                success: function (data) {
+                    $("#div_mensaje").html(data.mensaje);
+                },
+                error: function () {
+                    alert('Ocurrió un error al acceder a la información');
+                }
+            })
 
-<fieldset>
-    <legend>prueba</legend>
+        });
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.pru_id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.pru_id)
-    </div>
+        $(".valedit").change(function () {
+            var res_id = $(this).attr("id");
+            var res_cuan = $(this).val();
+            $.ajax({
+                type: 'POST',
+                url: $("#link_valor").attr('href'),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ "id": res_id, "valor": res_cuan }),
+                success: function (data) {
+                    $("#div_mensaje").html(data.mensaje);
+                },
+                error: function () {
+                    alert('Ocurrió un error al acceder a la información');
+                }
+            })
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.examen.exa_nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.examen.exa_nombre)
-    </div>
+        });
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.registro.reg_fecha)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.registro.reg_fecha)
-    </div>
+        $(".val_cual").change(function () {
+            var valor = $(this).val();
+            if (valor == 'POSITIVO') {
+                $(".div_doble").show();
+            }
+            else {
+                $(".div_doble").hide();
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.pru_cuan)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.pru_cuan)
-    </div>
+            }
+        });
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.pru_cual)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.pru_cual)
-    </div>
+    });
+</script>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.pru_codigo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.pru_codigo)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.pru_fuera)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.pru_fuera)
-    </div>
+@{
+    int area_inicial = 0;
+    string linea1 = "<div class=\"panel panel-default\">";
+    string linea2 = "<div class=\"panel-body\">";
+    string linea3 = "</div>";
+    string head1 = "<div class=\"panel-heading\">";
+    string head2 = "</div>";
+    int num_reg = Model.prueba.Count();
+    int index = 0;
+    foreach (var item in Model.prueba)
+    {
+        if (area_inicial == 0)
+        {
+            area_inicial = item.examen.exa_area;
+            @Html.Raw(linea1)
+            @Html.Raw(head1)
+            @item.examen.area.are_nombre
+            @Html.Raw(head2)
+            @Html.Raw(linea2)
+        }
+        if (area_inicial != item.examen.exa_area)
+        {
+            area_inicial = item.examen.exa_area;
+            @Html.Raw(linea3)
+            @Html.Raw(linea3)
+            <div style="clear:both"></div>
+            @Html.Raw(linea1)
+            @Html.Raw(head1)
+            @item.examen.area.are_nombre
+            @Html.Raw(head2)
+            @Html.Raw(linea2)
+        }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.pru_valor)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.pru_valor)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label class="control-label">@item.examen.exa_nombre</label>
+                @Html.TextBox(item.pru_id+"", item.pru_resultado, new { @class = "form-control", @readonly="readonly"})
+            </div>
+        </div>
+                index++;
+                if (index == num_reg)
+                {
+                    @Html.Raw(linea3)
+                    @Html.Raw(linea3)
+                }
+    }
+}
+
+
+
+<a href="@Url.Content("~/Prueba/Modificar")" id="link_resultado"></a>
+<a href="@Url.Content("~/Prueba/Valor")" id="link_valor"></a>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

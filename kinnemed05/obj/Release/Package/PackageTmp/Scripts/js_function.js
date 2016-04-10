@@ -11,15 +11,16 @@
     //        $("#pac_edad").val(restaFechas(selectedDate, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
     //    }
     //});
-    var progressbar = $("#div_loading"), progressLabel = $("#div_loading.progress-bar");
+    var progressbar = $("#div_loading"), progressLabel = $(".progress-bar");
 
     progressbar.progressbar({
         value: false,
         change: function () {
-            progressLabel.css("width",progressbar.progressbar("value") + "%");
+            progressLabel.css("width", progressbar.progressbar("value")+"%");
+            //progressLabel.text(progressbar.progressbar("value") + "%");
         },
         complete: function () {
-            progressLabel.text("Complete!");
+            progressLabel.text("Completo");
         }
     });
 
@@ -29,7 +30,7 @@
         progressbar.progressbar("value", val + 2);
 
         if (val < 99) {
-            setTimeout(progress, 2000);
+            setTimeout(progress, 80);
         }
     }
 
