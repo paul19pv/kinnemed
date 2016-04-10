@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="are_id" />
+    </Key>
+    <Property Name="are_id" Type="int" Nullable="false" />
+    <Property Name="are_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="audiometria">
+    <Key>
+      <PropertyRef Name="aud_id" />
+    </Key>
+    <Property Name="aud_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aud_paciente" Type="int" Nullable="false" />
+    <Property Name="aud_archivo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="aud_observacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="canton">
+    <Key>
+      <PropertyRef Name="can_id" />
+    </Key>
+    <Property Name="can_id" Type="int" Nullable="false" />
+    <Property Name="can_nombre" Type="varchar" MaxLength="150" />
+    <Property Name="can_provincia" Type="int" />
+  </EntityType>
+  <EntityType Name="cie10">
+    <Key>
+      <PropertyRef Name="cie_id" />
+    </Key>
+    <Property Name="cie_id" Type="int" Nullable="false" />
+    <Property Name="cie_codigo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="cie_descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="componente">
+    <Key>
+      <PropertyRef Name="com_id" />
+    </Key>
+    <Property Name="com_id" Type="int" Nullable="false" />
+    <Property Name="com_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="control">
+    <Key>
+      <PropertyRef Name="con_id" />
+    </Key>
+    <Property Name="con_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="con_perfil" Type="int" Nullable="false" />
+    <Property Name="con_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="diagnostico">
+    <Key>
+      <PropertyRef Name="dia_id" />
+    </Key>
+    <Property Name="dia_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dia_historia" Type="int" Nullable="false" />
+    <Property Name="dia_descripcion" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="dia_subcie10" Type="int" Nullable="false" />
+    <Property Name="dia_tipo" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="empresa">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_cedula" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="emp_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="emp_direccion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="emp_telefono" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="emp_mail" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="emp_estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="especialidad">
+    <Key>
+      <PropertyRef Name="esp_id" />
+    </Key>
+    <Property Name="esp_id" Type="int" Nullable="false" />
+    <Property Name="esp_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="espirometria">
+    <Key>
+      <PropertyRef Name="esp_id" />
+    </Key>
+    <Property Name="esp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="esp_paciente" Type="int" Nullable="false" />
+    <Property Name="esp_archivo" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="esp_observacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="examen">
+    <Key>
+      <PropertyRef Name="exa_id" />
+    </Key>
+    <Property Name="exa_id" Type="int" Nullable="false" />
+    <Property Name="exa_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="exa_unidad" Type="varchar" MaxLength="15" />
+    <Property Name="exa_tipo" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="exa_area" Type="int" Nullable="false" />
+    <Property Name="exa_item" Type="int" />
+    <Property Name="exa_valores" Type="varchar" MaxLength="500" />
+    <Property Name="exa_inicial" Type="varchar" MaxLength="50" />
+    <Property Name="exa_estado" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="familiar">
+    <Key>
+      <PropertyRef Name="fam_id" />
+    </Key>
+    <Property Name="fam_id" Type="int" Nullable="false" />
+    <Property Name="fam_cardiopatia" Type="bit" Nullable="false" />
+    <Property Name="fam_car_txt" Type="nvarchar(max)" />
+    <Property Name="fam_diabetes" Type="bit" Nullable="false" />
+    <Property Name="fam_dia_txt" Type="nvarchar(max)" />
+    <Property Name="fam_cardiovascular" Type="bit" Nullable="false" />
+    <Property Name="fam_vas_txt" Type="nvarchar(max)" />
+    <Property Name="fam_hipertension" Type="bit" Nullable="false" />
+    <Property Name="fam_hip_txt" Type="nvarchar(max)" />
+    <Property Name="fam_cancer" Type="bit" Nullable="false" />
+    <Property Name="fam_can_txt" Type="nvarchar(max)" />
+    <Property Name="fam_tuberculosis" Type="bit" Nullable="false" />
+    <Property Name="fam_tub_txt" Type="nvarchar(max)" />
+    <Property Name="fam_mental" Type="bit" Nullable="false" />
+    <Property Name="fam_men_txt" Type="nvarchar(max)" />
+    <Property Name="fam_infecciosa" Type="bit" Nullable="false" />
+    <Property Name="fam_inf_txt" Type="nvarchar(max)" />
+    <Property Name="fam_malformacion" Type="bit" Nullable="false" />
+    <Property Name="fam_mal_txt" Type="nvarchar(max)" />
+    <Property Name="fam_otro" Type="bit" Nullable="false" />
+    <Property Name="fam_otr_txt" Type="nvarchar(max)" />
+    <Property Name="fam_hipotiroidismo" Type="bit" Nullable="false" />
+    <Property Name="fam_hit_txt" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="fisico">
+    <Key>
+      <PropertyRef Name="fis_id" />
+    </Key>
+    <Property Name="fis_id" Type="int" Nullable="false" />
+    <Property Name="fis_piel" Type="bit" Nullable="false" />
+    <Property Name="fis_pie_txt" Type="nvarchar(max)" />
+    <Property Name="fis_cabeza" Type="bit" Nullable="false" />
+    <Property Name="fis_cab_txt" Type="nvarchar(max)" />
+    <Property Name="fis_ojos" Type="bit" Nullable="false" />
+    <Property Name="fis_ojo_txt" Type="nvarchar(max)" />
+    <Property Name="fis_oidos" Type="bit" Nullable="false" />
+    <Property Name="fis_oid_txt" Type="nvarchar(max)" />
+    <Property Name="fis_nariz" Type="bit" Nullable="false" />
+    <Property Name="fis_nar_txt" Type="nvarchar(max)" />
+    <Property Name="fis_boca" Type="bit" Nullable="false" />
+    <Property Name="fis_boc_txt" Type="nvarchar(max)" />
+    <Property Name="fis_faringe" Type="bit" Nullable="false" />
+    <Property Name="fis_far_txt" Type="nvarchar(max)" />
+    <Property Name="fis_cuello" Type="bit" Nullable="false" />
+    <Property Name="fis_cue_txt" Type="nvarchar(max)" />
+    <Property Name="fis_axilas" Type="bit" Nullable="false" />
+    <Property Name="fis_axi_txt" Type="nvarchar(max)" />
+    <Property Name="fis_torax" Type="bit" Nullable="false" />
+    <Property Name="fis_tor_txt" Type="nvarchar(max)" />
+    <Property Name="fis_abdomen" Type="bit" Nullable="false" />
+    <Property Name="fis_abd_txt" Type="nvarchar(max)" />
+    <Property Name="fis_columna" Type="bit" Nullable="false" />
+    <Property Name="fis_col_txt" Type="nvarchar(max)" />
+    <Property Name="fis_ingle" Type="bit" Nullable="false" />
+    <Property Name="fis_ing_txt" Type="nvarchar(max)" />
+    <Property Name="fis_mie_sup" Type="bit" Nullable="false" />
+    <Property Name="fis_msp_txt" Type="nvarchar(max)" />
+    <Property Name="fis_mie_inf" Type="bit" Nullable="false" />
+    <Property Name="fis_mif_txt" Type="nvarchar(max)" />
+    <Property Name="fis_organos" Type="bit" Nullable="false" />
+    <Property Name="fis_org_txt" Type="nvarchar(max)" />
+    <Property Name="fis_respiratorio" Type="bit" Nullable="false" />
+    <Property Name="fis_res_txt" Type="nvarchar(max)" />
+    <Property Name="fis_cardiovascular" Type="bit" Nullable="false" />
+    <Property Name="fis_car_txt" Type="nvarchar(max)" />
+    <Property Name="fis_digestivo" Type="bit" Nullable="false" />
+    <Property Name="fis_dig_txt" Type="nvarchar(max)" />
+    <Property Name="fis_genital" Type="bit" Nullable="false" />
+    <Property Name="fis_fen_txt" Type="nvarchar(max)" />
+    <Property Name="fis_urinario" Type="bit" Nullable="false" />
+    <Property Name="fis_uri_txt" Type="nvarchar(max)" />
+    <Property Name="fis_esqueletico" Type="bit" Nullable="false" />
+    <Property Name="fis_esq_txt" Type="nvarchar(max)" />
+    <Property Name="fis_endocrino" Type="bit" Nullable="false" />
+    <Property Name="fis_end_txt" Type="nvarchar(max)" />
+    <Property Name="fis_linfatico" Type="bit" Nullable="false" />
+    <Property Name="fis_lin_txt" Type="nvarchar(max)" />
+    <Property Name="fis_neurologico" Type="bit" Nullable="false" />
+    <Property Name="fis_neu_txt" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ginecologico">
+    <Key>
+      <PropertyRef Name="gin_id" />
+    </Key>
+    <Property Name="gin_id" Type="int" Nullable="false" />
+    <Property Name="gin_fum" Type="varchar" MaxLength="10" />
+    <Property Name="gin_ciclos" Type="int" />
+    <Property Name="gin_gestas" Type="int" />
+    <Property Name="gin_partos" Type="int" />
+    <Property Name="gin_cesarea" Type="int" />
+    <Property Name="gin_abortos" Type="int" />
+    <Property Name="gin_hijos" Type="int" />
+    <Property Name="gin_planificacion" Type="bit" Nullable="false" />
+    <Property Name="gin_pla_txt" Type="nvarchar(max)" />
+    <Property Name="gin_paptest" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="historia">
+    <Key>
+      <PropertyRef Name="his_id" />
+    </Key>
+    <Property Name="his_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="his_paciente" Type="int" Nullable="false" />
+    <Property Name="his_motivo" Type="nvarchar(max)" />
+    <Property Name="his_problema" Type="nvarchar(max)" />
+    <Property Name="his_observacion" Type="nvarchar(max)" />
+    <Property Name="his_tipo" Type="int" Nullable="false" />
+    <Property Name="his_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="his_numero" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="inmunizacion">
+    <Key>
+      <PropertyRef Name="inm_id" />
+    </Key>
+    <Property Name="inm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="inm_vacuna" Type="int" Nullable="false" />
+    <Property Name="inm_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="inm_tipo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="inm_paciente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="laboral">
+    <Key>
+      <PropertyRef Name="lab_id" />
+    </Key>
+    <Property Name="lab_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lab_ocupacional" Type="int" Nullable="false" />
+    <Property Name="lab_riesgo" Type="int" Nullable="false" />
+    <Property Name="lab_estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="medico">
+    <Key>
+      <PropertyRef Name="med_id" />
+    </Key>
+    <Property Name="med_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="med_cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="med_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="med_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="med_ci" Type="varchar" MaxLength="50" />
+    <Property Name="med_codigo" Type="varchar" MaxLength="50" />
+    <Property Name="med_especialidad" Type="int" Nullable="false" />
+    <Property Name="med_correo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="med_estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ocupacional">
+    <Key>
+      <PropertyRef Name="ocu_id" />
+    </Key>
+    <Property Name="ocu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ocu_empresa" Type="varchar" MaxLength="200" />
+    <Property Name="ocu_seccion" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ocu_cargo" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ocu_descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ocu_jornada" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ocu_inicio" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ocu_fin" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="ocu_tiempo" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="ocu_maquinaria" Type="nvarchar(max)" />
+    <Property Name="ocu_materiales" Type="nvarchar(max)" />
+    <Property Name="ocu_sustancias" Type="nvarchar(max)" />
+    <Property Name="ocu_equipo" Type="nvarchar(max)" />
+    <Property Name="ocu_tipo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ocu_estado" Type="bit" Nullable="false" />
+    <Property Name="ocu_paciente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="paciente">
+    <Key>
+      <PropertyRef Name="pac_id" />
+    </Key>
+    <Property Name="pac_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pac_cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="pac_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="pac_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="pac_genero" Type="varchar" MaxLength="50" />
+    <Property Name="pac_estadocivil" Type="varchar" MaxLength="50" />
+    <Property Name="pac_pais" Type="int" />
+    <Property Name="pac_fechanacimiento" Type="varchar" MaxLength="10" />
+    <Property Name="pac_edad" Type="int" Nullable="false" />
+    <Property Name="pac_telefono" Type="varchar" MaxLength="15" />
+    <Property Name="pac_celular" Type="varchar" MaxLength="15" />
+    <Property Name="pac_correo" Type="varchar" MaxLength="150" />
+    <Property Name="pac_provincia" Type="int" />
+    <Property Name="pac_canton" Type="int" />
+    <Property Name="pac_direccion" Type="varchar" MaxLength="250" />
+    <Property Name="pac_instruccion" Type="varchar" MaxLength="50" />
+    <Property Name="pac_profesion" Type="int" />
+    <Property Name="pac_tipodiscapacidad" Type="varchar" MaxLength="50" />
+    <Property Name="pac_porcentajediscapacidad" Type="int" />
+    <Property Name="pac_empresa" Type="int" />
+    <Property Name="pac_estado" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pais">
+    <Key>
+      <PropertyRef Name="pais_id" />
+    </Key>
+    <Property Name="pais_id" Type="int" Nullable="false" />
+    <Property Name="pais_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="per_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="per_descripcion" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="personal">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="int" Nullable="false" />
+    <Property Name="per_patologicas" Type="bit" Nullable="false" />
+    <Property Name="per_pat_txt" Type="nvarchar(max)" />
+    <Property Name="per_quirurgicas" Type="bit" Nullable="false" />
+    <Property Name="per_qui_txt" Type="nvarchar(max)" />
+    <Property Name="per_traumaticos" Type="bit" Nullable="false" />
+    <Property Name="per_tra_txt" Type="nvarchar(max)" />
+    <Property Name="per_alergias" Type="bit" Nullable="false" />
+    <Property Name="per_ale_txt" Type="nvarchar(max)" />
+    <Property Name="per_vacunas" Type="bit" Nullable="false" />
+    <Property Name="per_vac_txt" Type="nvarchar(max)" />
+    <Property Name="per_otros" Type="bit" Nullable="false" />
+    <Property Name="per_otr_txt" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="pla_id" />
+    </Key>
+    <Property Name="pla_id" Type="int" Nullable="false" />
+    <Property Name="pla_texto1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pla_texto2" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="profesion">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="provincia">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_nombre" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="prueba">
+    <Key>
+      <PropertyRef Name="pru_id" />
+    </Key>
+    <Property Name="pru_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pru_examen" Type="int" Nullable="false" />
+    <Property Name="pru_registro" Type="int" Nullable="false" />
+    <Property Name="pru_resultado" Type="varchar" MaxLength="20" />
+    <Property Name="pru_valor" Type="varchar" MaxLength="20" />
+    <Property Name="pru_codigo" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="pru_imagen" Type="image" Nullable="false" />
+    <Property Name="pru_fuera" Type="varchar" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="rayos">
+    <Key>
+      <PropertyRef Name="ray_id" />
+    </Key>
+    <Property Name="ray_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ray_paciente" Type="int" Nullable="false" />
+    <Property Name="ray_imagen" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="ray_observacion" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="registro">
+    <Key>
+      <PropertyRef Name="reg_id" />
+    </Key>
+    <Property Name="reg_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reg_paciente" Type="int" Nullable="false" />
+    <Property Name="reg_orden" Type="int" Nullable="false" />
+    <Property Name="reg_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="reg_medico" Type="int" />
+    <Property Name="reg_estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="revision">
+    <Key>
+      <PropertyRef Name="rev_id" />
+    </Key>
+    <Property Name="rev_id" Type="int" Nullable="false" />
+    <Property Name="rev_organos" Type="bit" Nullable="false" />
+    <Property Name="rev_org_txt" Type="nvarchar(max)" />
+    <Property Name="rev_respiratorio" Type="bit" Nullable="false" />
+    <Property Name="rev_res_txt" Type="nvarchar(max)" />
+    <Property Name="rev_cardiovascular" Type="bit" Nullable="false" />
+    <Property Name="rev_car_txt" Type="nvarchar(max)" />
+    <Property Name="rev_digestivo" Type="bit" Nullable="false" />
+    <Property Name="rev_dig_txt" Type="nvarchar(max)" />
+    <Property Name="rev_genital" Type="bit" Nullable="false" />
+    <Property Name="rev_gen_txt" Type="nvarchar(max)" />
+    <Property Name="rev_urinario" Type="bit" Nullable="false" />
+    <Property Name="rev_uri_txt" Type="nvarchar(max)" />
+    <Property Name="rev_musculo" Type="bit" Nullable="false" />
+    <Property Name="rev_mus_txt" Type="nvarchar(max)" />
+    <Property Name="rev_endocrino" Type="bit" Nullable="false" />
+    <Property Name="rev_end_txt" Type="nvarchar(max)" />
+    <Property Name="rev_linfatico" Type="bit" Nullable="false" />
+    <Property Name="rev_lin_txt" Type="nvarchar(max)" />
+    <Property Name="rev_nervioso" Type="bit" Nullable="false" />
+    <Property Name="rev_ner_txt" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="riesgo">
+    <Key>
+      <PropertyRef Name="rie_id" />
+    </Key>
+    <Property Name="rie_id" Type="int" Nullable="false" />
+    <Property Name="rie_grupo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="rie_nombre" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="signos">
+    <Key>
+      <PropertyRef Name="sig_id" />
+    </Key>
+    <Property Name="sig_id" Type="int" Nullable="false" />
+    <Property Name="sig_presion" Type="varchar" MaxLength="25" />
+    <Property Name="sig_cardiaca" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_respiratoria" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_temperatura" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_peso" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_talla" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_masa" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_perimetro" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_viceral" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_corporal" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_kilocalorias" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="sig_edadpeso" Type="varchar" MaxLength="25" />
+    <Property Name="sig_masamuscular" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="sub_cie10">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="int" Nullable="false" />
+    <Property Name="sub_codigo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="sub_descripcion" Type="varchar" MaxLength="350" Nullable="false" />
+    <Property Name="sub_cie10" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="subsecuente">
+    <Key>
+      <PropertyRef Name="sub_id" />
+    </Key>
+    <Property Name="sub_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sub_historia" Type="int" Nullable="false" />
+    <Property Name="sub_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="sub_hora" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="sub_subjetivo" Type="nvarchar(max)" />
+    <Property Name="sub_objetivo" Type="nvarchar(max)" />
+    <Property Name="sub_analisis" Type="nvarchar(max)" />
+    <Property Name="sub_plan" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="vacuna">
+    <Key>
+      <PropertyRef Name="vac_id" />
+    </Key>
+    <Property Name="vac_id" Type="int" Nullable="false" />
+    <Property Name="vac_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="vac_dosis" Type="int" Nullable="false" />
+    <Property Name="vac_esquema" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="valores">
+    <Key>
+      <PropertyRef Name="val_id" />
+    </Key>
+    <Property Name="val_id" Type="int" Nullable="false" />
+    <Property Name="val_minimo" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="val_maximo" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="val_categoria" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="val_examen" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_audiometria_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="audiometria" Type="Self.audiometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="audiometria">
+        <PropertyRef Name="aud_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_canton_provincia">
+    <End Role="provincia" Type="Self.provincia" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="canton" Type="Self.canton" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="provincia">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="canton">
+        <PropertyRef Name="can_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_control_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="control" Type="Self.control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="control">
+        <PropertyRef Name="con_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_control_perfil">
+    <End Role="perfil" Type="Self.perfil" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="control" Type="Self.control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="per_id" />
+      </Principal>
+      <Dependent Role="control">
+        <PropertyRef Name="con_perfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_diagnostico_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="diagnostico" Type="Self.diagnostico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="diagnostico">
+        <PropertyRef Name="dia_historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_diagnostico_sub_cie10">
+    <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="1" />
+    <End Role="diagnostico" Type="Self.diagnostico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sub_cie10">
+        <PropertyRef Name="sub_id" />
+      </Principal>
+      <Dependent Role="diagnostico">
+        <PropertyRef Name="dia_subcie10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_espirometria_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="espirometria" Type="Self.espirometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="espirometria">
+        <PropertyRef Name="esp_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_examen_area">
+    <End Role="area" Type="Self.area" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="examen" Type="Self.examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="are_id" />
+      </Principal>
+      <Dependent Role="examen">
+        <PropertyRef Name="exa_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_familiar_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="familiar" Type="Self.familiar" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="familiar">
+        <PropertyRef Name="fam_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fisico_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="fisico" Type="Self.fisico" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="fisico">
+        <PropertyRef Name="fis_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ginecologico_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ginecologico" Type="Self.ginecologico" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="ginecologico">
+        <PropertyRef Name="gin_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_historia_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="historia" Type="Self.historia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="historia">
+        <PropertyRef Name="his_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inmunizacion_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="inmunizacion" Type="Self.inmunizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="inmunizacion">
+        <PropertyRef Name="inm_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_inmunizacion_vacuna">
+    <End Role="vacuna" Type="Self.vacuna" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="inmunizacion" Type="Self.inmunizacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vacuna">
+        <PropertyRef Name="vac_id" />
+      </Principal>
+      <Dependent Role="inmunizacion">
+        <PropertyRef Name="inm_vacuna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_laboral_ocupacional">
+    <End Role="ocupacional" Type="Self.ocupacional" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="laboral" Type="Self.laboral" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ocupacional">
+        <PropertyRef Name="ocu_id" />
+      </Principal>
+      <Dependent Role="laboral">
+        <PropertyRef Name="lab_ocupacional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_laboral_riesgo">
+    <End Role="riesgo" Type="Self.riesgo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="laboral" Type="Self.laboral" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="riesgo">
+        <PropertyRef Name="rie_id" />
+      </Principal>
+      <Dependent Role="laboral">
+        <PropertyRef Name="lab_riesgo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medico_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="medico" Type="Self.medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="esp_id" />
+      </Principal>
+      <Dependent Role="medico">
+        <PropertyRef Name="med_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ocupacional_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ocupacional" Type="Self.ocupacional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="ocupacional">
+        <PropertyRef Name="ocu_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_canton">
+    <End Role="canton" Type="Self.canton" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="canton">
+        <PropertyRef Name="can_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_pais">
+    <End Role="pais" Type="Self.pais" Multiplicity="0..1" />
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="pais_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_paciente_profesion">
+    <End Role="profesion" Type="Self.profesion" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="profesion">
+        <PropertyRef Name="pro_id" />
+      </Principal>
+      <Dependent Role="paciente">
+        <PropertyRef Name="pac_profesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personal_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="personal" Type="Self.personal" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="personal">
+        <PropertyRef Name="per_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_plan_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="plan" Type="Self.plan" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="plan">
+        <PropertyRef Name="pla_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prueba_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="prueba" Type="Self.prueba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="prueba">
+        <PropertyRef Name="pru_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prueba_registro">
+    <End Role="registro" Type="Self.registro" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="prueba" Type="Self.prueba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro">
+        <PropertyRef Name="reg_id" />
+      </Principal>
+      <Dependent Role="prueba">
+        <PropertyRef Name="pru_registro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rayos_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="rayos" Type="Self.rayos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="rayos">
+        <PropertyRef Name="ray_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="registro" Type="Self.registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="reg_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_registro_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="registro" Type="Self.registro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="registro">
+        <PropertyRef Name="reg_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_revision_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="revision" Type="Self.revision" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="revision">
+        <PropertyRef Name="rev_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_signos_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="signos" Type="Self.signos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="signos">
+        <PropertyRef Name="sig_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sub_cie10_cie10">
+    <End Role="cie10" Type="Self.cie10" Multiplicity="1" />
+    <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cie10">
+        <PropertyRef Name="cie_id" />
+      </Principal>
+      <Dependent Role="sub_cie10">
+        <PropertyRef Name="sub_cie10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subsecuente_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="subsecuente" Type="Self.subsecuente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="subsecuente">
+        <PropertyRef Name="sub_historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_valores_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="valores" Type="Self.valores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="valores">
+        <PropertyRef Name="val_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="kinnemedModelStoreContainer">
+    <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cie10" EntityType="Self.cie10" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="control" EntityType="Self.control" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="diagnostico" EntityType="Self.diagnostico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="espirometria" EntityType="Self.espirometria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="examen" EntityType="Self.examen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="familiar" EntityType="Self.familiar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="fisico" EntityType="Self.fisico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ginecologico" EntityType="Self.ginecologico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="historia" EntityType="Self.historia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="inmunizacion" EntityType="Self.inmunizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="laboral" EntityType="Self.laboral" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ocupacional" EntityType="Self.ocupacional" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="personal" EntityType="Self.personal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="plan" EntityType="Self.plan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="profesion" EntityType="Self.profesion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="provincia" EntityType="Self.provincia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="prueba" EntityType="Self.prueba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="rayos" EntityType="Self.rayos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="registro" EntityType="Self.registro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="revision" EntityType="Self.revision" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="riesgo" EntityType="Self.riesgo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sub_cie10" EntityType="Self.sub_cie10" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="subsecuente" EntityType="Self.subsecuente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vacuna" EntityType="Self.vacuna" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="audiometria" EntitySet="audiometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
+      <End Role="provincia" EntitySet="provincia" />
+      <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_control_examen" Association="Self.FK_control_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="control" EntitySet="control" />
+    </AssociationSet>
+    <AssociationSet Name="FK_control_perfil" Association="Self.FK_control_perfil">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="control" EntitySet="control" />
+    </AssociationSet>
+    <AssociationSet Name="FK_diagnostico_historia" Association="Self.FK_diagnostico_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_diagnostico_sub_cie10" Association="Self.FK_diagnostico_sub_cie10">
+      <End Role="sub_cie10" EntitySet="sub_cie10" />
+      <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_espirometria_paciente" Association="Self.FK_espirometria_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="espirometria" EntitySet="espirometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_examen_area" Association="Self.FK_examen_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="examen" EntitySet="examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_familiar_paciente" Association="Self.FK_familiar_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="familiar" EntitySet="familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fisico_historia" Association="Self.FK_fisico_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="fisico" EntitySet="fisico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ginecologico_paciente" Association="Self.FK_ginecologico_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="ginecologico" EntitySet="ginecologico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_historia_paciente" Association="Self.FK_historia_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="historia" EntitySet="historia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inmunizacion_paciente" Association="Self.FK_inmunizacion_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="inmunizacion" EntitySet="inmunizacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_inmunizacion_vacuna" Association="Self.FK_inmunizacion_vacuna">
+      <End Role="vacuna" EntitySet="vacuna" />
+      <End Role="inmunizacion" EntitySet="inmunizacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_laboral_ocupacional" Association="Self.FK_laboral_ocupacional">
+      <End Role="ocupacional" EntitySet="ocupacional" />
+      <End Role="laboral" EntitySet="laboral" />
+    </AssociationSet>
+    <AssociationSet Name="FK_laboral_riesgo" Association="Self.FK_laboral_riesgo">
+      <End Role="riesgo" EntitySet="riesgo" />
+      <End Role="laboral" EntitySet="laboral" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medico_especialidad" Association="Self.FK_medico_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
+      <End Role="medico" EntitySet="medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ocupacional_paciente" Association="Self.FK_ocupacional_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="ocupacional" EntitySet="ocupacional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_canton" Association="Self.FK_paciente_canton">
+      <End Role="canton" EntitySet="canton" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_empresa" Association="Self.FK_paciente_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_pais" Association="Self.FK_paciente_pais">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_paciente_profesion" Association="Self.FK_paciente_profesion">
+      <End Role="profesion" EntitySet="profesion" />
+      <End Role="paciente" EntitySet="paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personal_paciente" Association="Self.FK_personal_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="personal" EntitySet="personal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_plan_historia" Association="Self.FK_plan_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="plan" EntitySet="plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prueba_examen" Association="Self.FK_prueba_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prueba_registro" Association="Self.FK_prueba_registro">
+      <End Role="registro" EntitySet="registro" />
+      <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rayos_paciente" Association="Self.FK_rayos_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="rayos" EntitySet="rayos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_medico" Association="Self.FK_registro_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_registro_paciente" Association="Self.FK_registro_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_revision_historia" Association="Self.FK_revision_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="revision" EntitySet="revision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_signos_historia" Association="Self.FK_signos_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="signos" EntitySet="signos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sub_cie10_cie10" Association="Self.FK_sub_cie10_cie10">
+      <End Role="cie10" EntitySet="cie10" />
+      <End Role="sub_cie10" EntitySet="sub_cie10" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subsecuente_historia" Association="Self.FK_subsecuente_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="subsecuente" EntitySet="subsecuente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_valores_examen" Association="Self.FK_valores_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="valores" EntitySet="valores" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

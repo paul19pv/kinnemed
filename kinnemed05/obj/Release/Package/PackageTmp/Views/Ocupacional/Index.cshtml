@@ -1,0 +1,123 @@
+﻿@model IEnumerable<kinnemed05.Models.ocupacional>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_empresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_seccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_jornada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_tiempo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_maquinaria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_materiales)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_sustancias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_equipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ocu_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_empresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_seccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_jornada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_tiempo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_maquinaria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_materiales)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_sustancias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_equipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_tipo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ocu_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.pac_cedula)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
