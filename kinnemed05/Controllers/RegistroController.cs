@@ -25,10 +25,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Registro/
 
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var registro = db.registro.Include(r => r.paciente);
+            if (id != null)
+                registro = db.registro.Where(r => r.reg_paciente == id);
             registro = registro.Where(r => r.reg_estado != false);
+            if (Request.IsAjaxRequest())
+                return PartialView("Index_historia",registro.ToList());
             return View(registro.ToList());
         }
 
@@ -67,6 +71,7 @@ namespace kinnemed05.Controllers
             }
             return View(registro);
         }
+        
 
         //
         // GET: /Registro/Create

@@ -43,6 +43,21 @@
             },
             minLength: 2
         });
+
+
+        $.ajax({
+            url: $("#link_index").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val() },
+            success: function (data) {
+                $('#div_index').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
+        });
+
+
     });
     $(document).ajaxStart(function () {
         $('#div_loading').show();
@@ -50,6 +65,9 @@
     $(document).ajaxStop(function () {
         $('#div_loading').hide();
     });
+
+
+   
 
 </script>
 
@@ -115,6 +133,15 @@
         </div>
     </div>
 </div>
+<div id="div_index" style="clear:both" class="col-lg-12">
+
+</div>
+
+
+
+<a href="@Url.Content("~/Registro/Index")" id="link_index"></a>
+<a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

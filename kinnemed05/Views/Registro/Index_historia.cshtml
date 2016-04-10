@@ -1,0 +1,70 @@
+﻿@model IEnumerable<kinnemed05.Models.registro>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script>
+    $(".icon-table").click(function () {
+        alert($(this).attr('href'));
+        //$.ajax({
+        //    url: $(this).attr('href'),
+        //    type: 'GET',
+        //    //data: { id: $('#pac_id').val() },
+        //    success: function (data) {
+        //        $('#div_detail').html(data)
+        //    },
+        //    error: function (xhr, status, error) {
+        //        alert(error)
+        //    }
+        });
+    });
+</script>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover ">
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.paciente.pac_nombres) @Html.DisplayNameFor(model => model.paciente.pac_apellidos)*@
+                    Paciente
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.reg_orden)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.reg_fecha)
+                </th>
+                <th></th>
+            </tr>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reg_orden)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reg_fecha)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Resultados", "Details", "Prueba", new { reg_id = item.reg_id }, new { @class = "iconb icon-table", @title = "Resultados" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
+</div>
+
+<div id="div_detail" style="clear:both">
+
+</div>
+
+
+
+

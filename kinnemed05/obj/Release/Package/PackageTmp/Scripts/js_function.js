@@ -16,7 +16,7 @@
     progressbar.progressbar({
         value: false,
         change: function () {
-            progressLabel.css("width", progressbar.progressbar("value"));
+            progressLabel.css("width", progressbar.progressbar("value")+"%");
             //progressLabel.text(progressbar.progressbar("value") + "%");
         },
         complete: function () {
@@ -27,7 +27,7 @@
     function progress() {
         var val = progressbar.progressbar("value") || 0;
 
-        //progressbar.progressbar("value", val + 2);
+        progressbar.progressbar("value", val + 2);
 
         if (val < 99) {
             setTimeout(progress, 80);

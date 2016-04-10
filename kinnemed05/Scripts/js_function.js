@@ -16,7 +16,7 @@
     progressbar.progressbar({
         value: false,
         change: function () {
-            progressLabel.css("width", progressbar.progressbar("value"));
+            progressLabel.css("width", progressbar.progressbar("value")+"%");
             //progressLabel.text(progressbar.progressbar("value") + "%");
         },
         complete: function () {
