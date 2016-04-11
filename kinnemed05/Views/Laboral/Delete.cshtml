@@ -1,0 +1,40 @@
+﻿@model kinnemed05.Models.laboral
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>laboral</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ocupacional.ocu_empresa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ocupacional.ocu_empresa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.riesgo.rie_grupo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.riesgo.rie_grupo)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

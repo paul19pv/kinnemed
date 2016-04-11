@@ -70,6 +70,7 @@ namespace kinnemed05.Controllers
                 {
                     rayos.ray_imagen = fileName;
                     if (ModelState.IsValid && (Array.IndexOf(formatos, ext) > 0))
+                    //if (ModelState.IsValid)
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/rayos"), fileName);
                         file.SaveAs(path);
@@ -196,8 +197,9 @@ namespace kinnemed05.Controllers
 
         public ActionResult Download(int id = 0)
         {
-            string contentType = "application/pdf";
             rayos rayos = db.rayos.Find(id);
+            string[] filename = rayos.ray_imagen.Split('.');
+            string contentType = "application/"+filename[1];
             if (rayos == null)
             {
                 return HttpNotFound();

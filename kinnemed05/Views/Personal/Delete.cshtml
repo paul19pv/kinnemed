@@ -1,33 +1,231 @@
 ﻿@model kinnemed05.Models.personal
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Edit";
 }
+<script>
+    $(document).ajaxStart(function () {
+        $('#div_loading').show();
+    });
+    $(document).ajaxStop(function () {
+        $('#div_loading').hide();
+    });
+    $(function () {
+        $("#per_patologicas").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_patologicas").show();
+                $("#per_pat_txt").val("");
+            } else {
+                $("#div_patologicas").hide();
+                $("#per_pat_txt").val("NO REFIERE");
+            }
+        });
+        $("#per_quirurgicas").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_quirurgicas").show();
+                $("#per_qui_txt").val("");
+            } else {
+                $("#div_quirurgicas").hide();
+                $("#per_qui_txt").val("NO REFIERE");
+            }
+        });
+        $("#per_traumaticos").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_traumaticos").show();
+                $("#per_tra_txt").val("");
+            } else {
+                $("#div_traumaticos").hide();
+                $("#per_tra_txt").val("NO REFIERE");
+            }
+        });
+        $("#per_alergias").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_alergias").show();
+                $("#per_ale_txt").val("");
+            } else {
+                $("#div_alergias").hide();
+                $("#per_ale_txt").val("NO REFIERE");
+            }
+        });
+        $("#per_vacunas").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_vacunas").show();
+                $("#per_vac_txt").val("");
+            } else {
+                $("#div_vacunas").hide();
+                $("#per_vac_txt").val("NO REFIERE");
+            }
+        });
+        $("#per_otros").change(function () {
+            if ($(this).is(':checked')) {
+                $("#div_otros").show();
+                $("#per_otr_txt").val("");
+            } else {
+                $("#div_otros").hide();
+                $("#per_otr_txt").val("NO REFIERE");
+            }
+        });
 
-<h2>Delete</h2>
+        if ($('#per_patologicas').is(':checked')) {
+            $("#div_patologicas").show();
+        }
+        else {
+            $("#div_patologicas").hide();
+        }
+        if ($("#per_quirurgicas").is(':checked')) {
+            $("#div_quirurgicas").show();
+        }
+        else {
+            $("#div_quirurgicas").hide();
+        }
+        if ($('#per_traumaticos').is(':checked')) {
+            $("#div_traumaticos").show();
+        }
+        else {
+            $("#div_traumaticos").hide();
+        }
+        if ($('#per_alergias').is(':checked')) {
+            $("#div_alergias").show();
+        }
+        else {
+            $("#div_alergias").hide();
+        }
+        if ($('#per_vacunas').is(':checked')) {
+            $("#div_vacunas").show();
+        }
+        else {
+            $("#div_vacunas").hide();
+        }
+        if ($('#per_otros').is(':checked')) {
+            $("#div_otros").show();
+        }
+        else {
+            $("#div_otros").hide();
+        }
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>personal</legend>
+    })
+</script>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.historia.his_motivo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.historia.his_motivo)
-    </div>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">2 Antecedentes Personales</h3>
+        </div>
+        <div class="panel-body">
+            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.per_id)
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.per_observacino)
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.per_patologicas)
+                            Patológicas
+                        </label>
+                        @Html.ValidationMessageFor(model => model.per_patologicas)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.per_quirurgicas)
+                            Quirúrgicas
+                        </label>
+                        @Html.ValidationMessageFor(model => model.per_quirurgicas)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.per_traumaticos)
+                            Traumáticas
+                        </label>
+                        @Html.ValidationMessageFor(model => model.per_traumaticos)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div id="div_patologicas" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.per_pat_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.per_pat_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_quirurgicas" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.per_qui_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.per_qui_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_traumaticos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.per_tra_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.per_tra_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.per_alergias)
+                            Alergias
+                        </label>
+                        @Html.ValidationMessageFor(model => model.per_alergias)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.per_vacunas)
+                            Vacunas
+                        </label>
+                        @Html.ValidationMessageFor(model => model.per_vacunas)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.per_otros)
+                            Otros
+                        </label>
+                        @Html.ValidationMessageFor(model => model.per_otros)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear: both">
+                    <div id="div_alergias" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.per_ale_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.per_ale_txt)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_vacunas" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.per_vac_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.per_vac_txt)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div id="div_otros" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.per_otr_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.per_otr_txt)
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3" style="clear:both; float:right">
+                    <div class="form-group">
+                        @Ajax.ActionLink("Anterior", "Edit", "Historia", new { id = Session["his_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+                        <input type="submit" value="Siguiente" class="btn btn-primary" />
+
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.per_observacino)
-    </div>
-</fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }

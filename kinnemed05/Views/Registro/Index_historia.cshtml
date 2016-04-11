@@ -5,18 +5,19 @@
 }
 <script>
     $(".icon-table").click(function () {
-        alert($(this).attr('href'));
-        //$.ajax({
-        //    url: $(this).attr('href'),
-        //    type: 'GET',
-        //    //data: { id: $('#pac_id').val() },
-        //    success: function (data) {
-        //        $('#div_detail').html(data)
-        //    },
-        //    error: function (xhr, status, error) {
-        //        alert(error)
-        //    }
+        //alert($(this).attr('href'));
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'GET',
+            //data: { id: $('#pac_id').val() },
+            success: function (data) {
+                $('#div_detail').html(data)
+            },
+            error: function (xhr, status, error) {
+                alert(error)
+            }
         });
+        return false;
     });
 </script>
 <div class="panel panel-default">

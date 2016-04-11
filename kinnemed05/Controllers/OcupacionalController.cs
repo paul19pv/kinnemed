@@ -178,6 +178,7 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "Diurno", Value = "Diurno" });
             list_jornada.Add(new SelectListItem { Text = "Nocturno", Value = "Nocturno" });
             list_jornada.Add(new SelectListItem { Text = "Rotativo", Value = "Rotativo" });
+            list_jornada.Add(new SelectListItem { Text = "Vespertino", Value = "Vespertino" });
             SelectList jornadas;
             if (jornada == "")
                 jornadas = new SelectList(list_jornada, "Value", "Text");
