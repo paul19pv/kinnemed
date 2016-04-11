@@ -45,18 +45,6 @@
         });
 
 
-        $.ajax({
-            url: $("#link_index").attr('href'),
-            type: 'GET',
-            data: { id: $('#his_paciente').val() },
-            success: function (data) {
-                $('#div_index').html(data)
-            },
-            error: function (xhr, status, error) {
-                alert(error)
-            }
-        });
-
 
     });
     $(document).ajaxStart(function () {

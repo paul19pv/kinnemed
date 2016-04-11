@@ -418,7 +418,92 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_piel)
                     </div>
+                    <div id="div_piel" class="form-garoup" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_pie_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_pie_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_cabeza)
+                            (CP/SP) 2R Cabeza
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_cabeza)
+                    </div>
+                    <div id="div_cabeza" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_cab_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_cab_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_ojos)
+                            (CP/SP) 3R Ojos
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_ojos)
+                    </div>
+                    <div id="div_ojos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_ojo_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_ojo_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_oidos)
+                            (CP/SP) 4R Oidos
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_oidos)
+                    </div>
+                    <div id="div_oidos" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_oid_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_oid_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_nariz)
+                            (CP/SP) 5R Nariz
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_nariz)
+                    </div>
+                    <div id="div_nariz" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_nar_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_nar_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_boca)
+                            (CP/SP) 6R Boca
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_boca)
+                    </div>
+                    <div id="div_boca" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_boc_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_boc_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_faringe)
+                            (CP/SP) 7R Oro Faringe
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_faringe)
+                    </div>
+                    <div class="col-lg-4" style="clear: both">
+                        <div id="div_faringe" class="form-group" style="display: none;">
+                            @Html.TextBoxFor(model => model.fis_far_txt, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.fis_far_txt)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_cuello)
+                            (CP/SP) 8R Cuello
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_cuello)
+                    </div>
+                    <div id="div_cuello" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_cue_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_cue_txt)
+                    </div>
                 </div>
+                
+                
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>
@@ -427,7 +512,79 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_axilas)
                     </div>
+                    <div id="div_axilas" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_axi_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_axi_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_torax)
+                            (CP/SP) 10R Torax
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_torax)
+                    </div>
+                    <div id="div_torax" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_tor_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_tor_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_abdomen)
+                            (CP/SP) 11R Abdomen
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_abdomen)
+                    </div>
+                    <div id="div_abdomen" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_abd_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_abd_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_columna)
+                            (CP/SP) 12R Columna Vertebral
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_columna)
+                    </div>
+                    <div id="div_columna" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_col_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_col_txt)
+                    </div>
+                    <div class="form-group" style="clear:both">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_ingle)
+                            (CP/SP) 13R Ingle-Perine
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_ingle)
+                    </div>
+                    <div id="div_ingle" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_ing_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_ing_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_mie_sup)
+                            (CP/SP) 14R Miembros Superiores
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_mie_sup)
+                    </div>
+                    <div id="div_mie_sup" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_msp_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_msp_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fis_mie_inf)
+                            (CP/SP) 15R Miembros Inferiores
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fis_mie_inf)
+                    </div>
+                    <div id="div_mie_inf" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fis_mif_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.fis_mif_txt)
+                    </div>
                 </div>
+                
+                
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>
@@ -436,47 +593,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_organos)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div id="div_piel" class="form-garoup" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_pie_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_pie_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_axilas" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_axi_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_axi_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_organos" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_org_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_org_txt)
                     </div>
-                </div>
-
-
-
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_cabeza)
-                            (CP/SP) 2R Cabeza
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_cabeza)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_torax)
-                            (CP/SP) 10R Torax
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_torax)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_respiratorio)
@@ -484,44 +604,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_respiratorio)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div id="div_cabeza" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_cab_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_cab_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_torax" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_tor_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_tor_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_respiratorio" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_res_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_res_txt)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_ojos)
-                            (CP/SP) 3R Ojos
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_ojos)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_abdomen)
-                            (CP/SP) 11R Abdomen
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_abdomen)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_cardiovascular)
@@ -529,44 +615,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_cardiovascular)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div id="div_ojos" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_ojo_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_ojo_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_abdomen" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_abd_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_abd_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_cardiovascular" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_car_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_car_txt)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_oidos)
-                            (CP/SP) 4R Oidos
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_oidos)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_columna)
-                            (CP/SP) 12R Columna Vertebral
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_columna)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_digestivo)
@@ -574,45 +626,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_digestivo)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div id="div_oidos" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_oid_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_oid_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_columna" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_col_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_col_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_digestivo" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_dig_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_dig_txt)
                     </div>
-                </div>
-
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_nariz)
-                            (CP/SP) 5R Nariz
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_nariz)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group" style="clear:both">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_ingle)
-                            (CP/SP) 13R Ingle-Perine
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_ingle)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_genital)
@@ -620,46 +637,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_genital)
                     </div>
-                </div>
-
-                <div class="col-lg-4" style="clear:both">
-                    <div id="div_nariz" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_nar_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_nar_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_ingle" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_ing_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_ing_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_genital" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_fen_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_fen_txt)
                     </div>
-                </div>
-
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_boca)
-                            (CP/SP) 6R Boca
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_boca)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_mie_sup)
-                            (CP/SP) 14R Miembros Superiores
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_mie_sup)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_urinario)
@@ -667,44 +648,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_urinario)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div id="div_boca" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_boc_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_boc_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_mie_sup" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_msp_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_msp_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_urinario" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_uri_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_uri_txt)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_faringe)
-                            (CP/SP) 7R Oro Faringe
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_faringe)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_mie_inf)
-                            (CP/SP) 15R Miembros Inferiores
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_mie_inf)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_esqueletico)
@@ -712,39 +659,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_esqueletico)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div id="div_faringe" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_far_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_far_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_mie_inf" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_mif_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_mif_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div id="div_esqueletico" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_esq_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_esq_txt)
                     </div>
-                </div>
-
-                <div class="col-lg-4" style="clear:both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fis_cuello)
-                            (CP/SP) 8R Cuello
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fis_cuello)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_endocrino)
@@ -752,29 +670,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_endocrino)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-                    <div id="div_cuello" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fis_cue_txt, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.fis_cue_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-
-                </div>
-                <div class="col-lg-4">
                     <div id="div_endocrino" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_end_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_res_txt)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-
-                </div>
-                <div class="col-lg-4">
-
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_linfatico)
@@ -782,28 +681,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_linfatico)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-
-                </div>
-                <div class="col-lg-4">
-
-                </div>
-                <div class="col-lg-4">
                     <div id="div_linfatico" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_lin_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_car_txt)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-
-                </div>
-                <div class="col-lg-4">
-
-                </div>
-
-
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fis_neurologico)
@@ -811,19 +692,12 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fis_neurologico)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear:both">
-
-                </div>
-                <div class="col-lg-4">
-
-                </div>
-                <div class="col-lg-4">
                     <div id="div_neurologico" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fis_neu_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fis_neu_txt)
                     </div>
                 </div>
+                
                 <div class="col-lg-3" style="clear:both; float:right">
                     <div class="form-group">
                         @Ajax.ActionLink("Anterior", "Edit", "Signos", new { id = ViewBag.fis_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
