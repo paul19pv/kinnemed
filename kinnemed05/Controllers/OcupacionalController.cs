@@ -49,6 +49,7 @@ namespace kinnemed05.Controllers
             ViewBag.ocu_paciente = id;
             ViewBag.ocu_tipo = "actual";
             ViewBag.ocu_jornada = ocu_jornada();
+            ViewBag.his_tipo = Session["his_tipo"];
             return PartialView();
         }
 
@@ -70,6 +71,7 @@ namespace kinnemed05.Controllers
             ViewBag.ocu_paciente = ocupacional.ocu_paciente;
             ViewBag.ocu_tipo = ocupacional.ocu_tipo;
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            ViewBag.his_tipo = Session["his_tipo"];
             return PartialView(ocupacional);
         }
 
@@ -121,7 +123,9 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Create", new { id=id});
             }
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
+            ocupacional.ocu_tiempo = get_tiempo(ocupacional.ocu_inicio);
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            ViewBag.his_tipo = Session["his_tipo"];
             return PartialView(ocupacional);
         }
 
@@ -141,6 +145,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", "Laboral", new { id = ocupacional.ocu_id });
             }
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+            ViewBag.his_tipo = Session["his_tipo"];
             return PartialView(ocupacional);
         }
 
@@ -185,6 +190,15 @@ namespace kinnemed05.Controllers
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
+        }
+
+        public decimal get_tiempo(string inicio) {
+            decimal tiempo = 0;
+            string[] fec_ini = inicio.Split('/');
+            DateTime da = DateTime.Now;
+            DateTime dn = new DateTime(Convert.ToInt32(fec_ini[2]), Convert.ToInt32(fec_ini[1]), Convert.ToInt32(fec_ini[0]));
+            tiempo = Convert.ToDecimal(da.Year - dn.Year);
+            return tiempo;
         }
 
         protected override void Dispose(bool disposing)

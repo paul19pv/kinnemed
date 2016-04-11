@@ -16,9 +16,16 @@ namespace kinnemed05.Controllers
         //
         // GET: /Historia/
 
-        public ActionResult Index(int tipo)
+        public ActionResult Index(int tipo, int? paciente, string fecha)
         {
-            var historia = db.historia.Where(h => h.his_tipo == tipo);
+            var historia = db.historia.Include(h=>h.paciente).Where(h => h.his_tipo == tipo);
+            if (paciente != null)
+                historia = historia.Where(h => h.his_paciente == paciente);
+            if (!String.IsNullOrEmpty(fecha))
+                historia = historia.Where(h => h.his_fecha == fecha);
+
+            ViewBag.paciente = "";
+            ViewBag.fecha = "";
             ViewBag.tipo = tipo;
             ViewBag.titulo = titulo(tipo);
             return View(historia.ToList());
@@ -45,6 +52,7 @@ namespace kinnemed05.Controllers
             ViewBag.tipo = tipo;
             ViewBag.his_tipo = his_tipo(tipo);
             if (tipo != 1) {
+                ViewBag.his_motivo = motivo(tipo);
                 return View("Create01");
             }
                 
@@ -74,11 +82,11 @@ namespace kinnemed05.Controllers
         }
 
         //Historias preocupacionales, ocupaciones y retiro
-        public ActionResult Create01()
-        {
-            ViewBag.his_tipo = his_tipo();
-            return View();
-        }
+        //public ActionResult Create01()
+        //{
+        //    ViewBag.his_tipo = his_tipo();
+        //    return View();
+        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create01(historia historia)
@@ -93,6 +101,7 @@ namespace kinnemed05.Controllers
                 if (historia.his_tipo == 2)
                     change_tipo(historia.his_paciente);
                 Session["his_id"] = historia.his_id;
+                Session["his_tipo"] = historia.his_tipo;
                 return RedirectToAction("Create", "Ocupacional", new { id = historia.his_paciente });
             }
             ViewBag.his_tipo = his_tipo(historia.his_tipo);
@@ -133,6 +142,7 @@ namespace kinnemed05.Controllers
                 db.Entry(historia).State = EntityState.Modified;
                 db.SaveChanges();
                 Session["his_id"] = historia.his_id;
+                Session["his_tipo"] = historia.his_tipo;
                 return RedirectToAction("Edit", "Personal", new { id = historia.his_paciente });
             }
 
@@ -170,6 +180,7 @@ namespace kinnemed05.Controllers
                 db.Entry(historia).State = EntityState.Modified;
                 db.SaveChanges();
                 Session["his_id"] = historia.his_id;
+                Session["his_tipo"] = historia.his_tipo;
                 return RedirectToAction("Edit", "Ocupacional", new { id = historia.his_paciente });
             }
             ViewBag.his_tipo = his_tipo(historia.his_tipo);
@@ -184,6 +195,9 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            int tipo=Convert.ToInt32(Session["his_tipo"]);
+            if(tipo!=1)
+                return RedirectToAction("Edit", "Revision", new { id = historia.his_id });
             return PartialView(historia);
         }
         [HttpPost]
@@ -291,6 +305,27 @@ namespace kinnemed05.Controllers
                     break;
                 case 4:
                     titulo = "de Retiro";
+                    break;
+            }
+            return titulo;
+        }
+
+        public string motivo(int tipo)
+        {
+            string titulo = String.Empty;
+            switch (tipo)
+            {
+                case 1:
+                    titulo = "Historia General";
+                    break;
+                case 2:
+                    titulo = "Historia Preocupacionales";
+                    break;
+                case 3:
+                    titulo = "Historia Periodicas";
+                    break;
+                case 4:
+                    titulo = "Historia de Retiro";
                     break;
             }
             return titulo;

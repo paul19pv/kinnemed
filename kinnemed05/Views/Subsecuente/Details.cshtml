@@ -1,0 +1,62 @@
+﻿@model kinnemed05.Models.subsecuente
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Modificar Hoja Subsecuente</h3>
+        </div>
+        <div class="panel-body">
+            
+                <div class="col-lg-3">
+                    <div class="form-group">
+
+
+                        @Html.LabelFor(model => model.sub_fecha, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_fecha, new { @class = "form-control", @readonly = "readonly"})
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_hora, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_hora, new { @class = "form-control", @readonly = "readonly"})
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_subjetivo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_subjetivo, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_objetivo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_objetivo, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_analisis, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_analisis, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_plan, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_plan, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+
+                    <div class="col-lg-3" style="clear:both;float:right;">
+                        <div class="form-group">
+                            @Html.ActionLink("Regresar", "Index", "Subsecuente", "", new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+
+
+            
+        </div>
+    </div>
+</div>

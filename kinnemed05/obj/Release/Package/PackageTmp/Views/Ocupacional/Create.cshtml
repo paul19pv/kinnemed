@@ -59,21 +59,35 @@
                         @Html.ValidationMessageFor(model => model.ocu_inicio)
                     </div>
                 </div>
+                
                 <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_fin, new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.ocu_fin, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_fin)
-                    </div>
+                    @if (ViewBag.his_tipo == 4)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ocu_fin, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.ocu_fin, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ocu_fin)
+                        </div>
+                    }
+                    else{
+                        @Html.HiddenFor(model => model.ocu_fin, new { Value="00/00/0000"})
+                    }
+
                 </div>
                 <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ocu_tiempo, new { @class = "control-label" })
-                        @Html.TextBoxFor(model => model.ocu_tiempo, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ocu_tiempo)
-                    </div>
+                    @if (ViewBag.his_tipo == 4 || ViewBag.his_tipo == 3)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ocu_tiempo, new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.ocu_tiempo, new { @class = "form-control", @readonly="readonly" })
+                            @Html.ValidationMessageFor(model => model.ocu_tiempo)
+                        </div>
+                    }else{
+                        @Html.HiddenFor(model => model.ocu_tiempo, new { Value = "0" })
+                    }
+
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="clear:both">
                     <div class="form-group">
                         @Html.LabelFor(model => model.ocu_cargo, new { @class = "control-label" })
                         @Html.TextBoxFor(model => model.ocu_cargo, new { @class = "form-control" })

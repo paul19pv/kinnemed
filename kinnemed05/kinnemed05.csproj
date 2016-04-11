@@ -206,6 +206,7 @@
     <Compile Include="Context\rayos.cs" />
     <Compile Include="Context\registro.cs" />
     <Compile Include="Context\signos.cs" />
+    <Compile Include="Context\subsecuente.cs" />
     <Compile Include="Controllers\AudiometriaController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\DiagnosticoController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
     <Compile Include="Controllers\SignosController.cs" />
+    <Compile Include="Controllers\SubsecuenteController.cs" />
     <Compile Include="DataAnnotation\Unique.cs" />
     <Compile Include="Models\area.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
@@ -293,6 +295,7 @@
     <Compile Include="Models\laboral.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\lista.cs" />
     <Compile Include="Models\medico.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
@@ -478,6 +481,7 @@
     <Content Include="Content\img\iconos\historia06-icon.png" />
     <Content Include="Content\img\iconos\historia07-icon.png" />
     <Content Include="Content\img\iconos\lungs-icon.png" />
+    <Content Include="Content\img\iconos\page-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />
     <Content Include="Content\img\iconos\ray-icon.png" />
     <Content Include="Content\img\iconos\search-icon.png" />
@@ -833,6 +837,13 @@
     <Content Include="Views\Laboral\Edit.cshtml" />
     <Content Include="Views\Ocupacional\Historico.cshtml" />
     <Content Include="Views\Registro\Index_historia.cshtml" />
+    <Content Include="Views\Subsecuente\Index.cshtml" />
+    <Content Include="Views\Subsecuente\Details.cshtml" />
+    <Content Include="Views\Subsecuente\Create.cshtml" />
+    <Content Include="Views\Subsecuente\Edit.cshtml" />
+    <Content Include="Views\Subsecuente\Delete.cshtml" />
+    <Content Include="Views\Subsecuente\Lista.cshtml" />
+    <Content Include="Views\Subsecuente\Historia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

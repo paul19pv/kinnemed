@@ -1,0 +1,77 @@
+﻿@model kinnemed05.Models.subsecuente
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Crear Hoja Subsecuente</h3>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.sub_historia, new { Value = ViewBag.sub_historia })
+                @Html.ValidationMessageFor(model => model.sub_historia)
+                <div class="col-lg-3">
+                    <div class="form-group">
+
+
+                        @Html.LabelFor(model => model.sub_fecha, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_fecha, new { @class = "form-control", @readonly = "readonly", Value=ViewBag.fecha })
+                        @Html.ValidationMessageFor(model => model.sub_fecha)
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_hora, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_hora, new { @class = "form-control", @readonly = "readonly", Value=ViewBag.hora })
+                        @Html.ValidationMessageFor(model => model.sub_hora)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_subjetivo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_subjetivo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.sub_subjetivo)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_objetivo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_objetivo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.sub_objetivo)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_analisis, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_analisis, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.sub_analisis)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.sub_plan, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.sub_plan, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.sub_plan)
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-3" style="clear:both;float:right;">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Subsecuente", "", new { @class = "btn btn-default" })
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
