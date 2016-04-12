@@ -1,0 +1,50 @@
+﻿@model kinnemed05.Models.inmunizacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>inmunizacion</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inm_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inm_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vacuna.vac_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vacuna.vac_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inm_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inm_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inm_tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inm_tipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

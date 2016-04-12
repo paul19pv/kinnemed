@@ -1,0 +1,54 @@
+﻿@model kinnemed05.Models.inmunizacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>inmunizacion</legend> asd
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inm_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inm_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vacuna.vac_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vacuna.vac_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inm_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inm_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.inm_tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.inm_tipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
