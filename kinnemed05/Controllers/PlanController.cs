@@ -95,7 +95,7 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(plan).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Message", "Home", new { mensaje = "Datos Guardados. El proceso ha finalizado." });
+                return RedirectToAction("Create", "Inmunizacion");
             }
             ViewBag.pla_id = plan.pla_id;
             return PartialView(plan);

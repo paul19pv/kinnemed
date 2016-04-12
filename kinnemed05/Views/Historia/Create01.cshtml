@@ -51,6 +51,7 @@
         $('#div_loading').hide();
     });
 
+
 </script>
 
 <div id="div_form">
@@ -60,7 +61,7 @@
                 <h3 class="panel-title">Datos del Paciente</h3>
             </div>
             <div class="panel-body">
-                @using (Ajax.BeginForm("Create01", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+                @using (Ajax.BeginForm("Create01", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
@@ -104,8 +105,8 @@
 
                     <div class="col-lg-3" style="clear:both;float:right;">
                         <br />
-                        <div class="form-group">
-                            @Html.ActionLink("Regresar", "Index", "Historia", new {tipo=ViewBag.tipo }, new { @class = "btn btn-default" })
+                        <div class="form-group" style="float:right">
+                            @Html.ActionLink("Regresar", "Index", "Historia", new { tipo = ViewBag.tipo }, new { @class = "btn btn-default" })
                             <input type="submit" value="Siguiente" class="btn btn-primary" />
                         </div>
                     </div>

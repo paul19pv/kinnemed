@@ -198,6 +198,7 @@
     <Compile Include="Context\espirometria.cs" />
     <Compile Include="Context\ginecologico.cs" />
     <Compile Include="Context\historia.cs" />
+    <Compile Include="Context\inmunizacion.cs" />
     <Compile Include="Context\medico.cs" />
     <Compile Include="Context\ocupacional.cs" />
     <Compile Include="Context\paciente.cs" />
@@ -215,6 +216,7 @@
     <Compile Include="Controllers\FisicoController.cs" />
     <Compile Include="Controllers\GinecologicoController.cs" />
     <Compile Include="Controllers\HistoriaController.cs" />
+    <Compile Include="Controllers\InmunizacionController.cs" />
     <Compile Include="Controllers\LaboralController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
@@ -844,6 +846,11 @@
     <Content Include="Views\Subsecuente\Delete.cshtml" />
     <Content Include="Views\Subsecuente\Lista.cshtml" />
     <Content Include="Views\Subsecuente\Historia.cshtml" />
+    <Content Include="Views\Inmunizacion\Index.cshtml" />
+    <Content Include="Views\Inmunizacion\Details.cshtml" />
+    <Content Include="Views\Inmunizacion\Create.cshtml" />
+    <Content Include="Views\Inmunizacion\Edit.cshtml" />
+    <Content Include="Views\Inmunizacion\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

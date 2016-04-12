@@ -139,7 +139,7 @@
             <h3 class="panel-title">Diagnosticos</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnComplete = "clean_txt" }))
+            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnComplete = "clean_txt", OnFailure = "error" }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -206,9 +206,9 @@
 </div>
 <div class="col-lg-12" style="clear:both">
     <div class="col-lg-3" style="clear:both;float:right;">
-        <div class="form-group">
-            @Ajax.ActionLink("Anterior", "Edit", "Fisico", new { id = ViewBag.dia_historia }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
-            @Ajax.ActionLink("Siguiente", "Create", "Plan", new { id = ViewBag.dia_historia }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-primary" })
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Edit", "Fisico", new { id = ViewBag.dia_historia }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            @Ajax.ActionLink("Siguiente", "Create", "Plan", new { id = ViewBag.dia_historia }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-primary" })
         </div>
     </div>
 </div>

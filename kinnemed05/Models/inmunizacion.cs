@@ -15,10 +15,7 @@ namespace kinnemed05.Models
     public partial class inmunizacion
     {
         public int inm_id { get; set; }
-        public int inm_vacuna { get; set; }
-        public string inm_fecha { get; set; }
-        public string inm_tipo { get; set; }
-        public int inm_paciente { get; set; }
+        
     
         public virtual paciente paciente { get; set; }
         public virtual vacuna vacuna { get; set; }

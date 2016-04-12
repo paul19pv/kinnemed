@@ -20,7 +20,7 @@
             //progressLabel.text(progressbar.progressbar("value") + "%");
         },
         complete: function () {
-            progressLabel.text("Completo");
+            //progressLabel.text("Completo");
         }
     });
 
@@ -47,4 +47,9 @@ restaFechas = function (f1, f2) {
     var dif = fFecha2 - fFecha1;
     var dias = Math.floor(dif / (1000 * 60 * 60 * 24*365));
     return dias;
+}
+
+function error(result, status, xhr) {
+    alert("Ocurrio un problema con la variable de sesión, empiece el proceso nuevamente, si el problema persiste contacte con el administrador");
+    $(location).attr('href', $("#link_error").attr("href"));
 }

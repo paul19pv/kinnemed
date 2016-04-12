@@ -163,15 +163,16 @@
             </div>
             
 
-            <div class="col-lg-3" style="clear:both; float:right">
-                <div class="form-group">
-                    @Ajax.ActionLink("Anterior", "Edit", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
-                    @Ajax.ActionLink("Siguiente", "Historico", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-primary" })
-
-                </div>
-            </div>
+           
 
         </div>
+    </div>
+</div>
+<div class="col-lg-3" style="clear:both; float:right">
+    <div class="form-group" style="float:right">
+        @Ajax.ActionLink("Anterior", "Edit", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+        @Ajax.ActionLink("Siguiente", "Historico", "Ocupacional", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-primary" })
+
     </div>
 </div>
 <a href="@Url.Content("~/Laboral/Edit")" id="link_edit"></a>
