@@ -120,6 +120,8 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            if (historia.his_tipo != 1)
+                return RedirectToAction("Edit", "Historico", new { id = historia.his_paciente });
             if (Request.IsAjaxRequest())
             {
                 return PartialView(historia);
@@ -196,8 +198,8 @@ namespace kinnemed05.Controllers
                 return HttpNotFound();
             }
             int tipo=Convert.ToInt32(Session["his_tipo"]);
-            if(tipo!=1)
-                return RedirectToAction("Edit", "Revision", new { id = historia.his_id });
+            if (tipo != 1)
+                return RedirectToAction("Edit", "Familiar", new { id = historia.his_paciente });
             return PartialView(historia);
         }
         [HttpPost]

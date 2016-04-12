@@ -397,15 +397,15 @@
         $('#div_loading').hide();
     });
 </script>
+@using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Exámen Físico</h3>
+            </div>
+            <div class="panel-body">
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Exámen Físico</h3>
-        </div>
-        <div class="panel-body">
-            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
-            {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.fis_id, new { Value = ViewBag.fis_id })
@@ -502,8 +502,8 @@
                         @Html.ValidationMessageFor(model => model.fis_cue_txt)
                     </div>
                 </div>
-                
-                
+
+
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>
@@ -583,8 +583,8 @@
                         @Html.ValidationMessageFor(model => model.fis_mif_txt)
                     </div>
                 </div>
-                
-                
+
+
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>
@@ -697,20 +697,20 @@
                         @Html.ValidationMessageFor(model => model.fis_neu_txt)
                     </div>
                 </div>
-                
-               
-            }
+
+
+
+            </div>
         </div>
     </div>
-</div>
-<div class="col-lg-3" style="clear:both; float:right">
-    <div class="form-group" style="float:right">
-        @Ajax.ActionLink("Anterior", "Edit", "Signos", new { id = ViewBag.fis_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
-        <input type="submit" value="Siguiente" class="btn btn-primary" />
+    <div class="col-lg-3" style="clear:both; float:right">
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Edit", "Signos", new { id = ViewBag.fis_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            <input type="submit" value="Siguiente" class="btn btn-primary" />
 
+        </div>
     </div>
-</div>
-
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

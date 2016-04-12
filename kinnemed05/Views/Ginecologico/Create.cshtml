@@ -24,14 +24,15 @@
         }
     });
 </script>
+@using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
+            {
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">2A Ginecológico</h3>
+            <h3 class="panel-title">Ginecológico</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
-            {
+            
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.gin_id, new { Value = ViewBag.gin_id })
@@ -103,17 +104,20 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3" style="clear:both;float:right;">
+                
+            
+        </div>
+    </div>
+</div>
+    <div class="col-lg-3" style="clear:both;float:right;">
                     <br />
-                    <div class="form-group">
+                    <div class="form-group" style="float:right">
                         @Ajax.ActionLink("Anterior", "Edit", "Personal", new { id = ViewBag.gin_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
                         <input type="submit" value="Siguiente" class="btn btn-primary" />
                     </div>
                 </div>
+    
             }
-        </div>
-    </div>
-</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

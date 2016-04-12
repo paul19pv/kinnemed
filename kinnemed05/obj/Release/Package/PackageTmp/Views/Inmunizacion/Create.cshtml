@@ -46,15 +46,15 @@
         $("#inm_tipo").val("");
     }
 </script>
-
+@using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnComplete = "clean_txt", OnFailure = "error" }))
+            {
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Inmunización</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnComplete = "clean_txt", OnFailure = "error" }))
-            {
+            
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.inm_paciente, new { Value = @ViewBag.inm_paciente })
@@ -86,16 +86,14 @@
                 </div>
 
 
-            }
+            
         </div>
     </div>
 </div>
 
 <a href="@Url.Content("~/Inmunizacion/Index")" id="link_index"></a>
 
-<div id="div_index" style="clear:both">
 
-</div>
 <div class="col-lg-12" style="clear:both">
     <div class="col-lg-3" style="clear:both;float:right;">
         <div class="form-group" style="float:right">
@@ -104,6 +102,12 @@
         </div>
 
     </div>
+</div>
+            }
+
+
+<div id="div_index" style="clear:both">
+
 </div>
 
 <div id="div_loading" class="progress progress-striped active" style="display:none">

@@ -179,14 +179,15 @@
         }
     });
 </script>
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Antecedentes Familiares @ViewBag.valor</h3>
-        </div>
-        <div class="panel-body">
-            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
-            {
+@using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Antecedentes Familiares @ViewBag.valor</h3>
+            </div>
+            <div class="panel-body">
+
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.fam_id, new { Value = @ViewBag.fam_id })
@@ -228,14 +229,14 @@
 
                 <div class="col-lg-4">
                     <div id="div_diabetes" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_dia_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_dia_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_dia_txt)
                     </div>
                 </div>
 
                 <div class="col-lg-4">
                     <div id="div_cardiovascular" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_vas_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_vas_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_vas_txt)
                     </div>
                 </div>
@@ -274,7 +275,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div id="div_cancer" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_can_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_can_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_can_txt)
                     </div>
                 </div>
@@ -315,13 +316,13 @@
                 </div>
                 <div class="col-lg-4" style="clear: both">
                     <div id="div_mental" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_men_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_men_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_men_txt)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div id="div_infecciosa" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_inf_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_inf_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_inf_txt)
                     </div>
                 </div>
@@ -352,30 +353,31 @@
                 </div>
                 <div class="col-lg-4" style="clear:both;">
                     <div id="div_hipotiroidismo" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_hit_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_hit_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_hit_txt)
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div id="div_otro" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_otr_txt, new { @class = "form-control"})
+                        @Html.TextBoxFor(model => model.fam_otr_txt, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.fam_otr_txt)
                     </div>
                 </div>
 
 
-                
-            }
+
+
+            </div>
         </div>
     </div>
-</div>
-<div class="col-lg-3" style="clear:both; float:right">
-    <div class="form-group" style="float:right">
-        @Ajax.ActionLink("Anterior", "Edit", "Ginecologico", new { id = ViewBag.fam_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
-        <input type="submit" value="Siguiente" class="btn btn-primary" />
+    <div class="col-lg-3" style="clear:both; float:right">
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Edit", "Ginecologico", new { id = ViewBag.fam_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            <input type="submit" value="Siguiente" class="btn btn-primary" />
 
+        </div>
     </div>
-</div>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

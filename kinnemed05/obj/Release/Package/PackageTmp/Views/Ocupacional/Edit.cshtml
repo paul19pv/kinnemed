@@ -40,15 +40,15 @@
     }
 </script>
 
+@using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">INFORMACIÓN OCUPACIONAL</h3>
+            </div>
+            <div class="panel-body">
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">INFORMACIÓN OCUPACIONAL</h3>
-        </div>
-        <div class="panel-body">
-            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
-            {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.ocu_id)
@@ -61,17 +61,18 @@
                         @Html.ValidationMessageFor(model => model.ocu_inicio)
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4">
                     @if (ViewBag.his_tipo == 4)
                     {
                         <div class="form-group">
                             @Html.LabelFor(model => model.ocu_fin, new { @class = "control-label" })
-                            @Html.TextBoxFor(model => model.ocu_fin, new { @class = "form-control", Value="" })
+                            @Html.TextBoxFor(model => model.ocu_fin, new { @class = "form-control", Value = "" })
                             @Html.ValidationMessageFor(model => model.ocu_fin)
                         </div>
                     }
-                    else{
+                    else
+                    {
                         @Html.HiddenFor(model => model.ocu_fin)
                     }
 
@@ -81,10 +82,12 @@
                     {
                         <div class="form-group">
                             @Html.LabelFor(model => model.ocu_tiempo, new { @class = "control-label" })
-                            @Html.TextBoxFor(model => model.ocu_tiempo, new { @class = "form-control", @readonly="readonly" })
+                            @Html.TextBoxFor(model => model.ocu_tiempo, new { @class = "form-control", @readonly = "readonly" })
                             @Html.ValidationMessageFor(model => model.ocu_tiempo)
                         </div>
-                    }else{
+                    }
+                    else
+                    {
                         @Html.HiddenFor(model => model.ocu_tiempo)
                     }
 
@@ -146,17 +149,18 @@
                         @Html.ValidationMessageFor(model => model.ocu_equipo)
                     </div>
                 </div>
-                
-            }
+
+
+            </div>
         </div>
     </div>
-</div>
-<div class="col-lg-3" style="clear:both;float:right;">
-    <div class="form-group" style="float:right">
-        @Html.ActionLink("Regresar", "Edit02", "Historia", new { id = Session["his_id"] }, new { @class = "btn btn-default" })
-        <input type="submit" value="Siguiente" class="btn btn-primary" />
+    <div class="col-lg-3" style="clear:both;float:right;">
+        <div class="form-group" style="float:right">
+            @Html.ActionLink("Regresar", "Edit02", "Historia", new { id = Session["his_id"] }, new { @class = "btn btn-default" })
+            <input type="submit" value="Siguiente" class="btn btn-primary" />
+        </div>
     </div>
-</div>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

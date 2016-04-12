@@ -24,21 +24,21 @@
             alert(error)
         }
     });
-    
-</script>
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Planes</h3>
-        </div>
-        <div class="panel-body">
-            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
-            {
+</script>
+@using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Planes</h3>
+            </div>
+            <div class="panel-body">
+
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.pla_id, new { Value = ViewBag.pla_id })
-                @Html.Hidden("pac_id", "", new { Value = ViewBag.pac_id,@id="pac_id" })
+                @Html.Hidden("pac_id", "", new { Value = ViewBag.pac_id, @id = "pac_id" })
 
                 <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
@@ -55,19 +55,19 @@
                     </div>
                 </div>
 
-                
-            }
+
+
+            </div>
         </div>
     </div>
-</div>
-<div class="col-lg-3" style="clear:both; float:right">
-    <div class="form-group" style="float:right">
-        @Ajax.ActionLink("Anterior", "Create", "Diagnostico", new { id = ViewBag.pla_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
-        <input type="submit" value="Siguiente" class="btn btn-primary" />
+    <div class="col-lg-3" style="clear:both; float:right">
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Create", "Diagnostico", new { id = ViewBag.pla_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            <input type="submit" value="Siguiente" class="btn btn-primary" />
 
+        </div>
     </div>
-</div>
-
+}
 <div id="div_index" style="clear:both" class="col-lg-12">
 
 </div>

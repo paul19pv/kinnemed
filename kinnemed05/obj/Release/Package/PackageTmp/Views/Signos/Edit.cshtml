@@ -35,15 +35,15 @@
     });
 
 </script>
+@using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Signos Vitales y Mediciones</h3>
+            </div>
+            <div class="panel-body">
 
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Signos Vitales y Mediciones</h3>
-        </div>
-        <div class="panel-body">
-            @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
-            {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.sig_id, new { Value = ViewBag.sig_id })
@@ -149,17 +149,18 @@
 
 
 
-            }
+
+            </div>
         </div>
     </div>
-</div>
-<div class="col-lg-3" style="clear:both;float:right;">
-    <br />
-    <div class="form-group" style="float:right">
-        @Ajax.ActionLink("Anterior", "Edit", "Revision", new { id = ViewBag.sig_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
-        <input type="submit" value="Siguiente" class="btn btn-primary" />
+    <div class="col-lg-3" style="clear:both;float:right;">
+        <br />
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Edit", "Revision", new { id = ViewBag.sig_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            <input type="submit" value="Siguiente" class="btn btn-primary" />
+        </div>
     </div>
-</div>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
