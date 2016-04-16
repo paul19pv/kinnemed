@@ -22,7 +22,7 @@
                 $('#div_index').html("Sin Información")
             }
         });
-
+        //Antecedentes personales
         $.ajax({
             url: $("#link_personal").attr('href'),
             type: 'GET',
@@ -31,10 +31,10 @@
                 $('#div_personal').html(data)
             },
             error: function (xhr, status, error) {
-                $('#div_index').html("Sin Información")
+                $('#div_personal').html("Sin Información")
             }
         });
-
+        //antedecedentes familiares
         $.ajax({
             url: $("#link_familiar").attr('href'),
             type: 'GET',
@@ -43,10 +43,10 @@
                 $('#div_familiar').html(data)
             },
             error: function (xhr, status, error) {
-                $('#div_index').html("Sin Información")
+                $('#div_familiar').html("Sin Información")
             }
         });
-
+        //revision
         $.ajax({
             url: $("#link_revision").attr('href'),
             type: 'GET',
@@ -55,10 +55,10 @@
                 $('#div_revision').html(data)
             },
             error: function (xhr, status, error) {
-                $('#div_index').html("Sin Información")
+                $('#div_revision').html("Sin Información")
             }
         });
-
+        //signos vitales
         $.ajax({
             url: $("#link_signos").attr('href'),
             type: 'GET',
@@ -67,10 +67,10 @@
                 $('#div_signos').html(data)
             },
             error: function (xhr, status, error) {
-                $('#div_index').html("Sin Información")
+                $('#div_signos').html("Sin Información")
             }
         });
-
+        //examen físico
         $.ajax({
             url: $("#link_fisico").attr('href'),
             type: 'GET',
@@ -79,15 +79,68 @@
                 $('#div_fisico').html(data)
             },
             error: function (xhr, status, error) {
-                $('#div_index').html("Sin Información")
+                $('#div_fisico').html("Sin Información")
             }
         });
+
+        //informacion ocupacional
+        $.ajax({
+            url: $("#link_ocupacional").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val(), tipo: $('#his_tipo').val() },
+            success: function (data) {
+                $('#div_ocupacional').html(data)
+            },
+            error: function (xhr, status, error) {
+                $('#div_ocupacional').html("Sin Información")
+            }
+        });
+
+        //riesgos laborales
+        $.ajax({
+            url: $("#link_laboral").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val()},
+            success: function (data) {
+                $('#div_laboral').html(data)
+            },
+            error: function (xhr, status, error) {
+                $('#div_laboral').html("Sin Información")
+            }
+        });
+
+        //trabajos anteriores
+        $.ajax({
+            url: $("#link_historico").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val() },
+            success: function (data) {
+                $('#div_historico').html(data)
+            },
+            error: function (xhr, status, error) {
+                $('#div_historico').html("Sin Información")
+            }
+        });
+
+        //inmunizacion
+        $.ajax({
+            url: $("#link_inmunizacion").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_paciente').val() },
+            success: function (data) {
+                $('#div_inmunizacion').html(data)
+            },
+            error: function (xhr, status, error) {
+                $('#div_inmunizacion').html("Sin Información")
+            }
+        });
+
 
     });
 </script>
 @Html.HiddenFor(model => model.his_id)
 @Html.HiddenFor(model => model.his_paciente)
-@Html.HiddenFor(model=>model.his_tipo)
+@Html.HiddenFor(model => model.his_tipo)
 <div class="col-lg-12">
     <div class="panel panel-default">
         <div class="panel-heading">INFORMACIÓN DEL PACIENTE</div>
@@ -123,7 +176,7 @@
         <div class="panel-body">
             <div class="col-lg-12" style="clear:both">
                 <div class="form-group">
-                    @Html.TextAreaFor(model => model.his_motivo, new { @class = "form-control", @rows = "5",@readonly="readonly" })
+                    @Html.TextAreaFor(model => model.his_motivo, new { @class = "form-control", @rows = "5", @readonly = "readonly" })
                     @Html.ValidationMessageFor(model => model.his_motivo)
                 </div>
             </div>
@@ -140,32 +193,33 @@
 
         </div>
     </div>
-    @if (Model.his_tipo != 1) { 
+    @if (Model.his_tipo != 1)
+    {
         <div class="panel panel-default">
-        <div class="panel-heading">INFORMACIÓN OCUPACIONAL</div>
-        <div id="div_ocupacional" class="panel-body">
+            <div class="panel-heading">INFORMACIÓN OCUPACIONAL</div>
+            <div id="div_ocupacional" class="panel-body">
 
+            </div>
         </div>
-    </div>
         <div class="panel panel-default">
-        <div class="panel-heading">RIESGOS LABORALES</div>
-        <div id="div_ocupacional" class="panel-body">
+            <div class="panel-heading">RIESGOS LABORALES</div>
+            <div id="div_laboral" class="panel-body">
 
+            </div>
         </div>
-    </div>
         <div class="panel panel-default">
-        <div class="panel-heading">TRABAJOS ANTERIORES</div>
-        <div id="div_ocupacional" class="panel-body">
+            <div class="panel-heading">TRABAJOS ANTERIORES</div>
+            <div id="div_historico" class="panel-body">
 
+            </div>
         </div>
-    </div>    
     }
     <div class="panel panel-default">
         <div class="panel-heading">ENFERMEDAD O PROBLEMA ACTUAL</div>
         <div class="panel-body">
             <div class="col-lg-12" style="clear:both">
                 <div class="form-group">
-                    @Html.TextAreaFor(model => model.his_problema, new { @class = "form-control", @rows = "5",@readonly="readonly" })
+                    @Html.TextAreaFor(model => model.his_problema, new { @class = "form-control", @rows = "5", @readonly = "readonly" })
                 </div>
             </div>
         </div>
@@ -173,8 +227,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">REVISION ACTUAL DE ORGANOS Y SISTEMAS</div>
         <div id="div_revision" class="panel-body">
-            
-            
+
+
         </div>
         <div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
             <div class="progress-bar" style="width: 0%"></div>
@@ -183,7 +237,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">SIGNOS VITALES Y MEDICIONES</div>
         <div id="div_signos" class="panel-body">
-            
+
         </div>
 
     </div>
@@ -196,7 +250,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">DIAGNOSTICOS</div>
         <div id="div_index" class="panel-body">
-            
+
         </div>
     </div>
     <div class="panel panel-default">
@@ -205,7 +259,7 @@
             <div class="col-lg-12" style="clear:both">
                 <div class="form-group">
                     <label>Planes de Tratamiento Farmacologico</label>
-                    @Html.TextAreaFor(model => model.plan.pla_texto1, new { @class = "form-control", @rows = "10", @readonly="readonly" })
+                    @Html.TextAreaFor(model => model.plan.pla_texto1, new { @class = "form-control", @rows = "10", @readonly = "readonly" })
                 </div>
             </div>
             <div class="col-lg-12" style="clear:both">
@@ -217,6 +271,14 @@
 
         </div>
     </div>
+    @if (Model.his_tipo != 1) { 
+        <div class="panel panel-default">
+            <div class="panel-heading">INMUNIZACION</div>
+            <div id="div_inmunizacion" class="panel-body">
+
+            </div>
+        </div>
+    }
 </div>
 
 
@@ -226,3 +288,9 @@
 <a href="@Url.Content("~/Signos/Details")" id="link_signos"></a>
 <a href="@Url.Content("~/Fisico/Details")" id="link_fisico"></a>
 <a href="@Url.Content("~/Diagnostico/Consulta")" id="link_index"></a>
+
+
+<a href="@Url.Content("~/Ocupacional/Details")" id="link_ocupacional"></a>
+<a href="@Url.Content("~/Laboral/Details")" id="link_laboral"></a>
+<a href="@Url.Content("~/Ocupacional/Consulta")" id="link_historico"></a>
+<a href="@Url.Content("~/Inmunizacion/Consulta")" id="link_inmunizacion"></a>

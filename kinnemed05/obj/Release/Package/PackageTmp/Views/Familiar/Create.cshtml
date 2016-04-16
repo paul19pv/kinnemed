@@ -201,7 +201,46 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fam_cardiopatia)
                     </div>
+                    <div id="div_cardiopatia" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_car_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_car_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_hipertension)
+                            Hipertensión
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_hipertension)
+                    </div>
+                    <div id="div_hipertension" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_hip_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_hip_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_mental)
+                            Enf. Mental
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_mental)
+                    </div>
+                    <div id="div_mental" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_men_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_men_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_hipotiroidismo)
+                            Hipotiroidismo
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_hipotiroidismo)
+                    </div>
+                    <div id="div_hipotiroidismo" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_hit_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_hit_txt)
+                    </div>
                 </div>
+
+
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>
@@ -210,7 +249,46 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fam_diabetes)
                     </div>
+                    <div id="div_diabetes" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_dia_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_dia_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_cancer)
+                            Cancer
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_cancer)
+                    </div>
+                    <div id="div_cancer" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_can_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_can_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_infecciosa)
+                            Enf. Infecciosa
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_infecciosa)
+                    </div>
+                    <div id="div_infecciosa" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_inf_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_inf_txt)
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            @Html.CheckBoxFor(model => model.fam_otro)
+                            Otro
+                        </label>
+                        @Html.ValidationMessageFor(model => model.fam_otro)
+                    </div>
+                    <div id="div_otro" class="form-group" style="display: none;">
+                        @Html.TextBoxFor(model => model.fam_otr_txt, new { @class = "form-control", Value = "NO REFIERE" })
+                        @Html.ValidationMessageFor(model => model.fam_otr_txt)
+                    </div>
                 </div>
+
+
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>
@@ -219,46 +297,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fam_cardiovascular)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div id="div_cardiopatia" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_car_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_car_txt)
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div id="div_diabetes" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_dia_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_dia_txt)
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
                     <div id="div_cardiovascular" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fam_vas_txt, new { @class = "form-control", Value = "NO REFIERE" })
                         @Html.ValidationMessageFor(model => model.fam_vas_txt)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fam_hipertension)
-                            Hipertensión
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fam_hipertension)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fam_cancer)
-                            Cancer
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fam_cancer)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fam_tuberculosis)
@@ -266,46 +308,10 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fam_tuberculosis)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div id="div_hipertension" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_hip_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_hip_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_cancer" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_can_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_can_txt)
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
                     <div id="div_tuberculosis" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fam_tub_txt, new { @class = "form-control", Value = "NO REFIERE" })
                         @Html.ValidationMessageFor(model => model.fam_tub_txt)
                     </div>
-                </div>
-
-                <div class="col-lg-4" style="clear: both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fam_mental)
-                            Enf. Mental
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fam_mental)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fam_infecciosa)
-                            Enf. Infecciosa
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fam_infecciosa)
-                    </div>
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.fam_malformacion)
@@ -313,60 +319,11 @@
                         </label>
                         @Html.ValidationMessageFor(model => model.fam_malformacion)
                     </div>
-                </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div id="div_mental" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_men_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_men_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_infecciosa" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_inf_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_inf_txt)
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
                     <div id="div_malformacion" class="form-group" style="display: none;">
                         @Html.TextBoxFor(model => model.fam_mal_txt, new { @class = "form-control", Value = "NO REFIERE" })
                         @Html.ValidationMessageFor(model => model.fam_mal_txt)
                     </div>
                 </div>
-                <div class="col-lg-4" style="clear: both">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fam_hipotiroidismo)
-                            Hipotiroidismo
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fam_hipotiroidismo)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        <label>
-                            @Html.CheckBoxFor(model => model.fam_otro)
-                            Otro
-                        </label>
-                        @Html.ValidationMessageFor(model => model.fam_otro)
-                    </div>
-                </div>
-                <div class="col-lg-4" style="clear:both;">
-                    <div id="div_hipotiroidismo" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_hit_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_hit_txt)
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div id="div_otro" class="form-group" style="display: none;">
-                        @Html.TextBoxFor(model => model.fam_otr_txt, new { @class = "form-control", Value = "NO REFIERE" })
-                        @Html.ValidationMessageFor(model => model.fam_otr_txt)
-                    </div>
-                </div>
-
-
-
-
             </div>
         </div>
     </div>

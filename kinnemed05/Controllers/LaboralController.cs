@@ -25,14 +25,28 @@ namespace kinnemed05.Controllers
         //
         // GET: /Laboral/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id)
         {
-            laboral laboral = db.laboral.Find(id);
-            if (laboral == null)
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
+            if (!consulta.Any())
             {
                 return HttpNotFound();
             }
-            return View(laboral);
+            ocupacional ocupacional = consulta.First();
+            List<laboral> biologicos = db.laboral.Include(l => l.riesgo).Where(l => l.lab_ocupacional == ocupacional.ocu_id && l.riesgo.rie_grupo == "Biológicos").ToList();
+            List<laboral> biomecanicos = db.laboral.Include(l => l.riesgo).Where(l => l.lab_ocupacional == ocupacional.ocu_id && l.riesgo.rie_grupo == "Biomecánicas").ToList();
+            List<laboral> fisico = db.laboral.Include(l => l.riesgo).Where(l => l.lab_ocupacional == ocupacional.ocu_id && l.riesgo.rie_grupo == "Físico").ToList();
+            List<laboral> mecanicos = db.laboral.Include(l => l.riesgo).Where(l => l.lab_ocupacional == ocupacional.ocu_id && l.riesgo.rie_grupo == "Mecánicos").ToList();
+            List<laboral> psicosociales = db.laboral.Include(l => l.riesgo).Where(l => l.lab_ocupacional == ocupacional.ocu_id && l.riesgo.rie_grupo == "Psicosociales").ToList();
+            List<laboral> quimicos = db.laboral.Include(l => l.riesgo).Where(l => l.lab_ocupacional == ocupacional.ocu_id && l.riesgo.rie_grupo == "Químicos").ToList();
+            SetLaboral setlaboral = new SetLaboral();
+            setlaboral.biologicos = biologicos;
+            setlaboral.biomecanicos = biomecanicos;
+            setlaboral.fisico = fisico;
+            setlaboral.mecanicos = mecanicos;
+            setlaboral.psicosociales = psicosociales;
+            setlaboral.quimicos = quimicos;
+            return PartialView(setlaboral);
         }
 
         //

@@ -851,6 +851,8 @@
     <Content Include="Views\Inmunizacion\Create.cshtml" />
     <Content Include="Views\Inmunizacion\Edit.cshtml" />
     <Content Include="Views\Inmunizacion\Delete.cshtml" />
+    <Content Include="Views\Ocupacional\Consulta.cshtml" />
+    <Content Include="Views\Inmunizacion\Consulta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

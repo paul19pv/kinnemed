@@ -10,7 +10,7 @@ namespace kinnemed05.Models
     {
         [Display(Name="Historia")]
         public int dia_historia { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Observación")]
         public string dia_descripcion { get; set; }
         [Display(Name = "CIE10")]
         public int dia_subcie10 { get; set; }

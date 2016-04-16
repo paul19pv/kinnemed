@@ -121,7 +121,7 @@ namespace kinnemed05.Controllers
                 return HttpNotFound();
             }
             if (historia.his_tipo != 1)
-                return RedirectToAction("Edit", "Historico", new { id = historia.his_paciente });
+                return RedirectToAction("Historico", "Ocupacional", new { id = historia.his_paciente });
             if (Request.IsAjaxRequest())
             {
                 return PartialView(historia);
