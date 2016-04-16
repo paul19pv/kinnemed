@@ -82,19 +82,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="registro">
-      <EntityTypeMapping TypeName="kinnemedModel.registro">
-        <MappingFragment StoreEntitySet="registro">
-          <ScalarProperty Name="reg_laboratorista" ColumnName="reg_laboratorista" />
-          <ScalarProperty Name="reg_estado" ColumnName="reg_estado" />
-          <ScalarProperty Name="reg_medico" ColumnName="reg_medico" />
-          <ScalarProperty Name="reg_fecha" ColumnName="reg_fecha" />
-          <ScalarProperty Name="reg_orden" ColumnName="reg_orden" />
-          <ScalarProperty Name="reg_paciente" ColumnName="reg_paciente" />
-          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="control">
       <EntityTypeMapping TypeName="kinnemedModel.control">
         <MappingFragment StoreEntitySet="control">
@@ -525,6 +512,19 @@
           <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
           <ScalarProperty Name="pac_cedula" ColumnName="pac_cedula" />
           <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registro">
+      <EntityTypeMapping TypeName="kinnemedModel.registro">
+        <MappingFragment StoreEntitySet="registro">
+          <ScalarProperty Name="reg_laboratorista" ColumnName="reg_laboratorista" />
+          <ScalarProperty Name="reg_estado" ColumnName="reg_estado" />
+          <ScalarProperty Name="reg_medico" ColumnName="reg_medico" />
+          <ScalarProperty Name="reg_fecha" ColumnName="reg_fecha" />
+          <ScalarProperty Name="reg_orden" ColumnName="reg_orden" />
+          <ScalarProperty Name="reg_paciente" ColumnName="reg_paciente" />
+          <ScalarProperty Name="reg_id" ColumnName="reg_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

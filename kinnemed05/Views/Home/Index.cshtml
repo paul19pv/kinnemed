@@ -1,6 +1,14 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+
+@if (!String.IsNullOrEmpty(ViewBag.mensaje))
+{
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Advertencia!</strong> <a href="#" class="alert-link">@ViewBag.mensaje
+    </div>
+}
 <div class="jumbotron">
     <a class="btn btn-default btn-lg btn-img" title="Médico" href="@Url.Content("~/Medico/Index")">
         <img src="@Url.Content("~/Content/img/iconos/doctor-icon.png")" class="img-rounded" />
@@ -10,15 +18,19 @@
         <img src="@Url.Content("~/Content/img/iconos/patient-icon.png")" class="img-rounded" />
         <label>Pacientes</label>
     </a>
+    <a class="btn btn-default btn-lg btn-img" title="Laboratorista" href="@Url.Content("~/Laboratorista/Index")">
+        <img src="@Url.Content("~/Content/img/iconos/lab-icon.png")" class="img-rounded" />
+        <label>Labs.</label>
+    </a>
     <a class="btn btn-default btn-lg btn-img" title="Empresa" href="@Url.Content("~/Empresa/Index")">
         <img src="@Url.Content("~/Content/img/iconos/company-icon.png")" class="img-rounded" />
         <label>Empresas</label>
     </a>
-    
+
     @*<a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
-        <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
-        <label>Exámenes</label>
-    </a>*@
+            <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
+            <label>Exámenes</label>
+        </a>*@
     <a class="btn btn-default btn-lg btn-img" title="Laboratorio" href="@Url.Content("~/Registro/Index")">
         <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
         <label>Laboratorio</label>
@@ -41,6 +53,6 @@
     </a>
     <a class="btn btn-default btn-lg btn-img" title="Hoja Subsecuente" href="@Url.Content("~/Subsecuente/Index")">
         <img src="@Url.Content("~/Content/img/iconos/page-icon.png")" class="img-rounded" />
-        <label>Hoja Sub.</label>
+        <label>H. Sub.</label>
     </a>
 </div>

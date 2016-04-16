@@ -53,7 +53,7 @@
                             @Html.ValidationMessageFor(model => model.med_correo)
                         </div>
                         <div class="form-group">
-                            @Html.TextBoxFor(model => model.med_estado, new { @class = "form-control", Value = "activo", @type = "hidden" })
+                            @Html.TextBoxFor(model => model.med_estado, new { @class = "form-control", Value = true, @type = "hidden" })
                         </div>
                         <div class="form-group">
                             @Html.ActionLink("Regresar", "Index", "Medico", new { @class = "btn btn-default" })

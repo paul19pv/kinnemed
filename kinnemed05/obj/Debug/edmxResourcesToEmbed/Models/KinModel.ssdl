@@ -240,7 +240,7 @@
     <Property Name="lab_cedula" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="lab_nombres" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="lab_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="lab_correo" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="lab_correo" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="lab_firma" Type="varchar" MaxLength="256" />
     <Property Name="lab_estado" Type="bit" Nullable="false" />
   </EntityType>
@@ -392,7 +392,7 @@
     <Property Name="reg_paciente" Type="int" Nullable="false" />
     <Property Name="reg_orden" Type="int" Nullable="false" />
     <Property Name="reg_fecha" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="reg_medico" Type="int" />
+    <Property Name="reg_medico" Type="int" Nullable="false" />
     <Property Name="reg_estado" Type="bit" />
     <Property Name="reg_laboratorista" Type="int" Nullable="false" />
   </EntityType>
@@ -891,7 +891,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_registro_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="0..1">
+    <End Role="medico" Type="Self.medico" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="registro" Type="Self.registro" Multiplicity="*" />

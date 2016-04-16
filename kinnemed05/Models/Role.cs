@@ -11,7 +11,7 @@ namespace kinnemed05.Models
         public const string medico = "medico";
         public const string paciente = "paciente";
         public const string empresa = "empresa";
-        
+        public const string laboratorista = "laboratorista";
     }
 
     public enum UserRoles
@@ -19,6 +19,7 @@ namespace kinnemed05.Models
         admin = 1,
         medico = 2,
         paciente=3,
-        empresa=4
+        empresa=4,
+        laboratorista=5
     }
 }

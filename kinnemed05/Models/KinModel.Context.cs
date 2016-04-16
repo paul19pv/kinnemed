@@ -34,7 +34,6 @@ namespace kinnemed05.Models
         public DbSet<provincia> provincia { get; set; }
         public DbSet<valores> valores { get; set; }
         public DbSet<area> area { get; set; }
-        public DbSet<registro> registro { get; set; }
         public DbSet<control> control { get; set; }
         public DbSet<perfil> perfil { get; set; }
         public DbSet<prueba> prueba { get; set; }
@@ -62,5 +61,6 @@ namespace kinnemed05.Models
         public DbSet<laboratorista> laboratorista { get; set; }
         public DbSet<medico> medico { get; set; }
         public DbSet<paciente> paciente { get; set; }
+        public DbSet<registro> registro { get; set; }
     }
 }

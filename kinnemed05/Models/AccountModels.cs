@@ -31,6 +31,7 @@ namespace kinnemed05.Models
         public Nullable<int> UserMedico { get; set; }
         public Nullable<int> UserPaciente { get; set; }
         public Nullable<int> UserEmpresa { get; set; }
+        public Nullable<int> UserLaboratorista { get; set; }
     }
 
     public class RegisterExternalLoginModel

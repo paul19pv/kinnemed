@@ -486,6 +486,7 @@
     <Content Include="Content\img\iconos\historia05-icon.png" />
     <Content Include="Content\img\iconos\historia06-icon.png" />
     <Content Include="Content\img\iconos\historia07-icon.png" />
+    <Content Include="Content\img\iconos\lab-icon.png" />
     <Content Include="Content\img\iconos\lungs-icon.png" />
     <Content Include="Content\img\iconos\page-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />

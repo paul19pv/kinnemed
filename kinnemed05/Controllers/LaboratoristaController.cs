@@ -6,9 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Filters;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.admin)]
     public class LaboratoristaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
@@ -53,6 +57,16 @@ namespace kinnemed05.Controllers
             {
                 db.laboratorista.Add(laboratorista);
                 db.SaveChanges();
+
+                AccountController account = new AccountController();
+                account.CreateUserProfile(laboratorista.lab_cedula, laboratorista.lab_cedula);
+                UserManager userManager = new UserManager();
+                int Userid = userManager.UpdatePaciente(laboratorista.lab_cedula, laboratorista.lab_id);
+                UsersInRoles usersinroles = new UsersInRoles();
+                usersinroles.RoleId = 5;
+                usersinroles.UserId = Userid;
+                account.CreateUsersInRole(usersinroles);
+
                 return RedirectToAction("Index");
             }
 
@@ -109,6 +123,8 @@ namespace kinnemed05.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             laboratorista laboratorista = db.laboratorista.Find(id);
+            UserManager usermanager = new UserManager();
+            usermanager.DeleteUser(id, 3);
             db.laboratorista.Remove(laboratorista);
             db.SaveChanges();
             return RedirectToAction("Index");
