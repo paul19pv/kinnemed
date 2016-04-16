@@ -218,6 +218,7 @@
     <Compile Include="Controllers\HistoriaController.cs" />
     <Compile Include="Controllers\InmunizacionController.cs" />
     <Compile Include="Controllers\LaboralController.cs" />
+    <Compile Include="Controllers\LaboratoristaController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
@@ -295,6 +296,9 @@
       <DependentUpon>KinModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\laboral.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\laboratorista.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\lista.cs" />
@@ -853,6 +857,11 @@
     <Content Include="Views\Inmunizacion\Delete.cshtml" />
     <Content Include="Views\Ocupacional\Consulta.cshtml" />
     <Content Include="Views\Inmunizacion\Consulta.cshtml" />
+    <Content Include="Views\Laboratorista\Index.cshtml" />
+    <Content Include="Views\Laboratorista\Details.cshtml" />
+    <Content Include="Views\Laboratorista\Create.cshtml" />
+    <Content Include="Views\Laboratorista\Edit.cshtml" />
+    <Content Include="Views\Laboratorista\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

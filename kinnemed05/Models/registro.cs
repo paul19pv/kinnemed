@@ -21,8 +21,9 @@ namespace kinnemed05.Models
     
         public int reg_id { get; set; }
     
-        public virtual medico medico { get; set; }
         public virtual ICollection<prueba> prueba { get; set; }
+        public virtual laboratorista laboratorista { get; set; }
+        public virtual medico medico { get; set; }
         public virtual paciente paciente { get; set; }
     }
 }

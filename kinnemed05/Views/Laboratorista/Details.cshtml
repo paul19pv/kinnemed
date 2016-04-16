@@ -1,0 +1,64 @@
+﻿@model kinnemed05.Models.laboratorista
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>laboratorista</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_cedula)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_nombres)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_nombres)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_apellidos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_apellidos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_correo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_correo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_firma)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_firma)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lab_estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lab_estado)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

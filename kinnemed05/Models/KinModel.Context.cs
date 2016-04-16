@@ -29,7 +29,6 @@ namespace kinnemed05.Models
         public DbSet<componente> componente { get; set; }
         public DbSet<empresa> empresa { get; set; }
         public DbSet<especialidad> especialidad { get; set; }
-        public DbSet<medico> medico { get; set; }
         public DbSet<pais> pais { get; set; }
         public DbSet<profesion> profesion { get; set; }
         public DbSet<provincia> provincia { get; set; }
@@ -39,7 +38,6 @@ namespace kinnemed05.Models
         public DbSet<control> control { get; set; }
         public DbSet<perfil> perfil { get; set; }
         public DbSet<prueba> prueba { get; set; }
-        public DbSet<paciente> paciente { get; set; }
         public DbSet<fisico> fisico { get; set; }
         public DbSet<revision> revision { get; set; }
         public DbSet<cie10> cie10 { get; set; }
@@ -47,7 +45,6 @@ namespace kinnemed05.Models
         public DbSet<sub_cie10> sub_cie10 { get; set; }
         public DbSet<plan> plan { get; set; }
         public DbSet<familiar> familiar { get; set; }
-        public DbSet<historia> historia { get; set; }
         public DbSet<personal> personal { get; set; }
         public DbSet<signos> signos { get; set; }
         public DbSet<subsecuente> subsecuente { get; set; }
@@ -59,7 +56,11 @@ namespace kinnemed05.Models
         public DbSet<riesgo> riesgo { get; set; }
         public DbSet<vacuna> vacuna { get; set; }
         public DbSet<ocupacional> ocupacional { get; set; }
-        public DbSet<examen> examen { get; set; }
         public DbSet<laboral> laboral { get; set; }
+        public DbSet<examen> examen { get; set; }
+        public DbSet<historia> historia { get; set; }
+        public DbSet<laboratorista> laboratorista { get; set; }
+        public DbSet<medico> medico { get; set; }
+        public DbSet<paciente> paciente { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace kinnemed05.Models
     
         public int ocu_id { get; set; }
     
-        public virtual paciente paciente { get; set; }
         public virtual ICollection<laboral> laboral { get; set; }
+        public virtual paciente paciente { get; set; }
     }
 }

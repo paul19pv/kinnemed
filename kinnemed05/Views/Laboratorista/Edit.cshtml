@@ -1,0 +1,84 @@
+﻿@model kinnemed05.Models.laboratorista
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>laboratorista</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_id)
+            @Html.ValidationMessageFor(model => model.lab_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_cedula)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_cedula)
+            @Html.ValidationMessageFor(model => model.lab_cedula)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_nombres)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_nombres)
+            @Html.ValidationMessageFor(model => model.lab_nombres)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_apellidos)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_apellidos)
+            @Html.ValidationMessageFor(model => model.lab_apellidos)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_correo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_correo)
+            @Html.ValidationMessageFor(model => model.lab_correo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_firma)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_firma)
+            @Html.ValidationMessageFor(model => model.lab_firma)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.lab_estado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.lab_estado)
+            @Html.ValidationMessageFor(model => model.lab_estado)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

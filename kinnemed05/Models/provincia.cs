@@ -17,13 +17,11 @@ namespace kinnemed05.Models
         public provincia()
         {
             this.canton = new HashSet<canton>();
-            this.paciente = new HashSet<paciente>();
         }
     
         public int pro_id { get; set; }
         public string pro_nombre { get; set; }
     
         public virtual ICollection<canton> canton { get; set; }
-        public virtual ICollection<paciente> paciente { get; set; }
     }
 }

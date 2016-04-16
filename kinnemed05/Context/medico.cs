@@ -41,6 +41,9 @@ namespace kinnemed05.Models
         [EmailAddress(ErrorMessage = "El correo no tiene el formato correcto")]
         [StringLength(150, ErrorMessage = "La longitud máxima es 150 caracteres")]
         public string med_correo { get; set; }
-        public string med_estado { get; set; }
+        [Display(Name = "Firma")]
+        public string med_firma { get; set; }
+
+        public bool med_estado { get; set; }
     }
 }

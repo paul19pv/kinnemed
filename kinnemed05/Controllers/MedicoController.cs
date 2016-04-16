@@ -33,7 +33,7 @@ namespace kinnemed05.Controllers
             int cod_especialidad=0;
             //ViewBag.Reporte = exportar;
             var medico = db.medico.Include(m => m.especialidad);
-            medico=medico.Where(m=>m.med_estado!="INACTIVO");
+            medico=medico.Where(m=>m.med_estado!=false);
             if (!String.IsNullOrEmpty(searchString))
             {
                 searchString = searchString.ToUpper();

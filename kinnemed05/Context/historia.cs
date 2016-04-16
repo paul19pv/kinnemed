@@ -23,5 +23,7 @@ namespace kinnemed05.Models
         public string his_fecha { get; set; }
         [Display(Name = "Número")]
         public int his_numero { get; set; }
+        [Display(Name = "Médico")]
+        public int his_medico { get; set; }
     }
 }

@@ -18,5 +18,8 @@ namespace kinnemed05.Models
         public Nullable<int> reg_medico { get; set; }
         [Display(Name = "Estado")]
         public Nullable<bool> reg_estado { get; set; }
+        [Display(Name = "Laboratorista")]
+        public int reg_laboratorista { get; set; }
+
     }
 }
