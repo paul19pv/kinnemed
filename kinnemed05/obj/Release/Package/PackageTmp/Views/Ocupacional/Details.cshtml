@@ -4,124 +4,79 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_inicio, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.ocu_inicio, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-<fieldset>
-    <legend>ocupacional</legend>
+<div class="col-lg-4">
+    @if (ViewBag.his_tipo == 4)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.ocu_fin, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.ocu_fin, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_id)
-    </div>
+</div>
+<div class="col-lg-4">
+    @if (ViewBag.his_tipo == 4 || ViewBag.his_tipo == 3)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.ocu_tiempo, new { @class = "control-label" })
+            @Html.TextBoxFor(model => model.ocu_tiempo, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_empresa)
+</div>
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_cargo, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.ocu_cargo, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_empresa)
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_seccion, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.ocu_seccion, new { @class = "form-control", @readonly = "readonly" })
     </div>
+</div>
+<div class="col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_jornada, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.ocu_jornada, new { @class="form-control", @readonly = "readonly"})
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_descripcion, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.ocu_descripcion, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_seccion)
+<div class="col-lg-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_materiales, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.ocu_materiales, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_seccion)
+</div>
+<div class="col-lg-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_maquinaria, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.ocu_maquinaria, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_cargo)
+</div>
+<div class="col-lg-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_sustancias, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.ocu_sustancias, new { @class = "form-control", @readonly = "readonly" })
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_cargo)
+</div>
+<div class="col-lg-12">
+    <div class="form-group">
+        @Html.LabelFor(model => model.ocu_equipo, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.ocu_equipo, new { @class = "form-control", @readonly = "readonly" })
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_descripcion)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_descripcion)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_jornada)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_jornada)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_inicio)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_inicio)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_fin)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_fin)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_tiempo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_tiempo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_maquinaria)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_maquinaria)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_materiales)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_materiales)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_sustancias)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_sustancias)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_equipo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_equipo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_tipo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_tipo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocu_estado)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocu_estado)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.paciente.pac_cedula)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

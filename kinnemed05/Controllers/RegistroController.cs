@@ -15,16 +15,22 @@ using System.Drawing.Printing;
 using CrystalDecisions.Shared;
 using System.Security.Principal;
 using Microsoft.VisualBasic.FileIO;
+using kinnemed05.Filters;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.laboratorista)]
     public class RegistroController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Registro/
-
+        [InitializeSimpleMembership]
+        [CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
+        //[]
         public ActionResult Index(int? id)
         {
             var registro = db.registro.Include(r => r.paciente);

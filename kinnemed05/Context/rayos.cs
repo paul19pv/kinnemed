@@ -15,7 +15,6 @@ namespace kinnemed05.Models
         //[Required(ErrorMessage = "El campo Imagen es requerido")]
         public string ray_imagen { get; set; }
         [Display(Name = "Observación")]
-        [Required(ErrorMessage = "El campo Observación es requerido")]
         public string ray_observacion { get; set; }
     }
 }

@@ -14,7 +14,6 @@ namespace kinnemed05.Models
         [Display(Name = "Archivo")]
         public string esp_archivo { get; set; }
         [Display(Name = "Observación")]
-        [Required(ErrorMessage = "El campo Observación es requerido")]
         public string esp_observacion { get; set; }
     }
 }

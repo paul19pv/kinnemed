@@ -16,12 +16,14 @@ namespace kinnemed05.Models
     {
         public medico()
         {
+            this.historia = new HashSet<historia>();
             this.registro = new HashSet<registro>();
         }
     
         public int med_id { get; set; }
     
         public virtual especialidad especialidad { get; set; }
+        public virtual ICollection<historia> historia { get; set; }
         public virtual ICollection<registro> registro { get; set; }
     }
 }

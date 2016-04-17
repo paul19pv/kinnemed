@@ -20,10 +20,11 @@ namespace kinnemed05.Controllers
     //[CustomAuthorize(UserRoles.admin,UserRoles.empresa,UserRoles.medico)]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string mensaje)
         {
             //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
+            if (String.IsNullOrEmpty(mensaje))
+                ViewBag.mensaje = mensaje;
             return View();
         }
 
