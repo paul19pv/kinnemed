@@ -105,9 +105,9 @@ namespace kinnemed05.Controllers
                 db.medico.Add(medico);
                 db.SaveChanges();
                 AccountController account = new AccountController();
-                account.CreateUserProfile(medico.med_correo, medico.med_cedula);
+                account.CreateUserProfile(medico.med_cedula, medico.med_cedula);
                 UserManager userManager = new UserManager();
-                int Userid = userManager.UpdateMedico(medico.med_correo, medico.med_id);
+                int Userid = userManager.UpdateMedico(medico.med_cedula, medico.med_id);
                 UsersInRoles usersinroles = new UsersInRoles();
                 usersinroles.RoleId = 2;
                 usersinroles.UserId = Userid;

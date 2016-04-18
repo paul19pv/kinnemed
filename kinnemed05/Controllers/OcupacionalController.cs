@@ -12,19 +12,20 @@ using kinnemed05.Filters;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class OcupacionalController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Ocupacional/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int id)
         {
             var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o=>o.ocu_paciente==id && o.ocu_tipo=="historico");
             return PartialView(ocupacional.ToList());
         }
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Consulta(int id)
         {
             var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o => o.ocu_paciente == id && o.ocu_tipo == "historico");
@@ -33,7 +34,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ocupacional/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id, int tipo)
         {
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
@@ -48,6 +49,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Create
 
+[CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
@@ -66,6 +68,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Create
 
+[CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ocupacional ocupacional)
@@ -89,6 +92,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Create
 
+[CustomAuthorize(UserRoles.medico)]
         public ActionResult Historico(int id)
         {
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
@@ -102,6 +106,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Create
 
+[CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Historico(ocupacional ocupacional)
@@ -124,6 +129,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Edit/5
 
+[CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id)
         {
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
@@ -143,6 +149,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Edit/5
 
+[CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ocupacional ocupacional)
@@ -161,7 +168,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ocupacional/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id)
         {
             ocupacional ocupacional = db.ocupacional.Find(id);
@@ -172,7 +179,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Ocupacional/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -183,11 +190,11 @@ namespace kinnemed05.Controllers
             return RedirectToAction("Index");
         }
 
-        public string get_estado(int his_id) {
+        private string get_estado(int his_id) {
             string estado = String.Empty;
             return estado;
         }
-        public SelectList ocu_jornada(string jornada = "")
+        private SelectList ocu_jornada(string jornada = "")
         {
             List<SelectListItem> list_jornada = new List<SelectListItem>();
             list_jornada.Add(new SelectListItem { Text = "Diurno", Value = "Diurno" });
@@ -202,7 +209,7 @@ namespace kinnemed05.Controllers
             return jornadas;
         }
 
-        public decimal get_tiempo(string inicio) {
+        private decimal get_tiempo(string inicio) {
             decimal tiempo = 0;
             string[] fec_ini = inicio.Split('/');
             DateTime da = DateTime.Now;

@@ -14,14 +14,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista)]
+    
     public class PruebaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Prueba/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int id)
         {
             var prueba = db.prueba.Include(p => p.registro).Include(p => p.examen).Where(p => p.pru_registro == id && p.examen.exa_estado == "ACTIVO");
@@ -30,6 +30,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Details/5
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa,UserRoles.admin)]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Details(int reg_id)
         {
@@ -45,7 +46,7 @@ namespace kinnemed05.Controllers
                 return PartialView(setprueba);
             return View(setprueba);
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa)]
         public ActionResult Details(int paciente,string fecha)
         {
             var consulta = db.registro.Where(r => r.reg_paciente == paciente && r.reg_fecha == fecha);
@@ -61,7 +62,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Create
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Create(int id)
         {
             ViewBag.reg_id = id;
@@ -70,7 +71,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Prueba/Create
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(prueba prueba)
@@ -98,7 +99,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Edit(int res_id = 0)
         {
             List<prueba> resultado = db.prueba.Where(r => r.pru_registro == res_id).Include(p=>p.examen).ToList();
@@ -110,6 +111,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Prueba/Edit/5
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(registro registro)
@@ -129,6 +131,7 @@ namespace kinnemed05.Controllers
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
+        [CustomAuthorize(UserRoles.laboratorista)]
         public JsonResult Modificar(int id, string valor)
         {
             prueba prueba = db.prueba.Find(id);
@@ -137,6 +140,7 @@ namespace kinnemed05.Controllers
             //return new JsonResult { Data = new { mensaje = "Dato Guardado" } };
             return new JsonResult { Data = new { mensaje = "Datos Guardados" } };
         }
+        [CustomAuthorize(UserRoles.laboratorista)]
         public JsonResult Valor(int id, string valor)
         {
             prueba prueba = db.prueba.Find(id);
@@ -148,7 +152,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Delete(int id = 0)
         {
             prueba prueba = db.prueba.Find(id);
@@ -160,15 +164,15 @@ namespace kinnemed05.Controllers
         //
         // POST: /Prueba/Delete/5
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            prueba prueba = db.prueba.Find(id);
-            db.prueba.Remove(prueba);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    prueba prueba = db.prueba.Find(id);
+        //    db.prueba.Remove(prueba);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         private void CreatePrueba(string pru_nombre, int reg_id) {
             int are_id = db.area.Where(a => a.are_nombre == pru_nombre).First().are_id;

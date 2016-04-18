@@ -13,14 +13,14 @@ using kinnemed05.Filters;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista)]
+    //[CustomAuthorize(UserRoles.laboratorista)]
     public class RayosController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Rayos/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var rayos = db.rayos.Include(r => r.paciente);
@@ -29,7 +29,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Rayos/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             rayos rayos = db.rayos.Find(id);
@@ -50,6 +50,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/Create
 
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Create()
         {
             //ViewBag.ray_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula");
@@ -59,6 +60,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Rayos/Create
 
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(rayos rayos)
@@ -107,6 +109,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/Edit/5
 
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Edit(int id = 0)
         {
             rayos rayos = db.rayos.Find(id);
@@ -127,6 +130,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Rayos/Edit/5
 
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(rayos rayos)
@@ -182,6 +186,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/Delete/5
 
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             rayos rayos = db.rayos.Find(id);
@@ -199,22 +204,12 @@ namespace kinnemed05.Controllers
             return View(rayos);
         }
 
-        public ActionResult Download(int id = 0)
-        {
-            rayos rayos = db.rayos.Find(id);
-            string[] filename = rayos.ray_imagen.Split('.');
-            string contentType = "application/"+filename[1];
-            if (rayos == null)
-            {
-                return HttpNotFound();
-            }
-            return File(Server.MapPath("~/Content/rayos/") + rayos.ray_imagen, contentType, rayos.ray_imagen);
 
-        }
 
         //
         // POST: /Rayos/Delete/5
 
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -224,7 +219,18 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult Download(int id = 0)
+        {
+            rayos rayos = db.rayos.Find(id);
+            string[] filename = rayos.ray_imagen.Split('.');
+            string contentType = "application/" + filename[1];
+            if (rayos == null)
+            {
+                return HttpNotFound();
+            }
+            return File(Server.MapPath("~/Content/rayos/") + rayos.ray_imagen, contentType, rayos.ray_imagen);
 
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

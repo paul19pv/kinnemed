@@ -12,14 +12,15 @@ using kinnemed05.Filters;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
+    //[CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
     public class ControlController : Controller
     {
+        
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Control/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int id)
         {
             var control = db.control.Include(c => c.examen).Include(c => c.perfil).Where(c=>c.con_perfil==id);
@@ -28,7 +29,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Control/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             control control = db.control.Find(id);
@@ -41,7 +42,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Control/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Create(int id)
         {
             //ViewBag.con_examen = new SelectList(db.examen, "exa_id", "exa_nombre");
@@ -52,7 +53,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Control/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(control control)
@@ -70,7 +71,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Control/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             control control = db.control.Find(id);
@@ -85,7 +86,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Control/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(control control)
@@ -103,7 +104,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Control/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             control control = db.control.Find(id);
@@ -114,7 +115,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Control/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

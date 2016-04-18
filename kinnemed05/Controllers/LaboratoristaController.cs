@@ -61,7 +61,7 @@ namespace kinnemed05.Controllers
                 AccountController account = new AccountController();
                 account.CreateUserProfile(laboratorista.lab_cedula, laboratorista.lab_cedula);
                 UserManager userManager = new UserManager();
-                int Userid = userManager.UpdatePaciente(laboratorista.lab_cedula, laboratorista.lab_id);
+                int Userid = userManager.UpdateLaboratorista(laboratorista.lab_cedula, laboratorista.lab_id);
                 UsersInRoles usersinroles = new UsersInRoles();
                 usersinroles.RoleId = 5;
                 usersinroles.UserId = Userid;

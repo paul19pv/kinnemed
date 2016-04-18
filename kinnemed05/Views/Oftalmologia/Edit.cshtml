@@ -1,0 +1,148 @@
+﻿@model kinnemed05.Models.oftalmologia
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>oftalmologia</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_paciente, "paciente")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("oft_paciente", String.Empty)
+            @Html.ValidationMessageFor(model => model.oft_paciente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_con_od)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_con_od)
+            @Html.ValidationMessageFor(model => model.oft_con_od)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_con_oi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_con_oi)
+            @Html.ValidationMessageFor(model => model.oft_con_oi)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_sin_od)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_sin_od)
+            @Html.ValidationMessageFor(model => model.oft_sin_od)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_sin_oi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_sin_oi)
+            @Html.ValidationMessageFor(model => model.oft_sin_oi)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_ref_od)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_ref_od)
+            @Html.ValidationMessageFor(model => model.oft_ref_od)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_ref_oi)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_ref_oi)
+            @Html.ValidationMessageFor(model => model.oft_ref_oi)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_biomiscroscopia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_biomiscroscopia)
+            @Html.ValidationMessageFor(model => model.oft_biomiscroscopia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_bio_txt)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_bio_txt)
+            @Html.ValidationMessageFor(model => model.oft_bio_txt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_fondo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_fondo)
+            @Html.ValidationMessageFor(model => model.oft_fondo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_fon_txt)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_fon_txt)
+            @Html.ValidationMessageFor(model => model.oft_fon_txt)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_colores)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_colores)
+            @Html.ValidationMessageFor(model => model.oft_colores)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_diagnostico)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_diagnostico)
+            @Html.ValidationMessageFor(model => model.oft_diagnostico)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_indicaciones)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_indicaciones)
+            @Html.ValidationMessageFor(model => model.oft_indicaciones)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.oft_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.oft_id)
+            @Html.ValidationMessageFor(model => model.oft_id)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

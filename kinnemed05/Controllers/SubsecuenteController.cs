@@ -19,13 +19,13 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Subsecuente/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var subsecuente = db.subsecuente.Include(s => s.historia);
             return View(subsecuente.ToList());
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Historia(lista lista)
         {
             var historia = db.historia.Include(h => h.paciente);
@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Subsecuente/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             subsecuente subsecuente = db.subsecuente.Find(id);
@@ -51,13 +51,14 @@ namespace kinnemed05.Controllers
             }
             return View(subsecuente);
         }
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Lista() {
             ViewBag.tipo = his_tipo();
             return View();
         }
         //
         // GET: /Subsecuente/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             ViewBag.sub_historia = id;
@@ -69,7 +70,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Subsecuente/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(subsecuente subsecuente)
@@ -90,7 +91,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Subsecuente/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             subsecuente subsecuente = db.subsecuente.Find(id);
@@ -103,7 +104,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Subsecuente/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(subsecuente subsecuente)
@@ -119,7 +120,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Subsecuente/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             subsecuente subsecuente = db.subsecuente.Find(id);
@@ -132,7 +133,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Subsecuente/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

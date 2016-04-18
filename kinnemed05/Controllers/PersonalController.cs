@@ -12,14 +12,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class PersonalController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Personal/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var personal = db.personal.Include(p => p.paciente);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Personal/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             personal personal = db.personal.Find(id);
@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Personal/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             //ViewBag.per_id = new SelectList(db.historia, "his_id", "his_motivo");
@@ -56,7 +56,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Personal/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(personal personal)
@@ -82,6 +82,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Personal/Edit/5
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id)
         {
             personal personal = db.personal.Find(id);
@@ -96,7 +97,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Personal/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(personal personal)
@@ -122,7 +123,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Personal/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             personal personal = db.personal.Find(id);
@@ -135,7 +136,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Personal/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

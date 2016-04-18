@@ -64,7 +64,7 @@
                 <h3 class="panel-title">Datos del Paciente</h3>
             </div>
             <div class="panel-body">
-                @using (Ajax.BeginForm("Edit02", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure="error" }))
+                @using (Ajax.BeginForm("Edit02", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
@@ -74,6 +74,7 @@
                     @Html.HiddenFor(model => model.his_problema);
                     @Html.HiddenFor(model => model.his_fecha);
                     @Html.HiddenFor(model => model.his_numero);
+                    @Html.HiddenFor(model => model.his_medico);
                     <div class="col-lg-3">
                         <div class="form-group">
 

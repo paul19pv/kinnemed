@@ -192,6 +192,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\audiometria.cs" />
+    <Compile Include="Context\concepto.cs" />
     <Compile Include="Context\control.cs" />
     <Compile Include="Context\diagnostico.cs" />
     <Compile Include="Context\empresa.cs" />
@@ -199,8 +200,10 @@
     <Compile Include="Context\ginecologico.cs" />
     <Compile Include="Context\historia.cs" />
     <Compile Include="Context\inmunizacion.cs" />
+    <Compile Include="Context\laboratorista.cs" />
     <Compile Include="Context\medico.cs" />
     <Compile Include="Context\ocupacional.cs" />
+    <Compile Include="Context\oftalmologia.cs" />
     <Compile Include="Context\paciente.cs" />
     <Compile Include="Context\perfil.cs" />
     <Compile Include="Context\prueba.cs" />
@@ -220,6 +223,7 @@
     <Compile Include="Controllers\LaboralController.cs" />
     <Compile Include="Controllers\LaboratoristaController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
+    <Compile Include="Controllers\OftalmologiaController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
@@ -245,6 +249,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\componente.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\concepto.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\control.cs">
@@ -306,6 +313,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ocupacional.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\oftalmologia.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\paciente.cs">
@@ -469,6 +479,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap0.css" />
     <Content Include="Content\img\barcode-icon.png" />
     <Content Include="Content\img\delete-icon.png" />
     <Content Include="Content\img\edit-icon.png" />
@@ -863,6 +874,11 @@
     <Content Include="Views\Laboratorista\Create.cshtml" />
     <Content Include="Views\Laboratorista\Edit.cshtml" />
     <Content Include="Views\Laboratorista\Delete.cshtml" />
+    <Content Include="Views\Oftalmologia\Index.cshtml" />
+    <Content Include="Views\Oftalmologia\Details.cshtml" />
+    <Content Include="Views\Oftalmologia\Create.cshtml" />
+    <Content Include="Views\Oftalmologia\Edit.cshtml" />
+    <Content Include="Views\Oftalmologia\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
