@@ -64,9 +64,9 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 //crear los valores de usuario
                 AccountController account = new AccountController();
-                account.CreateUserProfile(empresa.emp_mail, empresa.emp_cedula);
+                account.CreateUserProfile(empresa.emp_cedula, empresa.emp_cedula);
                 UserManager userManager = new UserManager();
-                int Userid=userManager.UpdateEmpresa(empresa.emp_mail, empresa.emp_id);
+                int Userid = userManager.UpdateEmpresa(empresa.emp_cedula, empresa.emp_id);
                 UsersInRoles usersinroles = new UsersInRoles();
                 usersinroles.RoleId = 4;
                 usersinroles.UserId = Userid;

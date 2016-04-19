@@ -13,14 +13,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista,UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.laboratorista,UserRoles.medico)]
     public class EspirometriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Espirometria/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var espirometria = db.espirometria.Include(e => e.paciente);
@@ -29,7 +29,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             espirometria espirometria = db.espirometria.Find(id);
@@ -49,7 +49,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         public ActionResult Create()
         {
             //ViewBag.esp_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula");
@@ -58,7 +58,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Espirometria/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Create(HttpPostedFileBase FileUpload,espirometria espirometria)
@@ -104,7 +104,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             espirometria espirometria = db.espirometria.Find(id);
@@ -124,7 +124,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Espirometria/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(espirometria espirometria)
@@ -178,7 +178,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             espirometria espirometria = db.espirometria.Find(id);
@@ -195,6 +195,20 @@ namespace kinnemed05.Controllers
             @ViewBag.paciente = nom_pac;
             return View(espirometria);
         }
+       
+        //
+        // POST: /Espirometria/Delete/5
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            espirometria espirometria = db.espirometria.Find(id);
+            db.espirometria.Remove(espirometria);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Download(int id = 0)
         {
             string contentType = "application/pdf";
@@ -205,18 +219,6 @@ namespace kinnemed05.Controllers
             }
             return File(Server.MapPath("~/Content/espirometria/") + espirometria.esp_archivo, contentType, espirometria.esp_archivo);
 
-        }
-        //
-        // POST: /Espirometria/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            espirometria espirometria = db.espirometria.Find(id);
-            db.espirometria.Remove(espirometria);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

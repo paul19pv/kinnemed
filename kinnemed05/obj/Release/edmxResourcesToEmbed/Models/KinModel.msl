@@ -528,5 +528,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="concepto">
+      <EntityTypeMapping TypeName="kinnemedModel.concepto">
+        <MappingFragment StoreEntitySet="concepto">
+          <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
+          <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
+          <ScalarProperty Name="con_id" ColumnName="con_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oftalmologia">
+      <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
+        <MappingFragment StoreEntitySet="oftalmologia">
+          <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
+          <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
+          <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />
+          <ScalarProperty Name="oft_fon_txt" ColumnName="oft_fon_txt" />
+          <ScalarProperty Name="oft_fondo" ColumnName="oft_fondo" />
+          <ScalarProperty Name="oft_bio_txt" ColumnName="oft_bio_txt" />
+          <ScalarProperty Name="oft_biomiscroscopia" ColumnName="oft_biomiscroscopia" />
+          <ScalarProperty Name="oft_ref_oi" ColumnName="oft_ref_oi" />
+          <ScalarProperty Name="oft_ref_od" ColumnName="oft_ref_od" />
+          <ScalarProperty Name="oft_sin_oi" ColumnName="oft_sin_oi" />
+          <ScalarProperty Name="oft_sin_od" ColumnName="oft_sin_od" />
+          <ScalarProperty Name="oft_con_oi" ColumnName="oft_con_oi" />
+          <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
+          <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
+          <ScalarProperty Name="oft_id" ColumnName="oft_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

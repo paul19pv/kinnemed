@@ -12,21 +12,21 @@ using kinnemed05.Filters;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class DiagnosticoController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Diagnostico/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int id)
         {
             var diagnostico = db.diagnostico.Include(d => d.historia).Include(d => d.sub_cie10);
             diagnostico = diagnostico.Where(d => d.dia_historia == id);
             return PartialView(diagnostico.ToList());
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Consulta(int id)
         {
             var diagnostico = db.diagnostico.Include(d => d.historia).Include(d => d.sub_cie10);
@@ -36,7 +36,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Diagnostico/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             diagnostico diagnostico = db.diagnostico.Find(id);
@@ -49,7 +49,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Diagnostico/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             ViewBag.dia_historia = id;
@@ -60,7 +60,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Diagnostico/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(diagnostico diagnostico)
@@ -80,7 +80,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Diagnostico/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             diagnostico diagnostico = db.diagnostico.Find(id);
@@ -96,7 +96,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Diagnostico/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(diagnostico diagnostico)
@@ -115,7 +115,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Diagnostico/Delete/5
-
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             diagnostico diagnostico = db.diagnostico.Find(id);
@@ -126,7 +126,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Diagnostico/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

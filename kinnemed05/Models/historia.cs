@@ -30,5 +30,6 @@ namespace kinnemed05.Models
         public virtual revision revision { get; set; }
         public virtual signos signos { get; set; }
         public virtual ICollection<subsecuente> subsecuente { get; set; }
+        public virtual concepto concepto { get; set; }
     }
 }

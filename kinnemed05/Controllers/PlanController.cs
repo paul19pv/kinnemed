@@ -12,14 +12,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class PlanController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Plan/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var plan = db.plan.Include(p => p.historia);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Plan/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             plan plan = db.plan.Find(id);
@@ -42,6 +42,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Plan/Create
 
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             plan plan = db.plan.Find(id);
@@ -56,6 +57,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Plan/Create
 
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(plan plan)
@@ -64,7 +66,8 @@ namespace kinnemed05.Controllers
             {
                 db.plan.Add(plan);
                 db.SaveChanges();
-                return RedirectToAction("Message", "Home", new { mensaje="Datos Guardados. El proceso ha finalizado."});
+                //return RedirectToAction("Message", "Home", new { mensaje="Datos Guardados. El proceso ha finalizado."});
+                return RedirectToAction("Create", "Inmunizacion");
             }
 
             ViewBag.pla_id = plan.pla_id;
@@ -74,6 +77,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Plan/Edit/5
 
+[CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             plan plan = db.plan.Find(id);
@@ -91,6 +95,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Plan/Edit/5
 
+[CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(plan plan)
@@ -107,7 +112,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Plan/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             plan plan = db.plan.Find(id);
@@ -120,7 +125,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Plan/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

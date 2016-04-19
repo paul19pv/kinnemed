@@ -20,12 +20,6 @@ namespace kinnemed05.Models
         }
     
         public int lab_id { get; set; }
-        public string lab_cedula { get; set; }
-        public string lab_nombres { get; set; }
-        public string lab_apellidos { get; set; }
-        public string lab_correo { get; set; }
-        public string lab_firma { get; set; }
-        public bool lab_estado { get; set; }
     
         public virtual ICollection<registro> registro { get; set; }
     }

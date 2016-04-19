@@ -21,16 +21,18 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista)]
+    //[CustomAuthorize(UserRoles.laboratorista)]
     public class RegistroController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
+        private UsersContext db_users = new UsersContext();
 
         //
         // GET: /Registro/
-        [InitializeSimpleMembership]
-        [CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
+        //[InitializeSimpleMembership]
+        //[CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
         //[]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int? id)
         {
             var registro = db.registro.Include(r => r.paciente);
@@ -51,7 +53,7 @@ namespace kinnemed05.Controllers
         //    return new JsonResult() { Data = list_registro };
         //}
 
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Insert() {
             DateTime dd = DateTime.Now;
             string fecha = dd.Date.ToString("d");
@@ -67,7 +69,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Details/5
-
+        
         public ActionResult Details(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -81,7 +83,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Create
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Create()
         {
             //ViewBag.reg_id = new SelectList(db.paciente, "pac_id", "pac_cedula");
@@ -95,7 +97,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Registro/Create
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(registro registro)
@@ -107,6 +109,9 @@ namespace kinnemed05.Controllers
             string fecha = dd.Date.ToString("d");
             registro.reg_orden = GetOrden(fecha);
             registro.reg_estado = true;
+            registro.reg_laboratorista = get_user();
+            if (registro.reg_laboratorista == 0)
+                return RedirectToAction("Message", "Home", new { mensaje="Su perfil de usuario no permite realizar esta acción "});
             if (ModelState.IsValid)
             {
                 db.registro.Add(registro);
@@ -119,11 +124,12 @@ namespace kinnemed05.Controllers
             ViewBag.fecha = fecha;
             return View(registro);
         }
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Perfil() {
             ViewBag.con_perfil = new SelectList(db.perfil, "per_id", "per_nombre");
             return View();
         }
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Perfil(int reg_paciente,int con_perfil) {
@@ -148,10 +154,12 @@ namespace kinnemed05.Controllers
                 registro.reg_paciente = reg_paciente;
                 registro.reg_fecha = fecha;
                 registro.reg_orden = GetOrden(fecha);
+                registro.reg_laboratorista = get_user();
+                if (registro.reg_laboratorista == 0)
+                    return RedirectToAction("Message", "Home", new { mensaje = "Su perfil de usuario no permite realizar esta acción " });
                 db.registro.Add(registro);
                 db.SaveChanges();
                 int reg_id = registro.reg_id;
-
                 foreach (var item in list_control)
                 {
                     prueba prueba = new prueba();
@@ -174,7 +182,7 @@ namespace kinnemed05.Controllers
         }
         //
         // GET: /Registro/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -187,7 +195,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Registro/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(registro registro)
@@ -196,12 +204,12 @@ namespace kinnemed05.Controllers
                 return Codigo(registro);
             
         }
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         public ActionResult Cargar()
         {
             return View();
         }
-
+        [CustomAuthorize(UserRoles.laboratorista)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cargar(HttpPostedFileBase FileUpload)
@@ -209,21 +217,24 @@ namespace kinnemed05.Controllers
             try
             {
                 DataTable dt = new DataTable();
+                string mensaje = String.Empty;
                 string fileName = Path.GetFileName(FileUpload.FileName);
                 if (fileName != "")
                 {
                     string path = Path.Combine(Server.MapPath("~/Content/biometria"), fileName);
                     FileUpload.SaveAs(path);
                     dt = Process_CSV(path);
-                    ViewBag.mensaje = ProcessData(dt);
+                    mensaje = ProcessData(dt);
                     //return View("IndexCSV", dt);
-                    return View("Message");
+                    //return View("Message");
+                    return RedirectToAction("Message", "Home", new { mensaje=mensaje});
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.mensaje = ex.Message;
-                return View("Message");
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
 
             }
 
@@ -236,7 +247,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -250,7 +261,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Registro/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -313,10 +324,72 @@ namespace kinnemed05.Controllers
 
         }
 
-       
-        public ActionResult Message(string mensaje) {
-            return View(mensaje);
+        public ActionResult Reporte()
+        {
+            DateTime dd = DateTime.Now;
+            string fecha = dd.Date.ToString("d");
+            ViewBag.fecha = fecha;
+            return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reporte(registro registro)
+        {
+            try
+            {
+                var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                if (!consulta.Any())
+                    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+                Session["reg_paciente"] = registro.reg_paciente;
+                Session["reg_fecha"] = registro.reg_fecha;
+                ReportViewerViewModel model = new ReportViewerViewModel();
+                string content = Url.Content("~/Reports/Viewer/ViewPrueba.aspx");
+                model.ReportPath = content;
+                return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+        public ActionResult ReporteLimpio()
+        {
+            DateTime dd = DateTime.Now;
+            string fecha = dd.Date.ToString("d");
+            ViewBag.fecha = fecha;
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ReporteLimpio(registro registro)
+        {
+            try
+            {
+                var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                if (!consulta.Any())
+                    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+                Session["reg_paciente"] = registro.reg_paciente;
+                Session["reg_fecha"] = registro.reg_fecha;
+                ReportViewerViewModel model = new ReportViewerViewModel();
+                string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
+                model.ReportPath = content;
+                return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+
+       
+        //public ActionResult Message(string mensaje) {
+        //    return View(mensaje);
+        //}
 
         public DataTable Process_CSV(string fileName)
         {
@@ -507,63 +580,18 @@ namespace kinnemed05.Controllers
         //    return new JsonResult() { Data = areas };
 
         //}
-        public ActionResult Reporte() {
-            DateTime dd = DateTime.Now;
-            string fecha = dd.Date.ToString("d");
-            ViewBag.fecha = fecha;
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Reporte(registro registro)
+        
+        private int get_user()
         {
-            try
+            int user_id = 0;
+            if (Request.IsAuthenticated)
             {
-                var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                if(!consulta.Any())
-                    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
-                ReportViewerViewModel model = new ReportViewerViewModel();
-                string content = Url.Content("~/Reports/Viewer/ViewPrueba.aspx");
-                model.ReportPath = content;
-                return View("ReportViewer", model);
+                string user_name = String.Empty;
+                user_name = User.Identity.Name;
+                UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
+                user_id = userprofile.UserLaboratorista.GetValueOrDefault();
             }
-            catch (Exception ex)
-            {
-                ViewBag.mensaje = ex.Message;
-                return View("Message");
-            }
-        }
-        public ActionResult ReporteLimpio()
-        {
-            DateTime dd = DateTime.Now;
-            string fecha = dd.Date.ToString("d");
-            ViewBag.fecha = fecha;
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ReporteLimpio(registro registro)
-        {
-            try
-            {
-                var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                if (!consulta.Any())
-                    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
-                ReportViewerViewModel model = new ReportViewerViewModel();
-                string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
-                model.ReportPath = content;
-                return View("ReportViewer", model);
-            }
-            catch (Exception ex)
-            {
-                ViewBag.mensaje = ex.Message;
-                return View("Message");
-            }
+            return user_id;
         }
         protected override void Dispose(bool disposing)
         {
