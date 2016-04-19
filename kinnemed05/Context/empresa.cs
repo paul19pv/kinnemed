@@ -12,7 +12,7 @@ namespace kinnemed05.Models
         [Display(Name = "RUC")]
         [Required(ErrorMessage = "Campo Requerido")]
         [RegularExpression("^([0-9.&'-]+)$", ErrorMessage = "Solo se aceptan números")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "La longitud del campo debe ser 13 caracteres")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "La longitud del campo debe ser 13 caracteres.")]
         //[Unique]
         public string emp_cedula { get; set; }
         [Display(Name = "Nombre")]
