@@ -135,6 +135,19 @@
             }
         });
 
+        //cocepto
+        $.ajax({
+            url: $("#link_concepto").attr('href'),
+            type: 'GET',
+            data: { id: $('#his_id').val() },
+            success: function (data) {
+                $('#div_concepto').html(data)
+            },
+            error: function (xhr, status, error) {
+                $('#div_concepto').html("Sin Información")
+            }
+        });
+
 
     });
 </script>
@@ -278,6 +291,12 @@
 
             </div>
         </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">CONCEPTO</div>
+            <div id="div_concepto" class="panel-body">
+
+            </div>
+        </div>
     }
 </div>
 
@@ -294,3 +313,4 @@
 <a href="@Url.Content("~/Laboral/Details")" id="link_laboral"></a>
 <a href="@Url.Content("~/Ocupacional/Consulta")" id="link_historico"></a>
 <a href="@Url.Content("~/Inmunizacion/Consulta")" id="link_inmunizacion"></a>
+<a href="@Url.Content("~/Concepto/Details")" id="link_concepto"></a>

@@ -1,0 +1,18 @@
+﻿@model kinnemed05.Models.concepto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="col-lg-4" style="clear:both">
+    <div class="form-group">
+        @Html.LabelFor(model => model.con_resultado, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.con_resultado, new { @class="form-control",@readonly="readonly"})
+    </div>
+</div>
+<div class="col-lg-12" style="clear:both">
+    <div class="form-group">
+        @Html.LabelFor(model => model.con_observacion, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.con_observacion, new { @class = "form-control", @rows = "5", @readonly = "readonly" })
+    </div>
+</div>

@@ -72,12 +72,11 @@
                 @if (Request.IsAuthenticated)
                 {
 
-
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                     {
                         @Html.AntiForgeryToken()
-                        <br />
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        
                     }
 
                 }
