@@ -452,7 +452,7 @@ namespace kinnemed05.Controllers
             list_estado.Add(new SelectListItem { Text = "Casado", Value = "Casado" });
             list_estado.Add(new SelectListItem { Text = "Divorciado", Value = "Divorciado" });
             list_estado.Add(new SelectListItem { Text = "Viudo", Value = "Viudo" });
-            list_estado.Add(new SelectListItem { Text = "Union de Hecho", Value = "Union de Hecho" });
+            list_estado.Add(new SelectListItem { Text = "Unión de Hecho", Value = "Union de Hecho" });
             SelectList estados = new SelectList(list_estado, "Value", "Text", paciente.pac_estadocivil);
             return estados;
         }

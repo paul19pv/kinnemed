@@ -149,7 +149,7 @@ namespace kinnemed05.Controllers
             List<SelectListItem> list_tipo = new List<SelectListItem>();
             list_tipo.Add(new SelectListItem { Text = "General", Value = "1" });
             list_tipo.Add(new SelectListItem { Text = "Preocupacional", Value = "2" });
-            list_tipo.Add(new SelectListItem { Text = "Ocupacional", Value = "3" });
+            list_tipo.Add(new SelectListItem { Text = "Periodica", Value = "3" });
             list_tipo.Add(new SelectListItem { Text = "Retiro", Value = "4" });
             SelectList tipos;
             if (tipo == 0)

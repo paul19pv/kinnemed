@@ -224,7 +224,7 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(historia).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Revision", new { id = historia.his_id });
+                return RedirectToAction("Edit", "Revisión", new { id = historia.his_id });
             }
             return PartialView(historia);
         }
@@ -279,7 +279,7 @@ namespace kinnemed05.Controllers
         {
             List<SelectListItem> list_tipo = new List<SelectListItem>();
             list_tipo.Add(new SelectListItem { Text = "Preocupacional", Value = "2" });
-            list_tipo.Add(new SelectListItem { Text = "Ocupacional", Value = "3" });
+            list_tipo.Add(new SelectListItem { Text = "Periodica", Value = "3" });
             list_tipo.Add(new SelectListItem { Text = "Retiro", Value = "4" });
             SelectList tipos;
             if(tipo==0)
@@ -302,7 +302,7 @@ namespace kinnemed05.Controllers
                 ocupacional.ocu_estado = false;
                 db.Entry(ocupacional).State = EntityState.Modified;
                 db.SaveChanges();
-                mensaje = "El trabajo actual anterior quedara como historico";
+                mensaje = "El trabajo actual anterior quedará como histórico";
             }
             
             return mensaje;

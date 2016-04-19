@@ -22,7 +22,7 @@ namespace kinnemed05.Models
         public Nullable<decimal> sig_talla { get; set; }
         [Display(Name = "Indice Masa Corporal")]
         public Nullable<decimal> sig_masa { get; set; }
-        [Display(Name = "Perímetro Cefalico cm")]
+        [Display(Name = "Perímetro Cefálico cm")]
         public Nullable<decimal> sig_perimetro { get; set; }
         [Display(Name = "% Grasa Visceral")]
         public Nullable<decimal> sig_viceral { get; set; }

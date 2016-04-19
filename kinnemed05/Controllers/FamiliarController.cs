@@ -100,7 +100,7 @@ namespace kinnemed05.Controllers
                 if(his_tipo==1)
                     return RedirectToAction("Problema", "Historia", new { id = Session["his_id"] });
                 else
-                    return RedirectToAction("Edit", "Revision", new { id = Session["his_id"] });
+                    return RedirectToAction("Edit", "Revisión", new { id = Session["his_id"] });
             }
             ViewBag.fam_id = familiar.fam_id;
             return PartialView(familiar);

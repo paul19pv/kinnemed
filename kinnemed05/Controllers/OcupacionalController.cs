@@ -22,13 +22,13 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int id)
         {
-            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o=>o.ocu_paciente==id && o.ocu_tipo=="historico");
+            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o=>o.ocu_paciente==id && o.ocu_tipo=="histórico");
             return PartialView(ocupacional.ToList());
         }
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Consulta(int id)
         {
-            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o => o.ocu_paciente == id && o.ocu_tipo == "historico");
+            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o => o.ocu_paciente == id && o.ocu_tipo == "histórico");
             return PartialView(ocupacional.ToList());
         }
 
@@ -97,7 +97,7 @@ namespace kinnemed05.Controllers
         {
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
             ViewBag.ocu_paciente = id;
-            ViewBag.ocu_tipo = "historico";
+            ViewBag.ocu_tipo = "histórico";
             ViewBag.ocu_jornada = ocu_jornada();
             ViewBag.ocu_id = ocupacional.ocu_id;
             return PartialView();
@@ -119,7 +119,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Index", new { id = ocupacional.ocu_paciente });
             }
             ViewBag.ocu_paciente = ocupacional.ocu_paciente;
-            ViewBag.ocu_tipo = "historico";
+            ViewBag.ocu_tipo = "histórico";
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
             return PartialView(ocupacional);
         }

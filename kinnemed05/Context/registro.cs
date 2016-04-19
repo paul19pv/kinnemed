@@ -10,7 +10,7 @@ namespace kinnemed05.Models
     {
         [Display(Name = "Paciente")]
         public int reg_paciente { get; set; }
-        [Display(Name = "Orden")]
+        [Display(Name = "Órden")]
         public int reg_orden { get; set; }
         [Display(Name = "Fecha")]
         public string reg_fecha { get; set; }
