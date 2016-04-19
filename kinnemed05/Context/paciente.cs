@@ -74,10 +74,13 @@ namespace kinnemed05.Models
         public Nullable<int> pac_porcentajediscapacidad { get; set; }
 
         [Display(Name = "Empresa")]
-        //[Required(ErrorMessage = "Campo Requerido")]
-        public Nullable<int> pac_empresa { get; set; }
+        [Required(ErrorMessage = "Campo Requerido")]
+        public int pac_empresa { get; set; }
+        
+        [Display(Name = "Firma")]
+        public string pac_firma { get; set; }
 
-        public string pac_estado { get; set; }
+        public bool pac_estado { get; set; }
 
     }
 }

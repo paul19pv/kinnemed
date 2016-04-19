@@ -1,0 +1,59 @@
+﻿@model IEnumerable<kinnemed05.Models.laboratorista>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Laboratotistas</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", new { }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Regresar", "Index", "Home", new { }, new { @class = "btn btn-default" })
+</p>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.lab_cedula)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lab_nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lab_apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.lab_correo)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lab_cedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lab_nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lab_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lab_correo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.lab_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                        @Html.ActionLink("Details", "Details", new { id = item.lab_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.lab_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

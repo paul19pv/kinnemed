@@ -6,9 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Filters;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.medico)]
     public class HistoriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
@@ -121,7 +125,7 @@ namespace kinnemed05.Controllers
                 return HttpNotFound();
             }
             if (historia.his_tipo != 1)
-                return RedirectToAction("Edit", "Historico", new { id = historia.his_paciente });
+                return RedirectToAction("Historico", "Ocupacional", new { id = historia.his_paciente });
             if (Request.IsAjaxRequest())
             {
                 return PartialView(historia);

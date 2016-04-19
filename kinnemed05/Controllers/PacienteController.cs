@@ -35,7 +35,7 @@ namespace kinnemed05.Controllers
             ViewBag.SearchString = searchString;
             ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             int cod_empresa = 0;
-            var paciente = db.paciente.Include(p => p.canton).Include(p => p.empresa).Include(p => p.pais).Include(p => p.profesion).Include(p => p.provincia);
+            var paciente = db.paciente.Include(p => p.canton).Include(p => p.empresa).Include(p => p.pais).Include(p => p.profesion);
             if (!String.IsNullOrEmpty(searchString)) { 
                 searchString=searchString.ToUpper();
                 paciente = paciente.Where(p => p.pac_nombres.ToUpper().Contains(searchString)||p.pac_apellidos.Contains(searchString)||p.pac_cedula.Contains(searchString));
@@ -76,6 +76,7 @@ namespace kinnemed05.Controllers
         public ActionResult Details(int id = 0)
         {
             paciente paciente = db.paciente.Find(id);
+            //paciente = paciente.Include(p => p.canton);
             if (paciente == null)
             {
                 return HttpNotFound();
@@ -390,7 +391,7 @@ namespace kinnemed05.Controllers
                     paciente.pac_nombres = strArray[1].ToString();
                     paciente.pac_apellidos = strArray[2].ToString();
                     paciente.pac_edad = Convert.ToInt32(strArray[3]);
-                    paciente.pac_estado = "activo";
+                    paciente.pac_estado = true;
                     paciente.pac_empresa = pac_empresa;
                     db.paciente.Add(paciente);
                     db.SaveChanges();

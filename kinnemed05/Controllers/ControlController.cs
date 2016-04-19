@@ -6,9 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Security;
+using kinnemed05.Filters;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
     public class ControlController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();

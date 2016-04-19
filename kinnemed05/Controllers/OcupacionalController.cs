@@ -6,9 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Security;
+using kinnemed05.Filters;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.medico)]
     public class OcupacionalController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
@@ -21,18 +25,24 @@ namespace kinnemed05.Controllers
             var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o=>o.ocu_paciente==id && o.ocu_tipo=="historico");
             return PartialView(ocupacional.ToList());
         }
+        public ActionResult Consulta(int id)
+        {
+            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o => o.ocu_paciente == id && o.ocu_tipo == "historico");
+            return PartialView(ocupacional.ToList());
+        }
 
         //
         // GET: /Ocupacional/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(int id, int tipo)
         {
-            ocupacional ocupacional = db.ocupacional.Find(id);
+            ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
             if (ocupacional == null)
             {
                 return HttpNotFound();
             }
-            return View(ocupacional);
+            ViewBag.his_tipo = tipo;
+            return PartialView(ocupacional);
         }
 
         //

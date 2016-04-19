@@ -1,36 +1,124 @@
-﻿@model kinnemed05.Models.laboral
+﻿@model kinnemed05.Models.SetLaboral
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Biológicos</h3>
+    </div>
+    <div class="panel-body">
+        @foreach (var item in Model.biologicos)
+        {
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @disabled="disabled" })
+                        @item.riesgo.rie_nombre
+                    </label>
+                </div>
+            </div>
+        }
 
-<fieldset>
-    <legend>laboral</legend>
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.lab_id)
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Biomecánicas</h3>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.lab_id)
-    </div>
+    <div class="panel-body">
+        @foreach (var item in Model.biomecanicos)
+        {
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @disabled = "disabled" })
+                        @item.riesgo.rie_nombre
+                    </label>
+                </div>
+            </div>
+        }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ocupacional.ocu_empresa)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ocupacional.ocu_empresa)
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Físico</h3>
     </div>
+    <div class="panel-body">
+        @foreach (var item in Model.fisico)
+        {
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @disabled = "disabled" })
+                        @item.riesgo.rie_nombre
+                    </label>
+                </div>
+            </div>
+        }
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.riesgo.rie_grupo)
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.riesgo.rie_grupo)
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Mecánicos</h3>
     </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <div class="panel-body">
+        @foreach (var item in Model.mecanicos)
+        {
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @disabled = "disabled" })
+                        @item.riesgo.rie_nombre
+                    </label>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Psicosociales</h3>
+    </div>
+    <div class="panel-body">
+        @foreach (var item in Model.psicosociales)
+        {
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @disabled = "disabled" })
+                        @item.riesgo.rie_nombre
+                    </label>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Químicos</h3>
+    </div>
+    <div class="panel-body">
+        @foreach (var item in Model.quimicos)
+        {
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>
+                        @Html.CheckBox(item.lab_riesgo + "", item.lab_estado, new { @disabled = "disabled" })
+                        @item.riesgo.rie_nombre
+                    </label>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+

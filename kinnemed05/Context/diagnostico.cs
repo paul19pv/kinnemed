@@ -9,12 +9,15 @@ namespace kinnemed05.Models
     public partial class diagnostico
     {
         [Display(Name="Historia")]
+        [Required(ErrorMessage = "El campo es requerido")]
         public int dia_historia { get; set; }
-        [Display(Name = "Descripcion")]
+        [Display(Name = "Observación")]
         public string dia_descripcion { get; set; }
         [Display(Name = "CIE10")]
+        [Required(ErrorMessage = "El campo es requerido")]
         public int dia_subcie10 { get; set; }
         [Display(Name = "Tipo")]
+        [Required(ErrorMessage = "El campo es requerido")]
         public string dia_tipo { get; set; }
     }
 }

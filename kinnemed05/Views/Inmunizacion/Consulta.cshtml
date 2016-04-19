@@ -1,0 +1,42 @@
+﻿@model IEnumerable<kinnemed05.Models.inmunizacion>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.inm_vacuna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inm_fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inm_tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.inm_paciente)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.vacuna.vac_nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.inm_fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.inm_tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.inm_paciente)
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -16,7 +16,7 @@ namespace kinnemed05.Models
     {
         public int pru_id { get; set; }
     
-        public virtual registro registro { get; set; }
         public virtual examen examen { get; set; }
+        public virtual registro registro { get; set; }
     }
 }

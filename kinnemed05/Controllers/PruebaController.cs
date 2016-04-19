@@ -8,9 +8,13 @@ using System.Web.Mvc;
 using kinnemed05.Models;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using kinnemed05.Filters;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.laboratorista)]
     public class PruebaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();

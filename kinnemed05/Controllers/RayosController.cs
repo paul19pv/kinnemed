@@ -7,9 +7,13 @@ using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
 using System.IO;
+using kinnemed05.Security;
+using kinnemed05.Filters;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.laboratorista)]
     public class RayosController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();

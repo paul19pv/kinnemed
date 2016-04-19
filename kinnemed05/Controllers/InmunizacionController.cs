@@ -6,9 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Filters;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
+    [CustomAuthorize(UserRoles.medico)]
     public class InmunizacionController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
@@ -17,6 +21,13 @@ namespace kinnemed05.Controllers
         // GET: /Inmunizacion/
 
         public ActionResult Index(int id)
+        {
+            var inmunizacion = db.inmunizacion.Include(i => i.paciente).Include(i => i.vacuna);
+            inmunizacion = inmunizacion.Where(i => i.inm_paciente == id);
+            return PartialView(inmunizacion.ToList());
+        }
+
+        public ActionResult Consulta(int id)
         {
             var inmunizacion = db.inmunizacion.Include(i => i.paciente).Include(i => i.vacuna);
             inmunizacion = inmunizacion.Where(i => i.inm_paciente == id);
@@ -42,7 +53,11 @@ namespace kinnemed05.Controllers
         public ActionResult Create()
         {
             ViewBag.inm_paciente = Session["pac_id"];
+            ViewBag.his_id = Session["his_id"];
             ViewBag.inm_vacuna = new SelectList(db.vacuna, "vac_id", "vac_nombre");
+            int his_tipo = Convert.ToInt32(Session["his_tipo"]);
+            if (his_tipo == 1)
+                return RedirectToAction("Index", "Historia", new { tipo = his_tipo });
             return PartialView();
         }
 

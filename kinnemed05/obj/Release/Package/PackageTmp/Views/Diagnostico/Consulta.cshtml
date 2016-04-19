@@ -4,16 +4,17 @@
 <table class="table table-striped table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.dia_descripcion)
-        </th>
-        <th>
             CIE10
         </th>
         <th>
-            Código
+            SUBCIE10
         </th>
+        <th>Diagnóstico</th>
         <th>
             @Html.DisplayNameFor(model => model.dia_tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dia_descripcion)
         </th>
     </tr>
 
@@ -21,16 +22,19 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.dia_descripcion)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.sub_cie10.cie10.cie_codigo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.sub_cie10.sub_codigo)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.sub_cie10.sub_descripcion)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.dia_tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dia_descripcion)
             </td>
         </tr>
     }
