@@ -203,7 +203,7 @@ namespace kinnemed05.Controllers
                 daEspecialidad.Fill(dsMedico, "especialidad");
                 daMedico.Fill(dsMedico, "medico");
                 Session["ReportSource"] = dsMedico;
-                Session["Titulo"] = "Medicos";
+                Session["Titulo"] = "Médicos";
 
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/RptViewer.aspx");

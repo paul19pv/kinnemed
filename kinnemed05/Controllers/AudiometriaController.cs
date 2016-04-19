@@ -82,7 +82,7 @@ namespace kinnemed05.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("ext", "Extensión no Valida");
+                        ModelState.AddModelError("ext", "Extensión no Válida");
                     }
                 }
                 else
@@ -151,7 +151,7 @@ namespace kinnemed05.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("ext", "Extensión no Valida");
+                        ModelState.AddModelError("ext", "Extensión no Válida");
                     }
                 }
                 else

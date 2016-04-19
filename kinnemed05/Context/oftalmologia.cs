@@ -28,11 +28,11 @@ namespace kinnemed05.Models
         public string oft_bio_txt { get; set; }
         [Display(Name = "Fondo de Ojo")]
         public string oft_fondo { get; set; }
-        [Display(Name = "Observacion")]
+        [Display(Name = "Observación")]
         public string oft_fon_txt { get; set; }
         [Display(Name = "Test de Colores")]
         public string oft_colores { get; set; }
-        [Display(Name = "Diagnostico")]
+        [Display(Name = "Diagnóstico")]
         public string oft_diagnostico { get; set; }
         [Display(Name = "Indicaciones")]
         public string oft_indicaciones { get; set; }

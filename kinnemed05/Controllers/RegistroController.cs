@@ -104,7 +104,7 @@ namespace kinnemed05.Controllers
         {
             var consulta = db.registro.Where(r => r.reg_fecha == registro.reg_fecha && r.reg_paciente == registro.reg_paciente && r.reg_estado==true);
             if (consulta.Any())
-                return RedirectToAction("Message", "Home", new { mensaje = "El registro ya existe, por favor seleccione la opcion editar" });
+                return RedirectToAction("Message", "Home", new { mensaje = "El registro ya existe, por favor seleccione la opción editar" });
             DateTime dd = DateTime.Today;
             string fecha = dd.Date.ToString("d");
             registro.reg_orden = GetOrden(fecha);
@@ -141,7 +141,7 @@ namespace kinnemed05.Controllers
                 string fecha = dd.Date.ToString("d");
                 var consulta = db.registro.Where(r => r.reg_fecha == fecha && r.reg_paciente == reg_paciente && r.reg_estado == true);
                 if (consulta.Any())
-                    return RedirectToAction("Message", "Home", new { mensaje = "El registro ya existe, por favor seleccione la opcion editar" });
+                    return RedirectToAction("Message", "Home", new { mensaje = "El registro ya existe, por favor seleccione la opción editar" });
 
                 barcode barcode = new barcode();
                 List<control> list_control = db.control.Where(c => c.con_perfil == con_perfil).ToList();
