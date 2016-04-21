@@ -23,8 +23,10 @@ namespace kinnemed05.Controllers
         public ActionResult Index(string mensaje)
         {
             //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            
             if (String.IsNullOrEmpty(mensaje))
                 ViewBag.mensaje = mensaje;
+            ViewBag.perfil = get_perfil();
             return View();
         }
 
@@ -47,6 +49,19 @@ namespace kinnemed05.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        private string get_perfil() {
+            string perfil = String.Empty;
+            if(User.IsInRole("admin"))
+                perfil="admin";
+            else if(User.IsInRole("medico"))
+                perfil="medico";
+            else if (User.IsInRole("paciente"))
+                perfil = "paciente";
+            else if (User.IsInRole("laboratorista"))
+                perfil = "laboratorista";
+            return perfil;
         }
 
         public ActionResult Message(string mensaje) {

@@ -16,6 +16,7 @@ namespace kinnemed05.Controllers
     public class LaboratoristaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
+        
 
         //
         // GET: /Laboratorista/
@@ -61,7 +62,7 @@ namespace kinnemed05.Controllers
                 AccountController account = new AccountController();
                 account.CreateUserProfile(laboratorista.lab_cedula, laboratorista.lab_cedula);
                 UserManager userManager = new UserManager();
-                int Userid = userManager.UpdatePaciente(laboratorista.lab_cedula, laboratorista.lab_id);
+                int Userid = userManager.UpdateLaboratorista(laboratorista.lab_cedula, laboratorista.lab_id);
                 UsersInRoles usersinroles = new UsersInRoles();
                 usersinroles.RoleId = 5;
                 usersinroles.UserId = Userid;

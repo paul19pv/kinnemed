@@ -64,9 +64,9 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 //crear los valores de usuario
                 AccountController account = new AccountController();
-                account.CreateUserProfile(empresa.emp_mail, empresa.emp_cedula);
+                account.CreateUserProfile(empresa.emp_cedula, empresa.emp_cedula);
                 UserManager userManager = new UserManager();
-                int Userid=userManager.UpdateEmpresa(empresa.emp_mail, empresa.emp_id);
+                int Userid = userManager.UpdateEmpresa(empresa.emp_cedula, empresa.emp_id);
                 UsersInRoles usersinroles = new UsersInRoles();
                 usersinroles.RoleId = 4;
                 usersinroles.UserId = Userid;
@@ -127,6 +127,8 @@ namespace kinnemed05.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             empresa empresa = db.empresa.Find(id);
+            UserManager usermanager = new UserManager();
+            usermanager.DeleteUser(id, 4);
             db.empresa.Remove(empresa);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -20,17 +20,22 @@ using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    //[InitializeSimpleMembership]
+    //[CustomAuthorize(UserRoles.laboratorista)]
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista)]
+    
     public class RegistroController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_user = new UsersContext();
         //
         // GET: /Registro/
-        [InitializeSimpleMembership]
-        [CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
+        
         //[]
+        //[InitializeSimpleMembership]
+        
+
+        [CustomAuthorize(UserRoles.medico,UserRoles.laboratorista,UserRoles.admin,UserRoles.paciente)]
         public ActionResult Index(int? id)
         {
             var registro = db.registro.Include(r => r.paciente);
@@ -51,7 +56,7 @@ namespace kinnemed05.Controllers
         //    return new JsonResult() { Data = list_registro };
         //}
 
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Insert() {
             DateTime dd = DateTime.Now;
             string fecha = dd.Date.ToString("d");
@@ -81,7 +86,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Create()
         {
             //ViewBag.reg_id = new SelectList(db.paciente, "pac_id", "pac_cedula");
@@ -95,7 +100,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Registro/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(registro registro)
@@ -107,6 +112,9 @@ namespace kinnemed05.Controllers
             string fecha = dd.Date.ToString("d");
             registro.reg_orden = GetOrden(fecha);
             registro.reg_estado = true;
+            registro.reg_laboratorista = get_user_id();
+            if (registro.reg_laboratorista == 0)
+                return RedirectToAction("Message", "Home", new { mensaje = "Su Perfil de Usuario no permite crear exámenes" });
             if (ModelState.IsValid)
             {
                 db.registro.Add(registro);
@@ -119,11 +127,12 @@ namespace kinnemed05.Controllers
             ViewBag.fecha = fecha;
             return View(registro);
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Perfil() {
             ViewBag.con_perfil = new SelectList(db.perfil, "per_id", "per_nombre");
             return View();
         }
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Perfil(int reg_paciente,int con_perfil) {
@@ -141,13 +150,12 @@ namespace kinnemed05.Controllers
                 List<control> list_control = db.control.Where(c => c.con_perfil == con_perfil).ToList();
                 
                 registro registro = new registro();
-
-
-
-
                 registro.reg_paciente = reg_paciente;
                 registro.reg_fecha = fecha;
                 registro.reg_orden = GetOrden(fecha);
+                registro.reg_laboratorista = get_user_id();
+                if (registro.reg_laboratorista == 0)
+                    return RedirectToAction("Message", "Home", new { mensaje = "Su Perfil de Usuario no permite crear exámenes" });
                 db.registro.Add(registro);
                 db.SaveChanges();
                 int reg_id = registro.reg_id;
@@ -174,7 +182,7 @@ namespace kinnemed05.Controllers
         }
         //
         // GET: /Registro/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -187,21 +195,20 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Registro/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(registro registro)
         {
-            
-                return Codigo(registro);
+            return Codigo(registro);
             
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Cargar()
         {
             return View();
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cargar(HttpPostedFileBase FileUpload)
@@ -210,20 +217,21 @@ namespace kinnemed05.Controllers
             {
                 DataTable dt = new DataTable();
                 string fileName = Path.GetFileName(FileUpload.FileName);
+                string mensaje = String.Empty;
                 if (fileName != "")
                 {
                     string path = Path.Combine(Server.MapPath("~/Content/biometria"), fileName);
                     FileUpload.SaveAs(path);
                     dt = Process_CSV(path);
-                    ViewBag.mensaje = ProcessData(dt);
+                    mensaje = ProcessData(dt);
                     //return View("IndexCSV", dt);
-                    return View("Message");
+                    return RedirectToAction("Message", "Home", new { mensaje = mensaje });
                 }
             }
             catch (Exception ex)
             {
                 ViewBag.mensaje = ex.Message;
-                return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
 
             }
 
@@ -236,7 +244,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -250,7 +258,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Registro/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -533,7 +541,8 @@ namespace kinnemed05.Controllers
             catch (Exception ex)
             {
                 ViewBag.mensaje = ex.Message;
-                return View("Message");
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message});
             }
         }
         public ActionResult ReporteLimpio()
@@ -562,8 +571,17 @@ namespace kinnemed05.Controllers
             catch (Exception ex)
             {
                 ViewBag.mensaje = ex.Message;
-                return View("Message");
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message});
             }
+        }
+
+        private int get_user_id() {
+            int user_id=0;
+            string user_name = User.Identity.Name;
+            UserProfile userprofile = db_user.UserProfiles.Where(u => u.UserName == user_name).First();
+            user_id = userprofile.UserLaboratorista.GetValueOrDefault();
+            return user_id;
         }
         protected override void Dispose(bool disposing)
         {

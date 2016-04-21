@@ -64,12 +64,13 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-                
+
                 @Html.HiddenFor(model => model.his_id);
                 @Html.HiddenFor(model => model.his_motivo, new { Value = "Historia Laboral" })
                 @Html.HiddenFor(model => model.his_problema);
                 @Html.HiddenFor(model => model.his_fecha);
                 @Html.HiddenFor(model => model.his_numero);
+                @Html.HiddenFor(model => model.his_medico);
                 <div class="col-lg-3">
                     <div class="form-group">
 
@@ -121,7 +122,7 @@
 <a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
 
 <div id="div_loading" class="progress progress-striped active" style="display:none;clear:both;">
-    <div class="progress-bar" style="width: 45%"></div>
+    <div class="progress-bar" style="width: 0%"></div>
 </div>
 
 

@@ -12,14 +12,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    
     public class HistoriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_user = new UsersContext();
         //
         // GET: /Historia/
-
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Index(int tipo, int? paciente, string fecha)
         {
             var historia = db.historia.Include(h=>h.paciente).Where(h => h.his_tipo == tipo);
@@ -50,7 +50,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Create
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Create(int tipo)
         {
             ViewBag.tipo = tipo;
@@ -65,7 +65,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Create
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(historia historia)
@@ -74,6 +74,9 @@ namespace kinnemed05.Controllers
             historia.his_fecha = dd.Date.ToString("d");
             historia.his_numero = numero_historia(historia);
             historia.his_tipo = 1;
+            historia.his_medico = get_user_id();
+            if (historia.his_medico == 0)
+                return RedirectToAction("Message", "Home", new { mensaje = "Su Perfil de Usuario no permite crear exámenes" });
             if (ModelState.IsValid)
             {
                 db.historia.Add(historia);
@@ -91,6 +94,7 @@ namespace kinnemed05.Controllers
         //    ViewBag.his_tipo = his_tipo();
         //    return View();
         //}
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create01(historia historia)
@@ -98,6 +102,9 @@ namespace kinnemed05.Controllers
             DateTime dd = DateTime.Now;
             historia.his_fecha = dd.Date.ToString("d");
             historia.his_numero = numero_historia(historia);
+            historia.his_medico = get_user_id();
+            if (historia.his_medico == 0)
+                return RedirectToAction("Message", "Home", new { mensaje = "Su Perfil de Usuario no permite crear exámenes" });
             if (ModelState.IsValid)
             {
                 db.historia.Add(historia);
@@ -115,7 +122,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Edit/5
-        
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -138,7 +145,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(historia historia)
@@ -155,7 +162,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit02(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -176,7 +183,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit02(historia historia)
@@ -193,7 +200,7 @@ namespace kinnemed05.Controllers
             ViewBag.tipo = historia.his_tipo;
             return PartialView(historia);
         }
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Problema(int id)
         {
             historia historia = db.historia.Find(id);
@@ -206,6 +213,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", "Familiar", new { id = historia.his_paciente });
             return PartialView(historia);
         }
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Problema(historia historia)
@@ -220,7 +228,7 @@ namespace kinnemed05.Controllers
         }
         //
         // GET: /Historia/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -234,7 +242,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -335,6 +343,14 @@ namespace kinnemed05.Controllers
                     break;
             }
             return titulo;
+        }
+        private int get_user_id()
+        {
+            int user_id = 0;
+            string user_name = User.Identity.Name;
+            UserProfile userprofile = db_user.UserProfiles.Where(u => u.UserName == user_name).First();
+            user_id = userprofile.UserMedico.GetValueOrDefault();
+            return user_id;
         }
         protected override void Dispose(bool disposing)
         {
