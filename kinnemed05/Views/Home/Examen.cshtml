@@ -2,39 +2,23 @@
     ViewBag.Title = "Examen";
 }
 
-<p>
-    @Html.ActionLink("Solicitar Exámen", "Create", "Examen","" ,new { @class = "btn btn-default" })
-    @Html.ActionLink("Ingresar CSV", "Create", "Biometria", "", new { @class = "btn btn-default" })
-</p>
+<div class="jumbotron">
 
-    
-
-<div class="panel panel-default">
-    <div class="panel-heading">Exámenes de Laboratorio</div>
-    <div class="panel-body">
-        <a class="btn btn-default btn-lg btn-img" title="Lista General" href="@Url.Content("~/Examen/Index")">
-            <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
-            <label>Todos</label>
-        </a>
-
-        <a class="btn btn-default btn-lg btn-img" title="Biometría" href="@Url.Content("~/Examen/Index?grupo=9")">
-            <img src="@Url.Content("~/Content/img/iconos/examen01-icon.png")" class="img-rounded" />
-            <label>Biometría</label>
-        </a>
-        <a class="btn btn-default btn-lg btn-img" title="Químico Sanguineo" href="@Url.Content("~/Examen/Index?grupo=2")">
-            <img src="@Url.Content("~/Content/img/iconos/examen02-icon.png")" class="img-rounded" />
-            <label>Químico</label>
-        </a>
-    </div>
-</div>
-@*<div class="jumbotron">
-    <a class="btn btn-default btn-lg btn-img" title="Lista General" href="@Url.Content("~/Examen/Index")">
-        <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
-        <label>Todos</label>
-    </a>
-
-    <a class="btn btn-default btn-lg btn-img" title="Químico Sanguineo" href="@Url.Content("~/Examen/Index?grupo=2")">
+    <a class="btn btn-default btn-lg btn-img" title="Laboratorio" href="@Url.Content("~/Registro/Index")">
         <img src="@Url.Content("~/Content/img/iconos/examen01-icon.png")" class="img-rounded" />
-        <label>Químico</label>
+        <label>Laboratorio</label>
     </a>
-</div>*@
+    <a class="btn btn-default btn-lg btn-img" title="Espirometria" href="@Url.Content("~/Espirometria/Index")">
+        <img src="@Url.Content("~/Content/img/iconos/lungs-icon.png")" class="img-rounded" />
+        <label>Espirometría</label>
+    </a>
+    <a class="btn btn-default btn-lg btn-img" title="Audiometría" href="@Url.Content("~/Audiometria/Index")">
+        <img src="@Url.Content("~/Content/img/iconos/sound-icon.png")" class="img-rounded" />
+        <label>Audiometría</label>
+    </a>
+    <a class="btn btn-default btn-lg btn-img" title="Rayos X" href="@Url.Content("~/Rayos/Index")">
+        <img src="@Url.Content("~/Content/img/iconos/ray-icon.png")" class="img-rounded" />
+        <label>Rayos X</label>
+    </a>
+
+</div>

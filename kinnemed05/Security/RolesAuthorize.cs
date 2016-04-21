@@ -35,9 +35,9 @@ namespace kinnemed05.Security
             {
                 var url = new UrlHelper(context.RequestContext);
                 //var logonUrl = url.Action("Http", "Error", new { Id = 401, Area = "" });
-                string url_logon = "";
-                if (HttpContext.Current.Request.IsAuthenticated)
-                    url_logon=url.Action("Message","Home",new {mensaje="Su perfil de acceso no tiene permisos para esta acción"});
+                string url_logon = String.Empty;
+                if(HttpContext.Current.Request.IsAuthenticated)
+                    url_logon = url.Action("Message", "Home", new {mensaje = "Acceso no Autorizado" });
                 else
                     url_logon = url.Action("Login", "Account");
                 context.Result = new RedirectResult(url_logon);

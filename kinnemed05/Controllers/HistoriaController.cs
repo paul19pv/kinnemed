@@ -12,14 +12,15 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    
+    //[CustomAuthorize(UserRoles.medico)]
     public class HistoriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-        private UsersContext db_user = new UsersContext();
+        private UsersContext db_users = new UsersContext();
+
         //
         // GET: /Historia/
-        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int tipo, int? paciente, string fecha)
         {
             var historia = db.historia.Include(h=>h.paciente).Where(h => h.his_tipo == tipo);
@@ -37,7 +38,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -50,7 +51,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Create
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int tipo)
         {
             ViewBag.tipo = tipo;
@@ -65,7 +66,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Create
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(historia historia)
@@ -74,9 +75,9 @@ namespace kinnemed05.Controllers
             historia.his_fecha = dd.Date.ToString("d");
             historia.his_numero = numero_historia(historia);
             historia.his_tipo = 1;
-            historia.his_medico = get_user_id();
+            historia.his_medico = get_user();
             if (historia.his_medico == 0)
-                return RedirectToAction("Message", "Home", new { mensaje = "Su Perfil de Usuario no permite crear exámenes" });
+                return RedirectToAction("Message", "Home", new { mensaje = "Su perfil de usuario no permite realizar esta acción" });
             if (ModelState.IsValid)
             {
                 db.historia.Add(historia);
@@ -94,7 +95,7 @@ namespace kinnemed05.Controllers
         //    ViewBag.his_tipo = his_tipo();
         //    return View();
         //}
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create01(historia historia)
@@ -102,9 +103,9 @@ namespace kinnemed05.Controllers
             DateTime dd = DateTime.Now;
             historia.his_fecha = dd.Date.ToString("d");
             historia.his_numero = numero_historia(historia);
-            historia.his_medico = get_user_id();
+            historia.his_medico = get_user();
             if (historia.his_medico == 0)
-                return RedirectToAction("Message", "Home", new { mensaje = "Su Perfil de Usuario no permite crear exámenes" });
+                return RedirectToAction("Message", "Home", new { mensaje = "Su perfil de usuario no permite realizar esta acción" });
             if (ModelState.IsValid)
             {
                 db.historia.Add(historia);
@@ -122,7 +123,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -145,7 +146,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(historia historia)
@@ -162,7 +163,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit02(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -183,7 +184,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit02(historia historia)
@@ -200,7 +201,7 @@ namespace kinnemed05.Controllers
             ViewBag.tipo = historia.his_tipo;
             return PartialView(historia);
         }
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Problema(int id)
         {
             historia historia = db.historia.Find(id);
@@ -213,7 +214,8 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", "Familiar", new { id = historia.his_paciente });
             return PartialView(historia);
         }
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Problema(historia historia)
@@ -222,7 +224,7 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(historia).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Revision", new { id = historia.his_id });
+                return RedirectToAction("Edit", "Revisión", new { id = historia.his_id });
             }
             return PartialView(historia);
         }
@@ -266,18 +268,18 @@ namespace kinnemed05.Controllers
             }
             return new JsonResult() { Data = result };
         }
-        public int numero_historia(historia historia) {
+        private int numero_historia(historia historia) {
             int num = 0;
             num = db.historia.Where(h => h.his_tipo == historia.his_tipo && h.his_paciente == historia.his_paciente).Count();
             num++;
             return num;
         }
 
-        public SelectList his_tipo(int? tipo=0)
+        private SelectList his_tipo(int? tipo=0)
         {
             List<SelectListItem> list_tipo = new List<SelectListItem>();
             list_tipo.Add(new SelectListItem { Text = "Preocupacional", Value = "2" });
-            list_tipo.Add(new SelectListItem { Text = "Ocupacional", Value = "3" });
+            list_tipo.Add(new SelectListItem { Text = "Periodica", Value = "3" });
             list_tipo.Add(new SelectListItem { Text = "Retiro", Value = "4" });
             SelectList tipos;
             if(tipo==0)
@@ -287,7 +289,7 @@ namespace kinnemed05.Controllers
             return tipos;
         }
 
-        public string change_tipo(int pac_id) {
+        private string change_tipo(int pac_id) {
             string mensaje = String.Empty;
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual");
             if (!consulta.Any())
@@ -300,12 +302,12 @@ namespace kinnemed05.Controllers
                 ocupacional.ocu_estado = false;
                 db.Entry(ocupacional).State = EntityState.Modified;
                 db.SaveChanges();
-                mensaje = "El trabajo actual anterior quedara como historico";
+                mensaje = "El trabajo actual anterior quedará como histórico";
             }
             
             return mensaje;
         }
-        public string titulo(int tipo) {
+        private string titulo(int tipo) {
             string titulo = String.Empty;
             switch (tipo) { 
                 case 1:
@@ -324,7 +326,7 @@ namespace kinnemed05.Controllers
             return titulo;
         }
 
-        public string motivo(int tipo)
+        private string motivo(int tipo)
         {
             string titulo = String.Empty;
             switch (tipo)
@@ -344,14 +346,17 @@ namespace kinnemed05.Controllers
             }
             return titulo;
         }
-        private int get_user_id()
-        {
+        private int get_user() {
             int user_id = 0;
-            string user_name = User.Identity.Name;
-            UserProfile userprofile = db_user.UserProfiles.Where(u => u.UserName == user_name).First();
-            user_id = userprofile.UserMedico.GetValueOrDefault();
+            if (Request.IsAuthenticated) {
+                string user_name = String.Empty;
+                user_name = User.Identity.Name;
+                UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
+                user_id = userprofile.UserMedico.GetValueOrDefault();
+            }
             return user_id;
         }
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

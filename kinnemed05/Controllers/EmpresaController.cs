@@ -127,8 +127,6 @@ namespace kinnemed05.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             empresa empresa = db.empresa.Find(id);
-            UserManager usermanager = new UserManager();
-            usermanager.DeleteUser(id, 4);
             db.empresa.Remove(empresa);
             db.SaveChanges();
             return RedirectToAction("Index");

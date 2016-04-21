@@ -171,8 +171,6 @@ namespace kinnemed05.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             medico medico = db.medico.Find(id);
-            UserManager usermanager = new UserManager();
-            usermanager.DeleteUser(id, 2);
             db.medico.Remove(medico);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -205,7 +203,7 @@ namespace kinnemed05.Controllers
                 daEspecialidad.Fill(dsMedico, "especialidad");
                 daMedico.Fill(dsMedico, "medico");
                 Session["ReportSource"] = dsMedico;
-                Session["Titulo"] = "Medicos";
+                Session["Titulo"] = "Médicos";
 
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/RptViewer.aspx");

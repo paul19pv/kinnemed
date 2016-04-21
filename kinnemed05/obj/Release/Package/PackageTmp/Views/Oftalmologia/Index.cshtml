@@ -1,0 +1,117 @@
+﻿@model IEnumerable<kinnemed05.Models.oftalmologia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_con_od)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_con_oi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_sin_od)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_sin_oi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_ref_od)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_ref_oi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_biomiscroscopia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_bio_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_fondo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_fon_txt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_colores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_diagnostico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_indicaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oft_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.pac_cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_con_od)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_con_oi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_sin_od)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_sin_oi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_ref_od)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_ref_oi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_biomiscroscopia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_bio_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_fondo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_fon_txt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_colores)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_diagnostico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_indicaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oft_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

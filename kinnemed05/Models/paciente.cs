@@ -23,6 +23,7 @@ namespace kinnemed05.Models
             this.ocupacional = new HashSet<ocupacional>();
             this.rayos = new HashSet<rayos>();
             this.registro = new HashSet<registro>();
+            this.oftalmologia = new HashSet<oftalmologia>();
         }
     
         public int pac_id { get; set; }
@@ -41,5 +42,6 @@ namespace kinnemed05.Models
         public virtual personal personal { get; set; }
         public virtual ICollection<rayos> rayos { get; set; }
         public virtual ICollection<registro> registro { get; set; }
+        public virtual ICollection<oftalmologia> oftalmologia { get; set; }
     }
 }

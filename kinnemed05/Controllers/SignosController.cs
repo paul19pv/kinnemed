@@ -12,14 +12,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class SignosController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Signos/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var signos = db.signos.Include(s => s.historia);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Signos/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             signos signos = db.signos.Find(id);
@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Signos/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             ViewBag.sig_id = id;
@@ -50,7 +50,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Signos/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(signos signos)
@@ -68,7 +68,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Signos/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             signos signos = db.signos.Find(id);
@@ -82,7 +82,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Signos/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(signos signos)
@@ -99,7 +99,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Signos/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             signos signos = db.signos.Find(id);
@@ -112,7 +112,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Signos/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

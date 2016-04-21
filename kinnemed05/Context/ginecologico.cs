@@ -8,7 +8,7 @@ namespace kinnemed05.Models
 {
     public partial class ginecologico
     {
-        [Display(Name="Fecha Ultima Menstruación")]
+        [Display(Name="Fecha Última Menstruación")]
         public string gin_fum { get; set; }
         [Display(Name = "Ciclos Menstruales")]
         public Nullable<int> gin_ciclos { get; set; }

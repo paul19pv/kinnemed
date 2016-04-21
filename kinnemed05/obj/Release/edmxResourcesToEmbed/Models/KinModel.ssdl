@@ -39,6 +39,14 @@
     <Property Name="com_id" Type="int" Nullable="false" />
     <Property Name="com_nombre" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="concepto">
+    <Key>
+      <PropertyRef Name="con_id" />
+    </Key>
+    <Property Name="con_id" Type="int" Nullable="false" />
+    <Property Name="con_resultado" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="con_observacion" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="control">
     <Key>
       <PropertyRef Name="con_id" />
@@ -280,6 +288,26 @@
     <Property Name="ocu_estado" Type="bit" Nullable="false" />
     <Property Name="ocu_paciente" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="oftalmologia">
+    <Key>
+      <PropertyRef Name="oft_id" />
+    </Key>
+    <Property Name="oft_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="oft_paciente" Type="int" Nullable="false" />
+    <Property Name="oft_con_od" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="oft_con_oi" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="oft_sin_od" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="oft_sin_oi" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="oft_ref_od" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_ref_oi" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_biomiscroscopia" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="oft_bio_txt" Type="varchar" MaxLength="150" />
+    <Property Name="oft_fondo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="oft_fon_txt" Type="varchar" MaxLength="150" />
+    <Property Name="oft_colores" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_diagnostico" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
+  </EntityType>
   <EntityType Name="paciente">
     <Key>
       <PropertyRef Name="pac_id" />
@@ -518,6 +546,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_concepto_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="concepto" Type="Self.concepto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="concepto">
+        <PropertyRef Name="con_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_control_examen">
     <End Role="examen" Type="Self.examen" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -751,6 +793,20 @@
       </Principal>
       <Dependent Role="ocupacional">
         <PropertyRef Name="ocu_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oftalmologia_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="oftalmologia" Type="Self.oftalmologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="oftalmologia">
+        <PropertyRef Name="oft_paciente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -992,6 +1048,7 @@
     <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cie10" EntityType="Self.cie10" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="concepto" EntityType="Self.concepto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="control" EntityType="Self.control" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="diagnostico" EntityType="Self.diagnostico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
@@ -1007,6 +1064,7 @@
     <EntitySet Name="laboratorista" EntityType="Self.laboratorista" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ocupacional" EntityType="Self.ocupacional" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oftalmologia" EntityType="Self.oftalmologia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
@@ -1031,6 +1089,10 @@
     <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
       <End Role="provincia" EntitySet="provincia" />
       <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_concepto_historia" Association="Self.FK_concepto_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="concepto" EntitySet="concepto" />
     </AssociationSet>
     <AssociationSet Name="FK_control_examen" Association="Self.FK_control_examen">
       <End Role="examen" EntitySet="examen" />
@@ -1099,6 +1161,10 @@
     <AssociationSet Name="FK_ocupacional_paciente" Association="Self.FK_ocupacional_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ocupacional" EntitySet="ocupacional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oftalmologia_paciente" Association="Self.FK_oftalmologia_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="oftalmologia" EntitySet="oftalmologia" />
     </AssociationSet>
     <AssociationSet Name="FK_paciente_canton" Association="Self.FK_paciente_canton">
       <End Role="canton" EntitySet="canton" />

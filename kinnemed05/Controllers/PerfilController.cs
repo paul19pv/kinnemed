@@ -12,14 +12,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
+    //[CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
     public class PerfilController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Perfil/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             return View(db.perfil.ToList());
@@ -27,7 +27,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Perfil/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             perfil perfil = db.perfil.Find(id);
@@ -40,8 +40,8 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Perfil/Create
-
-        public ActionResult Create(int id)
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
+        public ActionResult Create()
         {
             var riesgo = db.riesgo.ToList();
             return View();
@@ -49,7 +49,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Perfil/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(perfil perfil)
@@ -67,7 +67,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Perfil/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             perfil perfil = db.perfil.Find(id);
@@ -80,7 +80,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Perfil/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(perfil perfil)
@@ -96,7 +96,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Perfil/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             perfil perfil = db.perfil.Find(id);
@@ -109,7 +109,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Perfil/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

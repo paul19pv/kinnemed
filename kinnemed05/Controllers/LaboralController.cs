@@ -12,14 +12,14 @@ using kinnemed05.Security;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class LaboralController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Laboral/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var laboral = db.laboral.Include(l => l.ocupacional).Include(l => l.riesgo);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Laboral/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id)
         {
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
@@ -99,7 +99,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Laboral/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             var consulta = db.laboral.Where(l => l.lab_ocupacional == id);
@@ -145,7 +145,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Laboral/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             laboral laboral = db.laboral.Find(id);
@@ -158,7 +158,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Laboral/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

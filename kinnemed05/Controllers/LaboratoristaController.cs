@@ -16,7 +16,6 @@ namespace kinnemed05.Controllers
     public class LaboratoristaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-        
 
         //
         // GET: /Laboratorista/

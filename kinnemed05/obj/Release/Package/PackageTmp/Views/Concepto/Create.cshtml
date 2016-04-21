@@ -1,0 +1,56 @@
+﻿@model kinnemed05.Models.concepto
+
+@{
+    ViewBag.Title = "Create";
+}
+<script>
+    $(function () {
+        $('.form-group select').addClass('form-control');
+    });
+</script>
+@using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Planes</h3>
+            </div>
+            <div class="panel-body">
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.con_id, new { Value = ViewBag.con_id })
+
+
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.con_resultado, new { @class = "control-label" })
+                        @Html.DropDownList("con_resultado",String.Empty)
+                        @Html.ValidationMessageFor(model => model.con_resultado)
+                    </div>
+                </div>
+                <div class="col-lg-12" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.con_observacion, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.con_observacion, new { @class = "form-control", @rows = "5" })
+                        @Html.ValidationMessageFor(model => model.con_observacion)
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3" style="clear:both; float:right">
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Create", "Inmunizacion", new { }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            <input type="submit" value="Finalizar" class="btn btn-primary" />
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

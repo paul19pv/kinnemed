@@ -12,14 +12,14 @@ using kinnemed05.Filters;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.medico)]
     public class FisicoController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Fisico/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var fisico = db.fisico.Include(f => f.historia);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Fisico/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             fisico fisico = db.fisico.Find(id);
@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Fisico/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             ViewBag.fis_id = id;
@@ -50,7 +50,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Fisico/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(fisico fisico)
@@ -59,7 +59,7 @@ namespace kinnemed05.Controllers
             {
                 db.fisico.Add(fisico);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Diagnostico", new { id=fisico.fis_id});
+                return RedirectToAction("Create", "Diagnóstico", new { id=fisico.fis_id});
             }
 
             ViewBag.fis_id = fisico.fis_id;
@@ -68,7 +68,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Fisico/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             fisico fisico = db.fisico.Find(id);
@@ -82,7 +82,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Fisico/Edit/5
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(fisico fisico)
@@ -99,7 +99,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Fisico/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             fisico fisico = db.fisico.Find(id);
@@ -112,7 +112,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Fisico/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

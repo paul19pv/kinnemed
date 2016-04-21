@@ -13,14 +13,14 @@ using kinnemed05.Filters;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.laboratorista,UserRoles.medico)]
+    //[CustomAuthorize(UserRoles.laboratorista,UserRoles.medico)]
     public class AudiometriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Audiometria/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var audiometria = db.audiometria.Include(a => a.paciente);
@@ -29,7 +29,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Audiometria/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             audiometria audiometria = db.audiometria.Find(id);
@@ -49,7 +49,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Audiometria/Create
-
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.medico)]
         public ActionResult Create()
         {
             //ViewBag.aud_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula");
@@ -58,7 +58,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Audiometria/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(audiometria audiometria)
@@ -82,7 +82,7 @@ namespace kinnemed05.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("ext", "Extensión no Valida");
+                        ModelState.AddModelError("ext", "Extensión no Válida");
                     }
                 }
                 else
@@ -104,7 +104,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Audiometria/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         public ActionResult Edit(int id = 0)
         {
             audiometria audiometria = db.audiometria.Find(id);
@@ -124,7 +124,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Audiometria/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(audiometria audiometria)
@@ -151,7 +151,7 @@ namespace kinnemed05.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("ext", "Extensión no Valida");
+                        ModelState.AddModelError("ext", "Extensión no Válida");
                     }
                 }
                 else
@@ -176,7 +176,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Audiometria/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             audiometria audiometria = db.audiometria.Find(id);
@@ -194,6 +194,22 @@ namespace kinnemed05.Controllers
             return View(audiometria);
         }
 
+        
+
+        //
+        // POST: /Audiometria/Delete/5
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            audiometria audiometria = db.audiometria.Find(id);
+            db.audiometria.Remove(audiometria);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Download(int id = 0)
         {
             string contentType = "application/pdf";
@@ -204,19 +220,6 @@ namespace kinnemed05.Controllers
             }
             return File(Server.MapPath("~/Content/audiometria/") + audiometria.aud_archivo, contentType, audiometria.aud_archivo);
 
-        }
-
-        //
-        // POST: /Audiometria/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            audiometria audiometria = db.audiometria.Find(id);
-            db.audiometria.Remove(audiometria);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
