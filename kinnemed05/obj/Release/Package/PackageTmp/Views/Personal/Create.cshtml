@@ -201,7 +201,14 @@
     </div>
     <div class="col-lg-3" style="clear:both; float:right">
         <div class="form-group" style="float:right">
-            @Ajax.ActionLink("Anterior", "Edit", "Historia", new { id = Session["his_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            @if (Convert.ToInt32(Session["his_tipo"]) != 1)
+            {
+                @Ajax.ActionLink("Anterior", "Historico", "Ocupacional", new { id = ViewBag.per_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            }
+            else { 
+                @Ajax.ActionLink("Anterior", "Edit", "Historia", new { id = Session["his_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            }
+            
             <input type="submit" value="Siguiente" class="btn btn-primary" />
 
         </div>

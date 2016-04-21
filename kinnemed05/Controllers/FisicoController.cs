@@ -59,7 +59,7 @@ namespace kinnemed05.Controllers
             {
                 db.fisico.Add(fisico);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Diagnóstico", new { id=fisico.fis_id});
+                return RedirectToAction("Create", "Diagnostico", new { id=fisico.fis_id});
             }
 
             ViewBag.fis_id = fisico.fis_id;

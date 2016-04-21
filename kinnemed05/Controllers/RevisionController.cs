@@ -44,6 +44,11 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
+            revision revision = db.revision.Find(id);
+            if (revision != null)
+            {
+                return RedirectToAction("Edit", new { id = id });
+            }
             ViewBag.rev_id = id;
             return PartialView();
         }
