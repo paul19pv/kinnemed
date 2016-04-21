@@ -373,6 +373,11 @@
     <Compile Include="Models\valores.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Reports\dataset\dsCertificado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCertificado.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\dataset\dsCodigo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -397,6 +402,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptBase.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptCertificado.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCertificado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RptCodigo.cs">
@@ -620,6 +631,17 @@
       <DependentUpon>dsCodigo.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\trabajo.pubxml" />
+    <Content Include="Reports\dataset\dsCertificado.xsc">
+      <DependentUpon>dsCertificado.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\dataset\dsCertificado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCertificado.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\dataset\dsCertificado.xss">
+      <DependentUpon>dsCertificado.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\dataset\dsCodigo.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -909,6 +931,10 @@
     <EmbeddedResource Include="Reports\RptBase.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptBase.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCertificado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCertificado.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptCodigo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

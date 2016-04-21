@@ -94,6 +94,7 @@
                     @Html.DisplayNameFor(model => model.his_numero)
                 </th>
                 <th></th>
+                <th></th>
             </tr>
 
             @foreach (var item in Model)
@@ -129,6 +130,9 @@
                         
                         @Html.ActionLink("Details", "Details", new { id = item.his_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
                         @Html.ActionLink("Delete", "Delete", new { id = item.his_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Certificado", "Certificado", new { id = item.his_id, pac_id=item.his_paciente }, new { @class = "iconb icon-pdf", @title = "Certificado" })
                     </td>
                 </tr>
             }

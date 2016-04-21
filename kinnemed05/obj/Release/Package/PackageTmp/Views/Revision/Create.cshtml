@@ -170,7 +170,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Revisión Actual de Órganos y Sentidos</h3>
+                <h3 class="panel-title">Revisión Actual de Órganos y Sentidos (CP/SP)</h3>
             </div>
             <div class="panel-body">
 
@@ -182,7 +182,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_organos)
-                            (CP/SP) Organos de los Sentidos
+                            Órganos de los Sentidos
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_organos)
                     </div>
@@ -191,7 +191,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_respiratorio)
-                            (CP/SP) Respiratorio
+                            Respiratorio
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_respiratorio)
                     </div>
@@ -200,7 +200,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_cardiovascular)
-                            (CP/SP) Cardio Vascular
+                            Cardio Vascular
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_cardiovascular)
                     </div>
@@ -229,7 +229,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_digestivo)
-                            (CP/SP) Digestivo
+                            Digestivo
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_digestivo)
                     </div>
@@ -238,7 +238,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_genital)
-                            (CP/SP) Genital
+                            Genital
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_genital)
                     </div>
@@ -247,7 +247,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_urinario)
-                            (CP/SP) Urinario
+                            Urinario
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_urinario)
                     </div>
@@ -276,7 +276,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_musculo)
-                            (CP/SP) Músculo Esquelético
+                            Músculo Esquelético
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_musculo)
                     </div>
@@ -285,7 +285,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_endocrino)
-                            (CP/SP) Endocrino
+                            Endocrino
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_endocrino)
                     </div>
@@ -294,7 +294,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_linfatico)
-                            (CP/SP) Emo Linfático
+                            Emo Linfático
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_linfatico)
                     </div>
@@ -323,7 +323,7 @@
                     <div class="form-group">
                         <label>
                             @Html.CheckBoxFor(model => model.rev_nervioso)
-                            (CP/SP) Nervioso
+                            Nervioso
                         </label>
                         @Html.ValidationMessageFor(model => model.rev_nervioso)
                     </div>
@@ -342,7 +342,15 @@
     </div>
     <div class="col-lg-3" style="clear:both; float:right">
         <div class="form-group" style="float:right">
-            @Ajax.ActionLink("Anterior", "Problema", "Historia", new { id = ViewBag.rev_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            @*@Ajax.ActionLink("Anterior", "Problema", "Historia", new { id = ViewBag.rev_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })*@
+            @if (Convert.ToInt32(Session["his_tipo"]) != 1)
+            {
+                @Ajax.ActionLink("Anterior", "Edit", "Familiar", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            }
+            else
+            {
+                @Ajax.ActionLink("Anterior", "Problema", "Historia", new { id = ViewBag.rev_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            }
             <input type="submit" value="Siguiente" class="btn btn-primary" />
 
         </div>

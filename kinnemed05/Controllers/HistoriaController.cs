@@ -8,6 +8,11 @@ using System.Web.Mvc;
 using kinnemed05.Models;
 using kinnemed05.Filters;
 using kinnemed05.Security;
+using kinnemed05.Reports.dataset;
+using System.Configuration;
+using System.Data.SqlClient;
+using kinnemed05.Reports;
+using System.IO;
 
 namespace kinnemed05.Controllers
 {
@@ -132,8 +137,8 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            if (historia.his_tipo != 1)
-                return RedirectToAction("Historico", "Ocupacional", new { id = historia.his_paciente });
+            //if (historia.his_tipo != 1)
+            //    return RedirectToAction("Historico", "Ocupacional", new { id = historia.his_paciente });
             if (Request.IsAjaxRequest())
             {
                 return PartialView(historia);
@@ -210,8 +215,8 @@ namespace kinnemed05.Controllers
                 return HttpNotFound();
             }
             int tipo=Convert.ToInt32(Session["his_tipo"]);
-            if (tipo != 1)
-                return RedirectToAction("Edit", "Familiar", new { id = historia.his_paciente });
+            //if (tipo != 1)
+            //    return RedirectToAction("Edit", "Familiar", new { id = historia.his_paciente });
             return PartialView(historia);
         }
 
@@ -224,7 +229,7 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(historia).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Revisión", new { id = historia.his_id });
+                return RedirectToAction("Edit", "Revision", new { id = historia.his_id });
             }
             return PartialView(historia);
         }
@@ -254,6 +259,45 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index", new {tipo=historia.his_tipo });
         }
+
+
+        public ActionResult Certificado(int id,int pac_id) {
+
+            try
+            {
+                dsCertificado dsCertificado = new dsCertificado();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+
+                string strHistoria = "Select * from historia where his_id="+id;
+                string strPaciente = "Select * from paciente where pac_id="+pac_id;
+                string strConcepto = "Select * from concepto where con_id="+id;
+
+                SqlConnection sqlcon = new SqlConnection(conn);
+                SqlDataAdapter daHistoria=new SqlDataAdapter(strHistoria,sqlcon);
+                SqlDataAdapter daPaciente=new SqlDataAdapter(strPaciente,sqlcon);
+                SqlDataAdapter daConcepto=new SqlDataAdapter(strConcepto,sqlcon);
+                daHistoria.Fill(dsCertificado,"historia");
+                daPaciente.Fill(dsCertificado,"paciente");
+                daConcepto.Fill(dsCertificado,"concepto");
+                
+                RptCertificado rp= new RptCertificado();
+                rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
+                rp.SetDataSource(dsCertificado);
+                Response.Buffer = false;
+                Response.ClearContent();
+                Response.ClearHeaders();
+
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Certificado.pdf");
+
+            }
+            catch (Exception ex) {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+
+        }
+
         public JsonResult AutocompletePaciente(string search)
         {
             search = search.ToUpper();

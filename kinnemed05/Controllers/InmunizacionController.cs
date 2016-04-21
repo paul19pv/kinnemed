@@ -58,7 +58,7 @@ namespace kinnemed05.Controllers
             ViewBag.inm_vacuna = new SelectList(db.vacuna, "vac_id", "vac_nombre");
             int his_tipo = Convert.ToInt32(Session["his_tipo"]);
             if (his_tipo == 1)
-                return RedirectToAction("Index", "Historia", new { tipo = his_tipo });
+                return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
             return PartialView();
         }
 

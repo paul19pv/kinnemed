@@ -64,7 +64,12 @@ namespace kinnemed05.Controllers
             {
                 db.familiar.Add(familiar);
                 db.SaveChanges();
-                return RedirectToAction("Problema", "Historia", new { id=Session["his_id"] });
+                //return RedirectToAction("Problema", "Historia", new { id=Session["his_id"] });
+                int his_tipo = Convert.ToInt32(Session["his_tipo"]);
+                if (his_tipo == 1)
+                    return RedirectToAction("Problema", "Historia", new { id = Session["his_id"] });
+                else
+                    return RedirectToAction("Create", "Revision", new { id = Session["his_id"] });
             }
             ViewBag.valor = familiar.fam_cardiopatia;
             ViewBag.fam_id = familiar.fam_id;
@@ -97,10 +102,10 @@ namespace kinnemed05.Controllers
                 db.Entry(familiar).State = EntityState.Modified;
                 db.SaveChanges();
                 int his_tipo = Convert.ToInt32(Session["his_tipo"]);
-                if(his_tipo==1)
+                if (his_tipo == 1)
                     return RedirectToAction("Problema", "Historia", new { id = Session["his_id"] });
                 else
-                    return RedirectToAction("Edit", "Revisión", new { id = Session["his_id"] });
+                    return RedirectToAction("Edit", "Revision", new { id = Session["his_id"] });
             }
             ViewBag.fam_id = familiar.fam_id;
             return PartialView(familiar);
