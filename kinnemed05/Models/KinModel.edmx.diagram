@@ -78,10 +78,10 @@
         <AssociationConnector Association="kinnemedModel.FK_registro_medico" />
         <AssociationConnector Association="kinnemedModel.FK_registro_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_registro" />
-        <EntityTypeShape EntityType="kinnemedModel.concepto" Width="1.5" PointX="15.75" PointY="27.875" />
         <EntityTypeShape EntityType="kinnemedModel.oftalmologia" Width="1.5" PointX="7.5" PointY="50.625" />
-        <AssociationConnector Association="kinnemedModel.FK_concepto_historia" />
         <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.concepto" Width="1.5" PointX="15.75" PointY="27.75" />
+        <AssociationConnector Association="kinnemedModel.FK_concepto_historia" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

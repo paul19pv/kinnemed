@@ -495,6 +495,8 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columncon_observacion;
             
+            private global::System.Data.DataColumn columncon_valor;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public conceptoDataTable() {
@@ -554,6 +556,14 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn con_valorColumn {
+                get {
+                    return this.columncon_valor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -589,12 +599,13 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public conceptoRow AddconceptoRow(historiaRow parenthistoriaRowByFK_concepto_historia, string con_resultado, string con_observacion) {
+            public conceptoRow AddconceptoRow(historiaRow parenthistoriaRowByFK_concepto_historia, string con_resultado, string con_observacion, string con_valor) {
                 conceptoRow rowconceptoRow = ((conceptoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         con_resultado,
-                        con_observacion};
+                        con_observacion,
+                        con_valor};
                 if ((parenthistoriaRowByFK_concepto_historia != null)) {
                     columnValuesArray[0] = parenthistoriaRowByFK_concepto_historia[0];
                 }
@@ -630,6 +641,7 @@ namespace kinnemed05.Reports.dataset {
                 this.columncon_id = base.Columns["con_id"];
                 this.columncon_resultado = base.Columns["con_resultado"];
                 this.columncon_observacion = base.Columns["con_observacion"];
+                this.columncon_valor = base.Columns["con_valor"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -641,6 +653,8 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columncon_resultado);
                 this.columncon_observacion = new global::System.Data.DataColumn("con_observacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncon_observacion);
+                this.columncon_valor = new global::System.Data.DataColumn("con_valor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncon_valor);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columncon_id}, true));
                 this.columncon_id.AllowDBNull = false;
@@ -648,6 +662,7 @@ namespace kinnemed05.Reports.dataset {
                 this.columncon_resultado.AllowDBNull = false;
                 this.columncon_resultado.MaxLength = 50;
                 this.columncon_observacion.MaxLength = 2147483647;
+                this.columncon_valor.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3072,6 +3087,22 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string con_valor {
+                get {
+                    try {
+                        return ((string)(this[this.tableconcepto.con_valorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'con_valor\' in table \'concepto\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableconcepto.con_valorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public historiaRow historiaRow {
                 get {
                     return ((historiaRow)(this.GetParentRow(this.Table.ParentRelations["FK_concepto_historia"])));
@@ -3091,6 +3122,18 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setcon_observacionNull() {
                 this[this.tableconcepto.con_observacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Iscon_valorNull() {
+                return this.IsNull(this.tableconcepto.con_valorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setcon_valorNull() {
+                this[this.tableconcepto.con_valorColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4746,6 +4789,7 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
             tableMapping.ColumnMappings.Add("con_id", "con_id");
             tableMapping.ColumnMappings.Add("con_resultado", "con_resultado");
             tableMapping.ColumnMappings.Add("con_observacion", "con_observacion");
+            tableMapping.ColumnMappings.Add("con_valor", "con_valor");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -4754,20 +4798,23 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[concepto] ([con_id], [con_resultado], [con_observacion]) VALUE" +
-                "S (@con_id, @con_resultado, @con_observacion)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[concepto] ([con_id], [con_resultado], [con_observacion], [con_" +
+                "valor]) VALUES (@con_id, @con_resultado, @con_observacion, @con_valor)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_resultado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_resultado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_observacion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_observacion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_valor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_valor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[concepto] SET [con_id] = @con_id, [con_resultado] = @con_resultado," +
-                " [con_observacion] = @con_observacion WHERE (([con_id] = @Original_con_id))";
+                " [con_observacion] = @con_observacion, [con_valor] = @con_valor WHERE (([con_id]" +
+                " = @Original_con_id))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_resultado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_resultado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_observacion", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_observacion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@con_valor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_valor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_con_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "con_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -4775,7 +4822,7 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["bd_kinnemed02ConnectionString"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4784,7 +4831,7 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT con_id, con_resultado, con_observacion FROM dbo.concepto";
+            this._commandCollection[0].CommandText = "SELECT con_id, con_resultado, con_observacion, con_valor FROM dbo.concepto";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4867,7 +4914,7 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int con_id, string con_resultado, string con_observacion) {
+        public virtual int Insert(int con_id, string con_resultado, string con_observacion, string con_valor) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(con_id));
             if ((con_resultado == null)) {
                 throw new global::System.ArgumentNullException("con_resultado");
@@ -4880,6 +4927,12 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(con_observacion));
+            }
+            if ((con_valor == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(con_valor));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4901,7 +4954,7 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int con_id, string con_resultado, string con_observacion, int Original_con_id) {
+        public virtual int Update(int con_id, string con_resultado, string con_observacion, string con_valor, int Original_con_id) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(con_id));
             if ((con_resultado == null)) {
                 throw new global::System.ArgumentNullException("con_resultado");
@@ -4915,7 +4968,13 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(con_observacion));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_con_id));
+            if ((con_valor == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(con_valor));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_con_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4936,8 +4995,8 @@ namespace kinnemed05.Reports.dataset.dsCertificadoTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string con_resultado, string con_observacion, int Original_con_id) {
-            return this.Update(Original_con_id, con_resultado, con_observacion, Original_con_id);
+        public virtual int Update(string con_resultado, string con_observacion, string con_valor, int Original_con_id) {
+            return this.Update(Original_con_id, con_resultado, con_observacion, con_valor, Original_con_id);
         }
     }
     

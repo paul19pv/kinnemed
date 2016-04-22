@@ -51,6 +51,7 @@
           <Property Name="con_id" Type="int" Nullable="false" />
           <Property Name="con_resultado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="con_observacion" Type="nvarchar(max)" />
+          <Property Name="con_valor" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="control">
           <Key>
@@ -1513,15 +1514,15 @@
             <End Role="registro" EntitySet="registro" />
             <End Role="prueba" EntitySet="prueba" />
           </AssociationSet>
-          <EntitySet Name="concepto" EntityType="kinnemedModel.concepto" />
           <EntitySet Name="oftalmologia" EntityType="kinnemedModel.oftalmologia" />
-          <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
-            <End Role="historia" EntitySet="historia" />
-            <End Role="concepto" EntitySet="concepto" />
-          </AssociationSet>
           <AssociationSet Name="FK_oftalmologia_paciente" Association="kinnemedModel.FK_oftalmologia_paciente">
             <End Role="paciente" EntitySet="paciente" />
             <End Role="oftalmologia" EntitySet="oftalmologia" />
+          </AssociationSet>
+          <EntitySet Name="concepto" EntityType="kinnemedModel.concepto" />
+          <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
+            <End Role="historia" EntitySet="historia" />
+            <End Role="concepto" EntitySet="concepto" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="area">
@@ -2497,15 +2498,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="concepto">
-          <Key>
-            <PropertyRef Name="con_id" />
-          </Key>
-          <Property Name="con_id" Type="Int32" Nullable="false" />
-          <Property Name="con_resultado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="con_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_concepto_historia" FromRole="concepto" ToRole="historia" />
-        </EntityType>
         <EntityType Name="oftalmologia">
           <Key>
             <PropertyRef Name="oft_id" />
@@ -2527,20 +2519,6 @@
           <Property Name="oft_indicaciones" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="oftalmologia" ToRole="paciente" />
         </EntityType>
-        <Association Name="FK_concepto_historia">
-          <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.concepto" Role="concepto" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="historia">
-              <PropertyRef Name="his_id" />
-            </Principal>
-            <Dependent Role="concepto">
-              <PropertyRef Name="con_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_oftalmologia_paciente">
           <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -2552,6 +2530,30 @@
             </Principal>
             <Dependent Role="oftalmologia">
               <PropertyRef Name="oft_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="concepto">
+          <Key>
+            <PropertyRef Name="con_id" />
+          </Key>
+          <Property Name="con_id" Type="Int32" Nullable="false" />
+          <Property Name="con_resultado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="con_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="con_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_concepto_historia" FromRole="concepto" ToRole="historia" />
+        </EntityType>
+        <Association Name="FK_concepto_historia">
+          <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.concepto" Role="concepto" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="historia">
+              <PropertyRef Name="his_id" />
+            </Principal>
+            <Dependent Role="concepto">
+              <PropertyRef Name="con_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3088,15 +3090,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="concepto">
-            <EntityTypeMapping TypeName="kinnemedModel.concepto">
-              <MappingFragment StoreEntitySet="concepto">
-                <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
-                <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
-                <ScalarProperty Name="con_id" ColumnName="con_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="oftalmologia">
             <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
               <MappingFragment StoreEntitySet="oftalmologia">
@@ -3115,6 +3108,16 @@
                 <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
                 <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
                 <ScalarProperty Name="oft_id" ColumnName="oft_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="concepto">
+            <EntityTypeMapping TypeName="kinnemedModel.concepto">
+              <MappingFragment StoreEntitySet="concepto">
+                <ScalarProperty Name="con_valor" ColumnName="con_valor" />
+                <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
+                <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
+                <ScalarProperty Name="con_id" ColumnName="con_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

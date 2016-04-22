@@ -29,6 +29,13 @@
                         @Html.ValidationMessageFor(model => model.con_resultado)
                     </div>
                 </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.con_valor, new { @class = "control-label" })
+                        @Html.DropDownList("con_valor", String.Empty)
+                        @Html.ValidationMessageFor(model => model.con_valor)
+                    </div>
+                </div>
                 <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
                         @Html.LabelFor(model => model.con_observacion, new { @class = "control-label" })

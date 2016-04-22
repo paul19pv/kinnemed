@@ -422,6 +422,12 @@
       <DependentUpon>RptCerNoApto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\RptCerRetiro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCerRetiro.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\RptCertificado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -962,6 +968,10 @@
     <EmbeddedResource Include="Reports\RptCerNoApto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptCerNoApto.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCerRetiro.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCerRetiro.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptCertificado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

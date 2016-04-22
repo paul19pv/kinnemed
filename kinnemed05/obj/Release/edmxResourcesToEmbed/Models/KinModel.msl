@@ -528,15 +528,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="concepto">
-      <EntityTypeMapping TypeName="kinnemedModel.concepto">
-        <MappingFragment StoreEntitySet="concepto">
-          <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
-          <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
-          <ScalarProperty Name="con_id" ColumnName="con_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="oftalmologia">
       <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
         <MappingFragment StoreEntitySet="oftalmologia">
@@ -555,6 +546,16 @@
           <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
           <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
           <ScalarProperty Name="oft_id" ColumnName="oft_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="concepto">
+      <EntityTypeMapping TypeName="kinnemedModel.concepto">
+        <MappingFragment StoreEntitySet="concepto">
+          <ScalarProperty Name="con_valor" ColumnName="con_valor" />
+          <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
+          <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
+          <ScalarProperty Name="con_id" ColumnName="con_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

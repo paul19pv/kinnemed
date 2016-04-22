@@ -32,31 +32,31 @@
                         @Html.ValidationMessageFor(model => model.sub_hora)
                     </div>
                 </div>
-                <div class="col-lg-4" style="clear:both">
+                <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
                         @Html.LabelFor(model => model.sub_subjetivo, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.sub_subjetivo, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.sub_subjetivo, new { @class = "form-control", @rows = "3" })
                         @Html.ValidationMessageFor(model => model.sub_subjetivo)
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <div class="form-group">
                         @Html.LabelFor(model => model.sub_objetivo, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.sub_objetivo, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.sub_objetivo, new { @class = "form-control", @rows = "3" })
                         @Html.ValidationMessageFor(model => model.sub_objetivo)
                     </div>
                 </div>
-                <div class="col-lg-4" style="clear:both">
+                <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
                         @Html.LabelFor(model => model.sub_analisis, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.sub_analisis, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.sub_analisis, new { @class = "form-control", @rows = "3" })
                         @Html.ValidationMessageFor(model => model.sub_analisis)
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-12">
                     <div class="form-group">
                         @Html.LabelFor(model => model.sub_plan, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.sub_plan, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.sub_plan, new { @class = "form-control", @rows = "3" })
                         @Html.ValidationMessageFor(model => model.sub_plan)
                     </div>
                 </div>
