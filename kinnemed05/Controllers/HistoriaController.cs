@@ -88,6 +88,7 @@ namespace kinnemed05.Controllers
                 db.historia.Add(historia);
                 db.SaveChanges();
                 Session["his_id"] = historia.his_id;
+                Session["his_tipo"] = historia.his_tipo;
                 return RedirectToAction("Create", "Personal", new { id = historia.his_paciente});
             }
             ViewBag.numero = numero_historia(historia);
@@ -266,28 +267,76 @@ namespace kinnemed05.Controllers
             try
             {
                 dsCertificado dsCertificado = new dsCertificado();
+                paciente paciente = db.paciente.Find(pac_id);
+                historia historia = db.historia.Find(id);
+                concepto concepto = db.concepto.Find(id);
+                var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual" && o.ocu_estado == true);
+                ocupacional ocupacional=new ocupacional();
+
+                if(consulta.Any())
+                    ocupacional=consulta.First();
                 string conn = ConfigurationManager.AppSettings["conexion"];
 
                 string strHistoria = "Select * from historia where his_id="+id;
                 string strPaciente = "Select * from paciente where pac_id="+pac_id;
                 string strConcepto = "Select * from concepto where con_id="+id;
+                string strEmpresa = "Select * from empresa where emp_id="+paciente.pac_empresa;
+                string strMedico = "Select * from medico where med_id="+historia.his_medico;
+                string strOcupacional=String.Empty;
+                if (ocupacional.ocu_id != null)
+                    strOcupacional = "Select * from ocupacional where ocu_id=" + ocupacional.ocu_id;
+                else
+                    strOcupacional = "Select top 1 * from ocupacional";
 
                 SqlConnection sqlcon = new SqlConnection(conn);
                 SqlDataAdapter daHistoria=new SqlDataAdapter(strHistoria,sqlcon);
                 SqlDataAdapter daPaciente=new SqlDataAdapter(strPaciente,sqlcon);
                 SqlDataAdapter daConcepto=new SqlDataAdapter(strConcepto,sqlcon);
+                SqlDataAdapter daEmpresa = new SqlDataAdapter(strEmpresa, sqlcon);
+                SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
+                SqlDataAdapter daOcupacional = new SqlDataAdapter(strOcupacional, sqlcon);
                 daHistoria.Fill(dsCertificado,"historia");
                 daPaciente.Fill(dsCertificado,"paciente");
                 daConcepto.Fill(dsCertificado,"concepto");
+                daEmpresa.Fill(dsCertificado, "empresa");
+                daMedico.Fill(dsCertificado, "medico");
+                daOcupacional.Fill(dsCertificado, "ocupacional");
+
+                RptCertificado rp_base = new RptCertificado();
+                rp_base.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
+                rp_base.SetDataSource(dsCertificado);
+                Stream stream = rp_base.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+
+                if (concepto.con_resultado == "APTO") {
+                    RptCerApto rp = new RptCerApto();
+                    rp.Load(Path.Combine(Server.MapPath("~/Reports"),"RptCerApto.rpt"));
+                    rp.SetDataSource(dsCertificado);
+                    stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                }
+                else if (concepto.con_resultado == "APTO CON RESTRICCIONES PERSONALES" || concepto.con_resultado == "APTO CON RESTRICCIONES LABORALES")
+                {
+                    RptCerAptoRes rp = new RptCerAptoRes();
+                    rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerAptoRes.rpt"));
+                    rp.SetDataSource(dsCertificado);
+                    stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                }
+                else if (concepto.con_resultado == "NO APTO") {
+                    RptCerNoApto rp = new RptCerNoApto();
+                    rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerNoApto.rpt"));
+                    rp.SetDataSource(dsCertificado);
+                    stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                }
+               
+                    
                 
-                RptCertificado rp= new RptCertificado();
-                rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
-                rp.SetDataSource(dsCertificado);
+                //RptCertificado rp= new RptCertificado();
+                //rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
+                //rp.SetDataSource(dsCertificado);
                 Response.Buffer = false;
                 Response.ClearContent();
                 Response.ClearHeaders();
 
-                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                //Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
                 return File(stream, "application/pdf", "Certificado.pdf");
 

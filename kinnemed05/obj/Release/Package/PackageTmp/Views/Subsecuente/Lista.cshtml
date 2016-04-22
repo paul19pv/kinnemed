@@ -64,11 +64,7 @@
                     @Html.TextBoxFor(model => model.fecha, new { @class = "form-control", Value = ViewBag.fecha })
                     @Html.ValidationMessageFor(model => model.fecha)
                 </div>
-                @Html.Label("Tipo", new { @class = "control-label col-lg-1", @for = "inputDefault" })
-                <div class="col-lg-3">
-                    @Html.DropDownList("tipo", String.Empty)
-                    @Html.ValidationMessageFor(model => model.tipo)
-                </div>
+                
                 <input type="submit" value="Filtrar" class="btn btn-primary" />
             </div>
         }

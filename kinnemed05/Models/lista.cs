@@ -11,6 +11,5 @@ namespace kinnemed05.Models
         
         public int paciente { get; set; }
         public string fecha { get; set; }
-        public int tipo { get; set; }
     }
 }
