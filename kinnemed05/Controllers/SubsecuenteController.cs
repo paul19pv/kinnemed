@@ -33,9 +33,8 @@ namespace kinnemed05.Controllers
                 historia = historia.Where(h => h.his_paciente == lista.paciente);
             if (!String.IsNullOrEmpty(lista.fecha))
                 historia = historia.Where(h => h.his_fecha == lista.fecha);
-            if (lista.tipo != 0)
-                historia = historia.Where(h => h.his_tipo == lista.tipo);
-            ViewBag.paciente = lista.paciente +" "+lista.fecha+" "+lista.tipo;
+                historia = historia.Where(h => h.his_tipo == 1);
+            //ViewBag.paciente = lista.paciente +" "+lista.fecha+" "+lista.tipo;
             return PartialView(historia.ToList());
         }
 

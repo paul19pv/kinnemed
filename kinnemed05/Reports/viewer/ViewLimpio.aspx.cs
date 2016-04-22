@@ -70,7 +70,7 @@ namespace kinnemed05.Reports.viewer
                 reportDocument.SetParameterValue("genero", "");
             reportDocument.SetParameterValue("hc", "");
             reportDocument.SetParameterValue("orden", registro.reg_orden);
-
+            
 
             crViewer.ReportSource = reportDocument;
             crViewer.DataBind();

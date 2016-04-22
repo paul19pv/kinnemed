@@ -404,6 +404,24 @@
       <DependentUpon>RptBase.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\RptCerApto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCerApto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptCerAptoRes.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCerAptoRes.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptCerNoApto.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCerNoApto.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\RptCertificado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -450,18 +468,18 @@
     <Compile Include="Reports\RptViewer.aspx.designer.cs">
       <DependentUpon>RptViewer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\viewer\ViewLimpio.aspx.cs">
+    <Compile Include="Reports\Viewer\ViewLimpio.aspx.cs">
       <DependentUpon>ViewLimpio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\viewer\ViewLimpio.aspx.designer.cs">
+    <Compile Include="Reports\Viewer\ViewLimpio.aspx.designer.cs">
       <DependentUpon>ViewLimpio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\viewer\ViewPrueba.aspx.cs">
+    <Compile Include="Reports\Viewer\ViewPrueba.aspx.cs">
       <DependentUpon>ViewPrueba.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\viewer\ViewPrueba.aspx.designer.cs">
+    <Compile Include="Reports\Viewer\ViewPrueba.aspx.designer.cs">
       <DependentUpon>ViewPrueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Security\RolesAuthorize.cs" />
@@ -493,6 +511,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap0.css" />
     <Content Include="Content\img\barcode-icon.png" />
+    <Content Include="Content\img\certificate-icon.png" />
     <Content Include="Content\img\delete-icon.png" />
     <Content Include="Content\img\edit-icon.png" />
     <Content Include="Content\img\iconos\company-icon.png" />
@@ -679,8 +698,8 @@
     </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Reports\RptViewer.aspx" />
-    <Content Include="Reports\viewer\ViewLimpio.aspx" />
-    <Content Include="Reports\viewer\ViewPrueba.aspx" />
+    <Content Include="Reports\Viewer\ViewLimpio.aspx" />
+    <Content Include="Reports\Viewer\ViewPrueba.aspx" />
     <Content Include="Scripts\ajax_paciente.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -931,6 +950,18 @@
     <EmbeddedResource Include="Reports\RptBase.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptBase.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCerApto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCerApto.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCerAptoRes.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCerAptoRes.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCerNoApto.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCerNoApto.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptCertificado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

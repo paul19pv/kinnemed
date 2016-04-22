@@ -97,6 +97,9 @@ textarea {
 .icon-barcode {
     background: url(img/barcode-icon.png) no-repeat center right;
 }
+.icon-certificate {
+    background: url(img/certificate-icon.png) no-repeat center right;
+}
 
 a.btn-img > img {
     margin-left:auto;margin-right:auto;display:block;

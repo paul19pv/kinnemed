@@ -52,7 +52,7 @@ namespace kinnemed05.Controllers
 [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
-            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado==true);
             //ocupacional ocupacional = db.ocupacional.Find(id);
             if (consulta.Any())
             {
@@ -74,6 +74,7 @@ namespace kinnemed05.Controllers
         public ActionResult Create(ocupacional ocupacional)
         {
             ocupacional.ocu_estado = true;
+            ocupacional.ocu_tiempo = get_tiempo(ocupacional.ocu_inicio);
             if (ModelState.IsValid)
             {
                 db.ocupacional.Add(ocupacional);
@@ -84,6 +85,7 @@ namespace kinnemed05.Controllers
             ViewBag.ocu_paciente = ocupacional.ocu_paciente;
             ViewBag.ocu_tipo = ocupacional.ocu_tipo;
             ViewBag.ocu_jornada = ocu_jornada(ocupacional.ocu_jornada);
+
             ViewBag.his_tipo = Session["his_tipo"];
             return PartialView(ocupacional);
         }
@@ -132,7 +134,7 @@ namespace kinnemed05.Controllers
 [CustomAuthorize(UserRoles.medico)]
         public ActionResult Edit(int id)
         {
-            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual");
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado==true);
             //ocupacional ocupacional = db.ocupacional.Find(id);
             if (!consulta.Any())
             {

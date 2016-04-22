@@ -50,14 +50,14 @@
 <h2>Historias @ViewBag.titulo</h2>
 
 <p>
-    @Html.ActionLink("Nueva Historia", "Create", new {tipo=ViewBag.tipo }, new { @class = "btn btn-default" })
-    @Html.ActionLink("Regresar", "Historia","Home", new { }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Nueva Historia", "Create", new { tipo = ViewBag.tipo }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Regresar", "Historia", "Home", new { }, new { @class = "btn btn-default" })
 </p>
 <div class="panel panel-default">
     <div class="panel-body">
         @using (Html.BeginForm())
         {
-            @Html.Hidden("paciente", "", new {Value=ViewBag.paciente })
+            @Html.Hidden("paciente", "", new { Value = ViewBag.paciente })
             <div class="form-group">
                 @Html.Label("Paciente", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-3">
@@ -65,7 +65,7 @@
                 </div>
                 @Html.Label("Fecha", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-2">
-                    @Html.TextBox("fecha", "", new { @class = "form-control", Value=ViewBag.fecha })
+                    @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
                 </div>
                 <input type="submit" value="Filtrar" class="btn btn-primary" />
             </div>
@@ -79,7 +79,7 @@
         <table class="table table-striped table-hover ">
             <tr>
                 <th>
-                   Paciente
+                    Paciente
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.his_motivo)
@@ -116,23 +116,33 @@
                         @Html.DisplayFor(modelItem => item.his_numero)
                     </td>
                     <td>
-                        @{
-                            if(item.his_tipo==1){
-                                @Html.ActionLink("Edit", "Edit", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
-                            }
-                                
-                        else{
-                                @Html.ActionLink("Edit", "Edit02", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+
+                        @if (item.his_tipo == 1)
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
                         }
 
-}
+                        else
+                        {
+                            @Html.ActionLink("Edit", "Edit02", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                        }
 
-                        
+
+
                         @Html.ActionLink("Details", "Details", new { id = item.his_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
                         @Html.ActionLink("Delete", "Delete", new { id = item.his_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
                     </td>
                     <td>
-                        @Html.ActionLink("Certificado", "Certificado", new { id = item.his_id, pac_id=item.his_paciente }, new { @class = "iconb icon-pdf", @title = "Certificado" })
+                        @if (item.his_tipo == 1)
+                        {
+
+                        }
+                        else { 
+                            @Html.ActionLink("Certificado", "Certificado", new { id = item.his_id, pac_id = item.his_paciente }, new { @class = "iconb icon-certificate", @title = "Certificado" })
+                        }
+
+
+                        
                     </td>
                 </tr>
             }
