@@ -21,9 +21,13 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var rayos = db.rayos.Include(r => r.paciente);
+            if (id != null)
+                rayos = rayos.Where(r => r.ray_paciente == id);
+            if (Request.IsAjaxRequest())
+                return PartialView("Index_historia", rayos.ToList());
             return View(rayos.ToList());
         }
 

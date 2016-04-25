@@ -12,13 +12,26 @@
         $('#div_loading').hide();
     });
 
-
+    //lista examenes de laboratorio
     $.ajax({
         url: $("#link_index").attr('href'),
         type: 'GET',
         data: { id: $('#pac_id').val() },
         success: function (data) {
             $('#div_index').html(data)
+        },
+        error: function (xhr, status, error) {
+            alert(error)
+        }
+    });
+
+
+    $.ajax({
+        url: $("#link_rayos").attr('href'),
+        type: 'GET',
+        data: { id: $('#pac_id').val() },
+        success: function (data) {
+            $('#div_rayos').html(data)
         },
         error: function (xhr, status, error) {
             alert(error)
@@ -42,14 +55,14 @@
 
                 <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
-                        <label>Recomendaciones Farmácologicas</label>
+                        @Html.LabelFor(model => model.pla_texto1, new { @class = "control-label" })
                         @Html.TextAreaFor(model => model.pla_texto1, new { @class = "form-control", @rows = "5" })
                         @Html.ValidationMessageFor(model => model.pla_texto1)
                     </div>
                 </div>
                 <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
-                        <label>Recomendaciones No Farmacológicas</label>
+                        @Html.LabelFor(model => model.pla_texto2, new { @class = "control-label" })
                         @Html.TextAreaFor(model => model.pla_texto2, new { @class = "form-control", @rows = "5" })
                         @Html.ValidationMessageFor(model => model.pla_texto2)
                     </div>
@@ -72,9 +85,15 @@
 
 </div>
 
+<div id="div_rayos" style="clear:both" class="col-lg-12">
+
+</div>
+
 
 
 <a href="@Url.Content("~/Registro/Index")" id="link_index"></a>
+
+<a href="@Url.Content("~/Rayos/Index")" id="link_rayos"></a>
 
 
 @section Scripts {

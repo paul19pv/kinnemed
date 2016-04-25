@@ -21,9 +21,13 @@ namespace kinnemed05.Controllers
         //
         // GET: /Espirometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var espirometria = db.espirometria.Include(e => e.paciente);
+            if (id != null)
+                espirometria = espirometria.Where(e => e.esp_paciente == id);
+            if (Request.IsAjaxRequest())
+                return PartialView("Index_historia", espirometria.ToList());
             return View(espirometria.ToList());
         }
 

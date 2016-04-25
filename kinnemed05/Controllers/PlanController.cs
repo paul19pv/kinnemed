@@ -46,11 +46,14 @@ namespace kinnemed05.Controllers
         public ActionResult Create(int id)
         {
             plan plan = db.plan.Find(id);
+            
             if (plan != null)
             {
                 return RedirectToAction("Edit", new { id = id });
             }
+            historia historia = db.historia.Find(id);
             ViewBag.pla_id = id;
+            ViewBag.pac_id = historia.his_paciente;
             return PartialView();
         }
 
