@@ -518,6 +518,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap0.css" />
+    <Content Include="Content\firmas\firma.png" />
     <Content Include="Content\img\barcode-icon.png" />
     <Content Include="Content\img\certificate-icon.png" />
     <Content Include="Content\img\delete-icon.png" />
@@ -549,6 +550,7 @@
     <Content Include="Content\img\pdf-icon.png" />
     <Content Include="Content\img\search-icon.png" />
     <Content Include="Content\img\table-icon.png" />
+    <Content Include="Content\logincss.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -939,13 +941,14 @@
     <Content Include="Views\Rayos\Index_historia.cshtml" />
     <Content Include="Views\Audiometria\Index_historia.cshtml" />
     <Content Include="Views\Espirometria\Index_historia.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\audiometria\" />
     <Folder Include="Content\biometria\" />
     <Folder Include="Content\espirometria\" />
-    <Folder Include="Content\firmas\" />
     <Folder Include="Content\firmas_\" />
     <Folder Include="Content\rayos\" />
     <Folder Include="crystalreportviewers13\" />

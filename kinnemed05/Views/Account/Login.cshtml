@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 <div id="login">
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))

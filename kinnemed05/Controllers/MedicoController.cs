@@ -177,6 +177,7 @@ namespace kinnemed05.Controllers
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
+
                     objfirma.ResizeImage(path, path01, 200, 120);
                 }
                 else
