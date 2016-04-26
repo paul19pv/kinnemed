@@ -1,6 +1,6 @@
 ﻿body {
   /* Ubicación de la imagen */
-  background-image: url(../Content/img/fondo_login.jpg);
+  background-image: url(img/fondo_login.jpg);
 
   /* Nos aseguramos que la imagen de fondo este centrada vertical y
     horizontalmente en todo momento */

@@ -44,7 +44,14 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
+            fisico fisico = db.fisico.Find(id);
+            if (fisico != null)
+            {
+                return RedirectToAction("Edit", new { id = id });
+            }
+            historia historia = db.historia.Find(id);
             ViewBag.fis_id = id;
+            ViewBag.pac_id = historia.his_paciente;
             return PartialView();
         }
 
@@ -76,7 +83,9 @@ namespace kinnemed05.Controllers
             {
                 return RedirectToAction("Create", new { id=id});
             }
+            historia historia = db.historia.Find(id);
             ViewBag.fis_id = id;
+            ViewBag.pac_id = historia.his_paciente;
             return PartialView(fisico);
         }
 

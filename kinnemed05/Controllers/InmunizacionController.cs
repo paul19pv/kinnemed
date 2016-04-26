@@ -57,6 +57,8 @@ namespace kinnemed05.Controllers
             ViewBag.his_id = Session["his_id"];
             ViewBag.inm_vacuna = new SelectList(db.vacuna, "vac_id", "vac_nombre");
             int his_tipo = Convert.ToInt32(Session["his_tipo"]);
+            if(his_tipo==null)
+                return RedirectToAction("Message", "Home", new { mensaje = "Ocurrio un problema con la variable de sesion. Por favor edite los datos existentes" });
             if (his_tipo == 1)
                 return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
             return PartialView();
@@ -74,12 +76,12 @@ namespace kinnemed05.Controllers
             {
                 db.inmunizacion.Add(inmunizacion);
                 db.SaveChanges();
-                return RedirectToAction("Index", new {id=inmunizacion.inm_paciente });
+                
             }
-
-            ViewBag.inm_paciente = inmunizacion.inm_paciente;
-            ViewBag.inm_vacuna = new SelectList(db.vacuna, "vac_id", "vac_nombre", inmunizacion.inm_vacuna);
-            return PartialView(inmunizacion);
+            return RedirectToAction("Index", new { id = inmunizacion.inm_paciente });
+            //ViewBag.inm_paciente = inmunizacion.inm_paciente;
+            //ViewBag.inm_vacuna = new SelectList(db.vacuna, "vac_id", "vac_nombre", inmunizacion.inm_vacuna);
+            //return PartialView(inmunizacion);
         }
 
         //

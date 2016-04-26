@@ -44,6 +44,11 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
+            signos signos = db.signos.Find(id);
+            if (signos != null)
+            {
+                return RedirectToAction("Edit", new { id = id });
+            }
             ViewBag.sig_id = id;
             return PartialView();
         }
