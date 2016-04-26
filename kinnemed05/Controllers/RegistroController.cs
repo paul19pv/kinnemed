@@ -33,11 +33,15 @@ namespace kinnemed05.Controllers
         //[CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
         //[]
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, int? paciente, string fecha)
         {
             var registro = db.registro.Include(r => r.paciente);
             if (id != null)
                 registro = db.registro.Where(r => r.reg_paciente == id);
+            if (paciente != null)
+                registro = registro.Where(r=>r.reg_paciente==paciente);
+            if (!String.IsNullOrEmpty(fecha))
+                registro = registro.Where(r=>r.reg_fecha == fecha);
             registro = registro.Where(r => r.reg_estado != false);
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia",registro.ToList());
@@ -324,6 +328,49 @@ namespace kinnemed05.Controllers
 
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Codigo(int id)
+        {
+            //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+            //if (!consulta.Any())
+            //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" + registro.reg_fecha + registro.reg_paciente });
+
+
+            string conn = ConfigurationManager.AppSettings["conexion"];
+            registro registro = db.registro.Find(id);
+            int reg_id = registro.reg_id;
+            string paciente = registro.paciente.pac_nombres + " " + registro.paciente.pac_apellidos;
+            string strRegistro = "Select * from view_codigo where reg_id=" + reg_id+"";
+
+            SqlConnection conexion = new SqlConnection(conn);
+            DataTable dt = new DataTable();
+            try
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(strRegistro, conexion);
+                SqlDataAdapter dap = new SqlDataAdapter(cmd);
+                dap.Fill(dt);
+
+                RptCodigo rp = new RptCodigo();
+                rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCodigo.rpt"));
+                rp.SetDataSource(dt);
+                rp.SetParameterValue("paciente", paciente);
+                //Response.Buffer = false;
+                //Response.ClearContent();
+                //Response.ClearHeaders();
+
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", reg_id + ".pdf");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+
+
+        }
+
         public ActionResult Reporte()
         {
             DateTime dd = DateTime.Now;
@@ -355,6 +402,30 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Reporte(int id)
+        {
+            try
+            {
+                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                //if (!consulta.Any())
+                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+                registro registro = db.registro.Find(id);
+                Session["reg_paciente"] = registro.reg_paciente;
+                Session["reg_fecha"] = registro.reg_fecha;
+                ReportViewerViewModel model = new ReportViewerViewModel();
+                string content = Url.Content("~/Reports/Viewer/ViewPrueba.aspx");
+                model.ReportPath = content;
+                return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
         public ActionResult ReporteLimpio()
         {
             DateTime dd = DateTime.Now;
@@ -371,6 +442,30 @@ namespace kinnemed05.Controllers
                 var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
                 if (!consulta.Any())
                     return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+                Session["reg_paciente"] = registro.reg_paciente;
+                Session["reg_fecha"] = registro.reg_fecha;
+                ReportViewerViewModel model = new ReportViewerViewModel();
+                string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
+                model.ReportPath = content;
+                return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ReporteLimpio(int id)
+        {
+            try
+            {
+                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                //if (!consulta.Any())
+                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+                registro registro = db.registro.Find(id);
                 Session["reg_paciente"] = registro.reg_paciente;
                 Session["reg_fecha"] = registro.reg_fecha;
                 ReportViewerViewModel model = new ReportViewerViewModel();

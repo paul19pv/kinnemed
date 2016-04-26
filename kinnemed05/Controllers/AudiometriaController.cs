@@ -21,9 +21,13 @@ namespace kinnemed05.Controllers
         //
         // GET: /Audiometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var audiometria = db.audiometria.Include(a => a.paciente);
+            if (id != null)
+                audiometria = audiometria.Where(a => a.aud_paciente == id);
+            if (Request.IsAjaxRequest())
+                return PartialView("Index_historia", audiometria.ToList());
             return View(audiometria.ToList());
         }
 

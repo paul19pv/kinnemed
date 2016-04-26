@@ -29,14 +29,23 @@
                     @Html.LabelFor(model => model.lab_nombres, new { @class = "control-label", @for = "inputDefault" })
                     @Html.TextBoxFor(model => model.lab_nombres, new { @class = "form-control", @readonly = "readonly" })
                 </div>
-
-            </div>
-            <div class="col-lg-4">
                 <div class="form-group">
 
                     @Html.LabelFor(model => model.lab_apellidos, new { @class = "control-label", @for = "inputDefault" })
                     @Html.TextBoxFor(model => model.lab_apellidos, new { @class = "form-control", @readonly = "readonly" })
                 </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.lab_firma, new { @class = "control-label" })
+                    @if (Model.lab_firma != null)
+                    {
+                        <img src="@Url.Content("~/Content/firmas/" + Model.lab_firma)" class="img-rounded" />
+                    }
+                </div>
+
+
 
             </div>
 

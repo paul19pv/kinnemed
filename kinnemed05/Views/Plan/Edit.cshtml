@@ -12,7 +12,7 @@
         $('#div_loading').hide();
     });
 
-
+    //lista examenes de laboratorio
     $.ajax({
         url: $("#link_index").attr('href'),
         type: 'GET',
@@ -21,9 +21,48 @@
             $('#div_index').html(data)
         },
         error: function (xhr, status, error) {
-            alert(error)
+            $('#div_index').html(error)
         }
     });
+
+    //lista de examenes de rayos x
+    $.ajax({
+        url: $("#link_rayos").attr('href'),
+        type: 'GET',
+        data: { id: $('#pac_id').val() },
+        success: function (data) {
+            $('#div_rayos').html(data)
+        },
+        error: function (xhr, status, error) {
+            $('#div_rayos').html(error)
+        }
+    });
+    //lista de examenes de espirometria
+    $.ajax({
+        url: $("#link_espirometria").attr('href'),
+        type: 'GET',
+        data: { id: $('#pac_id').val() },
+        success: function (data) {
+            $('#div_espirometria').html(data)
+        },
+        error: function (xhr, status, error) {
+            $('#div_espirometria').html(error)
+        }
+    });
+    //lista de examenes de audiometria
+    $.ajax({
+        url: $("#link_audiometria").attr('href'),
+        type: 'GET',
+        data: { id: $('#pac_id').val() },
+        success: function (data) {
+            $('#div_audiometria').html(data)
+        },
+        error: function (xhr, status, error) {
+            $('#div_audiometria').html(error)
+        }
+    });
+
+
 
 </script>
 @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
@@ -42,14 +81,14 @@
 
                 <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
-                        <label>Recomendaciones Farmácologicas</label>
+                        @Html.LabelFor(model => model.pla_texto1, new { @class = "control-label" })
                         @Html.TextAreaFor(model => model.pla_texto1, new { @class = "form-control", @rows = "5" })
                         @Html.ValidationMessageFor(model => model.pla_texto1)
                     </div>
                 </div>
                 <div class="col-lg-12" style="clear:both">
                     <div class="form-group">
-                        <label>Recomendaciones No Farmacológicas</label>
+                        @Html.LabelFor(model => model.pla_texto2, new { @class = "control-label" })
                         @Html.TextAreaFor(model => model.pla_texto2, new { @class = "form-control", @rows = "5" })
                         @Html.ValidationMessageFor(model => model.pla_texto2)
                     </div>
@@ -72,9 +111,22 @@
 
 </div>
 
+<div id="div_rayos" style="clear:both" class="col-lg-12">
+
+</div>
+<div id="div_espirometria" style="clear:both" class="col-lg-12">
+
+</div>
+<div id="div_audiometria" style="clear:both" class="col-lg-12">
+
+</div>
+
 
 
 <a href="@Url.Content("~/Registro/Index")" id="link_index"></a>
+<a href="@Url.Content("~/Rayos/Index")" id="link_rayos"></a>
+<a href="@Url.Content("~/Espirometria/Index")" id="link_espirometria"></a>
+<a href="@Url.Content("~/Audiometria/Index")" id="link_audiometria"></a>
 
 
 @section Scripts {

@@ -69,13 +69,9 @@ namespace kinnemed05.Controllers
             {
                 db.diagnostico.Add(diagnostico);
                 db.SaveChanges();
-                return RedirectToAction("Index", new { id=diagnostico.dia_historia});
+                
             }
-
-            ViewBag.dia_historia = diagnostico.dia_historia;
-            //ViewBag.dia_subcie10 = new SelectList(db.sub_cie10, "sub_id", "sub_codigo", diagnostico.dia_subcie10);
-            ViewBag.dia_tipo = tipo(diagnostico);
-            return PartialView(diagnostico);
+            return RedirectToAction("Index", new { id = diagnostico.dia_historia });
         }
 
         //

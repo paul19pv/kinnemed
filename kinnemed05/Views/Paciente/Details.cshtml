@@ -4,14 +4,13 @@
     ViewBag.Title = "Details";
 }
 
-<div class="col-lg-9">
-    <div class="bs-component">
+<div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Detalle Paciente</h3>
             </div>
             <div class="panel-body">
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.pac_cedula, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.pac_cedula, new { @class = "form-control", @readonly = "readonly" })
@@ -38,8 +37,18 @@
                         @Html.TextBoxFor(model => model.pais.pais_nombre, new { @class = "form-control", @readonly = "readonly" })
                     </div>
                     <div class="form-group">
+                        @Html.LabelFor(model => model.pac_instruccion, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.pac_instruccion, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
                         @Html.LabelFor(model => model.pac_fechanacimiento, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.pac_fechanacimiento, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.pac_edad, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.pac_edad, new { @class = "form-control", @readonly = "readonly" })
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => model.pac_telefono, new { @class = "control-label", @for = "inputDefault" })
@@ -49,13 +58,6 @@
                         @Html.LabelFor(model => model.pac_celular, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.pac_celular, new { @class = "form-control", @readonly = "readonly" })
                     </div>
-                    <div class="form-group">
-                        @Html.ActionLink("Regresar", "Index", "Paciente", new { @class = "btn btn-default" })
-                    </div>
-
-
-                </div>
-                <div class="col-lg-5 col-lg-offset-1">
                     <div class="form-group">
                         @Html.LabelFor(model => model.pac_provincia, "Provincia", new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.canton.provincia.pro_nombre, new { @class = "form-control", @readonly = "readonly" })
@@ -68,10 +70,8 @@
                         @Html.LabelFor(model => model.pac_direccion, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.pac_direccion, new { @class = "form-control", @readonly = "readonly" })
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.pac_instruccion, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.pac_instruccion, new { @class = "form-control", @readonly = "readonly" })
-                    </div>
+                </div>
+                <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.pac_profesion, "Profesion", new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.profesion.pro_nombre, new { @class = "form-control", @readonly = "readonly" })
@@ -93,12 +93,19 @@
                         @Html.TextBoxFor(model => model.pac_correo, new { @class = "form-control", @readonly = "readonly" })
                     </div>
                     <div class="form-group">
-                        @Html.TextBoxFor(model => model.pac_estado, new { @class = "form-control", Value = "activo", @type = "hidden" })
+                        @Html.LabelFor(model => model.pac_firma, new {@class="control-label" })
+                        @if (Model.pac_firma != null) {
+                            <img src="@Url.Content("~/Content/firmas/"+Model.pac_firma)" class="img-rounded" />
+                        }
                     </div>
 
                 </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Paciente", new { @class = "btn btn-default" })
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 

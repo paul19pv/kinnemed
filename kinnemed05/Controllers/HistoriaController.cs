@@ -326,6 +326,18 @@ namespace kinnemed05.Controllers
                     rp.SetDataSource(dsCertificado);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
+                else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA") {
+                    RptCerRetiro rp = new RptCerRetiro();
+                    rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerRetiro.rpt"));
+                    rp.SetDataSource(dsCertificado);
+                    string nexo=String.Empty;
+                    if(concepto.con_valor=="NO")
+                        nexo="NINGUNA";
+                    else
+                        nexo="UNA";
+                    rp.SetParameterValue("nexo",nexo);
+                    stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                }
                
                     
                 

@@ -16,6 +16,7 @@ using System.Configuration;
 using System.Web.Helpers;
 using Microsoft.VisualBasic.FileIO;
 using System.Data.Entity.Validation;
+using WebMatrix.WebData;
 
 namespace kinnemed05.Controllers
 {
@@ -116,12 +117,35 @@ namespace kinnemed05.Controllers
         {
             try
             {
+                if (Request.Files.Count > 0)
+                {
+                    var file = Request.Files[0];
+                    string fileName = Path.GetFileName(file.FileName);
+                    string ext = Path.GetExtension(fileName);
+                    string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
+                    if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                    {
+                        Firma objfirma = new Firma();
+                        paciente.pac_firma = fileName;
+                        string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
+                        string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                        file.SaveAs(path);
+                        objfirma.ResizeImage(path, path01, 200, 120);
+                    }
+                    else
+                    {
+                        if(!String.IsNullOrEmpty(ext))
+                            if (Array.IndexOf(formatos, ext) <= 0)
+                                ModelState.AddModelError("ext", "Extensión no Válida");
+                        //else if (String.IsNullOrEmpty(fileName))
+                        //    ModelState.AddModelError("ext", "Debe Seleccionar un archivo");
+                    }
+                }
+                
                 if (ModelState.IsValid)
                 {
                     db.paciente.Add(paciente);
                     db.SaveChanges();
-
-
                     AccountController account = new AccountController();
                     account.CreateUserProfile(paciente.pac_cedula, paciente.pac_cedula);
                     UserManager userManager = new UserManager();
@@ -224,6 +248,28 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(paciente paciente)
         {
+            if (Request.Files.Count > 0) {
+                var file = Request.Files[0];
+                string fileName = Path.GetFileName(file.FileName);
+                string ext = Path.GetExtension(fileName);
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif",".JPG",".JPEG",".BMP",".PNG",".GIF" };
+                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                {
+                    Firma objfirma = new Firma();
+                    paciente.pac_firma = fileName;
+                    string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    file.SaveAs(path);
+                    objfirma.ResizeImage(path, path01, 200, 120);
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(ext))
+                        if (Array.IndexOf(formatos, ext) <= 0)
+                            ModelState.AddModelError("ext", "Extensión no Válida");
+                }
+            }
+            
             if (ModelState.IsValid)
             {
                 db.Entry(paciente).State = EntityState.Modified;
@@ -276,12 +322,19 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            paciente paciente = db.paciente.Find(id);
-            UserManager usermanager = new UserManager();
-            usermanager.DeleteUser(id, 3);
-            db.paciente.Remove(paciente);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                paciente paciente = db.paciente.Find(id);
+                UserManager usermanager = new UserManager();
+                usermanager.DeleteUser(id, 3);
+                db.paciente.Remove(paciente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex) {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+            
         }
 
 
@@ -698,3 +751,12 @@ namespace kinnemed05.Controllers
         }
     }
 }
+
+
+
+//try
+//            {
+//            }
+//            catch (Exception ex) {
+//                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+//            }

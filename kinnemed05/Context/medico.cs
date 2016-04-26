@@ -24,9 +24,9 @@ namespace kinnemed05.Models
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string med_apellidos { get; set; }
         [Display(Name = "CI")]
-        [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
-        [StringLength(50, MinimumLength = 1, ErrorMessage = "La longitud mínima es 1 caracteres y la máxima 50")]
+        //[Required(ErrorMessage = "Campo Requerido")]
+        //[RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        //[StringLength(50, MinimumLength = 1, ErrorMessage = "La longitud mínima es 1 caracteres y la máxima 50")]
         public string med_ci { get; set; }
         [Display(Name = "Código")]
         [Required(ErrorMessage = "Campo Requerido")]

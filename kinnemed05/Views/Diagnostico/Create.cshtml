@@ -117,6 +117,8 @@
                        + "</option>");
                 });
 
+                $("#dia_subcie10").val($("#dro_subcategoria").val());
+
             },
             error: function () {
                 alert('Ocurrió un error al acceder a la información');
@@ -130,6 +132,7 @@
         $("#dro_subcategoria").val("");
         $("#txt_subcategoria").val("");
         $("#dia_tipo").val("");
+        $("#dia_subcie10").val("");
     }
 </script>
 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnComplete = "clean_txt", OnFailure = "error" }))

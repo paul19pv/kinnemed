@@ -13,5 +13,7 @@ namespace kinnemed05.Models
         public string con_resultado { get; set; }
         [Display(Name = "Observación")]
         public string con_observacion { get; set; }
+        [Display(Name = "Valor")]
+        public string con_valor { get; set; }
     }
 }

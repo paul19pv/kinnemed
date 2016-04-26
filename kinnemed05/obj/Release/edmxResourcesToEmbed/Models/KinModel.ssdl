@@ -46,6 +46,7 @@
     <Property Name="con_id" Type="int" Nullable="false" />
     <Property Name="con_resultado" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="con_observacion" Type="nvarchar(max)" />
+    <Property Name="con_valor" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="control">
     <Key>

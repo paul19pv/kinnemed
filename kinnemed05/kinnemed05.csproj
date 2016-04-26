@@ -206,6 +206,7 @@
     <Compile Include="Context\oftalmologia.cs" />
     <Compile Include="Context\paciente.cs" />
     <Compile Include="Context\perfil.cs" />
+    <Compile Include="Context\plan.cs" />
     <Compile Include="Context\prueba.cs" />
     <Compile Include="Context\rayos.cs" />
     <Compile Include="Context\registro.cs" />
@@ -276,6 +277,7 @@
     <Compile Include="Models\familiar.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Firma.cs" />
     <Compile Include="Models\fisico.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
@@ -422,6 +424,12 @@
       <DependentUpon>RptCerNoApto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\RptCerRetiro.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptCerRetiro.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\RptCertificado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -514,6 +522,7 @@
     <Content Include="Content\img\certificate-icon.png" />
     <Content Include="Content\img\delete-icon.png" />
     <Content Include="Content\img\edit-icon.png" />
+    <Content Include="Content\img\fondo_login.jpg" />
     <Content Include="Content\img\iconos\company-icon.png" />
     <Content Include="Content\img\iconos\delete-icon.png" />
     <Content Include="Content\img\iconos\doctor-icon.png" />
@@ -649,6 +658,7 @@
     <Content Include="Reports\dataset\dsCodigo.xsc">
       <DependentUpon>dsCodigo.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\nube2.pubxml" />
     <None Include="Properties\PublishProfiles\trabajo.pubxml" />
     <Content Include="Reports\dataset\dsCertificado.xsc">
       <DependentUpon>dsCertificado.xsd</DependentUpon>
@@ -926,13 +936,19 @@
     <Content Include="Views\Concepto\Create.cshtml" />
     <Content Include="Views\Concepto\Edit.cshtml" />
     <Content Include="Views\Concepto\Delete.cshtml" />
+    <Content Include="Views\Rayos\Index_historia.cshtml" />
+    <Content Include="Views\Audiometria\Index_historia.cshtml" />
+    <Content Include="Views\Espirometria\Index_historia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\audiometria\" />
     <Folder Include="Content\biometria\" />
     <Folder Include="Content\espirometria\" />
+    <Folder Include="Content\firmas\" />
+    <Folder Include="Content\firmas_\" />
     <Folder Include="Content\rayos\" />
+    <Folder Include="crystalreportviewers13\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -962,6 +978,10 @@
     <EmbeddedResource Include="Reports\RptCerNoApto.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptCerNoApto.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptCerRetiro.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptCerRetiro.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptCertificado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -4,8 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
-
-@using (Html.BeginForm()) {
+<script>
+    $(function () {
+        $("#btn_upload").click(function () {
+            $("#div_upload").show();
+            $("#div_download").hide();
+        });
+        $("#btn_download").click(function () {
+            $("#div_upload").hide();
+            $("#div_download").show();
+        });
+    });
+</script>
+@using (Html.BeginForm("Edit", "Laboratorista", FormMethod.Post, new { @enctype = "multipart/form-data" })) { 
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model=>model.lab_id)
@@ -39,14 +50,31 @@
                         @Html.TextBoxFor(model => model.lab_nombres, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.lab_nombres)
                     </div>
-
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
 
                         @Html.LabelFor(model => model.lab_apellidos, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.lab_apellidos, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.lab_apellidos)
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div id="div_download" class="form-group">
+                        @Html.LabelFor(model => model.lab_firma, new { @class = "control-label", @for = "inputDefault" })
+                        @if (Model.lab_firma != null)
+                        {
+                            <div class="form-group">
+                                <img src="@Url.Content("~/Content/firmas/" + Model.lab_firma)" class="img-rounded" />
+                            </div>
+                        }
+                        <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />
+                    </div>
+                    <div id="div_upload" class="form-group" style="display:none;">
+                        <label style="display:block;">Archivo</label>
+                        <input type="file" name="Edit" id="Edit" style="display:inline">
+                        <input type="button" id="btn_download" value="Mantener" class="btn btn-default" />
+                        @Html.ValidationMessageFor(model => model.lab_firma)
+                        @Html.ValidationMessage("ext")
                     </div>
 
                 </div>

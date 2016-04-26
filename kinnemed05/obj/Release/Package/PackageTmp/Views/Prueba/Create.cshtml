@@ -73,6 +73,7 @@
                     <br />
                     <div class="form-group">
                         <input type="submit" value="Agregar" class="btn btn-primary" />
+                        @Html.ActionLink("Imprimir", "Codigo", "Registro", new { id = ViewBag.reg_id }, new { @class = "btn btn-default" })
                     </div>
                 </div>
             }

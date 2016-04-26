@@ -100,6 +100,30 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(medico medico)
         {
+
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                string fileName = Path.GetFileName(file.FileName);
+                string ext = Path.GetExtension(fileName);
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
+                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                {
+                    Firma objfirma = new Firma();
+                    medico.med_firma = fileName;
+                    string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    file.SaveAs(path);
+                    objfirma.ResizeImage(path, path01, 200, 120);
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(ext))
+                        if (Array.IndexOf(formatos, ext) <= 0)
+                            ModelState.AddModelError("ext", "Extensión no Válida");
+                }
+            }
+                
             if (ModelState.IsValid)
             {
                 db.medico.Add(medico);
@@ -140,6 +164,28 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(medico medico)
         {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                string fileName = Path.GetFileName(file.FileName);
+                string ext = Path.GetExtension(fileName);
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
+                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                {
+                    Firma objfirma = new Firma();
+                    medico.med_firma = fileName;
+                    string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    file.SaveAs(path);
+                    objfirma.ResizeImage(path, path01, 200, 120);
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(ext))
+                        if (Array.IndexOf(formatos, ext) <= 0)
+                            ModelState.AddModelError("ext", "Extensión no Válida");
+                }
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(medico).State = EntityState.Modified;

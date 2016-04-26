@@ -100,13 +100,13 @@ namespace kinnemed05.Controllers
         //
         // GET: /Prueba/Edit/5
         [CustomAuthorize(UserRoles.laboratorista)]
-        public ActionResult Edit(int res_id = 0)
+        public ActionResult Edit(int id = 0)
         {
-            List<prueba> resultado = db.prueba.Where(r => r.pru_registro == res_id).Include(p=>p.examen).ToList();
+            List<prueba> resultado = db.prueba.Where(r => r.pru_registro == id && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).Include(p => p.examen).ToList();
             SetPrueba setprueba = new SetPrueba();
             setprueba.prueba = resultado;
             //ViewBag.prueba = resultado;
-            return PartialView(setprueba);
+            return View(setprueba);
         }
 
         //
