@@ -463,6 +463,7 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.fis_id, new { Value = ViewBag.fis_id })
+                @Html.Hidden("pac_id", "", new { Value = ViewBag.pac_id, @id = "pac_id" })
 
                 <div class="col-lg-4">
                     <div class="form-group">
