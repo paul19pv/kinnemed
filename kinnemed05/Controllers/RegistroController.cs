@@ -213,7 +213,7 @@ namespace kinnemed05.Controllers
         {
             return View();
         }
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Cargar(HttpPostedFileBase FileUpload)

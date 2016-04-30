@@ -33,9 +33,9 @@ namespace kinnemed05.Controllers
 
                 //return Register();
             }
-            if (Request.IsAuthenticated) {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (Request.IsAuthenticated) {
+            //    return RedirectToAction("Index", "Home");
+            //}
             ViewBag.ReturnUrl = returnUrl;
             return View();
             

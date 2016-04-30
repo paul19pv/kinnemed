@@ -129,7 +129,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -152,7 +152,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(historia historia)
@@ -169,7 +169,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit02(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -190,7 +190,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit02(historia historia)

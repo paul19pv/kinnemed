@@ -46,7 +46,7 @@ namespace kinnemed05.Controllers
         public ActionResult Create(int id)
         {
             plan plan = db.plan.Find(id);
-            
+
             if (plan != null)
             {
                 return RedirectToAction("Edit", new { id = id });
@@ -80,7 +80,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Plan/Edit/5
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             plan plan = db.plan.Find(id);
@@ -88,7 +88,7 @@ namespace kinnemed05.Controllers
 
             if (plan == null)
             {
-                return RedirectToAction("Create", new { id=id});
+                return RedirectToAction("Create", new { id = id });
             }
             ViewBag.pla_id = plan.pla_id;
             ViewBag.pac_id = historia.his_paciente;
@@ -98,7 +98,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Plan/Edit/5
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(plan plan)

@@ -108,7 +108,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/Edit/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             espirometria espirometria = db.espirometria.Find(id);
@@ -128,7 +128,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Espirometria/Edit/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(espirometria espirometria)
@@ -212,7 +212,7 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Download(int id = 0)
         {
             string contentType = "application/pdf";

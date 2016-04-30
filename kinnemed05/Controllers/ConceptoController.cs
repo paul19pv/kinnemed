@@ -6,9 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Security;
+using kinnemed05.Filters;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
     public class ConceptoController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
@@ -37,7 +40,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Concepto/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
             concepto concepto = db.concepto.Find(id);
@@ -67,7 +70,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Concepto/Create
-
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(concepto concepto)
@@ -96,7 +99,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Concepto/Edit/5
-
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             concepto concepto = db.concepto.Find(id);
@@ -122,7 +125,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Concepto/Edit/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(concepto concepto)

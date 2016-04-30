@@ -64,6 +64,8 @@
             $("#div_upload").show();
             $("#div_download").hide();
         });
+
+        fecha($("#dia").val(), $("#mes").val(), $("#anio").val());
         $("#btn_download").click(function () {
             $("#div_upload").hide();
             $("#div_download").show();
@@ -98,6 +100,10 @@
             var f = new Date();
             $("#pac_edad").val(restaFechas(fecha_nac, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
         }
+        else {
+            $("#pac_edad").val(0);
+        }
+
     }
     restaFechas = function (f1, f2) {
         var aFecha1 = f1.split('/');

@@ -76,7 +76,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Diagnostico/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             diagnostico diagnostico = db.diagnostico.Find(id);
@@ -92,7 +92,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Diagnostico/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(diagnostico diagnostico)

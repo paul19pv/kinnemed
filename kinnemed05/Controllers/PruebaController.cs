@@ -99,7 +99,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Edit/5
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             List<prueba> resultado = db.prueba.Where(r => r.pru_registro == id && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).Include(p => p.examen).ToList();
@@ -111,7 +111,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Prueba/Edit/5
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(registro registro)
@@ -131,7 +131,7 @@ namespace kinnemed05.Controllers
 
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public JsonResult Modificar(int id, string valor)
         {
             prueba prueba = db.prueba.Find(id);
@@ -140,7 +140,7 @@ namespace kinnemed05.Controllers
             //return new JsonResult { Data = new { mensaje = "Dato Guardado" } };
             return new JsonResult { Data = new { mensaje = "Datos Guardados" } };
         }
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public JsonResult Valor(int id, string valor)
         {
             prueba prueba = db.prueba.Find(id);
@@ -152,7 +152,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Prueba/Delete/5
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             prueba prueba = db.prueba.Find(id);

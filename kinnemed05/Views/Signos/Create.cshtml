@@ -27,13 +27,6 @@
         $("#sig_masa").val(imc.toFixed(2));
     }
 
-    $(document).ajaxStart(function () {
-        $('#div_loading').show();
-    });
-    $(document).ajaxStop(function () {
-        $('#div_loading').hide();
-    });
-
 </script>
 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
 {

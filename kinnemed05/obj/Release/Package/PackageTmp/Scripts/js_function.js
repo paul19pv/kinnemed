@@ -39,6 +39,15 @@
 
 });
 
+$(document).ajaxStart(function () {
+    $('#div_loading').show();
+    $('#div_form').hide();
+});
+$(document).ajaxStop(function () {
+    $('#div_loading').hide();
+    $('#div_form').show();
+});
+
 restaFechas = function (f1, f2) {
     var aFecha1 = f1.split('/');
     var aFecha2 = f2.split('/');

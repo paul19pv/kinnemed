@@ -22,7 +22,7 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int id)
         {
-            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o=>o.ocu_paciente==id && o.ocu_tipo=="histórico");
+            var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o => o.ocu_paciente == id && o.ocu_tipo == "histórico");
             return PartialView(ocupacional.ToList());
         }
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
@@ -49,10 +49,10 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Create
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
-            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado==true);
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado == true);
             //ocupacional ocupacional = db.ocupacional.Find(id);
             if (consulta.Any())
             {
@@ -68,7 +68,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Create
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ocupacional ocupacional)
@@ -80,7 +80,7 @@ namespace kinnemed05.Controllers
                 db.ocupacional.Add(ocupacional);
                 db.SaveChanges();
                 Session["pac_id"] = ocupacional.ocu_paciente;
-                return RedirectToAction("Edit", "Laboral", new {id=ocupacional.ocu_id });
+                return RedirectToAction("Edit", "Laboral", new { id = ocupacional.ocu_id });
             }
             ViewBag.ocu_paciente = ocupacional.ocu_paciente;
             ViewBag.ocu_tipo = ocupacional.ocu_tipo;
@@ -94,7 +94,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Create
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Historico(int id)
         {
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
@@ -108,7 +108,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Create
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Historico(ocupacional ocupacional)
@@ -131,14 +131,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Edit/5
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id)
         {
-            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado==true);
+            var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado == true);
             //ocupacional ocupacional = db.ocupacional.Find(id);
             if (!consulta.Any())
             {
-                return RedirectToAction("Create", new { id=id});
+                return RedirectToAction("Create", new { id = id });
             }
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
             ocupacional.ocu_tiempo = get_tiempo(ocupacional.ocu_inicio);
@@ -151,7 +151,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Edit/5
 
-[CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ocupacional ocupacional)
@@ -176,7 +176,7 @@ namespace kinnemed05.Controllers
             ocupacional ocupacional = db.ocupacional.Find(id);
             db.ocupacional.Remove(ocupacional);
             db.SaveChanges();
-            return RedirectToAction("Index", new { id=ocupacional.ocu_paciente});
+            return RedirectToAction("Index", new { id = ocupacional.ocu_paciente });
         }
 
         //
@@ -192,7 +192,8 @@ namespace kinnemed05.Controllers
             return RedirectToAction("Index");
         }
 
-        private string get_estado(int his_id) {
+        private string get_estado(int his_id)
+        {
             string estado = String.Empty;
             return estado;
         }
@@ -211,7 +212,8 @@ namespace kinnemed05.Controllers
             return jornadas;
         }
 
-        private decimal get_tiempo(string inicio) {
+        private decimal get_tiempo(string inicio)
+        {
             decimal tiempo = 0;
             string[] fec_ini = inicio.Split('/');
             DateTime da = DateTime.Now;

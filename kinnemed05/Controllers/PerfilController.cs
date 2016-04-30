@@ -11,7 +11,7 @@ using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
-    [InitializeSimpleMembership]
+    //[InitializeSimpleMembership]
     //[CustomAuthorize(UserRoles.laboratorista,UserRoles.admin)]
     public class PerfilController : Controller
     {

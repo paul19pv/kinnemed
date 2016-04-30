@@ -18,8 +18,10 @@ using System.Web.Mvc;
 namespace kinnemed05.Controllers
 {
     //[CustomAuthorize(UserRoles.admin,UserRoles.empresa,UserRoles.medico)]
+    [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista)]
     public class HomeController : Controller
     {
+        
         public ActionResult Index(string mensaje)
         {
             //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -37,19 +39,6 @@ namespace kinnemed05.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your app description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
 
         private string get_perfil() {
             string perfil = String.Empty;

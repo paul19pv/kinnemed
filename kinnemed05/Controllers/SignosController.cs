@@ -73,7 +73,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Signos/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             signos signos = db.signos.Find(id);
@@ -87,7 +87,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Signos/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(signos signos)
