@@ -108,7 +108,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Audiometria/Edit/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             audiometria audiometria = db.audiometria.Find(id);
@@ -128,7 +128,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Audiometria/Edit/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(audiometria audiometria)

@@ -69,7 +69,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Subsecuente/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(subsecuente subsecuente)
@@ -90,7 +90,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Subsecuente/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             subsecuente subsecuente = db.subsecuente.Find(id);
@@ -103,7 +103,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Subsecuente/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(subsecuente subsecuente)

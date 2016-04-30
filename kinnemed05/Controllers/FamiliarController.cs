@@ -78,7 +78,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Familiar/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id)
         {
             familiar familiar = db.familiar.Find(id);
@@ -92,7 +92,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Familiar/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(familiar familiar)

@@ -10,14 +10,14 @@ using System.Web.Mvc;
 
 namespace kinnemed05.Controllers
 {
-    [CustomAuthorize(UserRoles.admin)]
+    //[CustomAuthorize(UserRoles.admin)]
     public class EmpresaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Empresa/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             try
@@ -32,7 +32,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Empresa/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             empresa empresa = db.empresa.Find(id);
@@ -45,7 +45,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Empresa/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Create()
         {
             return View();
@@ -53,7 +53,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Empresa/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(empresa empresa)
@@ -79,7 +79,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Empresa/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             empresa empresa = db.empresa.Find(id);
@@ -92,7 +92,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Empresa/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(empresa empresa)
@@ -108,7 +108,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Empresa/Delete/5
-
+        [CustomAuthorize(UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             empresa empresa = db.empresa.Find(id);
@@ -121,7 +121,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Empresa/Delete/5
-
+        [CustomAuthorize(UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

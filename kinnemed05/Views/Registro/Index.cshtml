@@ -10,33 +10,66 @@
             changeYear: true,
             dateFormat: "dd/mm/yy"
         });
+        $('#txt_paciente').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_paciente").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_paciente").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pac_nombres + " " + item.pac_apellidos,
+                                id: item.pac_id,
+                                nombres: item.pac_nombres,
+                                apellidos: item.pac_apellidos
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#paciente").val(ui.item.id);
+            },
+            minLength: 2
+        });
     });
 </script>
 <p>
     @Html.ActionLink("Nuevo Registro", "Create", "", new { @class = "btn btn-default" })
     @Html.ActionLink("Registro por Pefil", "Perfil", "", new { @class = "btn btn-default" })
-    @Html.ActionLink("Ingresar Resultados", "Insert", "", new { @class = "btn btn-default" })
+    @*@Html.ActionLink("Ingresar Resultados", "Insert", "", new { @class = "btn btn-default" })*@
     @Html.ActionLink("Cargar Resultados", "Cargar", "", new { @class = "btn btn-default" })
-    @Html.ActionLink("Reporte por Paciente", "Reporte", "", new { @class = "btn btn-default" })
-    @Html.ActionLink("Reporte sin Margen", "ReporteLimpio", "", new { @class = "btn btn-default" })
+    @*@Html.ActionLink("Reporte por Paciente", "Reporte", "", new { @class = "btn btn-default" })*@
+    @*@Html.ActionLink("Reporte sin Margen", "ReporteLimpio", "", new { @class = "btn btn-default" })*@
     @Html.ActionLink("Codigos por Paciente", "Codigo", "", new { @class = "btn btn-default" })
+    @Html.ActionLink("Regresar", "Index", "Home", new { }, new { @class = "btn btn-default" })
 </p>
 
 <div class="panel panel-default">
     <div class="panel-body">
         @using (Html.BeginForm())
         {
+            @Html.Hidden("paciente", "", new { Value = ViewBag.paciente })
             <div class="form-group">
                 @Html.Label("Paciente", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-3">
-                    @Html.TextBox("searchString", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
+                    @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
                 @Html.Label("Fecha", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-2">
-                    @Html.TextBox("fecha","", new { @class = "form-control"})
+                    @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
                 </div>
                 <input type="submit" value="Filtrar" class="btn btn-primary" />
-                <input type="submit" id="exportar" name="exportar" value="Exportar" class="btn btn-default" />
             </div>
         }
     </div>
@@ -58,9 +91,10 @@
                 </th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
 
-            
+
             @foreach (var item in Model)
             {
                 <tr>
@@ -74,15 +108,17 @@
                         @Html.DisplayFor(modelItem => item.reg_fecha)
                     </td>
                     <td>
+                        @Html.ActionLink("Ingresar", "Edit","Prueba", new { id = item.reg_id }, new { @class = "iconb icon-new", @title = "Ingresar Resultados" })
                         @Html.ActionLink("Resultados", "Details", "Prueba", new { reg_id = item.reg_id }, new { @class = "iconb icon-table", @title = "Resultados" })
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.reg_id }, new { @class = "iconb icon-edit", @title = "Editar" })
                         @Html.ActionLink("Details", "Details", new { id = item.reg_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                        
                         @Html.ActionLink("Delete", "Delete", new { id = item.reg_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
-                        
-                        
+                    </td>
+                    <td>
+                        @Html.ActionLink("Reporte", "Reporte", new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Normal",@target="_blank" })
+                        @Html.ActionLink("ReporteLimpio", "ReporteLimpio", new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Sin Margen", @target = "_blank" })
                     </td>
                 </tr>
             }
@@ -94,3 +130,8 @@
 </div>
 
 
+<a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

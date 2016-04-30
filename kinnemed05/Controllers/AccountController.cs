@@ -33,9 +33,9 @@ namespace kinnemed05.Controllers
 
                 //return Register();
             }
-            if (Request.IsAuthenticated) {
-                return RedirectToAction("Index", "Home");
-            }
+            //if (Request.IsAuthenticated) {
+            //    return RedirectToAction("Index", "Home");
+            //}
             ViewBag.ReturnUrl = returnUrl;
             return View();
             
@@ -181,7 +181,7 @@ namespace kinnemed05.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? " Your password has been changed. "
+                message == ManageMessageId.ChangePasswordSuccess ? "Tu contraseña ha sido modificada"
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
@@ -221,7 +221,7 @@ namespace kinnemed05.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                        ModelState.AddModelError("", "La contraseña actual es incorrecta o la nueva es invalida");
                     }
                 }
             }

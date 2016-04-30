@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Laboratorista", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -38,14 +38,20 @@
                         @Html.TextBoxFor(model => model.lab_nombres, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.lab_nombres)
                     </div>
-
-                </div>
-                <div class="col-lg-4">
                     <div class="form-group">
 
                         @Html.LabelFor(model => model.lab_apellidos, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBoxFor(model => model.lab_apellidos, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.lab_apellidos)
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Archivo</label>
+                        <input type="file" name="Create" id="Create">
+                        @Html.ValidationMessageFor(model => model.lab_firma)
+                        @Html.ValidationMessage("ext")
                     </div>
 
                 </div>

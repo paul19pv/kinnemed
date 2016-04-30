@@ -54,15 +54,16 @@ namespace kinnemed05.Models
             UserProfile deleteuser = new UserProfile();
 
             if (perfil == 2)
-                deleteuser = db.UserProfiles.Where(u => u.UserMedico == user_id).First();
+                deleteuser = db.UserProfiles.Where(u => u.UserMedico == user_id).FirstOrDefault();
             else if (perfil == 3)
-                deleteuser = db.UserProfiles.Where(u => u.UserPaciente == user_id).First();
+                deleteuser = db.UserProfiles.Where(u => u.UserPaciente == user_id).FirstOrDefault();
             else if (perfil == 4)
-                deleteuser = db.UserProfiles.Where(u => u.UserEmpresa == user_id).First();
+                deleteuser = db.UserProfiles.Where(u => u.UserEmpresa == user_id).FirstOrDefault();
             else if (perfil == 5)
-                deleteuser = db.UserProfiles.Where(u => u.UserLaboratorista == user_id).First();
+                deleteuser = db.UserProfiles.Where(u => u.UserLaboratorista == user_id).FirstOrDefault();
 
-            db.UserProfiles.Remove(deleteuser);
+            if(deleteuser!=null)
+                db.UserProfiles.Remove(deleteuser);
             db.SaveChanges();
 
 

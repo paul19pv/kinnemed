@@ -15,12 +15,12 @@ namespace kinnemed05.Models
         public string pac_cedula { get; set; }
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9ñ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string pac_nombres { get; set; }
         [Display(Name = "Apellidos")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9ñ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string pac_apellidos { get; set; }
         [Display(Name = "Género")]

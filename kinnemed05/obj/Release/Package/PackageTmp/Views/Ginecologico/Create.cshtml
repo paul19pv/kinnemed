@@ -6,7 +6,7 @@
 <script>
     $(function () {
         $("#gin_fum").datepicker({
-            dateFormat:"yy-mm-dd"
+            dateFormat: "yy-mm-dd"
         });
         $("#gin_planificacion").change(function () {
             if ($(this).is(':checked')) {
@@ -25,14 +25,14 @@
     });
 </script>
 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
-            {
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Ginecológico</h3>
-        </div>
-        <div class="panel-body">
-            
+{
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ginecológico</h3>
+            </div>
+            <div class="panel-body">
+
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.gin_id, new { Value = ViewBag.gin_id })
@@ -46,7 +46,8 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.gin_ciclos, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.gin_ciclos, new { @class = "form-control" })
+                        @*@Html.TextBoxFor(model => model.gin_ciclos, new { @class = "form-control" })*@
+                        @Html.DropDownList("gin_ciclos",String.Empty)
                         @Html.ValidationMessageFor(model => model.gin_ciclos)
                     </div>
                 </div>
@@ -65,13 +66,13 @@
                     </div>
                 </div>
 
-    <div class="col-lg-3" style="clear: both">
-        <div class="form-group">
-            @Html.LabelFor(model => model.gin_cesarea, new { @class = "control-label", @for = "inputDefault" })
-            @Html.TextBoxFor(model => model.gin_cesarea, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.gin_cesarea)
-        </div>
-    </div>
+                <div class="col-lg-3" style="clear: both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.gin_cesarea, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.gin_cesarea, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.gin_cesarea)
+                    </div>
+                </div>
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.gin_abortos, new { @class = "control-label", @for = "inputDefault" })
@@ -86,15 +87,15 @@
                         @Html.ValidationMessageFor(model => model.gin_hijos)
                     </div>
                 </div>
-    <div class="col-lg-3" style="clear: both">
-        <div class="form-group">
-            <label>
-                Planificación Si/No
-                @Html.CheckBoxFor(model => model.gin_planificacion)
-            </label>
-            @Html.ValidationMessageFor(model => model.gin_planificacion)
-        </div>
-    </div>
+                <div class="col-lg-3" style="clear: both">
+                    <div class="form-group">
+                        <label>
+                            Planificación Si/No
+                            @Html.CheckBoxFor(model => model.gin_planificacion)
+                        </label>
+                        @Html.ValidationMessageFor(model => model.gin_planificacion)
+                    </div>
+                </div>
 
                 <div class="col-lg-3">
                     <div id="div_pla" class="form-garoup" style="display: none;">
@@ -104,20 +105,21 @@
                     </div>
                 </div>
 
-                
-            
+
+
+            </div>
         </div>
     </div>
-</div>
     <div class="col-lg-3" style="clear:both;float:right;">
-                    <br />
-                    <div class="form-group" style="float:right">
-                        @Ajax.ActionLink("Anterior", "Edit", "Personal", new { id = ViewBag.gin_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
-                        <input type="submit" value="Siguiente" class="btn btn-primary" />
-                    </div>
-                </div>
-    
-            }
+        <br />
+        <div class="form-group" style="float:right">
+            @Ajax.ActionLink("Anterior", "Edit", "Personal", new { id = ViewBag.gin_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }, new { @class = "btn btn-default" })
+            <input type="submit" value="Siguiente" class="btn btn-primary" />
+        </div>
+    </div>
+
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+

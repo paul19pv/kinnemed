@@ -113,7 +113,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/Edit/5
 
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista,UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             rayos rayos = db.rayos.Find(id);
@@ -134,7 +134,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Rayos/Edit/5
 
-        [CustomAuthorize(UserRoles.laboratorista)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(rayos rayos)

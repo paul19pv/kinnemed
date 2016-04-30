@@ -59,6 +59,17 @@
         $("#dia").change(function () {
             fecha($("#dia").val(), $("#mes").val(), $("#anio").val());
         });
+
+        $("#btn_upload").click(function () {
+            $("#div_upload").show();
+            $("#div_download").hide();
+        });
+
+        fecha($("#dia").val(), $("#mes").val(), $("#anio").val());
+        $("#btn_download").click(function () {
+            $("#div_upload").hide();
+            $("#div_download").show();
+        });
     });
 
     function fillCombo(updateId, value) {
@@ -89,6 +100,10 @@
             var f = new Date();
             $("#pac_edad").val(restaFechas(fecha_nac, f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear()));
         }
+        else {
+            $("#pac_edad").val(0);
+        }
+
     }
     restaFechas = function (f1, f2) {
         var aFecha1 = f1.split('/');
@@ -99,6 +114,7 @@
         var dias = Math.floor(dif / (1000 * 60 * 60 * 24 * 365));
         return dias;
     }
+    
 </script>
 
 
@@ -109,7 +125,7 @@
                 <h3 class="panel-title">Modificar Paciente</h3>
             </div>
             <div class="panel-body">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("Edit", "Paciente", FormMethod.Post, new { @enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true)
@@ -249,11 +265,30 @@
                             @Html.TextBoxFor(model => model.pac_estado, new { @class = "form-control", Value = true, @type = "hidden" })
                         </div>
 
+
+
+                        <div id="div_download" class="form-group">
+                            @Html.LabelFor(model => model.pac_firma, new { @class = "control-label", @for = "inputDefault" })
+                            @if (Model.pac_firma != null) { 
+                                <div class="form-group">
+                                    <img src="@Url.Content("~/Content/firmas/"+Model.pac_firma)" class="img-rounded" />
+                                </div>
+                            }
+                            <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />
+                        </div>
+                        <div id="div_upload" class="form-group" style="display:none;">
+                            <label style="display:block;">Archivo</label>
+                            <input type="file" name="Edit" id="Edit" style="display:inline">
+                            <input type="button" id="btn_download" value="Mantener" class="btn btn-default" />
+                            @Html.ValidationMessageFor(model => model.pac_firma)
+                            @Html.ValidationMessage("ext")
+                        </div>
+
                     </div>
                     <div class="col-lg-4" style="clear:both">
                         <div class="form-group">
                             @Html.ActionLink("Regresar", "Index", "Paciente", new { @class = "btn btn-default" })
-                            <input type="submit" value="Moodificar" class="btn btn-primary" />
+                            <input type="submit" value="Guardar" class="btn btn-primary" />
                         </div>
                     </div>
                     

@@ -5,38 +5,9 @@
 }
 
 <script>
-    $(document).ajaxStart(function () {
-        $('#div_loading').show();
-    });
-    $(document).ajaxStop(function () {
-        $('#div_loading').hide();
-    });
-
-    //lista examenes de laboratorio
-    $.ajax({
-        url: $("#link_index").attr('href'),
-        type: 'GET',
-        data: { id: $('#pac_id').val() },
-        success: function (data) {
-            $('#div_index').html(data)
-        },
-        error: function (xhr, status, error) {
-            alert(error)
-        }
-    });
+    
 
 
-    $.ajax({
-        url: $("#link_rayos").attr('href'),
-        type: 'GET',
-        data: { id: $('#pac_id').val() },
-        success: function (data) {
-            $('#div_rayos').html(data)
-        },
-        error: function (xhr, status, error) {
-            alert(error)
-        }
-    });
 
 </script>
 @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
@@ -81,19 +52,7 @@
         </div>
     </div>
 }
-<div id="div_index" style="clear:both" class="col-lg-12">
 
-</div>
-
-<div id="div_rayos" style="clear:both" class="col-lg-12">
-
-</div>
-
-
-
-<a href="@Url.Content("~/Registro/Index")" id="link_index"></a>
-
-<a href="@Url.Content("~/Rayos/Index")" id="link_rayos"></a>
 
 
 @section Scripts {

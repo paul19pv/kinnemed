@@ -27,13 +27,6 @@
         $("#sig_masa").val(imc.toFixed(2));
     }
 
-    $(document).ajaxStart(function () {
-        $('#div_loading').show();
-    });
-    $(document).ajaxStop(function () {
-        $('#div_loading').hide();
-    });
-
 </script>
 @using (Ajax.BeginForm("Edit", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
 {
@@ -93,7 +86,7 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.sig_masa, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.sig_masa, new { @class = "form-control", Value = 0 })
+                        @Html.TextBoxFor(model => model.sig_masa, new { @class = "form-control", @readonly="readonly"})
                         @Html.ValidationMessageFor(model => model.sig_masa)
                     </div>
                 </div>

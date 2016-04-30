@@ -24,6 +24,15 @@ namespace kinnemed05.Models
                 valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
+        public SelectList val_inm(string defaul)
+        {
+            List<SelectListItem> list_valores = new List<SelectListItem>();
+            list_valores.Add(new SelectListItem { Text = "REACTIVO", Value = "REACTIVO" });
+            list_valores.Add(new SelectListItem { Text = "NO REACTIVO", Value = "NO REACTIVO" });
+            SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
+            return valores;
+
+        }
         public SelectList col_cop(string defaul) {
             List<SelectListItem> list_valores = new List<SelectListItem>();
             list_valores.Add(new SelectListItem { Text = "CAFE", Value = "CAFE" });

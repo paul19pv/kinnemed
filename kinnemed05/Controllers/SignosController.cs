@@ -44,6 +44,11 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico)]
         public ActionResult Create(int id)
         {
+            signos signos = db.signos.Find(id);
+            if (signos != null)
+            {
+                return RedirectToAction("Edit", new { id = id });
+            }
             ViewBag.sig_id = id;
             return PartialView();
         }
@@ -68,7 +73,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Signos/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             signos signos = db.signos.Find(id);
@@ -82,7 +87,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Signos/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(signos signos)

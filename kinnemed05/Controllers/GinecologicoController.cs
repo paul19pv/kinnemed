@@ -50,6 +50,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", new { id=id});
             }
             ViewBag.gin_id = id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView();
         }
 
@@ -73,7 +74,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id)
         {
             ginecologico ginecologico = db.ginecologico.Find(id);
@@ -95,7 +96,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Ginecologico/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ginecologico ginecologico)
@@ -112,7 +113,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             ginecologico ginecologico = db.ginecologico.Find(id);
@@ -135,7 +136,20 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+
+        private SelectList gin_ciclo(string ciclo = "")
+        {
+            List<SelectListItem> list_ciclo = new List<SelectListItem>();
+            list_ciclo.Add(new SelectListItem { Text = "REGULAR", Value = "REGULAR" });
+            list_ciclo.Add(new SelectListItem { Text = "IRREGULAR", Value = "IRREGULAR" });
+            SelectList ciclos;
+            if (ciclo == "")
+                ciclos = new SelectList(list_ciclo, "Value", "Text");
+            else
+                ciclos = new SelectList(list_ciclo, "Value", "Text", ciclo);
+            return ciclos;
+        }
+        
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

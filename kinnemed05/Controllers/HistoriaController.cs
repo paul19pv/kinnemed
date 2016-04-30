@@ -129,7 +129,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -152,7 +152,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(historia historia)
@@ -169,7 +169,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit02(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -190,7 +190,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit02(historia historia)
@@ -270,8 +270,13 @@ namespace kinnemed05.Controllers
                 paciente paciente = db.paciente.Find(pac_id);
                 historia historia = db.historia.Find(id);
                 concepto concepto = db.concepto.Find(id);
+                medico medico = db.medico.Find(historia.his_medico);
                 var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual" && o.ocu_estado == true);
                 ocupacional ocupacional=new ocupacional();
+
+                string fileName = medico.med_firma;
+                if (String.IsNullOrEmpty(fileName))
+                    fileName = "firma.png";
 
                 if(consulta.Any())
                     ocupacional=consulta.First();
@@ -318,6 +323,8 @@ namespace kinnemed05.Controllers
                     RptCerAptoRes rp = new RptCerAptoRes();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerAptoRes.rpt"));
                     rp.SetDataSource(dsCertificado);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "NO APTO") {
