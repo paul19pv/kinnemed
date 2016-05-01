@@ -12,10 +12,13 @@ namespace kinnemed05.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class plan
+    public partial class trabajador
     {
-        public int pla_id { get; set; }
-    
-        public virtual historia historia { get; set; }
+        public int tra_id { get; set; }
+        public string tra_cedula { get; set; }
+        public string tra_nombres { get; set; }
+        public string tra_apellidos { get; set; }
+        public string tra_correo { get; set; }
+        public Nullable<bool> tra_estado { get; set; }
     }
 }

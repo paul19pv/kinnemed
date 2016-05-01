@@ -1,0 +1,76 @@
+﻿@model kinnemed05.Models.trabajador
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>trabajador</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tra_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tra_id)
+            @Html.ValidationMessageFor(model => model.tra_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tra_cedula)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tra_cedula)
+            @Html.ValidationMessageFor(model => model.tra_cedula)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tra_nombres)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tra_nombres)
+            @Html.ValidationMessageFor(model => model.tra_nombres)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tra_apellidos)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tra_apellidos)
+            @Html.ValidationMessageFor(model => model.tra_apellidos)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tra_correo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tra_correo)
+            @Html.ValidationMessageFor(model => model.tra_correo)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.tra_estado)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.tra_estado)
+            @Html.ValidationMessageFor(model => model.tra_estado)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

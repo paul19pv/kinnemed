@@ -11,7 +11,7 @@ namespace kinnemed05.Models
         [Display(Name="Fecha Última Menstruación")]
         public string gin_fum { get; set; }
         [Display(Name = "Ciclos Menstruales")]
-        public Nullable<int> gin_ciclos { get; set; }
+        public string gin_ciclos { get; set; }
         [Display(Name = "Gestas")]
         public Nullable<int> gin_gestas { get; set; }
         [Display(Name = "Partos")]

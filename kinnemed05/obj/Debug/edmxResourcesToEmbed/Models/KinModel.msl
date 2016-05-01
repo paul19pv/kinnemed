@@ -319,23 +319,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ginecologico">
-      <EntityTypeMapping TypeName="kinnemedModel.ginecologico">
-        <MappingFragment StoreEntitySet="ginecologico">
-          <ScalarProperty Name="gin_paptest" ColumnName="gin_paptest" />
-          <ScalarProperty Name="gin_pla_txt" ColumnName="gin_pla_txt" />
-          <ScalarProperty Name="gin_planificacion" ColumnName="gin_planificacion" />
-          <ScalarProperty Name="gin_hijos" ColumnName="gin_hijos" />
-          <ScalarProperty Name="gin_abortos" ColumnName="gin_abortos" />
-          <ScalarProperty Name="gin_cesarea" ColumnName="gin_cesarea" />
-          <ScalarProperty Name="gin_partos" ColumnName="gin_partos" />
-          <ScalarProperty Name="gin_gestas" ColumnName="gin_gestas" />
-          <ScalarProperty Name="gin_ciclos" ColumnName="gin_ciclos" />
-          <ScalarProperty Name="gin_fum" ColumnName="gin_fum" />
-          <ScalarProperty Name="gin_id" ColumnName="gin_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="audiometria">
       <EntityTypeMapping TypeName="kinnemedModel.audiometria">
         <MappingFragment StoreEntitySet="audiometria">
@@ -556,6 +539,35 @@
           <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
           <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
           <ScalarProperty Name="con_id" ColumnName="con_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ginecologico">
+      <EntityTypeMapping TypeName="kinnemedModel.ginecologico">
+        <MappingFragment StoreEntitySet="ginecologico">
+          <ScalarProperty Name="gin_paptest" ColumnName="gin_paptest" />
+          <ScalarProperty Name="gin_pla_txt" ColumnName="gin_pla_txt" />
+          <ScalarProperty Name="gin_planificacion" ColumnName="gin_planificacion" />
+          <ScalarProperty Name="gin_hijos" ColumnName="gin_hijos" />
+          <ScalarProperty Name="gin_abortos" ColumnName="gin_abortos" />
+          <ScalarProperty Name="gin_cesarea" ColumnName="gin_cesarea" />
+          <ScalarProperty Name="gin_partos" ColumnName="gin_partos" />
+          <ScalarProperty Name="gin_gestas" ColumnName="gin_gestas" />
+          <ScalarProperty Name="gin_ciclos" ColumnName="gin_ciclos" />
+          <ScalarProperty Name="gin_fum" ColumnName="gin_fum" />
+          <ScalarProperty Name="gin_id" ColumnName="gin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="trabajador">
+      <EntityTypeMapping TypeName="kinnemedModel.trabajador">
+        <MappingFragment StoreEntitySet="trabajador">
+          <ScalarProperty Name="tra_estado" ColumnName="tra_estado" />
+          <ScalarProperty Name="tra_correo" ColumnName="tra_correo" />
+          <ScalarProperty Name="tra_apellidos" ColumnName="tra_apellidos" />
+          <ScalarProperty Name="tra_nombres" ColumnName="tra_nombres" />
+          <ScalarProperty Name="tra_cedula" ColumnName="tra_cedula" />
+          <ScalarProperty Name="tra_id" ColumnName="tra_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

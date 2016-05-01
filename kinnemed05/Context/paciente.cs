@@ -51,13 +51,13 @@ namespace kinnemed05.Models
         [EmailAddress(ErrorMessage = "El correo no tiene el formato correcto")]
         [StringLength(100, ErrorMessage = "La longitud máxima es 100 caracteres")]
         public string pac_correo { get; set; }
-        [Display(Name = "Provincia")]
+        [Display(Name = "Provincia de Residencia")]
         //[Required(ErrorMessage = "Campo Requerido")]
         public Nullable<int> pac_provincia { get; set; }
-        [Display(Name = "Cantón")]
+        [Display(Name = "Cantón de Residencia")]
         //[Required(ErrorMessage = "Campo Requerido")]
         public Nullable<int> pac_canton { get; set; }
-        [Display(Name = "Dirección")]
+        [Display(Name = "Dirección de Residencia")]
         //[Required(ErrorMessage = "Campo Requerido")]
         [DataType(DataType.Text, ErrorMessage = "El campo no tiene el formato correcto")]
         public string pac_direccion { get; set; }

@@ -33,7 +33,6 @@ namespace kinnemed05.Models
         public virtual empresa empresa { get; set; }
         public virtual ICollection<espirometria> espirometria { get; set; }
         public virtual familiar familiar { get; set; }
-        public virtual ginecologico ginecologico { get; set; }
         public virtual ICollection<historia> historia { get; set; }
         public virtual ICollection<inmunizacion> inmunizacion { get; set; }
         public virtual ICollection<ocupacional> ocupacional { get; set; }
@@ -43,5 +42,6 @@ namespace kinnemed05.Models
         public virtual ICollection<rayos> rayos { get; set; }
         public virtual ICollection<registro> registro { get; set; }
         public virtual ICollection<oftalmologia> oftalmologia { get; set; }
+        public virtual ginecologico ginecologico { get; set; }
     }
 }

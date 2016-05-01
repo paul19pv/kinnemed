@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="area">
           <Key>
             <PropertyRef Name="are_id" />
@@ -203,7 +203,7 @@
           </Key>
           <Property Name="gin_id" Type="int" Nullable="false" />
           <Property Name="gin_fum" Type="varchar" MaxLength="10" />
-          <Property Name="gin_ciclos" Type="int" />
+          <Property Name="gin_ciclos" Type="varchar" MaxLength="25" />
           <Property Name="gin_gestas" Type="int" />
           <Property Name="gin_partos" Type="int" />
           <Property Name="gin_cesarea" Type="int" />
@@ -504,6 +504,17 @@
           <Property Name="sub_objetivo" Type="nvarchar(max)" />
           <Property Name="sub_analisis" Type="nvarchar(max)" />
           <Property Name="sub_plan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="trabajador">
+          <Key>
+            <PropertyRef Name="tra_id" />
+          </Key>
+          <Property Name="tra_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tra_cedula" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="tra_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tra_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tra_correo" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="tra_estado" Type="bit" />
         </EntityType>
         <EntityType Name="vacuna">
           <Key>
@@ -1086,6 +1097,7 @@
           <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sub_cie10" EntityType="Self.sub_cie10" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="subsecuente" EntityType="Self.subsecuente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trabajador" EntityType="Self.trabajador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vacuna" EntityType="Self.vacuna" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
@@ -1371,7 +1383,6 @@
           <EntitySet Name="personal" EntityType="kinnemedModel.personal" />
           <EntitySet Name="signos" EntityType="kinnemedModel.signos" />
           <EntitySet Name="subsecuente" EntityType="kinnemedModel.subsecuente" />
-          <EntitySet Name="ginecologico" EntityType="kinnemedModel.ginecologico" />
           <EntitySet Name="audiometria" EntityType="kinnemedModel.audiometria" />
           <EntitySet Name="espirometria" EntityType="kinnemedModel.espirometria" />
           <EntitySet Name="rayos" EntityType="kinnemedModel.rayos" />
@@ -1444,10 +1455,6 @@
           <AssociationSet Name="FK_fisico_historia" Association="kinnemedModel.FK_fisico_historia">
             <End Role="historia" EntitySet="historia" />
             <End Role="fisico" EntitySet="fisico" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ginecologico_paciente" Association="kinnemedModel.FK_ginecologico_paciente">
-            <End Role="paciente" EntitySet="paciente" />
-            <End Role="ginecologico" EntitySet="ginecologico" />
           </AssociationSet>
           <AssociationSet Name="FK_historia_medico" Association="kinnemedModel.FK_historia_medico">
             <End Role="medico" EntitySet="medico" />
@@ -1523,6 +1530,12 @@
           <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
             <End Role="historia" EntitySet="historia" />
             <End Role="concepto" EntitySet="concepto" />
+          </AssociationSet>
+          <EntitySet Name="ginecologico" EntityType="kinnemedModel.ginecologico" />
+          <EntitySet Name="trabajador" EntityType="kinnemedModel.trabajador" />
+          <AssociationSet Name="FK_ginecologico_paciente" Association="kinnemedModel.FK_ginecologico_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="ginecologico" EntitySet="ginecologico" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="area">
@@ -1812,23 +1825,6 @@
           <Property Name="sub_plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="subsecuente" ToRole="historia" />
         </EntityType>
-        <EntityType Name="ginecologico">
-          <Key>
-            <PropertyRef Name="gin_id" />
-          </Key>
-          <Property Name="gin_id" Type="Int32" Nullable="false" />
-          <Property Name="gin_fum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="gin_ciclos" Type="Int32" />
-          <Property Name="gin_gestas" Type="Int32" />
-          <Property Name="gin_partos" Type="Int32" />
-          <Property Name="gin_cesarea" Type="Int32" />
-          <Property Name="gin_abortos" Type="Int32" />
-          <Property Name="gin_hijos" Type="Int32" />
-          <Property Name="gin_planificacion" Type="Boolean" Nullable="false" />
-          <Property Name="gin_pla_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="gin_paptest" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="ginecologico" ToRole="paciente" />
-        </EntityType>
         <EntityType Name="audiometria">
           <Key>
             <PropertyRef Name="aud_id" />
@@ -2069,7 +2065,6 @@
           <NavigationProperty Name="empresa" Relationship="kinnemedModel.FK_paciente_empresa" FromRole="paciente" ToRole="empresa" />
           <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="paciente" ToRole="espirometria" />
           <NavigationProperty Name="familiar" Relationship="kinnemedModel.FK_familiar_paciente" FromRole="paciente" ToRole="familiar" />
-          <NavigationProperty Name="ginecologico" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="paciente" ToRole="ginecologico" />
           <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_paciente" FromRole="paciente" ToRole="historia" />
           <NavigationProperty Name="inmunizacion" Relationship="kinnemedModel.FK_inmunizacion_paciente" FromRole="paciente" ToRole="inmunizacion" />
           <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="paciente" ToRole="ocupacional" />
@@ -2079,6 +2074,7 @@
           <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
           <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_paciente" FromRole="paciente" ToRole="registro" />
           <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="paciente" ToRole="oftalmologia" />
+          <NavigationProperty Name="ginecologico" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="paciente" ToRole="ginecologico" />
         </EntityType>
         <Association Name="FK_examen_area">
           <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
@@ -2243,20 +2239,6 @@
             </Principal>
             <Dependent Role="fisico">
               <PropertyRef Name="fis_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ginecologico_paciente">
-          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.ginecologico" Role="ginecologico" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="paciente">
-              <PropertyRef Name="pac_id" />
-            </Principal>
-            <Dependent Role="ginecologico">
-              <PropertyRef Name="gin_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2554,6 +2536,48 @@
             </Principal>
             <Dependent Role="concepto">
               <PropertyRef Name="con_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ginecologico">
+          <Key>
+            <PropertyRef Name="gin_id" />
+          </Key>
+          <Property Name="gin_id" Type="Int32" Nullable="false" />
+          <Property Name="gin_fum" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="gin_ciclos" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="gin_gestas" Type="Int32" />
+          <Property Name="gin_partos" Type="Int32" />
+          <Property Name="gin_cesarea" Type="Int32" />
+          <Property Name="gin_abortos" Type="Int32" />
+          <Property Name="gin_hijos" Type="Int32" />
+          <Property Name="gin_planificacion" Type="Boolean" Nullable="false" />
+          <Property Name="gin_pla_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gin_paptest" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="ginecologico" ToRole="paciente" />
+        </EntityType>
+        <EntityType Name="trabajador">
+          <Key>
+            <PropertyRef Name="tra_id" />
+          </Key>
+          <Property Name="tra_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tra_cedula" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="tra_nombres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="tra_apellidos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="tra_correo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="tra_estado" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_ginecologico_paciente">
+          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.ginecologico" Role="ginecologico" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="ginecologico">
+              <PropertyRef Name="gin_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2881,23 +2905,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ginecologico">
-            <EntityTypeMapping TypeName="kinnemedModel.ginecologico">
-              <MappingFragment StoreEntitySet="ginecologico">
-                <ScalarProperty Name="gin_paptest" ColumnName="gin_paptest" />
-                <ScalarProperty Name="gin_pla_txt" ColumnName="gin_pla_txt" />
-                <ScalarProperty Name="gin_planificacion" ColumnName="gin_planificacion" />
-                <ScalarProperty Name="gin_hijos" ColumnName="gin_hijos" />
-                <ScalarProperty Name="gin_abortos" ColumnName="gin_abortos" />
-                <ScalarProperty Name="gin_cesarea" ColumnName="gin_cesarea" />
-                <ScalarProperty Name="gin_partos" ColumnName="gin_partos" />
-                <ScalarProperty Name="gin_gestas" ColumnName="gin_gestas" />
-                <ScalarProperty Name="gin_ciclos" ColumnName="gin_ciclos" />
-                <ScalarProperty Name="gin_fum" ColumnName="gin_fum" />
-                <ScalarProperty Name="gin_id" ColumnName="gin_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="audiometria">
             <EntityTypeMapping TypeName="kinnemedModel.audiometria">
               <MappingFragment StoreEntitySet="audiometria">
@@ -3118,6 +3125,35 @@
                 <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
                 <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
                 <ScalarProperty Name="con_id" ColumnName="con_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ginecologico">
+            <EntityTypeMapping TypeName="kinnemedModel.ginecologico">
+              <MappingFragment StoreEntitySet="ginecologico">
+                <ScalarProperty Name="gin_paptest" ColumnName="gin_paptest" />
+                <ScalarProperty Name="gin_pla_txt" ColumnName="gin_pla_txt" />
+                <ScalarProperty Name="gin_planificacion" ColumnName="gin_planificacion" />
+                <ScalarProperty Name="gin_hijos" ColumnName="gin_hijos" />
+                <ScalarProperty Name="gin_abortos" ColumnName="gin_abortos" />
+                <ScalarProperty Name="gin_cesarea" ColumnName="gin_cesarea" />
+                <ScalarProperty Name="gin_partos" ColumnName="gin_partos" />
+                <ScalarProperty Name="gin_gestas" ColumnName="gin_gestas" />
+                <ScalarProperty Name="gin_ciclos" ColumnName="gin_ciclos" />
+                <ScalarProperty Name="gin_fum" ColumnName="gin_fum" />
+                <ScalarProperty Name="gin_id" ColumnName="gin_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trabajador">
+            <EntityTypeMapping TypeName="kinnemedModel.trabajador">
+              <MappingFragment StoreEntitySet="trabajador">
+                <ScalarProperty Name="tra_estado" ColumnName="tra_estado" />
+                <ScalarProperty Name="tra_correo" ColumnName="tra_correo" />
+                <ScalarProperty Name="tra_apellidos" ColumnName="tra_apellidos" />
+                <ScalarProperty Name="tra_nombres" ColumnName="tra_nombres" />
+                <ScalarProperty Name="tra_cedula" ColumnName="tra_cedula" />
+                <ScalarProperty Name="tra_id" ColumnName="tra_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

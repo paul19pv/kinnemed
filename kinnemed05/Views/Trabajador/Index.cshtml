@@ -1,0 +1,63 @@
+﻿@model IEnumerable<kinnemed05.Models.trabajador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tra_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tra_cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tra_nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tra_apellidos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tra_correo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tra_estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tra_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tra_cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tra_nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tra_apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tra_correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tra_estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
