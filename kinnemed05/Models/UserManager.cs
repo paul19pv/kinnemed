@@ -43,6 +43,15 @@ namespace kinnemed05.Models
             db.SaveChanges();
             return original.UserId;
         }
+        public int UpdateTrabajador(string usuario, int id)
+        {
+            UserProfile updateUser = new UserProfile();
+            var result = from u in db.UserProfiles where u.UserName == usuario select u;
+            UserProfile original = result.First();
+            original.UserTrabajador = id;
+            db.SaveChanges();
+            return original.UserId;
+        }
         public int UserId(string usuario) {
             UserProfile updateUser = new UserProfile();
             var result = from u in db.UserProfiles where u.UserName == usuario select u;
@@ -61,6 +70,8 @@ namespace kinnemed05.Models
                 deleteuser = db.UserProfiles.Where(u => u.UserEmpresa == user_id).FirstOrDefault();
             else if (perfil == 5)
                 deleteuser = db.UserProfiles.Where(u => u.UserLaboratorista == user_id).FirstOrDefault();
+            else if (perfil == 6)
+                deleteuser = db.UserProfiles.Where(u => u.UserTrabajador == user_id).FirstOrDefault();
 
             if(deleteuser!=null)
                 db.UserProfiles.Remove(deleteuser);

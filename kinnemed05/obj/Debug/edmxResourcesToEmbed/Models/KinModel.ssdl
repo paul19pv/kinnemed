@@ -307,7 +307,9 @@
     <Property Name="oft_fon_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_colores" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="oft_diagnostico" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_dia_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="paciente">
     <Key>
@@ -509,7 +511,7 @@
     <Property Name="tra_nombres" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="tra_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="tra_correo" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="tra_estado" Type="bit" />
+    <Property Name="tra_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="vacuna">
     <Key>

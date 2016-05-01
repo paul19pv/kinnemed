@@ -8,55 +8,61 @@
 
 <p>
     @Html.ActionLink("Crear Nuevo", "Create", "Empresa", new { @class = "btn btn-default" })
+    @Html.ActionLink("Regresar", "Index", "Home", new { }, new { @class = "btn btn-default" })
 </p>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.emp_cedula)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.emp_nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.emp_direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.emp_telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.emp_mail)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.emp_cedula)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.emp_nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.emp_direccion)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.emp_telefono)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.emp_mail)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
 
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emp_cedula)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emp_nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emp_direccion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emp_telefono)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.emp_mail)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.emp_id }, new { @class = "iconb icon-edit", @title = "Editar" })
-                    @Html.ActionLink("Details", "Details", new { id = item.emp_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.emp_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
-                </td>
-            </tr>
-        }
-    </tbody>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emp_cedula)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emp_nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emp_direccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emp_telefono)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.emp_mail)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.emp_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            @Html.ActionLink("Details", "Details", new { id = item.emp_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.emp_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
 
-</table>
+        </table>
+
+    </div>
+</div>

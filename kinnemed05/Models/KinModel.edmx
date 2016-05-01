@@ -312,7 +312,9 @@
           <Property Name="oft_fon_txt" Type="varchar" MaxLength="150" />
           <Property Name="oft_colores" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="oft_diagnostico" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="oft_dia_txt" Type="varchar" MaxLength="150" />
           <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="paciente">
           <Key>
@@ -514,7 +516,7 @@
           <Property Name="tra_nombres" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="tra_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="tra_correo" Type="varchar" MaxLength="150" Nullable="false" />
-          <Property Name="tra_estado" Type="bit" />
+          <Property Name="tra_estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="vacuna">
           <Key>
@@ -2500,6 +2502,8 @@
           <Property Name="oft_diagnostico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="oft_indicaciones" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="oftalmologia" ToRole="paciente" />
+          <Property Name="oft_dia_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="oft_ind_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_oftalmologia_paciente">
           <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
@@ -2565,7 +2569,7 @@
           <Property Name="tra_nombres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="tra_apellidos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="tra_correo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="tra_estado" Type="Boolean" />
+          <Property Name="tra_estado" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK_ginecologico_paciente">
           <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
@@ -3100,6 +3104,8 @@
           <EntitySetMapping Name="oftalmologia">
             <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
               <MappingFragment StoreEntitySet="oftalmologia">
+                <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
+                <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
                 <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
                 <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
                 <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />

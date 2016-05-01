@@ -15,10 +15,5 @@ namespace kinnemed05.Models
     public partial class trabajador
     {
         public int tra_id { get; set; }
-        public string tra_cedula { get; set; }
-        public string tra_nombres { get; set; }
-        public string tra_apellidos { get; set; }
-        public string tra_correo { get; set; }
-        public Nullable<bool> tra_estado { get; set; }
     }
 }

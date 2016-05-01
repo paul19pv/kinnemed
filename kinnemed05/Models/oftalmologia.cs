@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class oftalmologia
     {
         public int oft_id { get; set; }
-    
+
         public virtual paciente paciente { get; set; }
     }
 }

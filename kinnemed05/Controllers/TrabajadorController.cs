@@ -53,6 +53,16 @@ namespace kinnemed05.Controllers
             {
                 db.trabajador.Add(trabajador);
                 db.SaveChanges();
+
+                AccountController account = new AccountController();
+                account.CreateUserProfile(trabajador.tra_cedula, trabajador.tra_cedula);
+                UserManager userManager = new UserManager();
+                int Userid = userManager.UpdateTrabajador(trabajador.tra_cedula, trabajador.tra_id);
+                UsersInRoles usersinroles = new UsersInRoles();
+                usersinroles.RoleId = 6;
+                usersinroles.UserId = Userid;
+                account.CreateUsersInRole(usersinroles);
+
                 return RedirectToAction("Index");
             }
 
@@ -109,6 +119,8 @@ namespace kinnemed05.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             trabajador trabajador = db.trabajador.Find(id);
+            UserManager usermanager = new UserManager();
+            usermanager.DeleteUser(id, 6);
             db.trabajador.Remove(trabajador);
             db.SaveChanges();
             return RedirectToAction("Index");

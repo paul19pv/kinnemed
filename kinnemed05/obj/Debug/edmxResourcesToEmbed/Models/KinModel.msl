@@ -514,6 +514,8 @@
     <EntitySetMapping Name="oftalmologia">
       <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
         <MappingFragment StoreEntitySet="oftalmologia">
+          <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
+          <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
           <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
           <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
           <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />

@@ -212,6 +212,7 @@
     <Compile Include="Context\registro.cs" />
     <Compile Include="Context\signos.cs" />
     <Compile Include="Context\subsecuente.cs" />
+    <Compile Include="Context\trabajador.cs" />
     <Compile Include="Controllers\AudiometriaController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
@@ -225,7 +226,6 @@
     <Compile Include="Controllers\LaboralController.cs" />
     <Compile Include="Controllers\LaboratoristaController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
-    <Compile Include="Controllers\OftalmologiaController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
@@ -544,6 +544,7 @@
     <Content Include="Content\img\iconos\historia07-icon.png" />
     <Content Include="Content\img\iconos\lab-icon.png" />
     <Content Include="Content\img\iconos\lungs-icon.png" />
+    <Content Include="Content\img\iconos\office-icon.png" />
     <Content Include="Content\img\iconos\page-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />
     <Content Include="Content\img\iconos\ray-icon.png" />
@@ -932,11 +933,6 @@
     <Content Include="Views\Laboratorista\Create.cshtml" />
     <Content Include="Views\Laboratorista\Edit.cshtml" />
     <Content Include="Views\Laboratorista\Delete.cshtml" />
-    <Content Include="Views\Oftalmologia\Index.cshtml" />
-    <Content Include="Views\Oftalmologia\Details.cshtml" />
-    <Content Include="Views\Oftalmologia\Create.cshtml" />
-    <Content Include="Views\Oftalmologia\Edit.cshtml" />
-    <Content Include="Views\Oftalmologia\Delete.cshtml" />
     <Content Include="Views\Concepto\Index.cshtml" />
     <Content Include="Views\Concepto\Details.cshtml" />
     <Content Include="Views\Concepto\Create.cshtml" />

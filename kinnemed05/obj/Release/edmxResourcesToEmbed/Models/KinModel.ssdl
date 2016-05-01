@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="area">
     <Key>
       <PropertyRef Name="are_id" />
@@ -198,7 +198,7 @@
     </Key>
     <Property Name="gin_id" Type="int" Nullable="false" />
     <Property Name="gin_fum" Type="varchar" MaxLength="10" />
-    <Property Name="gin_ciclos" Type="int" />
+    <Property Name="gin_ciclos" Type="varchar" MaxLength="25" />
     <Property Name="gin_gestas" Type="int" />
     <Property Name="gin_partos" Type="int" />
     <Property Name="gin_cesarea" Type="int" />
@@ -499,6 +499,17 @@
     <Property Name="sub_objetivo" Type="nvarchar(max)" />
     <Property Name="sub_analisis" Type="nvarchar(max)" />
     <Property Name="sub_plan" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="trabajador">
+    <Key>
+      <PropertyRef Name="tra_id" />
+    </Key>
+    <Property Name="tra_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tra_cedula" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tra_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tra_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tra_correo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tra_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="vacuna">
     <Key>
@@ -1081,6 +1092,7 @@
     <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sub_cie10" EntityType="Self.sub_cie10" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="subsecuente" EntityType="Self.subsecuente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="trabajador" EntityType="Self.trabajador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vacuna" EntityType="Self.vacuna" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
