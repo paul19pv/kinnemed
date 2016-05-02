@@ -16,6 +16,8 @@ namespace kinnemed05.Models
         public string tra_apellidos { get; set; }
         [Display(Name = "Correo Electrónico")]
         public string tra_correo { get; set; }
+        [Display(Name = "Empresa")]
+        public int tra_empresa { get; set; }
         [Display(Name = "Estado")]
         public bool tra_estado { get; set; }
     }

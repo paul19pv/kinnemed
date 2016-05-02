@@ -322,6 +322,7 @@
     <EntitySetMapping Name="audiometria">
       <EntityTypeMapping TypeName="kinnemedModel.audiometria">
         <MappingFragment StoreEntitySet="audiometria">
+          <ScalarProperty Name="aud_medico" ColumnName="aud_medico" />
           <ScalarProperty Name="aud_observacion" ColumnName="aud_observacion" />
           <ScalarProperty Name="aud_archivo" ColumnName="aud_archivo" />
           <ScalarProperty Name="aud_paciente" ColumnName="aud_paciente" />
@@ -332,6 +333,7 @@
     <EntitySetMapping Name="espirometria">
       <EntityTypeMapping TypeName="kinnemedModel.espirometria">
         <MappingFragment StoreEntitySet="espirometria">
+          <ScalarProperty Name="esp_medico" ColumnName="esp_medico" />
           <ScalarProperty Name="esp_observacion" ColumnName="esp_observacion" />
           <ScalarProperty Name="esp_archivo" ColumnName="esp_archivo" />
           <ScalarProperty Name="esp_paciente" ColumnName="esp_paciente" />
@@ -342,6 +344,7 @@
     <EntitySetMapping Name="rayos">
       <EntityTypeMapping TypeName="kinnemedModel.rayos">
         <MappingFragment StoreEntitySet="rayos">
+          <ScalarProperty Name="ray_medico" ColumnName="ray_medico" />
           <ScalarProperty Name="ray_observacion" ColumnName="ray_observacion" />
           <ScalarProperty Name="ray_imagen" ColumnName="ray_imagen" />
           <ScalarProperty Name="ray_paciente" ColumnName="ray_paciente" />
@@ -514,6 +517,7 @@
     <EntitySetMapping Name="oftalmologia">
       <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
         <MappingFragment StoreEntitySet="oftalmologia">
+          <ScalarProperty Name="oft_medico" ColumnName="oft_medico" />
           <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
           <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
           <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
@@ -565,6 +569,7 @@
       <EntityTypeMapping TypeName="kinnemedModel.trabajador">
         <MappingFragment StoreEntitySet="trabajador">
           <ScalarProperty Name="tra_estado" ColumnName="tra_estado" />
+          <ScalarProperty Name="tra_empresa" ColumnName="tra_empresa" />
           <ScalarProperty Name="tra_correo" ColumnName="tra_correo" />
           <ScalarProperty Name="tra_apellidos" ColumnName="tra_apellidos" />
           <ScalarProperty Name="tra_nombres" ColumnName="tra_nombres" />

@@ -36,8 +36,11 @@ namespace kinnemed05.Models
         public string oft_diagnostico { get; set; }
         [Display(Name = "Indicaciones")]
         public string oft_indicaciones { get; set; }
-
         public string oft_dia_txt { get; set; }
         public string oft_ind_txt { get; set; }
+        [Display(Name = "Médico")]
+        public int oft_medico { get; set; }
+
+        
     }
 }

@@ -15,5 +15,7 @@ namespace kinnemed05.Models
         public string esp_archivo { get; set; } 
         [Display(Name = "Observación")]
         public string esp_observacion { get; set; }
+        [Display(Name = "Médico")]
+        public int esp_medico { get; set; }
     }
 }

@@ -36,6 +36,40 @@
             minLength: 2
         });
 
+        $('#txt_medico').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_medico").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_medico").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.med_nombres + " " + item.med_apellidos,
+                                id: item.med_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#aud_medico").val(ui.item.id)
+            },
+            minLength: 2
+        });
+
+
+
+
     });
 </script>
 <div class="col-lg-12">
@@ -56,6 +90,14 @@
                         @Html.LabelFor(model => model.aud_paciente, new { @class = "control-label", @for = "inputDefault" })
                         @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = @ViewBag.paciente })
                         @Html.ValidationMessageFor(model => model.aud_paciente)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.aud_medico, new { @class = "form-control", @type = "hidden" })
+                        @Html.LabelFor(model => model.aud_medico, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico })
+                        @Html.ValidationMessageFor(model => model.aud_medico)
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -87,7 +129,11 @@
     </div>
 </div>
 <a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/AutocompleteMedico")" id="link_medico"></a>
 
+<div id="div_loading" class="progress progress-striped active" style="display:none">
+    <div class="progress-bar" style="width: 0%"></div>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

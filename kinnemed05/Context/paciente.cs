@@ -33,7 +33,7 @@ namespace kinnemed05.Models
         //[Required(ErrorMessage = "Campo Requerido")]
         public Nullable<int> pac_pais { get; set; }
         [Display(Name = "Fecha Nacimiento")]
-        [Required(ErrorMessage = "Campo Requerido")]
+        //[Required(ErrorMessage = "Campo Requerido")]
         public string pac_fechanacimiento { get; set; }
         [Display(Name = "Edad")]
         [Required(ErrorMessage = "Campo Requerido")]

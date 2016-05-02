@@ -226,6 +226,7 @@
     <Compile Include="Controllers\LaboralController.cs" />
     <Compile Include="Controllers\LaboratoristaController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
+    <Compile Include="Controllers\OftalmologiaController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
     <Compile Include="Controllers\PlanController.cs" />
@@ -535,6 +536,7 @@
     <Content Include="Content\img\iconos\examen-icon.png" />
     <Content Include="Content\img\iconos\examen01-icon.png" />
     <Content Include="Content\img\iconos\examen02-icon.png" />
+    <Content Include="Content\img\iconos\eye-icon.png" />
     <Content Include="Content\img\iconos\historia01-icon.png" />
     <Content Include="Content\img\iconos\historia02-icon.png" />
     <Content Include="Content\img\iconos\historia03-icon.png" />
@@ -948,6 +950,11 @@
     <Content Include="Views\Trabajador\Create.cshtml" />
     <Content Include="Views\Trabajador\Edit.cshtml" />
     <Content Include="Views\Trabajador\Delete.cshtml" />
+    <Content Include="Views\Oftalmologia\Index.cshtml" />
+    <Content Include="Views\Oftalmologia\Details.cshtml" />
+    <Content Include="Views\Oftalmologia\Create.cshtml" />
+    <Content Include="Views\Oftalmologia\Edit.cshtml" />
+    <Content Include="Views\Oftalmologia\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

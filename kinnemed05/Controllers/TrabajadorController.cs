@@ -39,6 +39,7 @@ namespace kinnemed05.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.tra_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
 
@@ -65,7 +66,7 @@ namespace kinnemed05.Controllers
 
                 return RedirectToAction("Index");
             }
-
+            ViewBag.tra_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre",trabajador.tra_empresa);
             return View(trabajador);
         }
 
@@ -79,6 +80,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.tra_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre", trabajador.tra_empresa);
             return View(trabajador);
         }
 
@@ -95,6 +97,7 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.tra_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre", trabajador.tra_empresa);
             return View(trabajador);
         }
 

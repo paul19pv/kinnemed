@@ -15,5 +15,7 @@ namespace kinnemed05.Models
     public partial class trabajador
     {
         public int tra_id { get; set; }
+    
+        public virtual empresa empresa { get; set; }
     }
 }

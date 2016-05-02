@@ -17,5 +17,6 @@ namespace kinnemed05.Models
         public int ray_id { get; set; }
     
         public virtual paciente paciente { get; set; }
+        public virtual medico medico { get; set; }
     }
 }

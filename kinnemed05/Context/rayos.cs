@@ -16,5 +16,7 @@ namespace kinnemed05.Models
         public string ray_imagen { get; set; }
         [Display(Name = "Observación")]
         public string ray_observacion { get; set; }
+        [Display(Name = "Médico")]
+        public int ray_medico { get; set; }
     }
 }

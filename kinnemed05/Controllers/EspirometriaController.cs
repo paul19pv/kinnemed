@@ -41,13 +41,10 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            string nom_pac = String.Empty;
+            medico medico = db.medico.Find(espirometria.esp_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
             paciente paciente = db.paciente.Find(espirometria.esp_paciente);
-            if (paciente != null)
-                nom_pac = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            else
-                nom_pac = "";
-            @ViewBag.paciente = nom_pac;
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
             return View(espirometria);
         }
 
@@ -69,6 +66,7 @@ namespace kinnemed05.Controllers
         public ActionResult Create(espirometria espirometria)
         {
             string nom_pac;
+            string nom_med;
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
@@ -102,7 +100,13 @@ namespace kinnemed05.Controllers
                 nom_pac = paciente.pac_nombres + " " + paciente.pac_apellidos;
             else
                 nom_pac = "";
-            @ViewBag.paciente = nom_pac;
+            ViewBag.paciente = nom_pac;
+            medico medico = db.medico.Find(espirometria.esp_medico);
+            if (medico != null)
+                nom_med = medico.med_nombres + " " + medico.med_apellidos;
+            else
+                nom_med = "";
+            ViewBag.medico = nom_med;
             return View(espirometria);
         }
 
@@ -116,13 +120,11 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            
+            medico medico = db.medico.Find(espirometria.esp_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
             paciente paciente = db.paciente.Find(espirometria.esp_paciente);
-            string nom_pac = String.Empty;
-            if (paciente != null)
-                nom_pac = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            else
-                nom_pac = "";
-            @ViewBag.paciente = nom_pac;
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
             return View(espirometria);
         }
 
@@ -133,7 +135,7 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(espirometria espirometria)
         {
-            string nom_pac;
+            
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
@@ -170,13 +172,10 @@ namespace kinnemed05.Controllers
 
 
             }
-
+            medico medico = db.medico.Find(espirometria.esp_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
             paciente paciente = db.paciente.Find(espirometria.esp_paciente);
-            if (paciente != null)
-                nom_pac = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            else
-                nom_pac = "";
-            @ViewBag.paciente = nom_pac;
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
             return View(espirometria);
         }
 

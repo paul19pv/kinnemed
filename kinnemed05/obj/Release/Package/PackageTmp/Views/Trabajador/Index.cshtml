@@ -1,0 +1,61 @@
+﻿@model IEnumerable<kinnemed05.Models.trabajador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Trabajador Ocupacional</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create", new { }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Regresar", "Index", "Home", new { }, new { @class = "btn btn-default" })
+</p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.tra_cedula)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tra_nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tra_apellidos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tra_correo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tra_estado)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tra_cedula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tra_nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tra_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tra_correo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.tra_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                        @Html.ActionLink("Details", "Details", new { id = item.tra_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.tra_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>

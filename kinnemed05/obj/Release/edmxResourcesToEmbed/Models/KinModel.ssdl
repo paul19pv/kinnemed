@@ -15,6 +15,7 @@
     <Property Name="aud_paciente" Type="int" Nullable="false" />
     <Property Name="aud_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="aud_observacion" Type="nvarchar(max)" />
+    <Property Name="aud_medico" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="canton">
     <Key>
@@ -93,6 +94,7 @@
     <Property Name="esp_paciente" Type="int" Nullable="false" />
     <Property Name="esp_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="esp_observacion" Type="nvarchar(max)" />
+    <Property Name="esp_medico" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="examen">
     <Key>
@@ -307,7 +309,10 @@
     <Property Name="oft_fon_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_colores" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="oft_diagnostico" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_dia_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
+    <Property Name="oft_medico" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="paciente">
     <Key>
@@ -412,6 +417,7 @@
     <Property Name="ray_paciente" Type="int" Nullable="false" />
     <Property Name="ray_imagen" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="ray_observacion" Type="nvarchar(max)" />
+    <Property Name="ray_medico" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="registro">
     <Key>
@@ -509,6 +515,7 @@
     <Property Name="tra_nombres" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="tra_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="tra_correo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="tra_empresa" Type="int" Nullable="false" />
     <Property Name="tra_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="vacuna">
@@ -530,6 +537,20 @@
     <Property Name="val_categoria" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="val_examen" Type="int" Nullable="false" />
   </EntityType>
+  <Association Name="FK_audiometria_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="audiometria" Type="Self.audiometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="audiometria">
+        <PropertyRef Name="aud_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_audiometria_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -623,6 +644,20 @@
       </Principal>
       <Dependent Role="diagnostico">
         <PropertyRef Name="dia_subcie10" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_espirometria_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="espirometria" Type="Self.espirometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="espirometria">
+        <PropertyRef Name="esp_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -808,6 +843,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_oftalmologia_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="oftalmologia" Type="Self.oftalmologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="oftalmologia">
+        <PropertyRef Name="oft_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_oftalmologia_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -837,7 +886,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_paciente_empresa">
-    <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+    <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="paciente" Type="Self.paciente" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="empresa">
@@ -927,6 +978,20 @@
       </Principal>
       <Dependent Role="prueba">
         <PropertyRef Name="pru_registro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rayos_medico">
+    <End Role="medico" Type="Self.medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="rayos" Type="Self.rayos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="rayos">
+        <PropertyRef Name="ray_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1040,6 +1105,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_trabajador_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="trabajador" Type="Self.trabajador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="trabajador">
+        <PropertyRef Name="tra_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_valores_examen">
     <End Role="examen" Type="Self.examen" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1095,6 +1174,10 @@
     <EntitySet Name="trabajador" EntityType="Self.trabajador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vacuna" EntityType="Self.vacuna" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_audiometria_medico" Association="Self.FK_audiometria_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="audiometria" EntitySet="audiometria" />
+    </AssociationSet>
     <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="audiometria" EntitySet="audiometria" />
@@ -1122,6 +1205,10 @@
     <AssociationSet Name="FK_diagnostico_sub_cie10" Association="Self.FK_diagnostico_sub_cie10">
       <End Role="sub_cie10" EntitySet="sub_cie10" />
       <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_espirometria_medico" Association="Self.FK_espirometria_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="espirometria" EntitySet="espirometria" />
     </AssociationSet>
     <AssociationSet Name="FK_espirometria_paciente" Association="Self.FK_espirometria_paciente">
       <End Role="paciente" EntitySet="paciente" />
@@ -1175,6 +1262,10 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ocupacional" EntitySet="ocupacional" />
     </AssociationSet>
+    <AssociationSet Name="FK_oftalmologia_medico" Association="Self.FK_oftalmologia_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="oftalmologia" EntitySet="oftalmologia" />
+    </AssociationSet>
     <AssociationSet Name="FK_oftalmologia_paciente" Association="Self.FK_oftalmologia_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="oftalmologia" EntitySet="oftalmologia" />
@@ -1211,6 +1302,10 @@
       <End Role="registro" EntitySet="registro" />
       <End Role="prueba" EntitySet="prueba" />
     </AssociationSet>
+    <AssociationSet Name="FK_rayos_medico" Association="Self.FK_rayos_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="rayos" EntitySet="rayos" />
+    </AssociationSet>
     <AssociationSet Name="FK_rayos_paciente" Association="Self.FK_rayos_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="rayos" EntitySet="rayos" />
@@ -1242,6 +1337,10 @@
     <AssociationSet Name="FK_subsecuente_historia" Association="Self.FK_subsecuente_historia">
       <End Role="historia" EntitySet="historia" />
       <End Role="subsecuente" EntitySet="subsecuente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_trabajador_empresa" Association="Self.FK_trabajador_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="trabajador" EntitySet="trabajador" />
     </AssociationSet>
     <AssociationSet Name="FK_valores_examen" Association="Self.FK_valores_examen">
       <End Role="examen" EntitySet="examen" />
