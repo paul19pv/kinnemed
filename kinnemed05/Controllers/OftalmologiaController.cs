@@ -6,16 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Filters;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [InitializeSimpleMembership]
     public class OftalmologiaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
 
         //
         // GET: /Oftalmologia/
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index()
         {
             var oftalmologia = db.oftalmologia.Include(o => o.paciente).Include(o => o.medico);
@@ -24,7 +27,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Oftalmologia/Details/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             oftalmologia oftalmologia = db.oftalmologia.Find(id);
@@ -32,12 +35,16 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
+            medico medico = db.medico.Find(oftalmologia.oft_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
             return View(oftalmologia);
         }
 
         //
         // GET: /Oftalmologia/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         public ActionResult Create()
         {
             
@@ -58,11 +65,13 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Oftalmologia/Create
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(oftalmologia oftalmologia)
         {
+            string nom_pac;
+            string nom_med;
             if (ModelState.IsValid)
             {
                 db.oftalmologia.Add(oftalmologia);
@@ -70,22 +79,34 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.oft_con_od = get_agudeza("20/20");
-            ViewBag.oft_con_oi = get_agudeza("20/20");
-            ViewBag.oft_sin_od = get_agudeza("20/20");
-            ViewBag.oft_sin_oi = get_agudeza("20/20");
+            ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
+            ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
+            ViewBag.oft_sin_od = get_agudeza(oftalmologia.oft_sin_od);
+            ViewBag.oft_sin_oi = get_agudeza(oftalmologia.oft_sin_oi);
 
-            ViewBag.oft_biomiscroscopia = get_valor();
-            ViewBag.oft_fondo = get_valor();
-            ViewBag.oft_colores = get_colores();
-            ViewBag.oft_diagnostico = get_diagnostico();
-            ViewBag.oft_indicaciones = get_indicacion();
+            ViewBag.oft_biomiscroscopia = get_valor(oftalmologia.oft_biomiscroscopia);
+            ViewBag.oft_fondo = get_valor(oftalmologia.oft_fondo);
+            ViewBag.oft_colores = get_colores(oftalmologia.oft_colores);
+            ViewBag.oft_diagnostico = get_diagnostico(oftalmologia.oft_diagnostico);
+            ViewBag.oft_indicaciones = get_indicacion(oftalmologia.oft_indicaciones);
+            paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
+            if (paciente != null)
+                nom_pac = paciente.pac_nombres + " " + paciente.pac_apellidos;
+            else
+                nom_pac = "";
+            ViewBag.paciente = nom_pac;
+            medico medico = db.medico.Find(oftalmologia.oft_medico);
+            if (medico != null)
+                nom_med = medico.med_nombres + " " + medico.med_apellidos;
+            else
+                nom_med = "";
+            ViewBag.medico = nom_med;
             return View(oftalmologia);
         }
 
         //
         // GET: /Oftalmologia/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             oftalmologia oftalmologia = db.oftalmologia.Find(id);
@@ -93,14 +114,27 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.oft_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula", oftalmologia.oft_paciente);
-            ViewBag.oft_medico = new SelectList(db.medico, "med_id", "med_cedula", oftalmologia.oft_medico);
+            paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
+            medico medico = db.medico.Find(oftalmologia.oft_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+
+            ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
+            ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
+            ViewBag.oft_sin_od = get_agudeza(oftalmologia.oft_sin_od);
+            ViewBag.oft_sin_oi = get_agudeza(oftalmologia.oft_sin_oi);
+
+            ViewBag.oft_biomiscroscopia = get_valor(oftalmologia.oft_biomiscroscopia);
+            ViewBag.oft_fondo = get_valor(oftalmologia.oft_fondo);
+            ViewBag.oft_colores = get_colores(oftalmologia.oft_colores);
+            ViewBag.oft_diagnostico = get_diagnostico(oftalmologia.oft_diagnostico);
+            ViewBag.oft_indicaciones = get_indicacion(oftalmologia.oft_indicaciones);
             return View(oftalmologia);
         }
 
         //
         // POST: /Oftalmologia/Edit/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(oftalmologia oftalmologia)
@@ -111,14 +145,27 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.oft_paciente = new SelectList(db.paciente, "pac_id", "pac_cedula", oftalmologia.oft_paciente);
-            ViewBag.oft_medico = new SelectList(db.medico, "med_id", "med_cedula", oftalmologia.oft_medico);
+            paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
+            medico medico = db.medico.Find(oftalmologia.oft_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+
+            ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
+            ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
+            ViewBag.oft_sin_od = get_agudeza(oftalmologia.oft_sin_od);
+            ViewBag.oft_sin_oi = get_agudeza(oftalmologia.oft_sin_oi);
+
+            ViewBag.oft_biomiscroscopia = get_valor(oftalmologia.oft_biomiscroscopia);
+            ViewBag.oft_fondo = get_valor(oftalmologia.oft_fondo);
+            ViewBag.oft_colores = get_colores(oftalmologia.oft_colores);
+            ViewBag.oft_diagnostico = get_diagnostico(oftalmologia.oft_diagnostico);
+            ViewBag.oft_indicaciones = get_indicacion(oftalmologia.oft_indicaciones);
             return View(oftalmologia);
         }
 
         //
         // GET: /Oftalmologia/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Delete(int id = 0)
         {
             oftalmologia oftalmologia = db.oftalmologia.Find(id);
@@ -126,12 +173,16 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
+            paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
+            ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
+            medico medico = db.medico.Find(oftalmologia.oft_medico);
+            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
             return View(oftalmologia);
         }
 
         //
         // POST: /Oftalmologia/Delete/5
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

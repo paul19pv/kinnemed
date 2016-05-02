@@ -1,7 +1,7 @@
 ﻿@model kinnemed05.Models.oftalmologia
 
 @{
-    ViewBag.Title = "Detalle";
+    ViewBag.Title = "Delete";
 }
 <script>
     $(function () {
@@ -254,11 +254,16 @@
 
 
             </div>
-            <div class="col-lg-4" style="clear:both">
-                <div class="form-group">
-                    @Html.ActionLink("Regresar", "Index", "Oftalmologia", new { }, new { @class = "btn btn-default" })
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <input class="btn btn-default" type="submit" value="Eliminar" />
+                        @Html.ActionLink("Regresar", "Index", "Oftalmologia", new { }, new { @class = "btn btn-default" })
+                    </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
 </div>
