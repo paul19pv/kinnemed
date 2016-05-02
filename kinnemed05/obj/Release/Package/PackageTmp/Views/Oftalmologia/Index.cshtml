@@ -4,114 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Oftalmología</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Exámen", "Create", "", new { @class = "btn btn-default" })
+    @Html.ActionLink("Regresar", "Examen", "Home", new { }, new { @class = "btn btn-default" })
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.paciente.pac_cedula)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_con_od)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_con_oi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_sin_od)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_sin_oi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_ref_od)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_ref_oi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_biomiscroscopia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_bio_txt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_fondo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_fon_txt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_colores)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_diagnostico)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_indicaciones)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oft_id)
-        </th>
-        <th></th>
-    </tr>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.oft_paciente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.oft_diagnostico)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.oft_indicaciones)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.oft_medico)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.paciente.pac_cedula)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_con_od)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_con_oi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_sin_od)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_sin_oi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_ref_od)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_ref_oi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_biomiscroscopia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_bio_txt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_fondo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_fon_txt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_colores)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_diagnostico)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_indicaciones)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oft_id)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.oft_diagnostico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.oft_indicaciones)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.oft_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                        @Html.ActionLink("Detalle", "Details", new { id = item.oft_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.oft_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+
+
+    </div>
+</div> 

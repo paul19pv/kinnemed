@@ -212,6 +212,7 @@
     <Compile Include="Context\registro.cs" />
     <Compile Include="Context\signos.cs" />
     <Compile Include="Context\subsecuente.cs" />
+    <Compile Include="Context\trabajador.cs" />
     <Compile Include="Controllers\AudiometriaController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Controllers\RevisionController.cs" />
     <Compile Include="Controllers\SignosController.cs" />
     <Compile Include="Controllers\SubsecuenteController.cs" />
+    <Compile Include="Controllers\TrabajadorController.cs" />
     <Compile Include="DataAnnotation\Unique.cs" />
     <Compile Include="Models\area.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
@@ -367,6 +369,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sub_cie10.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\trabajador.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vacuna.cs">
@@ -531,6 +536,7 @@
     <Content Include="Content\img\iconos\examen-icon.png" />
     <Content Include="Content\img\iconos\examen01-icon.png" />
     <Content Include="Content\img\iconos\examen02-icon.png" />
+    <Content Include="Content\img\iconos\eye-icon.png" />
     <Content Include="Content\img\iconos\historia01-icon.png" />
     <Content Include="Content\img\iconos\historia02-icon.png" />
     <Content Include="Content\img\iconos\historia03-icon.png" />
@@ -540,6 +546,7 @@
     <Content Include="Content\img\iconos\historia07-icon.png" />
     <Content Include="Content\img\iconos\lab-icon.png" />
     <Content Include="Content\img\iconos\lungs-icon.png" />
+    <Content Include="Content\img\iconos\office-icon.png" />
     <Content Include="Content\img\iconos\page-icon.png" />
     <Content Include="Content\img\iconos\patient-icon.png" />
     <Content Include="Content\img\iconos\ray-icon.png" />
@@ -928,11 +935,6 @@
     <Content Include="Views\Laboratorista\Create.cshtml" />
     <Content Include="Views\Laboratorista\Edit.cshtml" />
     <Content Include="Views\Laboratorista\Delete.cshtml" />
-    <Content Include="Views\Oftalmologia\Index.cshtml" />
-    <Content Include="Views\Oftalmologia\Details.cshtml" />
-    <Content Include="Views\Oftalmologia\Create.cshtml" />
-    <Content Include="Views\Oftalmologia\Edit.cshtml" />
-    <Content Include="Views\Oftalmologia\Delete.cshtml" />
     <Content Include="Views\Concepto\Index.cshtml" />
     <Content Include="Views\Concepto\Details.cshtml" />
     <Content Include="Views\Concepto\Create.cshtml" />
@@ -943,6 +945,16 @@
     <Content Include="Views\Espirometria\Index_historia.cshtml" />
     <Content Include="Views\Shared\_LayoutLogin.cshtml" />
     <Content Include="Views\Shared\View1.cshtml" />
+    <Content Include="Views\Trabajador\Index.cshtml" />
+    <Content Include="Views\Trabajador\Details.cshtml" />
+    <Content Include="Views\Trabajador\Create.cshtml" />
+    <Content Include="Views\Trabajador\Edit.cshtml" />
+    <Content Include="Views\Trabajador\Delete.cshtml" />
+    <Content Include="Views\Oftalmologia\Index.cshtml" />
+    <Content Include="Views\Oftalmologia\Details.cshtml" />
+    <Content Include="Views\Oftalmologia\Create.cshtml" />
+    <Content Include="Views\Oftalmologia\Edit.cshtml" />
+    <Content Include="Views\Oftalmologia\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

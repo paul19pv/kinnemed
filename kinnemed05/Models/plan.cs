@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class plan
     {
         public int pla_id { get; set; }
-        
+    
         public virtual historia historia { get; set; }
     }
 }

@@ -79,7 +79,7 @@
             <h3 class="panel-title">Registro</h3>
         </div>
         <div class="panel-body">
-            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId="div_loading", LoadingElementDuration=100 }))
+            @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100 }))
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
@@ -110,7 +110,7 @@
                         @Html.ValidationMessageFor(model => model.reg_fecha)
                     </div>
                 </div>
-               
+
                 <div class="col-lg-3">
                     <br />
                     <div class="form-group">
@@ -118,6 +118,9 @@
                         @Html.ActionLink("Regresar", "Index", "Registro", new { }, new { @class = "btn btn-default" })
                         @*@Html.ActionLink("Imprimir", "DownloadCodigo", "Examen", new { }, new { @class = "btn btn-warning" })*@
                     </div>
+                </div>
+                <div id="div_loading" class="progress progress-striped active" style="display:none; clear:both">
+                    <div class="progress-bar" style="width: 0%"></div>
                 </div>
             }
         </div>
@@ -133,9 +136,6 @@
 
 </div>
 
-<div id="div_loading" class="progress progress-striped active" style="display:none">
-    <div class="progress-bar" style="width: 45%"></div>
-</div>
 
 
 @section Scripts {

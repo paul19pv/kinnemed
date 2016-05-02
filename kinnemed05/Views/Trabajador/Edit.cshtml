@@ -1,0 +1,64 @@
+﻿@model kinnemed05.Models.trabajador
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model=>model.tra_id)
+    @Html.HiddenFor(model => model.tra_estado, new { Value = true })
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Modificar Trabajador Ocupacional</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tra_cedula, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tra_cedula, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.tra_cedula)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tra_correo, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tra_correo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.tra_correo)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tra_nombres, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tra_nombres, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.tra_nombres)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tra_empresa, new { @class = "control-label" })
+                        @Html.DropDownList("tra_empresa", String.Empty)
+                        @Html.ValidationMessageFor(model => model.tra_empresa)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.tra_apellidos, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.tra_apellidos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.tra_apellidos)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                        @Html.ActionLink("Regresar", "Index", "Trabajador", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

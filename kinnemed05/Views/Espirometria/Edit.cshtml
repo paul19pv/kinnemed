@@ -35,6 +35,37 @@
             },
             minLength: 2
         });
+        $('#txt_medico').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_medico").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_medico").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.med_nombres + " " + item.med_apellidos,
+                                id: item.med_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#esp_medico").val(ui.item.id)
+            },
+            minLength: 2
+        });
+
 
         $("#btn_upload").click(function () {
             $("#div_upload").show();
@@ -59,8 +90,8 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
-                @Html.HiddenFor(model=>model.esp_id)
-                @Html.HiddenFor(model=>model.esp_archivo)
+                @Html.HiddenFor(model => model.esp_id)
+                @Html.HiddenFor(model => model.esp_archivo)
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.TextBoxFor(model => model.esp_paciente, new { @class = "form-control", @type = "hidden" })
@@ -69,11 +100,19 @@
                         @Html.ValidationMessageFor(model => model.esp_paciente)
                     </div>
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.esp_medico, new { @class = "form-control", @type = "hidden" })
+                        @Html.LabelFor(model => model.esp_medico, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico })
+                        @Html.ValidationMessageFor(model => model.esp_medico)
+                    </div>
+                </div>
+                <div class="col-lg-4">
                     <div id="div_download" class="form-group">
                         @Html.LabelFor(model => model.esp_archivo, new { @class = "control-label", @for = "inputDefault", @style = "float:left;" })
-                        
-                        @Html.ActionLink("Descargar", "Download", new { id = Model.esp_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @style="display:block;" })
+
+                        @Html.ActionLink("Descargar", "Download", new { id = Model.esp_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @style = "display:block;" })
                         <br />
                         <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />
                     </div>
@@ -99,10 +138,20 @@
                         @Html.ActionLink("Regresar", "Index", "Espirometria", new { }, new { @class = "btn btn-default" })
                     </div>
                 </div>
+                <div id="div_loading" class="progress progress-striped active" style="display:none; clear:both">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
 
             }
 
         </div>
     </div>
 </div>
+
+<div class="col-lg-12">
+    <embed src="@Url.Content("~/Content/espirometria/" + Model.esp_archivo)" width="100%" height="600px">
+</div>
+
 <a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/AutocompleteMedico")" id="link_medico"></a>
+

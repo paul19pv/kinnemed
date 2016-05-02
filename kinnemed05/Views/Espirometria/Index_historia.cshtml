@@ -11,7 +11,10 @@
         <table class="table table-striped table-hover ">
             <tr>
                 <th>
-                    Paciente
+                    @Html.DisplayNameFor(model => model.esp_paciente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.esp_medico)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.esp_observacion)
@@ -24,6 +27,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.esp_observacion)

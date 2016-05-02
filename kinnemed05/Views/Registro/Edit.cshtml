@@ -15,13 +15,13 @@
             error: function (xhr, status, error) {
                 alert(error);
             }
-            
+
         });
 
         $.ajax({
             url: $("#link_index").attr('href'),
             type: 'GET',
-            data:{id:$('#reg_id').val()},
+            data: { id: $('#reg_id').val() },
             success: function (data) {
                 $('#div_index').html(data)
             },
@@ -47,13 +47,13 @@
         <div class="panel-body">
             @using (Html.BeginForm())
             {
-                @Html.HiddenFor(model=>model.reg_id)
+                @Html.HiddenFor(model => model.reg_id)
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.reg_paciente, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_paciente", Model.paciente.pac_nombres + " " + Model.paciente.pac_apellidos, new { @class = "form-control", @readonly="readonly"})
+                        @Html.TextBox("txt_paciente", Model.paciente.pac_nombres + " " + Model.paciente.pac_apellidos, new { @class = "form-control", @readonly = "readonly" })
                         @Html.TextBoxFor(model => model.reg_paciente, new { @class = "form-control", @type = "hidden" })
                     </div>
                 </div>
@@ -66,10 +66,11 @@
                         {
                             @Html.TextBox("txt_medico", Model.medico.med_nombres + " " + Model.medico.med_apellidos, new { @class = "form-control", @readonly = "readonly" })
                         }
-                        else { 
+                        else
+                        {
                             @Html.TextBox("txt_medico", "", new { @class = "form-control", @readonly = "readonly" })
                         }
-                        
+
                         @Html.ValidationMessageFor(model => model.reg_medico)
                     </div>
                 </div>
@@ -89,6 +90,10 @@
                         @Html.ActionLink("Regresar", "Index", "Registro", new { }, new { @class = "btn btn-default" })
                     </div>
                 </div>
+
+                <div id="div_loading" class="progress progress-striped active" style="display:none; clear:both">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
             }
         </div>
     </div>
@@ -100,10 +105,6 @@
 </div>
 <div id="div_index" style="clear:both">
 
-</div>
-
-<div id="div_loading" class="progress progress-striped active">
-    <div class="progress-bar" style="width: 0%"></div>
 </div>
 
 <a href="@Url.Content("~/Prueba/Create")" id="link_form"></a>

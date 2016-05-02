@@ -3,118 +3,264 @@
 @{
     ViewBag.Title = "Details";
 }
+<script>
+    $(function () {
+        $('#txt_paciente').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_paciente").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_paciente").val()
+                    },
+                    success: function (data) {
 
-<h2>Details</h2>
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.pac_nombres + " " + item.pac_apellidos,
+                                id: item.pac_id
+                            };
+                        }));
 
-<fieldset>
-    <legend>oftalmologia</legend>
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#oft_paciente").val(ui.item.id)
+            },
+            minLength: 2
+        });
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.paciente.pac_cedula)
+        $('#txt_medico').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_medico").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_medico").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.med_nombres + " " + item.med_apellidos,
+                                id: item.med_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#oft_medico").val(ui.item.id)
+            },
+            minLength: 2
+        });
+
+
+        $("#oft_biomiscroscopia").change(function () {
+            if ($(this).val()=="ANORMAL") {
+                $("#div_biomiscroscopia").show();
+            } else {
+                $("#div_biomiscroscopia").hide();
+                $("#oft_bio_txt").val("");
+            }
+        });
+
+        $("#oft_fondo").change(function () {
+            if ($(this).val() == "ANORMAL") {
+                $("#div_fondo").show();
+            } else {
+                $("#div_fondo").hide();
+                $("#oft_fon_txt").val("");
+            }
+        });
+        $("#oft_diagnostico").change(function () {
+            if ($(this).val() == "OTROS") {
+                $("#div_diagnostico").show();
+            } else {
+                $("#div_diagnostico").hide();
+                $("#oft_dia_txt").val("");
+            }
+        });
+        $("#oft_indicaciones").change(function () {
+            if ($(this).val() == "OTROS") {
+                $("#div_indicaciones").show();
+            } else {
+                $("#div_indicaciones").hide();
+                $("#oft_ind_txt").val("");
+            }
+        });
+
+
+        if ($('#oft_biomiscroscopia').val()=="ANORMAL") {
+            $("#div_biomiscroscopia").show();
+        }
+        else {
+            $("#div_biomiscroscopia").hide();
+        }
+
+        if ($('#oft_fondo').val() == "ANORMAL") {
+            $("#div_fondo").show();
+        }
+        else {
+            $("#div_fondo").hide();
+        }
+
+        if ($('#oft_diagnostico').val() == "OTROS") {
+            $("#div_diagnostico").show();
+        }
+        else {
+            $("#div_diagnostico").hide();
+        }
+
+        if ($('#oft_indicaciones').val() == "OTROS") {
+            $("#div_indicaciones").show();
+        }
+        else {
+            $("#div_indicaciones").hide();
+        }
+
+    });
+</script>
+
+
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Detalle Exámen Oftalmológico</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_paciente, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = @ViewBag.paciente, @readonly = "readonly" })
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_medico, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico, @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.Label("AGUDEZA VISUAL CON CORRECIÓN")
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.oft_con_od)
+                            @Html.TextBoxFor(model => model.oft_con_od, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.oft_con_oi)
+                            @Html.TextBoxFor(model => model.oft_con_oi, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_biomiscroscopia)
+                        @Html.TextBoxFor(model => model.oft_biomiscroscopia, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div id="div_biomiscroscopia" class="form-group" style="display:none">
+                        @Html.TextBoxFor(model => model.oft_bio_txt, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_diagnostico)
+                        @Html.TextBoxFor(model => model.oft_diagnostico, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div id="div_diagnostico" class="form-group" style="display:none">
+                        @Html.TextBoxFor(model => model.oft_dia_txt, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.Label("AGUDEZA VISUAL SIN CORRECIÓN")
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.oft_sin_od)
+                            @Html.TextBoxFor(model => model.oft_sin_od, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.oft_sin_oi)
+                            @Html.TextBoxFor(model => model.oft_sin_oi, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_fondo)
+                        @Html.TextBoxFor(model => model.oft_fondo, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div id="div_fondo" class="form-group" style="display:none">
+                        @Html.TextBoxFor(model => model.oft_fon_txt, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_indicaciones)
+                        @Html.TextBoxFor(model => model.oft_indicaciones, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div id="div_indicaciones" class="form-group" style="display:none">
+                        @Html.TextBoxFor(model => model.oft_ind_txt, new { @class = "form-control",@readonly="readonly" })
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.Label("REFRACCIÓN")
+                    </div>
+
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.oft_ref_od, new { @class = "control-label" })
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.oft_ref_od, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.oft_ref_oi)
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.oft_ref_oi, new { @class = "form-control", @readonly = "readonly" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_colores)
+                        @Html.TextBoxFor(model => model.oft_colores, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Oftalmologia", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_con_od)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_con_od)
-    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_con_oi)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_con_oi)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_sin_od)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_sin_od)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_sin_oi)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_sin_oi)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_ref_od)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_ref_od)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_ref_oi)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_ref_oi)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_biomiscroscopia)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_biomiscroscopia)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_bio_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_bio_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_fondo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_fondo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_fon_txt)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_fon_txt)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_colores)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_colores)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_diagnostico)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_diagnostico)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_indicaciones)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_indicaciones)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.oft_id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.oft_id)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -42,7 +42,7 @@
             changeYear: true,
             dateFormat: "dd/mm/yy"
         });
-        
+
     });
 
 </script>
@@ -71,18 +71,22 @@
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.reg_fecha, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBoxFor(model => model.reg_fecha, new { @class = "form-control", Value = @ViewBag.fecha})
+                        @Html.TextBoxFor(model => model.reg_fecha, new { @class = "form-control", Value = @ViewBag.fecha })
                         @Html.ValidationMessageFor(model => model.reg_fecha)
                     </div>
 
                 </div>
-                
+
                 <div class="col-lg-3">
                     <br />
                     <div class="form-group">
                         <input type="submit" value="Filtrar" class="btn btn-primary" />
                         @Html.ActionLink("Regresar", "Index", "Registro", new { }, new { @class = "btn btn-default" })
                     </div>
+                </div>
+
+                <div id="div_loading" class="progress progress-striped active" style="display:none; clear:both">
+                    <div class="progress-bar" style="width: 0%"></div>
                 </div>
             }
         </div>
@@ -102,9 +106,6 @@
 
 </div>
 
-<div id="div_loading" class="progress progress-striped active" style="display:none">
-    <div class="progress-bar" style="width: 10%"></div>
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

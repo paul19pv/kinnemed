@@ -15,6 +15,9 @@
                     @Html.DisplayNameFor(model => model.aud_paciente)
                 </th>
                 <th>
+                    @Html.DisplayNameFor(model => model.aud_medico)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.aud_observacion)
                 </th>
                 <th></th>
@@ -25,6 +28,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.aud_observacion)

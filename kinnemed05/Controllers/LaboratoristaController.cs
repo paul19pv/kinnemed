@@ -169,7 +169,7 @@ namespace kinnemed05.Controllers
         {
             laboratorista laboratorista = db.laboratorista.Find(id);
             UserManager usermanager = new UserManager();
-            usermanager.DeleteUser(id, 3);
+            usermanager.DeleteUser(id, 5);
             db.laboratorista.Remove(laboratorista);
             db.SaveChanges();
             return RedirectToAction("Index");

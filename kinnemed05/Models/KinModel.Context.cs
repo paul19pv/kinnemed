@@ -47,7 +47,6 @@ namespace kinnemed05.Models
         public DbSet<personal> personal { get; set; }
         public DbSet<signos> signos { get; set; }
         public DbSet<subsecuente> subsecuente { get; set; }
-        public DbSet<ginecologico> ginecologico { get; set; }
         public DbSet<audiometria> audiometria { get; set; }
         public DbSet<espirometria> espirometria { get; set; }
         public DbSet<rayos> rayos { get; set; }
@@ -64,5 +63,7 @@ namespace kinnemed05.Models
         public DbSet<registro> registro { get; set; }
         public DbSet<oftalmologia> oftalmologia { get; set; }
         public DbSet<concepto> concepto { get; set; }
+        public DbSet<ginecologico> ginecologico { get; set; }
+        public DbSet<trabajador> trabajador { get; set; }
     }
 }
