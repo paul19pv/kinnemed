@@ -17,7 +17,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Empresa/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         public ActionResult Index()
         {
             try
@@ -32,7 +32,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Empresa/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             empresa empresa = db.empresa.Find(id);

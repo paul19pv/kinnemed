@@ -25,6 +25,7 @@
                     @Html.DisplayNameFor(model => model.aud_observacion)
                 </th>
                 <th></th>
+                <th></th>
             </tr>
 
             @foreach (var item in Model)
@@ -33,17 +34,21 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.aud_observacion)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem=>item.medico.med_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.aud_observacion)
                     </td>
                     <td>
                         @Html.ActionLink("Descargar", "Download", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
                         @Html.ActionLink("Editar", "Edit", new { id = item.aud_id }, new { @class = "iconb icon-edit", @title = "Editar" })
                         @Html.ActionLink("Detalle", "Details", new { id = item.aud_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
                         @Html.ActionLink("Borrar", "Delete", new { id = item.aud_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                    <td>
+                        @Html.ActionLink("Reporte", "Reporte", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
                     </td>
                 </tr>
             }

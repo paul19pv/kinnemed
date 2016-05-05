@@ -28,6 +28,17 @@ namespace kinnemed05.Controllers
                 rayos = rayos.Where(r => r.ray_paciente == id);
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia", rayos.ToList());
+            
+            UserManager usermanager = new UserManager();
+            string perfil = usermanager.get_perfil(User);
+            if (perfil == "paciente")
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
+                rayos = rayos.Where(a => a.ray_paciente == paciente_.pac_id);
+            }
+
+
             return View(rayos.ToList());
         }
 
@@ -73,11 +84,11 @@ namespace kinnemed05.Controllers
                 var file = Request.Files[0];
                 string fileName = Path.GetFileName(file.FileName);
                 string ext = Path.GetExtension(fileName);
-                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" };
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
                 if (fileName != "")
                 {
                     rayos.ray_imagen = fileName;
-                    if (ModelState.IsValid && (Array.IndexOf(formatos, ext) > 0))
+                    if (ModelState.IsValid && (Array.IndexOf(formatos, ext) >= 0))
                     //if (ModelState.IsValid)
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/rayos"), fileName);
@@ -88,7 +99,7 @@ namespace kinnemed05.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("ext", "Extensión no Válida");
+                        ModelState.AddModelError("ext", "Extensión no Válida "+ext);
                     }
                 }
                 else
@@ -146,10 +157,10 @@ namespace kinnemed05.Controllers
                 var file = Request.Files[0];
                 string fileName = Path.GetFileName(file.FileName);
                 string ext = Path.GetExtension(fileName);
-                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif" };
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
                 if (fileName != "")
                 {
-                    if (ModelState.IsValid && (Array.IndexOf(formatos, ext) > 0))
+                    if (ModelState.IsValid && (Array.IndexOf(formatos, ext) >= 0))
                     {
                         if (fileName != rayos.ray_imagen)
                         {
@@ -233,6 +244,28 @@ namespace kinnemed05.Controllers
             }
             return File(Server.MapPath("~/Content/rayos/") + rayos.ray_imagen, contentType, rayos.ray_imagen);
 
+        }
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Reporte(int id)
+        {
+            try
+            {
+                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                //if (!consulta.Any())
+                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+
+                Session["ray_id"] = id;
+                ReportViewerViewModel model = new ReportViewerViewModel();
+                string content = Url.Content("~/Reports/Viewer/ViewRayos.aspx");
+                model.ReportPath = content;
+                return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
         }
         protected override void Dispose(bool disposing)
         {

@@ -35,6 +35,8 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int? id, int? paciente, string fecha)
         {
+            
+                
             var registro = db.registro.Include(r => r.paciente);
             if (id != null)
                 registro = db.registro.Where(r => r.reg_paciente == id);
@@ -43,8 +45,17 @@ namespace kinnemed05.Controllers
             if (!String.IsNullOrEmpty(fecha))
                 registro = registro.Where(r=>r.reg_fecha == fecha);
             registro = registro.Where(r => r.reg_estado != false);
+            UserManager usermanager = new UserManager();
+            string perfil = usermanager.get_perfil(User);
+            if (perfil == "paciente") {
+                string cedula = Convert.ToString(User.Identity.Name);
+                paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
+                registro = registro.Where(r => r.reg_paciente == paciente_.pac_id);
+            }
+
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia",registro.ToList());
+
             return View(registro.ToList());
         }
 
@@ -414,6 +425,7 @@ namespace kinnemed05.Controllers
                 registro registro = db.registro.Find(id);
                 Session["reg_paciente"] = registro.reg_paciente;
                 Session["reg_fecha"] = registro.reg_fecha;
+                Session["reg_id"] = id;
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/Viewer/ViewPrueba.aspx");
                 model.ReportPath = content;
@@ -468,6 +480,7 @@ namespace kinnemed05.Controllers
                 registro registro = db.registro.Find(id);
                 Session["reg_paciente"] = registro.reg_paciente;
                 Session["reg_fecha"] = registro.reg_fecha;
+                Session["reg_id"] = id;
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
                 model.ReportPath = content;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 
 namespace kinnemed05.Models
@@ -81,6 +82,22 @@ namespace kinnemed05.Models
         }
         public bool there_users() {
             return (from u in db.UserProfiles select u).Any();
+        }
+
+        public string get_perfil(IPrincipal User)
+        {
+            string perfil = String.Empty;
+            if(User.IsInRole("admin"))
+                perfil="admin";
+            else if(User.IsInRole("medico"))
+                perfil="medico";
+            else if (User.IsInRole("paciente"))
+                perfil = "paciente";
+            else if (User.IsInRole("laboratorista"))
+                perfil = "laboratorista";
+            else if (User.IsInRole("trabajador"))
+                perfil = "trabajador";
+            return perfil;
         }
     }
 }

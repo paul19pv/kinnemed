@@ -9,63 +9,87 @@
             <a class="navbar-brand" href="@Url.Action("Index","Home")">Kinnemed</a>
         </div>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
+
             @if (Request.IsAuthenticated)
             {
                 <ul class="nav navbar-nav">
+                    @if (User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administracion<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Registrar Medico", "Create", "Medico")</li>
+                                <li>@Html.ActionLink("Registrar Empresa", "Create", "Empresa")</li>
+                                <li>@Html.ActionLink("Registrar Paciente", "Create", "Paciente")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Perfil", "Manage", "Account")</li>
+                                <li class="divider"></li>
+                                <li>@Html.ActionLink("Perfiles de Laboratorio", "Index", "Perfil")</li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administracion<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Registrar Medico", "Create", "Medico")</li>
-                            <li>@Html.ActionLink("Registrar Empresa", "Create", "Empresa")</li>
-                            <li>@Html.ActionLink("Registrar Paciente", "Create", "Paciente")</li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("Perfil", "Manage", "Account")</li>
-                            
-                            
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Historias Clinicas<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("General", "Index", "Historia", new { tipo = 1 }, new { })</li>
-                            <li>@Html.ActionLink("Preocupacional", "Index", "Historia", new { tipo = 2 }, new { })</li>
-                            <li>@Html.ActionLink("Periodicas", "Index", "Historia", new { tipo = 3 }, new { })</li>
-                            <li>@Html.ActionLink("De Retiro", "Index", "Historia", new { tipo = 4 }, new { })</li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administracion<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Perfil", "Manage", "Account")</li>
+                            </ul>
+                        </li>
+                    }
 
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exámenes<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Laboratorio", "Index", "Registro")</li>
-                            <li>@Html.ActionLink("Rayos X", "Index", "Rayos")</li>
-                            <li>@Html.ActionLink("Audiometría", "Index", "Audiometria")</li>
-                            <li>@Html.ActionLink("Espirometría", "Index", "Espirometria")</li>
-                            <li class="divider"></li>
-                            <li>@Html.ActionLink("Perfiles", "Index", "Perfil")</li>
+                    @if (User.IsInRole("trabajador") || User.IsInRole("empresa") || User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Historias Clinicas<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("General", "Index", "Historia", new { tipo = 1 }, new { })</li>
+                                <li>@Html.ActionLink("Preocupacional", "Index", "Historia", new { tipo = 2 }, new { })</li>
+                                <li>@Html.ActionLink("Periodicas", "Index", "Historia", new { tipo = 3 }, new { })</li>
+                                <li>@Html.ActionLink("De Retiro", "Index", "Historia", new { tipo = 4 }, new { })</li>
 
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
+                    }
+
+
+                    @if (User.IsInRole("paciente") || User.IsInRole("empresa") || User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+                    {
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exámenes<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Laboratorio", "Index", "Registro")</li>
+                                <li>@Html.ActionLink("Rayos X", "Index", "Rayos")</li>
+                                <li>@Html.ActionLink("Audiometría", "Index", "Audiometria")</li>
+                                <li>@Html.ActionLink("Espirometría", "Index", "Espirometria")</li>
+
+
+
+                            </ul>
+                        </li>
+                    }
+
 
                     @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Historias", "Historia", "Home")</li>
-                            <li>@Html.ActionLink("Examenes", "Examen", "Home")</li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Historias", "Historia", "Home")</li>
+                                <li>@Html.ActionLink("Examenes", "Examen", "Home")</li>
 
-                        </ul>
-                    </li>*@
-                    
+                            </ul>
+                        </li>*@
+
 
                 </ul>
 
             }
-            else { 
+            else
+            {
                 <ul class="nav navbar-nav"></ul>
-                
+
             }
-            
+
             <!--
             <form class="navbar-form navbar-left">
                 <input type="text" class="form-control col-lg-8" placeholder="Search">
@@ -74,6 +98,22 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @*<li>@User.Identity.Name</li>*@
+                @if(User.IsInRole("admin")){
+                    <li><a href="#">Perfil: Administrador</a></li>
+                }
+                else if(User.IsInRole("medico")){
+                    <li><a href="#">Perfil: Medico</a></li>
+                }
+                else if (User.IsInRole("paciente")){
+                    <li><a href="#">Perfil: Paciente</a></li>
+                }
+                else if (User.IsInRole("laboratorista")){
+                    <li><a href="#">Perfil: Laboratorista</a></li>
+                }
+                else if (User.IsInRole("trabajador")) { 
+                    <li><a href="#">Perfil: Trabajador</a></li>
+                }
+                
                 @if (Request.IsAuthenticated)
                 {
 
@@ -81,7 +121,7 @@
                     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
                     {
                         @Html.AntiForgeryToken()
-                        
+
                     }
 
                 }

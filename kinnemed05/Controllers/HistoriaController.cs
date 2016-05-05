@@ -25,7 +25,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin,UserRoles.trabajador)]
         public ActionResult Index(int tipo, int? paciente, string fecha)
         {
             var historia = db.historia.Include(h=>h.paciente).Where(h => h.his_tipo == tipo);
@@ -33,6 +33,21 @@ namespace kinnemed05.Controllers
                 historia = historia.Where(h => h.his_paciente == paciente);
             if (!String.IsNullOrEmpty(fecha))
                 historia = historia.Where(h => h.his_fecha == fecha);
+
+
+            UserManager usermanager = new UserManager();
+            string perfil = usermanager.get_perfil(User);
+            if (perfil == "trabajador")
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                trabajador trabajador = db.trabajador.Where(t => t.tra_cedula == cedula).First();
+                historia = historia.Where(a => a.paciente.pac_empresa == trabajador.tra_empresa);
+            }
+            else if (perfil == "empresa") {
+                string cedula = Convert.ToString(User.Identity.Name);
+                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
+                historia = historia.Where(a => a.paciente.pac_empresa == empresa.emp_id);
+            }
 
             ViewBag.paciente = "";
             ViewBag.fecha = "";
@@ -43,7 +58,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
         public ActionResult Details(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -316,6 +331,8 @@ namespace kinnemed05.Controllers
                     RptCerApto rp = new RptCerApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"),"RptCerApto.rpt"));
                     rp.SetDataSource(dsCertificado);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "APTO CON RESTRICCIONES PERSONALES" || concepto.con_resultado == "APTO CON RESTRICCIONES LABORALES")
@@ -331,6 +348,8 @@ namespace kinnemed05.Controllers
                     RptCerNoApto rp = new RptCerNoApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerNoApto.rpt"));
                     rp.SetDataSource(dsCertificado);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA") {
@@ -343,6 +362,8 @@ namespace kinnemed05.Controllers
                     else
                         nexo="UNA";
                     rp.SetParameterValue("nexo",nexo);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                

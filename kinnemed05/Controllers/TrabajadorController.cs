@@ -6,9 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using kinnemed05.Models;
+using kinnemed05.Security;
 
 namespace kinnemed05.Controllers
 {
+    [CustomAuthorize(UserRoles.admin)]
     public class TrabajadorController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();

@@ -33,13 +33,28 @@ namespace kinnemed05.Models
             return valores;
 
         }
+        public SelectList val_cul(string defaul)
+        {
+            List<SelectListItem> list_valores = new List<SelectListItem>();
+            list_valores.Add(new SelectListItem { Text = "", Value = "" });
+            list_valores.Add(new SelectListItem { Text = "SENSIBLE", Value = "SENSIBLE" });
+            list_valores.Add(new SelectListItem { Text = "INTERMEDIO", Value = "INTERMEDIO" });
+            list_valores.Add(new SelectListItem { Text = "RESISTENTE", Value = "RESISTENTE" });
+            SelectList valores;
+            if (String.IsNullOrEmpty(defaul))
+                valores = new SelectList(list_valores, "Value", "Text");
+            else
+                valores = new SelectList(list_valores, "Value", "Text", defaul);
+            return valores;
+
+        }
         public SelectList col_cop(string defaul) {
             List<SelectListItem> list_valores = new List<SelectListItem>();
             list_valores.Add(new SelectListItem { Text = "CAFE", Value = "CAFE" });
             list_valores.Add(new SelectListItem { Text = "AMARILLO", Value = "AMARILLO" });
             list_valores.Add(new SelectListItem { Text = "VERDOSO", Value = "VERDOSO" });
             list_valores.Add(new SelectListItem { Text = "ROJIZO", Value = "ROJIZO" });
-            list_valores.Add(new SelectListItem { Text = "NEGRUZO", Value = "NEGRUZCO" });
+            list_valores.Add(new SelectListItem { Text = "NEGRUZCO", Value = "NEGRUZCO" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
 

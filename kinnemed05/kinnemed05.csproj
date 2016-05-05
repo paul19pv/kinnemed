@@ -380,6 +380,11 @@
     <Compile Include="Models\valores.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Reports\dataset\dsAudiometria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAudiometria.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\dataset\dsCertificado.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -389,6 +394,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCodigo.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\dataset\dsEspirometria.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsEspirometria.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reports\dataset\dsMedico.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -404,6 +414,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsPruebaPaciente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\dataset\dsRayos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRayos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RptAudiometria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptAudiometria.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Reports\RptBase.cs">
       <AutoGen>True</AutoGen>
@@ -447,6 +469,13 @@
       <DependentUpon>RptCodigo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\RptEspirometria.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptEspirometria.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Reports\RptLimpio.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -474,12 +503,33 @@
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Reports\RptRayos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptRayos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Reports\RptViewer.aspx.cs">
       <DependentUpon>RptViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Reports\RptViewer.aspx.designer.cs">
       <DependentUpon>RptViewer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Viewer\ViewAudiometria.aspx.cs">
+      <DependentUpon>ViewAudiometria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Viewer\ViewAudiometria.aspx.designer.cs">
+      <DependentUpon>ViewAudiometria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Viewer\ViewEspirometria.aspx.cs">
+      <DependentUpon>ViewEspirometria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Viewer\ViewEspirometria.aspx.designer.cs">
+      <DependentUpon>ViewEspirometria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Viewer\ViewLimpio.aspx.cs">
       <DependentUpon>ViewLimpio.aspx</DependentUpon>
@@ -494,6 +544,13 @@
     </Compile>
     <Compile Include="Reports\Viewer\ViewPrueba.aspx.designer.cs">
       <DependentUpon>ViewPrueba.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Viewer\ViewRayos.aspx.cs">
+      <DependentUpon>ViewRayos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Viewer\ViewRayos.aspx.designer.cs">
+      <DependentUpon>ViewRayos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Security\RolesAuthorize.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -524,6 +581,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap0.css" />
     <Content Include="Content\firmas\firma.png" />
+    <Content Include="Content\firmas\firma_lab.png" />
     <Content Include="Content\img\barcode-icon.png" />
     <Content Include="Content\img\certificate-icon.png" />
     <Content Include="Content\img\delete-icon.png" />
@@ -672,6 +730,17 @@
     <Content Include="Reports\dataset\dsCertificado.xsc">
       <DependentUpon>dsCertificado.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\dataset\dsAudiometria.xsc">
+      <DependentUpon>dsAudiometria.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\dataset\dsAudiometria.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAudiometria.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\dataset\dsAudiometria.xss">
+      <DependentUpon>dsAudiometria.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\dataset\dsCertificado.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -687,6 +756,17 @@
     </None>
     <Content Include="Reports\dataset\dsCodigo.xss">
       <DependentUpon>dsCodigo.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\dataset\dsEspirometria.xsc">
+      <DependentUpon>dsEspirometria.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\dataset\dsEspirometria.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsEspirometria.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\dataset\dsEspirometria.xss">
+      <DependentUpon>dsEspirometria.xsd</DependentUpon>
     </Content>
     <None Include="Reports\dataset\dsMedico.xsd">
       <SubType>Designer</SubType>
@@ -715,10 +795,24 @@
     <Content Include="Reports\dataset\dsPruebaPaciente.xss">
       <DependentUpon>dsPruebaPaciente.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\dataset\dsRayos.xsc">
+      <DependentUpon>dsRayos.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\dataset\dsRayos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRayos.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\dataset\dsRayos.xss">
+      <DependentUpon>dsRayos.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Reports\RptViewer.aspx" />
+    <Content Include="Reports\Viewer\ViewAudiometria.aspx" />
+    <Content Include="Reports\Viewer\ViewEspirometria.aspx" />
     <Content Include="Reports\Viewer\ViewLimpio.aspx" />
     <Content Include="Reports\Viewer\ViewPrueba.aspx" />
+    <Content Include="Reports\Viewer\ViewRayos.aspx" />
     <Content Include="Scripts\ajax_paciente.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -955,6 +1049,9 @@
     <Content Include="Views\Oftalmologia\Create.cshtml" />
     <Content Include="Views\Oftalmologia\Edit.cshtml" />
     <Content Include="Views\Oftalmologia\Delete.cshtml" />
+    <Content Include="Views\Audiometria\ReportViewer.cshtml" />
+    <Content Include="Views\Espirometria\ReportViewer.cshtml" />
+    <Content Include="Views\Rayos\ReportViewer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -976,6 +1073,11 @@
     <Content Include="Reports\RptMedico.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptMedico.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptAudiometria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptAudiometria.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Reports\RptBase.rpt">
@@ -1011,6 +1113,11 @@
       <LastGenOutput>RptLimpio.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reports\RptEspirometria.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptEspirometria.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reports\RptPaciente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptPaciente.cs</LastGenOutput>
@@ -1018,6 +1125,11 @@
     <Content Include="Reports\RptPrueba.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptPrueba.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RptRayos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRayos.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

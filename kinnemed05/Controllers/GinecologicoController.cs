@@ -69,6 +69,7 @@ namespace kinnemed05.Controllers
             }
 
             ViewBag.gin_id = ginecologico.gin_id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView(ginecologico);
         }
 
@@ -91,6 +92,7 @@ namespace kinnemed05.Controllers
                 
             }
             ViewBag.gin_id = ginecologico.gin_id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView(ginecologico);
         }
 
@@ -108,6 +110,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", "Familiar", new { id = ginecologico.gin_id });
             }
             ViewBag.gin_id = ginecologico.gin_id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView(ginecologico);
         }
 

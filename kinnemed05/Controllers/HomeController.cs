@@ -18,10 +18,10 @@ using System.Web.Mvc;
 namespace kinnemed05.Controllers
 {
     //[CustomAuthorize(UserRoles.admin,UserRoles.empresa,UserRoles.medico)]
-    [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista)]
+    
     public class HomeController : Controller
     {
-        
+        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.paciente, UserRoles.trabajador)]
         public ActionResult Index(string mensaje)
         {
             //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -31,10 +31,11 @@ namespace kinnemed05.Controllers
             ViewBag.perfil = get_perfil();
             return View();
         }
-
+        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.paciente)]
         public ActionResult Examen() {
             return View();
         }
+        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.paciente, UserRoles.trabajador)]
         public ActionResult Historia() {
             return View();
         }
@@ -50,6 +51,8 @@ namespace kinnemed05.Controllers
                 perfil = "paciente";
             else if (User.IsInRole("laboratorista"))
                 perfil = "laboratorista";
+            else if (User.IsInRole("trabajador"))
+                perfil = "trabajador";
             return perfil;
         }
 

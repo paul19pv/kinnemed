@@ -6,41 +6,68 @@
 {
     <div class="alert alert-dismissible alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        
+
     </div>
 }
+@if (Request.IsAuthenticated)
+{
+    <div class="jumbotron">
+        @if (User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+        {
+            <a class="btn btn-default btn-lg btn-img" title="Médico" href="@Url.Content("~/Medico/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/doctor-icon.png")" class="img-rounded" />
+                <label>Médicos&nbsp;</label>
+            </a>
+            <a class="btn btn-default btn-lg btn-img" title="Paciente" href="@Url.Content("~/Paciente/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/patient-icon.png")" class="img-rounded" />
+                <label>Pacientes</label>
+            </a>
+            <a class="btn btn-default btn-lg btn-img" title="Laboratorista" href="@Url.Content("~/Laboratorista/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/lab-icon.png")" class="img-rounded" />
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;Labs.&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </a>
+            <a class="btn btn-default btn-lg btn-img" title="Trabajador" href="@Url.Content("~/Trabajador/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/office-icon.png")" class="img-rounded" />
+                <label>Trab. Soc.</label>
+            </a>
+            <a class="btn btn-default btn-lg btn-img" title="Empresa" href="@Url.Content("~/Empresa/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/company-icon.png")" class="img-rounded" />
+                <label>Empresas&nbsp;</label>
+            </a>
 
-<div class="jumbotron">
-    <a class="btn btn-default btn-lg btn-img" title="Médico" href="@Url.Content("~/Medico/Index")">
-        <img src="@Url.Content("~/Content/img/iconos/doctor-icon.png")" class="img-rounded" />
-        <label>Médicos&nbsp;</label>
-    </a>
-    <a class="btn btn-default btn-lg btn-img" title="Paciente" href="@Url.Content("~/Paciente/Index")">
-        <img src="@Url.Content("~/Content/img/iconos/patient-icon.png")" class="img-rounded" />
-        <label>Pacientes</label>
-    </a>
-    <a class="btn btn-default btn-lg btn-img" title="Laboratorista" href="@Url.Content("~/Laboratorista/Index")">
-        <img src="@Url.Content("~/Content/img/iconos/lab-icon.png")" class="img-rounded" />
-        <label>&nbsp;&nbsp;&nbsp;&nbsp;Labs.&nbsp;&nbsp;&nbsp;&nbsp;</label>
-    </a>
-    <a class="btn btn-default btn-lg btn-img" title="Trabajador" href="@Url.Content("~/Trabajador/Index")">
-        <img src="@Url.Content("~/Content/img/iconos/office-icon.png")" class="img-rounded" />
-        <label>Trab. Ocu.</label>
-    </a>
-    <a class="btn btn-default btn-lg btn-img" title="Empresa" href="@Url.Content("~/Empresa/Index")">
-        <img src="@Url.Content("~/Content/img/iconos/company-icon.png")" class="img-rounded" />
-        <label>Empresas&nbsp;</label>
-    </a>
-
-    <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
-        <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
-        <label>Exámenes&nbsp;</label>
-    </a>
+            <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
+                <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
+                <label>Exámenes&nbsp;</label>
+            </a>
 
 
-    <a class="btn btn-default btn-lg btn-img" title="Historias" href="@Url.Content("~/Home/Historia")">
-        <img src="@Url.Content("~/Content/img/iconos/historia01-icon.png")" class="img-rounded" />
-        <label>Historias</label>
-    </a>
+            <a class="btn btn-default btn-lg btn-img" title="Historias" href="@Url.Content("~/Home/Historia")">
+                <img src="@Url.Content("~/Content/img/iconos/historia01-icon.png")" class="img-rounded" />
+                <label>Historias</label>
+            </a>
 
-</div>
+        }
+        else if (User.IsInRole("paciente") || User.IsInRole("empresa") || User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+        {
+            <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
+                <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
+                <label>Exámenes&nbsp;</label>
+            </a>
+
+        }
+        else if (User.IsInRole("trabajador") || User.IsInRole("empresa") || User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+        {
+            <a class="btn btn-default btn-lg btn-img" title="Historias" href="@Url.Content("~/Home/Historia")">
+                <img src="@Url.Content("~/Content/img/iconos/historia01-icon.png")" class="img-rounded" />
+                <label>Historias</label>
+            </a>
+        }
+
+
+
+
+
+
+
+    </div>
+}
