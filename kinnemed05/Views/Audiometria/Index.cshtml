@@ -49,6 +49,7 @@
                     </td>
                     <td>
                         @Html.ActionLink("Reporte", "Reporte", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
+                        @Html.ActionLink("Descargar", "Descargar", new { id = item.aud_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
                     </td>
                 </tr>
             }

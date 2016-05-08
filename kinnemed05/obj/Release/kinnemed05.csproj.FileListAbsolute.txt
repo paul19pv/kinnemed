@@ -265,3 +265,5 @@ C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.cs
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.dll
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.xml

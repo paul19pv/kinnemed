@@ -100,6 +100,9 @@ textarea {
 .icon-certificate {
     background: url(img/certificate-icon.png) no-repeat center right;
 }
+.icon-download {
+    background: url(img/download-icon.png) no-repeat center right;
+}
 
 a.btn-img > img {
     margin-left:auto;margin-right:auto;display:block;

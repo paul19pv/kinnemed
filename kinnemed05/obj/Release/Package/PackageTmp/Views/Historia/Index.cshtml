@@ -140,7 +140,7 @@
                         else { 
                             @Html.ActionLink("Certificado", "Certificado", new { id = item.his_id, pac_id = item.his_paciente }, new { @class = "iconb icon-certificate", @title = "Certificado" })
                         }
-
+                        @Html.ActionLink("Descargar", "Reporte", new { id = item.his_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
 
                         
                     </td>

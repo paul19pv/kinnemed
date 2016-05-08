@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using kinnemed05.Reports;
 using System.IO;
+using CrystalDecisions.Shared;
 
 namespace kinnemed05.Controllers
 {
@@ -25,10 +26,10 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin,UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
         public ActionResult Index(int tipo, int? paciente, string fecha)
         {
-            var historia = db.historia.Include(h=>h.paciente).Where(h => h.his_tipo == tipo);
+            var historia = db.historia.Include(h => h.paciente).Where(h => h.his_tipo == tipo);
             if (paciente != null)
                 historia = historia.Where(h => h.his_paciente == paciente);
             if (!String.IsNullOrEmpty(fecha))
@@ -43,7 +44,8 @@ namespace kinnemed05.Controllers
                 trabajador trabajador = db.trabajador.Where(t => t.tra_cedula == cedula).First();
                 historia = historia.Where(a => a.paciente.pac_empresa == trabajador.tra_empresa);
             }
-            else if (perfil == "empresa") {
+            else if (perfil == "empresa")
+            {
                 string cedula = Convert.ToString(User.Identity.Name);
                 empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
                 historia = historia.Where(a => a.paciente.pac_empresa == empresa.emp_id);
@@ -58,7 +60,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -76,11 +78,12 @@ namespace kinnemed05.Controllers
         {
             ViewBag.tipo = tipo;
             ViewBag.his_tipo = his_tipo(tipo);
-            if (tipo != 1) {
+            if (tipo != 1)
+            {
                 ViewBag.his_motivo = motivo(tipo);
                 return View("Create01");
             }
-                
+
             return View();
         }
 
@@ -104,7 +107,7 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 Session["his_id"] = historia.his_id;
                 Session["his_tipo"] = historia.his_tipo;
-                return RedirectToAction("Create", "Personal", new { id = historia.his_paciente});
+                return RedirectToAction("Create", "Personal", new { id = historia.his_paciente });
             }
             ViewBag.numero = numero_historia(historia);
             return PartialView(historia);
@@ -144,7 +147,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -159,8 +162,8 @@ namespace kinnemed05.Controllers
             {
                 return PartialView(historia);
             }
-            
-            return View("Edit01",historia);
+
+            return View("Edit01", historia);
         }
 
 
@@ -230,7 +233,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            int tipo=Convert.ToInt32(Session["his_tipo"]);
+            int tipo = Convert.ToInt32(Session["his_tipo"]);
             //if (tipo != 1)
             //    return RedirectToAction("Edit", "Familiar", new { id = historia.his_paciente });
             return PartialView(historia);
@@ -273,11 +276,12 @@ namespace kinnemed05.Controllers
             historia historia = db.historia.Find(id);
             db.historia.Remove(historia);
             db.SaveChanges();
-            return RedirectToAction("Index", new {tipo=historia.his_tipo });
+            return RedirectToAction("Index", new { tipo = historia.his_tipo });
         }
 
 
-        public ActionResult Certificado(int id,int pac_id) {
+        public ActionResult Certificado(int id, int pac_id)
+        {
 
             try
             {
@@ -287,37 +291,37 @@ namespace kinnemed05.Controllers
                 concepto concepto = db.concepto.Find(id);
                 medico medico = db.medico.Find(historia.his_medico);
                 var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual" && o.ocu_estado == true);
-                ocupacional ocupacional=new ocupacional();
+                ocupacional ocupacional = new ocupacional();
 
                 string fileName = medico.med_firma;
                 if (String.IsNullOrEmpty(fileName))
                     fileName = "firma.png";
 
-                if(consulta.Any())
-                    ocupacional=consulta.First();
+                if (consulta.Any())
+                    ocupacional = consulta.First();
                 string conn = ConfigurationManager.AppSettings["conexion"];
 
-                string strHistoria = "Select * from historia where his_id="+id;
-                string strPaciente = "Select * from paciente where pac_id="+pac_id;
-                string strConcepto = "Select * from concepto where con_id="+id;
-                string strEmpresa = "Select * from empresa where emp_id="+paciente.pac_empresa;
-                string strMedico = "Select * from medico where med_id="+historia.his_medico;
-                string strOcupacional=String.Empty;
+                string strHistoria = "Select * from historia where his_id=" + id;
+                string strPaciente = "Select * from paciente where pac_id=" + pac_id;
+                string strConcepto = "Select * from concepto where con_id=" + id;
+                string strEmpresa = "Select * from empresa where emp_id=" + paciente.pac_empresa;
+                string strMedico = "Select * from medico where med_id=" + historia.his_medico;
+                string strOcupacional = String.Empty;
                 if (ocupacional.ocu_id != null)
                     strOcupacional = "Select * from ocupacional where ocu_id=" + ocupacional.ocu_id;
                 else
                     strOcupacional = "Select top 1 * from ocupacional";
 
                 SqlConnection sqlcon = new SqlConnection(conn);
-                SqlDataAdapter daHistoria=new SqlDataAdapter(strHistoria,sqlcon);
-                SqlDataAdapter daPaciente=new SqlDataAdapter(strPaciente,sqlcon);
-                SqlDataAdapter daConcepto=new SqlDataAdapter(strConcepto,sqlcon);
+                SqlDataAdapter daHistoria = new SqlDataAdapter(strHistoria, sqlcon);
+                SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
+                SqlDataAdapter daConcepto = new SqlDataAdapter(strConcepto, sqlcon);
                 SqlDataAdapter daEmpresa = new SqlDataAdapter(strEmpresa, sqlcon);
                 SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
                 SqlDataAdapter daOcupacional = new SqlDataAdapter(strOcupacional, sqlcon);
-                daHistoria.Fill(dsCertificado,"historia");
-                daPaciente.Fill(dsCertificado,"paciente");
-                daConcepto.Fill(dsCertificado,"concepto");
+                daHistoria.Fill(dsCertificado, "historia");
+                daPaciente.Fill(dsCertificado, "paciente");
+                daConcepto.Fill(dsCertificado, "concepto");
                 daEmpresa.Fill(dsCertificado, "empresa");
                 daMedico.Fill(dsCertificado, "medico");
                 daOcupacional.Fill(dsCertificado, "ocupacional");
@@ -327,9 +331,10 @@ namespace kinnemed05.Controllers
                 rp_base.SetDataSource(dsCertificado);
                 Stream stream = rp_base.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
 
-                if (concepto.con_resultado == "APTO") {
+                if (concepto.con_resultado == "APTO")
+                {
                     RptCerApto rp = new RptCerApto();
-                    rp.Load(Path.Combine(Server.MapPath("~/Reports"),"RptCerApto.rpt"));
+                    rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerApto.rpt"));
                     rp.SetDataSource(dsCertificado);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     rp.SetParameterValue("picturePath", path01);
@@ -344,7 +349,8 @@ namespace kinnemed05.Controllers
                     rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
-                else if (concepto.con_resultado == "NO APTO") {
+                else if (concepto.con_resultado == "NO APTO")
+                {
                     RptCerNoApto rp = new RptCerNoApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerNoApto.rpt"));
                     rp.SetDataSource(dsCertificado);
@@ -352,23 +358,24 @@ namespace kinnemed05.Controllers
                     rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
-                else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA") {
+                else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA")
+                {
                     RptCerRetiro rp = new RptCerRetiro();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerRetiro.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    string nexo=String.Empty;
-                    if(concepto.con_valor=="NO")
-                        nexo="NINGUNA";
+                    string nexo = String.Empty;
+                    if (concepto.con_valor == "NO")
+                        nexo = "NINGUNA";
                     else
-                        nexo="UNA";
-                    rp.SetParameterValue("nexo",nexo);
+                        nexo = "UNA";
+                    rp.SetParameterValue("nexo", nexo);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
-               
-                    
-                
+
+
+
                 //RptCertificado rp= new RptCertificado();
                 //rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
                 //rp.SetDataSource(dsCertificado);
@@ -381,10 +388,66 @@ namespace kinnemed05.Controllers
                 return File(stream, "application/pdf", "Certificado.pdf");
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
 
+        }
+
+
+        public ActionResult Reporte(int id)
+        {
+            //string pathRpt = Path.Combine(Server.MapPath("~/Reports"), "RptHistoria.rpt");
+            try
+            {
+                dsHistoria dshistoria = new dsHistoria();
+                //dsHistorico dshistorico = new dsHistorico();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                SqlConnection sqlcon = new SqlConnection(conn);
+                historia historia = db.historia.Find(id);
+                string strHistoria = "Select * from view_historia where his_id=" + id;
+                SqlDataAdapter daHistoria = new SqlDataAdapter(strHistoria, sqlcon);
+                daHistoria.Fill(dshistoria, "view_historia");
+                RptHistoria rp = new RptHistoria();
+                string reportPath = Server.MapPath("~/Reports/RptHistoria.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dshistoria);
+                
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Reporte1.pdf");
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message + ex.InnerException });
+            }
+
+        }
+
+
+
+        public ActionResult Reporte01(int id)
+        {
+            try
+            {
+                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                //if (!consulta.Any())
+                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
+
+                Session["his_id"] = id;
+                ReportViewerViewModel model = new ReportViewerViewModel();
+                string content = Url.Content("~/Reports/Viewer/ViewHistoria.aspx");
+                model.ReportPath = content;
+                return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
         }
 
         public JsonResult AutocompletePaciente(string search)
@@ -397,39 +460,42 @@ namespace kinnemed05.Controllers
                           select new { p.pac_id, p.pac_nombres, p.pac_apellidos, p.pac_edad }).Distinct();
             if (result.Count() == 0)
             {
-                return new JsonResult() { Data = new { Data = new { pac_id = 0, pac_nombres = "Sin Datos", pac_apellidos = "",pac_edad="" } } };
+                return new JsonResult() { Data = new { Data = new { pac_id = 0, pac_nombres = "Sin Datos", pac_apellidos = "", pac_edad = "" } } };
             }
             return new JsonResult() { Data = result };
         }
-        private int numero_historia(historia historia) {
+        private int numero_historia(historia historia)
+        {
             int num = 0;
             num = db.historia.Where(h => h.his_tipo == historia.his_tipo && h.his_paciente == historia.his_paciente).Count();
             num++;
             return num;
         }
 
-        private SelectList his_tipo(int? tipo=0)
+        private SelectList his_tipo(int? tipo = 0)
         {
             List<SelectListItem> list_tipo = new List<SelectListItem>();
             list_tipo.Add(new SelectListItem { Text = "Preocupacional", Value = "2" });
             list_tipo.Add(new SelectListItem { Text = "Periodica", Value = "3" });
             list_tipo.Add(new SelectListItem { Text = "Retiro", Value = "4" });
             SelectList tipos;
-            if(tipo==0)
-                tipos= new SelectList(list_tipo, "Value", "Text");
+            if (tipo == 0)
+                tipos = new SelectList(list_tipo, "Value", "Text");
             else
-                tipos = new SelectList(list_tipo, "Value", "Text",tipo.ToString());
+                tipos = new SelectList(list_tipo, "Value", "Text", tipo.ToString());
             return tipos;
         }
 
-        private string change_tipo(int pac_id) {
+        private string change_tipo(int pac_id)
+        {
             string mensaje = String.Empty;
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual");
             if (!consulta.Any())
             {
                 mensaje = "El paciente no registra un trabajo actual";
             }
-            else {
+            else
+            {
                 ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual").First();
                 ocupacional.ocu_tipo = "registro";
                 ocupacional.ocu_estado = false;
@@ -437,12 +503,14 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 mensaje = "El trabajo actual anterior quedará como histórico";
             }
-            
+
             return mensaje;
         }
-        private string titulo(int tipo) {
+        private string titulo(int tipo)
+        {
             string titulo = String.Empty;
-            switch (tipo) { 
+            switch (tipo)
+            {
                 case 1:
                     titulo = "Generales";
                     break;
@@ -479,9 +547,11 @@ namespace kinnemed05.Controllers
             }
             return titulo;
         }
-        private int get_user() {
+        private int get_user()
+        {
             int user_id = 0;
-            if (Request.IsAuthenticated) {
+            if (Request.IsAuthenticated)
+            {
                 string user_name = String.Empty;
                 user_name = User.Identity.Name;
                 UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();

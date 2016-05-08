@@ -9,6 +9,12 @@ using kinnemed05.Models;
 using System.IO;
 using kinnemed05.Filters;
 using kinnemed05.Security;
+using kinnemed05.Reports.dataset;
+using System.Configuration;
+using System.Data.SqlClient;
+using kinnemed05.Reports;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace kinnemed05.Controllers
 {
@@ -255,6 +261,128 @@ namespace kinnemed05.Controllers
                 //return View("Message");
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
+        }
+
+
+
+        public ActionResult Descargar(int id)
+        {
+            try
+            {
+                string contentType = "application/pdf";
+                dsEspirometria dsPrueba = new dsEspirometria();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                espirometria espirometria = db.espirometria.Find(id);
+                medico medico = db.medico.Find(espirometria.esp_medico);
+                string fileName = medico.med_firma;
+                if (String.IsNullOrEmpty(fileName))
+                    fileName = "firma.png";
+                string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+
+                string strEspirometria = "Select * from espirometria where esp_id=" + id;
+                string strPaciente = "Select * from paciente where pac_id=" + espirometria.esp_paciente;
+                string strMedico = "Select * from medico where med_id=" + espirometria.esp_medico;
+
+
+                SqlConnection sqlcon = new SqlConnection(conn);
+                SqlDataAdapter daEspirometria = new SqlDataAdapter(strEspirometria, sqlcon);
+                SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
+                SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
+                daEspirometria.Fill(dsPrueba, "espirometria");
+                daPaciente.Fill(dsPrueba, "paciente");
+                daMedico.Fill(dsPrueba, "medico");
+
+                RptEspirometria_ rp = new RptEspirometria_();
+                rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptEspirometria_.rpt"));
+                rp.SetDataSource(dsPrueba);
+                rp.SetParameterValue("hc", "");
+                rp.SetParameterValue("orden", "");
+                rp.SetParameterValue("picturePath", path01);
+                rp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Path.Combine(Server.MapPath("~/Content/audiometria"), id + ".pdf"));
+
+                //Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                //stream.Seek(0, SeekOrigin.Begin);
+                //return File(stream, "application/pdf", aud_id + ".pdf");
+
+                var document = new Document();
+                var ms = new MemoryStream();
+                string archivo1 = Path.Combine(Server.MapPath("~/Content/audiometria"), id + ".pdf");
+                string archivo2 = Path.Combine(Server.MapPath("~/Content/audiometria"), espirometria.esp_archivo);
+                fileName = "Reporte" + id + ".pdf";
+                string fileTarget = Path.Combine(Server.MapPath("~/Content/audiometria/") + fileName);
+                string[] Lista = { archivo1, archivo2 };
+
+                Merge(fileTarget, Lista);
+                return File(fileTarget, contentType, fileName);
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+
+        internal static bool Merge(string strFileTarget, string[] arrStrFilesSource)
+        {
+            bool blnMerged = false;
+
+            // Crea el PDF de salida
+            try
+            {
+                using (System.IO.FileStream stmFile = new System.IO.FileStream(strFileTarget, System.IO.FileMode.Create))
+                {
+                    Document objDocument = null;
+                    PdfWriter objWriter = null;
+
+                    // Recorre los archivos
+                    for (int intIndexFile = 0; intIndexFile < arrStrFilesSource.Length; intIndexFile++)
+                    {
+                        PdfReader objReader = new PdfReader(arrStrFilesSource[intIndexFile]);
+                        int intNumberOfPages = objReader.NumberOfPages;
+
+                        // La primera vez, inicializa el documento y el escritor
+                        if (intIndexFile == 0)
+                        { // Asigna el documento y el generador
+                            objDocument = new Document(objReader.GetPageSizeWithRotation(1));
+                            objWriter = PdfWriter.GetInstance(objDocument, stmFile);
+                            // Abre el documento
+                            objDocument.Open();
+                        }
+                        // Añade las páginas
+                        for (int intPage = 0; intPage < intNumberOfPages; intPage++)
+                        {
+                            int intRotation = objReader.GetPageRotation(intPage + 1);
+                            PdfImportedPage objPage = objWriter.GetImportedPage(objReader, intPage + 1);
+
+                            // Asigna el tamaño de la página
+                            objDocument.SetPageSize(objReader.GetPageSizeWithRotation(intPage + 1));
+                            // Crea una nueva página
+                            objDocument.NewPage();
+                            // Añade la página leída
+                            if (intRotation == 90 || intRotation == 270)
+                                objWriter.DirectContent.AddTemplate(objPage, 0, -1f, 1f, 0, 0,
+                                                                    objReader.GetPageSizeWithRotation(intPage + 1).Height);
+                            else
+                                objWriter.DirectContent.AddTemplate(objPage, 1f, 0, 0, 1f, 0, 0);
+                        }
+                    }
+                    // Cierra el documento
+                    if (objDocument != null)
+                        objDocument.Close();
+                    // Cierra el stream del archivo
+                    stmFile.Close();
+                }
+                // Indica que se ha creado el documento
+                blnMerged = true;
+            }
+            catch (Exception objException)
+            {
+                System.Diagnostics.Debug.WriteLine(objException.Message);
+            }
+            // Devuelve el valor que indica si se han mezclado los archivos
+            return blnMerged;
         }
 
         protected override void Dispose(bool disposing)
