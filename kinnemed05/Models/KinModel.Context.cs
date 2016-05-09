@@ -57,13 +57,13 @@ namespace kinnemed05.Models
         public DbSet<laboral> laboral { get; set; }
         public DbSet<examen> examen { get; set; }
         public DbSet<historia> historia { get; set; }
-        public DbSet<laboratorista> laboratorista { get; set; }
-        public DbSet<medico> medico { get; set; }
-        public DbSet<paciente> paciente { get; set; }
         public DbSet<registro> registro { get; set; }
         public DbSet<oftalmologia> oftalmologia { get; set; }
         public DbSet<concepto> concepto { get; set; }
         public DbSet<ginecologico> ginecologico { get; set; }
         public DbSet<trabajador> trabajador { get; set; }
+        public DbSet<laboratorista> laboratorista { get; set; }
+        public DbSet<medico> medico { get; set; }
+        public DbSet<paciente> paciente { get; set; }
     }
 }

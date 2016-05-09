@@ -20,7 +20,7 @@ namespace kinnemed05.Models
         }
     
         public int lab_id { get; set; }
-    
+
         public virtual ICollection<registro> registro { get; set; }
     }
 }

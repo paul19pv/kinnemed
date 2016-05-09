@@ -30,9 +30,9 @@ namespace kinnemed05.Reports.Viewer
             int id = Convert.ToInt32(Session["ray_id"]);
             rayos rayos = db.rayos.Find(id);
             medico medico = db.medico.Find(rayos.ray_medico);
-            string fileName = medico.med_firma;
-            if (String.IsNullOrEmpty(fileName))
-                fileName = "firma.png";
+            //string fileName = medico.med_firma;
+            //if (String.IsNullOrEmpty(fileName))
+            //    fileName = "firma.png";
 
             string strAudiometia = "Select * from rayos where ray_id=" + id;
             string strPaciente = "Select * from paciente where pac_id=" + rayos.ray_paciente;
@@ -54,8 +54,8 @@ namespace kinnemed05.Reports.Viewer
             reportDocument.SetDataSource(dsPrueba);
             reportDocument.SetParameterValue("hc", "");
             reportDocument.SetParameterValue("orden", "");
-            string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-            reportDocument.SetParameterValue("picturePath", path01);
+            //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+            //reportDocument.SetParameterValue("picturePath", path01);
             crViewer.ReportSource = reportDocument;
             crViewer.DataBind();
 

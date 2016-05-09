@@ -8,10 +8,10 @@
   <Shapes>
     <Shape ID="DesignTable:concepto" ZOrder="11" X="503" Y="110" Height="209" Width="273" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="142" />
     <Shape ID="DesignTable:historia" ZOrder="10" X="456" Y="405" Height="248" Width="188" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
-    <Shape ID="DesignTable:paciente" ZOrder="1" X="726" Y="426" Height="305" Width="194" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
-    <Shape ID="DesignTable:medico" ZOrder="7" X="228" Y="379" Height="267" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
-    <Shape ID="DesignTable:empresa" ZOrder="5" X="1093" Y="579" Height="210" Width="194" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
-    <Shape ID="DesignTable:ocupacional" ZOrder="3" X="1077" Y="113" Height="305" Width="214" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:empresa" ZOrder="8" X="1093" Y="579" Height="210" Width="194" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="159" />
+    <Shape ID="DesignTable:ocupacional" ZOrder="7" X="1077" Y="113" Height="305" Width="214" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
+    <Shape ID="DesignTable:medico" ZOrder="6" X="216" Y="360" Height="267" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="216" />
+    <Shape ID="DesignTable:paciente" ZOrder="4" X="777" Y="492" Height="305" Width="194" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="254" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_concepto_historia" ZOrder="9" LineWidth="11">
@@ -26,55 +26,55 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_historia_paciente" ZOrder="8" LineWidth="11">
+    <Connector ID="DesignRelation:FK_historia_medico" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>726</X>
-          <Y>539</Y>
-        </Point>
-        <Point>
-          <X>644</X>
-          <Y>539</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK_historia_medico" ZOrder="6" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>415</X>
-          <Y>525</Y>
+          <X>403</X>
+          <Y>516</Y>
         </Point>
         <Point>
           <X>456</X>
-          <Y>525</Y>
+          <Y>516</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK_paciente_empresa" ZOrder="4" LineWidth="11">
+    <Connector ID="DesignRelation:FK_historia_paciente" ZOrder="3" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>1093</X>
-          <Y>654</Y>
+          <X>777</X>
+          <Y>537</Y>
         </Point>
         <Point>
-          <X>920</X>
-          <Y>654</Y>
+          <X>644</X>
+          <Y>537</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK_ocupacional_paciente" ZOrder="2" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>903</X>
-          <Y>426</Y>
+          <X>918</X>
+          <Y>492</Y>
         </Point>
         <Point>
-          <X>903</X>
+          <X>918</X>
           <Y>401</Y>
         </Point>
         <Point>
           <X>1077</X>
           <Y>401</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_paciente_empresa" ZOrder="1" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>1093</X>
+          <Y>684</Y>
+        </Point>
+        <Point>
+          <X>971</X>
+          <Y>684</Y>
         </Point>
       </RoutePoints>
     </Connector>

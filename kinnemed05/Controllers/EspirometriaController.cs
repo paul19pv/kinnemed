@@ -274,10 +274,10 @@ namespace kinnemed05.Controllers
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 espirometria espirometria = db.espirometria.Find(id);
                 medico medico = db.medico.Find(espirometria.esp_medico);
-                string fileName = medico.med_firma;
-                if (String.IsNullOrEmpty(fileName))
-                    fileName = "firma.png";
-                string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                string fileName = String.Empty;
+                //if (String.IsNullOrEmpty(fileName))
+                //    fileName = "firma.png";
+                //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
 
                 string strEspirometria = "Select * from espirometria where esp_id=" + id;
                 string strPaciente = "Select * from paciente where pac_id=" + espirometria.esp_paciente;
@@ -297,7 +297,7 @@ namespace kinnemed05.Controllers
                 rp.SetDataSource(dsPrueba);
                 rp.SetParameterValue("hc", "");
                 rp.SetParameterValue("orden", "");
-                rp.SetParameterValue("picturePath", path01);
+                //rp.SetParameterValue("picturePath", path01);
                 rp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Path.Combine(Server.MapPath("~/Content/audiometria"), id + ".pdf"));
 
                 //Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);

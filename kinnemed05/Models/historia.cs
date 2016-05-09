@@ -24,12 +24,12 @@ namespace kinnemed05.Models
     
         public virtual ICollection<diagnostico> diagnostico { get; set; }
         public virtual fisico fisico { get; set; }
-        public virtual medico medico { get; set; }
-        public virtual paciente paciente { get; set; }
         public virtual plan plan { get; set; }
         public virtual revision revision { get; set; }
         public virtual signos signos { get; set; }
         public virtual ICollection<subsecuente> subsecuente { get; set; }
         public virtual concepto concepto { get; set; }
+        public virtual medico medico { get; set; }
+        public virtual paciente paciente { get; set; }
     }
 }

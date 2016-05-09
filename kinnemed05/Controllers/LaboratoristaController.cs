@@ -63,11 +63,12 @@ namespace kinnemed05.Controllers
                 if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
                 {
                     Firma objfirma = new Firma();
-                    laboratorista.lab_firma = fileName;
+                    //laboratorista.lab_firma = fileName;
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
+                    laboratorista.lab_firma = ConvertBytes(path01);
                 }
                 else
                 {
@@ -125,11 +126,12 @@ namespace kinnemed05.Controllers
                 if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
                 {
                     Firma objfirma = new Firma();
-                    laboratorista.lab_firma = fileName;
+                    //laboratorista.lab_firma = fileName;
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
+                    laboratorista.lab_firma = ConvertBytes(path01);
                 }
                 else
                 {
@@ -174,7 +176,14 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public Byte[] ConvertBytes(String ruta)
+        {
+            FileStream foto = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Byte[] arreglo = new Byte[foto.Length];
+            BinaryReader reader = new BinaryReader(foto);
+            arreglo = reader.ReadBytes(Convert.ToInt32(foto.Length));
+            return arreglo;
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

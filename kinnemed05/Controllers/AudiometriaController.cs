@@ -278,10 +278,10 @@ namespace kinnemed05.Controllers
                 int aud_id = id;
                 audiometria audiometria = db.audiometria.Find(aud_id);
                 medico medico = db.medico.Find(audiometria.aud_medico);
-                string fileName = medico.med_firma;
-                if (String.IsNullOrEmpty(fileName))
-                    fileName = "firma.png";
-                string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                string fileName =String.Empty;
+                //if (String.IsNullOrEmpty(fileName))
+                //    fileName = "firma.png";
+                //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
 
                 string strAudiometia = "Select * from audiometria where aud_id=" + aud_id;
                 string strPaciente = "Select * from paciente where pac_id=" + audiometria.aud_paciente;
@@ -302,7 +302,7 @@ namespace kinnemed05.Controllers
                 rp.SetDataSource(dsPrueba);
                 rp.SetParameterValue("hc", "");
                 rp.SetParameterValue("orden", "");
-                rp.SetParameterValue("picturePath", path01);
+                //rp.SetParameterValue("picturePath", path01);
                 rp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Path.Combine(Server.MapPath("~/Content/audiometria"), aud_id + ".pdf"));
                 
                 //Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);

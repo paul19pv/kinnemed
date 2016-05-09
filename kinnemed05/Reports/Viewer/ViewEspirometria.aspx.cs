@@ -29,9 +29,9 @@ namespace kinnemed05.Reports.Viewer
             int id = Convert.ToInt32(Session["esp_id"]);
             espirometria espirometria = db.espirometria.Find(id);
             medico medico = db.medico.Find(espirometria.esp_medico);
-            string fileName = medico.med_firma;
-            if (String.IsNullOrEmpty(fileName))
-                fileName = "firma.png";
+            //string fileName = medico.med_firma;
+            //if (String.IsNullOrEmpty(fileName))
+            //    fileName = "firma.png";
 
             string strEspirometria = "Select * from espirometria where esp_id=" + id;
             string strPaciente = "Select * from paciente where pac_id=" + espirometria.esp_paciente;
@@ -53,8 +53,8 @@ namespace kinnemed05.Reports.Viewer
             reportDocument.SetDataSource(dsPrueba);
             reportDocument.SetParameterValue("hc", "");
             reportDocument.SetParameterValue("orden", "");
-            string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-            reportDocument.SetParameterValue("picturePath", path01);
+            //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+            //reportDocument.SetParameterValue("picturePath", path01);
             crViewer.ReportSource = reportDocument;
             crViewer.DataBind();
 

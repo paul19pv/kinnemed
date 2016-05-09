@@ -71,8 +71,10 @@
                         @Html.LabelFor(model => model.med_firma, new { @class = "control-label", @for = "inputDefault" })
                         @if (Model.med_firma != null)
                         {
+                            string ruta = "data:image/jpg;base64," + Convert.ToBase64String((byte[])Model.med_firma);
                             <div class="form-group">
-                                <img src="@Url.Content("~/Content/firmas/" + Model.med_firma)" class="img-rounded" />
+                                
+                                <img src="@ruta" class="img-rounded" />
                             </div>
                         }
                         <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />

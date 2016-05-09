@@ -293,9 +293,9 @@ namespace kinnemed05.Controllers
                 var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual" && o.ocu_estado == true);
                 ocupacional ocupacional = new ocupacional();
 
-                string fileName = medico.med_firma;
-                if (String.IsNullOrEmpty(fileName))
-                    fileName = "firma.png";
+                //string fileName = medico.med_firma;
+                //if (String.IsNullOrEmpty(fileName))
+                //    fileName = "firma.png";
 
                 if (consulta.Any())
                     ocupacional = consulta.First();
@@ -336,8 +336,8 @@ namespace kinnemed05.Controllers
                     RptCerApto rp = new RptCerApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerApto.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    rp.SetParameterValue("picturePath", path01);
+                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    //rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "APTO CON RESTRICCIONES PERSONALES" || concepto.con_resultado == "APTO CON RESTRICCIONES LABORALES")
@@ -345,8 +345,8 @@ namespace kinnemed05.Controllers
                     RptCerAptoRes rp = new RptCerAptoRes();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerAptoRes.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    rp.SetParameterValue("picturePath", path01);
+                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    //rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "NO APTO")
@@ -354,8 +354,8 @@ namespace kinnemed05.Controllers
                     RptCerNoApto rp = new RptCerNoApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerNoApto.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    rp.SetParameterValue("picturePath", path01);
+                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    //rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA")
@@ -369,8 +369,8 @@ namespace kinnemed05.Controllers
                     else
                         nexo = "UNA";
                     rp.SetParameterValue("nexo", nexo);
-                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    rp.SetParameterValue("picturePath", path01);
+                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    //rp.SetParameterValue("picturePath", path01);
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
 

@@ -29,7 +29,7 @@ namespace kinnemed05.Models
         [StringLength(100, ErrorMessage = "La longitud máxima es 100 caracteres")]
         public string lab_correo { get; set; }
         [Display(Name = "Firma")]
-        public string lab_firma { get; set; }
+        public byte[] lab_firma { get; set; }
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "Campo Requerido")]
         public bool lab_estado { get; set; }

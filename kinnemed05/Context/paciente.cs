@@ -78,7 +78,7 @@ namespace kinnemed05.Models
         public int pac_empresa { get; set; }
         
         [Display(Name = "Firma")]
-        public string pac_firma { get; set; }
+        public byte[] pac_firma { get; set; }
 
         public bool pac_estado { get; set; }
 

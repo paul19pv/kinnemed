@@ -16,22 +16,22 @@ namespace kinnemed05.Models
     {
         public medico()
         {
-            this.historia = new HashSet<historia>();
-            this.registro = new HashSet<registro>();
             this.audiometria = new HashSet<audiometria>();
             this.espirometria = new HashSet<espirometria>();
+            this.historia = new HashSet<historia>();
             this.oftalmologia = new HashSet<oftalmologia>();
             this.rayos = new HashSet<rayos>();
+            this.registro = new HashSet<registro>();
         }
     
         public int med_id { get; set; }
     
-        public virtual especialidad especialidad { get; set; }
-        public virtual ICollection<historia> historia { get; set; }
-        public virtual ICollection<registro> registro { get; set; }
         public virtual ICollection<audiometria> audiometria { get; set; }
+        public virtual especialidad especialidad { get; set; }
         public virtual ICollection<espirometria> espirometria { get; set; }
+        public virtual ICollection<historia> historia { get; set; }
         public virtual ICollection<oftalmologia> oftalmologia { get; set; }
         public virtual ICollection<rayos> rayos { get; set; }
+        public virtual ICollection<registro> registro { get; set; }
     }
 }

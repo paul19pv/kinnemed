@@ -33,9 +33,9 @@ namespace kinnemed05.Reports.viewer
             int id=Convert.ToInt32(Session["reg_id"]);
             registro registro_ = db.registro.Find(id);
             laboratorista laboratorista = db.laboratorista.Find(registro_.reg_laboratorista);
-            string fileName = laboratorista.lab_firma;
-            if (String.IsNullOrEmpty(fileName))
-                fileName = "firma_lab.png";
+            //string fileName = laboratorista.lab_firma;
+            //if (String.IsNullOrEmpty(fileName))
+            //    fileName = "firma_lab.png";
             SqlConnection sqlcon = new SqlConnection(conn);
             SqlDataAdapter daQuimico = new SqlDataAdapter(strAglutinacion, sqlcon);
             daQuimico.Fill(dsPrueba, "view_prueba_paciente");
@@ -75,8 +75,8 @@ namespace kinnemed05.Reports.viewer
                 reportDocument.SetParameterValue("genero", "");
             reportDocument.SetParameterValue("hc", "");
             reportDocument.SetParameterValue("orden", registro.reg_orden);
-            string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-            reportDocument.SetParameterValue("picturePath", path01);
+            //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+            //reportDocument.SetParameterValue("picturePath", path01);
 
             crViewer.ReportSource = reportDocument;
             crViewer.DataBind();

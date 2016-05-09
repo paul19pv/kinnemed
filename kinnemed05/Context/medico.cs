@@ -42,7 +42,7 @@ namespace kinnemed05.Models
         [StringLength(150, ErrorMessage = "La longitud máxima es 150 caracteres")]
         public string med_correo { get; set; }
         [Display(Name = "Firma")]
-        public string med_firma { get; set; }
+        public byte[] med_firma { get; set; }
 
         public bool med_estado { get; set; }
     }

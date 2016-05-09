@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="area">
     <Key>
       <PropertyRef Name="are_id" />
@@ -252,7 +252,7 @@
     <Property Name="lab_nombres" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="lab_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="lab_correo" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="lab_firma" Type="varchar" MaxLength="256" />
+    <Property Name="lab_firma" Type="image" />
     <Property Name="lab_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="medico">
@@ -267,7 +267,7 @@
     <Property Name="med_codigo" Type="varchar" MaxLength="50" />
     <Property Name="med_especialidad" Type="int" Nullable="false" />
     <Property Name="med_correo" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="med_firma" Type="varchar" MaxLength="256" />
+    <Property Name="med_firma" Type="image" />
     <Property Name="med_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ocupacional">
@@ -338,7 +338,7 @@
     <Property Name="pac_tipodiscapacidad" Type="varchar" MaxLength="50" />
     <Property Name="pac_porcentajediscapacidad" Type="int" />
     <Property Name="pac_empresa" Type="int" Nullable="false" />
-    <Property Name="pac_firma" Type="varchar" MaxLength="256" />
+    <Property Name="pac_firma" Type="image" />
     <Property Name="pac_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="pais">
@@ -636,7 +636,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_diagnostico_sub_cie10">
-    <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="1" />
+    <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="diagnostico" Type="Self.diagnostico" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sub_cie10">
@@ -1080,7 +1082,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_sub_cie10_cie10">
-    <End Role="cie10" Type="Self.cie10" Multiplicity="1" />
+    <End Role="cie10" Type="Self.cie10" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cie10">
