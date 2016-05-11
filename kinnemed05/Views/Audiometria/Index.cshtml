@@ -7,9 +7,13 @@
 <h2>Audiometría</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Exámen", "Create", "", new { @class = "btn btn-default" })
+    @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+    {
+        @Html.ActionLink("Nuevo Exámen", "Create", "", new { @class = "btn btn-default" })
+        
+    }
     @Html.ActionLink("Regresar", "Examen", "Home", new { }, new { @class = "btn btn-default" })
-    
+
 </p>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -34,21 +38,25 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
                     </td>
-                    
+
                     <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem=>item.medico.med_apellidos)
+                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.aud_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
-                        @Html.ActionLink("Editar", "Edit", new { id = item.aud_id }, new { @class = "iconb icon-edit", @title = "Editar" })
-                        @Html.ActionLink("Detalle", "Details", new { id = item.aud_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                        @Html.ActionLink("Borrar", "Delete", new { id = item.aud_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+                        {
+                            @*@Html.ActionLink("Descargar", "Download", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })*@
+                            @Html.ActionLink("Editar", "Edit", new { id = item.aud_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            @Html.ActionLink("Detalle", "Details", new { id = item.aud_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                            @Html.ActionLink("Borrar", "Delete", new { id = item.aud_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        }
+
                     </td>
                     <td>
-                        @Html.ActionLink("Reporte", "Reporte", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
+                        @*@Html.ActionLink("Reporte", "Reporte", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })*@
                         @Html.ActionLink("Descargar", "Descargar", new { id = item.aud_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
                     </td>
                 </tr>
@@ -57,4 +65,3 @@
         </table>
     </div>
 </div>
-

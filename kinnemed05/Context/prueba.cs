@@ -18,12 +18,6 @@ namespace kinnemed05.Models
         public string pru_resultado { get; set; }
         [Display(Name = "Valor")]
         public string pru_valor { get; set; }
-        [Display(Name = "Código")]
-        //[Required(ErrorMessage = "Campo Requerido")]
-        public string pru_codigo { get; set; }
-        [Display(Name = "Imagen")]
-        //[Required(ErrorMessage = "Campo Requerido")]
-        public byte[] pru_imagen { get; set; }
         [Display(Name = "Fuera de Rango")]
         public string pru_fuera { get; set; }
     

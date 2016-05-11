@@ -36,7 +36,8 @@
                         @Html.DisplayFor(modelItem => item.aud_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
+                        @Html.ActionLink("Detalle", "Details", "Audiometria", new { id = item.aud_id }, new { @class = "iconb icon-detail", @title = "Detalle", @target = "_blank" })
+                        @Html.ActionLink("Descargar", "Download","Audiometria", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @target="_blank" })
                     </td>
                 </tr>
             }

@@ -36,7 +36,6 @@ namespace kinnemed05.Models
         public DbSet<area> area { get; set; }
         public DbSet<control> control { get; set; }
         public DbSet<perfil> perfil { get; set; }
-        public DbSet<prueba> prueba { get; set; }
         public DbSet<fisico> fisico { get; set; }
         public DbSet<revision> revision { get; set; }
         public DbSet<cie10> cie10 { get; set; }
@@ -65,5 +64,8 @@ namespace kinnemed05.Models
         public DbSet<laboratorista> laboratorista { get; set; }
         public DbSet<medico> medico { get; set; }
         public DbSet<paciente> paciente { get; set; }
+        public DbSet<codigo> codigo { get; set; }
+        public DbSet<orden> orden { get; set; }
+        public DbSet<prueba> prueba { get; set; }
     }
 }

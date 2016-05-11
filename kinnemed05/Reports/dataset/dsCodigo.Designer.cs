@@ -279,13 +279,13 @@ namespace kinnemed05.Reports.dataset {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class view_codigoDataTable : global::System.Data.TypedTableBase<view_codigoRow> {
             
-            private global::System.Data.DataColumn columnpru_codigo;
+            private global::System.Data.DataColumn columncod_codigo;
             
-            private global::System.Data.DataColumn columnpru_imagen;
-            
-            private global::System.Data.DataColumn columnpac_apellidos;
+            private global::System.Data.DataColumn columncod_imagen;
             
             private global::System.Data.DataColumn columnpac_nombres;
+            
+            private global::System.Data.DataColumn columnpac_apellidos;
             
             private global::System.Data.DataColumn columnreg_id;
             
@@ -324,25 +324,17 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn pru_codigoColumn {
+            public global::System.Data.DataColumn cod_codigoColumn {
                 get {
-                    return this.columnpru_codigo;
+                    return this.columncod_codigo;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn pru_imagenColumn {
+            public global::System.Data.DataColumn cod_imagenColumn {
                 get {
-                    return this.columnpru_imagen;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn pac_apellidosColumn {
-                get {
-                    return this.columnpac_apellidos;
+                    return this.columncod_imagen;
                 }
             }
             
@@ -351,6 +343,14 @@ namespace kinnemed05.Reports.dataset {
             public global::System.Data.DataColumn pac_nombresColumn {
                 get {
                     return this.columnpac_nombres;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pac_apellidosColumn {
+                get {
+                    return this.columnpac_apellidos;
                 }
             }
             
@@ -399,13 +399,13 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public view_codigoRow Addview_codigoRow(string pru_codigo, byte[] pru_imagen, string pac_apellidos, string pac_nombres, int reg_id) {
+            public view_codigoRow Addview_codigoRow(string cod_codigo, byte[] cod_imagen, string pac_nombres, string pac_apellidos, int reg_id) {
                 view_codigoRow rowview_codigoRow = ((view_codigoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        pru_codigo,
-                        pru_imagen,
-                        pac_apellidos,
+                        cod_codigo,
+                        cod_imagen,
                         pac_nombres,
+                        pac_apellidos,
                         reg_id};
                 rowview_codigoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_codigoRow);
@@ -436,35 +436,34 @@ namespace kinnemed05.Reports.dataset {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnpru_codigo = base.Columns["pru_codigo"];
-                this.columnpru_imagen = base.Columns["pru_imagen"];
-                this.columnpac_apellidos = base.Columns["pac_apellidos"];
+                this.columncod_codigo = base.Columns["cod_codigo"];
+                this.columncod_imagen = base.Columns["cod_imagen"];
                 this.columnpac_nombres = base.Columns["pac_nombres"];
+                this.columnpac_apellidos = base.Columns["pac_apellidos"];
                 this.columnreg_id = base.Columns["reg_id"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnpru_codigo = new global::System.Data.DataColumn("pru_codigo", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpru_codigo);
-                this.columnpru_imagen = new global::System.Data.DataColumn("pru_imagen", typeof(byte[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpru_imagen);
-                this.columnpac_apellidos = new global::System.Data.DataColumn("pac_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpac_apellidos);
+                this.columncod_codigo = new global::System.Data.DataColumn("cod_codigo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncod_codigo);
+                this.columncod_imagen = new global::System.Data.DataColumn("cod_imagen", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncod_imagen);
                 this.columnpac_nombres = new global::System.Data.DataColumn("pac_nombres", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_nombres);
+                this.columnpac_apellidos = new global::System.Data.DataColumn("pac_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpac_apellidos);
                 this.columnreg_id = new global::System.Data.DataColumn("reg_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnreg_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnreg_id}, true));
-                this.columnpru_codigo.AllowDBNull = false;
-                this.columnpru_codigo.MaxLength = 12;
-                this.columnpru_imagen.ReadOnly = true;
-                this.columnpac_apellidos.AllowDBNull = false;
-                this.columnpac_apellidos.MaxLength = 150;
+                this.columncod_codigo.AllowDBNull = false;
+                this.columncod_codigo.MaxLength = 12;
                 this.columnpac_nombres.AllowDBNull = false;
                 this.columnpac_nombres.MaxLength = 150;
+                this.columnpac_apellidos.AllowDBNull = false;
+                this.columnpac_apellidos.MaxLength = 150;
                 this.columnreg_id.AllowDBNull = false;
                 this.columnreg_id.Unique = true;
             }
@@ -609,39 +608,28 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string pru_codigo {
+            public string cod_codigo {
                 get {
-                    return ((string)(this[this.tableview_codigo.pru_codigoColumn]));
+                    return ((string)(this[this.tableview_codigo.cod_codigoColumn]));
                 }
                 set {
-                    this[this.tableview_codigo.pru_codigoColumn] = value;
+                    this[this.tableview_codigo.cod_codigoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public byte[] pru_imagen {
+            public byte[] cod_imagen {
                 get {
                     try {
-                        return ((byte[])(this[this.tableview_codigo.pru_imagenColumn]));
+                        return ((byte[])(this[this.tableview_codigo.cod_imagenColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'pru_imagen\' in table \'view_codigo\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'cod_imagen\' in table \'view_codigo\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableview_codigo.pru_imagenColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string pac_apellidos {
-                get {
-                    return ((string)(this[this.tableview_codigo.pac_apellidosColumn]));
-                }
-                set {
-                    this[this.tableview_codigo.pac_apellidosColumn] = value;
+                    this[this.tableview_codigo.cod_imagenColumn] = value;
                 }
             }
             
@@ -658,6 +646,17 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pac_apellidos {
+                get {
+                    return ((string)(this[this.tableview_codigo.pac_apellidosColumn]));
+                }
+                set {
+                    this[this.tableview_codigo.pac_apellidosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int reg_id {
                 get {
                     return ((int)(this[this.tableview_codigo.reg_idColumn]));
@@ -669,14 +668,14 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ispru_imagenNull() {
-                return this.IsNull(this.tableview_codigo.pru_imagenColumn);
+            public bool Iscod_imagenNull() {
+                return this.IsNull(this.tableview_codigo.cod_imagenColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setpru_imagenNull() {
-                this[this.tableview_codigo.pru_imagenColumn] = global::System.Convert.DBNull;
+            public void Setcod_imagenNull() {
+                this[this.tableview_codigo.cod_imagenColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -839,10 +838,10 @@ namespace kinnemed05.Reports.dataset.dsCodigoTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "view_codigo";
-            tableMapping.ColumnMappings.Add("pru_codigo", "pru_codigo");
-            tableMapping.ColumnMappings.Add("pru_imagen", "pru_imagen");
-            tableMapping.ColumnMappings.Add("pac_apellidos", "pac_apellidos");
+            tableMapping.ColumnMappings.Add("cod_codigo", "cod_codigo");
+            tableMapping.ColumnMappings.Add("cod_imagen", "cod_imagen");
             tableMapping.ColumnMappings.Add("pac_nombres", "pac_nombres");
+            tableMapping.ColumnMappings.Add("pac_apellidos", "pac_apellidos");
             tableMapping.ColumnMappings.Add("reg_id", "reg_id");
             this._adapter.TableMappings.Add(tableMapping);
         }
@@ -860,7 +859,7 @@ namespace kinnemed05.Reports.dataset.dsCodigoTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT pru_codigo, pru_imagen, pac_apellidos, pac_nombres, reg_id FROM dbo.view_c" +
+            this._commandCollection[0].CommandText = "SELECT cod_codigo, cod_imagen, pac_nombres, pac_apellidos, reg_id FROM dbo.view_c" +
                 "odigo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }

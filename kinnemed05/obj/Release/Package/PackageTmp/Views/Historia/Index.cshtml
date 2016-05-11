@@ -50,7 +50,11 @@
 <h2>Historias @ViewBag.titulo</h2>
 
 <p>
-    @Html.ActionLink("Nueva Historia", "Create", new { tipo = ViewBag.tipo }, new { @class = "btn btn-default" })
+    @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+    {
+        @Html.ActionLink("Nueva Historia", "Create", new { tipo = ViewBag.tipo }, new { @class = "btn btn-default" })
+    }
+    
     @Html.ActionLink("Regresar", "Historia", "Home", new { }, new { @class = "btn btn-default" })
 </p>
 <div class="panel panel-default">
@@ -116,33 +120,38 @@
                         @Html.DisplayFor(modelItem => item.his_numero)
                     </td>
                     <td>
-
-                        @if (item.his_tipo == 1)
+                        @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
                         {
-                            @Html.ActionLink("Edit", "Edit", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            if (item.his_tipo == 1)
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            }
+
+                            else
+                            {
+                                @Html.ActionLink("Edit", "Edit02", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            }
+
+
+
+                            @Html.ActionLink("Details", "Details", new { id = item.his_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.his_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
                         }
 
-                        else
-                        {
-                            @Html.ActionLink("Edit", "Edit02", new { id = item.his_id }, new { @class = "iconb icon-edit", @title = "Editar" })
-                        }
 
-
-
-                        @Html.ActionLink("Details", "Details", new { id = item.his_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.his_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
                     </td>
                     <td>
                         @if (item.his_tipo == 1)
                         {
 
                         }
-                        else { 
+                        else
+                        {
                             @Html.ActionLink("Certificado", "Certificado", new { id = item.his_id, pac_id = item.his_paciente }, new { @class = "iconb icon-certificate", @title = "Certificado" })
                         }
                         @Html.ActionLink("Descargar", "Reporte", new { id = item.his_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
 
-                        
+
                     </td>
                 </tr>
             }

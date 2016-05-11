@@ -35,7 +35,7 @@
                 <label>Empresas&nbsp;</label>
             </a>
 
-            <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
+            @*<a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
                 <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
                 <label>Exámenes&nbsp;</label>
             </a>
@@ -44,10 +44,10 @@
             <a class="btn btn-default btn-lg btn-img" title="Historias" href="@Url.Content("~/Home/Historia")">
                 <img src="@Url.Content("~/Content/img/iconos/historia01-icon.png")" class="img-rounded" />
                 <label>Historias</label>
-            </a>
+            </a>*@
 
         }
-        else if (User.IsInRole("paciente") || User.IsInRole("empresa") || User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+        @if (!User.IsInRole("trabajador"))
         {
             <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
                 <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />
@@ -55,7 +55,7 @@
             </a>
 
         }
-        else if (User.IsInRole("trabajador") || User.IsInRole("empresa") || User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
+        @if (!User.IsInRole("paciente"))
         {
             <a class="btn btn-default btn-lg btn-img" title="Historias" href="@Url.Content("~/Home/Historia")">
                 <img src="@Url.Content("~/Content/img/iconos/historia01-icon.png")" class="img-rounded" />

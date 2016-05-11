@@ -93,6 +93,8 @@ namespace kinnemed05.Models
                 perfil="medico";
             else if (User.IsInRole("paciente"))
                 perfil = "paciente";
+            else if (User.IsInRole("empresa"))
+                perfil = "empresa";
             else if (User.IsInRole("laboratorista"))
                 perfil = "laboratorista";
             else if (User.IsInRole("trabajador"))

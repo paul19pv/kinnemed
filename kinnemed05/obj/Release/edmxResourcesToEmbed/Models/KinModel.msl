@@ -100,20 +100,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="prueba">
-      <EntityTypeMapping TypeName="kinnemedModel.prueba">
-        <MappingFragment StoreEntitySet="prueba">
-          <ScalarProperty Name="pru_fuera" ColumnName="pru_fuera" />
-          <ScalarProperty Name="pru_imagen" ColumnName="pru_imagen" />
-          <ScalarProperty Name="pru_codigo" ColumnName="pru_codigo" />
-          <ScalarProperty Name="pru_valor" ColumnName="pru_valor" />
-          <ScalarProperty Name="pru_resultado" ColumnName="pru_resultado" />
-          <ScalarProperty Name="pru_registro" ColumnName="pru_registro" />
-          <ScalarProperty Name="pru_examen" ColumnName="pru_examen" />
-          <ScalarProperty Name="pru_id" ColumnName="pru_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="fisico">
       <EntityTypeMapping TypeName="kinnemedModel.fisico">
         <MappingFragment StoreEntitySet="fisico">
@@ -417,6 +403,7 @@
     <EntitySetMapping Name="examen">
       <EntityTypeMapping TypeName="kinnemedModel.examen">
         <MappingFragment StoreEntitySet="examen">
+          <ScalarProperty Name="exa_orden" ColumnName="exa_orden" />
           <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
           <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
           <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
@@ -575,6 +562,39 @@
           <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
           <ScalarProperty Name="pac_cedula" ColumnName="pac_cedula" />
           <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="codigo">
+      <EntityTypeMapping TypeName="kinnemedModel.codigo">
+        <MappingFragment StoreEntitySet="codigo">
+          <ScalarProperty Name="cod_area" ColumnName="cod_area" />
+          <ScalarProperty Name="cod_registro" ColumnName="cod_registro" />
+          <ScalarProperty Name="cod_imagen" ColumnName="cod_imagen" />
+          <ScalarProperty Name="cod_codigo" ColumnName="cod_codigo" />
+          <ScalarProperty Name="cod_id" ColumnName="cod_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orden">
+      <EntityTypeMapping TypeName="kinnemedModel.orden">
+        <MappingFragment StoreEntitySet="orden">
+          <ScalarProperty Name="ord_fecha" ColumnName="ord_fecha" />
+          <ScalarProperty Name="ord_examen" ColumnName="ord_examen" />
+          <ScalarProperty Name="ord_paciente" ColumnName="ord_paciente" />
+          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="prueba">
+      <EntityTypeMapping TypeName="kinnemedModel.prueba">
+        <MappingFragment StoreEntitySet="prueba">
+          <ScalarProperty Name="pru_fuera" ColumnName="pru_fuera" />
+          <ScalarProperty Name="pru_valor" ColumnName="pru_valor" />
+          <ScalarProperty Name="pru_resultado" ColumnName="pru_resultado" />
+          <ScalarProperty Name="pru_registro" ColumnName="pru_registro" />
+          <ScalarProperty Name="pru_examen" ColumnName="pru_examen" />
+          <ScalarProperty Name="pru_id" ColumnName="pru_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

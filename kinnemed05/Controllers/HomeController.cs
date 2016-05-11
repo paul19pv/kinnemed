@@ -35,7 +35,7 @@ namespace kinnemed05.Controllers
         public ActionResult Examen() {
             return View();
         }
-        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.paciente, UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.trabajador)]
         public ActionResult Historia() {
             return View();
         }
@@ -49,6 +49,8 @@ namespace kinnemed05.Controllers
                 perfil="medico";
             else if (User.IsInRole("paciente"))
                 perfil = "paciente";
+            else if (User.IsInRole("empresa"))
+                perfil = "empresa";
             else if (User.IsInRole("laboratorista"))
                 perfil = "laboratorista";
             else if (User.IsInRole("trabajador"))

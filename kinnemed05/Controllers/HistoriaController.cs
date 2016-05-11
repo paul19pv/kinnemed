@@ -26,7 +26,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
         public ActionResult Index(int tipo, int? paciente, string fecha)
         {
             var historia = db.historia.Include(h => h.paciente).Where(h => h.his_tipo == tipo);
@@ -34,17 +34,13 @@ namespace kinnemed05.Controllers
                 historia = historia.Where(h => h.his_paciente == paciente);
             if (!String.IsNullOrEmpty(fecha))
                 historia = historia.Where(h => h.his_fecha == fecha);
-
-
-            UserManager usermanager = new UserManager();
-            string perfil = usermanager.get_perfil(User);
-            if (perfil == "trabajador")
+            if (User.IsInRole("trabajador"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 trabajador trabajador = db.trabajador.Where(t => t.tra_cedula == cedula).First();
                 historia = historia.Where(a => a.paciente.pac_empresa == trabajador.tra_empresa);
             }
-            else if (perfil == "empresa")
+            if (User.IsInRole("empresa"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
@@ -60,7 +56,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -325,19 +321,13 @@ namespace kinnemed05.Controllers
                 daEmpresa.Fill(dsCertificado, "empresa");
                 daMedico.Fill(dsCertificado, "medico");
                 daOcupacional.Fill(dsCertificado, "ocupacional");
-
-                RptCertificado rp_base = new RptCertificado();
-                rp_base.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
-                rp_base.SetDataSource(dsCertificado);
-                Stream stream = rp_base.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-
+                Stream stream = MemoryStream.Null;
                 if (concepto.con_resultado == "APTO")
                 {
                     RptCerApto rp = new RptCerApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerApto.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    //rp.SetParameterValue("picturePath", path01);
+                    rp.SetParameterValue("fecha", get_fecha());
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "APTO CON RESTRICCIONES PERSONALES" || concepto.con_resultado == "APTO CON RESTRICCIONES LABORALES")
@@ -345,8 +335,7 @@ namespace kinnemed05.Controllers
                     RptCerAptoRes rp = new RptCerAptoRes();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerAptoRes.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    //rp.SetParameterValue("picturePath", path01);
+                    rp.SetParameterValue("fecha", get_fecha());
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "NO APTO")
@@ -354,8 +343,7 @@ namespace kinnemed05.Controllers
                     RptCerNoApto rp = new RptCerNoApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerNoApto.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    //rp.SetParameterValue("picturePath", path01);
+                    rp.SetParameterValue("fecha", get_fecha());
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA")
@@ -369,21 +357,12 @@ namespace kinnemed05.Controllers
                     else
                         nexo = "UNA";
                     rp.SetParameterValue("nexo", nexo);
-                    //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
-                    //rp.SetParameterValue("picturePath", path01);
+                    rp.SetParameterValue("fecha", get_fecha());
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
-
-
-
-                //RptCertificado rp= new RptCertificado();
-                //rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCertificado.rpt"));
-                //rp.SetDataSource(dsCertificado);
                 Response.Buffer = false;
                 Response.ClearContent();
                 Response.ClearHeaders();
-
-                //Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
                 return File(stream, "application/pdf", "Certificado.pdf");
 
@@ -558,6 +537,54 @@ namespace kinnemed05.Controllers
                 user_id = userprofile.UserMedico.GetValueOrDefault();
             }
             return user_id;
+        }
+
+        private string get_fecha() {
+            string fecha = String.Empty;
+            DateTime fecha_cal = DateTime.Now;
+            string dia = fecha_cal.Day.ToString();
+            string mes = String.Empty;
+            string anio = fecha_cal.Year.ToString();
+            switch (fecha_cal.Month) { 
+                case 1:
+                    mes = "enero";
+                    break;
+                case 2:
+                    mes = "febrero";
+                    break;
+                case 3:
+                    mes = "marzo";
+                    break;
+                case 4:
+                    mes = "abril";
+                    break;
+                case 5:
+                    mes = "mayo";
+                    break;
+                case 6:
+                    mes = "junio";
+                    break;
+                case 7:
+                    mes = "julio";
+                    break;
+                case 8:
+                    mes = "agosto";
+                    break;
+                case 9:
+                    mes = "septiembre";
+                    break;
+                case 10:
+                    mes = "octubre";
+                    break;
+                case 11:
+                    mes = "noviembre";
+                    break;
+                case 12:
+                    mes = "diciembre";
+                    break;
+            }
+            fecha = "Quito, " + dia + " de " + mes + " de " + anio;
+            return fecha;
         }
 
         protected override void Dispose(bool disposing)

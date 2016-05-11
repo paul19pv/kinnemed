@@ -98,7 +98,7 @@ namespace kinnemed05.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_picturePath {
+        public CrystalDecisions.Shared.IParameterField Parameter_fecha {
             get {
                 return this.DataDefinition.ParameterFields[1];
             }

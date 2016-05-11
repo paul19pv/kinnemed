@@ -29,7 +29,8 @@
                         @Html.DisplayFor(modelItem => item.ray_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
+                        @Html.ActionLink("Descargar", "Download","Rayos", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @target="_blank" })
+                        @Html.ActionLink("Detalle", "Details", "Rayos",new { id = item.ray_id }, new { @class = "iconb icon-detail", @title = "Detalle", @target = "_blank" })
                     </td>
                 </tr>
             }

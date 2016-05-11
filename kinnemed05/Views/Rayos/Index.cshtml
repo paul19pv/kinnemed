@@ -7,8 +7,13 @@
 <h2>Rayos X</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Exámen", "Create", "", new { @class = "btn btn-default" })
+    @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+    {
+        @Html.ActionLink("Nuevo Exámen", "Create", "", new { @class = "btn btn-default" })
+        
+    }
     @Html.ActionLink("Regresar", "Examen", "Home", new { }, new { @class = "btn btn-default" })
+    
 </p>
 <div class="panel panel-default">
     <div class="panel-body">
@@ -40,10 +45,14 @@
                         @Html.DisplayFor(modelItem => item.ray_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
-                        @Html.ActionLink("Editar", "Edit", new { id = item.ray_id }, new { @class = "iconb icon-edit", @title = "Editar" })
-                        @Html.ActionLink("Detalle", "Details", new { id = item.ray_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                        @Html.ActionLink("Borrar", "Delete", new { id = item.ray_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+                        {
+                            @Html.ActionLink("Descargar", "Download", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.ray_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            @Html.ActionLink("Detalle", "Details", new { id = item.ray_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                            @Html.ActionLink("Borrar", "Delete", new { id = item.ray_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        }
+                        
                     </td>
                     <td>
                         @Html.ActionLink("Reporte", "Reporte", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })

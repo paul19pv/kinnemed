@@ -33,6 +33,16 @@
     <Property Name="cie_codigo" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="cie_descripcion" Type="varchar" MaxLength="200" Nullable="false" />
   </EntityType>
+  <EntityType Name="codigo">
+    <Key>
+      <PropertyRef Name="cod_id" />
+    </Key>
+    <Property Name="cod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_codigo" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="cod_imagen" Type="image" />
+    <Property Name="cod_registro" Type="int" Nullable="false" />
+    <Property Name="cod_area" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="componente">
     <Key>
       <PropertyRef Name="com_id" />
@@ -106,9 +116,10 @@
     <Property Name="exa_tipo" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="exa_area" Type="int" Nullable="false" />
     <Property Name="exa_item" Type="int" />
-    <Property Name="exa_valores" Type="varchar" MaxLength="500" />
+    <Property Name="exa_valores" Type="nvarchar(max)" />
     <Property Name="exa_inicial" Type="varchar" MaxLength="50" />
     <Property Name="exa_estado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="exa_orden" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="familiar">
     <Key>
@@ -314,6 +325,15 @@
     <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_medico" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="orden">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="int" Nullable="false" />
+    <Property Name="ord_paciente" Type="int" Nullable="false" />
+    <Property Name="ord_examen" Type="int" Nullable="false" />
+    <Property Name="ord_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
   <EntityType Name="paciente">
     <Key>
       <PropertyRef Name="pac_id" />
@@ -405,8 +425,6 @@
     <Property Name="pru_registro" Type="int" Nullable="false" />
     <Property Name="pru_resultado" Type="varchar" MaxLength="20" />
     <Property Name="pru_valor" Type="varchar" MaxLength="20" />
-    <Property Name="pru_codigo" Type="varchar" MaxLength="12" Nullable="false" />
-    <Property Name="pru_imagen" Type="image" Nullable="false" />
     <Property Name="pru_fuera" Type="varchar" MaxLength="2" />
   </EntityType>
   <EntityType Name="rayos">
@@ -576,6 +594,34 @@
       </Principal>
       <Dependent Role="canton">
         <PropertyRef Name="can_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_codigo_area">
+    <End Role="area" Type="Self.area" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="codigo" Type="Self.codigo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="are_id" />
+      </Principal>
+      <Dependent Role="codigo">
+        <PropertyRef Name="cod_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_codigo_registro">
+    <End Role="registro" Type="Self.registro" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="codigo" Type="Self.codigo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro">
+        <PropertyRef Name="reg_id" />
+      </Principal>
+      <Dependent Role="codigo">
+        <PropertyRef Name="cod_registro" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -873,6 +919,34 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_orden_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="orden" Type="Self.orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="orden" Type="Self.orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_paciente_canton">
     <End Role="canton" Type="Self.canton" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -1142,6 +1216,7 @@
     <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cie10" EntityType="Self.cie10" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="codigo" EntityType="Self.codigo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="concepto" EntityType="Self.concepto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="control" EntityType="Self.control" Schema="dbo" store:Type="Tables" />
@@ -1160,6 +1235,7 @@
     <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ocupacional" EntityType="Self.ocupacional" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="oftalmologia" EntityType="Self.oftalmologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden" EntityType="Self.orden" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
@@ -1189,6 +1265,14 @@
     <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
       <End Role="provincia" EntitySet="provincia" />
       <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_codigo_area" Association="Self.FK_codigo_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="codigo" EntitySet="codigo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_codigo_registro" Association="Self.FK_codigo_registro">
+      <End Role="registro" EntitySet="registro" />
+      <End Role="codigo" EntitySet="codigo" />
     </AssociationSet>
     <AssociationSet Name="FK_concepto_historia" Association="Self.FK_concepto_historia">
       <End Role="historia" EntitySet="historia" />
@@ -1273,6 +1357,14 @@
     <AssociationSet Name="FK_oftalmologia_paciente" Association="Self.FK_oftalmologia_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="oftalmologia" EntitySet="oftalmologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_examen" Association="Self.FK_orden_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="orden" EntitySet="orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_paciente" Association="Self.FK_orden_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="orden" EntitySet="orden" />
     </AssociationSet>
     <AssociationSet Name="FK_paciente_canton" Association="Self.FK_paciente_canton">
       <End Role="canton" EntitySet="canton" />

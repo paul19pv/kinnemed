@@ -17,8 +17,9 @@ namespace kinnemed05.Models
         public examen()
         {
             this.control = new HashSet<control>();
-            this.prueba = new HashSet<prueba>();
             this.valores = new HashSet<valores>();
+            this.orden = new HashSet<orden>();
+            this.prueba = new HashSet<prueba>();
         }
     
         public int exa_id { get; set; }
@@ -30,10 +31,12 @@ namespace kinnemed05.Models
         public string exa_valores { get; set; }
         public string exa_inicial { get; set; }
         public string exa_estado { get; set; }
+        public int exa_orden { get; set; }
     
         public virtual area area { get; set; }
         public virtual ICollection<control> control { get; set; }
-        public virtual ICollection<prueba> prueba { get; set; }
         public virtual ICollection<valores> valores { get; set; }
+        public virtual ICollection<orden> orden { get; set; }
+        public virtual ICollection<prueba> prueba { get; set; }
     }
 }

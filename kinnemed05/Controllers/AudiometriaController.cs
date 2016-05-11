@@ -32,13 +32,16 @@ namespace kinnemed05.Controllers
             var audiometria = db.audiometria.Include(a => a.paciente);
             if (id != null)
                 audiometria = audiometria.Where(a => a.aud_paciente == id);
-            UserManager usermanager = new UserManager();
-            string perfil = usermanager.get_perfil(User);
-            if (perfil == "paciente")
+            if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
                 audiometria = audiometria.Where(a => a.aud_paciente == paciente_.pac_id);
+            }
+            if (User.IsInRole("empresa")) {
+                string cedula = Convert.ToString(User.Identity.Name);
+                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
+                audiometria = audiometria.Where(a => a.paciente.pac_empresa == empresa.emp_id);
             }
 
 
@@ -153,7 +156,7 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(audiometria audiometria)
         {
-            string nom_pac;
+            //string nom_pac;
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];

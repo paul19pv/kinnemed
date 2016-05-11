@@ -33,13 +33,17 @@ namespace kinnemed05.Controllers
             if (id != null)
                 espirometria = espirometria.Where(e => e.esp_paciente == id);
 
-            UserManager usermanager = new UserManager();
-            string perfil = usermanager.get_perfil(User);
-            if (perfil == "paciente")
+            if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
                 espirometria = espirometria.Where(a => a.esp_paciente == paciente_.pac_id);
+            }
+            if (User.IsInRole("empresa"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
+                espirometria = espirometria.Where(e => e.paciente.pac_empresa == empresa.emp_id);
             }
 
             if (Request.IsAjaxRequest())
