@@ -15,6 +15,7 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
+                @Html.ValidationMessage("user")
                 <div class="col-lg-5">
                     <div class="form-group">
                         @Html.LabelFor(model => model.emp_cedula, new { @class = "control-label", @for = "inputDefault" })

@@ -86,9 +86,7 @@ C:\Users\Paul Chicaiza\Documents\Visual Studio 2013\Projects\kinnemed05\kinnemed
 C:\Users\Paul Chicaiza\Documents\Visual Studio 2013\Projects\kinnemed05\kinnemed05\bin\Reports\RptLimpio.rpt
 C:\Users\Paul Chicaiza\Documents\Visual Studio 2013\Projects\kinnemed05\kinnemed05\bin\Reports\RptLimpio.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptMedico.rpt
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptPrueba.rpt
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptMedico.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptPrueba.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll.config

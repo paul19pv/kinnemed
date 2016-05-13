@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsInmunizacion" targetNamespace="http://tempuri.org/dsInmunizacion.xsd" xmlns:mstns="http://tempuri.org/dsInmunizacion.xsd" xmlns="http://tempuri.org/dsInmunizacion.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_inmunizacionTableAdapter" GeneratorDataComponentClassName="view_inmunizacionTableAdapter" Name="view_inmunizacion" UserDataComponentName="view_inmunizacionTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_inmunizacion" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT vac_nombre, inm_fecha, inm_tipo, inm_paciente FROM dbo.view_inmunizacion</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="vac_nombre" DataSetColumn="vac_nombre" />
+              <Mapping SourceColumn="inm_fecha" DataSetColumn="inm_fecha" />
+              <Mapping SourceColumn="inm_tipo" DataSetColumn="inm_tipo" />
+              <Mapping SourceColumn="inm_paciente" DataSetColumn="inm_paciente" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsInmunizacion" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsInmunizacion" msprop:Generator_UserDSName="dsInmunizacion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_inmunizacion" msprop:Generator_TableClassName="view_inmunizacionDataTable" msprop:Generator_TableVarName="tableview_inmunizacion" msprop:Generator_TablePropName="view_inmunizacion" msprop:Generator_RowDeletingName="view_inmunizacionRowDeleting" msprop:Generator_RowChangingName="view_inmunizacionRowChanging" msprop:Generator_RowEvHandlerName="view_inmunizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="view_inmunizacionRowDeleted" msprop:Generator_UserTableName="view_inmunizacion" msprop:Generator_RowChangedName="view_inmunizacionRowChanged" msprop:Generator_RowEvArgName="view_inmunizacionRowChangeEvent" msprop:Generator_RowClassName="view_inmunizacionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="vac_nombre" msprop:Generator_ColumnVarNameInTable="columnvac_nombre" msprop:Generator_ColumnPropNameInRow="vac_nombre" msprop:Generator_ColumnPropNameInTable="vac_nombreColumn" msprop:Generator_UserColumnName="vac_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="inm_fecha" msprop:Generator_ColumnVarNameInTable="columninm_fecha" msprop:Generator_ColumnPropNameInRow="inm_fecha" msprop:Generator_ColumnPropNameInTable="inm_fechaColumn" msprop:Generator_UserColumnName="inm_fecha">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="inm_tipo" msprop:Generator_ColumnVarNameInTable="columninm_tipo" msprop:Generator_ColumnPropNameInRow="inm_tipo" msprop:Generator_ColumnPropNameInTable="inm_tipoColumn" msprop:Generator_UserColumnName="inm_tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="inm_paciente" msprop:Generator_ColumnVarNameInTable="columninm_paciente" msprop:Generator_ColumnPropNameInRow="inm_paciente" msprop:Generator_ColumnPropNameInTable="inm_pacienteColumn" msprop:Generator_UserColumnName="inm_paciente" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

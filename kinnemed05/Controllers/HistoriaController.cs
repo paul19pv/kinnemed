@@ -381,7 +381,6 @@ namespace kinnemed05.Controllers
             try
             {
                 dsHistoria dshistoria = new dsHistoria();
-                //dsHistorico dshistorico = new dsHistorico();
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 SqlConnection sqlcon = new SqlConnection(conn);
                 historia historia = db.historia.Find(id);
@@ -392,10 +391,42 @@ namespace kinnemed05.Controllers
                 string reportPath = Server.MapPath("~/Reports/RptHistoria.rpt");
                 rp.Load(reportPath);
                 rp.SetDataSource(dshistoria);
-                
+
+                //Subreportes
+                //TRABAJOS ANTERIORES
+                dsHistorico dshistorico = new dsHistorico();
+                string strHistorico = "Select * from ocupacional where ocu_tipo='histórico' and ocu_paciente=" + historia.his_paciente;
+                SqlDataAdapter daHistorico = new SqlDataAdapter(strHistorico, sqlcon);
+                daHistorico.Fill(dshistorico, "ocupacional");
+                //INFORMACIÓN OCUPACIONAL
+                dsHistorico dsocupacional = new dsHistorico();
+                string strOcupacional = "Select top 1 * from ocupacional where ocu_tipo='actual' and ocu_paciente=" + historia.his_paciente;
+                SqlDataAdapter daOcupacional = new SqlDataAdapter(strOcupacional, sqlcon);
+                daOcupacional.Fill(dsocupacional, "ocupacional");
+                //riesgos laborales
+                dsRiesgos dsriesgos = new dsRiesgos();
+                string strRiesgos = "Select * from view_riesgo where ocu_paciente=" + historia.his_paciente;
+                SqlDataAdapter daRiesgos = new SqlDataAdapter(strRiesgos, sqlcon);
+                daRiesgos.Fill(dsriesgos, "view_riesgo");
+                ////diagnostico
+                dsDiagnostico dsdiagnostico = new dsDiagnostico();
+                string strDiagnostico = "Select * from view_diagnostico where dia_historia=" + historia.his_id;
+                SqlDataAdapter daDiagnostico = new SqlDataAdapter(strDiagnostico, sqlcon);
+                daDiagnostico.Fill(dsdiagnostico, "view_diagnostico");
+                ////inmunizacion
+                dsInmunizacion dsinmunizacion = new dsInmunizacion();
+                string strInmunizacion = "Select * from view_inmunizacion where inm_paciente=" + historia.his_paciente;
+                SqlDataAdapter daInmunizacion = new SqlDataAdapter(strInmunizacion, sqlcon);
+                daInmunizacion.Fill(dsinmunizacion, "view_inmunizacion");
+
+                rp.Subreports["RptHistorico.rpt"].SetDataSource(dshistorico);
+                rp.Subreports["RptOcupacional.rpt"].SetDataSource(dsocupacional);
+                rp.Subreports["RptRiesgos.rpt"].SetDataSource(dsriesgos);
+                rp.Subreports["RptDiagnostico.rpt"].SetDataSource(dsdiagnostico);
+                rp.Subreports["RptInmunizacion.rpt"].SetDataSource(dsinmunizacion);
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/pdf", "Reporte1.pdf");
+                return File(stream, "application/pdf", "Reporte.pdf");
 
             }
             catch (Exception ex)

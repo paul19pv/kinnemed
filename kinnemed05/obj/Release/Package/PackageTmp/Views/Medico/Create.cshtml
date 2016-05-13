@@ -16,6 +16,7 @@
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
                 @Html.TextBoxFor(model => model.med_estado, new { @class = "form-control", Value = true, @type = "hidden" })
+                @Html.ValidationMessage("user")
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.med_cedula, new { @class = "control-label", @for = "inputDefault" })

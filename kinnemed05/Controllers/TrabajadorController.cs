@@ -14,7 +14,7 @@ namespace kinnemed05.Controllers
     public class TrabajadorController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_user = new UsersContext();
         //
         // GET: /Trabajador/
 
@@ -52,7 +52,7 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(trabajador trabajador)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && IsUserExist(trabajador.tra_cedula))
             {
                 db.trabajador.Add(trabajador);
                 db.SaveChanges();
@@ -129,6 +129,17 @@ namespace kinnemed05.Controllers
             db.trabajador.Remove(trabajador);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        private bool IsUserExist(string usuario)
+        {
+            bool estado = true;
+            var consulta = db_user.UserProfiles.Where(u => u.UserName == usuario);
+            if (consulta.Any())
+            {
+                estado = false;
+                ModelState.AddModelError("user", "El trabajador social ya esta registrado con otro perfil por favor verifique la información");
+            }
+            return estado;
         }
 
         protected override void Dispose(bool disposing)

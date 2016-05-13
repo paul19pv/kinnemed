@@ -14,7 +14,7 @@ namespace kinnemed05.Controllers
     public class EmpresaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_user = new UsersContext();
         //
         // GET: /Empresa/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.admin)]
@@ -58,7 +58,7 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(empresa empresa)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && IsUserExist(empresa.emp_cedula))
             {
                 db.empresa.Add(empresa);
                 db.SaveChanges();
@@ -131,7 +131,17 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        private bool IsUserExist(string usuario)
+        {
+            bool estado = true;
+            var consulta = db_user.UserProfiles.Where(u => u.UserName == usuario);
+            if (consulta.Any())
+            {
+                estado = false;
+                ModelState.AddModelError("user", "La empresa ya esta registrada con otro perfil por favor verifique la información");
+            }
+            return estado;
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
