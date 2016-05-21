@@ -79,7 +79,8 @@ namespace kinnemed05.Controllers
             {
                 db.concepto.Add(concepto);
                 db.SaveChanges();
-                return RedirectToAction("Message", "Home", new {mensaje="Proceso Finalizado" });
+                //return RedirectToAction("Message", "Home", new {mensaje="Proceso Finalizado" });
+                return RedirectToAction("Firma", "Historia", new { id = concepto.con_id });
             }
             historia historia = db.historia.Find(concepto.con_id);
             if (historia.his_tipo == 2 || historia.his_tipo == 3)
@@ -134,7 +135,8 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(concepto).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
+                //return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
+                return RedirectToAction("Firma", "Historia", new { id = concepto.con_id });
             }
             historia historia = db.historia.Find(concepto.con_id);
             if (historia.his_tipo == 2 || historia.his_tipo == 3)

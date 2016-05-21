@@ -248,6 +248,58 @@ namespace kinnemed05.Controllers
             }
             return PartialView(historia);
         }
+
+
+        [CustomAuthorize(UserRoles.medico)]
+        public ActionResult Firma(int id)
+        {
+            historia historia = db.historia.Find(id);
+            if (historia == null)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(historia);
+        }
+
+        [CustomAuthorize(UserRoles.medico)]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Firma(historia historia)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                string fileName = Path.GetFileName(file.FileName);
+                string ext = Path.GetExtension(fileName);
+                string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
+                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                {
+                    Firma objfirma = new Firma();
+                    //paciente.pac_firma = fileName;
+                    string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
+                    string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+                    file.SaveAs(path);
+                    objfirma.ResizeImage(path, path01, 200, 120);
+                    historia.his_firma = ConvertBytes(path01);
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(ext))
+                        if (Array.IndexOf(formatos, ext) <= 0)
+                            ModelState.AddModelError("ext", "Extensión no Válida");
+                    //else if (String.IsNullOrEmpty(fileName))
+                    //    ModelState.AddModelError("ext", "Debe Seleccionar un archivo");
+                    return View(historia);
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                db.Entry(historia).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
+            }
+            return View(historia);
+        }
         //
         // GET: /Historia/Delete/5
         [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
@@ -418,12 +470,18 @@ namespace kinnemed05.Controllers
                 string strInmunizacion = "Select * from view_inmunizacion where inm_paciente=" + historia.his_paciente;
                 SqlDataAdapter daInmunizacion = new SqlDataAdapter(strInmunizacion, sqlcon);
                 daInmunizacion.Fill(dsinmunizacion, "view_inmunizacion");
+                //concepto
+                dsConcepto dsconcepto = new dsConcepto();
+                string strConcepto = "Select * from concepto where con_id="+historia.his_id;
+                SqlDataAdapter daConcepto = new SqlDataAdapter(strConcepto, sqlcon);
+                daConcepto.Fill(dsconcepto,"concepto");
 
                 rp.Subreports["RptHistorico.rpt"].SetDataSource(dshistorico);
                 rp.Subreports["RptOcupacional.rpt"].SetDataSource(dsocupacional);
                 rp.Subreports["RptRiesgos.rpt"].SetDataSource(dsriesgos);
                 rp.Subreports["RptDiagnostico.rpt"].SetDataSource(dsdiagnostico);
                 rp.Subreports["RptInmunizacion.rpt"].SetDataSource(dsinmunizacion);
+                rp.Subreports["RptConcepto.rpt"].SetDataSource(dsconcepto);
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
                 return File(stream, "application/pdf", "Reporte.pdf");
@@ -434,6 +492,33 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message + ex.InnerException });
             }
 
+        }
+
+        public ActionResult Reposo(int id) {
+            try
+            {
+                dsReposo dsReposo = new dsReposo();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                SqlConnection sqlcon = new SqlConnection(conn);
+                //historia historia = db.historia.Find(id);
+                string strReposo = "Select * from view_reposo where his_id=" + id;
+                SqlDataAdapter daReposo = new SqlDataAdapter(strReposo, sqlcon);
+                daReposo.Fill(dsReposo, "view_reposo");
+                RptReposo rp = new RptReposo();
+                string reportPath = Server.MapPath("~/Reports/RptReposo.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dsReposo);
+                rp.SetParameterValue("fecha", get_fecha());
+                
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Certificado.pdf");
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message + ex.InnerException });
+            }
         }
 
 
@@ -616,6 +701,15 @@ namespace kinnemed05.Controllers
             }
             fecha = "Quito, " + dia + " de " + mes + " de " + anio;
             return fecha;
+        }
+
+        public Byte[] ConvertBytes(String ruta)
+        {
+            FileStream foto = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Byte[] arreglo = new Byte[foto.Length];
+            BinaryReader reader = new BinaryReader(foto);
+            arreglo = reader.ReadBytes(Convert.ToInt32(foto.Length));
+            return arreglo;
         }
 
         protected override void Dispose(bool disposing)

@@ -267,7 +267,7 @@
 
 
 
-                        <div id="div_download" class="form-group">
+                        @*<div id="div_download" class="form-group">
                             @Html.LabelFor(model => model.pac_firma, new { @class = "control-label", @for = "inputDefault" })
                             @if (Model.pac_firma != null)
                             {
@@ -281,14 +281,14 @@
                                 </div>
                             }
                             <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />
-                        </div>
-                        <div id="div_upload" class="form-group" style="display:none;">
+                        </div>*@
+                        @*<div id="div_upload" class="form-group" style="display:none;">
                             <label style="display:block;">Archivo</label>
                             <input type="file" name="Edit" id="Edit" style="display:inline">
                             <input type="button" id="btn_download" value="Mantener" class="btn btn-default" />
                             @Html.ValidationMessageFor(model => model.pac_firma)
                             @Html.ValidationMessage("ext")
-                        </div>
+                        </div>*@
 
                     </div>
                     <div class="col-lg-4" style="clear:both">

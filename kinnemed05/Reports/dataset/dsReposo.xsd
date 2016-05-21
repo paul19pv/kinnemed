@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReposo" targetNamespace="http://tempuri.org/dsReposo.xsd" xmlns:mstns="http://tempuri.org/dsReposo.xsd" xmlns="http://tempuri.org/dsReposo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_reposoTableAdapter" GeneratorDataComponentClassName="view_reposoTableAdapter" Name="view_reposo" UserDataComponentName="view_reposoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_reposo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, dia_subcie10, sub_descripcion, sub_cie10, cie_descripcion, rep_inicio, rep_fin, rep_tiempo, med_cedula, med_nombres, med_apellidos, med_codigo, med_firma FROM dbo.view_reposo</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="his_id" DataSetColumn="his_id" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
+              <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="dia_subcie10" DataSetColumn="dia_subcie10" />
+              <Mapping SourceColumn="sub_descripcion" DataSetColumn="sub_descripcion" />
+              <Mapping SourceColumn="sub_cie10" DataSetColumn="sub_cie10" />
+              <Mapping SourceColumn="cie_descripcion" DataSetColumn="cie_descripcion" />
+              <Mapping SourceColumn="rep_inicio" DataSetColumn="rep_inicio" />
+              <Mapping SourceColumn="rep_fin" DataSetColumn="rep_fin" />
+              <Mapping SourceColumn="rep_tiempo" DataSetColumn="rep_tiempo" />
+              <Mapping SourceColumn="med_cedula" DataSetColumn="med_cedula" />
+              <Mapping SourceColumn="med_nombres" DataSetColumn="med_nombres" />
+              <Mapping SourceColumn="med_apellidos" DataSetColumn="med_apellidos" />
+              <Mapping SourceColumn="med_codigo" DataSetColumn="med_codigo" />
+              <Mapping SourceColumn="med_firma" DataSetColumn="med_firma" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReposo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReposo" msprop:Generator_UserDSName="dsReposo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_reposo" msprop:Generator_TableClassName="view_reposoDataTable" msprop:Generator_TableVarName="tableview_reposo" msprop:Generator_TablePropName="view_reposo" msprop:Generator_RowDeletingName="view_reposoRowDeleting" msprop:Generator_RowChangingName="view_reposoRowChanging" msprop:Generator_RowEvHandlerName="view_reposoRowChangeEventHandler" msprop:Generator_RowDeletedName="view_reposoRowDeleted" msprop:Generator_UserTableName="view_reposo" msprop:Generator_RowChangedName="view_reposoRowChanged" msprop:Generator_RowEvArgName="view_reposoRowChangeEvent" msprop:Generator_RowClassName="view_reposoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="his_id" msprop:Generator_ColumnVarNameInTable="columnhis_id" msprop:Generator_ColumnPropNameInRow="his_id" msprop:Generator_ColumnPropNameInTable="his_idColumn" msprop:Generator_UserColumnName="his_id" type="xs:int" />
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dia_subcie10" msprop:Generator_ColumnVarNameInTable="columndia_subcie10" msprop:Generator_ColumnPropNameInRow="dia_subcie10" msprop:Generator_ColumnPropNameInTable="dia_subcie10Column" msprop:Generator_UserColumnName="dia_subcie10" type="xs:int" />
+              <xs:element name="sub_descripcion" msprop:Generator_ColumnVarNameInTable="columnsub_descripcion" msprop:Generator_ColumnPropNameInRow="sub_descripcion" msprop:Generator_ColumnPropNameInTable="sub_descripcionColumn" msprop:Generator_UserColumnName="sub_descripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="350" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sub_cie10" msprop:Generator_ColumnVarNameInTable="columnsub_cie10" msprop:Generator_ColumnPropNameInRow="sub_cie10" msprop:Generator_ColumnPropNameInTable="sub_cie10Column" msprop:Generator_UserColumnName="sub_cie10" type="xs:int" />
+              <xs:element name="cie_descripcion" msprop:Generator_ColumnVarNameInTable="columncie_descripcion" msprop:Generator_ColumnPropNameInRow="cie_descripcion" msprop:Generator_ColumnPropNameInTable="cie_descripcionColumn" msprop:Generator_UserColumnName="cie_descripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rep_inicio" msprop:Generator_ColumnVarNameInTable="columnrep_inicio" msprop:Generator_ColumnPropNameInRow="rep_inicio" msprop:Generator_ColumnPropNameInTable="rep_inicioColumn" msprop:Generator_UserColumnName="rep_inicio">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rep_fin" msprop:Generator_ColumnVarNameInTable="columnrep_fin" msprop:Generator_ColumnPropNameInRow="rep_fin" msprop:Generator_ColumnPropNameInTable="rep_finColumn" msprop:Generator_UserColumnName="rep_fin">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rep_tiempo" msprop:Generator_ColumnVarNameInTable="columnrep_tiempo" msprop:Generator_ColumnPropNameInRow="rep_tiempo" msprop:Generator_ColumnPropNameInTable="rep_tiempoColumn" msprop:Generator_UserColumnName="rep_tiempo" type="xs:int" />
+              <xs:element name="med_cedula" msprop:Generator_ColumnVarNameInTable="columnmed_cedula" msprop:Generator_ColumnPropNameInRow="med_cedula" msprop:Generator_ColumnPropNameInTable="med_cedulaColumn" msprop:Generator_UserColumnName="med_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="med_nombres" msprop:Generator_ColumnVarNameInTable="columnmed_nombres" msprop:Generator_ColumnPropNameInRow="med_nombres" msprop:Generator_ColumnPropNameInTable="med_nombresColumn" msprop:Generator_UserColumnName="med_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="med_apellidos" msprop:Generator_ColumnVarNameInTable="columnmed_apellidos" msprop:Generator_ColumnPropNameInRow="med_apellidos" msprop:Generator_ColumnPropNameInTable="med_apellidosColumn" msprop:Generator_UserColumnName="med_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="med_codigo" msprop:Generator_ColumnVarNameInTable="columnmed_codigo" msprop:Generator_ColumnPropNameInRow="med_codigo" msprop:Generator_ColumnPropNameInTable="med_codigoColumn" msprop:Generator_UserColumnName="med_codigo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="med_firma" msprop:Generator_ColumnVarNameInTable="columnmed_firma" msprop:Generator_ColumnPropNameInRow="med_firma" msprop:Generator_ColumnPropNameInTable="med_firmaColumn" msprop:Generator_UserColumnName="med_firma" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_reposo" />
+      <xs:field xpath="mstns:his_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

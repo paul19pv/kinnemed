@@ -319,6 +319,11 @@
       <End Role="registro" EntitySet="registro" />
       <End Role="prueba" EntitySet="prueba" />
     </AssociationSet>
+    <EntitySet Name="reposo" EntityType="kinnemedModel.reposo" />
+    <AssociationSet Name="FK_reposo_historia" Association="kinnemedModel.FK_reposo_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="reposo" EntitySet="reposo" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="area">
     <Key>
@@ -778,6 +783,7 @@
     <NavigationProperty Name="concepto" Relationship="kinnemedModel.FK_concepto_historia" FromRole="historia" ToRole="concepto" />
     <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_historia_medico" FromRole="historia" ToRole="medico" />
     <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_historia_paciente" FromRole="historia" ToRole="paciente" />
+    <NavigationProperty Name="reposo" Relationship="kinnemedModel.FK_reposo_historia" FromRole="historia" ToRole="reposo" />
   </EntityType>
   <Association Name="FK_examen_area">
     <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
@@ -1530,6 +1536,30 @@
       </Principal>
       <Dependent Role="prueba">
         <PropertyRef Name="pru_registro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="reposo">
+    <Key>
+      <PropertyRef Name="rep_id" />
+    </Key>
+    <Property Name="rep_id" Type="Int32" Nullable="false" />
+    <Property Name="rep_inicio" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="rep_fin" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="rep_tiempo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_reposo_historia" FromRole="reposo" ToRole="historia" />
+  </EntityType>
+  <Association Name="FK_reposo_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.reposo" Role="reposo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="reposo">
+        <PropertyRef Name="rep_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -54,8 +54,8 @@
                         @Html.DisplayFor(modelItem => item.reg_fecha)
                     </td>
                     <td>
-                        @Html.ActionLink("Resultados", "Details", "Prueba", new { reg_id = item.reg_id }, new { @class = "iconb icon-table", @title = "Resultados", @target="_blank" })
-                        @Html.ActionLink("Reporte", "Reporte", "Historia",new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Normal", @target = "_blank" })
+                        @*@Html.ActionLink("Resultados", "Details", "Prueba", new { reg_id = item.reg_id }, new { @class = "iconb icon-table", @title = "Resultados", @target="_blank" })*@
+                        @Html.ActionLink("Reporte", "Reporte", "Registro",new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Normal", @target = "_blank" })
                     </td>
                 </tr>
             }

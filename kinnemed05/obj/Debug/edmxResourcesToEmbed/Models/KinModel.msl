@@ -416,21 +416,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="historia">
-      <EntityTypeMapping TypeName="kinnemedModel.historia">
-        <MappingFragment StoreEntitySet="historia">
-          <ScalarProperty Name="his_medico" ColumnName="his_medico" />
-          <ScalarProperty Name="his_numero" ColumnName="his_numero" />
-          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
-          <ScalarProperty Name="his_tipo" ColumnName="his_tipo" />
-          <ScalarProperty Name="his_observacion" ColumnName="his_observacion" />
-          <ScalarProperty Name="his_problema" ColumnName="his_problema" />
-          <ScalarProperty Name="his_motivo" ColumnName="his_motivo" />
-          <ScalarProperty Name="his_paciente" ColumnName="his_paciente" />
-          <ScalarProperty Name="his_id" ColumnName="his_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="registro">
       <EntityTypeMapping TypeName="kinnemedModel.registro">
         <MappingFragment StoreEntitySet="registro">
@@ -595,6 +580,32 @@
           <ScalarProperty Name="pru_registro" ColumnName="pru_registro" />
           <ScalarProperty Name="pru_examen" ColumnName="pru_examen" />
           <ScalarProperty Name="pru_id" ColumnName="pru_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reposo">
+      <EntityTypeMapping TypeName="kinnemedModel.reposo">
+        <MappingFragment StoreEntitySet="reposo">
+          <ScalarProperty Name="rep_tiempo" ColumnName="rep_tiempo" />
+          <ScalarProperty Name="rep_fin" ColumnName="rep_fin" />
+          <ScalarProperty Name="rep_inicio" ColumnName="rep_inicio" />
+          <ScalarProperty Name="rep_id" ColumnName="rep_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="historia">
+      <EntityTypeMapping TypeName="kinnemedModel.historia">
+        <MappingFragment StoreEntitySet="historia">
+          <ScalarProperty Name="his_firma" ColumnName="his_firma" />
+          <ScalarProperty Name="his_medico" ColumnName="his_medico" />
+          <ScalarProperty Name="his_numero" ColumnName="his_numero" />
+          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
+          <ScalarProperty Name="his_tipo" ColumnName="his_tipo" />
+          <ScalarProperty Name="his_observacion" ColumnName="his_observacion" />
+          <ScalarProperty Name="his_problema" ColumnName="his_problema" />
+          <ScalarProperty Name="his_motivo" ColumnName="his_motivo" />
+          <ScalarProperty Name="his_paciente" ColumnName="his_paciente" />
+          <ScalarProperty Name="his_id" ColumnName="his_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

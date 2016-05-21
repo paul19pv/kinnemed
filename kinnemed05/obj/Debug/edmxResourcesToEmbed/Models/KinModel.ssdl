@@ -234,6 +234,7 @@
     <Property Name="his_fecha" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="his_numero" Type="int" Nullable="false" />
     <Property Name="his_medico" Type="int" Nullable="false" />
+    <Property Name="his_firma" Type="image" />
   </EntityType>
   <EntityType Name="inmunizacion">
     <Key>
@@ -448,6 +449,15 @@
     <Property Name="reg_medico" Type="int" Nullable="false" />
     <Property Name="reg_estado" Type="bit" />
     <Property Name="reg_laboratorista" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reposo">
+    <Key>
+      <PropertyRef Name="rep_id" />
+    </Key>
+    <Property Name="rep_id" Type="int" Nullable="false" />
+    <Property Name="rep_inicio" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="rep_fin" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="rep_tiempo" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="revision">
     <Key>
@@ -1127,6 +1137,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_reposo_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reposo" Type="Self.reposo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="reposo">
+        <PropertyRef Name="rep_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_revision_historia">
     <End Role="historia" Type="Self.historia" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1246,6 +1270,7 @@
     <EntitySet Name="prueba" EntityType="Self.prueba" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rayos" EntityType="Self.rayos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="registro" EntityType="Self.registro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reposo" EntityType="Self.reposo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="revision" EntityType="Self.revision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="riesgo" EntityType="Self.riesgo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
@@ -1417,6 +1442,10 @@
     <AssociationSet Name="FK_registro_paciente" Association="Self.FK_registro_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reposo_historia" Association="Self.FK_reposo_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="reposo" EntitySet="reposo" />
     </AssociationSet>
     <AssociationSet Name="FK_revision_historia" Association="Self.FK_revision_historia">
       <End Role="historia" EntitySet="historia" />

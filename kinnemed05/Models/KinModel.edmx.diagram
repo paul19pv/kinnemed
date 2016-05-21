@@ -42,20 +42,12 @@
         <AssociationConnector Association="kinnemedModel.FK_laboral_ocupacional" />
         <AssociationConnector Association="kinnemedModel.FK_laboral_riesgo" />
         <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="10.5" PointY="11.625" />
-        <EntityTypeShape EntityType="kinnemedModel.historia" Width="1.5" PointX="7.5" PointY="42.125" />
         <AssociationConnector Association="kinnemedModel.FK_examen_area" />
         <AssociationConnector Association="kinnemedModel.FK_control_examen" />
-        <AssociationConnector Association="kinnemedModel.FK_diagnostico_historia" />
         <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
-        <AssociationConnector Association="kinnemedModel.FK_fisico_historia" />
-        <AssociationConnector Association="kinnemedModel.FK_plan_historia" />
-        <AssociationConnector Association="kinnemedModel.FK_revision_historia" />
-        <AssociationConnector Association="kinnemedModel.FK_signos_historia" />
-        <AssociationConnector Association="kinnemedModel.FK_subsecuente_historia" />
         <EntityTypeShape EntityType="kinnemedModel.registro" Width="1.5" PointX="10.5" PointY="35.875" />
         <EntityTypeShape EntityType="kinnemedModel.oftalmologia" Width="1.5" PointX="7.5" PointY="91.75" />
         <EntityTypeShape EntityType="kinnemedModel.concepto" Width="1.5" PointX="9.75" PointY="29.125" />
-        <AssociationConnector Association="kinnemedModel.FK_concepto_historia" />
         <EntityTypeShape EntityType="kinnemedModel.ginecologico" Width="1.5" PointX="7.5" PointY="82.375" />
         <EntityTypeShape EntityType="kinnemedModel.trabajador" Width="1.5" PointX="5.25" PointY="33.875" />
         <AssociationConnector Association="kinnemedModel.FK_trabajador_empresa" />
@@ -71,8 +63,6 @@
         <AssociationConnector Association="kinnemedModel.FK_espirometria_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_familiar_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_ginecologico_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_historia_medico" />
-        <AssociationConnector Association="kinnemedModel.FK_historia_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_inmunizacion_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_registro_laboratorista" />
         <AssociationConnector Association="kinnemedModel.FK_oftalmologia_medico" />
@@ -94,6 +84,18 @@
         <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="12.75" PointY="21.125" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_registro" />
+        <EntityTypeShape EntityType="kinnemedModel.reposo" Width="1.5" PointX="9.75" PointY="32.5" />
+        <EntityTypeShape EntityType="kinnemedModel.historia" Width="1.5" PointX="13.5" PointY="32.875" />
+        <AssociationConnector Association="kinnemedModel.FK_concepto_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_diagnostico_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_fisico_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_historia_medico" />
+        <AssociationConnector Association="kinnemedModel.FK_historia_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_plan_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_reposo_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_revision_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_signos_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_subsecuente_historia" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -145,6 +145,7 @@ namespace kinnemed05.Controllers
             List<SelectListItem> list_ciclo = new List<SelectListItem>();
             list_ciclo.Add(new SelectListItem { Text = "REGULAR", Value = "REGULAR" });
             list_ciclo.Add(new SelectListItem { Text = "IRREGULAR", Value = "IRREGULAR" });
+            list_ciclo.Add(new SelectListItem { Text = "MENOPAUSIA", Value = "MENOPAUSIA" });
             SelectList ciclos;
             if (ciclo == "")
                 ciclos = new SelectList(list_ciclo, "Value", "Text");

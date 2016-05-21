@@ -88,7 +88,7 @@ namespace kinnemed05.Controllers
                 set_codigo(prueba.pru_registro, prueba.pru_examen);
                 if (prueba.examen.exa_tipo == "PLANTILLA")
                 {
-                    CreatePrueba(prueba.examen.exa_nombre, prueba.pru_registro);
+                    CreatePrueba(prueba.pru_examen, prueba.pru_registro);
                 }
                 else {
                     CreateObservacion(prueba.pru_registro,prueba.pru_examen);
@@ -159,28 +159,37 @@ namespace kinnemed05.Controllers
         {
             prueba prueba = db.prueba.Find(id);
             if (prueba.examen.exa_tipo == "PLANTILLA") {
-                DeleteGrupo(prueba.examen.exa_nombre, prueba.pru_registro);
+                DeleteGrupo(prueba.pru_examen, prueba.pru_registro);
             }
             db.prueba.Remove(prueba);
             db.SaveChanges();
             return RedirectToAction("Index", new { id=prueba.pru_registro});
         }
 
-        private void DeleteGrupo(string pru_nombre, int reg_id)
+        private void DeleteGrupo(int exa_id, int reg_id)
         {
-            int are_id = db.area.Where(a => a.are_nombre == pru_nombre).First().are_id;
+            examen examen = db.examen.Find(exa_id);
+            int are_id = db.area.Where(a => a.are_nombre == examen.exa_nombre).First().are_id;
             List<examen> list_exa = new List<examen>();
             list_exa = db.examen.Where(e => e.exa_area == are_id).ToList();
-            foreach (var item in list_exa) {
-                prueba prueba = db.prueba.Where(p=>p.pru_examen==item.exa_id && p.pru_registro==reg_id).First();
-                db.prueba.Remove(prueba);
-            }
-            db.SaveChanges();
+                foreach (var item in list_exa)
+                {
+                    var consulta = db.prueba.Where(p => p.pru_examen == item.exa_id && p.pru_registro == reg_id);
+                    if (consulta.Any()) {
+                        prueba prueba = db.prueba.Where(p => p.pru_examen == item.exa_id && p.pru_registro == reg_id).First();
+                        db.prueba.Remove(prueba);
+                    }
+                    
+                }
+                db.SaveChanges();
+            
+            
         }
 
         
-        private void CreatePrueba(string pru_nombre, int reg_id) {
-            int are_id = db.area.Where(a => a.are_nombre == pru_nombre).First().are_id;
+        private void CreatePrueba(int exa_id, int reg_id) {
+            examen examen = db.examen.Find(exa_id);
+            int are_id = db.area.Where(a => a.are_nombre == examen.exa_nombre).First().are_id;
             List<examen> list_exa = new List<examen>();
             barcode barcode = new barcode();
             list_exa = db.examen.Where(e => e.exa_area == are_id).ToList();
@@ -191,7 +200,7 @@ namespace kinnemed05.Controllers
                 prueba.pru_resultado = item.exa_inicial;
                 //prueba.pru_codigo = GetCodigo(reg_id, item.exa_id);
                 //prueba.pru_imagen = barcode.GenerarCodigo(prueba.pru_codigo);
-                set_codigo(prueba.pru_registro, prueba.examen.exa_area);
+                set_codigo(prueba.pru_registro, prueba.pru_examen);
                 db.prueba.Add(prueba);
                 //db.SaveChanges();
             }

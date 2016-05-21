@@ -147,7 +147,6 @@
       <End Role="laboral" EntitySet="laboral" />
     </AssociationSet>
     <EntitySet Name="examen" EntityType="kinnemedModel.examen" />
-    <EntitySet Name="historia" EntityType="kinnemedModel.historia" />
     <AssociationSet Name="FK_examen_area" Association="kinnemedModel.FK_examen_area">
       <End Role="area" EntitySet="area" />
       <End Role="examen" EntitySet="examen" />
@@ -156,41 +155,13 @@
       <End Role="examen" EntitySet="examen" />
       <End Role="control" EntitySet="control" />
     </AssociationSet>
-    <AssociationSet Name="FK_diagnostico_historia" Association="kinnemedModel.FK_diagnostico_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="diagnostico" EntitySet="diagnostico" />
-    </AssociationSet>
     <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
       <End Role="examen" EntitySet="examen" />
       <End Role="valores" EntitySet="valores" />
     </AssociationSet>
-    <AssociationSet Name="FK_fisico_historia" Association="kinnemedModel.FK_fisico_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="fisico" EntitySet="fisico" />
-    </AssociationSet>
-    <AssociationSet Name="FK_plan_historia" Association="kinnemedModel.FK_plan_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="plan" EntitySet="plan" />
-    </AssociationSet>
-    <AssociationSet Name="FK_revision_historia" Association="kinnemedModel.FK_revision_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="revision" EntitySet="revision" />
-    </AssociationSet>
-    <AssociationSet Name="FK_signos_historia" Association="kinnemedModel.FK_signos_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="signos" EntitySet="signos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_subsecuente_historia" Association="kinnemedModel.FK_subsecuente_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="subsecuente" EntitySet="subsecuente" />
-    </AssociationSet>
     <EntitySet Name="registro" EntityType="kinnemedModel.registro" />
     <EntitySet Name="oftalmologia" EntityType="kinnemedModel.oftalmologia" />
     <EntitySet Name="concepto" EntityType="kinnemedModel.concepto" />
-    <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="concepto" EntitySet="concepto" />
-    </AssociationSet>
     <EntitySet Name="ginecologico" EntityType="kinnemedModel.ginecologico" />
     <EntitySet Name="trabajador" EntityType="kinnemedModel.trabajador" />
     <AssociationSet Name="FK_trabajador_empresa" Association="kinnemedModel.FK_trabajador_empresa">
@@ -235,14 +206,6 @@
     <AssociationSet Name="FK_ginecologico_paciente" Association="kinnemedModel.FK_ginecologico_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ginecologico" EntitySet="ginecologico" />
-    </AssociationSet>
-    <AssociationSet Name="FK_historia_medico" Association="kinnemedModel.FK_historia_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="historia" EntitySet="historia" />
-    </AssociationSet>
-    <AssociationSet Name="FK_historia_paciente" Association="kinnemedModel.FK_historia_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="historia" EntitySet="historia" />
     </AssociationSet>
     <AssociationSet Name="FK_inmunizacion_paciente" Association="kinnemedModel.FK_inmunizacion_paciente">
       <End Role="paciente" EntitySet="paciente" />
@@ -318,6 +281,48 @@
     <AssociationSet Name="FK_prueba_registro" Association="kinnemedModel.FK_prueba_registro">
       <End Role="registro" EntitySet="registro" />
       <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <EntitySet Name="reposo" EntityType="kinnemedModel.reposo" />
+    <EntitySet Name="historia" EntityType="kinnemedModel.historia" />
+    <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="concepto" EntitySet="concepto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_diagnostico_historia" Association="kinnemedModel.FK_diagnostico_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_fisico_historia" Association="kinnemedModel.FK_fisico_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="fisico" EntitySet="fisico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_historia_medico" Association="kinnemedModel.FK_historia_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="historia" EntitySet="historia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_historia_paciente" Association="kinnemedModel.FK_historia_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="historia" EntitySet="historia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_plan_historia" Association="kinnemedModel.FK_plan_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="plan" EntitySet="plan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reposo_historia" Association="kinnemedModel.FK_reposo_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="reposo" EntitySet="reposo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_revision_historia" Association="kinnemedModel.FK_revision_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="revision" EntitySet="revision" />
+    </AssociationSet>
+    <AssociationSet Name="FK_signos_historia" Association="kinnemedModel.FK_signos_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="signos" EntitySet="signos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_subsecuente_historia" Association="kinnemedModel.FK_subsecuente_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="subsecuente" EntitySet="subsecuente" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="area">
@@ -756,29 +761,6 @@
     <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_examen" FromRole="examen" ToRole="orden" />
     <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
   </EntityType>
-  <EntityType Name="historia">
-    <Key>
-      <PropertyRef Name="his_id" />
-    </Key>
-    <Property Name="his_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="his_paciente" Type="Int32" Nullable="false" />
-    <Property Name="his_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="his_problema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="his_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="his_tipo" Type="Int32" Nullable="false" />
-    <Property Name="his_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="his_numero" Type="Int32" Nullable="false" />
-    <Property Name="his_medico" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="diagnostico" Relationship="kinnemedModel.FK_diagnostico_historia" FromRole="historia" ToRole="diagnostico" />
-    <NavigationProperty Name="fisico" Relationship="kinnemedModel.FK_fisico_historia" FromRole="historia" ToRole="fisico" />
-    <NavigationProperty Name="plan" Relationship="kinnemedModel.FK_plan_historia" FromRole="historia" ToRole="plan" />
-    <NavigationProperty Name="revision" Relationship="kinnemedModel.FK_revision_historia" FromRole="historia" ToRole="revision" />
-    <NavigationProperty Name="signos" Relationship="kinnemedModel.FK_signos_historia" FromRole="historia" ToRole="signos" />
-    <NavigationProperty Name="subsecuente" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="historia" ToRole="subsecuente" />
-    <NavigationProperty Name="concepto" Relationship="kinnemedModel.FK_concepto_historia" FromRole="historia" ToRole="concepto" />
-    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_historia_medico" FromRole="historia" ToRole="medico" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_historia_paciente" FromRole="historia" ToRole="paciente" />
-  </EntityType>
   <Association Name="FK_examen_area">
     <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -807,20 +789,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_diagnostico_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.diagnostico" Role="diagnostico" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="diagnostico">
-        <PropertyRef Name="dia_historia" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_valores_examen">
     <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -832,76 +800,6 @@
       </Principal>
       <Dependent Role="valores">
         <PropertyRef Name="val_examen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_fisico_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.fisico" Role="fisico" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="fisico">
-        <PropertyRef Name="fis_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_plan_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.plan" Role="plan" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="plan">
-        <PropertyRef Name="pla_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_revision_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.revision" Role="revision" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="revision">
-        <PropertyRef Name="rev_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_signos_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.signos" Role="signos" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="signos">
-        <PropertyRef Name="sig_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_subsecuente_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.subsecuente" Role="subsecuente" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="subsecuente">
-        <PropertyRef Name="sub_historia" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -957,20 +855,6 @@
     <Property Name="con_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_concepto_historia" FromRole="concepto" ToRole="historia" />
   </EntityType>
-  <Association Name="FK_concepto_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.concepto" Role="concepto" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="concepto">
-        <PropertyRef Name="con_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="ginecologico">
     <Key>
       <PropertyRef Name="gin_id" />
@@ -1045,10 +929,10 @@
     <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_medico" FromRole="medico" ToRole="audiometria" />
     <NavigationProperty Name="especialidad" Relationship="kinnemedModel.FK_medico_especialidad" FromRole="medico" ToRole="especialidad" />
     <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_medico" FromRole="medico" ToRole="espirometria" />
-    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_medico" FromRole="medico" ToRole="historia" />
     <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_medico" FromRole="medico" ToRole="oftalmologia" />
     <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_medico" FromRole="medico" ToRole="rayos" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_medico" FromRole="medico" ToRole="registro" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_medico" FromRole="medico" ToRole="historia" />
   </EntityType>
   <EntityType Name="paciente">
     <Key>
@@ -1082,7 +966,6 @@
     <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="paciente" ToRole="espirometria" />
     <NavigationProperty Name="familiar" Relationship="kinnemedModel.FK_familiar_paciente" FromRole="paciente" ToRole="familiar" />
     <NavigationProperty Name="ginecologico" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="paciente" ToRole="ginecologico" />
-    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_paciente" FromRole="paciente" ToRole="historia" />
     <NavigationProperty Name="inmunizacion" Relationship="kinnemedModel.FK_inmunizacion_paciente" FromRole="paciente" ToRole="inmunizacion" />
     <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="paciente" ToRole="ocupacional" />
     <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="paciente" ToRole="oftalmologia" />
@@ -1092,6 +975,7 @@
     <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_paciente" FromRole="paciente" ToRole="registro" />
     <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_paciente" FromRole="paciente" ToRole="orden" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_paciente" FromRole="paciente" ToRole="historia" />
   </EntityType>
   <Association Name="FK_audiometria_medico">
     <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
@@ -1216,34 +1100,6 @@
       </Principal>
       <Dependent Role="ginecologico">
         <PropertyRef Name="gin_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_historia_medico">
-    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="historia">
-        <PropertyRef Name="his_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_historia_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="historia">
-        <PropertyRef Name="his_paciente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1530,6 +1386,181 @@
       </Principal>
       <Dependent Role="prueba">
         <PropertyRef Name="pru_registro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="reposo">
+    <Key>
+      <PropertyRef Name="rep_id" />
+    </Key>
+    <Property Name="rep_id" Type="Int32" Nullable="false" />
+    <Property Name="rep_inicio" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="rep_fin" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="rep_tiempo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_reposo_historia" FromRole="reposo" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="historia">
+    <Key>
+      <PropertyRef Name="his_id" />
+    </Key>
+    <Property Name="his_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="his_paciente" Type="Int32" Nullable="false" />
+    <Property Name="his_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="his_problema" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="his_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="his_tipo" Type="Int32" Nullable="false" />
+    <Property Name="his_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="his_numero" Type="Int32" Nullable="false" />
+    <Property Name="his_medico" Type="Int32" Nullable="false" />
+    <Property Name="his_firma" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="concepto" Relationship="kinnemedModel.FK_concepto_historia" FromRole="historia" ToRole="concepto" />
+    <NavigationProperty Name="diagnostico" Relationship="kinnemedModel.FK_diagnostico_historia" FromRole="historia" ToRole="diagnostico" />
+    <NavigationProperty Name="fisico" Relationship="kinnemedModel.FK_fisico_historia" FromRole="historia" ToRole="fisico" />
+    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_historia_medico" FromRole="historia" ToRole="medico" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_historia_paciente" FromRole="historia" ToRole="paciente" />
+    <NavigationProperty Name="plan" Relationship="kinnemedModel.FK_plan_historia" FromRole="historia" ToRole="plan" />
+    <NavigationProperty Name="reposo" Relationship="kinnemedModel.FK_reposo_historia" FromRole="historia" ToRole="reposo" />
+    <NavigationProperty Name="revision" Relationship="kinnemedModel.FK_revision_historia" FromRole="historia" ToRole="revision" />
+    <NavigationProperty Name="signos" Relationship="kinnemedModel.FK_signos_historia" FromRole="historia" ToRole="signos" />
+    <NavigationProperty Name="subsecuente" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="historia" ToRole="subsecuente" />
+  </EntityType>
+  <Association Name="FK_concepto_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.concepto" Role="concepto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="concepto">
+        <PropertyRef Name="con_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_diagnostico_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.diagnostico" Role="diagnostico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="diagnostico">
+        <PropertyRef Name="dia_historia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_fisico_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.fisico" Role="fisico" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="fisico">
+        <PropertyRef Name="fis_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_historia_medico">
+    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="historia">
+        <PropertyRef Name="his_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_historia_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="historia">
+        <PropertyRef Name="his_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_plan_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.plan" Role="plan" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="plan">
+        <PropertyRef Name="pla_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reposo_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.reposo" Role="reposo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="reposo">
+        <PropertyRef Name="rep_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_revision_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.revision" Role="revision" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="revision">
+        <PropertyRef Name="rev_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_signos_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.signos" Role="signos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="signos">
+        <PropertyRef Name="sig_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_subsecuente_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.subsecuente" Role="subsecuente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="subsecuente">
+        <PropertyRef Name="sub_historia" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

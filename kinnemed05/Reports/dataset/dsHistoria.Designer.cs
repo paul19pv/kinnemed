@@ -345,26 +345,6 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnper_otr_txt;
             
-            private global::System.Data.DataColumn columngin_fum;
-            
-            private global::System.Data.DataColumn columngin_ciclos;
-            
-            private global::System.Data.DataColumn columngin_gestas;
-            
-            private global::System.Data.DataColumn columngin_partos;
-            
-            private global::System.Data.DataColumn columngin_cesarea;
-            
-            private global::System.Data.DataColumn columngin_abortos;
-            
-            private global::System.Data.DataColumn columngin_hijos;
-            
-            private global::System.Data.DataColumn columngin_planificacion;
-            
-            private global::System.Data.DataColumn columngin_pla_txt;
-            
-            private global::System.Data.DataColumn columngin_paptest;
-            
             private global::System.Data.DataColumn columnfis_pie_txt;
             
             private global::System.Data.DataColumn columnfis_cab_txt;
@@ -441,12 +421,6 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnsig_masamuscular;
             
-            private global::System.Data.DataColumn columncon_resultado;
-            
-            private global::System.Data.DataColumn columncon_observacion;
-            
-            private global::System.Data.DataColumn columncon_valor;
-            
             private global::System.Data.DataColumn columnpla_texto1;
             
             private global::System.Data.DataColumn columnpla_texto2;
@@ -458,6 +432,20 @@ namespace kinnemed05.Reports.dataset {
             private global::System.Data.DataColumn columnhis_fecha;
             
             private global::System.Data.DataColumn columnhis_tipo;
+            
+            private global::System.Data.DataColumn columnhis_firma;
+            
+            private global::System.Data.DataColumn columnmed_firma;
+            
+            private global::System.Data.DataColumn columnmed_nombres;
+            
+            private global::System.Data.DataColumn columnmed_apellidos;
+            
+            private global::System.Data.DataColumn columnmed_codigo;
+            
+            private global::System.Data.DataColumn columnhis_numero;
+            
+            private global::System.Data.DataColumn columnmed_cedula;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -753,86 +741,6 @@ namespace kinnemed05.Reports.dataset {
             public global::System.Data.DataColumn per_otr_txtColumn {
                 get {
                     return this.columnper_otr_txt;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_fumColumn {
-                get {
-                    return this.columngin_fum;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_ciclosColumn {
-                get {
-                    return this.columngin_ciclos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_gestasColumn {
-                get {
-                    return this.columngin_gestas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_partosColumn {
-                get {
-                    return this.columngin_partos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_cesareaColumn {
-                get {
-                    return this.columngin_cesarea;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_abortosColumn {
-                get {
-                    return this.columngin_abortos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_hijosColumn {
-                get {
-                    return this.columngin_hijos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_planificacionColumn {
-                get {
-                    return this.columngin_planificacion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_pla_txtColumn {
-                get {
-                    return this.columngin_pla_txt;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn gin_paptestColumn {
-                get {
-                    return this.columngin_paptest;
                 }
             }
             
@@ -1142,30 +1050,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn con_resultadoColumn {
-                get {
-                    return this.columncon_resultado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn con_observacionColumn {
-                get {
-                    return this.columncon_observacion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn con_valorColumn {
-                get {
-                    return this.columncon_valor;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn pla_texto1Column {
                 get {
                     return this.columnpla_texto1;
@@ -1209,6 +1093,62 @@ namespace kinnemed05.Reports.dataset {
             public global::System.Data.DataColumn his_tipoColumn {
                 get {
                     return this.columnhis_tipo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn his_firmaColumn {
+                get {
+                    return this.columnhis_firma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn med_firmaColumn {
+                get {
+                    return this.columnmed_firma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn med_nombresColumn {
+                get {
+                    return this.columnmed_nombres;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn med_apellidosColumn {
+                get {
+                    return this.columnmed_apellidos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn med_codigoColumn {
+                get {
+                    return this.columnmed_codigo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn his_numeroColumn {
+                get {
+                    return this.columnhis_numero;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn med_cedulaColumn {
+                get {
+                    return this.columnmed_cedula;
                 }
             }
             
@@ -1283,16 +1223,6 @@ namespace kinnemed05.Reports.dataset {
                         string per_ale_txt, 
                         string per_vac_txt, 
                         string per_otr_txt, 
-                        string gin_fum, 
-                        string gin_ciclos, 
-                        int gin_gestas, 
-                        int gin_partos, 
-                        int gin_cesarea, 
-                        int gin_abortos, 
-                        int gin_hijos, 
-                        bool gin_planificacion, 
-                        string gin_pla_txt, 
-                        string gin_paptest, 
                         string fis_pie_txt, 
                         string fis_cab_txt, 
                         string fis_ojo_txt, 
@@ -1331,15 +1261,19 @@ namespace kinnemed05.Reports.dataset {
                         decimal sig_kilocalorias, 
                         string sig_edadpeso, 
                         decimal sig_masamuscular, 
-                        string con_resultado, 
-                        string con_observacion, 
-                        string con_valor, 
                         string pla_texto1, 
                         string pla_texto2, 
                         string his_problema, 
                         string his_motivo, 
                         string his_fecha, 
-                        int his_tipo) {
+                        int his_tipo, 
+                        byte[] his_firma, 
+                        byte[] med_firma, 
+                        string med_nombres, 
+                        string med_apellidos, 
+                        string med_codigo, 
+                        int his_numero, 
+                        string med_cedula) {
                 view_historiaRow rowview_historiaRow = ((view_historiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         his_id,
@@ -1375,16 +1309,6 @@ namespace kinnemed05.Reports.dataset {
                         per_ale_txt,
                         per_vac_txt,
                         per_otr_txt,
-                        gin_fum,
-                        gin_ciclos,
-                        gin_gestas,
-                        gin_partos,
-                        gin_cesarea,
-                        gin_abortos,
-                        gin_hijos,
-                        gin_planificacion,
-                        gin_pla_txt,
-                        gin_paptest,
                         fis_pie_txt,
                         fis_cab_txt,
                         fis_ojo_txt,
@@ -1423,15 +1347,19 @@ namespace kinnemed05.Reports.dataset {
                         sig_kilocalorias,
                         sig_edadpeso,
                         sig_masamuscular,
-                        con_resultado,
-                        con_observacion,
-                        con_valor,
                         pla_texto1,
                         pla_texto2,
                         his_problema,
                         his_motivo,
                         his_fecha,
-                        his_tipo};
+                        his_tipo,
+                        his_firma,
+                        med_firma,
+                        med_nombres,
+                        med_apellidos,
+                        med_codigo,
+                        his_numero,
+                        med_cedula};
                 rowview_historiaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_historiaRow);
                 return rowview_historiaRow;
@@ -1494,16 +1422,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnper_ale_txt = base.Columns["per_ale_txt"];
                 this.columnper_vac_txt = base.Columns["per_vac_txt"];
                 this.columnper_otr_txt = base.Columns["per_otr_txt"];
-                this.columngin_fum = base.Columns["gin_fum"];
-                this.columngin_ciclos = base.Columns["gin_ciclos"];
-                this.columngin_gestas = base.Columns["gin_gestas"];
-                this.columngin_partos = base.Columns["gin_partos"];
-                this.columngin_cesarea = base.Columns["gin_cesarea"];
-                this.columngin_abortos = base.Columns["gin_abortos"];
-                this.columngin_hijos = base.Columns["gin_hijos"];
-                this.columngin_planificacion = base.Columns["gin_planificacion"];
-                this.columngin_pla_txt = base.Columns["gin_pla_txt"];
-                this.columngin_paptest = base.Columns["gin_paptest"];
                 this.columnfis_pie_txt = base.Columns["fis_pie_txt"];
                 this.columnfis_cab_txt = base.Columns["fis_cab_txt"];
                 this.columnfis_ojo_txt = base.Columns["fis_ojo_txt"];
@@ -1542,15 +1460,19 @@ namespace kinnemed05.Reports.dataset {
                 this.columnsig_kilocalorias = base.Columns["sig_kilocalorias"];
                 this.columnsig_edadpeso = base.Columns["sig_edadpeso"];
                 this.columnsig_masamuscular = base.Columns["sig_masamuscular"];
-                this.columncon_resultado = base.Columns["con_resultado"];
-                this.columncon_observacion = base.Columns["con_observacion"];
-                this.columncon_valor = base.Columns["con_valor"];
                 this.columnpla_texto1 = base.Columns["pla_texto1"];
                 this.columnpla_texto2 = base.Columns["pla_texto2"];
                 this.columnhis_problema = base.Columns["his_problema"];
                 this.columnhis_motivo = base.Columns["his_motivo"];
                 this.columnhis_fecha = base.Columns["his_fecha"];
                 this.columnhis_tipo = base.Columns["his_tipo"];
+                this.columnhis_firma = base.Columns["his_firma"];
+                this.columnmed_firma = base.Columns["med_firma"];
+                this.columnmed_nombres = base.Columns["med_nombres"];
+                this.columnmed_apellidos = base.Columns["med_apellidos"];
+                this.columnmed_codigo = base.Columns["med_codigo"];
+                this.columnhis_numero = base.Columns["his_numero"];
+                this.columnmed_cedula = base.Columns["med_cedula"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1622,26 +1544,6 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnper_vac_txt);
                 this.columnper_otr_txt = new global::System.Data.DataColumn("per_otr_txt", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnper_otr_txt);
-                this.columngin_fum = new global::System.Data.DataColumn("gin_fum", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_fum);
-                this.columngin_ciclos = new global::System.Data.DataColumn("gin_ciclos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_ciclos);
-                this.columngin_gestas = new global::System.Data.DataColumn("gin_gestas", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_gestas);
-                this.columngin_partos = new global::System.Data.DataColumn("gin_partos", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_partos);
-                this.columngin_cesarea = new global::System.Data.DataColumn("gin_cesarea", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_cesarea);
-                this.columngin_abortos = new global::System.Data.DataColumn("gin_abortos", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_abortos);
-                this.columngin_hijos = new global::System.Data.DataColumn("gin_hijos", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_hijos);
-                this.columngin_planificacion = new global::System.Data.DataColumn("gin_planificacion", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_planificacion);
-                this.columngin_pla_txt = new global::System.Data.DataColumn("gin_pla_txt", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_pla_txt);
-                this.columngin_paptest = new global::System.Data.DataColumn("gin_paptest", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngin_paptest);
                 this.columnfis_pie_txt = new global::System.Data.DataColumn("fis_pie_txt", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfis_pie_txt);
                 this.columnfis_cab_txt = new global::System.Data.DataColumn("fis_cab_txt", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1718,12 +1620,6 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnsig_edadpeso);
                 this.columnsig_masamuscular = new global::System.Data.DataColumn("sig_masamuscular", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsig_masamuscular);
-                this.columncon_resultado = new global::System.Data.DataColumn("con_resultado", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncon_resultado);
-                this.columncon_observacion = new global::System.Data.DataColumn("con_observacion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncon_observacion);
-                this.columncon_valor = new global::System.Data.DataColumn("con_valor", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncon_valor);
                 this.columnpla_texto1 = new global::System.Data.DataColumn("pla_texto1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpla_texto1);
                 this.columnpla_texto2 = new global::System.Data.DataColumn("pla_texto2", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1736,6 +1632,20 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnhis_fecha);
                 this.columnhis_tipo = new global::System.Data.DataColumn("his_tipo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhis_tipo);
+                this.columnhis_firma = new global::System.Data.DataColumn("his_firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhis_firma);
+                this.columnmed_firma = new global::System.Data.DataColumn("med_firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmed_firma);
+                this.columnmed_nombres = new global::System.Data.DataColumn("med_nombres", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmed_nombres);
+                this.columnmed_apellidos = new global::System.Data.DataColumn("med_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmed_apellidos);
+                this.columnmed_codigo = new global::System.Data.DataColumn("med_codigo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmed_codigo);
+                this.columnhis_numero = new global::System.Data.DataColumn("his_numero", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhis_numero);
+                this.columnmed_cedula = new global::System.Data.DataColumn("med_cedula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmed_cedula);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnhis_id}, true));
                 this.columnhis_id.AllowDBNull = false;
@@ -1775,11 +1685,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnper_ale_txt.MaxLength = 2147483647;
                 this.columnper_vac_txt.MaxLength = 2147483647;
                 this.columnper_otr_txt.MaxLength = 2147483647;
-                this.columngin_fum.MaxLength = 10;
-                this.columngin_ciclos.MaxLength = 25;
-                this.columngin_planificacion.AllowDBNull = false;
-                this.columngin_pla_txt.MaxLength = 2147483647;
-                this.columngin_paptest.MaxLength = 10;
                 this.columnfis_pie_txt.MaxLength = 2147483647;
                 this.columnfis_cab_txt.MaxLength = 2147483647;
                 this.columnfis_ojo_txt.MaxLength = 2147483647;
@@ -1807,10 +1712,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnfis_neu_txt.MaxLength = 2147483647;
                 this.columnsig_presion.MaxLength = 25;
                 this.columnsig_edadpeso.MaxLength = 25;
-                this.columncon_resultado.AllowDBNull = false;
-                this.columncon_resultado.MaxLength = 50;
-                this.columncon_observacion.MaxLength = 2147483647;
-                this.columncon_valor.MaxLength = 50;
                 this.columnpla_texto1.AllowDBNull = false;
                 this.columnpla_texto1.MaxLength = 2147483647;
                 this.columnpla_texto2.AllowDBNull = false;
@@ -1820,6 +1721,14 @@ namespace kinnemed05.Reports.dataset {
                 this.columnhis_fecha.AllowDBNull = false;
                 this.columnhis_fecha.MaxLength = 10;
                 this.columnhis_tipo.AllowDBNull = false;
+                this.columnmed_nombres.AllowDBNull = false;
+                this.columnmed_nombres.MaxLength = 150;
+                this.columnmed_apellidos.AllowDBNull = false;
+                this.columnmed_apellidos.MaxLength = 150;
+                this.columnmed_codigo.MaxLength = 50;
+                this.columnhis_numero.AllowDBNull = false;
+                this.columnmed_cedula.AllowDBNull = false;
+                this.columnmed_cedula.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2465,161 +2374,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string gin_fum {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.gin_fumColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_fum\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_fumColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string gin_ciclos {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.gin_ciclosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_ciclos\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_ciclosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int gin_gestas {
-                get {
-                    try {
-                        return ((int)(this[this.tableview_historia.gin_gestasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_gestas\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_gestasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int gin_partos {
-                get {
-                    try {
-                        return ((int)(this[this.tableview_historia.gin_partosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_partos\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_partosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int gin_cesarea {
-                get {
-                    try {
-                        return ((int)(this[this.tableview_historia.gin_cesareaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_cesarea\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_cesareaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int gin_abortos {
-                get {
-                    try {
-                        return ((int)(this[this.tableview_historia.gin_abortosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_abortos\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_abortosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int gin_hijos {
-                get {
-                    try {
-                        return ((int)(this[this.tableview_historia.gin_hijosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_hijos\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_hijosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool gin_planificacion {
-                get {
-                    return ((bool)(this[this.tableview_historia.gin_planificacionColumn]));
-                }
-                set {
-                    this[this.tableview_historia.gin_planificacionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string gin_pla_txt {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.gin_pla_txtColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_pla_txt\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_pla_txtColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string gin_paptest {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.gin_paptestColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'gin_paptest\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.gin_paptestColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string fis_pie_txt {
                 get {
                     try {
@@ -3228,49 +2982,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string con_resultado {
-                get {
-                    return ((string)(this[this.tableview_historia.con_resultadoColumn]));
-                }
-                set {
-                    this[this.tableview_historia.con_resultadoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string con_observacion {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.con_observacionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'con_observacion\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.con_observacionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string con_valor {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.con_valorColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'con_valor\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.con_valorColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string pla_texto1 {
                 get {
                     return ((string)(this[this.tableview_historia.pla_texto1Column]));
@@ -3342,6 +3053,98 @@ namespace kinnemed05.Reports.dataset {
                 }
                 set {
                     this[this.tableview_historia.his_tipoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] his_firma {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableview_historia.his_firmaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'his_firma\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.his_firmaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] med_firma {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableview_historia.med_firmaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'med_firma\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.med_firmaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string med_nombres {
+                get {
+                    return ((string)(this[this.tableview_historia.med_nombresColumn]));
+                }
+                set {
+                    this[this.tableview_historia.med_nombresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string med_apellidos {
+                get {
+                    return ((string)(this[this.tableview_historia.med_apellidosColumn]));
+                }
+                set {
+                    this[this.tableview_historia.med_apellidosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string med_codigo {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.med_codigoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'med_codigo\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.med_codigoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int his_numero {
+                get {
+                    return ((int)(this[this.tableview_historia.his_numeroColumn]));
+                }
+                set {
+                    this[this.tableview_historia.his_numeroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string med_cedula {
+                get {
+                    return ((string)(this[this.tableview_historia.med_cedulaColumn]));
+                }
+                set {
+                    this[this.tableview_historia.med_cedulaColumn] = value;
                 }
             }
             
@@ -3679,114 +3482,6 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setper_otr_txtNull() {
                 this[this.tableview_historia.per_otr_txtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_fumNull() {
-                return this.IsNull(this.tableview_historia.gin_fumColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_fumNull() {
-                this[this.tableview_historia.gin_fumColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_ciclosNull() {
-                return this.IsNull(this.tableview_historia.gin_ciclosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_ciclosNull() {
-                this[this.tableview_historia.gin_ciclosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_gestasNull() {
-                return this.IsNull(this.tableview_historia.gin_gestasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_gestasNull() {
-                this[this.tableview_historia.gin_gestasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_partosNull() {
-                return this.IsNull(this.tableview_historia.gin_partosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_partosNull() {
-                this[this.tableview_historia.gin_partosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_cesareaNull() {
-                return this.IsNull(this.tableview_historia.gin_cesareaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_cesareaNull() {
-                this[this.tableview_historia.gin_cesareaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_abortosNull() {
-                return this.IsNull(this.tableview_historia.gin_abortosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_abortosNull() {
-                this[this.tableview_historia.gin_abortosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_hijosNull() {
-                return this.IsNull(this.tableview_historia.gin_hijosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_hijosNull() {
-                this[this.tableview_historia.gin_hijosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_pla_txtNull() {
-                return this.IsNull(this.tableview_historia.gin_pla_txtColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_pla_txtNull() {
-                this[this.tableview_historia.gin_pla_txtColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Isgin_paptestNull() {
-                return this.IsNull(this.tableview_historia.gin_paptestColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setgin_paptestNull() {
-                this[this.tableview_historia.gin_paptestColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4247,30 +3942,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iscon_observacionNull() {
-                return this.IsNull(this.tableview_historia.con_observacionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setcon_observacionNull() {
-                this[this.tableview_historia.con_observacionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Iscon_valorNull() {
-                return this.IsNull(this.tableview_historia.con_valorColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Setcon_valorNull() {
-                this[this.tableview_historia.con_valorColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ishis_problemaNull() {
                 return this.IsNull(this.tableview_historia.his_problemaColumn);
             }
@@ -4291,6 +3962,42 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Sethis_motivoNull() {
                 this[this.tableview_historia.his_motivoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ishis_firmaNull() {
+                return this.IsNull(this.tableview_historia.his_firmaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sethis_firmaNull() {
+                this[this.tableview_historia.his_firmaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismed_firmaNull() {
+                return this.IsNull(this.tableview_historia.med_firmaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmed_firmaNull() {
+                this[this.tableview_historia.med_firmaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismed_codigoNull() {
+                return this.IsNull(this.tableview_historia.med_codigoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmed_codigoNull() {
+                this[this.tableview_historia.med_codigoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4486,16 +4193,6 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             tableMapping.ColumnMappings.Add("per_ale_txt", "per_ale_txt");
             tableMapping.ColumnMappings.Add("per_vac_txt", "per_vac_txt");
             tableMapping.ColumnMappings.Add("per_otr_txt", "per_otr_txt");
-            tableMapping.ColumnMappings.Add("gin_fum", "gin_fum");
-            tableMapping.ColumnMappings.Add("gin_ciclos", "gin_ciclos");
-            tableMapping.ColumnMappings.Add("gin_gestas", "gin_gestas");
-            tableMapping.ColumnMappings.Add("gin_partos", "gin_partos");
-            tableMapping.ColumnMappings.Add("gin_cesarea", "gin_cesarea");
-            tableMapping.ColumnMappings.Add("gin_abortos", "gin_abortos");
-            tableMapping.ColumnMappings.Add("gin_hijos", "gin_hijos");
-            tableMapping.ColumnMappings.Add("gin_planificacion", "gin_planificacion");
-            tableMapping.ColumnMappings.Add("gin_pla_txt", "gin_pla_txt");
-            tableMapping.ColumnMappings.Add("gin_paptest", "gin_paptest");
             tableMapping.ColumnMappings.Add("fis_pie_txt", "fis_pie_txt");
             tableMapping.ColumnMappings.Add("fis_cab_txt", "fis_cab_txt");
             tableMapping.ColumnMappings.Add("fis_ojo_txt", "fis_ojo_txt");
@@ -4534,15 +4231,19 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             tableMapping.ColumnMappings.Add("sig_kilocalorias", "sig_kilocalorias");
             tableMapping.ColumnMappings.Add("sig_edadpeso", "sig_edadpeso");
             tableMapping.ColumnMappings.Add("sig_masamuscular", "sig_masamuscular");
-            tableMapping.ColumnMappings.Add("con_resultado", "con_resultado");
-            tableMapping.ColumnMappings.Add("con_observacion", "con_observacion");
-            tableMapping.ColumnMappings.Add("con_valor", "con_valor");
             tableMapping.ColumnMappings.Add("pla_texto1", "pla_texto1");
             tableMapping.ColumnMappings.Add("pla_texto2", "pla_texto2");
             tableMapping.ColumnMappings.Add("his_problema", "his_problema");
             tableMapping.ColumnMappings.Add("his_motivo", "his_motivo");
             tableMapping.ColumnMappings.Add("his_fecha", "his_fecha");
             tableMapping.ColumnMappings.Add("his_tipo", "his_tipo");
+            tableMapping.ColumnMappings.Add("his_firma", "his_firma");
+            tableMapping.ColumnMappings.Add("med_firma", "med_firma");
+            tableMapping.ColumnMappings.Add("med_nombres", "med_nombres");
+            tableMapping.ColumnMappings.Add("med_apellidos", "med_apellidos");
+            tableMapping.ColumnMappings.Add("med_codigo", "med_codigo");
+            tableMapping.ColumnMappings.Add("his_numero", "his_numero");
+            tableMapping.ColumnMappings.Add("med_cedula", "med_cedula");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4559,7 +4260,7 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, gin_fum, gin_ciclos, gin_gestas, gin_partos, gin_cesarea, gin_abortos, gin_hijos, gin_planificacion, gin_pla_txt, gin_paptest, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, con_resultado, con_observacion, con_valor, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo FROM dbo.view_historia";
+            this._commandCollection[0].CommandText = @"SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula FROM dbo.view_historia";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

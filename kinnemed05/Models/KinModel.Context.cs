@@ -55,7 +55,6 @@ namespace kinnemed05.Models
         public DbSet<ocupacional> ocupacional { get; set; }
         public DbSet<laboral> laboral { get; set; }
         public DbSet<examen> examen { get; set; }
-        public DbSet<historia> historia { get; set; }
         public DbSet<registro> registro { get; set; }
         public DbSet<oftalmologia> oftalmologia { get; set; }
         public DbSet<concepto> concepto { get; set; }
@@ -67,5 +66,7 @@ namespace kinnemed05.Models
         public DbSet<codigo> codigo { get; set; }
         public DbSet<orden> orden { get; set; }
         public DbSet<prueba> prueba { get; set; }
+        public DbSet<reposo> reposo { get; set; }
+        public DbSet<historia> historia { get; set; }
     }
 }

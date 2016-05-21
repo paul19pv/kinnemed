@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_historia" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, gin_fum, gin_ciclos, gin_gestas, gin_partos, gin_cesarea, gin_abortos, gin_hijos, gin_planificacion, gin_pla_txt, gin_paptest, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, con_resultado, con_observacion, con_valor, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo FROM dbo.view_historia</CommandText>
+                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula FROM dbo.view_historia</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -52,16 +52,6 @@
               <Mapping SourceColumn="per_ale_txt" DataSetColumn="per_ale_txt" />
               <Mapping SourceColumn="per_vac_txt" DataSetColumn="per_vac_txt" />
               <Mapping SourceColumn="per_otr_txt" DataSetColumn="per_otr_txt" />
-              <Mapping SourceColumn="gin_fum" DataSetColumn="gin_fum" />
-              <Mapping SourceColumn="gin_ciclos" DataSetColumn="gin_ciclos" />
-              <Mapping SourceColumn="gin_gestas" DataSetColumn="gin_gestas" />
-              <Mapping SourceColumn="gin_partos" DataSetColumn="gin_partos" />
-              <Mapping SourceColumn="gin_cesarea" DataSetColumn="gin_cesarea" />
-              <Mapping SourceColumn="gin_abortos" DataSetColumn="gin_abortos" />
-              <Mapping SourceColumn="gin_hijos" DataSetColumn="gin_hijos" />
-              <Mapping SourceColumn="gin_planificacion" DataSetColumn="gin_planificacion" />
-              <Mapping SourceColumn="gin_pla_txt" DataSetColumn="gin_pla_txt" />
-              <Mapping SourceColumn="gin_paptest" DataSetColumn="gin_paptest" />
               <Mapping SourceColumn="fis_pie_txt" DataSetColumn="fis_pie_txt" />
               <Mapping SourceColumn="fis_cab_txt" DataSetColumn="fis_cab_txt" />
               <Mapping SourceColumn="fis_ojo_txt" DataSetColumn="fis_ojo_txt" />
@@ -100,15 +90,19 @@
               <Mapping SourceColumn="sig_kilocalorias" DataSetColumn="sig_kilocalorias" />
               <Mapping SourceColumn="sig_edadpeso" DataSetColumn="sig_edadpeso" />
               <Mapping SourceColumn="sig_masamuscular" DataSetColumn="sig_masamuscular" />
-              <Mapping SourceColumn="con_resultado" DataSetColumn="con_resultado" />
-              <Mapping SourceColumn="con_observacion" DataSetColumn="con_observacion" />
-              <Mapping SourceColumn="con_valor" DataSetColumn="con_valor" />
               <Mapping SourceColumn="pla_texto1" DataSetColumn="pla_texto1" />
               <Mapping SourceColumn="pla_texto2" DataSetColumn="pla_texto2" />
               <Mapping SourceColumn="his_problema" DataSetColumn="his_problema" />
               <Mapping SourceColumn="his_motivo" DataSetColumn="his_motivo" />
               <Mapping SourceColumn="his_fecha" DataSetColumn="his_fecha" />
               <Mapping SourceColumn="his_tipo" DataSetColumn="his_tipo" />
+              <Mapping SourceColumn="his_firma" DataSetColumn="his_firma" />
+              <Mapping SourceColumn="med_firma" DataSetColumn="med_firma" />
+              <Mapping SourceColumn="med_nombres" DataSetColumn="med_nombres" />
+              <Mapping SourceColumn="med_apellidos" DataSetColumn="med_apellidos" />
+              <Mapping SourceColumn="med_codigo" DataSetColumn="med_codigo" />
+              <Mapping SourceColumn="his_numero" DataSetColumn="his_numero" />
+              <Mapping SourceColumn="med_cedula" DataSetColumn="med_cedula" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -342,40 +336,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="gin_fum" msprop:Generator_ColumnVarNameInTable="columngin_fum" msprop:Generator_ColumnPropNameInRow="gin_fum" msprop:Generator_ColumnPropNameInTable="gin_fumColumn" msprop:Generator_UserColumnName="gin_fum" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="gin_ciclos" msprop:Generator_ColumnVarNameInTable="columngin_ciclos" msprop:Generator_ColumnPropNameInRow="gin_ciclos" msprop:Generator_ColumnPropNameInTable="gin_ciclosColumn" msprop:Generator_UserColumnName="gin_ciclos" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="25" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="gin_gestas" msprop:Generator_ColumnVarNameInTable="columngin_gestas" msprop:Generator_ColumnPropNameInRow="gin_gestas" msprop:Generator_ColumnPropNameInTable="gin_gestasColumn" msprop:Generator_UserColumnName="gin_gestas" type="xs:int" minOccurs="0" />
-              <xs:element name="gin_partos" msprop:Generator_ColumnVarNameInTable="columngin_partos" msprop:Generator_ColumnPropNameInRow="gin_partos" msprop:Generator_ColumnPropNameInTable="gin_partosColumn" msprop:Generator_UserColumnName="gin_partos" type="xs:int" minOccurs="0" />
-              <xs:element name="gin_cesarea" msprop:Generator_ColumnVarNameInTable="columngin_cesarea" msprop:Generator_ColumnPropNameInRow="gin_cesarea" msprop:Generator_ColumnPropNameInTable="gin_cesareaColumn" msprop:Generator_UserColumnName="gin_cesarea" type="xs:int" minOccurs="0" />
-              <xs:element name="gin_abortos" msprop:Generator_ColumnVarNameInTable="columngin_abortos" msprop:Generator_ColumnPropNameInRow="gin_abortos" msprop:Generator_ColumnPropNameInTable="gin_abortosColumn" msprop:Generator_UserColumnName="gin_abortos" type="xs:int" minOccurs="0" />
-              <xs:element name="gin_hijos" msprop:Generator_ColumnVarNameInTable="columngin_hijos" msprop:Generator_ColumnPropNameInRow="gin_hijos" msprop:Generator_ColumnPropNameInTable="gin_hijosColumn" msprop:Generator_UserColumnName="gin_hijos" type="xs:int" minOccurs="0" />
-              <xs:element name="gin_planificacion" msprop:Generator_ColumnVarNameInTable="columngin_planificacion" msprop:Generator_ColumnPropNameInRow="gin_planificacion" msprop:Generator_ColumnPropNameInTable="gin_planificacionColumn" msprop:Generator_UserColumnName="gin_planificacion" type="xs:boolean" />
-              <xs:element name="gin_pla_txt" msprop:Generator_ColumnVarNameInTable="columngin_pla_txt" msprop:Generator_ColumnPropNameInRow="gin_pla_txt" msprop:Generator_ColumnPropNameInTable="gin_pla_txtColumn" msprop:Generator_UserColumnName="gin_pla_txt" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="gin_paptest" msprop:Generator_ColumnVarNameInTable="columngin_paptest" msprop:Generator_ColumnPropNameInRow="gin_paptest" msprop:Generator_ColumnPropNameInTable="gin_paptestColumn" msprop:Generator_UserColumnName="gin_paptest" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="10" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="fis_pie_txt" msprop:Generator_ColumnVarNameInTable="columnfis_pie_txt" msprop:Generator_ColumnPropNameInRow="fis_pie_txt" msprop:Generator_ColumnPropNameInTable="fis_pie_txtColumn" msprop:Generator_UserColumnName="fis_pie_txt" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -576,27 +536,6 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="sig_masamuscular" msprop:Generator_ColumnVarNameInTable="columnsig_masamuscular" msprop:Generator_ColumnPropNameInRow="sig_masamuscular" msprop:Generator_ColumnPropNameInTable="sig_masamuscularColumn" msprop:Generator_UserColumnName="sig_masamuscular" type="xs:decimal" minOccurs="0" />
-              <xs:element name="con_resultado" msprop:Generator_ColumnVarNameInTable="columncon_resultado" msprop:Generator_ColumnPropNameInRow="con_resultado" msprop:Generator_ColumnPropNameInTable="con_resultadoColumn" msprop:Generator_UserColumnName="con_resultado">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="con_observacion" msprop:Generator_ColumnVarNameInTable="columncon_observacion" msprop:Generator_ColumnPropNameInRow="con_observacion" msprop:Generator_ColumnPropNameInTable="con_observacionColumn" msprop:Generator_UserColumnName="con_observacion" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="con_valor" msprop:Generator_ColumnVarNameInTable="columncon_valor" msprop:Generator_ColumnPropNameInRow="con_valor" msprop:Generator_ColumnPropNameInTable="con_valorColumn" msprop:Generator_UserColumnName="con_valor" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="pla_texto1" msprop:Generator_ColumnVarNameInTable="columnpla_texto1" msprop:Generator_ColumnPropNameInRow="pla_texto1" msprop:Generator_ColumnPropNameInTable="pla_texto1Column" msprop:Generator_UserColumnName="pla_texto1">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -633,6 +572,37 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="his_tipo" msprop:Generator_ColumnVarNameInTable="columnhis_tipo" msprop:Generator_ColumnPropNameInRow="his_tipo" msprop:Generator_ColumnPropNameInTable="his_tipoColumn" msprop:Generator_UserColumnName="his_tipo" type="xs:int" />
+              <xs:element name="his_firma" msprop:Generator_ColumnVarNameInTable="columnhis_firma" msprop:Generator_ColumnPropNameInRow="his_firma" msprop:Generator_ColumnPropNameInTable="his_firmaColumn" msprop:Generator_UserColumnName="his_firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="med_firma" msprop:Generator_ColumnVarNameInTable="columnmed_firma" msprop:Generator_ColumnPropNameInRow="med_firma" msprop:Generator_ColumnPropNameInTable="med_firmaColumn" msprop:Generator_UserColumnName="med_firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="med_nombres" msprop:Generator_ColumnVarNameInTable="columnmed_nombres" msprop:Generator_ColumnPropNameInRow="med_nombres" msprop:Generator_ColumnPropNameInTable="med_nombresColumn" msprop:Generator_UserColumnName="med_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="med_apellidos" msprop:Generator_ColumnVarNameInTable="columnmed_apellidos" msprop:Generator_ColumnPropNameInRow="med_apellidos" msprop:Generator_ColumnPropNameInTable="med_apellidosColumn" msprop:Generator_UserColumnName="med_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="med_codigo" msprop:Generator_ColumnVarNameInTable="columnmed_codigo" msprop:Generator_ColumnPropNameInRow="med_codigo" msprop:Generator_ColumnPropNameInTable="med_codigoColumn" msprop:Generator_UserColumnName="med_codigo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="his_numero" msprop:Generator_ColumnVarNameInTable="columnhis_numero" msprop:Generator_ColumnPropNameInRow="his_numero" msprop:Generator_ColumnPropNameInTable="his_numeroColumn" msprop:Generator_UserColumnName="his_numero" type="xs:int" />
+              <xs:element name="med_cedula" msprop:Generator_ColumnVarNameInTable="columnmed_cedula" msprop:Generator_ColumnPropNameInRow="med_cedula" msprop:Generator_ColumnPropNameInTable="med_cedulaColumn" msprop:Generator_UserColumnName="med_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

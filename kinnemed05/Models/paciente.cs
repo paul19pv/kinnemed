@@ -18,13 +18,13 @@ namespace kinnemed05.Models
         {
             this.audiometria = new HashSet<audiometria>();
             this.espirometria = new HashSet<espirometria>();
-            this.historia = new HashSet<historia>();
             this.inmunizacion = new HashSet<inmunizacion>();
             this.ocupacional = new HashSet<ocupacional>();
             this.oftalmologia = new HashSet<oftalmologia>();
             this.rayos = new HashSet<rayos>();
             this.registro = new HashSet<registro>();
             this.orden = new HashSet<orden>();
+            this.historia = new HashSet<historia>();
         }
     
         public int pac_id { get; set; }
@@ -35,7 +35,6 @@ namespace kinnemed05.Models
         public virtual ICollection<espirometria> espirometria { get; set; }
         public virtual familiar familiar { get; set; }
         public virtual ginecologico ginecologico { get; set; }
-        public virtual ICollection<historia> historia { get; set; }
         public virtual ICollection<inmunizacion> inmunizacion { get; set; }
         public virtual ICollection<ocupacional> ocupacional { get; set; }
         public virtual ICollection<oftalmologia> oftalmologia { get; set; }
@@ -45,5 +44,6 @@ namespace kinnemed05.Models
         public virtual ICollection<rayos> rayos { get; set; }
         public virtual ICollection<registro> registro { get; set; }
         public virtual ICollection<orden> orden { get; set; }
+        public virtual ICollection<historia> historia { get; set; }
     }
 }

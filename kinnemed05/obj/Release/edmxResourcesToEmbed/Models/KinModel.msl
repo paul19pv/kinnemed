@@ -598,5 +598,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="reposo">
+      <EntityTypeMapping TypeName="kinnemedModel.reposo">
+        <MappingFragment StoreEntitySet="reposo">
+          <ScalarProperty Name="rep_tiempo" ColumnName="rep_tiempo" />
+          <ScalarProperty Name="rep_fin" ColumnName="rep_fin" />
+          <ScalarProperty Name="rep_inicio" ColumnName="rep_inicio" />
+          <ScalarProperty Name="rep_id" ColumnName="rep_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

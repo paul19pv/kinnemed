@@ -190,6 +190,11 @@
                     <label class="control-label">@item.examen.exa_nombre</label>
                     @Html.TextBox(item.pru_id + "", item.pru_resultado, new { @class = "form-control textedit calendario", @id = item.pru_id })
                 }
+                else if (item.examen.exa_tipo == "VAL_SAN")
+                {
+                    <label class="control-label">@item.examen.exa_nombre</label>
+                    @Html.DropDownList(item.pru_id + "", Model.val_san(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
+                }
                 else if (item.examen.exa_tipo == "OCULTO")
                 {
                     

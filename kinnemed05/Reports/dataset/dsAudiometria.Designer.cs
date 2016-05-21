@@ -1002,7 +1002,7 @@ namespace kinnemed05.Reports.dataset {
                         string pac_tipodiscapacidad, 
                         int pac_porcentajediscapacidad, 
                         int pac_empresa, 
-                        string pac_firma, 
+                        byte[] pac_firma, 
                         bool pac_estado) {
                 pacienteRow rowpacienteRow = ((pacienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1124,7 +1124,7 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnpac_porcentajediscapacidad);
                 this.columnpac_empresa = new global::System.Data.DataColumn("pac_empresa", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_empresa);
-                this.columnpac_firma = new global::System.Data.DataColumn("pac_firma", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnpac_firma = new global::System.Data.DataColumn("pac_firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_firma);
                 this.columnpac_estado = new global::System.Data.DataColumn("pac_estado", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_estado);
@@ -1153,7 +1153,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpac_instruccion.MaxLength = 50;
                 this.columnpac_tipodiscapacidad.MaxLength = 50;
                 this.columnpac_empresa.AllowDBNull = false;
-                this.columnpac_firma.MaxLength = 256;
                 this.columnpac_estado.AllowDBNull = false;
             }
             
@@ -1458,7 +1457,7 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public medicoRow AddmedicoRow(string med_cedula, string med_nombres, string med_apellidos, string med_ci, string med_codigo, int med_especialidad, string med_correo, string med_firma, bool med_estado) {
+            public medicoRow AddmedicoRow(string med_cedula, string med_nombres, string med_apellidos, string med_ci, string med_codigo, int med_especialidad, string med_correo, byte[] med_firma, bool med_estado) {
                 medicoRow rowmedicoRow = ((medicoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1531,7 +1530,7 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnmed_especialidad);
                 this.columnmed_correo = new global::System.Data.DataColumn("med_correo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmed_correo);
-                this.columnmed_firma = new global::System.Data.DataColumn("med_firma", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnmed_firma = new global::System.Data.DataColumn("med_firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmed_firma);
                 this.columnmed_estado = new global::System.Data.DataColumn("med_estado", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnmed_estado);
@@ -1554,7 +1553,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnmed_especialidad.AllowDBNull = false;
                 this.columnmed_correo.AllowDBNull = false;
                 this.columnmed_correo.MaxLength = 150;
-                this.columnmed_firma.MaxLength = 256;
                 this.columnmed_estado.AllowDBNull = false;
             }
             
@@ -2097,10 +2095,10 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string pac_firma {
+            public byte[] pac_firma {
                 get {
                     try {
-                        return ((string)(this[this.tablepaciente.pac_firmaColumn]));
+                        return ((byte[])(this[this.tablepaciente.pac_firmaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'pac_firma\' in table \'paciente\' is DBNull.", e);
@@ -2428,10 +2426,10 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string med_firma {
+            public byte[] med_firma {
                 get {
                     try {
-                        return ((string)(this[this.tablemedico.med_firmaColumn]));
+                        return ((byte[])(this[this.tablemedico.med_firmaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'med_firma\' in table \'medico\' is DBNull.", e);
@@ -3099,7 +3097,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_tipodiscapacidad", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_tipodiscapacidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_porcentajediscapacidad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_porcentajediscapacidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_empresa", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_empresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_firma", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_firma", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -3124,7 +3122,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_tipodiscapacidad", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_tipodiscapacidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_porcentajediscapacidad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_porcentajediscapacidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_empresa", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_empresa", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_firma", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_firma", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pac_estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pac_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pac_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -3133,7 +3131,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["bd_kinnemed02ConnectionString"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3245,7 +3243,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
                     string pac_tipodiscapacidad, 
                     global::System.Nullable<int> pac_porcentajediscapacidad, 
                     int pac_empresa, 
-                    string pac_firma, 
+                    byte[] pac_firma, 
                     bool pac_estado) {
             if ((pac_cedula == null)) {
                 throw new global::System.ArgumentNullException("pac_cedula");
@@ -3355,7 +3353,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
                 this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(pac_firma));
+                this.Adapter.InsertCommand.Parameters[19].Value = ((byte[])(pac_firma));
             }
             this.Adapter.InsertCommand.Parameters[20].Value = ((bool)(pac_estado));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -3398,7 +3396,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
                     string pac_tipodiscapacidad, 
                     global::System.Nullable<int> pac_porcentajediscapacidad, 
                     int pac_empresa, 
-                    string pac_firma, 
+                    byte[] pac_firma, 
                     bool pac_estado, 
                     int Original_pac_id) {
             if ((pac_cedula == null)) {
@@ -3509,7 +3507,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(pac_firma));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((byte[])(pac_firma));
             }
             this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(pac_estado));
             this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_pac_id));
@@ -3678,7 +3676,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_codigo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_especialidad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_especialidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_correo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_correo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_firma", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_firma", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
@@ -3691,7 +3689,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_codigo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_codigo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_especialidad", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_especialidad", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_correo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_correo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_firma", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_firma", global::System.Data.SqlDbType.Image, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_firma", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@med_estado", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_med_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "med_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
@@ -3700,7 +3698,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["bd_kinnemed02ConnectionString"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3793,7 +3791,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string med_cedula, string med_nombres, string med_apellidos, string med_ci, string med_codigo, int med_especialidad, string med_correo, string med_firma, bool med_estado) {
+        public virtual int Insert(string med_cedula, string med_nombres, string med_apellidos, string med_ci, string med_codigo, int med_especialidad, string med_correo, byte[] med_firma, bool med_estado) {
             if ((med_cedula == null)) {
                 throw new global::System.ArgumentNullException("med_cedula");
             }
@@ -3835,7 +3833,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(med_firma));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((byte[])(med_firma));
             }
             this.Adapter.InsertCommand.Parameters[8].Value = ((bool)(med_estado));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
@@ -3858,7 +3856,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string med_cedula, string med_nombres, string med_apellidos, string med_ci, string med_codigo, int med_especialidad, string med_correo, string med_firma, bool med_estado, int Original_med_id) {
+        public virtual int Update(string med_cedula, string med_nombres, string med_apellidos, string med_ci, string med_codigo, int med_especialidad, string med_correo, byte[] med_firma, bool med_estado, int Original_med_id) {
             if ((med_cedula == null)) {
                 throw new global::System.ArgumentNullException("med_cedula");
             }
@@ -3900,7 +3898,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(med_firma));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((byte[])(med_firma));
             }
             this.Adapter.UpdateCommand.Parameters[8].Value = ((bool)(med_estado));
             this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_med_id));

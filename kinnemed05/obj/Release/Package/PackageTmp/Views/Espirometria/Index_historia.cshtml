@@ -35,7 +35,7 @@
                         @Html.DisplayFor(modelItem => item.esp_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Detalle", "Details", "Espirometria", new { id = item.esp_id }, new { @class = "iconb icon-detail", @title = "Descargar" })
+                        @*@Html.ActionLink("Detalle", "Details", "Espirometria", new { id = item.esp_id }, new { @class = "iconb icon-detail", @title = "Descargar" })*@
                         @Html.ActionLink("Descargar", "Download","Espirometria", new { id = item.esp_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
                     </td>
                 </tr>

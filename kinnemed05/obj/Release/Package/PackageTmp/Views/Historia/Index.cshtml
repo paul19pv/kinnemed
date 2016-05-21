@@ -143,7 +143,7 @@
                     <td>
                         @if (item.his_tipo == 1)
                         {
-
+                            @Html.ActionLink("Certificado", "Reposo", new { id = item.his_id}, new { @class = "iconb icon-certificate", @title = "Certificado" })
                         }
                         else
                         {

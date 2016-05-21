@@ -94,6 +94,8 @@
         <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="12.75" PointY="21.125" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_registro" />
+        <EntityTypeShape EntityType="kinnemedModel.reposo" Width="1.5" PointX="9.75" PointY="32.5" />
+        <AssociationConnector Association="kinnemedModel.FK_reposo_historia" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

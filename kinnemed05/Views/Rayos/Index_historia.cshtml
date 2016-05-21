@@ -30,7 +30,8 @@
                     </td>
                     <td>
                         @Html.ActionLink("Descargar", "Download","Rayos", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @target="_blank" })
-                        @Html.ActionLink("Detalle", "Details", "Rayos",new { id = item.ray_id }, new { @class = "iconb icon-detail", @title = "Detalle", @target = "_blank" })
+                        @Html.ActionLink("Reporte", "Reporte", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
+                        @*@Html.ActionLink("Detalle", "Details", "Rayos",new { id = item.ray_id }, new { @class = "iconb icon-detail", @title = "Detalle", @target = "_blank" })*@
                     </td>
                 </tr>
             }

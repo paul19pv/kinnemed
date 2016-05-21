@@ -67,6 +67,7 @@ namespace kinnemed05.Models
             list_valores.Add(new SelectListItem { Text = "DURA", Value = "DURA" });
             list_valores.Add(new SelectListItem { Text = "LIQUIDA", Value = "LIQUIDA" });
             list_valores.Add(new SelectListItem { Text = "SEMILIQUIDA", Value = "SEMILIQUIDA" });
+            list_valores.Add(new SelectListItem { Text = "MUCOIDEO", Value = "MUCOIDEO" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
@@ -154,6 +155,7 @@ namespace kinnemed05.Models
             List<SelectListItem> list_valores = new List<SelectListItem>();
             list_valores.Add(new SelectListItem { Text = "TRANSPARENTE", Value = "TRANSPARENTE" });
             list_valores.Add(new SelectListItem { Text = "LIGERAMENTE TURBIO", Value = "LIGERAMENTE TURBIO" });
+            list_valores.Add(new SelectListItem { Text = "TURBIO", Value = "TURBIO" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
@@ -198,6 +200,20 @@ namespace kinnemed05.Models
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
 
+        }
+
+        public SelectList val_san(string defaul) {
+            List<SelectListItem> list_valores = new List<SelectListItem>();
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"A\" Factor RH positivo(+)", Value = "GRUPO \"A\" Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"B\" Factor RH positivo(+)", Value = "GRUPO \"B\" Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"O\" Factor RH positivo(+)", Value = "GRUPO \"O\" Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"AB\" Factor RH positivo(+)", Value = "GRUPO \"AB\" Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"A\" Factor RH negativo(-)", Value = "GRUPO \"A\" Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"B\" Factor RH negativo(-)", Value = "GRUPO \"B\" Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"O\" Factor RH negativo(-)", Value = "GRUPO \"O\" Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO \"AB\" Factor RH negativo(-)", Value = "GRUPO \"AB\" Factor RH negativo(-)" });
+            SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
+            return valores;
         }
 
 

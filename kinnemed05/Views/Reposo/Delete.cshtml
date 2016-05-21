@@ -1,0 +1,47 @@
+﻿@model kinnemed05.Models.reposo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>reposo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rep_inicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rep_inicio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rep_fin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rep_fin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rep_tiempo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rep_tiempo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.historia.his_motivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.historia.his_motivo)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
