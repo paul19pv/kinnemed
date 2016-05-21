@@ -77,9 +77,6 @@ namespace kinnemed05.Models
         [Required(ErrorMessage = "Campo Requerido")]
         public int pac_empresa { get; set; }
         
-        [Display(Name = "Firma")]
-        public byte[] pac_firma { get; set; }
-
         public bool pac_estado { get; set; }
 
     }

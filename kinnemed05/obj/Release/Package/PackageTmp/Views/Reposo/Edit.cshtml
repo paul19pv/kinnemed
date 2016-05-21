@@ -35,6 +35,11 @@
                         @Html.TextBoxFor(model => model.rep_inicio, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.rep_inicio)
                     </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.rep_ini_txt, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.rep_ini_txt, new { @class = "form-control", @rows = "3" })
+                        @Html.ValidationMessageFor(model => model.rep_ini_txt)
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
@@ -42,6 +47,12 @@
                         @Html.TextBoxFor(model => model.rep_fin, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.rep_fin)
                     </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.rep_fin_txt, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.rep_fin_txt, new { @class = "form-control", @rows = "3" })
+                        @Html.ValidationMessageFor(model => model.rep_fin_txt)
+                    </div>
+
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
@@ -53,13 +64,15 @@
 
 
 
+
             </div>
         </div>
     </div>
     <div class="col-lg-3" style="clear:both; float:right">
         <div class="form-group" style="float:right">
             @Ajax.ActionLink("Anterior", "Create", "Plan", new { id = ViewBag.per_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
-            <input type="submit" value="Finalizar" class="btn btn-primary" />
+            @Ajax.ActionLink("Saltar", "Message", "Home", new { mensaje = "Proceso Finalizado" }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+            <input type="submit" value="Guardar" class="btn btn-primary" />
 
         </div>
     </div>

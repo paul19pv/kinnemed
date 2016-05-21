@@ -325,6 +325,7 @@
     <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_medico" Type="int" Nullable="false" />
+    <Property Name="oft_otros" Type="varchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="orden">
     <Key>
@@ -359,7 +360,6 @@
     <Property Name="pac_tipodiscapacidad" Type="varchar" MaxLength="50" />
     <Property Name="pac_porcentajediscapacidad" Type="int" />
     <Property Name="pac_empresa" Type="int" Nullable="false" />
-    <Property Name="pac_firma" Type="image" />
     <Property Name="pac_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="pais">
@@ -458,6 +458,8 @@
     <Property Name="rep_inicio" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="rep_fin" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="rep_tiempo" Type="int" Nullable="false" />
+    <Property Name="rep_ini_txt" Type="varchar" MaxLength="500" />
+    <Property Name="rep_fin_txt" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="revision">
     <Key>

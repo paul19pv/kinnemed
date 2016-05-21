@@ -40,6 +40,8 @@ namespace kinnemed05.Models
         public string oft_ind_txt { get; set; }
         [Display(Name = "Médico")]
         public int oft_medico { get; set; }
+        [Display(Name = "Otros")]
+        public string oft_otros { get; set; }
 
         
     }

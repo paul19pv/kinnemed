@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class reposo
     {
         public int rep_id { get; set; }
-
+    
         public virtual historia historia { get; set; }
     }
 }

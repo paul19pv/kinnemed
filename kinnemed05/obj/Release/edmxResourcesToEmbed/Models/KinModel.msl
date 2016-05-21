@@ -416,21 +416,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="historia">
-      <EntityTypeMapping TypeName="kinnemedModel.historia">
-        <MappingFragment StoreEntitySet="historia">
-          <ScalarProperty Name="his_medico" ColumnName="his_medico" />
-          <ScalarProperty Name="his_numero" ColumnName="his_numero" />
-          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
-          <ScalarProperty Name="his_tipo" ColumnName="his_tipo" />
-          <ScalarProperty Name="his_observacion" ColumnName="his_observacion" />
-          <ScalarProperty Name="his_problema" ColumnName="his_problema" />
-          <ScalarProperty Name="his_motivo" ColumnName="his_motivo" />
-          <ScalarProperty Name="his_paciente" ColumnName="his_paciente" />
-          <ScalarProperty Name="his_id" ColumnName="his_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="registro">
       <EntityTypeMapping TypeName="kinnemedModel.registro">
         <MappingFragment StoreEntitySet="registro">
@@ -441,30 +426,6 @@
           <ScalarProperty Name="reg_orden" ColumnName="reg_orden" />
           <ScalarProperty Name="reg_paciente" ColumnName="reg_paciente" />
           <ScalarProperty Name="reg_id" ColumnName="reg_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="oftalmologia">
-      <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
-        <MappingFragment StoreEntitySet="oftalmologia">
-          <ScalarProperty Name="oft_medico" ColumnName="oft_medico" />
-          <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
-          <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
-          <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
-          <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
-          <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />
-          <ScalarProperty Name="oft_fon_txt" ColumnName="oft_fon_txt" />
-          <ScalarProperty Name="oft_fondo" ColumnName="oft_fondo" />
-          <ScalarProperty Name="oft_bio_txt" ColumnName="oft_bio_txt" />
-          <ScalarProperty Name="oft_biomiscroscopia" ColumnName="oft_biomiscroscopia" />
-          <ScalarProperty Name="oft_ref_oi" ColumnName="oft_ref_oi" />
-          <ScalarProperty Name="oft_ref_od" ColumnName="oft_ref_od" />
-          <ScalarProperty Name="oft_sin_oi" ColumnName="oft_sin_oi" />
-          <ScalarProperty Name="oft_sin_od" ColumnName="oft_sin_od" />
-          <ScalarProperty Name="oft_con_oi" ColumnName="oft_con_oi" />
-          <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
-          <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
-          <ScalarProperty Name="oft_id" ColumnName="oft_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -537,34 +498,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="paciente">
-      <EntityTypeMapping TypeName="kinnemedModel.paciente">
-        <MappingFragment StoreEntitySet="paciente">
-          <ScalarProperty Name="pac_estado" ColumnName="pac_estado" />
-          <ScalarProperty Name="pac_firma" ColumnName="pac_firma" />
-          <ScalarProperty Name="pac_empresa" ColumnName="pac_empresa" />
-          <ScalarProperty Name="pac_porcentajediscapacidad" ColumnName="pac_porcentajediscapacidad" />
-          <ScalarProperty Name="pac_tipodiscapacidad" ColumnName="pac_tipodiscapacidad" />
-          <ScalarProperty Name="pac_profesion" ColumnName="pac_profesion" />
-          <ScalarProperty Name="pac_instruccion" ColumnName="pac_instruccion" />
-          <ScalarProperty Name="pac_direccion" ColumnName="pac_direccion" />
-          <ScalarProperty Name="pac_canton" ColumnName="pac_canton" />
-          <ScalarProperty Name="pac_provincia" ColumnName="pac_provincia" />
-          <ScalarProperty Name="pac_correo" ColumnName="pac_correo" />
-          <ScalarProperty Name="pac_celular" ColumnName="pac_celular" />
-          <ScalarProperty Name="pac_telefono" ColumnName="pac_telefono" />
-          <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
-          <ScalarProperty Name="pac_fechanacimiento" ColumnName="pac_fechanacimiento" />
-          <ScalarProperty Name="pac_pais" ColumnName="pac_pais" />
-          <ScalarProperty Name="pac_estadocivil" ColumnName="pac_estadocivil" />
-          <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
-          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-          <ScalarProperty Name="pac_cedula" ColumnName="pac_cedula" />
-          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="codigo">
       <EntityTypeMapping TypeName="kinnemedModel.codigo">
         <MappingFragment StoreEntitySet="codigo">
@@ -598,9 +531,79 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="historia">
+      <EntityTypeMapping TypeName="kinnemedModel.historia">
+        <MappingFragment StoreEntitySet="historia">
+          <ScalarProperty Name="his_firma" ColumnName="his_firma" />
+          <ScalarProperty Name="his_medico" ColumnName="his_medico" />
+          <ScalarProperty Name="his_numero" ColumnName="his_numero" />
+          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
+          <ScalarProperty Name="his_tipo" ColumnName="his_tipo" />
+          <ScalarProperty Name="his_observacion" ColumnName="his_observacion" />
+          <ScalarProperty Name="his_problema" ColumnName="his_problema" />
+          <ScalarProperty Name="his_motivo" ColumnName="his_motivo" />
+          <ScalarProperty Name="his_paciente" ColumnName="his_paciente" />
+          <ScalarProperty Name="his_id" ColumnName="his_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oftalmologia">
+      <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
+        <MappingFragment StoreEntitySet="oftalmologia">
+          <ScalarProperty Name="oft_otros" ColumnName="oft_otros" />
+          <ScalarProperty Name="oft_medico" ColumnName="oft_medico" />
+          <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
+          <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
+          <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
+          <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
+          <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />
+          <ScalarProperty Name="oft_fon_txt" ColumnName="oft_fon_txt" />
+          <ScalarProperty Name="oft_fondo" ColumnName="oft_fondo" />
+          <ScalarProperty Name="oft_bio_txt" ColumnName="oft_bio_txt" />
+          <ScalarProperty Name="oft_biomiscroscopia" ColumnName="oft_biomiscroscopia" />
+          <ScalarProperty Name="oft_ref_oi" ColumnName="oft_ref_oi" />
+          <ScalarProperty Name="oft_ref_od" ColumnName="oft_ref_od" />
+          <ScalarProperty Name="oft_sin_oi" ColumnName="oft_sin_oi" />
+          <ScalarProperty Name="oft_sin_od" ColumnName="oft_sin_od" />
+          <ScalarProperty Name="oft_con_oi" ColumnName="oft_con_oi" />
+          <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
+          <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
+          <ScalarProperty Name="oft_id" ColumnName="oft_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paciente">
+      <EntityTypeMapping TypeName="kinnemedModel.paciente">
+        <MappingFragment StoreEntitySet="paciente">
+          <ScalarProperty Name="pac_estado" ColumnName="pac_estado" />
+          <ScalarProperty Name="pac_empresa" ColumnName="pac_empresa" />
+          <ScalarProperty Name="pac_porcentajediscapacidad" ColumnName="pac_porcentajediscapacidad" />
+          <ScalarProperty Name="pac_tipodiscapacidad" ColumnName="pac_tipodiscapacidad" />
+          <ScalarProperty Name="pac_profesion" ColumnName="pac_profesion" />
+          <ScalarProperty Name="pac_instruccion" ColumnName="pac_instruccion" />
+          <ScalarProperty Name="pac_direccion" ColumnName="pac_direccion" />
+          <ScalarProperty Name="pac_canton" ColumnName="pac_canton" />
+          <ScalarProperty Name="pac_provincia" ColumnName="pac_provincia" />
+          <ScalarProperty Name="pac_correo" ColumnName="pac_correo" />
+          <ScalarProperty Name="pac_celular" ColumnName="pac_celular" />
+          <ScalarProperty Name="pac_telefono" ColumnName="pac_telefono" />
+          <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
+          <ScalarProperty Name="pac_fechanacimiento" ColumnName="pac_fechanacimiento" />
+          <ScalarProperty Name="pac_pais" ColumnName="pac_pais" />
+          <ScalarProperty Name="pac_estadocivil" ColumnName="pac_estadocivil" />
+          <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
+          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+          <ScalarProperty Name="pac_cedula" ColumnName="pac_cedula" />
+          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="reposo">
       <EntityTypeMapping TypeName="kinnemedModel.reposo">
         <MappingFragment StoreEntitySet="reposo">
+          <ScalarProperty Name="rep_fin_txt" ColumnName="rep_fin_txt" />
+          <ScalarProperty Name="rep_ini_txt" ColumnName="rep_ini_txt" />
           <ScalarProperty Name="rep_tiempo" ColumnName="rep_tiempo" />
           <ScalarProperty Name="rep_fin" ColumnName="rep_fin" />
           <ScalarProperty Name="rep_inicio" ColumnName="rep_inicio" />

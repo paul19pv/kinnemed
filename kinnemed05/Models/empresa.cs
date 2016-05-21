@@ -21,7 +21,7 @@ namespace kinnemed05.Models
         }
     
         public int emp_id { get; set; }
-
+    
         public virtual ICollection<trabajador> trabajador { get; set; }
         public virtual ICollection<paciente> paciente { get; set; }
     }
