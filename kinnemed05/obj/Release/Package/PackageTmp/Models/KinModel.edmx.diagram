@@ -76,8 +76,10 @@
         <AssociationConnector Association="kinnemedModel.FK_signos_historia" />
         <AssociationConnector Association="kinnemedModel.FK_subsecuente_historia" />
         <EntityTypeShape EntityType="kinnemedModel.oftalmologia" Width="1.5" PointX="15.5" PointY="26.75" />
-        <EntityTypeShape EntityType="kinnemedModel.paciente" Width="1.5" PointX="5.25" PointY="38.25" />
         <EntityTypeShape EntityType="kinnemedModel.reposo" Width="1.5" PointX="15.75" PointY="34.125" />
+        <AssociationConnector Association="kinnemedModel.FK_reposo_historia" />
+        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_medico" />
+        <EntityTypeShape EntityType="kinnemedModel.paciente" Width="1.5" PointX="5.25" PointY="38.25" />
         <AssociationConnector Association="kinnemedModel.FK_audiometria_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_canton" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_empresa" />
@@ -85,9 +87,7 @@
         <AssociationConnector Association="kinnemedModel.FK_familiar_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_ginecologico_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_historia_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_reposo_historia" />
         <AssociationConnector Association="kinnemedModel.FK_inmunizacion_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_medico" />
         <AssociationConnector Association="kinnemedModel.FK_ocupacional_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_orden_paciente" />

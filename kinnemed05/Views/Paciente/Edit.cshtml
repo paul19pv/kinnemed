@@ -265,6 +265,11 @@
                             @Html.TextBoxFor(model => model.pac_estado, new { @class = "form-control", Value = true, @type = "hidden" })
                         </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_varios, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.pac_varios, new { @class = "form-control", @rows = "5" })
+                            @Html.ValidationMessageFor(model => model.pac_varios)
+                        </div>
 
 
                         @*<div id="div_download" class="form-group">

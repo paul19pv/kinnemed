@@ -28,6 +28,7 @@ namespace kinnemed05.Models
         }
     
         public int pac_id { get; set; }
+        
     
         public virtual ICollection<audiometria> audiometria { get; set; }
         public virtual canton canton { get; set; }

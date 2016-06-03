@@ -79,5 +79,8 @@ namespace kinnemed05.Models
         
         public bool pac_estado { get; set; }
 
+        [Display(Name = "Exámenes")]
+        public string pac_varios { get; set; }
+
     }
 }

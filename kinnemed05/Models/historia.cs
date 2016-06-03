@@ -30,7 +30,7 @@ namespace kinnemed05.Models
         public virtual revision revision { get; set; }
         public virtual signos signos { get; set; }
         public virtual ICollection<subsecuente> subsecuente { get; set; }
-        public virtual paciente paciente { get; set; }
         public virtual reposo reposo { get; set; }
+        public virtual paciente paciente { get; set; }
     }
 }

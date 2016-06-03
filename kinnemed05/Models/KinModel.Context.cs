@@ -66,7 +66,7 @@ namespace kinnemed05.Models
         public DbSet<prueba> prueba { get; set; }
         public DbSet<historia> historia { get; set; }
         public DbSet<oftalmologia> oftalmologia { get; set; }
-        public DbSet<paciente> paciente { get; set; }
         public DbSet<reposo> reposo { get; set; }
+        public DbSet<paciente> paciente { get; set; }
     }
 }

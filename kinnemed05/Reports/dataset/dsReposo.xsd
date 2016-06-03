@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_reposo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, dia_subcie10, sub_descripcion, sub_cie10, cie_descripcion, rep_inicio, rep_fin, rep_tiempo, med_cedula, med_nombres, med_apellidos, med_codigo, med_firma FROM dbo.view_reposo</CommandText>
+                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, dia_subcie10, sub_descripcion, sub_cie10, cie_descripcion, rep_inicio, rep_ini_txt, rep_fin, rep_fin_txt, rep_tiempo, med_cedula, med_nombres, med_apellidos, med_codigo, med_firma FROM dbo.view_reposo</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -28,7 +28,9 @@
               <Mapping SourceColumn="sub_cie10" DataSetColumn="sub_cie10" />
               <Mapping SourceColumn="cie_descripcion" DataSetColumn="cie_descripcion" />
               <Mapping SourceColumn="rep_inicio" DataSetColumn="rep_inicio" />
+              <Mapping SourceColumn="rep_ini_txt" DataSetColumn="rep_ini_txt" />
               <Mapping SourceColumn="rep_fin" DataSetColumn="rep_fin" />
+              <Mapping SourceColumn="rep_fin_txt" DataSetColumn="rep_fin_txt" />
               <Mapping SourceColumn="rep_tiempo" DataSetColumn="rep_tiempo" />
               <Mapping SourceColumn="med_cedula" DataSetColumn="med_cedula" />
               <Mapping SourceColumn="med_nombres" DataSetColumn="med_nombres" />
@@ -94,10 +96,24 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="rep_ini_txt" msprop:Generator_ColumnVarNameInTable="columnrep_ini_txt" msprop:Generator_ColumnPropNameInRow="rep_ini_txt" msprop:Generator_ColumnPropNameInTable="rep_ini_txtColumn" msprop:Generator_UserColumnName="rep_ini_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="rep_fin" msprop:Generator_ColumnVarNameInTable="columnrep_fin" msprop:Generator_ColumnPropNameInRow="rep_fin" msprop:Generator_ColumnPropNameInTable="rep_finColumn" msprop:Generator_UserColumnName="rep_fin">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rep_fin_txt" msprop:Generator_ColumnVarNameInTable="columnrep_fin_txt" msprop:Generator_ColumnPropNameInRow="rep_fin_txt" msprop:Generator_ColumnPropNameInTable="rep_fin_txtColumn" msprop:Generator_UserColumnName="rep_fin_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

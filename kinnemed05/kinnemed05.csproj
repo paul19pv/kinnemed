@@ -449,6 +449,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMedico.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\dataset\dsOftalmologia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOftalmologia.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\dataset\dsPaciente.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -601,6 +606,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptOcupacional.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\RptOftalmologia_.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptOftalmologia_.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RptPaciente.cs">
@@ -975,6 +986,17 @@
     <Content Include="Reports\dataset\dsMedico.xss">
       <DependentUpon>dsMedico.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\dataset\dsOftalmologia.xsc">
+      <DependentUpon>dsOftalmologia.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\dataset\dsOftalmologia.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOftalmologia.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\dataset\dsOftalmologia.xss">
+      <DependentUpon>dsOftalmologia.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\dataset\dsPaciente.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -1281,6 +1303,7 @@
     <Content Include="Views\Reposo\Edit.cshtml" />
     <Content Include="Views\Reposo\Delete.cshtml" />
     <Content Include="Views\Historia\Firma.cshtml" />
+    <Content Include="Views\Oftalmologia\Index_historia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1385,6 +1408,10 @@
     <EmbeddedResource Include="Reports\RptOcupacional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptOcupacional.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptOftalmologia_.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptOftalmologia_.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptPaciente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

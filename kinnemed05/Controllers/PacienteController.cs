@@ -120,19 +120,22 @@ namespace kinnemed05.Controllers
             try
             {
                 
-                if (ModelState.IsValid && IsUserExist(paciente.pac_cedula))
+                if (ModelState.IsValid)
                 {
                     
                     db.paciente.Add(paciente);
                     db.SaveChanges();
-                    AccountController account = new AccountController();
-                    account.CreateUserProfile(paciente.pac_cedula, paciente.pac_cedula);
-                    UserManager userManager = new UserManager();
-                    int Userid = userManager.UpdatePaciente(paciente.pac_cedula, paciente.pac_id);
-                    UsersInRoles usersinroles = new UsersInRoles();
-                    usersinroles.RoleId = 3;
-                    usersinroles.UserId = Userid;
-                    account.CreateUsersInRole(usersinroles);
+                    if (IsUserExist(paciente.pac_cedula)) {
+                        AccountController account = new AccountController();
+                        account.CreateUserProfile(paciente.pac_cedula, paciente.pac_cedula);
+                        UserManager userManager = new UserManager();
+                        int Userid = userManager.UpdatePaciente(paciente.pac_cedula, paciente.pac_id);
+                        UsersInRoles usersinroles = new UsersInRoles();
+                        usersinroles.RoleId = 3;
+                        usersinroles.UserId = Userid;
+                        account.CreateUsersInRole(usersinroles);
+                    }
+                    
                     return RedirectToAction("Index");
                 }
 

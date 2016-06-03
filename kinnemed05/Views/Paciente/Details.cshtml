@@ -93,17 +93,8 @@
                         @Html.TextBoxFor(model => model.pac_correo, new { @class = "form-control", @readonly = "readonly" })
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.pac_firma, new {@class="control-label" })
-                        @if (Model.pac_firma != null) {
-                            string ruta = "data:image/jpg;base64," + Convert.ToBase64String((byte[])Model.lab_firma);
-                                <div class="form-group">
-                                    
-                                    <div class="form-group">
-
-                                        <img src="@ruta" class="img-rounded" />
-                                    </div>
-                                </div>
-                        }
+                        @Html.LabelFor(model => model.pac_varios, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.pac_varios, new { @class = "form-control", @rows = "5", @readonly = "readonly" })
                     </div>
 
                 </div>

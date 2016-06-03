@@ -572,9 +572,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="reposo">
+      <EntityTypeMapping TypeName="kinnemedModel.reposo">
+        <MappingFragment StoreEntitySet="reposo">
+          <ScalarProperty Name="rep_fin_txt" ColumnName="rep_fin_txt" />
+          <ScalarProperty Name="rep_ini_txt" ColumnName="rep_ini_txt" />
+          <ScalarProperty Name="rep_tiempo" ColumnName="rep_tiempo" />
+          <ScalarProperty Name="rep_fin" ColumnName="rep_fin" />
+          <ScalarProperty Name="rep_inicio" ColumnName="rep_inicio" />
+          <ScalarProperty Name="rep_id" ColumnName="rep_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="paciente">
       <EntityTypeMapping TypeName="kinnemedModel.paciente">
         <MappingFragment StoreEntitySet="paciente">
+          <ScalarProperty Name="pac_varios" ColumnName="pac_varios" />
           <ScalarProperty Name="pac_estado" ColumnName="pac_estado" />
           <ScalarProperty Name="pac_empresa" ColumnName="pac_empresa" />
           <ScalarProperty Name="pac_porcentajediscapacidad" ColumnName="pac_porcentajediscapacidad" />
@@ -596,18 +609,6 @@
           <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
           <ScalarProperty Name="pac_cedula" ColumnName="pac_cedula" />
           <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="reposo">
-      <EntityTypeMapping TypeName="kinnemedModel.reposo">
-        <MappingFragment StoreEntitySet="reposo">
-          <ScalarProperty Name="rep_fin_txt" ColumnName="rep_fin_txt" />
-          <ScalarProperty Name="rep_ini_txt" ColumnName="rep_ini_txt" />
-          <ScalarProperty Name="rep_tiempo" ColumnName="rep_tiempo" />
-          <ScalarProperty Name="rep_fin" ColumnName="rep_fin" />
-          <ScalarProperty Name="rep_inicio" ColumnName="rep_inicio" />
-          <ScalarProperty Name="rep_id" ColumnName="rep_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -297,7 +297,11 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnrep_inicio;
             
+            private global::System.Data.DataColumn columnrep_ini_txt;
+            
             private global::System.Data.DataColumn columnrep_fin;
+            
+            private global::System.Data.DataColumn columnrep_fin_txt;
             
             private global::System.Data.DataColumn columnrep_tiempo;
             
@@ -418,9 +422,25 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn rep_ini_txtColumn {
+                get {
+                    return this.columnrep_ini_txt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn rep_finColumn {
                 get {
                     return this.columnrep_fin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn rep_fin_txtColumn {
+                get {
+                    return this.columnrep_fin_txt;
                 }
             }
             
@@ -519,7 +539,9 @@ namespace kinnemed05.Reports.dataset {
                         int sub_cie10, 
                         string cie_descripcion, 
                         string rep_inicio, 
+                        string rep_ini_txt, 
                         string rep_fin, 
+                        string rep_fin_txt, 
                         int rep_tiempo, 
                         string med_cedula, 
                         string med_nombres, 
@@ -537,7 +559,9 @@ namespace kinnemed05.Reports.dataset {
                         sub_cie10,
                         cie_descripcion,
                         rep_inicio,
+                        rep_ini_txt,
                         rep_fin,
+                        rep_fin_txt,
                         rep_tiempo,
                         med_cedula,
                         med_nombres,
@@ -582,7 +606,9 @@ namespace kinnemed05.Reports.dataset {
                 this.columnsub_cie10 = base.Columns["sub_cie10"];
                 this.columncie_descripcion = base.Columns["cie_descripcion"];
                 this.columnrep_inicio = base.Columns["rep_inicio"];
+                this.columnrep_ini_txt = base.Columns["rep_ini_txt"];
                 this.columnrep_fin = base.Columns["rep_fin"];
+                this.columnrep_fin_txt = base.Columns["rep_fin_txt"];
                 this.columnrep_tiempo = base.Columns["rep_tiempo"];
                 this.columnmed_cedula = base.Columns["med_cedula"];
                 this.columnmed_nombres = base.Columns["med_nombres"];
@@ -612,8 +638,12 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columncie_descripcion);
                 this.columnrep_inicio = new global::System.Data.DataColumn("rep_inicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrep_inicio);
+                this.columnrep_ini_txt = new global::System.Data.DataColumn("rep_ini_txt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrep_ini_txt);
                 this.columnrep_fin = new global::System.Data.DataColumn("rep_fin", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrep_fin);
+                this.columnrep_fin_txt = new global::System.Data.DataColumn("rep_fin_txt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrep_fin_txt);
                 this.columnrep_tiempo = new global::System.Data.DataColumn("rep_tiempo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrep_tiempo);
                 this.columnmed_cedula = new global::System.Data.DataColumn("med_cedula", typeof(string), null, global::System.Data.MappingType.Element);
@@ -644,8 +674,10 @@ namespace kinnemed05.Reports.dataset {
                 this.columncie_descripcion.MaxLength = 200;
                 this.columnrep_inicio.AllowDBNull = false;
                 this.columnrep_inicio.MaxLength = 10;
+                this.columnrep_ini_txt.MaxLength = 500;
                 this.columnrep_fin.AllowDBNull = false;
                 this.columnrep_fin.MaxLength = 10;
+                this.columnrep_fin_txt.MaxLength = 500;
                 this.columnrep_tiempo.AllowDBNull = false;
                 this.columnmed_cedula.AllowDBNull = false;
                 this.columnmed_cedula.MaxLength = 10;
@@ -895,12 +927,44 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string rep_ini_txt {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_reposo.rep_ini_txtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rep_ini_txt\' in table \'view_reposo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_reposo.rep_ini_txtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string rep_fin {
                 get {
                     return ((string)(this[this.tableview_reposo.rep_finColumn]));
                 }
                 set {
                     this[this.tableview_reposo.rep_finColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string rep_fin_txt {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_reposo.rep_fin_txtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'rep_fin_txt\' in table \'view_reposo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_reposo.rep_fin_txtColumn] = value;
                 }
             }
             
@@ -978,6 +1042,30 @@ namespace kinnemed05.Reports.dataset {
                 set {
                     this[this.tableview_reposo.med_firmaColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isrep_ini_txtNull() {
+                return this.IsNull(this.tableview_reposo.rep_ini_txtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setrep_ini_txtNull() {
+                this[this.tableview_reposo.rep_ini_txtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isrep_fin_txtNull() {
+                return this.IsNull(this.tableview_reposo.rep_fin_txtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setrep_fin_txtNull() {
+                this[this.tableview_reposo.rep_fin_txtColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1173,7 +1261,9 @@ namespace kinnemed05.Reports.dataset.dsReposoTableAdapters {
             tableMapping.ColumnMappings.Add("sub_cie10", "sub_cie10");
             tableMapping.ColumnMappings.Add("cie_descripcion", "cie_descripcion");
             tableMapping.ColumnMappings.Add("rep_inicio", "rep_inicio");
+            tableMapping.ColumnMappings.Add("rep_ini_txt", "rep_ini_txt");
             tableMapping.ColumnMappings.Add("rep_fin", "rep_fin");
+            tableMapping.ColumnMappings.Add("rep_fin_txt", "rep_fin_txt");
             tableMapping.ColumnMappings.Add("rep_tiempo", "rep_tiempo");
             tableMapping.ColumnMappings.Add("med_cedula", "med_cedula");
             tableMapping.ColumnMappings.Add("med_nombres", "med_nombres");
@@ -1197,8 +1287,9 @@ namespace kinnemed05.Reports.dataset.dsReposoTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, dia_subcie10, sub_descripc" +
-                "ion, sub_cie10, cie_descripcion, rep_inicio, rep_fin, rep_tiempo, med_cedula, me" +
-                "d_nombres, med_apellidos, med_codigo, med_firma FROM dbo.view_reposo";
+                "ion, sub_cie10, cie_descripcion, rep_inicio, rep_ini_txt, rep_fin, rep_fin_txt, " +
+                "rep_tiempo, med_cedula, med_nombres, med_apellidos, med_codigo, med_firma FROM d" +
+                "bo.view_reposo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

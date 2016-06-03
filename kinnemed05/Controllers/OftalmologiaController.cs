@@ -8,6 +8,12 @@ using System.Web.Mvc;
 using kinnemed05.Models;
 using kinnemed05.Filters;
 using kinnemed05.Security;
+using kinnemed05.Reports.dataset;
+using System.Configuration;
+using System.Data.SqlClient;
+using kinnemed05.Reports;
+using iTextSharp.text.pdf.parser;
+using System.IO;
 
 namespace kinnemed05.Controllers
 {
@@ -19,9 +25,27 @@ namespace kinnemed05.Controllers
         //
         // GET: /Oftalmologia/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             var oftalmologia = db.oftalmologia.Include(o => o.paciente).Include(o => o.medico);
+            if (id != null)
+                oftalmologia = oftalmologia.Where(a => a.oft_paciente == id);
+            if (User.IsInRole("paciente"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
+                oftalmologia = oftalmologia.Where(a => a.oft_paciente == paciente_.pac_id);
+            }
+            if (User.IsInRole("empresa"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
+                oftalmologia = oftalmologia.Where(a => a.paciente.pac_empresa == empresa.emp_id);
+            }
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("Index_historia", oftalmologia.ToList());
             return View(oftalmologia.ToList());
         }
 
@@ -192,6 +216,57 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Descargar(int id)
+        {
+            try
+            {
+                //string contentType = "application/pdf";
+                dsOftalmologia dsPrueba = new dsOftalmologia();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                int oft_id = id;
+                oftalmologia oftalmologia = db.oftalmologia.Find(oft_id);
+                medico medico = db.medico.Find(oftalmologia.oft_medico);
+                string fileName = String.Empty;
+                //if (String.IsNullOrEmpty(fileName))
+                //    fileName = "firma.png";
+                //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+
+                string strOftalmologia = "Select * from oftalmologia where oft_id=" + oft_id;
+                string strPaciente = "Select * from paciente where pac_id=" + oftalmologia.oft_paciente;
+                string strMedico = "Select * from medico where med_id=" + oftalmologia.oft_medico;
+
+                SqlConnection sqlcon = new SqlConnection(conn);
+
+                SqlDataAdapter daOftalmologia = new SqlDataAdapter(strOftalmologia, sqlcon);
+                SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
+                SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
+
+                daOftalmologia.Fill(dsPrueba, "oftalmologia");
+                daPaciente.Fill(dsPrueba, "paciente");
+                daMedico.Fill(dsPrueba, "medico");
+
+                RptOftalmologia_ rp = new RptOftalmologia_();
+                string reportPath = Server.MapPath("~/Reports/RptOftalmologia_.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dsPrueba);
+                
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", oft_id + ".pdf");
+
+                
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+
+
 
         private SelectList get_agudeza(string agudeza = "")
         {

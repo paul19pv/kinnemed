@@ -27,6 +27,7 @@
                     @Html.DisplayNameFor(model => model.oft_medico)
                 </th>
                 <th></th>
+                <th></th>
             </tr>
 
             @foreach (var item in Model)
@@ -48,6 +49,10 @@
                         @Html.ActionLink("Editar", "Edit", new { id = item.oft_id }, new { @class = "iconb icon-edit", @title = "Editar" })
                         @Html.ActionLink("Detalle", "Details", new { id = item.oft_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
                         @Html.ActionLink("Borrar", "Delete", new { id = item.oft_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Reporte", "Reporte", new { id = item.esp_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })*@
+                        @Html.ActionLink("Descargar", "Descargar", new { id = item.oft_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
                     </td>
                 </tr>
             }
