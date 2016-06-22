@@ -33,7 +33,7 @@ namespace kinnemed05.Controllers
         //[CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
         //[]
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id, int? paciente, string fecha)
+        public ActionResult Index(int? id, int? paciente, int? medico, string fecha)
         {
             
                 
@@ -42,6 +42,8 @@ namespace kinnemed05.Controllers
                 registro = db.registro.Where(r => r.reg_paciente == id);
             if (paciente != null)
                 registro = registro.Where(r=>r.reg_paciente==paciente);
+            if (medico != null)
+                registro = registro.Where(r => r.reg_medico == medico);
             if (!String.IsNullOrEmpty(fecha))
                 registro = registro.Where(r=>r.reg_fecha == fecha);
             registro = registro.Where(r => r.reg_estado != false);
@@ -378,6 +380,25 @@ namespace kinnemed05.Controllers
 
         }
 
+
+        public ActionResult Notificar(int id) {
+            registro registro = db.registro.Find(id);
+            paciente paciente = db.paciente.Find(registro.reg_paciente);
+            string celular = paciente.pac_celular;
+            string correo = paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular)) {
+                
+                mensaje.enviar(celular, "Los exámenes de laboratorio se encuentran listos. Kinnemed");
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                mensaje.mail(correo, "Los exámenes de laboratorio se encuentran listos. Kinnemed");
+            }
+            //if ()
+            return RedirectToAction("Index", "Registro");
+        }
+
         public ActionResult Reporte()
         {
             DateTime dd = DateTime.Now;
@@ -415,12 +436,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                //if (!consulta.Any())
-                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
                 registro registro = db.registro.Find(id);
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
                 Session["reg_id"] = id;
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/Viewer/ViewPrueba.aspx");
@@ -434,48 +450,12 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
-        public ActionResult ReporteLimpio()
-        {
-            DateTime dd = DateTime.Now;
-            string fecha = dd.Date.ToString("d");
-            ViewBag.fecha = fecha;
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ReporteLimpio(registro registro)
-        {
-            try
-            {
-                var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                if (!consulta.Any())
-                    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
-                ReportViewerViewModel model = new ReportViewerViewModel();
-                string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
-                model.ReportPath = content;
-                return View("ReportViewer", model);
-            }
-            catch (Exception ex)
-            {
-                ViewBag.mensaje = ex.Message;
-                //return View("Message");
-                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
-            }
-        }
-
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ReporteLimpio(int id)
         {
             try
             {
-                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                //if (!consulta.Any())
-                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
                 registro registro = db.registro.Find(id);
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
                 Session["reg_id"] = id;
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");

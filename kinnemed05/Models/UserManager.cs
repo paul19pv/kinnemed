@@ -84,22 +84,57 @@ namespace kinnemed05.Models
             return (from u in db.UserProfiles select u).Any();
         }
 
-        public string get_perfil(IPrincipal User)
-        {
-            string perfil = String.Empty;
-            if(User.IsInRole("admin"))
-                perfil="admin";
-            else if(User.IsInRole("medico"))
-                perfil="medico";
+        //public string get_perfil(IPrincipal User)
+        //{
+        //    string perfil = String.Empty;
+        //    if(User.IsInRole("admin"))
+        //        perfil="admin";
+        //    else if(User.IsInRole("medico"))
+        //        perfil="medico";
+        //    else if (User.IsInRole("paciente"))
+        //        perfil = "paciente";
+        //    else if (User.IsInRole("empresa"))
+        //        perfil = "empresa";
+        //    else if (User.IsInRole("laboratorista"))
+        //        perfil = "laboratorista";
+        //    else if (User.IsInRole("trabajador"))
+        //        perfil = "trabajador";
+        //    return perfil;
+        //}
+
+        public int get_perfil(IPrincipal User) {
+            int perfil = 0;
+            if (User.IsInRole("admin"))
+                perfil = 1;
+            else if (User.IsInRole("medico"))
+                perfil = 2;
             else if (User.IsInRole("paciente"))
-                perfil = "paciente";
+                perfil = 3;
             else if (User.IsInRole("empresa"))
-                perfil = "empresa";
+                perfil = 4;
             else if (User.IsInRole("laboratorista"))
-                perfil = "laboratorista";
+                perfil = 5;
             else if (User.IsInRole("trabajador"))
-                perfil = "trabajador";
+                perfil = 6;
             return perfil;
         }
+        public int get_user_id(IPrincipal User) {
+            int user_id = 0;
+            UserProfile usuario = db.UserProfiles.Where(u => u.UserName == User.Identity.Name).First();
+
+
+            if (User.IsInRole("medico"))
+                user_id = (int)usuario.UserMedico;
+            else if (User.IsInRole("paciente"))
+                user_id = (int)usuario.UserPaciente;
+            else if (User.IsInRole("empresa"))
+                user_id = (int)usuario.UserEmpresa;
+            else if (User.IsInRole("laboratorista"))
+                user_id = (int)usuario.UserLaboratorista;
+            else if (User.IsInRole("trabajador"))
+                user_id = (int)usuario.UserTrabajador;
+            return user_id;
+        }
+
     }
 }

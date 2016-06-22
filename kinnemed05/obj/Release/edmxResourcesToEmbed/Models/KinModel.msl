@@ -10,14 +10,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="componente">
-      <EntityTypeMapping TypeName="kinnemedModel.componente">
-        <MappingFragment StoreEntitySet="componente">
-          <ScalarProperty Name="com_id" ColumnName="com_id" />
-          <ScalarProperty Name="com_nombre" ColumnName="com_nombre" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="empresa">
       <EntityTypeMapping TypeName="kinnemedModel.empresa">
         <MappingFragment StoreEntitySet="empresa">
@@ -305,39 +297,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="audiometria">
-      <EntityTypeMapping TypeName="kinnemedModel.audiometria">
-        <MappingFragment StoreEntitySet="audiometria">
-          <ScalarProperty Name="aud_medico" ColumnName="aud_medico" />
-          <ScalarProperty Name="aud_observacion" ColumnName="aud_observacion" />
-          <ScalarProperty Name="aud_archivo" ColumnName="aud_archivo" />
-          <ScalarProperty Name="aud_paciente" ColumnName="aud_paciente" />
-          <ScalarProperty Name="aud_id" ColumnName="aud_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="espirometria">
-      <EntityTypeMapping TypeName="kinnemedModel.espirometria">
-        <MappingFragment StoreEntitySet="espirometria">
-          <ScalarProperty Name="esp_medico" ColumnName="esp_medico" />
-          <ScalarProperty Name="esp_observacion" ColumnName="esp_observacion" />
-          <ScalarProperty Name="esp_archivo" ColumnName="esp_archivo" />
-          <ScalarProperty Name="esp_paciente" ColumnName="esp_paciente" />
-          <ScalarProperty Name="esp_id" ColumnName="esp_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="rayos">
-      <EntityTypeMapping TypeName="kinnemedModel.rayos">
-        <MappingFragment StoreEntitySet="rayos">
-          <ScalarProperty Name="ray_medico" ColumnName="ray_medico" />
-          <ScalarProperty Name="ray_observacion" ColumnName="ray_observacion" />
-          <ScalarProperty Name="ray_imagen" ColumnName="ray_imagen" />
-          <ScalarProperty Name="ray_paciente" ColumnName="ray_paciente" />
-          <ScalarProperty Name="ray_id" ColumnName="ray_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="inmunizacion">
       <EntityTypeMapping TypeName="kinnemedModel.inmunizacion">
         <MappingFragment StoreEntitySet="inmunizacion">
@@ -547,31 +506,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="oftalmologia">
-      <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
-        <MappingFragment StoreEntitySet="oftalmologia">
-          <ScalarProperty Name="oft_otros" ColumnName="oft_otros" />
-          <ScalarProperty Name="oft_medico" ColumnName="oft_medico" />
-          <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
-          <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
-          <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
-          <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
-          <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />
-          <ScalarProperty Name="oft_fon_txt" ColumnName="oft_fon_txt" />
-          <ScalarProperty Name="oft_fondo" ColumnName="oft_fondo" />
-          <ScalarProperty Name="oft_bio_txt" ColumnName="oft_bio_txt" />
-          <ScalarProperty Name="oft_biomiscroscopia" ColumnName="oft_biomiscroscopia" />
-          <ScalarProperty Name="oft_ref_oi" ColumnName="oft_ref_oi" />
-          <ScalarProperty Name="oft_ref_od" ColumnName="oft_ref_od" />
-          <ScalarProperty Name="oft_sin_oi" ColumnName="oft_sin_oi" />
-          <ScalarProperty Name="oft_sin_od" ColumnName="oft_sin_od" />
-          <ScalarProperty Name="oft_con_oi" ColumnName="oft_con_oi" />
-          <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
-          <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
-          <ScalarProperty Name="oft_id" ColumnName="oft_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="reposo">
       <EntityTypeMapping TypeName="kinnemedModel.reposo">
         <MappingFragment StoreEntitySet="reposo">
@@ -612,5 +546,97 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="audiometria">
+      <EntityTypeMapping TypeName="kinnemedModel.audiometria">
+        <MappingFragment StoreEntitySet="audiometria">
+          <ScalarProperty Name="aud_perfil" ColumnName="aud_perfil" />
+          <ScalarProperty Name="aud_responsable" ColumnName="aud_responsable" />
+          <ScalarProperty Name="aud_fecha" ColumnName="aud_fecha" />
+          <ScalarProperty Name="aud_medico" ColumnName="aud_medico" />
+          <ScalarProperty Name="aud_observacion" ColumnName="aud_observacion" />
+          <ScalarProperty Name="aud_archivo" ColumnName="aud_archivo" />
+          <ScalarProperty Name="aud_paciente" ColumnName="aud_paciente" />
+          <ScalarProperty Name="aud_id" ColumnName="aud_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="espirometria">
+      <EntityTypeMapping TypeName="kinnemedModel.espirometria">
+        <MappingFragment StoreEntitySet="espirometria">
+          <ScalarProperty Name="esp_perfil" ColumnName="esp_perfil" />
+          <ScalarProperty Name="esp_responsable" ColumnName="esp_responsable" />
+          <ScalarProperty Name="esp_fecha" ColumnName="esp_fecha" />
+          <ScalarProperty Name="esp_medico" ColumnName="esp_medico" />
+          <ScalarProperty Name="esp_observacion" ColumnName="esp_observacion" />
+          <ScalarProperty Name="esp_archivo" ColumnName="esp_archivo" />
+          <ScalarProperty Name="esp_paciente" ColumnName="esp_paciente" />
+          <ScalarProperty Name="esp_id" ColumnName="esp_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oftalmologia">
+      <EntityTypeMapping TypeName="kinnemedModel.oftalmologia">
+        <MappingFragment StoreEntitySet="oftalmologia">
+          <ScalarProperty Name="oft_perfil" ColumnName="oft_perfil" />
+          <ScalarProperty Name="oft_responsable" ColumnName="oft_responsable" />
+          <ScalarProperty Name="oft_fecha" ColumnName="oft_fecha" />
+          <ScalarProperty Name="oft_otros" ColumnName="oft_otros" />
+          <ScalarProperty Name="oft_medico" ColumnName="oft_medico" />
+          <ScalarProperty Name="oft_ind_txt" ColumnName="oft_ind_txt" />
+          <ScalarProperty Name="oft_indicaciones" ColumnName="oft_indicaciones" />
+          <ScalarProperty Name="oft_dia_txt" ColumnName="oft_dia_txt" />
+          <ScalarProperty Name="oft_diagnostico" ColumnName="oft_diagnostico" />
+          <ScalarProperty Name="oft_colores" ColumnName="oft_colores" />
+          <ScalarProperty Name="oft_fon_txt" ColumnName="oft_fon_txt" />
+          <ScalarProperty Name="oft_fondo" ColumnName="oft_fondo" />
+          <ScalarProperty Name="oft_bio_txt" ColumnName="oft_bio_txt" />
+          <ScalarProperty Name="oft_biomiscroscopia" ColumnName="oft_biomiscroscopia" />
+          <ScalarProperty Name="oft_ref_oi" ColumnName="oft_ref_oi" />
+          <ScalarProperty Name="oft_ref_od" ColumnName="oft_ref_od" />
+          <ScalarProperty Name="oft_sin_oi" ColumnName="oft_sin_oi" />
+          <ScalarProperty Name="oft_sin_od" ColumnName="oft_sin_od" />
+          <ScalarProperty Name="oft_con_oi" ColumnName="oft_con_oi" />
+          <ScalarProperty Name="oft_con_od" ColumnName="oft_con_od" />
+          <ScalarProperty Name="oft_paciente" ColumnName="oft_paciente" />
+          <ScalarProperty Name="oft_id" ColumnName="oft_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rayos">
+      <EntityTypeMapping TypeName="kinnemedModel.rayos">
+        <MappingFragment StoreEntitySet="rayos">
+          <ScalarProperty Name="ray_perfil" ColumnName="ray_perfil" />
+          <ScalarProperty Name="ray_responsable" ColumnName="ray_responsable" />
+          <ScalarProperty Name="ray_fecha" ColumnName="ray_fecha" />
+          <ScalarProperty Name="ray_medico" ColumnName="ray_medico" />
+          <ScalarProperty Name="ray_observacion" ColumnName="ray_observacion" />
+          <ScalarProperty Name="ray_imagen" ColumnName="ray_imagen" />
+          <ScalarProperty Name="ray_paciente" ColumnName="ray_paciente" />
+          <ScalarProperty Name="ray_id" ColumnName="ray_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getReporte01" FunctionName="kinnemedModel.Store.getReporte01">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte01_Result">
+          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+          <ScalarProperty Name="historia" ColumnName="historia" />
+          <ScalarProperty Name="examen" ColumnName="examen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista01" FunctionName="kinnemedModel.Store.getReporte01">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista01">
+          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
+          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+          <ScalarProperty Name="historia" ColumnName="historia" />
+          <ScalarProperty Name="examen" ColumnName="examen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -27,11 +27,17 @@ namespace kinnemed05.Controllers
         //
         // GET: /Audiometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id,int? paciente, int? medico)
         {
             var audiometria = db.audiometria.Include(a => a.paciente);
             if (id != null)
                 audiometria = audiometria.Where(a => a.aud_paciente == id);
+            if (paciente != null)
+                audiometria = audiometria.Where(a => a.aud_paciente == paciente);
+            if (medico != null)
+                audiometria = audiometria.Where(a => a.aud_medico == medico);
+            //if (!String.IsNullOrEmpty(fecha))
+            //    audiometria = audiometria.Where(a => a.aud_fecha == fecha);
             if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
@@ -93,6 +99,8 @@ namespace kinnemed05.Controllers
                 if (fileName != "")
                 {
                     audiometria.aud_archivo = fileName;
+                    DateTime dd = DateTime.Now; 
+                    audiometria.aud_fecha=dd.Date.ToString("d");
                     if (ModelState.IsValid && ext == ".pdf")
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/audiometria"), fileName);
@@ -185,8 +193,13 @@ namespace kinnemed05.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                        UserManager usermanager = new UserManager();
+                        audiometria.aud_responsable = usermanager.get_user_id(User);
+                        audiometria.aud_perfil = usermanager.get_perfil(User);
                         db.Entry(audiometria).State = EntityState.Modified;
                         db.SaveChanges();
+                        if(audiometria.aud_observacion!="")
+                            notificar(audiometria.aud_paciente);
                         return RedirectToAction("Index");
                     }
                 }
@@ -252,7 +265,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
+                //var consulta = db.audiometria.Where(a => a.aud_paciente == audiometria.aud_paciente && r.aud_fecha == audiometria.aud_fecha && r.aud_estado == true);
                 //if (!consulta.Any())
                 //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
                 
@@ -399,6 +412,31 @@ namespace kinnemed05.Controllers
             // Devuelve el valor que indica si se han mezclado los archivos
             return blnMerged;
         }
+
+        private void notificar( int pac_id){
+            string resultado = String.Empty;
+            //ModelState.AddModelError("msn", "Llego");
+            paciente paciente = db.paciente.Find(pac_id);
+            string celular = paciente.pac_celular;
+            string correo=paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular))
+            {
+                
+                resultado = mensaje.enviar(celular, "Los exámenes de audiometria se encuentran listos. Kinnemed");
+                
+               
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                resultado = " " + resultado + mensaje.mail(correo, "Los exámenes de audiometria se encuentran listos. Kinnemed");
+            }
+            ModelState.AddModelError("notificacion", resultado);
+              
+
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

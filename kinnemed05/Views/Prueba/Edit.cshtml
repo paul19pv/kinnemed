@@ -65,6 +65,8 @@
 </script>
 
 
+
+
 @{
     int area_inicial = 0;
     string linea1 = "<div class=\"panel panel-default\">";
@@ -219,7 +221,7 @@
 }
 <div class="col-lg-3" style="clear:both;float:right;">
     <div class="form-group">
-        @Html.ActionLink("Regresar", "Index", "Registro", "", new { @class = "btn btn-default" })
+        @Html.ActionLink("Finalizar", "Notificar", "Registro", new { id = ViewBag.reg_id }, new { @class = "btn btn-default" })
     </div>
 </div>
 

@@ -16,6 +16,9 @@
     <Property Name="aud_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="aud_observacion" Type="nvarchar(max)" />
     <Property Name="aud_medico" Type="int" Nullable="false" />
+    <Property Name="aud_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="aud_responsable" Type="int" />
+    <Property Name="aud_perfil" Type="int" />
   </EntityType>
   <EntityType Name="canton">
     <Key>
@@ -42,13 +45,6 @@
     <Property Name="cod_imagen" Type="image" />
     <Property Name="cod_registro" Type="int" Nullable="false" />
     <Property Name="cod_area" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="componente">
-    <Key>
-      <PropertyRef Name="com_id" />
-    </Key>
-    <Property Name="com_id" Type="int" Nullable="false" />
-    <Property Name="com_nombre" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="concepto">
     <Key>
@@ -105,6 +101,9 @@
     <Property Name="esp_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="esp_observacion" Type="nvarchar(max)" />
     <Property Name="esp_medico" Type="int" Nullable="false" />
+    <Property Name="esp_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="esp_responsable" Type="int" />
+    <Property Name="esp_perfil" Type="int" />
   </EntityType>
   <EntityType Name="examen">
     <Key>
@@ -326,6 +325,9 @@
     <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_medico" Type="int" Nullable="false" />
     <Property Name="oft_otros" Type="varchar" MaxLength="250" />
+    <Property Name="oft_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="oft_responsable" Type="int" />
+    <Property Name="oft_perfil" Type="int" />
   </EntityType>
   <EntityType Name="orden">
     <Key>
@@ -361,6 +363,7 @@
     <Property Name="pac_porcentajediscapacidad" Type="int" />
     <Property Name="pac_empresa" Type="int" Nullable="false" />
     <Property Name="pac_estado" Type="bit" Nullable="false" />
+    <Property Name="pac_varios" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="pais">
     <Key>
@@ -437,6 +440,9 @@
     <Property Name="ray_imagen" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="ray_observacion" Type="nvarchar(max)" />
     <Property Name="ray_medico" Type="int" Nullable="false" />
+    <Property Name="ray_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="ray_responsable" Type="int" />
+    <Property Name="ray_perfil" Type="int" />
   </EntityType>
   <EntityType Name="registro">
     <Key>
@@ -1237,13 +1243,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="getReporte01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="kinnemedModelStoreContainer">
     <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cie10" EntityType="Self.cie10" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="codigo" EntityType="Self.codigo" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="concepto" EntityType="Self.concepto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="control" EntityType="Self.control" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="diagnostico" EntityType="Self.diagnostico" Schema="dbo" store:Type="Tables" />

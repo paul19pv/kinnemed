@@ -9,6 +9,8 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
@@ -63,6 +65,15 @@ namespace kinnemed05.Controllers
             if(Request.IsAjaxRequest())
                 return PartialView();
             return View();
+        }
+
+
+        public ActionResult Mensajetxt() {
+            Mensaje mensaje = new Mensaje();
+            string respuesta = mensaje.enviar("0984659882","Hola mundo");
+            string respuesta2 = mensaje.mail("juanjavierj@gmail.com", "mensaje prueba");
+            return RedirectToAction("Message", new { mensaje = respuesta+respuesta2 });
+        
         }
 
        

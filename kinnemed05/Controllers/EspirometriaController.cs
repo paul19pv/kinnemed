@@ -27,17 +27,20 @@ namespace kinnemed05.Controllers
         //
         // GET: /Espirometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, int? paciente, int? medico)
         {
             var espirometria = db.espirometria.Include(e => e.paciente);
             if (id != null)
                 espirometria = espirometria.Where(e => e.esp_paciente == id);
-
+            if (paciente != null)
+                espirometria = espirometria.Where(e => e.esp_paciente == paciente);
+            if (medico != null)
+                espirometria = espirometria.Where(e => e.esp_medico == medico);
             if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
-                espirometria = espirometria.Where(a => a.esp_paciente == paciente_.pac_id);
+                espirometria = espirometria.Where(e => e.esp_paciente == paciente_.pac_id);
             }
             if (User.IsInRole("empresa"))
             {
@@ -94,6 +97,8 @@ namespace kinnemed05.Controllers
                 string ext = Path.GetExtension(fileName);
                 if (fileName != "") {
                     espirometria.esp_archivo = fileName;
+                    DateTime dd = DateTime.Now;
+                    espirometria.esp_fecha = dd.Date.ToString("d");
                     if (ModelState.IsValid && ext == ".pdf")
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/espirometria"), fileName);
@@ -184,8 +189,13 @@ namespace kinnemed05.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                        UserManager usermanager = new UserManager();
+                        espirometria.esp_responsable = usermanager.get_user_id(User);
+                        espirometria.esp_perfil = usermanager.get_perfil(User);
                         db.Entry(espirometria).State = EntityState.Modified;
                         db.SaveChanges();
+                        if (espirometria.esp_observacion != "")
+                            notificar(espirometria.esp_paciente);
                         return RedirectToAction("Index");
                     }
                 }
@@ -302,18 +312,18 @@ namespace kinnemed05.Controllers
                 rp.SetParameterValue("hc", "");
                 rp.SetParameterValue("orden", "");
                 //rp.SetParameterValue("picturePath", path01);
-                rp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Path.Combine(Server.MapPath("~/Content/audiometria"), id + ".pdf"));
+                rp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Path.Combine(Server.MapPath("~/Content/espirometria"), id + ".pdf"));
 
                 //Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 //stream.Seek(0, SeekOrigin.Begin);
-                //return File(stream, "application/pdf", aud_id + ".pdf");
+                //return File(stream, "application/pdf", esp_id + ".pdf");
 
                 var document = new Document();
                 var ms = new MemoryStream();
-                string archivo1 = Path.Combine(Server.MapPath("~/Content/audiometria"), id + ".pdf");
-                string archivo2 = Path.Combine(Server.MapPath("~/Content/audiometria"), espirometria.esp_archivo);
+                string archivo1 = Path.Combine(Server.MapPath("~/Content/espirometria"), id + ".pdf");
+                string archivo2 = Path.Combine(Server.MapPath("~/Content/espirometria"), espirometria.esp_archivo);
                 fileName = "Reporte" + id + ".pdf";
-                string fileTarget = Path.Combine(Server.MapPath("~/Content/audiometria/") + fileName);
+                string fileTarget = Path.Combine(Server.MapPath("~/Content/espirometria/") + fileName);
                 string[] Lista = { archivo1, archivo2 };
 
                 Merge(fileTarget, Lista);
@@ -387,6 +397,30 @@ namespace kinnemed05.Controllers
             }
             // Devuelve el valor que indica si se han mezclado los archivos
             return blnMerged;
+        }
+
+        private void notificar(int pac_id)
+        {
+            string resultado = String.Empty;
+            //ModelState.AddModelError("msn", "Llego");
+            paciente paciente = db.paciente.Find(pac_id);
+            string celular = paciente.pac_celular;
+            string correo = paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular))
+            {
+
+                resultado = mensaje.enviar(celular, "Los exámenes de espirometria se encuentran listos. Kinnemed");
+
+
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                resultado = " " + resultado + mensaje.mail(correo, "Los exámenes de espirometria se encuentran listos. Kinnemed");
+            }
+            ModelState.AddModelError("notificacion", resultado);
+
+
         }
 
         protected override void Dispose(bool disposing)

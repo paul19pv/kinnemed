@@ -10,13 +10,6 @@
     <NavigationProperty Name="provincia" Relationship="Self.FK_canton_provincia" FromRole="canton" ToRole="provincia" />
     <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_paciente_canton" FromRole="canton" ToRole="paciente" />
   </EntityType>
-  <EntityType Name="componente">
-    <Key>
-      <PropertyRef Name="com_id" />
-    </Key>
-    <Property Name="com_id" Type="Int32" Nullable="false" />
-    <Property Name="com_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
   <EntityType Name="empresa">
     <Key>
       <PropertyRef Name="emp_id" />
@@ -90,7 +83,6 @@
   </Association>
   <EntityContainer Name="bd_kinnemed02Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="canton" EntityType="Self.canton" />
-    <EntitySet Name="componente" EntityType="Self.componente" />
     <EntitySet Name="empresa" EntityType="Self.empresa" />
     <EntitySet Name="especialidad" EntityType="Self.especialidad" />
     <EntitySet Name="pais" EntityType="Self.pais" />
@@ -126,9 +118,6 @@
     <EntitySet Name="personal" EntityType="kinnemedModel.personal" />
     <EntitySet Name="signos" EntityType="kinnemedModel.signos" />
     <EntitySet Name="subsecuente" EntityType="kinnemedModel.subsecuente" />
-    <EntitySet Name="audiometria" EntityType="kinnemedModel.audiometria" />
-    <EntitySet Name="espirometria" EntityType="kinnemedModel.espirometria" />
-    <EntitySet Name="rayos" EntityType="kinnemedModel.rayos" />
     <EntitySet Name="inmunizacion" EntityType="kinnemedModel.inmunizacion" />
     <EntitySet Name="riesgo" EntityType="kinnemedModel.riesgo" />
     <EntitySet Name="vacuna" EntityType="kinnemedModel.vacuna" />
@@ -169,25 +158,13 @@
     </AssociationSet>
     <EntitySet Name="laboratorista" EntityType="kinnemedModel.laboratorista" />
     <EntitySet Name="medico" EntityType="kinnemedModel.medico" />
-    <AssociationSet Name="FK_audiometria_medico" Association="kinnemedModel.FK_audiometria_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="audiometria" EntitySet="audiometria" />
-    </AssociationSet>
     <AssociationSet Name="FK_medico_especialidad" Association="kinnemedModel.FK_medico_especialidad">
       <End Role="especialidad" EntitySet="especialidad" />
       <End Role="medico" EntitySet="medico" />
     </AssociationSet>
-    <AssociationSet Name="FK_espirometria_medico" Association="kinnemedModel.FK_espirometria_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="espirometria" EntitySet="espirometria" />
-    </AssociationSet>
     <AssociationSet Name="FK_registro_laboratorista" Association="kinnemedModel.FK_registro_laboratorista">
       <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="registro" EntitySet="registro" />
-    </AssociationSet>
-    <AssociationSet Name="FK_rayos_medico" Association="kinnemedModel.FK_rayos_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="rayos" EntitySet="rayos" />
     </AssociationSet>
     <AssociationSet Name="FK_registro_medico" Association="kinnemedModel.FK_registro_medico">
       <End Role="medico" EntitySet="medico" />
@@ -249,21 +226,12 @@
       <End Role="historia" EntitySet="historia" />
       <End Role="subsecuente" EntitySet="subsecuente" />
     </AssociationSet>
-    <EntitySet Name="oftalmologia" EntityType="kinnemedModel.oftalmologia" />
     <EntitySet Name="reposo" EntityType="kinnemedModel.reposo" />
     <AssociationSet Name="FK_reposo_historia" Association="kinnemedModel.FK_reposo_historia">
       <End Role="historia" EntitySet="historia" />
       <End Role="reposo" EntitySet="reposo" />
     </AssociationSet>
-    <AssociationSet Name="FK_oftalmologia_medico" Association="kinnemedModel.FK_oftalmologia_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="oftalmologia" EntitySet="oftalmologia" />
-    </AssociationSet>
     <EntitySet Name="paciente" EntityType="kinnemedModel.paciente" />
-    <AssociationSet Name="FK_audiometria_paciente" Association="kinnemedModel.FK_audiometria_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="audiometria" EntitySet="audiometria" />
-    </AssociationSet>
     <AssociationSet Name="FK_paciente_canton" Association="kinnemedModel.FK_paciente_canton">
       <End Role="canton" EntitySet="canton" />
       <End Role="paciente" EntitySet="paciente" />
@@ -271,10 +239,6 @@
     <AssociationSet Name="FK_paciente_empresa" Association="kinnemedModel.FK_paciente_empresa">
       <End Role="empresa" EntitySet="empresa" />
       <End Role="paciente" EntitySet="paciente" />
-    </AssociationSet>
-    <AssociationSet Name="FK_espirometria_paciente" Association="kinnemedModel.FK_espirometria_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="espirometria" EntitySet="espirometria" />
     </AssociationSet>
     <AssociationSet Name="FK_familiar_paciente" Association="kinnemedModel.FK_familiar_paciente">
       <End Role="paciente" EntitySet="paciente" />
@@ -296,10 +260,6 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ocupacional" EntitySet="ocupacional" />
     </AssociationSet>
-    <AssociationSet Name="FK_oftalmologia_paciente" Association="kinnemedModel.FK_oftalmologia_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="oftalmologia" EntitySet="oftalmologia" />
-    </AssociationSet>
     <AssociationSet Name="FK_orden_paciente" Association="kinnemedModel.FK_orden_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="orden" EntitySet="orden" />
@@ -316,14 +276,56 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="personal" EntitySet="personal" />
     </AssociationSet>
-    <AssociationSet Name="FK_rayos_paciente" Association="kinnemedModel.FK_rayos_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="rayos" EntitySet="rayos" />
-    </AssociationSet>
     <AssociationSet Name="FK_registro_paciente" Association="kinnemedModel.FK_registro_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="registro" EntitySet="registro" />
     </AssociationSet>
+    <EntitySet Name="audiometria" EntityType="kinnemedModel.audiometria" />
+    <EntitySet Name="espirometria" EntityType="kinnemedModel.espirometria" />
+    <EntitySet Name="oftalmologia" EntityType="kinnemedModel.oftalmologia" />
+    <EntitySet Name="rayos" EntityType="kinnemedModel.rayos" />
+    <AssociationSet Name="FK_audiometria_medico" Association="kinnemedModel.FK_audiometria_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="audiometria" EntitySet="audiometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_audiometria_paciente" Association="kinnemedModel.FK_audiometria_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="audiometria" EntitySet="audiometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_espirometria_medico" Association="kinnemedModel.FK_espirometria_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="espirometria" EntitySet="espirometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_espirometria_paciente" Association="kinnemedModel.FK_espirometria_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="espirometria" EntitySet="espirometria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oftalmologia_medico" Association="kinnemedModel.FK_oftalmologia_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="oftalmologia" EntitySet="oftalmologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rayos_medico" Association="kinnemedModel.FK_rayos_medico">
+      <End Role="medico" EntitySet="medico" />
+      <End Role="rayos" EntitySet="rayos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oftalmologia_paciente" Association="kinnemedModel.FK_oftalmologia_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="oftalmologia" EntitySet="oftalmologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rayos_paciente" Association="kinnemedModel.FK_rayos_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="rayos" EntitySet="rayos" />
+    </AssociationSet>
+    <FunctionImport Name="getReporte01" ReturnType="Collection(kinnemedModel.getReporte01_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+      <Parameter Name="empresa" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getLista01" ReturnType="Collection(kinnemedModel.Lista01)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+      <Parameter Name="empresa" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="area">
     <Key>
@@ -598,42 +600,6 @@
     <Property Name="sub_plan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_subsecuente_historia" FromRole="subsecuente" ToRole="historia" />
   </EntityType>
-  <EntityType Name="audiometria">
-    <Key>
-      <PropertyRef Name="aud_id" />
-    </Key>
-    <Property Name="aud_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="aud_paciente" Type="Int32" Nullable="false" />
-    <Property Name="aud_archivo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="aud_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="aud_medico" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_audiometria_medico" FromRole="audiometria" ToRole="medico" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_audiometria_paciente" FromRole="audiometria" ToRole="paciente" />
-  </EntityType>
-  <EntityType Name="espirometria">
-    <Key>
-      <PropertyRef Name="esp_id" />
-    </Key>
-    <Property Name="esp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="esp_paciente" Type="Int32" Nullable="false" />
-    <Property Name="esp_archivo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="esp_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="esp_medico" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_espirometria_medico" FromRole="espirometria" ToRole="medico" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="espirometria" ToRole="paciente" />
-  </EntityType>
-  <EntityType Name="rayos">
-    <Key>
-      <PropertyRef Name="ray_id" />
-    </Key>
-    <Property Name="ray_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ray_paciente" Type="Int32" Nullable="false" />
-    <Property Name="ray_imagen" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="ray_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ray_medico" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_rayos_medico" FromRole="rayos" ToRole="medico" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="rayos" ToRole="paciente" />
-  </EntityType>
   <EntityType Name="inmunizacion">
     <Key>
       <PropertyRef Name="inm_id" />
@@ -901,28 +867,14 @@
     <Property Name="med_correo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
     <Property Name="med_firma" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="med_estado" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_medico" FromRole="medico" ToRole="audiometria" />
     <NavigationProperty Name="especialidad" Relationship="kinnemedModel.FK_medico_especialidad" FromRole="medico" ToRole="especialidad" />
-    <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_medico" FromRole="medico" ToRole="espirometria" />
-    <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_medico" FromRole="medico" ToRole="rayos" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_medico" FromRole="medico" ToRole="registro" />
     <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_medico" FromRole="medico" ToRole="historia" />
+    <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_medico" FromRole="medico" ToRole="audiometria" />
+    <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_medico" FromRole="medico" ToRole="espirometria" />
     <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_medico" FromRole="medico" ToRole="oftalmologia" />
+    <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_medico" FromRole="medico" ToRole="rayos" />
   </EntityType>
-  <Association Name="FK_audiometria_medico">
-    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.audiometria" Role="audiometria" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="audiometria">
-        <PropertyRef Name="aud_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_medico_especialidad">
     <End Type="kinnemedModel.especialidad" Role="especialidad" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -937,20 +889,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_espirometria_medico">
-    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.espirometria" Role="espirometria" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="espirometria">
-        <PropertyRef Name="esp_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_registro_laboratorista">
     <End Type="kinnemedModel.laboratorista" Role="laboratorista" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -962,20 +900,6 @@
       </Principal>
       <Dependent Role="registro">
         <PropertyRef Name="reg_laboratorista" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_rayos_medico">
-    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.rayos" Role="rayos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="rayos">
-        <PropertyRef Name="ray_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1236,32 +1160,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="oftalmologia">
-    <Key>
-      <PropertyRef Name="oft_id" />
-    </Key>
-    <Property Name="oft_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="oft_paciente" Type="Int32" Nullable="false" />
-    <Property Name="oft_con_od" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="oft_con_oi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="oft_sin_od" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="oft_sin_oi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="oft_ref_od" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_ref_oi" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_biomiscroscopia" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="oft_bio_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_fondo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="oft_fon_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_colores" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_diagnostico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_dia_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_indicaciones" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_ind_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="oft_medico" Type="Int32" Nullable="false" />
-    <Property Name="oft_otros" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_oftalmologia_medico" FromRole="oftalmologia" ToRole="medico" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="oftalmologia" ToRole="paciente" />
-  </EntityType>
   <EntityType Name="reposo">
     <Key>
       <PropertyRef Name="rep_id" />
@@ -1285,20 +1183,6 @@
       </Principal>
       <Dependent Role="reposo">
         <PropertyRef Name="rep_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_oftalmologia_medico">
-    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.oftalmologia" Role="oftalmologia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="oftalmologia">
-        <PropertyRef Name="oft_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1328,37 +1212,23 @@
     <Property Name="pac_empresa" Type="Int32" Nullable="false" />
     <Property Name="pac_estado" Type="Boolean" Nullable="false" />
     <Property Name="pac_varios" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_paciente" FromRole="paciente" ToRole="audiometria" />
     <NavigationProperty Name="canton" Relationship="kinnemedModel.FK_paciente_canton" FromRole="paciente" ToRole="canton" />
     <NavigationProperty Name="empresa" Relationship="kinnemedModel.FK_paciente_empresa" FromRole="paciente" ToRole="empresa" />
-    <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="paciente" ToRole="espirometria" />
     <NavigationProperty Name="familiar" Relationship="kinnemedModel.FK_familiar_paciente" FromRole="paciente" ToRole="familiar" />
     <NavigationProperty Name="ginecologico" Relationship="kinnemedModel.FK_ginecologico_paciente" FromRole="paciente" ToRole="ginecologico" />
     <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_paciente" FromRole="paciente" ToRole="historia" />
     <NavigationProperty Name="inmunizacion" Relationship="kinnemedModel.FK_inmunizacion_paciente" FromRole="paciente" ToRole="inmunizacion" />
     <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="paciente" ToRole="ocupacional" />
-    <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="paciente" ToRole="oftalmologia" />
     <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_paciente" FromRole="paciente" ToRole="orden" />
     <NavigationProperty Name="pais" Relationship="kinnemedModel.FK_paciente_pais" FromRole="paciente" ToRole="pais" />
     <NavigationProperty Name="profesion" Relationship="kinnemedModel.FK_paciente_profesion" FromRole="paciente" ToRole="profesion" />
     <NavigationProperty Name="personal" Relationship="kinnemedModel.FK_personal_paciente" FromRole="paciente" ToRole="personal" />
-    <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_paciente" FromRole="paciente" ToRole="registro" />
+    <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_paciente" FromRole="paciente" ToRole="audiometria" />
+    <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="paciente" ToRole="espirometria" />
+    <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="paciente" ToRole="oftalmologia" />
+    <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
   </EntityType>
-  <Association Name="FK_audiometria_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.audiometria" Role="audiometria" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="audiometria">
-        <PropertyRef Name="aud_paciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_paciente_canton">
     <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -1384,20 +1254,6 @@
       </Principal>
       <Dependent Role="paciente">
         <PropertyRef Name="pac_empresa" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_espirometria_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.espirometria" Role="espirometria" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="espirometria">
-        <PropertyRef Name="esp_paciente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1471,20 +1327,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_oftalmologia_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.oftalmologia" Role="oftalmologia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="oftalmologia">
-        <PropertyRef Name="oft_paciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_orden_paciente">
     <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1539,20 +1381,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_rayos_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.rayos" Role="rayos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="rayos">
-        <PropertyRef Name="ray_paciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_registro_paciente">
     <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1567,4 +1395,204 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="audiometria">
+    <Key>
+      <PropertyRef Name="aud_id" />
+    </Key>
+    <Property Name="aud_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="aud_paciente" Type="Int32" Nullable="false" />
+    <Property Name="aud_archivo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="aud_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="aud_medico" Type="Int32" Nullable="false" />
+    <Property Name="aud_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="aud_responsable" Type="Int32" />
+    <Property Name="aud_perfil" Type="Int32" />
+    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_audiometria_medico" FromRole="audiometria" ToRole="medico" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_audiometria_paciente" FromRole="audiometria" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="espirometria">
+    <Key>
+      <PropertyRef Name="esp_id" />
+    </Key>
+    <Property Name="esp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="esp_paciente" Type="Int32" Nullable="false" />
+    <Property Name="esp_archivo" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="esp_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="esp_medico" Type="Int32" Nullable="false" />
+    <Property Name="esp_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="esp_responsable" Type="Int32" />
+    <Property Name="esp_perfil" Type="Int32" />
+    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_espirometria_medico" FromRole="espirometria" ToRole="medico" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="espirometria" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="oftalmologia">
+    <Key>
+      <PropertyRef Name="oft_id" />
+    </Key>
+    <Property Name="oft_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="oft_paciente" Type="Int32" Nullable="false" />
+    <Property Name="oft_con_od" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="oft_con_oi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="oft_sin_od" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="oft_sin_oi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="oft_ref_od" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_ref_oi" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_biomiscroscopia" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="oft_bio_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_fondo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="oft_fon_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_colores" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_diagnostico" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_dia_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_indicaciones" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_ind_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="oft_medico" Type="Int32" Nullable="false" />
+    <Property Name="oft_otros" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="oft_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="oft_responsable" Type="Int32" />
+    <Property Name="oft_perfil" Type="Int32" />
+    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_oftalmologia_medico" FromRole="oftalmologia" ToRole="medico" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="oftalmologia" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="rayos">
+    <Key>
+      <PropertyRef Name="ray_id" />
+    </Key>
+    <Property Name="ray_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ray_paciente" Type="Int32" Nullable="false" />
+    <Property Name="ray_imagen" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="ray_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ray_medico" Type="Int32" Nullable="false" />
+    <Property Name="ray_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ray_responsable" Type="Int32" />
+    <Property Name="ray_perfil" Type="Int32" />
+    <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_rayos_medico" FromRole="rayos" ToRole="medico" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="rayos" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_audiometria_medico">
+    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.audiometria" Role="audiometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="audiometria">
+        <PropertyRef Name="aud_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_audiometria_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.audiometria" Role="audiometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="audiometria">
+        <PropertyRef Name="aud_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_espirometria_medico">
+    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.espirometria" Role="espirometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="espirometria">
+        <PropertyRef Name="esp_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_espirometria_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.espirometria" Role="espirometria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="espirometria">
+        <PropertyRef Name="esp_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oftalmologia_medico">
+    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.oftalmologia" Role="oftalmologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="oftalmologia">
+        <PropertyRef Name="oft_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rayos_medico">
+    <End Type="kinnemedModel.medico" Role="medico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.rayos" Role="rayos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="medico">
+        <PropertyRef Name="med_id" />
+      </Principal>
+      <Dependent Role="rayos">
+        <PropertyRef Name="ray_medico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oftalmologia_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.oftalmologia" Role="oftalmologia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="oftalmologia">
+        <PropertyRef Name="oft_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rayos_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.rayos" Role="rayos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="rayos">
+        <PropertyRef Name="ray_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="getReporte01_Result">
+    <Property Type="Int32" Name="pac_id" Nullable="false" />
+    <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
+    <Property Type="Boolean" Name="historia" Nullable="true" />
+    <Property Type="Boolean" Name="examen" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista01">
+    <Property Type="Int32" Name="pac_id" Nullable="false" />
+    <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
+    <Property Type="Boolean" Name="historia" Nullable="true" />
+    <Property Type="Boolean" Name="examen" Nullable="true" />
+  </ComplexType>
 </Schema>

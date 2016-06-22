@@ -25,22 +25,26 @@ namespace kinnemed05.Controllers
         //
         // GET: /Oftalmologia/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, int? paciente, int? medico)
         {
             var oftalmologia = db.oftalmologia.Include(o => o.paciente).Include(o => o.medico);
             if (id != null)
-                oftalmologia = oftalmologia.Where(a => a.oft_paciente == id);
+                oftalmologia = oftalmologia.Where(o => o.oft_paciente == id);
+            if (paciente != null)
+                oftalmologia = oftalmologia.Where(o => o.oft_paciente == paciente);
+            if (medico != null)
+                oftalmologia = oftalmologia.Where(o => o.oft_medico == medico);
             if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
-                oftalmologia = oftalmologia.Where(a => a.oft_paciente == paciente_.pac_id);
+                oftalmologia = oftalmologia.Where(o => o.oft_paciente == paciente_.pac_id);
             }
             if (User.IsInRole("empresa"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
-                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
-                oftalmologia = oftalmologia.Where(a => a.paciente.pac_empresa == empresa.emp_id);
+                empresa empresa = db.empresa.Where(o => o.emp_cedula == cedula).First();
+                oftalmologia = oftalmologia.Where(o => o.paciente.pac_empresa == empresa.emp_id);
             }
 
 
@@ -96,10 +100,18 @@ namespace kinnemed05.Controllers
         {
             string nom_pac;
             string nom_med;
+            DateTime dd = DateTime.Now;
+            oftalmologia.oft_fecha = dd.Date.ToString("d");
             if (ModelState.IsValid)
             {
+                UserManager usermanager = new UserManager();
+                oftalmologia.oft_responsable = usermanager.get_user_id(User);
+                oftalmologia.oft_perfil = usermanager.get_perfil(User);
                 db.oftalmologia.Add(oftalmologia);
                 db.SaveChanges();
+
+                
+                    notificar(oftalmologia.oft_paciente);
                 return RedirectToAction("Index");
             }
 
@@ -354,6 +366,30 @@ namespace kinnemed05.Controllers
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
+        }
+
+        private void notificar(int pac_id)
+        {
+            string resultado = String.Empty;
+            //ModelState.AddModelError("msn", "Llego");
+            paciente paciente = db.paciente.Find(pac_id);
+            string celular = paciente.pac_celular;
+            string correo = paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular))
+            {
+
+                resultado = mensaje.enviar(celular, "Los exámenes de oftalmologia se encuentran listos. Kinnemed");
+
+
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                resultado = " " + resultado + mensaje.mail(correo, "Los exámenes de oftalmologia se encuentran listos. Kinnemed");
+            }
+            ModelState.AddModelError("notificacion", resultado);
+
+
         }
 
         protected override void Dispose(bool disposing)

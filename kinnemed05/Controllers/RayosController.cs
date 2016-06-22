@@ -21,19 +21,22 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, int? paciente, int? medico)
         {
             var rayos = db.rayos.Include(r => r.paciente);
             if (id != null)
                 rayos = rayos.Where(r => r.ray_paciente == id);
+            if (paciente != null)
+                rayos = rayos.Where(r => r.ray_paciente == paciente);
+            if (medico != null)
+                rayos = rayos.Where(r => r.ray_medico == medico);
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia", rayos.ToList());
-            
             if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
                 paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
-                rayos = rayos.Where(a => a.ray_paciente == paciente_.pac_id);
+                rayos = rayos.Where(r => r.ray_paciente == paciente_.pac_id);
             }
             if (User.IsInRole("empresa"))
             {
@@ -92,6 +95,8 @@ namespace kinnemed05.Controllers
                 if (fileName != "")
                 {
                     rayos.ray_imagen = fileName;
+                    DateTime dd = DateTime.Now;
+                    rayos.ray_fecha = dd.Date.ToString("d");
                     if (ModelState.IsValid && (Array.IndexOf(formatos, ext) >= 0))
                     //if (ModelState.IsValid)
                     {
@@ -185,8 +190,13 @@ namespace kinnemed05.Controllers
                 {
                     if (ModelState.IsValid)
                     {
+                        UserManager usermanager = new UserManager();
+                        rayos.ray_responsable = usermanager.get_user_id(User);
+                        rayos.ray_perfil = usermanager.get_perfil(User);
                         db.Entry(rayos).State = EntityState.Modified;
                         db.SaveChanges();
+                        if (rayos.ray_observacion != "")
+                            notificar(rayos.ray_paciente);
                         return RedirectToAction("Index");
                     }
                 }
@@ -270,6 +280,29 @@ namespace kinnemed05.Controllers
                 //return View("Message");
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
+        }
+        private void notificar(int pac_id)
+        {
+            string resultado = String.Empty;
+            //ModelState.AddModelError("msn", "Llego");
+            paciente paciente = db.paciente.Find(pac_id);
+            string celular = paciente.pac_celular;
+            string correo = paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular))
+            {
+
+                resultado = mensaje.enviar(celular, "Los exámenes de rayos x se encuentran listos. Kinnemed");
+
+
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                resultado = " " + resultado + mensaje.mail(correo, "Los exámenes de rayos x se encuentran listos. Kinnemed");
+            }
+            ModelState.AddModelError("notificacion", resultado);
+
+
         }
         protected override void Dispose(bool disposing)
         {

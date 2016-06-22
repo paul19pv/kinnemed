@@ -12,6 +12,9 @@ namespace kinnemed05.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
     
     public partial class bd_kinnemed02Entities : DbContext
     {
@@ -26,7 +29,6 @@ namespace kinnemed05.Models
         }
     
         public DbSet<canton> canton { get; set; }
-        public DbSet<componente> componente { get; set; }
         public DbSet<empresa> empresa { get; set; }
         public DbSet<especialidad> especialidad { get; set; }
         public DbSet<pais> pais { get; set; }
@@ -46,9 +48,6 @@ namespace kinnemed05.Models
         public DbSet<personal> personal { get; set; }
         public DbSet<signos> signos { get; set; }
         public DbSet<subsecuente> subsecuente { get; set; }
-        public DbSet<audiometria> audiometria { get; set; }
-        public DbSet<espirometria> espirometria { get; set; }
-        public DbSet<rayos> rayos { get; set; }
         public DbSet<inmunizacion> inmunizacion { get; set; }
         public DbSet<riesgo> riesgo { get; set; }
         public DbSet<vacuna> vacuna { get; set; }
@@ -65,8 +64,45 @@ namespace kinnemed05.Models
         public DbSet<orden> orden { get; set; }
         public DbSet<prueba> prueba { get; set; }
         public DbSet<historia> historia { get; set; }
-        public DbSet<oftalmologia> oftalmologia { get; set; }
         public DbSet<reposo> reposo { get; set; }
         public DbSet<paciente> paciente { get; set; }
+        public DbSet<audiometria> audiometria { get; set; }
+        public DbSet<espirometria> espirometria { get; set; }
+        public DbSet<oftalmologia> oftalmologia { get; set; }
+        public DbSet<rayos> rayos { get; set; }
+    
+        public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte01_Result>("getReporte01", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista01> getLista01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista01>("getLista01", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
     }
 }

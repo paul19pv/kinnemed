@@ -42,8 +42,40 @@
             },
             minLength: 2
         });
+
+        $('#txt_medico').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_medico").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_medico").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.med_nombres + " " + item.med_apellidos,
+                                id: item.med_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#medico").val(ui.item.id)
+            },
+            minLength: 2
+        });
     });
 </script>
+<h2>Laboratorio</h2>
 <p>
     @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
     {
@@ -65,10 +97,15 @@
         @using (Html.BeginForm())
         {
             @Html.Hidden("paciente", "", new { Value = ViewBag.paciente })
+            @Html.Hidden("medico", "", new { Value = ViewBag.medico })
             <div class="form-group">
                 @Html.Label("Paciente", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-3">
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
+                </div>
+                @Html.Label("Medico", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("txt_medico", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
                 @Html.Label("Fecha", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-2">
@@ -147,7 +184,8 @@
 </div>
 
 
-<a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/AutocompleteMedico")" id="link_medico"></a>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

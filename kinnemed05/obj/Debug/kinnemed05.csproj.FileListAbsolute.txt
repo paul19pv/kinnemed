@@ -272,3 +272,5 @@ C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\zh-Hant\System.Spatial.r
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.dll
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.pdb
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.csprojResolveAssemblyReference.cache
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.rpt
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.cs

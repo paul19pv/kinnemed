@@ -109,6 +109,7 @@ namespace kinnemed05.Controllers
             List<prueba> resultado = db.prueba.Where(r => r.pru_registro == id && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).Include(p => p.examen).ToList();
             SetPrueba setprueba = new SetPrueba();
             setprueba.prueba = resultado;
+            ViewBag.reg_id = id;
             return View(setprueba);
         }
 

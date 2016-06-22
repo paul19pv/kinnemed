@@ -237,6 +237,7 @@
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\RayosController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\ReposoController.cs" />
     <Compile Include="Controllers\RevisionController.cs" />
     <Compile Include="Controllers\SignosController.cs" />
@@ -258,9 +259,6 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\codigo.cs">
-      <DependentUpon>KinModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\componente.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\concepto.cs">
@@ -289,6 +287,9 @@
     </Compile>
     <Compile Include="Models\Firma.cs" />
     <Compile Include="Models\fisico.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getReporte01_Result.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ginecologico.cs">
@@ -322,9 +323,13 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\lista.cs" />
+    <Compile Include="Models\Lista01.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\medico.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mensaje.cs" />
     <Compile Include="Models\ocupacional.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
@@ -594,6 +599,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RptLimpio.rpt</DependentUpon>
       <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Reports\RptMedico.cs">
       <AutoGen>True</AutoGen>
@@ -1304,6 +1310,7 @@
     <Content Include="Views\Reposo\Delete.cshtml" />
     <Content Include="Views\Historia\Firma.cshtml" />
     <Content Include="Views\Oftalmologia\Index_historia.cshtml" />
+    <Content Include="Views\Reporte\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1401,10 +1408,11 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptInmunizacion.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RptLimpio.rpt">
+    <Content Include="Reports\RptLimpio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptLimpio.cs</LastGenOutput>
-    </EmbeddedResource>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reports\RptOcupacional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptOcupacional.cs</LastGenOutput>

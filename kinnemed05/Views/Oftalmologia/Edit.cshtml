@@ -141,6 +141,9 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
     @Html.HiddenFor(model=>model.oft_id)
+    @Html.HiddenFor(model=>model.oft_fecha)
+    @Html.HiddenFor(model=>model.oft_responsable)
+    @Html.HiddenFor(model=>model.oft_perfil)
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">

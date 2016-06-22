@@ -44,7 +44,7 @@ namespace kinnemed05.Models
         public string pac_telefono { get; set; }
         [Display(Name = "Celular")]
         [RegularExpression("^([0-9.&'-]+)$", ErrorMessage = "Solo se aceptan números")]
-        [StringLength(10, MinimumLength = 7, ErrorMessage = "La longitud debe ser de 10 caracteres")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "La longitud debe ser de 10 caracteres")]
         public string pac_celular { get; set; }
         [Display(Name = "Correo electrónico")]
         //[Required(ErrorMessage = "Campo Requerido")]

@@ -92,6 +92,7 @@
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.aud_id)
                 @Html.HiddenFor(model => model.aud_archivo)
+                @Html.HiddenFor(model=>model.aud_fecha)
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.TextBoxFor(model => model.aud_paciente, new { @class = "form-control", @type = "hidden" })

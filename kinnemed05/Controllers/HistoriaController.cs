@@ -338,6 +338,9 @@ namespace kinnemed05.Controllers
                 historia historia = db.historia.Find(id);
                 concepto concepto = db.concepto.Find(id);
                 medico medico = db.medico.Find(historia.his_medico);
+
+                if (concepto == null)
+                    return RedirectToAction("Message", "Home", new { mensaje = "La historia no tiene información completa. Por llene toda la información y genere el certificado correspondiente" });
                 var consulta = db.ocupacional.Where(o => o.ocu_paciente == pac_id && o.ocu_tipo == "actual" && o.ocu_estado == true);
                 ocupacional ocupacional = new ocupacional();
 
@@ -379,7 +382,7 @@ namespace kinnemed05.Controllers
                     RptCerApto rp = new RptCerApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerApto.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    rp.SetParameterValue("fecha", get_fecha());
+                    rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "APTO CON RESTRICCIONES PERSONALES" || concepto.con_resultado == "APTO CON RESTRICCIONES LABORALES")
@@ -387,7 +390,7 @@ namespace kinnemed05.Controllers
                     RptCerAptoRes rp = new RptCerAptoRes();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerAptoRes.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    rp.SetParameterValue("fecha", get_fecha());
+                    rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "NO APTO")
@@ -395,7 +398,7 @@ namespace kinnemed05.Controllers
                     RptCerNoApto rp = new RptCerNoApto();
                     rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCerNoApto.rpt"));
                     rp.SetDataSource(dsCertificado);
-                    rp.SetParameterValue("fecha", get_fecha());
+                    rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA")
@@ -409,7 +412,7 @@ namespace kinnemed05.Controllers
                     else
                         nexo = "UNA";
                     rp.SetParameterValue("nexo", nexo);
-                    rp.SetParameterValue("fecha", get_fecha());
+                    rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 }
                 Response.Buffer = false;
@@ -500,7 +503,7 @@ namespace kinnemed05.Controllers
                 dsReposo dsReposo = new dsReposo();
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 SqlConnection sqlcon = new SqlConnection(conn);
-                //historia historia = db.historia.Find(id);
+                historia historia = db.historia.Find(id);
                 string strReposo = "Select * from view_reposo where his_id=" + id;
                 SqlDataAdapter daReposo = new SqlDataAdapter(strReposo, sqlcon);
                 daReposo.Fill(dsReposo, "view_reposo");
@@ -508,7 +511,7 @@ namespace kinnemed05.Controllers
                 string reportPath = Server.MapPath("~/Reports/RptReposo.rpt");
                 rp.Load(reportPath);
                 rp.SetDataSource(dsReposo);
-                rp.SetParameterValue("fecha", get_fecha());
+                rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                 
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -655,9 +658,9 @@ namespace kinnemed05.Controllers
             return user_id;
         }
 
-        private string get_fecha() {
+        private string get_fecha(string fec_his) {
             string fecha = String.Empty;
-            DateTime fecha_cal = DateTime.Now;
+            DateTime fecha_cal = DateTime.Parse(fec_his);
             string dia = fecha_cal.Day.ToString();
             string mes = String.Empty;
             string anio = fecha_cal.Year.ToString();

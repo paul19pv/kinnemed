@@ -43,6 +43,10 @@ namespace kinnemed05.Models
         [Display(Name = "Otros")]
         public string oft_otros { get; set; }
 
+        public string oft_fecha { get; set; }
+        public Nullable<int> oft_responsable { get; set; }
+        public Nullable<int> oft_perfil { get; set; }
+
         
     }
 }
