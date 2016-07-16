@@ -1,49 +1,26 @@
-﻿@model IEnumerable<kinnemed05.Models.Lista01>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "Filtro";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.pac_nombres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.pac_apellidos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.historia)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.pac_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pac_nombres)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.pac_apellidos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.historia)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
-
-</table>
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            
+            <div class="form-group">
+                @Html.Label("Fecha de Inicio", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("fec_ini", "", new { @class = "form-control"})
+                </div>
+                @Html.Label("Fecha de Fin", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("fec_fin", "", new { @class = "form-control"})
+                </div>
+                @Html.Label("Empresa", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-2">
+                    @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
+                </div>
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>

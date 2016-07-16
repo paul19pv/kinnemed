@@ -10,8 +10,11 @@ using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -70,10 +73,43 @@ namespace kinnemed05.Controllers
 
         public ActionResult Mensajetxt() {
             Mensaje mensaje = new Mensaje();
-            string respuesta = mensaje.enviar("0984659882","Hola mundo");
-            string respuesta2 = mensaje.mail("juanjavierj@gmail.com", "mensaje prueba");
-            return RedirectToAction("Message", new { mensaje = respuesta+respuesta2 });
+            string respuesta = String.Empty;
+            //string respuesta = mensaje.enviar("0984659882","Hola mundo");
+            //string respuesta2 = mensaje.mail("juanjavierj@gmail.com", "mensaje prueba");
+            RunAsync().Wait(); ;
+            return RedirectToAction("Message", new { mensaje = respuesta });
         
+        }
+
+        public static async Task RunAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://envia-movil.com");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                                                                        Convert.ToBase64String(
+                                                                            System.Text.ASCIIEncoding.ASCII.GetBytes(
+                                                                              string.Format("{0}:{1}", "FED3ADC535", "F37AEA0E3161838"))));
+
+
+                string mensaje = "Mensaje titulo";
+                string[] numeros = { "593998593448", "59384659882" };
+                string[] Mensajes = { "msj 1", "msj 2" };
+
+
+                var envio = new EnvioDTO();
+                envio.Mensaje = mensaje;
+                envio.Mensajes = Mensajes;
+                envio.Destinatarios = numeros;
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Envios", envio);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get the URI of the created resource.
+
+                }
+            }
         }
 
        

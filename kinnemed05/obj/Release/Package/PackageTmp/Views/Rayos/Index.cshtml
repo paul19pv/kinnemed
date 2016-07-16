@@ -115,6 +115,9 @@
                     @Html.DisplayNameFor(model=>model.ray_paciente)
                 </th>
                 <th>
+                    Empresa
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.ray_medico)
                 </th>
                 <th>
@@ -129,6 +132,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem=>item.medico.med_nombres) @Html.DisplayFor(modelItem=>item.medico.med_apellidos)
@@ -147,7 +153,8 @@
                         
                     </td>
                     <td>
-                        @Html.ActionLink("Reporte", "Reporte", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
+                        @*@Html.ActionLink("Reporte", "Reporte", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })*@
+                        @Html.ActionLink("Reporte", "Descargar", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
                     </td>
                 </tr>
             }

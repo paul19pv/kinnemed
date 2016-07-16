@@ -222,6 +222,7 @@
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\DiagnosticoController.cs" />
     <Compile Include="Controllers\EspirometriaController.cs" />
+    <Compile Include="Controllers\ExamenController.cs" />
     <Compile Include="Controllers\FamiliarController.cs" />
     <Compile Include="Controllers\FisicoController.cs" />
     <Compile Include="Controllers\GinecologicoController.cs" />
@@ -292,6 +293,12 @@
     <Compile Include="Models\getReporte01_Result.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\getReporte02_Result.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\getReporte03_Result.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ginecologico.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
@@ -324,6 +331,24 @@
     </Compile>
     <Compile Include="Models\lista.cs" />
     <Compile Include="Models\Lista01.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lista02.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lista03.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lista04.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lista05.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lista06.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lista07.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\medico.cs">
@@ -639,6 +664,12 @@
       <DependentUpon>RptRayos.rpt</DependentUpon>
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Reports\RptRayos_.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptRayos_.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RptReposo.cs">
       <AutoGen>True</AutoGen>
@@ -1311,6 +1342,19 @@
     <Content Include="Views\Historia\Firma.cshtml" />
     <Content Include="Views\Oftalmologia\Index_historia.cshtml" />
     <Content Include="Views\Reporte\Index.cshtml" />
+    <Content Include="Views\Reporte\Reporte02.cshtml" />
+    <Content Include="Views\Reporte\Lista02.cshtml" />
+    <Content Include="Views\Reporte\Reporte01.cshtml" />
+    <Content Include="Views\Reporte\Reporte03.cshtml" />
+    <Content Include="Views\Reporte\Reporte04.cshtml" />
+    <Content Include="Views\Reporte\Reporte05.cshtml" />
+    <Content Include="Views\Reporte\Reporte06.cshtml" />
+    <Content Include="Views\Reporte\Reporte07.cshtml" />
+    <Content Include="Views\Examen\Index.cshtml" />
+    <Content Include="Views\Examen\Details.cshtml" />
+    <Content Include="Views\Examen\Create.cshtml" />
+    <Content Include="Views\Examen\Edit.cshtml" />
+    <Content Include="Views\Examen\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1435,6 +1479,10 @@
       <LastGenOutput>RptRayos.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Reports\RptRayos_.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptRayos_.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptReposo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptReposo.cs</LastGenOutput>

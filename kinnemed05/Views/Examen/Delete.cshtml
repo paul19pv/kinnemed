@@ -1,0 +1,89 @@
+﻿@model kinnemed05.Models.examen
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>examen</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_unidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_unidad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_tipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.area.are_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.area.are_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_item)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_item)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_valores)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_valores)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_inicial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_inicial)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_estado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_orden)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_orden)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

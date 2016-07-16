@@ -113,6 +113,9 @@
                     @Html.DisplayNameFor(model => model.oft_paciente)
                 </th>
                 <th>
+                    Empresa
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.oft_diagnostico)
                 </th>
                 <th>
@@ -130,6 +133,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.oft_diagnostico)

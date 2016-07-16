@@ -23,6 +23,7 @@ namespace kinnemed05.Controllers
     public class EspirometriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
+        private UsersContext db_users = new UsersContext();
 
         //
         // GET: /Espirometria/
@@ -99,6 +100,7 @@ namespace kinnemed05.Controllers
                     espirometria.esp_archivo = fileName;
                     DateTime dd = DateTime.Now;
                     espirometria.esp_fecha = dd.Date.ToString("d");
+                    espirometria.esp_laboratorista = get_user();
                     if (ModelState.IsValid && ext == ".pdf")
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/espirometria"), fileName);
@@ -293,18 +295,12 @@ namespace kinnemed05.Controllers
                 //    fileName = "firma.png";
                 //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
 
-                string strEspirometria = "Select * from espirometria where esp_id=" + id;
-                string strPaciente = "Select * from paciente where pac_id=" + espirometria.esp_paciente;
-                string strMedico = "Select * from medico where med_id=" + espirometria.esp_medico;
+                string strEspirometria = "Select * from view_espirometria where esp_id=" + id;
 
 
                 SqlConnection sqlcon = new SqlConnection(conn);
                 SqlDataAdapter daEspirometria = new SqlDataAdapter(strEspirometria, sqlcon);
-                SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
-                SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
-                daEspirometria.Fill(dsPrueba, "espirometria");
-                daPaciente.Fill(dsPrueba, "paciente");
-                daMedico.Fill(dsPrueba, "medico");
+                daEspirometria.Fill(dsPrueba, "view_espirometria");
 
                 RptEspirometria_ rp = new RptEspirometria_();
                 rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptEspirometria_.rpt"));
@@ -421,6 +417,18 @@ namespace kinnemed05.Controllers
             ModelState.AddModelError("notificacion", resultado);
 
 
+        }
+        private int get_user()
+        {
+            int user_id = 0;
+            if (Request.IsAuthenticated)
+            {
+                string user_name = String.Empty;
+                user_name = User.Identity.Name;
+                UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
+                user_id = userprofile.UserLaboratorista.GetValueOrDefault();
+            }
+            return user_id;
         }
 
         protected override void Dispose(bool disposing)

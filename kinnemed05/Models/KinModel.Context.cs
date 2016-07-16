@@ -66,10 +66,10 @@ namespace kinnemed05.Models
         public DbSet<historia> historia { get; set; }
         public DbSet<reposo> reposo { get; set; }
         public DbSet<paciente> paciente { get; set; }
-        public DbSet<audiometria> audiometria { get; set; }
-        public DbSet<espirometria> espirometria { get; set; }
         public DbSet<oftalmologia> oftalmologia { get; set; }
         public DbSet<rayos> rayos { get; set; }
+        public DbSet<audiometria> audiometria { get; set; }
+        public DbSet<espirometria> espirometria { get; set; }
     
         public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
         {
@@ -103,6 +103,210 @@ namespace kinnemed05.Models
                 new ObjectParameter("empresa", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista01>("getLista01", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<getReporte02_Result> getReporte02(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte02_Result>("getReporte02", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<getReporte03_Result> getReporte03(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte03_Result>("getReporte03", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> getReporte04(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte04", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> getReporte05(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte05", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> getReporte06(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte06", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> getReporte07(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte07", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista02> getLista02(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista02>("getLista02", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista03> getLista03(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista03>("getLista03", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista04> getLista04(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista04>("getLista04", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista05> getLista05(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista05>("getLista05", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista06> getLista06(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista06>("getLista06", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
+    
+        public virtual ObjectResult<Lista07> getLista07(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista07>("getLista07", fecha_iniParameter, fecha_finParameter, empresaParameter);
         }
     }
 }

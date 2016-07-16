@@ -204,17 +204,31 @@ namespace kinnemed05.Models
 
         public SelectList val_san(string defaul) {
             List<SelectListItem> list_valores = new List<SelectListItem>();
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"A\" Factor RH positivo(+)", Value = "GRUPO \"A\" Factor RH positivo(+)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"B\" Factor RH positivo(+)", Value = "GRUPO \"B\" Factor RH positivo(+)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"O\" Factor RH positivo(+)", Value = "GRUPO \"O\" Factor RH positivo(+)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"AB\" Factor RH positivo(+)", Value = "GRUPO \"AB\" Factor RH positivo(+)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"A\" Factor RH negativo(-)", Value = "GRUPO \"A\" Factor RH negativo(-)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"B\" Factor RH negativo(-)", Value = "GRUPO \"B\" Factor RH negativo(-)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"O\" Factor RH negativo(-)", Value = "GRUPO \"O\" Factor RH negativo(-)" });
-            list_valores.Add(new SelectListItem { Text = "GRUPO \"AB\" Factor RH negativo(-)", Value = "GRUPO \"AB\" Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO A Factor RH positivo(+)", Value = "GRUPO A Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO B Factor RH positivo(+)", Value = "GRUPO B Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO O Factor RH positivo(+)", Value = "GRUPO O Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO AB Factor RH positivo(+)", Value = "GRUPO AB Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO A Factor RH negativo(-)", Value = "GRUPO A Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO B Factor RH negativo(-)", Value = "GRUPO B Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO O Factor RH negativo(-)", Value = "GRUPO O Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO AB Factor RH negativo(-)", Value = "GRUPO AB Factor RH negativo(-)" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
+        //public SelectList agl_valor(string defaul)
+        //{
+        //    List<SelectListItem> list_valores = new List<SelectListItem>();
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA TYPHI H", Value = "SALMONELLA TYPHI H" });
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA TYPHI O", Value = "SALMONELLA TYPHI O" });
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA HA", Value = "SALMONELLA HA" });
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA HB", Value = "SALMONELLA HB" });
+        //    list_valores.Add(new SelectListItem { Text = "PROTEUS OX19", Value = "PROTEUS OX19" });
+        //    list_valores.Add(new SelectListItem { Text = "BRUCELLA ABORTUS", Value = "BRUCELLA ABORTUS" });
+        //    SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
+        //    return valores;
+        //}
+
+
 
 
 

@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class subsecuente
     {
         public int sub_id { get; set; }
-    
+
         public virtual historia historia { get; set; }
     }
 }

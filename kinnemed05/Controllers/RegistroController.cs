@@ -296,7 +296,7 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Codigo() {
             DateTime dd = DateTime.Today;
             string fecha = dd.Date.ToString("d");
@@ -304,9 +304,10 @@ namespace kinnemed05.Controllers
             return View();
 
         }
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AcceptVerbs(HttpVerbs.Post)]
+        
         public ActionResult Codigo(registro registro)
         {
             var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
@@ -346,7 +347,7 @@ namespace kinnemed05.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Codigo(int id)
+        public ActionResult ReporteCodigo(int id)
         {
             string conn = ConfigurationManager.AppSettings["conexion"];
             registro registro = db.registro.Find(id);

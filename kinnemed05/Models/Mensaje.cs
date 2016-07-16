@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Mail;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace kinnemed05.Models
@@ -47,6 +50,41 @@ namespace kinnemed05.Models
             return lcHtml;
         }
 
+
+        
+
+
+        public static async Task RunAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:2740/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                                                                        Convert.ToBase64String(
+                                                                            System.Text.ASCIIEncoding.ASCII.GetBytes(
+                                                                              string.Format("{0}:{1}", "FED3ADC535", "F37AEA0E3161838"))));
+
+
+                string mensaje = "Mensaje titulo";
+                string[] numeros = { "593998593448", "59384659882" };
+                string[] Mensajes = { "msj 1", "msj 2" };
+
+
+                var envio = new EnvioDTO();
+                envio.Mensaje = mensaje;
+
+                envio.Destinatarios = numeros;
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Envios", envio);
+                if (response.IsSuccessStatusCode)
+                {
+                    // Get the URI of the created resource.
+
+                }
+            }
+        }
+
         public string mail(string destinatario, string mensaje) {
             MailMessage email = new MailMessage();
             email.To.Add(new MailAddress(destinatario));
@@ -77,5 +115,13 @@ namespace kinnemed05.Models
             }
             return output;
         }
+    }
+
+
+
+    public class EnvioDTO {
+        public string[] Mensajes { get; set; }
+        public string[] Destinatarios { get; set; }
+        public string Mensaje { get; set; }
     }
 }

@@ -83,18 +83,21 @@
         <AssociationConnector Association="kinnemedModel.FK_paciente_profesion" />
         <AssociationConnector Association="kinnemedModel.FK_personal_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_registro_paciente" />
-        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="14.25" PointY="48.875" />
-        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="11.25" PointY="44.875" />
         <EntityTypeShape EntityType="kinnemedModel.oftalmologia" Width="1.5" PointX="14.25" PointY="53.5" />
-        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="11.25" PointY="52.875" />
+        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_medico" />
+        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="8.25" PointY="38" />
+        <AssociationConnector Association="kinnemedModel.FK_rayos_laboratorista" />
+        <AssociationConnector Association="kinnemedModel.FK_rayos_medico" />
+        <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="11.25" PointY="43" />
+        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="14.25" PointY="49" />
+        <AssociationConnector Association="kinnemedModel.FK_audiometria_laboratorista" />
         <AssociationConnector Association="kinnemedModel.FK_audiometria_medico" />
         <AssociationConnector Association="kinnemedModel.FK_audiometria_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_espirometria_laboratorista" />
         <AssociationConnector Association="kinnemedModel.FK_espirometria_medico" />
         <AssociationConnector Association="kinnemedModel.FK_espirometria_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_medico" />
-        <AssociationConnector Association="kinnemedModel.FK_rayos_medico" />
-        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

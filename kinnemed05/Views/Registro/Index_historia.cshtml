@@ -32,6 +32,9 @@
                     Paciente
                 </th>
                 <th>
+                    Empresa
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.reg_orden)
                 </th>
                 <th>
@@ -46,6 +49,9 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.reg_orden)

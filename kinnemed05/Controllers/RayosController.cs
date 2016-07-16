@@ -9,6 +9,10 @@ using kinnemed05.Models;
 using System.IO;
 using kinnemed05.Security;
 using kinnemed05.Filters;
+using kinnemed05.Reports.dataset;
+using System.Configuration;
+using System.Data.SqlClient;
+using kinnemed05.Reports;
 
 namespace kinnemed05.Controllers
 {
@@ -17,6 +21,7 @@ namespace kinnemed05.Controllers
     public class RayosController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
+        private UsersContext db_users = new UsersContext();
 
         //
         // GET: /Rayos/
@@ -97,6 +102,7 @@ namespace kinnemed05.Controllers
                     rayos.ray_imagen = fileName;
                     DateTime dd = DateTime.Now;
                     rayos.ray_fecha = dd.Date.ToString("d");
+                    rayos.ray_laboratorista = get_user();
                     if (ModelState.IsValid && (Array.IndexOf(formatos, ext) >= 0))
                     //if (ModelState.IsValid)
                     {
@@ -281,6 +287,31 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
+        public ActionResult Descargar(int id) {
+            try
+            {
+                dsRayos dsRayos = new dsRayos();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                int ray_id = id;
+                string strRayos = "Select * from view_rayos where ray_id="+ray_id;
+                SqlConnection sqlcon = new SqlConnection(conn);
+                SqlDataAdapter daRayos = new SqlDataAdapter(strRayos, sqlcon);
+                daRayos.Fill(dsRayos, "view_rayos");
+                RptRayos_ rp = new RptRayos_();
+                string reportPath = Server.MapPath("~/Reports/RptRayos_.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dsRayos);
+
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", ray_id + ".pdf");
+            }
+            catch (Exception ex) {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
         private void notificar(int pac_id)
         {
             string resultado = String.Empty;
@@ -303,6 +334,18 @@ namespace kinnemed05.Controllers
             ModelState.AddModelError("notificacion", resultado);
 
 
+        }
+        private int get_user()
+        {
+            int user_id = 0;
+            if (Request.IsAuthenticated)
+            {
+                string user_name = String.Empty;
+                user_name = User.Identity.Name;
+                UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
+                user_id = userprofile.UserLaboratorista.GetValueOrDefault();
+            }
+            return user_id;
         }
         protected override void Dispose(bool disposing)
         {

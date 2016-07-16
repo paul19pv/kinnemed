@@ -18,6 +18,7 @@ namespace kinnemed05.Models
         public string ray_observacion { get; set; }
         [Display(Name = "Médico")]
         public int ray_medico { get; set; }
+        public int ray_laboratorista { get; set; }
 
         public string ray_fecha { get; set; }
         public Nullable<int> ray_responsable { get; set; }

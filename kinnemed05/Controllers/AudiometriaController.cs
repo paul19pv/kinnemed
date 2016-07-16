@@ -23,7 +23,7 @@ namespace kinnemed05.Controllers
     public class AudiometriaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_users = new UsersContext();
         //
         // GET: /Audiometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
@@ -101,6 +101,7 @@ namespace kinnemed05.Controllers
                     audiometria.aud_archivo = fileName;
                     DateTime dd = DateTime.Now; 
                     audiometria.aud_fecha=dd.Date.ToString("d");
+                    audiometria.aud_laboratorista = get_user();
                     if (ModelState.IsValid && ext == ".pdf")
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/audiometria"), fileName);
@@ -289,35 +290,27 @@ namespace kinnemed05.Controllers
             try
             {
                 string contentType = "application/pdf";
-                dsAudiometria dsPrueba = new dsAudiometria();
+                dsAudiometria dsAudiometria = new dsAudiometria();
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 int aud_id = id;
                 audiometria audiometria = db.audiometria.Find(aud_id);
-                medico medico = db.medico.Find(audiometria.aud_medico);
+                //medico medico = db.medico.Find(audiometria.aud_medico);
                 string fileName =String.Empty;
                 //if (String.IsNullOrEmpty(fileName))
                 //    fileName = "firma.png";
                 //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
 
-                string strAudiometia = "Select * from audiometria where aud_id=" + aud_id;
-                string strPaciente = "Select * from paciente where pac_id=" + audiometria.aud_paciente;
-                string strMedico = "Select * from medico where med_id=" + audiometria.aud_medico;
+                string strAudiometia = "Select * from view_audiometria where aud_id=" + aud_id;
 
                 SqlConnection sqlcon = new SqlConnection(conn);
                 
                 SqlDataAdapter daAudiometria = new SqlDataAdapter(strAudiometia, sqlcon);
-                SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
-                SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
-                
-                daAudiometria.Fill(dsPrueba, "audiometria");
-                daPaciente.Fill(dsPrueba, "paciente");
-                daMedico.Fill(dsPrueba, "medico");
+
+                daAudiometria.Fill(dsAudiometria, "view_audiometria");
 
                 RptAudiometria_ rp = new RptAudiometria_();
                 rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptAudiometria_.rpt"));
-                rp.SetDataSource(dsPrueba);
-                rp.SetParameterValue("hc", "");
-                rp.SetParameterValue("orden", "");
+                rp.SetDataSource(dsAudiometria);
                 //rp.SetParameterValue("picturePath", path01);
                 rp.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Path.Combine(Server.MapPath("~/Content/audiometria"), aud_id + ".pdf"));
                 
@@ -434,6 +427,18 @@ namespace kinnemed05.Controllers
             ModelState.AddModelError("notificacion", resultado);
               
 
+        }
+        private int get_user()
+        {
+            int user_id = 0;
+            if (Request.IsAuthenticated)
+            {
+                string user_name = String.Empty;
+                user_name = User.Identity.Name;
+                UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
+                user_id = userprofile.UserLaboratorista.GetValueOrDefault();
+            }
+            return user_id;
         }
 
 

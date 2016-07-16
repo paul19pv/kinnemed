@@ -209,10 +209,9 @@ namespace kinnemed05.Controllers
         }
 
         private void CreateObservacion(int reg_id, int exa_id) {
-            int are_id = db.examen.Where(e => e.exa_id == exa_id).First().exa_area;
+            int are_id = db.examen.Find(exa_id).exa_area;
             int obs_id = db.examen.Where(e => e.exa_area == are_id && e.exa_nombre == "OBSERVACIONES").First().exa_id;
             var consulta = db.prueba.Where(p => p.pru_examen == obs_id);
-            barcode barcode = new barcode();
             if (!consulta.Any()) {
                 prueba prueba = new prueba();
                 prueba.pru_examen = obs_id;

@@ -234,40 +234,30 @@ namespace kinnemed05.Controllers
             try
             {
                 //string contentType = "application/pdf";
-                dsOftalmologia dsPrueba = new dsOftalmologia();
+                dsOftalmologia dsOftalmologia = new dsOftalmologia();
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 int oft_id = id;
-                oftalmologia oftalmologia = db.oftalmologia.Find(oft_id);
-                medico medico = db.medico.Find(oftalmologia.oft_medico);
                 string fileName = String.Empty;
                 //if (String.IsNullOrEmpty(fileName))
                 //    fileName = "firma.png";
                 //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
 
-                string strOftalmologia = "Select * from oftalmologia where oft_id=" + oft_id;
-                string strPaciente = "Select * from paciente where pac_id=" + oftalmologia.oft_paciente;
-                string strMedico = "Select * from medico where med_id=" + oftalmologia.oft_medico;
+                string strOftalmologia = "Select * from view_oftalmologia where oft_id=" + oft_id;
 
                 SqlConnection sqlcon = new SqlConnection(conn);
 
                 SqlDataAdapter daOftalmologia = new SqlDataAdapter(strOftalmologia, sqlcon);
-                SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
-                SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
 
-                daOftalmologia.Fill(dsPrueba, "oftalmologia");
-                daPaciente.Fill(dsPrueba, "paciente");
-                daMedico.Fill(dsPrueba, "medico");
-
+                daOftalmologia.Fill(dsOftalmologia, "view_oftalmologia");
+                
                 RptOftalmologia_ rp = new RptOftalmologia_();
                 string reportPath = Server.MapPath("~/Reports/RptOftalmologia_.rpt");
                 rp.Load(reportPath);
-                rp.SetDataSource(dsPrueba);
+                rp.SetDataSource(dsOftalmologia);
                 
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
                 return File(stream, "application/pdf", oft_id + ".pdf");
-
-                
 
             }
             catch (Exception ex)
