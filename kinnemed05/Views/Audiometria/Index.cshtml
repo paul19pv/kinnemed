@@ -99,10 +99,7 @@
                 <div class="col-lg-3">
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
-                @Html.Label("Medico", new { @class = "control-label col-lg-1", @for = "inputDefault" })
-                <div class="col-lg-3">
-                    @Html.TextBox("txt_medico", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
-                </div>
+                
                 <input type="submit" value="Filtrar" class="btn btn-primary" />
             </div>
         }
@@ -119,9 +116,7 @@
                 <th>
                     Empresa
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.aud_medico)
-                </th>
+                
                 <th>
                     @Html.DisplayNameFor(model => model.aud_observacion)
                 </th>
@@ -138,9 +133,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.aud_observacion)
                     </td>

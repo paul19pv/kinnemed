@@ -27,15 +27,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Audiometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id,int? paciente, int? medico)
+        public ActionResult Index(int? id,int? paciente)
         {
             var audiometria = db.audiometria.Include(a => a.paciente);
             if (id != null)
                 audiometria = audiometria.Where(a => a.aud_paciente == id);
             if (paciente != null)
                 audiometria = audiometria.Where(a => a.aud_paciente == paciente);
-            if (medico != null)
-                audiometria = audiometria.Where(a => a.aud_medico == medico);
+            
             //if (!String.IsNullOrEmpty(fecha))
             //    audiometria = audiometria.Where(a => a.aud_fecha == fecha);
             if (User.IsInRole("paciente"))
@@ -68,8 +67,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(audiometria.aud_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(audiometria.aud_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(audiometria);
         }
 
@@ -90,7 +88,6 @@ namespace kinnemed05.Controllers
         public ActionResult Create(audiometria audiometria)
         {
             string nom_pac;
-            string nom_med;
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
@@ -129,12 +126,7 @@ namespace kinnemed05.Controllers
             else
                 nom_pac = "";
             ViewBag.paciente = nom_pac;
-            medico medico = db.medico.Find(audiometria.aud_medico);
-            if (medico != null)
-                nom_med = medico.med_nombres + " " + medico.med_apellidos;
-            else
-                nom_med = "";
-            ViewBag.medico = nom_med;
+           
             return View(audiometria);
         }
 
@@ -151,8 +143,6 @@ namespace kinnemed05.Controllers
             
             paciente paciente = db.paciente.Find(audiometria.aud_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(audiometria.aud_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
             
             
             return View(audiometria);
@@ -208,8 +198,7 @@ namespace kinnemed05.Controllers
 
             paciente paciente = db.paciente.Find(audiometria.aud_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(audiometria.aud_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+           
             return View(audiometria);
         }
 

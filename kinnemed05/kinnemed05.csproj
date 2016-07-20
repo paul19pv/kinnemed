@@ -200,6 +200,7 @@
     <Compile Include="Context\diagnostico.cs" />
     <Compile Include="Context\empresa.cs" />
     <Compile Include="Context\espirometria.cs" />
+    <Compile Include="Context\examen.cs" />
     <Compile Include="Context\ginecologico.cs" />
     <Compile Include="Context\historia.cs" />
     <Compile Include="Context\inmunizacion.cs" />
@@ -508,6 +509,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRiesgos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RepHisGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepHisGen.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\RptAudiometria.cs">
       <AutoGen>True</AutoGen>
@@ -1383,6 +1390,10 @@
       <LastGenOutput>RptAudiometria.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Reports\RepHisGen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepHisGen.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptAudiometria_.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptAudiometria_.cs</LastGenOutput>

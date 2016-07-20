@@ -15,8 +15,8 @@ namespace kinnemed05.Models
         public string aud_archivo { get; set; }
         [Display(Name = "Observación")]
         public string aud_observacion { get; set; }
-        [Display(Name = "Medico")]
-        public int aud_medico { get; set; }
+        //[Display(Name = "Medico")]
+        //public int aud_medico { get; set; }
         public int aud_laboratorista { get; set; }
 
         public string aud_fecha { get; set; }

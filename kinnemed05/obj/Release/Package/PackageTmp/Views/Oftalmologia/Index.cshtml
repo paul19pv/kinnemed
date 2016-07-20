@@ -96,10 +96,7 @@
                 <div class="col-lg-3">
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
-                @Html.Label("Medico", new { @class = "control-label col-lg-1", @for = "inputDefault" })
-                <div class="col-lg-3">
-                    @Html.TextBox("txt_medico", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
-                </div>
+                
                 <input type="submit" value="Filtrar" class="btn btn-primary" />
             </div>
         }
@@ -121,9 +118,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.oft_indicaciones)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.oft_medico)
-                </th>
+               
                 <th></th>
                 <th></th>
             </tr>
@@ -143,9 +138,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.oft_indicaciones)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
-                    </td>
+                   
                     <td>
                         @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
                         {

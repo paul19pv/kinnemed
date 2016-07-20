@@ -14,12 +14,14 @@ namespace kinnemed05.Models
         public int reg_orden { get; set; }
         [Display(Name = "Fecha")]
         public string reg_fecha { get; set; }
-        [Display(Name = "Médico")]
-        public Nullable<int> reg_medico { get; set; }
+        //[Display(Name = "Médico")]
+        //public Nullable<int> reg_medico { get; set; }
         [Display(Name = "Estado")]
         public Nullable<bool> reg_estado { get; set; }
         [Display(Name = "Laboratorista")]
         public int reg_laboratorista { get; set; }
+        public string reg_validacion { get; set; }
+
 
     }
 }

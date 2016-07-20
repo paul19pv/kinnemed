@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_rayos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ray_id, pac_nombres, pac_apellidos, med_nombres, med_apellidos, pac_genero, pac_edad, ray_observacion, ray_fecha, responsable, firma FROM dbo.view_rayos</CommandText>
+                    <CommandText>SELECT ray_id, pac_nombres, pac_apellidos, pac_genero, pac_edad, ray_observacion, ray_fecha, responsable, firma, emp_nombre, pac_cedula FROM dbo.view_rayos</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -22,14 +22,14 @@
               <Mapping SourceColumn="ray_id" DataSetColumn="ray_id" />
               <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
               <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
-              <Mapping SourceColumn="med_nombres" DataSetColumn="med_nombres" />
-              <Mapping SourceColumn="med_apellidos" DataSetColumn="med_apellidos" />
               <Mapping SourceColumn="pac_genero" DataSetColumn="pac_genero" />
               <Mapping SourceColumn="pac_edad" DataSetColumn="pac_edad" />
               <Mapping SourceColumn="ray_observacion" DataSetColumn="ray_observacion" />
               <Mapping SourceColumn="ray_fecha" DataSetColumn="ray_fecha" />
               <Mapping SourceColumn="responsable" DataSetColumn="responsable" />
               <Mapping SourceColumn="firma" DataSetColumn="firma" />
+              <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -53,20 +53,6 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="med_nombres" msprop:Generator_ColumnVarNameInTable="columnmed_nombres" msprop:Generator_ColumnPropNameInRow="med_nombres" msprop:Generator_ColumnPropNameInTable="med_nombresColumn" msprop:Generator_UserColumnName="med_nombres">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="med_apellidos" msprop:Generator_ColumnVarNameInTable="columnmed_apellidos" msprop:Generator_ColumnPropNameInRow="med_apellidos" msprop:Generator_ColumnPropNameInTable="med_apellidosColumn" msprop:Generator_UserColumnName="med_apellidos">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
@@ -103,6 +89,20 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="firma" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfirma" msprop:Generator_ColumnPropNameInRow="firma" msprop:Generator_ColumnPropNameInTable="firmaColumn" msprop:Generator_UserColumnName="firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="emp_nombre" msprop:Generator_ColumnVarNameInTable="columnemp_nombre" msprop:Generator_ColumnPropNameInRow="emp_nombre" msprop:Generator_ColumnPropNameInTable="emp_nombreColumn" msprop:Generator_UserColumnName="emp_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

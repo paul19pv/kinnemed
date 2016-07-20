@@ -104,10 +104,7 @@
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
                 
-                @Html.Label("Medico", new { @class = "control-label col-lg-1", @for = "inputDefault" })
-                <div class="col-lg-3">
-                    @Html.TextBox("txt_medico", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
-                </div>
+               
                 @Html.Label("Fecha", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-2">
                     @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })

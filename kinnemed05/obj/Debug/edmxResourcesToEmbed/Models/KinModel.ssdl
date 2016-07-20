@@ -15,7 +15,6 @@
     <Property Name="aud_paciente" Type="int" Nullable="false" />
     <Property Name="aud_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="aud_observacion" Type="nvarchar(max)" />
-    <Property Name="aud_medico" Type="int" Nullable="false" />
     <Property Name="aud_fecha" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="aud_responsable" Type="int" />
     <Property Name="aud_perfil" Type="int" />
@@ -101,7 +100,6 @@
     <Property Name="esp_paciente" Type="int" Nullable="false" />
     <Property Name="esp_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="esp_observacion" Type="nvarchar(max)" />
-    <Property Name="esp_medico" Type="int" Nullable="false" />
     <Property Name="esp_fecha" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="esp_responsable" Type="int" />
     <Property Name="esp_perfil" Type="int" />
@@ -325,7 +323,6 @@
     <Property Name="oft_dia_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
-    <Property Name="oft_medico" Type="int" Nullable="false" />
     <Property Name="oft_otros" Type="varchar" MaxLength="250" />
     <Property Name="oft_fecha" Type="varchar" MaxLength="10" />
     <Property Name="oft_responsable" Type="int" />
@@ -429,7 +426,7 @@
     <Property Name="pru_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="pru_examen" Type="int" Nullable="false" />
     <Property Name="pru_registro" Type="int" Nullable="false" />
-    <Property Name="pru_resultado" Type="varchar" MaxLength="20" />
+    <Property Name="pru_resultado" Type="varchar" MaxLength="40" />
     <Property Name="pru_valor" Type="varchar" MaxLength="20" />
     <Property Name="pru_fuera" Type="varchar" MaxLength="2" />
   </EntityType>
@@ -441,7 +438,6 @@
     <Property Name="ray_paciente" Type="int" Nullable="false" />
     <Property Name="ray_imagen" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="ray_observacion" Type="nvarchar(max)" />
-    <Property Name="ray_medico" Type="int" Nullable="false" />
     <Property Name="ray_fecha" Type="varchar" MaxLength="10" />
     <Property Name="ray_responsable" Type="int" />
     <Property Name="ray_perfil" Type="int" />
@@ -455,9 +451,9 @@
     <Property Name="reg_paciente" Type="int" Nullable="false" />
     <Property Name="reg_orden" Type="int" Nullable="false" />
     <Property Name="reg_fecha" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="reg_medico" Type="int" Nullable="false" />
     <Property Name="reg_estado" Type="bit" />
     <Property Name="reg_laboratorista" Type="int" Nullable="false" />
+    <Property Name="reg_validacion" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="reposo">
     <Key>
@@ -587,20 +583,6 @@
       </Principal>
       <Dependent Role="audiometria">
         <PropertyRef Name="aud_laboratorista" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_audiometria_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="audiometria" Type="Self.audiometria" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="audiometria">
-        <PropertyRef Name="aud_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -741,20 +723,6 @@
       </Principal>
       <Dependent Role="espirometria">
         <PropertyRef Name="esp_laboratorista" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_espirometria_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="espirometria" Type="Self.espirometria" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="espirometria">
-        <PropertyRef Name="esp_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -940,20 +908,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_oftalmologia_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="oftalmologia" Type="Self.oftalmologia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="oftalmologia">
-        <PropertyRef Name="oft_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_oftalmologia_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1120,20 +1074,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_rayos_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="rayos" Type="Self.rayos" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="rayos">
-        <PropertyRef Name="ray_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_rayos_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1159,20 +1099,6 @@
       </Principal>
       <Dependent Role="registro">
         <PropertyRef Name="reg_laboratorista" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_registro_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="registro" Type="Self.registro" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="registro">
-        <PropertyRef Name="reg_medico" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1370,10 +1296,6 @@
       <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="audiometria" EntitySet="audiometria" />
     </AssociationSet>
-    <AssociationSet Name="FK_audiometria_medico" Association="Self.FK_audiometria_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="audiometria" EntitySet="audiometria" />
-    </AssociationSet>
     <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="audiometria" EntitySet="audiometria" />
@@ -1412,10 +1334,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_espirometria_laboratorista" Association="Self.FK_espirometria_laboratorista">
       <End Role="laboratorista" EntitySet="laboratorista" />
-      <End Role="espirometria" EntitySet="espirometria" />
-    </AssociationSet>
-    <AssociationSet Name="FK_espirometria_medico" Association="Self.FK_espirometria_medico">
-      <End Role="medico" EntitySet="medico" />
       <End Role="espirometria" EntitySet="espirometria" />
     </AssociationSet>
     <AssociationSet Name="FK_espirometria_paciente" Association="Self.FK_espirometria_paciente">
@@ -1470,10 +1388,6 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ocupacional" EntitySet="ocupacional" />
     </AssociationSet>
-    <AssociationSet Name="FK_oftalmologia_medico" Association="Self.FK_oftalmologia_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="oftalmologia" EntitySet="oftalmologia" />
-    </AssociationSet>
     <AssociationSet Name="FK_oftalmologia_paciente" Association="Self.FK_oftalmologia_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="oftalmologia" EntitySet="oftalmologia" />
@@ -1522,20 +1436,12 @@
       <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="rayos" EntitySet="rayos" />
     </AssociationSet>
-    <AssociationSet Name="FK_rayos_medico" Association="Self.FK_rayos_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="rayos" EntitySet="rayos" />
-    </AssociationSet>
     <AssociationSet Name="FK_rayos_paciente" Association="Self.FK_rayos_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="rayos" EntitySet="rayos" />
     </AssociationSet>
     <AssociationSet Name="FK_registro_laboratorista" Association="Self.FK_registro_laboratorista">
       <End Role="laboratorista" EntitySet="laboratorista" />
-      <End Role="registro" EntitySet="registro" />
-    </AssociationSet>
-    <AssociationSet Name="FK_registro_medico" Association="Self.FK_registro_medico">
-      <End Role="medico" EntitySet="medico" />
       <End Role="registro" EntitySet="registro" />
     </AssociationSet>
     <AssociationSet Name="FK_registro_paciente" Association="Self.FK_registro_paciente">

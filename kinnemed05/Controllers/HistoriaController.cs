@@ -497,9 +497,62 @@ namespace kinnemed05.Controllers
 
         }
 
+        public ActionResult RepHisGen(int id)
+        {
+            //string pathRpt = Path.Combine(Server.MapPath("~/Reports"), "RptHistoria.rpt");
+            try
+            {
+                dsHistoria dshistoria = new dsHistoria();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                SqlConnection sqlcon = new SqlConnection(conn);
+                historia historia = db.historia.Find(id);
+                string strHistoria = "Select * from view_historia where his_id=" + id;
+                SqlDataAdapter daHistoria = new SqlDataAdapter(strHistoria, sqlcon);
+                daHistoria.Fill(dshistoria, "view_historia");
+                RepHisGen rp = new RepHisGen();
+                string reportPath = Server.MapPath("~/Reports/RepHisGen.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dshistoria);
+
+                //Subreportes
+                ////diagnostico
+                dsDiagnostico dsdiagnostico = new dsDiagnostico();
+                string strDiagnostico = "Select * from view_diagnostico where dia_historia=" + historia.his_id;
+                SqlDataAdapter daDiagnostico = new SqlDataAdapter(strDiagnostico, sqlcon);
+                daDiagnostico.Fill(dsdiagnostico, "view_diagnostico");
+                ////inmunizacion
+                dsInmunizacion dsinmunizacion = new dsInmunizacion();
+                string strInmunizacion = "Select * from view_inmunizacion where inm_paciente=" + historia.his_paciente;
+                SqlDataAdapter daInmunizacion = new SqlDataAdapter(strInmunizacion, sqlcon);
+                daInmunizacion.Fill(dsinmunizacion, "view_inmunizacion");
+                //concepto
+                dsConcepto dsconcepto = new dsConcepto();
+                string strConcepto = "Select * from concepto where con_id=" + historia.his_id;
+                SqlDataAdapter daConcepto = new SqlDataAdapter(strConcepto, sqlcon);
+                daConcepto.Fill(dsconcepto, "concepto");
+
+                
+                rp.Subreports["RptDiagnostico.rpt"].SetDataSource(dsdiagnostico);
+                rp.Subreports["RptInmunizacion.rpt"].SetDataSource(dsinmunizacion);
+                rp.Subreports["RptConcepto.rpt"].SetDataSource(dsconcepto);
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", "Reporte.pdf");
+
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message + ex.InnerException });
+            }
+
+        }
+
         public ActionResult Reposo(int id) {
             try
             {
+                reposo reposo = db.reposo.Find(id);
+                if(reposo==null)
+                    return RedirectToAction("Message", "Home", new { mensaje = "La historia no tiene certificado de reposo"});
                 dsReposo dsReposo = new dsReposo();
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 SqlConnection sqlcon = new SqlConnection(conn);

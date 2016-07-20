@@ -16,9 +16,7 @@
                 <th>
                     Empresa
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.esp_medico)
-                </th>
+              
                 <th>
                     @Html.DisplayNameFor(model => model.esp_observacion)
                 </th>
@@ -34,9 +32,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
-                    </td>
+                 
                     <td>
                         @Html.DisplayFor(modelItem => item.esp_observacion)
                     </td>

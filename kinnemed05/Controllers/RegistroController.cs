@@ -33,7 +33,7 @@ namespace kinnemed05.Controllers
         //[CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
         //[]
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id, int? paciente, int? medico, string fecha)
+        public ActionResult Index(int? id, int? paciente, string fecha)
         {
             
                 
@@ -42,8 +42,6 @@ namespace kinnemed05.Controllers
                 registro = db.registro.Where(r => r.reg_paciente == id);
             if (paciente != null)
                 registro = registro.Where(r=>r.reg_paciente==paciente);
-            if (medico != null)
-                registro = registro.Where(r => r.reg_medico == medico);
             if (!String.IsNullOrEmpty(fecha))
                 registro = registro.Where(r=>r.reg_fecha == fecha);
             registro = registro.Where(r => r.reg_estado != false);
@@ -381,9 +379,12 @@ namespace kinnemed05.Controllers
 
         }
 
-
-        public ActionResult Notificar(int id) {
+        //Validar que un examen tenga todos los resultados y notificar al usuario
+        public ActionResult Validar(int id) {
             registro registro = db.registro.Find(id);
+            registro.reg_validacion = "valido";
+            db.Entry(registro).State = EntityState.Modified;
+            db.SaveChanges();
             paciente paciente = db.paciente.Find(registro.reg_paciente);
             string celular = paciente.pac_celular;
             string correo = paciente.pac_correo;

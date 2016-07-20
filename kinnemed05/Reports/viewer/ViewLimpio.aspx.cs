@@ -38,10 +38,10 @@ namespace kinnemed05.Reports.viewer
             reportDocument.Load(reportPath);
             reportDocument.SetDataSource(dsPrueba.Tables[0]);
             var paciente = db.paciente.Where(p => p.pac_id == registro.reg_paciente).First();
-            var medico = db.medico.Where(m => m.med_id == registro.reg_medico).First();
+            
             
             reportDocument.SetParameterValue("paciente", paciente.pac_nombres + " " + paciente.pac_apellidos);
-            reportDocument.SetParameterValue("medico", medico.med_nombres + " " + medico.med_apellidos);
+            reportDocument.SetParameterValue("medico", "");
             reportDocument.SetParameterValue("fecha", registro.reg_fecha);
             reportDocument.SetParameterValue("edad", paciente.pac_edad);
             if (paciente.pac_genero != null)

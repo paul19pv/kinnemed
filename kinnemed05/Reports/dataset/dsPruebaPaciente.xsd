@@ -9,10 +9,10 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_prueba_pacienteTableAdapter" GeneratorDataComponentClassName="view_prueba_pacienteTableAdapter" Name="view_prueba_paciente" UserDataComponentName="view_prueba_pacienteTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="bd_kinnemed02.dbo.view_prueba_paciente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_prueba_paciente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, reg_paciente, reg_fecha, pru_valor FROM dbo.view_prueba_paciente</CommandText>
+                    <CommandText>SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, reg_paciente, reg_fecha, pru_valor, reg_id, exa_id FROM dbo.view_prueba_paciente</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -28,6 +28,8 @@
               <Mapping SourceColumn="reg_paciente" DataSetColumn="reg_paciente" />
               <Mapping SourceColumn="reg_fecha" DataSetColumn="reg_fecha" />
               <Mapping SourceColumn="pru_valor" DataSetColumn="pru_valor" />
+              <Mapping SourceColumn="reg_id" DataSetColumn="reg_id" />
+              <Mapping SourceColumn="exa_id" DataSetColumn="exa_id" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -53,7 +55,7 @@
               <xs:element name="pru_resultado" msprop:Generator_ColumnVarNameInTable="columnpru_resultado" msprop:Generator_ColumnPropNameInRow="pru_resultado" msprop:Generator_ColumnPropNameInTable="pru_resultadoColumn" msprop:Generator_UserColumnName="pru_resultado" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="20" />
+                    <xs:maxLength value="40" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -67,7 +69,7 @@
               <xs:element name="exa_valores" msprop:Generator_ColumnVarNameInTable="columnexa_valores" msprop:Generator_ColumnPropNameInRow="exa_valores" msprop:Generator_ColumnPropNameInTable="exa_valoresColumn" msprop:Generator_UserColumnName="exa_valores" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="500" />
+                    <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -93,14 +95,12 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="reg_id" msprop:Generator_ColumnVarNameInTable="columnreg_id" msprop:Generator_ColumnPropNameInRow="reg_id" msprop:Generator_ColumnPropNameInTable="reg_idColumn" msprop:Generator_UserColumnName="reg_id" type="xs:int" />
+              <xs:element name="exa_id" msprop:Generator_ColumnVarNameInTable="columnexa_id" msprop:Generator_ColumnPropNameInRow="exa_id" msprop:Generator_ColumnPropNameInTable="exa_idColumn" msprop:Generator_UserColumnName="exa_id" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:view_prueba_paciente" />
-      <xs:field xpath="mstns:pru_id" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

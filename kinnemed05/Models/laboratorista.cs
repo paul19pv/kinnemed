@@ -16,17 +16,17 @@ namespace kinnemed05.Models
     {
         public laboratorista()
         {
-            this.registro = new HashSet<registro>();
-            this.rayos = new HashSet<rayos>();
             this.audiometria = new HashSet<audiometria>();
             this.espirometria = new HashSet<espirometria>();
+            this.rayos = new HashSet<rayos>();
+            this.registro = new HashSet<registro>();
         }
     
         public int lab_id { get; set; }
     
-        public virtual ICollection<registro> registro { get; set; }
-        public virtual ICollection<rayos> rayos { get; set; }
         public virtual ICollection<audiometria> audiometria { get; set; }
         public virtual ICollection<espirometria> espirometria { get; set; }
+        public virtual ICollection<rayos> rayos { get; set; }
+        public virtual ICollection<registro> registro { get; set; }
     }
 }

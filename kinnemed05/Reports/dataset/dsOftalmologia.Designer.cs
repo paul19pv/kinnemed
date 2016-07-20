@@ -323,13 +323,11 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnpac_edad;
             
-            private global::System.Data.DataColumn columnmed_nombres;
-            
-            private global::System.Data.DataColumn columnmed_apellidos;
-            
             private global::System.Data.DataColumn columnresponsable;
             
             private global::System.Data.DataColumn columnfirma;
+            
+            private global::System.Data.DataColumn columnemp_nombre;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -542,22 +540,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn med_nombresColumn {
-                get {
-                    return this.columnmed_nombres;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn med_apellidosColumn {
-                get {
-                    return this.columnmed_apellidos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn responsableColumn {
                 get {
                     return this.columnresponsable;
@@ -569,6 +551,14 @@ namespace kinnemed05.Reports.dataset {
             public global::System.Data.DataColumn firmaColumn {
                 get {
                     return this.columnfirma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn emp_nombreColumn {
+                get {
+                    return this.columnemp_nombre;
                 }
             }
             
@@ -632,10 +622,9 @@ namespace kinnemed05.Reports.dataset {
                         string pac_apellidos, 
                         string pac_genero, 
                         int pac_edad, 
-                        string med_nombres, 
-                        string med_apellidos, 
                         string responsable, 
-                        byte[] firma) {
+                        byte[] firma, 
+                        string emp_nombre) {
                 view_oftalmologiaRow rowview_oftalmologiaRow = ((view_oftalmologiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         oft_id,
@@ -660,10 +649,9 @@ namespace kinnemed05.Reports.dataset {
                         pac_apellidos,
                         pac_genero,
                         pac_edad,
-                        med_nombres,
-                        med_apellidos,
                         responsable,
-                        firma};
+                        firma,
+                        emp_nombre};
                 rowview_oftalmologiaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_oftalmologiaRow);
                 return rowview_oftalmologiaRow;
@@ -715,10 +703,9 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpac_apellidos = base.Columns["pac_apellidos"];
                 this.columnpac_genero = base.Columns["pac_genero"];
                 this.columnpac_edad = base.Columns["pac_edad"];
-                this.columnmed_nombres = base.Columns["med_nombres"];
-                this.columnmed_apellidos = base.Columns["med_apellidos"];
                 this.columnresponsable = base.Columns["responsable"];
                 this.columnfirma = base.Columns["firma"];
+                this.columnemp_nombre = base.Columns["emp_nombre"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -768,14 +755,12 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnpac_genero);
                 this.columnpac_edad = new global::System.Data.DataColumn("pac_edad", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_edad);
-                this.columnmed_nombres = new global::System.Data.DataColumn("med_nombres", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmed_nombres);
-                this.columnmed_apellidos = new global::System.Data.DataColumn("med_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmed_apellidos);
                 this.columnresponsable = new global::System.Data.DataColumn("responsable", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnresponsable);
                 this.columnfirma = new global::System.Data.DataColumn("firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfirma);
+                this.columnemp_nombre = new global::System.Data.DataColumn("emp_nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemp_nombre);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnoft_id}, true));
                 this.columnoft_id.AllowDBNull = false;
@@ -814,13 +799,11 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpac_apellidos.MaxLength = 150;
                 this.columnpac_genero.MaxLength = 50;
                 this.columnpac_edad.AllowDBNull = false;
-                this.columnmed_nombres.AllowDBNull = false;
-                this.columnmed_nombres.MaxLength = 150;
-                this.columnmed_apellidos.AllowDBNull = false;
-                this.columnmed_apellidos.MaxLength = 150;
                 this.columnresponsable.ReadOnly = true;
                 this.columnresponsable.MaxLength = 150;
                 this.columnfirma.ReadOnly = true;
+                this.columnemp_nombre.AllowDBNull = false;
+                this.columnemp_nombre.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1240,28 +1223,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string med_nombres {
-                get {
-                    return ((string)(this[this.tableview_oftalmologia.med_nombresColumn]));
-                }
-                set {
-                    this[this.tableview_oftalmologia.med_nombresColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string med_apellidos {
-                get {
-                    return ((string)(this[this.tableview_oftalmologia.med_apellidosColumn]));
-                }
-                set {
-                    this[this.tableview_oftalmologia.med_apellidosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string responsable {
                 get {
                     try {
@@ -1289,6 +1250,17 @@ namespace kinnemed05.Reports.dataset {
                 }
                 set {
                     this[this.tableview_oftalmologia.firmaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string emp_nombre {
+                get {
+                    return ((string)(this[this.tableview_oftalmologia.emp_nombreColumn]));
+                }
+                set {
+                    this[this.tableview_oftalmologia.emp_nombreColumn] = value;
                 }
             }
             
@@ -1582,10 +1554,9 @@ namespace kinnemed05.Reports.dataset.dsOftalmologiaTableAdapters {
             tableMapping.ColumnMappings.Add("pac_apellidos", "pac_apellidos");
             tableMapping.ColumnMappings.Add("pac_genero", "pac_genero");
             tableMapping.ColumnMappings.Add("pac_edad", "pac_edad");
-            tableMapping.ColumnMappings.Add("med_nombres", "med_nombres");
-            tableMapping.ColumnMappings.Add("med_apellidos", "med_apellidos");
             tableMapping.ColumnMappings.Add("responsable", "responsable");
             tableMapping.ColumnMappings.Add("firma", "firma");
+            tableMapping.ColumnMappings.Add("emp_nombre", "emp_nombre");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1602,7 +1573,7 @@ namespace kinnemed05.Reports.dataset.dsOftalmologiaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, med_nombres, med_apellidos, responsable, firma FROM dbo.view_oftalmologia";
+            this._commandCollection[0].CommandText = @"SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre FROM dbo.view_oftalmologia";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

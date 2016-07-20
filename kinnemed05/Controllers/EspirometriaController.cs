@@ -28,15 +28,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Espirometria/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id, int? paciente, int? medico)
+        public ActionResult Index(int? id, int? paciente)
         {
             var espirometria = db.espirometria.Include(e => e.paciente);
             if (id != null)
                 espirometria = espirometria.Where(e => e.esp_paciente == id);
             if (paciente != null)
                 espirometria = espirometria.Where(e => e.esp_paciente == paciente);
-            if (medico != null)
-                espirometria = espirometria.Where(e => e.esp_medico == medico);
+           
             if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
@@ -65,8 +64,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            medico medico = db.medico.Find(espirometria.esp_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             paciente paciente = db.paciente.Find(espirometria.esp_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
             return View(espirometria);
@@ -90,7 +88,6 @@ namespace kinnemed05.Controllers
         public ActionResult Create(espirometria espirometria)
         {
             string nom_pac;
-            string nom_med;
             if (Request.Files.Count > 0)
             {
                 var file = Request.Files[0];
@@ -128,12 +125,7 @@ namespace kinnemed05.Controllers
             else
                 nom_pac = "";
             ViewBag.paciente = nom_pac;
-            medico medico = db.medico.Find(espirometria.esp_medico);
-            if (medico != null)
-                nom_med = medico.med_nombres + " " + medico.med_apellidos;
-            else
-                nom_med = "";
-            ViewBag.medico = nom_med;
+            
             return View(espirometria);
         }
 
@@ -148,8 +140,7 @@ namespace kinnemed05.Controllers
                 return HttpNotFound();
             }
             
-            medico medico = db.medico.Find(espirometria.esp_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             paciente paciente = db.paciente.Find(espirometria.esp_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
             return View(espirometria);
@@ -204,8 +195,7 @@ namespace kinnemed05.Controllers
 
 
             }
-            medico medico = db.medico.Find(espirometria.esp_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             paciente paciente = db.paciente.Find(espirometria.esp_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
             return View(espirometria);
@@ -289,7 +279,6 @@ namespace kinnemed05.Controllers
                 dsEspirometria dsPrueba = new dsEspirometria();
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 espirometria espirometria = db.espirometria.Find(id);
-                medico medico = db.medico.Find(espirometria.esp_medico);
                 string fileName = String.Empty;
                 //if (String.IsNullOrEmpty(fileName))
                 //    fileName = "firma.png";

@@ -26,15 +26,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Rayos/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id, int? paciente, int? medico)
+        public ActionResult Index(int? id, int? paciente)
         {
             var rayos = db.rayos.Include(r => r.paciente);
             if (id != null)
                 rayos = rayos.Where(r => r.ray_paciente == id);
             if (paciente != null)
                 rayos = rayos.Where(r => r.ray_paciente == paciente);
-            if (medico != null)
-                rayos = rayos.Where(r => r.ray_medico == medico);
+            
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia", rayos.ToList());
             if (User.IsInRole("paciente"))
@@ -66,8 +65,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(rayos.ray_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(rayos.ray_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(rayos);
         }
 
@@ -153,8 +151,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(rayos.ray_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(rayos.ray_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(rayos);
         }
 
@@ -212,8 +209,7 @@ namespace kinnemed05.Controllers
 
             paciente paciente = db.paciente.Find(rayos.ray_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(rayos.ray_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(rayos);
         }
 

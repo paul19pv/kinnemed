@@ -89,14 +89,7 @@
                         @Html.ValidationMessageFor(model => model.esp_paciente)
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.TextBoxFor(model => model.esp_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.esp_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico })
-                        @Html.ValidationMessageFor(model => model.esp_medico)
-                    </div>
-                </div>
+                
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label for="exampleInputFile">Archivo</label>

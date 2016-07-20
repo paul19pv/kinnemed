@@ -103,14 +103,7 @@
                         @Html.ValidationMessageFor(model => model.ray_paciente)
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.TextBoxFor(model => model.ray_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.ray_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico })
-                        @Html.ValidationMessageFor(model => model.ray_medico)
-                    </div>
-                </div>
+                
                 <div class="col-lg-4">
                     <div id="div_download" class="form-group">
                         @Html.LabelFor(model => model.ray_imagen, new { @class = "control-label", @for = "inputDefault", @style = "float:left;" })

@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_espirometria" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT esp_id, pac_nombres, pac_apellidos, med_nombres, med_apellidos, pac_genero, pac_edad, esp_fecha, esp_responsable, esp_perfil, esp_observacion, responsable, firma FROM dbo.view_espirometria</CommandText>
+                    <CommandText>SELECT esp_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, emp_nombre, esp_fecha, esp_responsable, esp_perfil, esp_observacion, responsable, firma FROM dbo.view_espirometria</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -20,12 +20,12 @@
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="esp_id" DataSetColumn="esp_id" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
               <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
               <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
-              <Mapping SourceColumn="med_nombres" DataSetColumn="med_nombres" />
-              <Mapping SourceColumn="med_apellidos" DataSetColumn="med_apellidos" />
               <Mapping SourceColumn="pac_genero" DataSetColumn="pac_genero" />
               <Mapping SourceColumn="pac_edad" DataSetColumn="pac_edad" />
+              <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
               <Mapping SourceColumn="esp_fecha" DataSetColumn="esp_fecha" />
               <Mapping SourceColumn="esp_responsable" DataSetColumn="esp_responsable" />
               <Mapping SourceColumn="esp_perfil" DataSetColumn="esp_perfil" />
@@ -47,6 +47,13 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="esp_id" msprop:Generator_ColumnVarNameInTable="columnesp_id" msprop:Generator_ColumnPropNameInRow="esp_id" msprop:Generator_ColumnPropNameInTable="esp_idColumn" msprop:Generator_UserColumnName="esp_id" type="xs:int" />
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -61,20 +68,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="med_nombres" msprop:Generator_ColumnVarNameInTable="columnmed_nombres" msprop:Generator_ColumnPropNameInRow="med_nombres" msprop:Generator_ColumnPropNameInTable="med_nombresColumn" msprop:Generator_UserColumnName="med_nombres">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="med_apellidos" msprop:Generator_ColumnVarNameInTable="columnmed_apellidos" msprop:Generator_ColumnPropNameInRow="med_apellidos" msprop:Generator_ColumnPropNameInTable="med_apellidosColumn" msprop:Generator_UserColumnName="med_apellidos">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="pac_genero" msprop:Generator_ColumnVarNameInTable="columnpac_genero" msprop:Generator_ColumnPropNameInRow="pac_genero" msprop:Generator_ColumnPropNameInTable="pac_generoColumn" msprop:Generator_UserColumnName="pac_genero" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -83,6 +76,13 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="pac_edad" msprop:Generator_ColumnVarNameInTable="columnpac_edad" msprop:Generator_ColumnPropNameInRow="pac_edad" msprop:Generator_ColumnPropNameInTable="pac_edadColumn" msprop:Generator_UserColumnName="pac_edad" type="xs:int" />
+              <xs:element name="emp_nombre" msprop:Generator_ColumnVarNameInTable="columnemp_nombre" msprop:Generator_ColumnPropNameInRow="emp_nombre" msprop:Generator_ColumnPropNameInTable="emp_nombreColumn" msprop:Generator_UserColumnName="emp_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="esp_fecha" msprop:Generator_ColumnVarNameInTable="columnesp_fecha" msprop:Generator_ColumnPropNameInRow="esp_fecha" msprop:Generator_ColumnPropNameInTable="esp_fechaColumn" msprop:Generator_UserColumnName="esp_fecha">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

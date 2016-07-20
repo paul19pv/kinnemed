@@ -93,16 +93,7 @@
                         @Html.ValidationMessageFor(model => model.reg_paciente)
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-
-                        @Html.TextBoxFor(model => model.reg_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.reg_medico, new { @class = "control-label", @for = "inputDefault" })
-
-                        @Html.TextBox("txt_medico", "", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.reg_medico)
-                    </div>
-                </div>
+               
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.reg_fecha, new { @class = "control-label", @for = "inputDefault" })

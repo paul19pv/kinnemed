@@ -1,0 +1,85 @@
+﻿@model kinnemed05.Models.examen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>examen</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_unidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_unidad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_tipo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_tipo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.area.are_nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.area.are_nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_item)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_item)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_valores)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_valores)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_inicial)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_inicial)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_estado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.exa_orden)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.exa_orden)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

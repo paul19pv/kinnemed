@@ -57,23 +57,7 @@
                         @Html.TextBoxFor(model => model.reg_paciente, new { @class = "form-control", @type = "hidden" })
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-
-                        @Html.TextBoxFor(model => model.reg_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.reg_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @if (Model.reg_medico != null)
-                        {
-                            @Html.TextBox("txt_medico", Model.medico.med_nombres + " " + Model.medico.med_apellidos, new { @class = "form-control", @readonly = "readonly" })
-                        }
-                        else
-                        {
-                            @Html.TextBox("txt_medico", "", new { @class = "form-control", @readonly = "readonly" })
-                        }
-
-                        @Html.ValidationMessageFor(model => model.reg_medico)
-                    </div>
-                </div>
+                
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.reg_fecha, new { @class = "control-label", @for = "inputDefault" })

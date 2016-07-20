@@ -54,22 +54,22 @@ namespace kinnemed05.Models
         public DbSet<ocupacional> ocupacional { get; set; }
         public DbSet<laboral> laboral { get; set; }
         public DbSet<examen> examen { get; set; }
-        public DbSet<registro> registro { get; set; }
         public DbSet<concepto> concepto { get; set; }
         public DbSet<ginecologico> ginecologico { get; set; }
         public DbSet<trabajador> trabajador { get; set; }
         public DbSet<laboratorista> laboratorista { get; set; }
-        public DbSet<medico> medico { get; set; }
         public DbSet<codigo> codigo { get; set; }
         public DbSet<orden> orden { get; set; }
         public DbSet<prueba> prueba { get; set; }
         public DbSet<historia> historia { get; set; }
         public DbSet<reposo> reposo { get; set; }
         public DbSet<paciente> paciente { get; set; }
-        public DbSet<oftalmologia> oftalmologia { get; set; }
-        public DbSet<rayos> rayos { get; set; }
         public DbSet<audiometria> audiometria { get; set; }
         public DbSet<espirometria> espirometria { get; set; }
+        public DbSet<medico> medico { get; set; }
+        public DbSet<oftalmologia> oftalmologia { get; set; }
+        public DbSet<rayos> rayos { get; set; }
+        public DbSet<registro> registro { get; set; }
     
         public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
         {

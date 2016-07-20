@@ -28,23 +28,22 @@ namespace kinnemed05.Reports.Viewer
             string conn = ConfigurationManager.AppSettings["conexion"];
             int id = Convert.ToInt32(Session["esp_id"]);
             espirometria espirometria = db.espirometria.Find(id);
-            medico medico = db.medico.Find(espirometria.esp_medico);
+            
             //string fileName = medico.med_firma;
             //if (String.IsNullOrEmpty(fileName))
             //    fileName = "firma.png";
 
             string strEspirometria = "Select * from espirometria where esp_id=" + id;
             string strPaciente = "Select * from paciente where pac_id=" + espirometria.esp_paciente;
-            string strMedico = "Select * from medico where med_id=" + espirometria.esp_medico;
+            
 
 
             SqlConnection sqlcon = new SqlConnection(conn);
             SqlDataAdapter daEspirometria = new SqlDataAdapter(strEspirometria, sqlcon);
             SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
-            SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
+            
             daEspirometria.Fill(dsPrueba, "espirometria");
             daPaciente.Fill(dsPrueba, "paciente");
-            daMedico.Fill(dsPrueba, "medico");
 
             reportDocument = new ReportDocument();
             //Report path

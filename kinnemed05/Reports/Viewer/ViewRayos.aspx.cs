@@ -29,23 +29,21 @@ namespace kinnemed05.Reports.Viewer
             string conn = ConfigurationManager.AppSettings["conexion"];
             int id = Convert.ToInt32(Session["ray_id"]);
             rayos rayos = db.rayos.Find(id);
-            medico medico = db.medico.Find(rayos.ray_medico);
             //string fileName = medico.med_firma;
             //if (String.IsNullOrEmpty(fileName))
             //    fileName = "firma.png";
 
             string strAudiometia = "Select * from rayos where ray_id=" + id;
             string strPaciente = "Select * from paciente where pac_id=" + rayos.ray_paciente;
-            string strMedico = "Select * from medico where med_id=" + rayos.ray_medico;
 
 
             SqlConnection sqlcon = new SqlConnection(conn);
             SqlDataAdapter daAudiometria = new SqlDataAdapter(strAudiometia, sqlcon);
             SqlDataAdapter daPaciente = new SqlDataAdapter(strPaciente, sqlcon);
-            SqlDataAdapter daMedico = new SqlDataAdapter(strMedico, sqlcon);
+            
             daAudiometria.Fill(dsPrueba, "rayos");
             daPaciente.Fill(dsPrueba, "paciente");
-            daMedico.Fill(dsPrueba, "medico");
+            
 
             reportDocument = new ReportDocument();
             //Report path

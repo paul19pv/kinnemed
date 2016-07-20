@@ -23,9 +23,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.oft_indicaciones)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.oft_medico)
-                </th>
+               
                 <th></th>
                 <th></th>
             </tr>
@@ -46,10 +44,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.oft_indicaciones)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
-                    </td>
-                   
+                    
                     <td>
                         @*@Html.ActionLink("Reporte", "Reporte", new { id = item.esp_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })*@
                         @Html.ActionLink("Descargar", "Descargar", new { id = item.oft_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })

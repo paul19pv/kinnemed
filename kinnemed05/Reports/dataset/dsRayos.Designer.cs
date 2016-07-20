@@ -285,10 +285,6 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnpac_apellidos;
             
-            private global::System.Data.DataColumn columnmed_nombres;
-            
-            private global::System.Data.DataColumn columnmed_apellidos;
-            
             private global::System.Data.DataColumn columnpac_genero;
             
             private global::System.Data.DataColumn columnpac_edad;
@@ -300,6 +296,10 @@ namespace kinnemed05.Reports.dataset {
             private global::System.Data.DataColumn columnresponsable;
             
             private global::System.Data.DataColumn columnfirma;
+            
+            private global::System.Data.DataColumn columnemp_nombre;
+            
+            private global::System.Data.DataColumn columnpac_cedula;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -360,22 +360,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn med_nombresColumn {
-                get {
-                    return this.columnmed_nombres;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn med_apellidosColumn {
-                get {
-                    return this.columnmed_apellidos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn pac_generoColumn {
                 get {
                     return this.columnpac_genero;
@@ -424,6 +408,22 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn emp_nombreColumn {
+                get {
+                    return this.columnemp_nombre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pac_cedulaColumn {
+                get {
+                    return this.columnpac_cedula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,20 +459,20 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public view_rayosRow Addview_rayosRow(int ray_id, string pac_nombres, string pac_apellidos, string med_nombres, string med_apellidos, string pac_genero, int pac_edad, string ray_observacion, string ray_fecha, string responsable, byte[] firma) {
+            public view_rayosRow Addview_rayosRow(int ray_id, string pac_nombres, string pac_apellidos, string pac_genero, int pac_edad, string ray_observacion, string ray_fecha, string responsable, byte[] firma, string emp_nombre, string pac_cedula) {
                 view_rayosRow rowview_rayosRow = ((view_rayosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ray_id,
                         pac_nombres,
                         pac_apellidos,
-                        med_nombres,
-                        med_apellidos,
                         pac_genero,
                         pac_edad,
                         ray_observacion,
                         ray_fecha,
                         responsable,
-                        firma};
+                        firma,
+                        emp_nombre,
+                        pac_cedula};
                 rowview_rayosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_rayosRow);
                 return rowview_rayosRow;
@@ -505,14 +505,14 @@ namespace kinnemed05.Reports.dataset {
                 this.columnray_id = base.Columns["ray_id"];
                 this.columnpac_nombres = base.Columns["pac_nombres"];
                 this.columnpac_apellidos = base.Columns["pac_apellidos"];
-                this.columnmed_nombres = base.Columns["med_nombres"];
-                this.columnmed_apellidos = base.Columns["med_apellidos"];
                 this.columnpac_genero = base.Columns["pac_genero"];
                 this.columnpac_edad = base.Columns["pac_edad"];
                 this.columnray_observacion = base.Columns["ray_observacion"];
                 this.columnray_fecha = base.Columns["ray_fecha"];
                 this.columnresponsable = base.Columns["responsable"];
                 this.columnfirma = base.Columns["firma"];
+                this.columnemp_nombre = base.Columns["emp_nombre"];
+                this.columnpac_cedula = base.Columns["pac_cedula"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -524,10 +524,6 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnpac_nombres);
                 this.columnpac_apellidos = new global::System.Data.DataColumn("pac_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_apellidos);
-                this.columnmed_nombres = new global::System.Data.DataColumn("med_nombres", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmed_nombres);
-                this.columnmed_apellidos = new global::System.Data.DataColumn("med_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmed_apellidos);
                 this.columnpac_genero = new global::System.Data.DataColumn("pac_genero", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_genero);
                 this.columnpac_edad = new global::System.Data.DataColumn("pac_edad", typeof(int), null, global::System.Data.MappingType.Element);
@@ -540,6 +536,10 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnresponsable);
                 this.columnfirma = new global::System.Data.DataColumn("firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfirma);
+                this.columnemp_nombre = new global::System.Data.DataColumn("emp_nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemp_nombre);
+                this.columnpac_cedula = new global::System.Data.DataColumn("pac_cedula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpac_cedula);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnray_id}, true));
                 this.columnray_id.AllowDBNull = false;
@@ -548,10 +548,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpac_nombres.MaxLength = 150;
                 this.columnpac_apellidos.AllowDBNull = false;
                 this.columnpac_apellidos.MaxLength = 150;
-                this.columnmed_nombres.AllowDBNull = false;
-                this.columnmed_nombres.MaxLength = 150;
-                this.columnmed_apellidos.AllowDBNull = false;
-                this.columnmed_apellidos.MaxLength = 150;
                 this.columnpac_genero.MaxLength = 50;
                 this.columnpac_edad.AllowDBNull = false;
                 this.columnray_observacion.MaxLength = 2147483647;
@@ -559,6 +555,10 @@ namespace kinnemed05.Reports.dataset {
                 this.columnresponsable.ReadOnly = true;
                 this.columnresponsable.MaxLength = 150;
                 this.columnfirma.ReadOnly = true;
+                this.columnemp_nombre.AllowDBNull = false;
+                this.columnemp_nombre.MaxLength = 50;
+                this.columnpac_cedula.AllowDBNull = false;
+                this.columnpac_cedula.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -734,28 +734,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string med_nombres {
-                get {
-                    return ((string)(this[this.tableview_rayos.med_nombresColumn]));
-                }
-                set {
-                    this[this.tableview_rayos.med_nombresColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string med_apellidos {
-                get {
-                    return ((string)(this[this.tableview_rayos.med_apellidosColumn]));
-                }
-                set {
-                    this[this.tableview_rayos.med_apellidosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string pac_genero {
                 get {
                     try {
@@ -842,6 +820,28 @@ namespace kinnemed05.Reports.dataset {
                 }
                 set {
                     this[this.tableview_rayos.firmaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string emp_nombre {
+                get {
+                    return ((string)(this[this.tableview_rayos.emp_nombreColumn]));
+                }
+                set {
+                    this[this.tableview_rayos.emp_nombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pac_cedula {
+                get {
+                    return ((string)(this[this.tableview_rayos.pac_cedulaColumn]));
+                }
+                set {
+                    this[this.tableview_rayos.pac_cedulaColumn] = value;
                 }
             }
             
@@ -1068,14 +1068,14 @@ namespace kinnemed05.Reports.dataset.dsRayosTableAdapters {
             tableMapping.ColumnMappings.Add("ray_id", "ray_id");
             tableMapping.ColumnMappings.Add("pac_nombres", "pac_nombres");
             tableMapping.ColumnMappings.Add("pac_apellidos", "pac_apellidos");
-            tableMapping.ColumnMappings.Add("med_nombres", "med_nombres");
-            tableMapping.ColumnMappings.Add("med_apellidos", "med_apellidos");
             tableMapping.ColumnMappings.Add("pac_genero", "pac_genero");
             tableMapping.ColumnMappings.Add("pac_edad", "pac_edad");
             tableMapping.ColumnMappings.Add("ray_observacion", "ray_observacion");
             tableMapping.ColumnMappings.Add("ray_fecha", "ray_fecha");
             tableMapping.ColumnMappings.Add("responsable", "responsable");
             tableMapping.ColumnMappings.Add("firma", "firma");
+            tableMapping.ColumnMappings.Add("emp_nombre", "emp_nombre");
+            tableMapping.ColumnMappings.Add("pac_cedula", "pac_cedula");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1092,8 +1092,8 @@ namespace kinnemed05.Reports.dataset.dsRayosTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ray_id, pac_nombres, pac_apellidos, med_nombres, med_apellidos, pac_genero" +
-                ", pac_edad, ray_observacion, ray_fecha, responsable, firma FROM dbo.view_rayos";
+            this._commandCollection[0].CommandText = "SELECT ray_id, pac_nombres, pac_apellidos, pac_genero, pac_edad, ray_observacion," +
+                " ray_fecha, responsable, firma, emp_nombre, pac_cedula FROM dbo.view_rayos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

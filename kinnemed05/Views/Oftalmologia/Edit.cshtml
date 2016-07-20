@@ -159,14 +159,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.TextBoxFor(model => model.oft_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.oft_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico,@readonly="readonly" })
-                        @Html.ValidationMessageFor(model => model.oft_medico)
-                    </div>
-                </div>
+               
                 <div class="col-lg-4" style="clear:both">
                     <div class="form-group">
                         @Html.Label("AGUDEZA VISUAL CON CORRECIÓN")
@@ -275,7 +268,7 @@
                         @Html.ValidationMessageFor(model => model.oft_diagnostico)
                     </div>
                     <div id="div_diagnostico" class="form-group" style="display:none">
-                        @Html.TextBoxFor(model => model.oft_dia_txt, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.oft_dia_txt, new { @class = "form-control", @rows = 3 })
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -285,7 +278,7 @@
                         @Html.ValidationMessageFor(model => model.oft_indicaciones)
                     </div>
                     <div id="div_indicaciones" class="form-group" style="display:none">
-                        @Html.TextBoxFor(model => model.oft_ind_txt, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.oft_ind_txt, new { @class = "form-control",@rows=3 })
                     </div>
                 </div>
                 <div class="col-lg-4" style="clear:both">

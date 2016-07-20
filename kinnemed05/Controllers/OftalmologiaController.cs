@@ -25,15 +25,14 @@ namespace kinnemed05.Controllers
         //
         // GET: /Oftalmologia/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index(int? id, int? paciente, int? medico)
+        public ActionResult Index(int? id, int? paciente)
         {
-            var oftalmologia = db.oftalmologia.Include(o => o.paciente).Include(o => o.medico);
+            var oftalmologia = db.oftalmologia.Include(o => o.paciente);
             if (id != null)
                 oftalmologia = oftalmologia.Where(o => o.oft_paciente == id);
             if (paciente != null)
                 oftalmologia = oftalmologia.Where(o => o.oft_paciente == paciente);
-            if (medico != null)
-                oftalmologia = oftalmologia.Where(o => o.oft_medico == medico);
+            
             if (User.IsInRole("paciente"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
@@ -65,8 +64,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(oftalmologia);
         }
 
@@ -99,7 +97,6 @@ namespace kinnemed05.Controllers
         public ActionResult Create(oftalmologia oftalmologia)
         {
             string nom_pac;
-            string nom_med;
             DateTime dd = DateTime.Now;
             oftalmologia.oft_fecha = dd.Date.ToString("d");
             if (ModelState.IsValid)
@@ -131,12 +128,7 @@ namespace kinnemed05.Controllers
             else
                 nom_pac = "";
             ViewBag.paciente = nom_pac;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            if (medico != null)
-                nom_med = medico.med_nombres + " " + medico.med_apellidos;
-            else
-                nom_med = "";
-            ViewBag.medico = nom_med;
+            
             return View(oftalmologia);
         }
 
@@ -152,8 +144,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
 
             ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
             ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
@@ -183,8 +174,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
 
             ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
             ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
@@ -211,8 +201,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(oftalmologia);
         }
 
@@ -303,9 +292,10 @@ namespace kinnemed05.Controllers
             List<SelectListItem> list_jornada = new List<SelectListItem>();
             list_jornada.Add(new SelectListItem { Text = "NORMAL", Value = "NORMAL" });
             list_jornada.Add(new SelectListItem { Text = "ANORMAL", Value = "ANORMAL" });
+            list_jornada.Add(new SelectListItem { Text = "NO VALORADO", Value = "NO VALORADO" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text","NORMAL");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
@@ -318,9 +308,10 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "PRESENTA PROBLEMAS EN COLOR VERDE", Value = "PRESENTA PROBLEMAS EN COLOR VERDE" });
             list_jornada.Add(new SelectListItem { Text = "PRESENTA PROBLEMAS EN COLOR AMARILLO", Value = "PRESENTA PROBLEMAS EN COLOR AMARILLO" });
             list_jornada.Add(new SelectListItem { Text = "PRESENTA PROBLEMAS EN COLOR ROJO", Value = "PRESENTA PROBLEMAS EN COLOR ROJO" });
+            list_jornada.Add(new SelectListItem { Text = "NO VALORADO", Value = "NO VALORADO" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text","NORMAL");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
@@ -337,7 +328,7 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "OTROS" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text", "EMETROPE");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
@@ -352,7 +343,7 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "OTROS" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text","CONTROL ANUAL");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
