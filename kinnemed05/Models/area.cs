@@ -22,6 +22,7 @@ namespace kinnemed05.Models
     
         public int are_id { get; set; }
         public string are_nombre { get; set; }
+        public string are_tipo { get; set; }
     
         public virtual ICollection<examen> examen { get; set; }
         public virtual ICollection<codigo> codigo { get; set; }

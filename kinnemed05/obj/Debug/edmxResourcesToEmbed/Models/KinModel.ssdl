@@ -6,6 +6,7 @@
     </Key>
     <Property Name="are_id" Type="int" Nullable="false" />
     <Property Name="are_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="are_tipo" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="audiometria">
     <Key>
@@ -19,6 +20,7 @@
     <Property Name="aud_responsable" Type="int" />
     <Property Name="aud_perfil" Type="int" />
     <Property Name="aud_laboratorista" Type="int" Nullable="false" />
+    <Property Name="aud_orden" Type="int" />
   </EntityType>
   <EntityType Name="canton">
     <Key>
@@ -104,6 +106,7 @@
     <Property Name="esp_responsable" Type="int" />
     <Property Name="esp_perfil" Type="int" />
     <Property Name="esp_laboratorista" Type="int" Nullable="false" />
+    <Property Name="esp_orden" Type="int" />
   </EntityType>
   <EntityType Name="examen">
     <Key>
@@ -320,13 +323,14 @@
     <Property Name="oft_fon_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_colores" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="oft_diagnostico" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="oft_dia_txt" Type="varchar" MaxLength="150" />
+    <Property Name="oft_dia_txt" Type="varchar(max)" />
     <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
+    <Property Name="oft_ind_txt" Type="varchar(max)" />
     <Property Name="oft_otros" Type="varchar" MaxLength="250" />
     <Property Name="oft_fecha" Type="varchar" MaxLength="10" />
     <Property Name="oft_responsable" Type="int" />
     <Property Name="oft_perfil" Type="int" />
+    <Property Name="oft_orden" Type="int" />
   </EntityType>
   <EntityType Name="orden">
     <Key>
@@ -442,6 +446,7 @@
     <Property Name="ray_responsable" Type="int" />
     <Property Name="ray_perfil" Type="int" />
     <Property Name="ray_laboratorista" Type="int" Nullable="false" />
+    <Property Name="ray_orden" Type="int" />
   </EntityType>
   <EntityType Name="registro">
     <Key>

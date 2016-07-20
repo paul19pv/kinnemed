@@ -74,25 +74,25 @@
         <AssociationConnector Association="kinnemedModel.FK_paciente_pais" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_profesion" />
         <AssociationConnector Association="kinnemedModel.FK_personal_paciente" />
-        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="8.25" PointY="39" />
-        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="14.25" PointY="49" />
         <EntityTypeShape EntityType="kinnemedModel.medico" Width="1.5" PointX="6" PointY="35.375" />
-        <EntityTypeShape EntityType="kinnemedModel.oftalmologia" Width="1.5" PointX="8.25" PointY="59.625" />
-        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="11.25" PointY="45" />
         <EntityTypeShape EntityType="kinnemedModel.registro" Width="1.5" PointX="8.25" PointY="42.875" />
-        <AssociationConnector Association="kinnemedModel.FK_audiometria_laboratorista" />
-        <AssociationConnector Association="kinnemedModel.FK_audiometria_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_codigo_registro" />
         <AssociationConnector Association="kinnemedModel.FK_medico_especialidad" />
-        <AssociationConnector Association="kinnemedModel.FK_espirometria_laboratorista" />
-        <AssociationConnector Association="kinnemedModel.FK_espirometria_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_historia_medico" />
-        <AssociationConnector Association="kinnemedModel.FK_rayos_laboratorista" />
         <AssociationConnector Association="kinnemedModel.FK_registro_laboratorista" />
-        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_registro_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_registro" />
+        <EntityTypeShape EntityType="kinnemedModel.audiometria" Width="1.5" PointX="8.25" PointY="38.875" />
+        <EntityTypeShape EntityType="kinnemedModel.espirometria" Width="1.5" PointX="11.25" PointY="44.875" />
+        <EntityTypeShape EntityType="kinnemedModel.oftalmologia" Width="1.5" PointX="8.25" PointY="59.625" />
+        <EntityTypeShape EntityType="kinnemedModel.rayos" Width="1.5" PointX="14.25" PointY="48.875" />
+        <AssociationConnector Association="kinnemedModel.FK_audiometria_laboratorista" />
+        <AssociationConnector Association="kinnemedModel.FK_audiometria_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_espirometria_laboratorista" />
+        <AssociationConnector Association="kinnemedModel.FK_espirometria_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_rayos_laboratorista" />
+        <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
+        <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
