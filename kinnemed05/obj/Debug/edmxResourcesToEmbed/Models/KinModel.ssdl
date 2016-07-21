@@ -112,7 +112,7 @@
     <Key>
       <PropertyRef Name="exa_id" />
     </Key>
-    <Property Name="exa_id" Type="int" Nullable="false" />
+    <Property Name="exa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="exa_nombre" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="exa_unidad" Type="varchar" MaxLength="15" />
     <Property Name="exa_tipo" Type="varchar" MaxLength="15" Nullable="false" />

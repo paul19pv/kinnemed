@@ -4,103 +4,64 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3 class="panel-title">Administración: Modificar Exámen</h3>
+        </div>
+        <div class="panel panel-body">
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model=>model.exa_id)
+                @Html.HiddenFor(model => model.exa_estado)
+                @Html.HiddenFor(model => model.exa_tipo)
+                @Html.HiddenFor(model => model.exa_item)
+                @Html.HiddenFor(model => model.exa_inicial)
 
-    <fieldset>
-        <legend>examen</legend>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.exa_nombre, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.exa_nombre)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_unidad, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.exa_unidad, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.exa_unidad)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_area, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.DropDownList("exa_area", String.Empty)
+                        @Html.ValidationMessageFor(model => model.exa_area)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_orden, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.exa_orden, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.exa_orden)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_valores, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextAreaFor(model => model.exa_valores, new { @class = "form-control", @rows = "3" })
+                        @Html.ValidationMessageFor(model => model.exa_valores)
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        <input type="submit" value="Guardar" class="btn btn-default" />
+                        @Html.ActionLink("Regresar", "Index", "Examen", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            }
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_id)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_id)
-            @Html.ValidationMessageFor(model => model.exa_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_nombre)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_nombre)
-            @Html.ValidationMessageFor(model => model.exa_nombre)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_unidad)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_unidad)
-            @Html.ValidationMessageFor(model => model.exa_unidad)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_tipo)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_tipo)
-            @Html.ValidationMessageFor(model => model.exa_tipo)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_area, "area")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("exa_area", String.Empty)
-            @Html.ValidationMessageFor(model => model.exa_area)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_item)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_item)
-            @Html.ValidationMessageFor(model => model.exa_item)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_valores)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_valores)
-            @Html.ValidationMessageFor(model => model.exa_valores)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_inicial)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_inicial)
-            @Html.ValidationMessageFor(model => model.exa_inicial)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_estado)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_estado)
-            @Html.ValidationMessageFor(model => model.exa_estado)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.exa_orden)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.exa_orden)
-            @Html.ValidationMessageFor(model => model.exa_orden)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
 
 @section Scripts {

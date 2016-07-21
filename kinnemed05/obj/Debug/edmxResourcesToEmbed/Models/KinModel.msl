@@ -360,22 +360,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="examen">
-      <EntityTypeMapping TypeName="kinnemedModel.examen">
-        <MappingFragment StoreEntitySet="examen">
-          <ScalarProperty Name="exa_orden" ColumnName="exa_orden" />
-          <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
-          <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
-          <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
-          <ScalarProperty Name="exa_item" ColumnName="exa_item" />
-          <ScalarProperty Name="exa_area" ColumnName="exa_area" />
-          <ScalarProperty Name="exa_tipo" ColumnName="exa_tipo" />
-          <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
-          <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-          <ScalarProperty Name="exa_id" ColumnName="exa_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="concepto">
       <EntityTypeMapping TypeName="kinnemedModel.concepto">
         <MappingFragment StoreEntitySet="concepto">
@@ -741,6 +725,22 @@
           <ScalarProperty Name="ray_imagen" ColumnName="ray_imagen" />
           <ScalarProperty Name="ray_paciente" ColumnName="ray_paciente" />
           <ScalarProperty Name="ray_id" ColumnName="ray_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="examen">
+      <EntityTypeMapping TypeName="kinnemedModel.examen">
+        <MappingFragment StoreEntitySet="examen">
+          <ScalarProperty Name="exa_orden" ColumnName="exa_orden" />
+          <ScalarProperty Name="exa_estado" ColumnName="exa_estado" />
+          <ScalarProperty Name="exa_inicial" ColumnName="exa_inicial" />
+          <ScalarProperty Name="exa_valores" ColumnName="exa_valores" />
+          <ScalarProperty Name="exa_item" ColumnName="exa_item" />
+          <ScalarProperty Name="exa_area" ColumnName="exa_area" />
+          <ScalarProperty Name="exa_tipo" ColumnName="exa_tipo" />
+          <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
+          <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
+          <ScalarProperty Name="exa_id" ColumnName="exa_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

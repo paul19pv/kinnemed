@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace kinnemed05.Context
+namespace kinnemed05.Models
 {
     public partial class examen
     {

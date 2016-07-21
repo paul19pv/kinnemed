@@ -53,7 +53,6 @@ namespace kinnemed05.Models
         public DbSet<vacuna> vacuna { get; set; }
         public DbSet<ocupacional> ocupacional { get; set; }
         public DbSet<laboral> laboral { get; set; }
-        public DbSet<examen> examen { get; set; }
         public DbSet<concepto> concepto { get; set; }
         public DbSet<ginecologico> ginecologico { get; set; }
         public DbSet<trabajador> trabajador { get; set; }
@@ -70,6 +69,7 @@ namespace kinnemed05.Models
         public DbSet<espirometria> espirometria { get; set; }
         public DbSet<oftalmologia> oftalmologia { get; set; }
         public DbSet<rayos> rayos { get; set; }
+        public DbSet<examen> examen { get; set; }
     
         public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
         {

@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_oftalmologia" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre FROM dbo.view_oftalmologia</CommandText>
+                    <CommandText>SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre, pac_cedula FROM dbo.view_oftalmologia</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -44,6 +44,7 @@
               <Mapping SourceColumn="responsable" DataSetColumn="responsable" />
               <Mapping SourceColumn="firma" DataSetColumn="firma" />
               <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -146,7 +147,7 @@
               <xs:element name="oft_dia_txt" msprop:Generator_ColumnVarNameInTable="columnoft_dia_txt" msprop:Generator_ColumnPropNameInRow="oft_dia_txt" msprop:Generator_ColumnPropNameInTable="oft_dia_txtColumn" msprop:Generator_UserColumnName="oft_dia_txt" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
+                    <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -160,7 +161,7 @@
               <xs:element name="oft_ind_txt" msprop:Generator_ColumnVarNameInTable="columnoft_ind_txt" msprop:Generator_ColumnPropNameInRow="oft_ind_txt" msprop:Generator_ColumnPropNameInTable="oft_ind_txtColumn" msprop:Generator_UserColumnName="oft_ind_txt" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="150" />
+                    <xs:maxLength value="2147483647" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -212,6 +213,13 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

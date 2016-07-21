@@ -22,5 +22,6 @@ namespace kinnemed05.Models
 
         public Nullable<int> esp_responsable { get; set; }
         public Nullable<int> esp_perfil { get; set; }
+        public Nullable<int> esp_orden { get; set; }
     }
 }

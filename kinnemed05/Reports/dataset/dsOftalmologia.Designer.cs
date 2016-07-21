@@ -329,6 +329,8 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnemp_nombre;
             
+            private global::System.Data.DataColumn columnpac_cedula;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public view_oftalmologiaDataTable() {
@@ -564,6 +566,14 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pac_cedulaColumn {
+                get {
+                    return this.columnpac_cedula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -624,7 +634,8 @@ namespace kinnemed05.Reports.dataset {
                         int pac_edad, 
                         string responsable, 
                         byte[] firma, 
-                        string emp_nombre) {
+                        string emp_nombre, 
+                        string pac_cedula) {
                 view_oftalmologiaRow rowview_oftalmologiaRow = ((view_oftalmologiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         oft_id,
@@ -651,7 +662,8 @@ namespace kinnemed05.Reports.dataset {
                         pac_edad,
                         responsable,
                         firma,
-                        emp_nombre};
+                        emp_nombre,
+                        pac_cedula};
                 rowview_oftalmologiaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_oftalmologiaRow);
                 return rowview_oftalmologiaRow;
@@ -706,6 +718,7 @@ namespace kinnemed05.Reports.dataset {
                 this.columnresponsable = base.Columns["responsable"];
                 this.columnfirma = base.Columns["firma"];
                 this.columnemp_nombre = base.Columns["emp_nombre"];
+                this.columnpac_cedula = base.Columns["pac_cedula"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -761,6 +774,8 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnfirma);
                 this.columnemp_nombre = new global::System.Data.DataColumn("emp_nombre", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnemp_nombre);
+                this.columnpac_cedula = new global::System.Data.DataColumn("pac_cedula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpac_cedula);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnoft_id}, true));
                 this.columnoft_id.AllowDBNull = false;
@@ -787,10 +802,10 @@ namespace kinnemed05.Reports.dataset {
                 this.columnoft_colores.MaxLength = 150;
                 this.columnoft_diagnostico.AllowDBNull = false;
                 this.columnoft_diagnostico.MaxLength = 150;
-                this.columnoft_dia_txt.MaxLength = 150;
+                this.columnoft_dia_txt.MaxLength = 2147483647;
                 this.columnoft_indicaciones.AllowDBNull = false;
                 this.columnoft_indicaciones.MaxLength = 150;
-                this.columnoft_ind_txt.MaxLength = 150;
+                this.columnoft_ind_txt.MaxLength = 2147483647;
                 this.columnoft_fecha.MaxLength = 10;
                 this.columnoft_otros.MaxLength = 250;
                 this.columnpac_nombres.AllowDBNull = false;
@@ -804,6 +819,8 @@ namespace kinnemed05.Reports.dataset {
                 this.columnfirma.ReadOnly = true;
                 this.columnemp_nombre.AllowDBNull = false;
                 this.columnemp_nombre.MaxLength = 50;
+                this.columnpac_cedula.AllowDBNull = false;
+                this.columnpac_cedula.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1266,6 +1283,17 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pac_cedula {
+                get {
+                    return ((string)(this[this.tableview_oftalmologia.pac_cedulaColumn]));
+                }
+                set {
+                    this[this.tableview_oftalmologia.pac_cedulaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isoft_bio_txtNull() {
                 return this.IsNull(this.tableview_oftalmologia.oft_bio_txtColumn);
             }
@@ -1557,6 +1585,7 @@ namespace kinnemed05.Reports.dataset.dsOftalmologiaTableAdapters {
             tableMapping.ColumnMappings.Add("responsable", "responsable");
             tableMapping.ColumnMappings.Add("firma", "firma");
             tableMapping.ColumnMappings.Add("emp_nombre", "emp_nombre");
+            tableMapping.ColumnMappings.Add("pac_cedula", "pac_cedula");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1573,7 +1602,7 @@ namespace kinnemed05.Reports.dataset.dsOftalmologiaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre FROM dbo.view_oftalmologia";
+            this._commandCollection[0].CommandText = @"SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre, pac_cedula FROM dbo.view_oftalmologia";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

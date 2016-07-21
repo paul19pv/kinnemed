@@ -135,19 +135,6 @@
       <End Role="riesgo" EntitySet="riesgo" />
       <End Role="laboral" EntitySet="laboral" />
     </AssociationSet>
-    <EntitySet Name="examen" EntityType="kinnemedModel.examen" />
-    <AssociationSet Name="FK_examen_area" Association="kinnemedModel.FK_examen_area">
-      <End Role="area" EntitySet="area" />
-      <End Role="examen" EntitySet="examen" />
-    </AssociationSet>
-    <AssociationSet Name="FK_control_examen" Association="kinnemedModel.FK_control_examen">
-      <End Role="examen" EntitySet="examen" />
-      <End Role="control" EntitySet="control" />
-    </AssociationSet>
-    <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
-      <End Role="examen" EntitySet="examen" />
-      <End Role="valores" EntitySet="valores" />
-    </AssociationSet>
     <EntitySet Name="concepto" EntityType="kinnemedModel.concepto" />
     <EntitySet Name="ginecologico" EntityType="kinnemedModel.ginecologico" />
     <EntitySet Name="trabajador" EntityType="kinnemedModel.trabajador" />
@@ -162,15 +149,7 @@
       <End Role="area" EntitySet="area" />
       <End Role="codigo" EntitySet="codigo" />
     </AssociationSet>
-    <AssociationSet Name="FK_orden_examen" Association="kinnemedModel.FK_orden_examen">
-      <End Role="examen" EntitySet="examen" />
-      <End Role="orden" EntitySet="orden" />
-    </AssociationSet>
     <EntitySet Name="prueba" EntityType="kinnemedModel.prueba" />
-    <AssociationSet Name="FK_prueba_examen" Association="kinnemedModel.FK_prueba_examen">
-      <End Role="examen" EntitySet="examen" />
-      <End Role="prueba" EntitySet="prueba" />
-    </AssociationSet>
     <EntitySet Name="historia" EntityType="kinnemedModel.historia" />
     <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
       <End Role="historia" EntitySet="historia" />
@@ -378,6 +357,27 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="rayos" EntitySet="rayos" />
     </AssociationSet>
+    <EntitySet Name="examen" EntityType="kinnemedModel.examen" />
+    <AssociationSet Name="FK_examen_area" Association="kinnemedModel.FK_examen_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="examen" EntitySet="examen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_control_examen" Association="kinnemedModel.FK_control_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="control" EntitySet="control" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_examen" Association="kinnemedModel.FK_orden_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="orden" EntitySet="orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prueba_examen" Association="kinnemedModel.FK_prueba_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="prueba" EntitySet="prueba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="valores" EntitySet="valores" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="area">
     <Key>
@@ -385,9 +385,9 @@
     </Key>
     <Property Name="are_id" Type="Int32" Nullable="false" />
     <Property Name="are_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_examen_area" FromRole="area" ToRole="examen" />
     <NavigationProperty Name="codigo" Relationship="kinnemedModel.FK_codigo_area" FromRole="area" ToRole="codigo" />
     <Property Name="are_tipo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_examen_area" FromRole="area" ToRole="examen" />
   </EntityType>
   <EntityType Name="control">
     <Key>
@@ -760,68 +760,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="examen">
-    <Key>
-      <PropertyRef Name="exa_id" />
-    </Key>
-    <Property Name="exa_id" Type="Int32" Nullable="false" />
-    <Property Name="exa_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="exa_unidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="exa_tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-    <Property Name="exa_area" Type="Int32" Nullable="false" />
-    <Property Name="exa_item" Type="Int32" />
-    <Property Name="exa_valores" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="exa_inicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="exa_estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="area" Relationship="kinnemedModel.FK_examen_area" FromRole="examen" ToRole="area" />
-    <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_examen" FromRole="examen" ToRole="control" />
-    <NavigationProperty Name="valores" Relationship="kinnemedModel.FK_valores_examen" FromRole="examen" ToRole="valores" />
-    <Property Name="exa_orden" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_examen" FromRole="examen" ToRole="orden" />
-    <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
-  </EntityType>
-  <Association Name="FK_examen_area">
-    <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="area">
-        <PropertyRef Name="are_id" />
-      </Principal>
-      <Dependent Role="examen">
-        <PropertyRef Name="exa_area" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_control_examen">
-    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.control" Role="control" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="examen">
-        <PropertyRef Name="exa_id" />
-      </Principal>
-      <Dependent Role="control">
-        <PropertyRef Name="con_examen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_valores_examen">
-    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.valores" Role="valores" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="examen">
-        <PropertyRef Name="exa_id" />
-      </Principal>
-      <Dependent Role="valores">
-        <PropertyRef Name="val_examen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="concepto">
     <Key>
       <PropertyRef Name="con_id" />
@@ -912,8 +850,8 @@
     <Property Name="ord_paciente" Type="Int32" Nullable="false" />
     <Property Name="ord_examen" Type="Int32" Nullable="false" />
     <Property Name="ord_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_orden_examen" FromRole="orden" ToRole="examen" />
     <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_orden_paciente" FromRole="orden" ToRole="paciente" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_orden_examen" FromRole="orden" ToRole="examen" />
   </EntityType>
   <Association Name="FK_codigo_area">
     <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
@@ -929,20 +867,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_orden_examen">
-    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.orden" Role="orden" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="examen">
-        <PropertyRef Name="exa_id" />
-      </Principal>
-      <Dependent Role="orden">
-        <PropertyRef Name="ord_examen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="prueba">
     <Key>
       <PropertyRef Name="pru_id" />
@@ -953,23 +877,9 @@
     <Property Name="pru_resultado" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
     <Property Name="pru_valor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="pru_fuera" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_prueba_examen" FromRole="prueba" ToRole="examen" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_prueba_registro" FromRole="prueba" ToRole="registro" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_prueba_examen" FromRole="prueba" ToRole="examen" />
   </EntityType>
-  <Association Name="FK_prueba_examen">
-    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.prueba" Role="prueba" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="examen">
-        <PropertyRef Name="exa_id" />
-      </Principal>
-      <Dependent Role="prueba">
-        <PropertyRef Name="pru_examen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="historia">
     <Key>
       <PropertyRef Name="his_id" />
@@ -1682,6 +1592,96 @@
       </Principal>
       <Dependent Role="rayos">
         <PropertyRef Name="ray_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="examen">
+    <Key>
+      <PropertyRef Name="exa_id" />
+    </Key>
+    <Property Name="exa_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exa_nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="exa_unidad" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="exa_tipo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="exa_area" Type="Int32" Nullable="false" />
+    <Property Name="exa_item" Type="Int32" />
+    <Property Name="exa_valores" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="exa_inicial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="exa_estado" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="exa_orden" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="area" Relationship="kinnemedModel.FK_examen_area" FromRole="examen" ToRole="area" />
+    <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_examen" FromRole="examen" ToRole="control" />
+    <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_examen" FromRole="examen" ToRole="orden" />
+    <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
+    <NavigationProperty Name="valores" Relationship="kinnemedModel.FK_valores_examen" FromRole="examen" ToRole="valores" />
+  </EntityType>
+  <Association Name="FK_examen_area">
+    <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="are_id" />
+      </Principal>
+      <Dependent Role="examen">
+        <PropertyRef Name="exa_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_control_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.control" Role="control" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="control">
+        <PropertyRef Name="con_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.orden" Role="orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prueba_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.prueba" Role="prueba" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="prueba">
+        <PropertyRef Name="pru_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_valores_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.valores" Role="valores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="valores">
+        <PropertyRef Name="val_examen" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

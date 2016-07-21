@@ -37,10 +37,6 @@
         <EntityTypeShape EntityType="kinnemedModel.laboral" Width="1.5" PointX="10.5" PointY="118.625" />
         <AssociationConnector Association="kinnemedModel.FK_laboral_ocupacional" />
         <AssociationConnector Association="kinnemedModel.FK_laboral_riesgo" />
-        <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="11.25" PointY="31.375" />
-        <AssociationConnector Association="kinnemedModel.FK_examen_area" />
-        <AssociationConnector Association="kinnemedModel.FK_control_examen" />
-        <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
         <EntityTypeShape EntityType="kinnemedModel.concepto" Width="1.5" PointX="10.5" PointY="39.625" />
         <EntityTypeShape EntityType="kinnemedModel.ginecologico" Width="1.5" PointX="8.25" PointY="113.375" />
         <EntityTypeShape EntityType="kinnemedModel.trabajador" Width="1.5" PointX="3" PointY="49.125" />
@@ -49,9 +45,7 @@
         <EntityTypeShape EntityType="kinnemedModel.codigo" Width="1.5" PointX="16.5" PointY="43.125" />
         <EntityTypeShape EntityType="kinnemedModel.orden" Width="1.5" PointX="11.25" PointY="49.25" />
         <AssociationConnector Association="kinnemedModel.FK_codigo_area" />
-        <AssociationConnector Association="kinnemedModel.FK_orden_examen" />
         <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="13.5" PointY="41.125" />
-        <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <EntityTypeShape EntityType="kinnemedModel.historia" Width="1.5" PointX="8.25" PointY="53.875" />
         <AssociationConnector Association="kinnemedModel.FK_concepto_historia" />
         <AssociationConnector Association="kinnemedModel.FK_diagnostico_historia" />
@@ -93,6 +87,12 @@
         <AssociationConnector Association="kinnemedModel.FK_rayos_laboratorista" />
         <AssociationConnector Association="kinnemedModel.FK_oftalmologia_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_rayos_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="11.25" PointY="31.5" />
+        <AssociationConnector Association="kinnemedModel.FK_examen_area" />
+        <AssociationConnector Association="kinnemedModel.FK_control_examen" />
+        <AssociationConnector Association="kinnemedModel.FK_orden_examen" />
+        <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
+        <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

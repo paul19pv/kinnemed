@@ -58,6 +58,7 @@ namespace kinnemed05.Models
         public string oft_fecha { get; set; }
         public Nullable<int> oft_responsable { get; set; }
         public Nullable<int> oft_perfil { get; set; }
+        public Nullable<int> oft_orden { get; set; }
 
         
     }

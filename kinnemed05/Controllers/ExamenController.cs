@@ -40,7 +40,9 @@ namespace kinnemed05.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.exa_area = new SelectList(db.area, "are_id", "are_nombre");
+            ViewBag.exa_area = new SelectList(db.area.Where(a=>a.are_tipo=="GRUPO"), "are_id", "are_nombre");
+            ViewBag.exa_tipo = "CUANTITATIVO";
+            ViewBag.exa_estado = "ACTIVO";
             return View();
         }
 
@@ -58,7 +60,9 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.exa_area = new SelectList(db.area, "are_id", "are_nombre", examen.exa_area);
+            ViewBag.exa_area = new SelectList(db.area.Where(a=>a.are_tipo=="GRUPO"), "are_id", "are_nombre",examen.exa_area);
+            ViewBag.exa_tipo = "CUANTITATIVO";
+            ViewBag.exa_estado = "ACTIVO";
             return View(examen);
         }
 
@@ -72,7 +76,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.exa_area = new SelectList(db.area, "are_id", "are_nombre", examen.exa_area);
+            ViewBag.exa_area = new SelectList(db.area.Where(a => a.are_tipo == "GRUPO"), "are_id", "are_nombre", examen.exa_area);
             return View(examen);
         }
 
@@ -89,7 +93,7 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.exa_area = new SelectList(db.area, "are_id", "are_nombre", examen.exa_area);
+            ViewBag.exa_area = new SelectList(db.area.Where(a => a.are_tipo == "GRUPO"), "are_id", "are_nombre", examen.exa_area);
             return View(examen);
         }
 

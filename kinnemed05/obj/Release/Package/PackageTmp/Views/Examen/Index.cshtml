@@ -4,84 +4,66 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Exámenes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create",new { @class = "btn btn-default" })
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_unidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.area.are_nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_item)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_valores)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_inicial)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.exa_orden)
-        </th>
-        <th></th>
-    </tr>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-striped table-hover ">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.exa_nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.exa_unidad)
+                </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_unidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_tipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.area.are_nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_item)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_valores)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_inicial)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.exa_orden)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+                <th>
+                    @Html.DisplayNameFor(model => model.area.are_nombre)
+                </th>
 
-</table>
+                <th>
+                    @Html.DisplayNameFor(model => model.exa_valores)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.exa_orden)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.exa_nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.exa_unidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.exa_tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.area.are_nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.exa_valores)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.exa_orden)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.exa_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                        @Html.ActionLink("Detalle", "Details", new { id = item.exa_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                        @Html.ActionLink("Borrar", "Delete", new { id = item.exa_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div> 
+
