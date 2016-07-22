@@ -25,7 +25,10 @@
                                 <li>@Html.ActionLink("Perfil", "Manage", "Account")</li>
                                 <li class="divider"></li>
                                 <li>@Html.ActionLink("Perfiles de Laboratorio", "Index", "Perfil")</li>
-                                <li>@Html.ActionLink("Exámenes", "Index", "Examen")</li>
+                                @if (User.IsInRole("admin")){
+                                    <li>@Html.ActionLink("Pruebas de Laboratorio", "Index", "Examen")</li>
+                                }
+
 
                             </ul>
                         </li>
@@ -72,7 +75,7 @@
                             </ul>
                         </li>
                     }
-                    
+
                     @if (User.IsInRole("admin") || User.IsInRole("medico") || User.IsInRole("laboratorista"))
                     {
                         <li class="dropdown">
@@ -117,25 +120,31 @@
 
             <ul class="nav navbar-nav navbar-right">
                 @*<li>@User.Identity.Name</li>*@
-                @if(User.IsInRole("admin")){
+                @if (User.IsInRole("admin"))
+                {
                     <li><a href="#">Perfil: Administrador</a></li>
                 }
-                else if(User.IsInRole("medico")){
+                else if (User.IsInRole("medico"))
+                {
                     <li><a href="#">Perfil: Medico</a></li>
                 }
-                else if (User.IsInRole("paciente")){
+                else if (User.IsInRole("paciente"))
+                {
                     <li><a href="#">Perfil: Paciente</a></li>
                 }
-                else if (User.IsInRole("empresa")){
+                else if (User.IsInRole("empresa"))
+                {
                     <li><a href="#">Perfil: Empresa</a></li>
                 }
-                else if (User.IsInRole("laboratorista")){
+                else if (User.IsInRole("laboratorista"))
+                {
                     <li><a href="#">Perfil: Técnico</a></li>
                 }
-                else if (User.IsInRole("trabajador")) { 
+                else if (User.IsInRole("trabajador"))
+                {
                     <li><a href="#">Perfil: Trabajador</a></li>
                 }
-                
+
                 @if (Request.IsAuthenticated)
                 {
 

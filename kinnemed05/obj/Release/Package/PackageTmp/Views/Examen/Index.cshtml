@@ -7,8 +7,29 @@
 <h2>Exámenes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create",new { @class = "btn btn-default" })
+    @Html.ActionLink("Nueva Prueba", "Create", "", new { @class = "btn btn-default" })
 </p>
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.Label("Nombre", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("nombre", "", new { @class = "form-control", placeholder = "Nombre" })
+                </div>
+                @Html.Label("Area", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-2">
+                    @Html.DropDownList("area", String.Empty)
+                </div>
+
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>
+
+
 <div class="panel panel-default">
     <div class="panel-body">
         <table class="table table-striped table-hover ">
@@ -21,9 +42,8 @@
                 </th>
 
                 <th>
-                    @Html.DisplayNameFor(model => model.area.are_nombre)
+                    @Html.DisplayNameFor(model => model.exa_area)
                 </th>
-
                 <th>
                     @Html.DisplayNameFor(model => model.exa_valores)
                 </th>
@@ -43,9 +63,6 @@
                         @Html.DisplayFor(modelItem => item.exa_unidad)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.exa_tipo)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.area.are_nombre)
                     </td>
                     <td>
@@ -57,7 +74,7 @@
                     <td>
                         @Html.ActionLink("Editar", "Edit", new { id = item.exa_id }, new { @class = "iconb icon-edit", @title = "Editar" })
                         @Html.ActionLink("Detalle", "Details", new { id = item.exa_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                        @Html.ActionLink("Borrar", "Delete", new { id = item.exa_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        @*@Html.ActionLink("Borrar", "Delete", new { id = item.exa_id }, new { @class = "iconb icon-delete", @title = "Borrar" })*@
                     </td>
                 </tr>
             }
@@ -65,5 +82,5 @@
         </table>
 
     </div>
-</div> 
+</div>
 

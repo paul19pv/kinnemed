@@ -1362,6 +1362,7 @@
     <Content Include="Views\Examen\Create.cshtml" />
     <Content Include="Views\Examen\Edit.cshtml" />
     <Content Include="Views\Examen\Delete.cshtml" />
+    <Content Include="Views\Prueba\Lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

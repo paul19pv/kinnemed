@@ -110,7 +110,21 @@ namespace kinnemed05.Controllers
             SetPrueba setprueba = new SetPrueba();
             setprueba.prueba = resultado;
             ViewBag.reg_id = id;
-            return View(setprueba);
+            return View("Edit01",setprueba);
+        }
+        public ActionResult Edit01(int id = 0) {
+            List<prueba> resultado = db.prueba.Where(r => r.pru_registro == id && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).Include(p => p.examen).ToList();
+            return View(resultado);
+        }
+
+        [HttpPost]
+        public ActionResult Edit01(SetPrueba setprueba){
+
+            List<prueba> resultado = db.prueba.Where(r => r.pru_registro == 584 && r.examen.exa_tipo != "PLANTILLA").OrderBy(r => r.examen.exa_area).OrderBy(p => p.pru_examen).Include(p => p.examen).ToList();
+            SetPrueba setprueba1 = new SetPrueba();
+            setprueba1.prueba = resultado;
+            ViewBag.pru_id = "asd";
+            return View("Lista", setprueba1);
         }
 
         //
@@ -209,18 +223,32 @@ namespace kinnemed05.Controllers
         }
 
         private void CreateObservacion(int reg_id, int exa_id) {
-            int are_id = db.examen.Find(exa_id).exa_area;
-            int obs_id = db.examen.Where(e => e.exa_area == are_id && e.exa_nombre == "OBSERVACIONES").First().exa_id;
-            var consulta = db.prueba.Where(p => p.pru_examen == obs_id);
-            if (!consulta.Any()) {
-                prueba prueba = new prueba();
-                prueba.pru_examen = obs_id;
-                prueba.pru_registro = reg_id;
-                //prueba.pru_codigo = GetCodigo(reg_id, exa_id);
-                //prueba.pru_imagen = barcode.GenerarCodigo(prueba.pru_codigo);
-                db.prueba.Add(prueba);
-                db.SaveChanges();
+            try
+            {
+                int are_id = db.examen.Find(exa_id).exa_area;
+                int obs_id = db.examen.Where(e => e.exa_area == are_id && e.exa_nombre.Contains("OBSERVACIONES")).First().exa_id;
+                var consulta = db.prueba.Where(p => p.pru_examen == obs_id && p.pru_registro==reg_id);
+                ModelState.AddModelError("error", obs_id+"");
+                if (!consulta.Any())
+                {
+                    //ModelState.AddModelError("error", "if observacion");
+                    prueba prueba = new prueba();
+                    prueba.pru_examen = obs_id;
+                    prueba.pru_registro = reg_id;
+                    //prueba.pru_codigo = GetCodigo(reg_id, exa_id);
+                    //prueba.pru_imagen = barcode.GenerarCodigo(prueba.pru_codigo);
+                    db.prueba.Add(prueba);
+                    db.SaveChanges();
+
+
+                }
+                
             }
+            catch (Exception ex) {
+                ModelState.AddModelError("error", ex.Message);
+            }
+
+            
         }
 
         private void set_codigo(int reg_id,int exa_id){

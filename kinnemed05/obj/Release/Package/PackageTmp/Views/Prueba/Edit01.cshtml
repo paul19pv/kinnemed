@@ -1,42 +1,32 @@
 ﻿@model kinnemed05.Models.SetPrueba
 
 @{
-    ViewBag.Title = "Edit01";
+    ViewBag.Title = "Edit";
 }
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Ingreso de Resultados</h3>
-        </div>
 
-        <div class="panel-body">
-
-            @foreach (var item in Model.prueba)
-            {
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <label class="control-label">@item.examen.exa_nombre</label>
-                        @*@if (item.examen.exa_tipo == "CUALITATIVO")
-                            {
-                                @Html.DropDownList(item.pru_id + "", Model.valores(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
-                            }
-                            else if (item.examen.exa_tipo == "COL_COP")
-                            {
-                                @Html.DropDownList(item.pru_id + "", Model.col_cop(item.pru_resultado), new { @class = "form-control textedit", @id = item.pru_id })
-                            }
-                            else {
-                                @Html.TextBox(item.pru_id + "", item.pru_resultado, new { @class = "form-control textedit", @id = item.pru_id })
-                            }*@
-
-
-                    </div>
-                </div>
-
-            }
-        </div>
-
+@using (Html.BeginForm("Edit01","Prueba"))
+{
+   
+    foreach (var item in Model.prueba)
+    {
+        @Html.TextBoxFor(modelItem=>item.pru_id)  
+    }
+    
+    
+    <input type="submit" value="Guardar" class="btn btn-default" />
+}
+<div class="col-lg-3" style="clear:both;float:right;">
+    <div class="form-group">
+        @Html.ActionLink("Finalizar", "Validar", "Registro", new { id = ViewBag.reg_id }, new { @class = "btn btn-default" })
     </div>
 </div>
+
+
+<a href="@Url.Content("~/Prueba/Modificar")" id="link_resultado"></a>
+<a href="@Url.Content("~/Prueba/Valor")" id="link_valor"></a>
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

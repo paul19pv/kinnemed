@@ -4,82 +4,48 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="col-lg-12">
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3 class="panel-title">Detalle Prueba Laboratorio</h3>
+        </div>
+        <div class="panel panel-body">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.exa_nombre, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_unidad, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.exa_unidad, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_area, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.area.are_nombre, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_orden, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.exa_nombre, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.exa_valores, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextAreaFor(model => model.exa_valores, new { @class = "form-control", @rows = "3", @readonly = "readonly" })
+                    </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Examen", new { }, new { @class = "btn btn-default" })
+                    </div>
+                </div>
 
-<fieldset>
-    <legend>examen</legend>
+        </div>
+    </div>
+</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_id)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_unidad)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_unidad)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_tipo)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_tipo)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.area.are_nombre)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.area.are_nombre)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_item)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_item)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_valores)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_valores)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_inicial)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_inicial)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_estado)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_estado)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.exa_orden)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.exa_orden)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

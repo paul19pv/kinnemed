@@ -274,3 +274,5 @@ C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.pdb
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.csprojResolveAssemblyReference.cache
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.cs
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll.CodeAnalysisLog.xml
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll.lastcodeanalysissucceeded
