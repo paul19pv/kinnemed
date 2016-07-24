@@ -101,6 +101,7 @@ namespace kinnemed05.Controllers
                     DateTime dd = DateTime.Now;
                     rayos.ray_fecha = dd.Date.ToString("d");
                     rayos.ray_laboratorista = get_user();
+                    rayos.ray_orden = get_orden(rayos.ray_fecha);
                     if (ModelState.IsValid && (Array.IndexOf(formatos, ext) >= 0))
                     //if (ModelState.IsValid)
                     {
@@ -342,6 +343,20 @@ namespace kinnemed05.Controllers
                 user_id = userprofile.UserLaboratorista.GetValueOrDefault();
             }
             return user_id;
+        }
+
+        private int get_orden(string fecha)
+        {
+            string orden = String.Empty;
+            int num = 0;
+            int num_exa = 0;
+            var consulta = db.rayos.Where(r => r.ray_fecha == fecha);
+            if (consulta.Any())
+                num_exa = db.rayos.Where(r => r.ray_fecha == fecha).OrderByDescending(r => r.ray_orden).First().ray_orden.GetValueOrDefault();
+            else
+                num_exa = 0;
+            num = num_exa + 1;
+            return num;
         }
         protected override void Dispose(bool disposing)
         {

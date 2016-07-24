@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_espirometria" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT esp_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, emp_nombre, esp_fecha, esp_responsable, esp_perfil, esp_observacion, responsable, firma FROM dbo.view_espirometria</CommandText>
+                    <CommandText>SELECT esp_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, emp_nombre, esp_fecha, esp_responsable, esp_perfil, esp_observacion, responsable, firma, esp_orden FROM dbo.view_espirometria</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -32,6 +32,7 @@
               <Mapping SourceColumn="esp_observacion" DataSetColumn="esp_observacion" />
               <Mapping SourceColumn="responsable" DataSetColumn="responsable" />
               <Mapping SourceColumn="firma" DataSetColumn="firma" />
+              <Mapping SourceColumn="esp_orden" DataSetColumn="esp_orden" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -107,6 +108,7 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="firma" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfirma" msprop:Generator_ColumnPropNameInRow="firma" msprop:Generator_ColumnPropNameInTable="firmaColumn" msprop:Generator_UserColumnName="firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="esp_orden" msprop:Generator_ColumnVarNameInTable="columnesp_orden" msprop:Generator_ColumnPropNameInRow="esp_orden" msprop:Generator_ColumnPropNameInTable="esp_ordenColumn" msprop:Generator_UserColumnName="esp_orden" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

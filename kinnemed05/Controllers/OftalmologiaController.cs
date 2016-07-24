@@ -104,6 +104,7 @@ namespace kinnemed05.Controllers
                 UserManager usermanager = new UserManager();
                 oftalmologia.oft_responsable = usermanager.get_user_id(User);
                 oftalmologia.oft_perfil = usermanager.get_perfil(User);
+                oftalmologia.oft_orden = get_orden(oftalmologia.oft_fecha);
                 db.oftalmologia.Add(oftalmologia);
                 db.SaveChanges();
 
@@ -371,6 +372,20 @@ namespace kinnemed05.Controllers
             ModelState.AddModelError("notificacion", resultado);
 
 
+        }
+
+        private int get_orden(string fecha)
+        {
+            string orden = String.Empty;
+            int num = 0;
+            int num_exa = 0;
+            var consulta = db.oftalmologia.Where(r => r.oft_fecha == fecha);
+            if (consulta.Any())
+                num_exa = db.oftalmologia.Where(r => r.oft_fecha == fecha).OrderByDescending(r => r.oft_orden).First().oft_orden.GetValueOrDefault();
+            else
+                num_exa = 0;
+            num = num_exa + 1;
+            return num;
         }
 
         protected override void Dispose(bool disposing)

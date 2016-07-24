@@ -99,6 +99,7 @@ namespace kinnemed05.Controllers
                     DateTime dd = DateTime.Now; 
                     audiometria.aud_fecha=dd.Date.ToString("d");
                     audiometria.aud_laboratorista = get_user();
+                    audiometria.aud_orden = get_orden(audiometria.aud_fecha);
                     if (ModelState.IsValid && ext == ".pdf")
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/audiometria"), fileName);
@@ -429,7 +430,19 @@ namespace kinnemed05.Controllers
             }
             return user_id;
         }
-
+        private int get_orden(string fecha)
+        {
+            string orden = String.Empty;
+            int num = 0;
+            int num_exa = 0;
+            var consulta = db.audiometria.Where(r => r.aud_fecha == fecha);
+            if (consulta.Any())
+                num_exa = db.audiometria.Where(r => r.aud_fecha == fecha).OrderByDescending(r => r.aud_orden).First().aud_orden.GetValueOrDefault();
+            else
+                num_exa = 0;
+            num = num_exa + 1;
+            return num;
+        }
 
         protected override void Dispose(bool disposing)
         {

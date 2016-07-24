@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_prueba_paciente" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, reg_paciente, reg_fecha, pru_valor, reg_id, exa_id FROM dbo.view_prueba_paciente</CommandText>
+                    <CommandText>SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, reg_paciente, reg_fecha, pru_valor, reg_id, exa_id, lab_cedula, lab_nombres, lab_apellidos, lab_firma, pac_cedula, pac_nombres, pac_apellidos, emp_nombre FROM dbo.view_prueba_paciente</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -30,6 +30,14 @@
               <Mapping SourceColumn="pru_valor" DataSetColumn="pru_valor" />
               <Mapping SourceColumn="reg_id" DataSetColumn="reg_id" />
               <Mapping SourceColumn="exa_id" DataSetColumn="exa_id" />
+              <Mapping SourceColumn="lab_cedula" DataSetColumn="lab_cedula" />
+              <Mapping SourceColumn="lab_nombres" DataSetColumn="lab_nombres" />
+              <Mapping SourceColumn="lab_apellidos" DataSetColumn="lab_apellidos" />
+              <Mapping SourceColumn="lab_firma" DataSetColumn="lab_firma" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
+              <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -97,6 +105,56 @@
               </xs:element>
               <xs:element name="reg_id" msprop:Generator_ColumnVarNameInTable="columnreg_id" msprop:Generator_ColumnPropNameInRow="reg_id" msprop:Generator_ColumnPropNameInTable="reg_idColumn" msprop:Generator_UserColumnName="reg_id" type="xs:int" />
               <xs:element name="exa_id" msprop:Generator_ColumnVarNameInTable="columnexa_id" msprop:Generator_ColumnPropNameInRow="exa_id" msprop:Generator_ColumnPropNameInTable="exa_idColumn" msprop:Generator_UserColumnName="exa_id" type="xs:int" />
+              <xs:element name="lab_cedula" msprop:Generator_ColumnVarNameInTable="columnlab_cedula" msprop:Generator_ColumnPropNameInRow="lab_cedula" msprop:Generator_ColumnPropNameInTable="lab_cedulaColumn" msprop:Generator_UserColumnName="lab_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lab_nombres" msprop:Generator_ColumnVarNameInTable="columnlab_nombres" msprop:Generator_ColumnPropNameInRow="lab_nombres" msprop:Generator_ColumnPropNameInTable="lab_nombresColumn" msprop:Generator_UserColumnName="lab_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lab_apellidos" msprop:Generator_ColumnVarNameInTable="columnlab_apellidos" msprop:Generator_ColumnPropNameInRow="lab_apellidos" msprop:Generator_ColumnPropNameInTable="lab_apellidosColumn" msprop:Generator_UserColumnName="lab_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="lab_firma" msprop:Generator_ColumnVarNameInTable="columnlab_firma" msprop:Generator_ColumnPropNameInRow="lab_firma" msprop:Generator_ColumnPropNameInTable="lab_firmaColumn" msprop:Generator_UserColumnName="lab_firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="emp_nombre" msprop:Generator_ColumnVarNameInTable="columnemp_nombre" msprop:Generator_ColumnPropNameInRow="emp_nombre" msprop:Generator_ColumnPropNameInTable="emp_nombreColumn" msprop:Generator_UserColumnName="emp_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

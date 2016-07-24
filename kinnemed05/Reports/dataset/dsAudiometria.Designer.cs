@@ -305,6 +305,8 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnfirma;
             
+            private global::System.Data.DataColumn columnaud_orden;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public view_audiometriaDataTable() {
@@ -444,6 +446,14 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn aud_ordenColumn {
+                get {
+                    return this.columnaud_orden;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +489,7 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public view_audiometriaRow Addview_audiometriaRow(int aud_id, string pac_cedula, string pac_nombres, string pac_apellidos, int pac_edad, string pac_genero, string emp_nombre, string aud_observacion, string aud_fecha, int aud_responsable, int aud_perfil, string responsable, byte[] firma) {
+            public view_audiometriaRow Addview_audiometriaRow(int aud_id, string pac_cedula, string pac_nombres, string pac_apellidos, int pac_edad, string pac_genero, string emp_nombre, string aud_observacion, string aud_fecha, int aud_responsable, int aud_perfil, string responsable, byte[] firma, int aud_orden) {
                 view_audiometriaRow rowview_audiometriaRow = ((view_audiometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         aud_id,
@@ -494,7 +504,8 @@ namespace kinnemed05.Reports.dataset {
                         aud_responsable,
                         aud_perfil,
                         responsable,
-                        firma};
+                        firma,
+                        aud_orden};
                 rowview_audiometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_audiometriaRow);
                 return rowview_audiometriaRow;
@@ -537,6 +548,7 @@ namespace kinnemed05.Reports.dataset {
                 this.columnaud_perfil = base.Columns["aud_perfil"];
                 this.columnresponsable = base.Columns["responsable"];
                 this.columnfirma = base.Columns["firma"];
+                this.columnaud_orden = base.Columns["aud_orden"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -568,6 +580,8 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnresponsable);
                 this.columnfirma = new global::System.Data.DataColumn("firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfirma);
+                this.columnaud_orden = new global::System.Data.DataColumn("aud_orden", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaud_orden);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnaud_id}, true));
                 this.columnaud_id.AllowDBNull = false;
@@ -903,6 +917,22 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int aud_orden {
+                get {
+                    try {
+                        return ((int)(this[this.tableview_audiometria.aud_ordenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'aud_orden\' in table \'view_audiometria\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_audiometria.aud_ordenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ispac_generoNull() {
                 return this.IsNull(this.tableview_audiometria.pac_generoColumn);
             }
@@ -971,6 +1001,18 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetfirmaNull() {
                 this[this.tableview_audiometria.firmaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isaud_ordenNull() {
+                return this.IsNull(this.tableview_audiometria.aud_ordenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setaud_ordenNull() {
+                this[this.tableview_audiometria.aud_ordenColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1146,6 +1188,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
             tableMapping.ColumnMappings.Add("aud_perfil", "aud_perfil");
             tableMapping.ColumnMappings.Add("responsable", "responsable");
             tableMapping.ColumnMappings.Add("firma", "firma");
+            tableMapping.ColumnMappings.Add("aud_orden", "aud_orden");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1164,7 +1207,7 @@ namespace kinnemed05.Reports.dataset.dsAudiometriaTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT aud_id, pac_cedula, pac_nombres, pac_apellidos, pac_edad, pac_genero, emp_" +
                 "nombre, aud_observacion, aud_fecha, aud_responsable, aud_perfil, responsable, fi" +
-                "rma FROM dbo.view_audiometria";
+                "rma, aud_orden FROM dbo.view_audiometria";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

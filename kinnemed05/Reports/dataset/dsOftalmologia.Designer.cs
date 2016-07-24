@@ -331,6 +331,8 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnpac_cedula;
             
+            private global::System.Data.DataColumn columnoft_orden;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public view_oftalmologiaDataTable() {
@@ -574,6 +576,14 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn oft_ordenColumn {
+                get {
+                    return this.columnoft_orden;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -635,7 +645,8 @@ namespace kinnemed05.Reports.dataset {
                         string responsable, 
                         byte[] firma, 
                         string emp_nombre, 
-                        string pac_cedula) {
+                        string pac_cedula, 
+                        int oft_orden) {
                 view_oftalmologiaRow rowview_oftalmologiaRow = ((view_oftalmologiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         oft_id,
@@ -663,7 +674,8 @@ namespace kinnemed05.Reports.dataset {
                         responsable,
                         firma,
                         emp_nombre,
-                        pac_cedula};
+                        pac_cedula,
+                        oft_orden};
                 rowview_oftalmologiaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_oftalmologiaRow);
                 return rowview_oftalmologiaRow;
@@ -719,6 +731,7 @@ namespace kinnemed05.Reports.dataset {
                 this.columnfirma = base.Columns["firma"];
                 this.columnemp_nombre = base.Columns["emp_nombre"];
                 this.columnpac_cedula = base.Columns["pac_cedula"];
+                this.columnoft_orden = base.Columns["oft_orden"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -776,6 +789,8 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnemp_nombre);
                 this.columnpac_cedula = new global::System.Data.DataColumn("pac_cedula", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnpac_cedula);
+                this.columnoft_orden = new global::System.Data.DataColumn("oft_orden", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnoft_orden);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnoft_id}, true));
                 this.columnoft_id.AllowDBNull = false;
@@ -1294,6 +1309,22 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int oft_orden {
+                get {
+                    try {
+                        return ((int)(this[this.tableview_oftalmologia.oft_ordenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'oft_orden\' in table \'view_oftalmologia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_oftalmologia.oft_ordenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isoft_bio_txtNull() {
                 return this.IsNull(this.tableview_oftalmologia.oft_bio_txtColumn);
             }
@@ -1398,6 +1429,18 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetfirmaNull() {
                 this[this.tableview_oftalmologia.firmaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isoft_ordenNull() {
+                return this.IsNull(this.tableview_oftalmologia.oft_ordenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setoft_ordenNull() {
+                this[this.tableview_oftalmologia.oft_ordenColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1586,6 +1629,7 @@ namespace kinnemed05.Reports.dataset.dsOftalmologiaTableAdapters {
             tableMapping.ColumnMappings.Add("firma", "firma");
             tableMapping.ColumnMappings.Add("emp_nombre", "emp_nombre");
             tableMapping.ColumnMappings.Add("pac_cedula", "pac_cedula");
+            tableMapping.ColumnMappings.Add("oft_orden", "oft_orden");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1602,7 +1646,7 @@ namespace kinnemed05.Reports.dataset.dsOftalmologiaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre, pac_cedula FROM dbo.view_oftalmologia";
+            this._commandCollection[0].CommandText = @"SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre, pac_cedula, oft_orden FROM dbo.view_oftalmologia";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

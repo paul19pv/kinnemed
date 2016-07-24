@@ -301,6 +301,22 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnexa_id;
             
+            private global::System.Data.DataColumn columnlab_cedula;
+            
+            private global::System.Data.DataColumn columnlab_nombres;
+            
+            private global::System.Data.DataColumn columnlab_apellidos;
+            
+            private global::System.Data.DataColumn columnlab_firma;
+            
+            private global::System.Data.DataColumn columnpac_cedula;
+            
+            private global::System.Data.DataColumn columnpac_nombres;
+            
+            private global::System.Data.DataColumn columnpac_apellidos;
+            
+            private global::System.Data.DataColumn columnemp_nombre;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public view_prueba_pacienteDataTable() {
@@ -424,6 +440,70 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lab_cedulaColumn {
+                get {
+                    return this.columnlab_cedula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lab_nombresColumn {
+                get {
+                    return this.columnlab_nombres;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lab_apellidosColumn {
+                get {
+                    return this.columnlab_apellidos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn lab_firmaColumn {
+                get {
+                    return this.columnlab_firma;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pac_cedulaColumn {
+                get {
+                    return this.columnpac_cedula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pac_nombresColumn {
+                get {
+                    return this.columnpac_nombres;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn pac_apellidosColumn {
+                get {
+                    return this.columnpac_apellidos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn emp_nombreColumn {
+                get {
+                    return this.columnemp_nombre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -459,7 +539,26 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public view_prueba_pacienteRow Addview_prueba_pacienteRow(int pru_id, string exa_nombre, string pru_resultado, string exa_unidad, string exa_valores, string are_nombre, int reg_paciente, string reg_fecha, string pru_valor, int reg_id, int exa_id) {
+            public view_prueba_pacienteRow Addview_prueba_pacienteRow(
+                        int pru_id, 
+                        string exa_nombre, 
+                        string pru_resultado, 
+                        string exa_unidad, 
+                        string exa_valores, 
+                        string are_nombre, 
+                        int reg_paciente, 
+                        string reg_fecha, 
+                        string pru_valor, 
+                        int reg_id, 
+                        int exa_id, 
+                        string lab_cedula, 
+                        string lab_nombres, 
+                        string lab_apellidos, 
+                        byte[] lab_firma, 
+                        string pac_cedula, 
+                        string pac_nombres, 
+                        string pac_apellidos, 
+                        string emp_nombre) {
                 view_prueba_pacienteRow rowview_prueba_pacienteRow = ((view_prueba_pacienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         pru_id,
@@ -472,7 +571,15 @@ namespace kinnemed05.Reports.dataset {
                         reg_fecha,
                         pru_valor,
                         reg_id,
-                        exa_id};
+                        exa_id,
+                        lab_cedula,
+                        lab_nombres,
+                        lab_apellidos,
+                        lab_firma,
+                        pac_cedula,
+                        pac_nombres,
+                        pac_apellidos,
+                        emp_nombre};
                 rowview_prueba_pacienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_prueba_pacienteRow);
                 return rowview_prueba_pacienteRow;
@@ -506,6 +613,14 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpru_valor = base.Columns["pru_valor"];
                 this.columnreg_id = base.Columns["reg_id"];
                 this.columnexa_id = base.Columns["exa_id"];
+                this.columnlab_cedula = base.Columns["lab_cedula"];
+                this.columnlab_nombres = base.Columns["lab_nombres"];
+                this.columnlab_apellidos = base.Columns["lab_apellidos"];
+                this.columnlab_firma = base.Columns["lab_firma"];
+                this.columnpac_cedula = base.Columns["pac_cedula"];
+                this.columnpac_nombres = base.Columns["pac_nombres"];
+                this.columnpac_apellidos = base.Columns["pac_apellidos"];
+                this.columnemp_nombre = base.Columns["emp_nombre"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -533,6 +648,22 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnreg_id);
                 this.columnexa_id = new global::System.Data.DataColumn("exa_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnexa_id);
+                this.columnlab_cedula = new global::System.Data.DataColumn("lab_cedula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlab_cedula);
+                this.columnlab_nombres = new global::System.Data.DataColumn("lab_nombres", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlab_nombres);
+                this.columnlab_apellidos = new global::System.Data.DataColumn("lab_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlab_apellidos);
+                this.columnlab_firma = new global::System.Data.DataColumn("lab_firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlab_firma);
+                this.columnpac_cedula = new global::System.Data.DataColumn("pac_cedula", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpac_cedula);
+                this.columnpac_nombres = new global::System.Data.DataColumn("pac_nombres", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpac_nombres);
+                this.columnpac_apellidos = new global::System.Data.DataColumn("pac_apellidos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpac_apellidos);
+                this.columnemp_nombre = new global::System.Data.DataColumn("emp_nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnemp_nombre);
                 this.columnpru_id.AllowDBNull = false;
                 this.columnexa_nombre.AllowDBNull = false;
                 this.columnexa_nombre.MaxLength = 50;
@@ -547,6 +678,20 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpru_valor.MaxLength = 20;
                 this.columnreg_id.AllowDBNull = false;
                 this.columnexa_id.AllowDBNull = false;
+                this.columnlab_cedula.AllowDBNull = false;
+                this.columnlab_cedula.MaxLength = 10;
+                this.columnlab_nombres.AllowDBNull = false;
+                this.columnlab_nombres.MaxLength = 150;
+                this.columnlab_apellidos.AllowDBNull = false;
+                this.columnlab_apellidos.MaxLength = 150;
+                this.columnpac_cedula.AllowDBNull = false;
+                this.columnpac_cedula.MaxLength = 10;
+                this.columnpac_nombres.AllowDBNull = false;
+                this.columnpac_nombres.MaxLength = 150;
+                this.columnpac_apellidos.AllowDBNull = false;
+                this.columnpac_apellidos.MaxLength = 150;
+                this.columnemp_nombre.AllowDBNull = false;
+                this.columnemp_nombre.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -830,6 +975,99 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string lab_cedula {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.lab_cedulaColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.lab_cedulaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string lab_nombres {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.lab_nombresColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.lab_nombresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string lab_apellidos {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.lab_apellidosColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.lab_apellidosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] lab_firma {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableview_prueba_paciente.lab_firmaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'lab_firma\' in table \'view_prueba_paciente\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_prueba_paciente.lab_firmaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pac_cedula {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.pac_cedulaColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.pac_cedulaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pac_nombres {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.pac_nombresColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.pac_nombresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string pac_apellidos {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.pac_apellidosColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.pac_apellidosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string emp_nombre {
+                get {
+                    return ((string)(this[this.tableview_prueba_paciente.emp_nombreColumn]));
+                }
+                set {
+                    this[this.tableview_prueba_paciente.emp_nombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ispru_resultadoNull() {
                 return this.IsNull(this.tableview_prueba_paciente.pru_resultadoColumn);
             }
@@ -874,6 +1112,18 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setpru_valorNull() {
                 this[this.tableview_prueba_paciente.pru_valorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Islab_firmaNull() {
+                return this.IsNull(this.tableview_prueba_paciente.lab_firmaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setlab_firmaNull() {
+                this[this.tableview_prueba_paciente.lab_firmaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1047,6 +1297,14 @@ namespace kinnemed05.Reports.dataset.dsPruebaPacienteTableAdapters {
             tableMapping.ColumnMappings.Add("pru_valor", "pru_valor");
             tableMapping.ColumnMappings.Add("reg_id", "reg_id");
             tableMapping.ColumnMappings.Add("exa_id", "exa_id");
+            tableMapping.ColumnMappings.Add("lab_cedula", "lab_cedula");
+            tableMapping.ColumnMappings.Add("lab_nombres", "lab_nombres");
+            tableMapping.ColumnMappings.Add("lab_apellidos", "lab_apellidos");
+            tableMapping.ColumnMappings.Add("lab_firma", "lab_firma");
+            tableMapping.ColumnMappings.Add("pac_cedula", "pac_cedula");
+            tableMapping.ColumnMappings.Add("pac_nombres", "pac_nombres");
+            tableMapping.ColumnMappings.Add("pac_apellidos", "pac_apellidos");
+            tableMapping.ColumnMappings.Add("emp_nombre", "emp_nombre");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1063,8 +1321,7 @@ namespace kinnemed05.Reports.dataset.dsPruebaPacienteTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, re" +
-                "g_paciente, reg_fecha, pru_valor, reg_id, exa_id FROM dbo.view_prueba_paciente";
+            this._commandCollection[0].CommandText = @"SELECT pru_id, exa_nombre, pru_resultado, exa_unidad, exa_valores, are_nombre, reg_paciente, reg_fecha, pru_valor, reg_id, exa_id, lab_cedula, lab_nombres, lab_apellidos, lab_firma, pac_cedula, pac_nombres, pac_apellidos, emp_nombre FROM dbo.view_prueba_paciente";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

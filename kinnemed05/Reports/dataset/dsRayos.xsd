@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_rayos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT ray_id, pac_nombres, pac_apellidos, pac_genero, pac_edad, ray_observacion, ray_fecha, responsable, firma, emp_nombre, pac_cedula FROM dbo.view_rayos</CommandText>
+                    <CommandText>SELECT ray_id, pac_nombres, pac_apellidos, pac_genero, pac_edad, ray_observacion, ray_fecha, responsable, firma, emp_nombre, pac_cedula, ray_orden FROM dbo.view_rayos</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -30,6 +30,7 @@
               <Mapping SourceColumn="firma" DataSetColumn="firma" />
               <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
               <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
+              <Mapping SourceColumn="ray_orden" DataSetColumn="ray_orden" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -103,6 +104,7 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="ray_orden" msprop:Generator_ColumnVarNameInTable="columnray_orden" msprop:Generator_ColumnPropNameInRow="ray_orden" msprop:Generator_ColumnPropNameInTable="ray_ordenColumn" msprop:Generator_UserColumnName="ray_orden" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

@@ -305,6 +305,8 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnfirma;
             
+            private global::System.Data.DataColumn columnesp_orden;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public view_espirometriaDataTable() {
@@ -444,6 +446,14 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn esp_ordenColumn {
+                get {
+                    return this.columnesp_orden;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -479,7 +489,7 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public view_espirometriaRow Addview_espirometriaRow(int esp_id, string pac_cedula, string pac_nombres, string pac_apellidos, string pac_genero, int pac_edad, string emp_nombre, string esp_fecha, int esp_responsable, int esp_perfil, string esp_observacion, string responsable, byte[] firma) {
+            public view_espirometriaRow Addview_espirometriaRow(int esp_id, string pac_cedula, string pac_nombres, string pac_apellidos, string pac_genero, int pac_edad, string emp_nombre, string esp_fecha, int esp_responsable, int esp_perfil, string esp_observacion, string responsable, byte[] firma, int esp_orden) {
                 view_espirometriaRow rowview_espirometriaRow = ((view_espirometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         esp_id,
@@ -494,7 +504,8 @@ namespace kinnemed05.Reports.dataset {
                         esp_perfil,
                         esp_observacion,
                         responsable,
-                        firma};
+                        firma,
+                        esp_orden};
                 rowview_espirometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_espirometriaRow);
                 return rowview_espirometriaRow;
@@ -537,6 +548,7 @@ namespace kinnemed05.Reports.dataset {
                 this.columnesp_observacion = base.Columns["esp_observacion"];
                 this.columnresponsable = base.Columns["responsable"];
                 this.columnfirma = base.Columns["firma"];
+                this.columnesp_orden = base.Columns["esp_orden"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -568,6 +580,8 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnresponsable);
                 this.columnfirma = new global::System.Data.DataColumn("firma", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfirma);
+                this.columnesp_orden = new global::System.Data.DataColumn("esp_orden", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnesp_orden);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnesp_id}, true));
                 this.columnesp_id.AllowDBNull = false;
@@ -903,6 +917,22 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int esp_orden {
+                get {
+                    try {
+                        return ((int)(this[this.tableview_espirometria.esp_ordenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'esp_orden\' in table \'view_espirometria\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_espirometria.esp_ordenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ispac_generoNull() {
                 return this.IsNull(this.tableview_espirometria.pac_generoColumn);
             }
@@ -971,6 +1001,18 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetfirmaNull() {
                 this[this.tableview_espirometria.firmaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isesp_ordenNull() {
+                return this.IsNull(this.tableview_espirometria.esp_ordenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setesp_ordenNull() {
+                this[this.tableview_espirometria.esp_ordenColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1146,6 +1188,7 @@ namespace kinnemed05.Reports.dataset.dsEspirometriaTableAdapters {
             tableMapping.ColumnMappings.Add("esp_observacion", "esp_observacion");
             tableMapping.ColumnMappings.Add("responsable", "responsable");
             tableMapping.ColumnMappings.Add("firma", "firma");
+            tableMapping.ColumnMappings.Add("esp_orden", "esp_orden");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1164,7 +1207,7 @@ namespace kinnemed05.Reports.dataset.dsEspirometriaTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT esp_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, emp_" +
                 "nombre, esp_fecha, esp_responsable, esp_perfil, esp_observacion, responsable, fi" +
-                "rma FROM dbo.view_espirometria";
+                "rma, esp_orden FROM dbo.view_espirometria";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

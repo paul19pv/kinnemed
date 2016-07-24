@@ -98,6 +98,7 @@ namespace kinnemed05.Controllers
                     DateTime dd = DateTime.Now;
                     espirometria.esp_fecha = dd.Date.ToString("d");
                     espirometria.esp_laboratorista = get_user();
+                    espirometria.esp_orden = get_orden(espirometria.esp_fecha);
                     if (ModelState.IsValid && ext == ".pdf")
                     {
                         string path = Path.Combine(Server.MapPath("~/Content/espirometria"), fileName);
@@ -418,6 +419,20 @@ namespace kinnemed05.Controllers
                 user_id = userprofile.UserLaboratorista.GetValueOrDefault();
             }
             return user_id;
+        }
+
+        private int get_orden(string fecha)
+        {
+            string orden = String.Empty;
+            int num = 0;
+            int num_exa = 0;
+            var consulta = db.espirometria.Where(r => r.esp_fecha == fecha);
+            if (consulta.Any())
+                num_exa = db.espirometria.Where(r => r.esp_fecha == fecha).OrderByDescending(r => r.esp_orden).First().esp_orden.GetValueOrDefault();
+            else
+                num_exa = 0;
+            num = num_exa + 1;
+            return num;
         }
 
         protected override void Dispose(bool disposing)
