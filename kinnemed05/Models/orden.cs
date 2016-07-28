@@ -19,7 +19,7 @@ namespace kinnemed05.Models
         public int ord_examen { get; set; }
         public string ord_fecha { get; set; }
     
-        public virtual paciente paciente { get; set; }
         public virtual examen examen { get; set; }
+        public virtual paciente paciente { get; set; }
     }
 }

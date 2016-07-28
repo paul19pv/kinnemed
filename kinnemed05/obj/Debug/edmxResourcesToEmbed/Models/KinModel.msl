@@ -424,16 +424,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="orden">
-      <EntityTypeMapping TypeName="kinnemedModel.orden">
-        <MappingFragment StoreEntitySet="orden">
-          <ScalarProperty Name="ord_fecha" ColumnName="ord_fecha" />
-          <ScalarProperty Name="ord_examen" ColumnName="ord_examen" />
-          <ScalarProperty Name="ord_paciente" ColumnName="ord_paciente" />
-          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="prueba">
       <EntityTypeMapping TypeName="kinnemedModel.prueba">
         <MappingFragment StoreEntitySet="prueba">
@@ -741,6 +731,16 @@
           <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
           <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
           <ScalarProperty Name="exa_id" ColumnName="exa_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orden">
+      <EntityTypeMapping TypeName="kinnemedModel.orden">
+        <MappingFragment StoreEntitySet="orden">
+          <ScalarProperty Name="ord_fecha" ColumnName="ord_fecha" />
+          <ScalarProperty Name="ord_examen" ColumnName="ord_examen" />
+          <ScalarProperty Name="ord_paciente" ColumnName="ord_paciente" />
+          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

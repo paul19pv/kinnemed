@@ -718,7 +718,7 @@ namespace kinnemed05.Controllers
             var consulta = db_user.UserProfiles.Where(u => u.UserName == usuario);
             if (consulta.Any()) {
                 estado = false;
-                ModelState.AddModelError("user", "El paciente ya esta registrado con otro perfil por favor verifique la información");
+                ModelState.AddModelError("user", "El paciente ya esta registrado por favor verifique la información");
             }
             return estado;
         }

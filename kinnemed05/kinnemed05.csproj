@@ -608,6 +608,12 @@
       <DependentUpon>RptHis.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\RptHisGen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptHisGen.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\RptHistoria.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1451,6 +1457,10 @@
     <EmbeddedResource Include="Reports\RptHis.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptHis.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\RptHisGen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptHisGen.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptHistoria.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

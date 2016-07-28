@@ -43,7 +43,6 @@
         <AssociationConnector Association="kinnemedModel.FK_trabajador_empresa" />
         <EntityTypeShape EntityType="kinnemedModel.laboratorista" Width="1.5" PointX="6" PointY="40.5" />
         <EntityTypeShape EntityType="kinnemedModel.codigo" Width="1.5" PointX="16.5" PointY="43.125" />
-        <EntityTypeShape EntityType="kinnemedModel.orden" Width="1.5" PointX="11.25" PointY="49.25" />
         <AssociationConnector Association="kinnemedModel.FK_codigo_area" />
         <EntityTypeShape EntityType="kinnemedModel.prueba" Width="1.5" PointX="13.5" PointY="41.125" />
         <EntityTypeShape EntityType="kinnemedModel.historia" Width="1.5" PointX="8.25" PointY="53.875" />
@@ -64,7 +63,6 @@
         <AssociationConnector Association="kinnemedModel.FK_historia_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_inmunizacion_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_ocupacional_paciente" />
-        <AssociationConnector Association="kinnemedModel.FK_orden_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_pais" />
         <AssociationConnector Association="kinnemedModel.FK_paciente_profesion" />
         <AssociationConnector Association="kinnemedModel.FK_personal_paciente" />
@@ -90,9 +88,11 @@
         <EntityTypeShape EntityType="kinnemedModel.examen" Width="1.5" PointX="11.25" PointY="31.5" />
         <AssociationConnector Association="kinnemedModel.FK_examen_area" />
         <AssociationConnector Association="kinnemedModel.FK_control_examen" />
-        <AssociationConnector Association="kinnemedModel.FK_orden_examen" />
         <AssociationConnector Association="kinnemedModel.FK_prueba_examen" />
         <AssociationConnector Association="kinnemedModel.FK_valores_examen" />
+        <EntityTypeShape EntityType="kinnemedModel.orden" Width="1.5" PointX="16.5" PointY="39.875" />
+        <AssociationConnector Association="kinnemedModel.FK_orden_examen" />
+        <AssociationConnector Association="kinnemedModel.FK_orden_paciente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

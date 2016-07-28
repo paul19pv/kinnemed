@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_historia" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula FROM dbo.view_historia</CommandText>
+                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil FROM dbo.view_historia</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -103,6 +103,12 @@
               <Mapping SourceColumn="med_codigo" DataSetColumn="med_codigo" />
               <Mapping SourceColumn="his_numero" DataSetColumn="his_numero" />
               <Mapping SourceColumn="med_cedula" DataSetColumn="med_cedula" />
+              <Mapping SourceColumn="pac_fechanacimiento" DataSetColumn="pac_fechanacimiento" />
+              <Mapping SourceColumn="pac_celular" DataSetColumn="pac_celular" />
+              <Mapping SourceColumn="pac_telefono" DataSetColumn="pac_telefono" />
+              <Mapping SourceColumn="pac_instruccion" DataSetColumn="pac_instruccion" />
+              <Mapping SourceColumn="pro_nombre" DataSetColumn="pro_nombre" />
+              <Mapping SourceColumn="pac_estadocivil" DataSetColumn="pac_estadocivil" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -600,6 +606,48 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_fechanacimiento" msprop:Generator_ColumnVarNameInTable="columnpac_fechanacimiento" msprop:Generator_ColumnPropNameInRow="pac_fechanacimiento" msprop:Generator_ColumnPropNameInTable="pac_fechanacimientoColumn" msprop:Generator_UserColumnName="pac_fechanacimiento" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_celular" msprop:Generator_ColumnVarNameInTable="columnpac_celular" msprop:Generator_ColumnPropNameInRow="pac_celular" msprop:Generator_ColumnPropNameInTable="pac_celularColumn" msprop:Generator_UserColumnName="pac_celular" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_telefono" msprop:Generator_ColumnVarNameInTable="columnpac_telefono" msprop:Generator_ColumnPropNameInRow="pac_telefono" msprop:Generator_ColumnPropNameInTable="pac_telefonoColumn" msprop:Generator_UserColumnName="pac_telefono" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_instruccion" msprop:Generator_ColumnVarNameInTable="columnpac_instruccion" msprop:Generator_ColumnPropNameInRow="pac_instruccion" msprop:Generator_ColumnPropNameInTable="pac_instruccionColumn" msprop:Generator_UserColumnName="pac_instruccion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pro_nombre" msprop:Generator_ColumnVarNameInTable="columnpro_nombre" msprop:Generator_ColumnPropNameInRow="pro_nombre" msprop:Generator_ColumnPropNameInTable="pro_nombreColumn" msprop:Generator_UserColumnName="pro_nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_estadocivil" msprop:Generator_ColumnVarNameInTable="columnpac_estadocivil" msprop:Generator_ColumnPropNameInRow="pac_estadocivil" msprop:Generator_ColumnPropNameInTable="pac_estadocivilColumn" msprop:Generator_UserColumnName="pac_estadocivil" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
