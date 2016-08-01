@@ -248,6 +248,7 @@
     <EntitySetMapping Name="personal">
       <EntityTypeMapping TypeName="kinnemedModel.personal">
         <MappingFragment StoreEntitySet="personal">
+          <ScalarProperty Name="per_lateralidad" ColumnName="per_lateralidad" />
           <ScalarProperty Name="per_otr_txt" ColumnName="per_otr_txt" />
           <ScalarProperty Name="per_otros" ColumnName="per_otros" />
           <ScalarProperty Name="per_vac_txt" ColumnName="per_vac_txt" />
@@ -363,6 +364,8 @@
     <EntitySetMapping Name="concepto">
       <EntityTypeMapping TypeName="kinnemedModel.concepto">
         <MappingFragment StoreEntitySet="concepto">
+          <ScalarProperty Name="con_periodo" ColumnName="con_periodo" />
+          <ScalarProperty Name="con_seguimiento" ColumnName="con_seguimiento" />
           <ScalarProperty Name="con_valor" ColumnName="con_valor" />
           <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
           <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
@@ -741,6 +744,43 @@
           <ScalarProperty Name="ord_examen" ColumnName="ord_examen" />
           <ScalarProperty Name="ord_paciente" ColumnName="ord_paciente" />
           <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accidente">
+      <EntityTypeMapping TypeName="kinnemedModel.accidente">
+        <MappingFragment StoreEntitySet="accidente">
+          <ScalarProperty Name="acc_paciente" ColumnName="acc_paciente" />
+          <ScalarProperty Name="acc_empresa" ColumnName="acc_empresa" />
+          <ScalarProperty Name="acc_fecha" ColumnName="acc_fecha" />
+          <ScalarProperty Name="acc_capacidad" ColumnName="acc_capacidad" />
+          <ScalarProperty Name="acc_descripción" ColumnName="acc_descripción" />
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enfermedad">
+      <EntityTypeMapping TypeName="kinnemedModel.enfermedad">
+        <MappingFragment StoreEntitySet="enfermedad">
+          <ScalarProperty Name="enf_paciente" ColumnName="enf_paciente" />
+          <ScalarProperty Name="enf_empresa" ColumnName="enf_empresa" />
+          <ScalarProperty Name="enf_fecha" ColumnName="enf_fecha" />
+          <ScalarProperty Name="enf_descripcion" ColumnName="enf_descripcion" />
+          <ScalarProperty Name="enf_id" ColumnName="enf_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="habitos">
+      <EntityTypeMapping TypeName="kinnemedModel.habitos">
+        <MappingFragment StoreEntitySet="habitos">
+          <ScalarProperty Name="hab_ejercicio" ColumnName="hab_ejercicio" />
+          <ScalarProperty Name="hab_drogas" ColumnName="hab_drogas" />
+          <ScalarProperty Name="hab_frecuencia" ColumnName="hab_frecuencia" />
+          <ScalarProperty Name="hab_alcohol" ColumnName="hab_alcohol" />
+          <ScalarProperty Name="hab_cigarillos" ColumnName="hab_cigarillos" />
+          <ScalarProperty Name="hab_fuma" ColumnName="hab_fuma" />
+          <ScalarProperty Name="hab_fumo" ColumnName="hab_fumo" />
+          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

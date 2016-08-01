@@ -326,7 +326,7 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "MIOPIA", Value = "MIOPIA" });
             list_jornada.Add(new SelectListItem { Text = "HIPERMETROPIA", Value = "HIPERMETROPIA" });
             list_jornada.Add(new SelectListItem { Text = "ASTIGMATISMO", Value = "ASTIGMATISMO" });
-            list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "OTROS" });
+            list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "" });
             SelectList jornadas;
             if (jornada == "")
                 jornadas = new SelectList(list_jornada, "Value", "Text");
@@ -341,7 +341,7 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "CONTROL ANUAL", Value = "CONTROL ANUAL" });
             list_jornada.Add(new SelectListItem { Text = "USAR LENTES", Value = "USAR LENTES" });
             list_jornada.Add(new SelectListItem { Text = "INTERCONSULTA", Value = "INTERCONSULTA" });
-            list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "OTROS" });
+            list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "" });
             SelectList jornadas;
             if (jornada == "")
                 jornadas = new SelectList(list_jornada, "Value", "Text");

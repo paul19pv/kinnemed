@@ -378,6 +378,21 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="orden" EntitySet="orden" />
     </AssociationSet>
+    <EntitySet Name="accidente" EntityType="kinnemedModel.accidente" />
+    <EntitySet Name="enfermedad" EntityType="kinnemedModel.enfermedad" />
+    <EntitySet Name="habitos" EntityType="kinnemedModel.habitos" />
+    <AssociationSet Name="FK_accidente_paciente" Association="kinnemedModel.FK_accidente_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="accidente" EntitySet="accidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_enfermedad_paciente" Association="kinnemedModel.FK_enfermedad_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="enfermedad" EntitySet="enfermedad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_habitos_paciente" Association="kinnemedModel.FK_habitos_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="habitos" EntitySet="habitos" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="area">
     <Key>
@@ -618,6 +633,7 @@
     <Property Name="per_otros" Type="Boolean" Nullable="false" />
     <Property Name="per_otr_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_personal_paciente" FromRole="personal" ToRole="paciente" />
+    <Property Name="per_lateralidad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="signos">
     <Key>
@@ -769,6 +785,8 @@
     <Property Name="con_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="con_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_concepto_historia" FromRole="concepto" ToRole="historia" />
+    <Property Name="con_seguimiento" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="con_periodo" Type="Int32" />
   </EntityType>
   <EntityType Name="ginecologico">
     <Key>
@@ -1060,6 +1078,9 @@
     <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="paciente" ToRole="oftalmologia" />
     <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
     <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_paciente" FromRole="paciente" ToRole="orden" />
+    <NavigationProperty Name="accidente" Relationship="kinnemedModel.FK_accidente_paciente" FromRole="paciente" ToRole="accidente" />
+    <NavigationProperty Name="enfermedad" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="paciente" ToRole="enfermedad" />
+    <NavigationProperty Name="habitos" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="paciente" ToRole="habitos" />
   </EntityType>
   <Association Name="FK_paciente_canton">
     <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
@@ -1682,6 +1703,85 @@
       </Principal>
       <Dependent Role="orden">
         <PropertyRef Name="ord_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="accidente">
+    <Key>
+      <PropertyRef Name="acc_id" />
+    </Key>
+    <Property Name="acc_id" Type="Int32" Nullable="false" />
+    <Property Name="acc_descripción" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acc_capacidad" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acc_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="acc_empresa" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acc_paciente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_accidente_paciente" FromRole="accidente" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="enfermedad">
+    <Key>
+      <PropertyRef Name="enf_id" />
+    </Key>
+    <Property Name="enf_id" Type="Int32" Nullable="false" />
+    <Property Name="enf_descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="enf_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="enf_empresa" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="enf_paciente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="enfermedad" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="habitos">
+    <Key>
+      <PropertyRef Name="hab_id" />
+    </Key>
+    <Property Name="hab_id" Type="Int32" Nullable="false" />
+    <Property Name="hab_fumo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_fuma" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_cigarillos" Type="Int32" />
+    <Property Name="hab_alcohol" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_frecuencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hab_drogas" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_ejercicio" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="habitos" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_accidente_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.accidente" Role="accidente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="accidente">
+        <PropertyRef Name="acc_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_enfermedad_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.enfermedad" Role="enfermedad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="enfermedad">
+        <PropertyRef Name="enf_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_habitos_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.habitos" Role="habitos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="habitos">
+        <PropertyRef Name="hab_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

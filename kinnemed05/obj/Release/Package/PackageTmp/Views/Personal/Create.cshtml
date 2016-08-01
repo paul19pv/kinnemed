@@ -135,6 +135,12 @@
                         @Html.TextBoxFor(model => model.per_ale_txt, new { @class = "form-control", Value = "NO REFIERE" })
                         @Html.ValidationMessageFor(model => model.per_ale_txt)
                     </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.per_lateralidad)
+                        @Html.DropDownList("per_lateralidad", String.Empty)
+                        @Html.ValidationMessageFor(model => model.per_lateralidad)
+                    </div>
+
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">

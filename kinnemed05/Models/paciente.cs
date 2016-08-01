@@ -25,6 +25,8 @@ namespace kinnemed05.Models
             this.oftalmologia = new HashSet<oftalmologia>();
             this.rayos = new HashSet<rayos>();
             this.orden = new HashSet<orden>();
+            this.accidente = new HashSet<accidente>();
+            this.enfermedad = new HashSet<enfermedad>();
         }
     
         public int pac_id { get; set; }
@@ -45,5 +47,8 @@ namespace kinnemed05.Models
         public virtual ICollection<oftalmologia> oftalmologia { get; set; }
         public virtual ICollection<rayos> rayos { get; set; }
         public virtual ICollection<orden> orden { get; set; }
+        public virtual ICollection<accidente> accidente { get; set; }
+        public virtual ICollection<enfermedad> enfermedad { get; set; }
+        public virtual habitos habitos { get; set; }
     }
 }

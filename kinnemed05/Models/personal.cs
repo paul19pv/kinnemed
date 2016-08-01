@@ -15,18 +15,6 @@ namespace kinnemed05.Models
     public partial class personal
     {
         public int per_id { get; set; }
-        public bool per_patologicas { get; set; }
-        public string per_pat_txt { get; set; }
-        public bool per_quirurgicas { get; set; }
-        public string per_qui_txt { get; set; }
-        public bool per_traumaticos { get; set; }
-        public string per_tra_txt { get; set; }
-        public bool per_alergias { get; set; }
-        public string per_ale_txt { get; set; }
-        public bool per_vacunas { get; set; }
-        public string per_vac_txt { get; set; }
-        public bool per_otros { get; set; }
-        public string per_otr_txt { get; set; }
     
         public virtual paciente paciente { get; set; }
     }

@@ -15,5 +15,9 @@ namespace kinnemed05.Models
         public string con_observacion { get; set; }
         [Display(Name = "Valor")]
         public string con_valor { get; set; }
+        [Display(Name = "Seguimiento")]
+        public string con_seguimiento { get; set; }
+        [Display(Name = "Periodo")]
+        public Nullable<int> con_periodo { get; set; }
     }
 }

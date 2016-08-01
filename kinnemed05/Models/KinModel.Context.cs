@@ -70,6 +70,9 @@ namespace kinnemed05.Models
         public DbSet<rayos> rayos { get; set; }
         public DbSet<examen> examen { get; set; }
         public DbSet<orden> orden { get; set; }
+        public DbSet<accidente> accidente { get; set; }
+        public DbSet<enfermedad> enfermedad { get; set; }
+        public DbSet<habitos> habitos { get; set; }
     
         public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
         {

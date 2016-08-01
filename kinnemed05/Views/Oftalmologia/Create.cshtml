@@ -225,7 +225,7 @@
                 <div class="col-lg-4" style="clear:both">
                     <div class="form-group">
                         @Html.LabelFor(model => model.oft_otros)
-                        @Html.TextBoxFor(model => model.oft_otros, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.oft_otros, new { @class = "form-control", @rows = 3 })
                         @Html.ValidationMessageFor(model => model.oft_otros)
                     </div>
                 </div>

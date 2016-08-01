@@ -194,11 +194,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Context\accidente.cs" />
     <Compile Include="Context\audiometria.cs" />
     <Compile Include="Context\concepto.cs" />
     <Compile Include="Context\control.cs" />
     <Compile Include="Context\diagnostico.cs" />
     <Compile Include="Context\empresa.cs" />
+    <Compile Include="Context\enfermedad.cs" />
     <Compile Include="Context\espirometria.cs" />
     <Compile Include="Context\examen.cs" />
     <Compile Include="Context\ginecologico.cs" />
@@ -210,6 +212,7 @@
     <Compile Include="Context\oftalmologia.cs" />
     <Compile Include="Context\paciente.cs" />
     <Compile Include="Context\perfil.cs" />
+    <Compile Include="Context\personal.cs" />
     <Compile Include="Context\plan.cs" />
     <Compile Include="Context\prueba.cs" />
     <Compile Include="Context\rayos.cs" />
@@ -246,6 +249,9 @@
     <Compile Include="Controllers\SubsecuenteController.cs" />
     <Compile Include="Controllers\TrabajadorController.cs" />
     <Compile Include="DataAnnotation\Unique.cs" />
+    <Compile Include="Models\accidente.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\area.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
@@ -275,6 +281,9 @@
     <Compile Include="Models\empresa.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\enfermedad.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\especialidad.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
@@ -301,6 +310,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ginecologico.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\habitos.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\historia.cs">
