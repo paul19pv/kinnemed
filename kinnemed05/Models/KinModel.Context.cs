@@ -73,8 +73,9 @@ namespace kinnemed05.Models
         public DbSet<accidente> accidente { get; set; }
         public DbSet<enfermedad> enfermedad { get; set; }
         public DbSet<habitos> habitos { get; set; }
+        public DbSet<actividad> actividad { get; set; }
     
-        public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual int getReporte08(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -84,14 +85,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte01_Result>("getReporte01", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte08", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Lista01> getLista01(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual int getReporte09(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -101,14 +98,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista01>("getLista01", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte09", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<getReporte02_Result> getReporte02(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual int getReporte10(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -118,14 +111,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte02_Result>("getReporte02", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte10", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<getReporte03_Result> getReporte03(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual int getReporte11(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -135,14 +124,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte03_Result>("getReporte03", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte11", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> getReporte04(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual int getReporte12(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -152,14 +137,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte04", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte12", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> getReporte05(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista01> getLista01(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -169,14 +150,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte05", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista01>("getLista01", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> getReporte06(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista02> getLista02(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -186,14 +163,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte06", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista02>("getLista02", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Nullable<int>> getReporte07(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista03> getLista03(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -203,14 +176,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getReporte07", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista03>("getLista03", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Lista02> getLista02(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista04> getLista04(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -220,14 +189,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista02>("getLista02", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista04>("getLista04", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Lista03> getLista03(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista05> getLista05(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -237,14 +202,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista03>("getLista03", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista05>("getLista05", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Lista04> getLista04(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista06> getLista06(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -254,14 +215,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista04>("getLista04", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista06>("getLista06", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Lista05> getLista05(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        public virtual ObjectResult<Lista07> getReporte07(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -271,45 +228,7 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista05>("getLista05", fecha_iniParameter, fecha_finParameter, empresaParameter);
-        }
-    
-        public virtual ObjectResult<Lista06> getLista06(string fecha_ini, string fecha_fin, Nullable<int> empresa)
-        {
-            var fecha_iniParameter = fecha_ini != null ?
-                new ObjectParameter("fecha_ini", fecha_ini) :
-                new ObjectParameter("fecha_ini", typeof(string));
-    
-            var fecha_finParameter = fecha_fin != null ?
-                new ObjectParameter("fecha_fin", fecha_fin) :
-                new ObjectParameter("fecha_fin", typeof(string));
-    
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista06>("getLista06", fecha_iniParameter, fecha_finParameter, empresaParameter);
-        }
-    
-        public virtual ObjectResult<Lista07> getLista07(string fecha_ini, string fecha_fin, Nullable<int> empresa)
-        {
-            var fecha_iniParameter = fecha_ini != null ?
-                new ObjectParameter("fecha_ini", fecha_ini) :
-                new ObjectParameter("fecha_ini", typeof(string));
-    
-            var fecha_finParameter = fecha_fin != null ?
-                new ObjectParameter("fecha_fin", fecha_fin) :
-                new ObjectParameter("fecha_fin", typeof(string));
-    
-            var empresaParameter = empresa.HasValue ?
-                new ObjectParameter("empresa", empresa) :
-                new ObjectParameter("empresa", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista07>("getLista07", fecha_iniParameter, fecha_finParameter, empresaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista07>("getReporte07", fecha_iniParameter, fecha_finParameter);
         }
     }
 }

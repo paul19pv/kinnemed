@@ -315,8 +315,9 @@ namespace kinnemed05.Controllers
                 fileName = "Reporte" + aud_id + ".pdf";
                 string fileTarget = Path.Combine(Server.MapPath("~/Content/audiometria/") + fileName);
                 string[] Lista = { archivo1, archivo2 };
-
+                
                 Merge(fileTarget, Lista);
+                ms.Close();
                 return File(fileTarget, contentType, fileName);
                 
             }

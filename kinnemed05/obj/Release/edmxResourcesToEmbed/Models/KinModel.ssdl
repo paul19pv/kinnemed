@@ -11,6 +11,21 @@
     <Property Name="acc_empresa" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="acc_paciente" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="actividad">
+    <Key>
+      <PropertyRef Name="act_id" />
+    </Key>
+    <Property Name="act_id" Type="int" Nullable="false" />
+    <Property Name="act_enf_estado" Type="varchar" MaxLength="2" />
+    <Property Name="act_enf_descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="act_enf_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="act_enf_empresa" Type="varchar" MaxLength="200" />
+    <Property Name="act_acc_estado" Type="varchar" MaxLength="2" />
+    <Property Name="act_acc_descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="act_acc_capacidad" Type="varchar" MaxLength="200" />
+    <Property Name="act_acc_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="act_acc_empresa" Type="varchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="area">
     <Key>
       <PropertyRef Name="are_id" />
@@ -625,6 +640,20 @@
       </Principal>
       <Dependent Role="accidente">
         <PropertyRef Name="acc_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_actividad_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="actividad" Type="Self.actividad" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="actividad">
+        <PropertyRef Name="act_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1301,40 +1330,54 @@
   <Function Name="getReporte01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
   </Function>
   <Function Name="getReporte02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
   </Function>
   <Function Name="getReporte03" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
   </Function>
   <Function Name="getReporte04" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
   </Function>
   <Function Name="getReporte05" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
   </Function>
   <Function Name="getReporte06" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
   </Function>
   <Function Name="getReporte07" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte08" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getReporte09" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getReporte10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getReporte11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="getReporte12" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="kinnemedModelStoreContainer">
     <EntitySet Name="accidente" EntityType="Self.accidente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="actividad" EntityType="Self.actividad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
@@ -1382,6 +1425,10 @@
     <AssociationSet Name="FK_accidente_paciente" Association="Self.FK_accidente_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="accidente" EntitySet="accidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_actividad_paciente" Association="Self.FK_actividad_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="actividad" EntitySet="actividad" />
     </AssociationSet>
     <AssociationSet Name="FK_audiometria_laboratorista" Association="Self.FK_audiometria_laboratorista">
       <End Role="laboratorista" EntitySet="laboratorista" />

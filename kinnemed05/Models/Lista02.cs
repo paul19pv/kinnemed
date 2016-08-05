@@ -13,26 +13,40 @@ namespace kinnemed05.Models
     
     public partial class Lista02
     {
-        public Nullable<int> pac_id { get; set; }
-        public string his_fecha { get; set; }
-        public string pac_nombres { get; set; }
-        public string pac_apellidos { get; set; }
-        public Nullable<int> pac_edad { get; set; }
-        public string pac_genero { get; set; }
-        public string med_nombres { get; set; }
-        public string med_apellidos { get; set; }
+        public Nullable<long> Numero { get; set; }
+        public string emp_nombre { get; set; }
+        public string Fecha { get; set; }
+        public string Paciente { get; set; }
+        public Nullable<int> Edad { get; set; }
+        public string Genero { get; set; }
+        public string Instruccion { get; set; }
+        public string EstadoCivil { get; set; }
+        public string Medico { get; set; }
         public string Puesto { get; set; }
+        public string Area { get; set; }
+        public string Enfermedad { get; set; }
+        public string Accidente { get; set; }
+        public string Fuma { get; set; }
+        public string Alcohol { get; set; }
+        public string Ejercicio { get; set; }
+        public string PapTest { get; set; }
+        public Nullable<int> Inmunizacion { get; set; }
+        public Nullable<decimal> Peso { get; set; }
+        public Nullable<decimal> Talla { get; set; }
+        public Nullable<decimal> IMC { get; set; }
         public string Tipo { get; set; }
-        public Nullable<bool> Laboratorio { get; set; }
-        public Nullable<bool> Audiometria { get; set; }
-        public Nullable<bool> Oftalmologia { get; set; }
-        public Nullable<bool> Espirometria { get; set; }
-        public Nullable<bool> Rayos { get; set; }
-        public Nullable<bool> Chequeo { get; set; }
+        public Nullable<int> Laboratorio { get; set; }
+        public Nullable<int> Audiometria { get; set; }
+        public Nullable<int> Oftalmologia { get; set; }
+        public Nullable<int> Espirometria { get; set; }
+        public Nullable<int> Rayos { get; set; }
+        public Nullable<int> Chequeo { get; set; }
         public string Certificado { get; set; }
         public string Diagnostico1 { get; set; }
         public string Diagnostico2 { get; set; }
         public string Diagnostico3 { get; set; }
         public string Diagnostico4 { get; set; }
+        public string Seguimiento { get; set; }
+        public Nullable<int> Periodicidad { get; set; }
     }
 }

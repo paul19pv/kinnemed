@@ -13,7 +13,8 @@ namespace kinnemed05.Models
     
     public partial class Lista03
     {
-        public string exa_nombre { get; set; }
+        public string Empresa { get; set; }
+        public string Examen { get; set; }
         public Nullable<int> Total { get; set; }
     }
 }

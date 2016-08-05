@@ -16,6 +16,21 @@
           <Property Name="acc_empresa" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="acc_paciente" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="actividad">
+          <Key>
+            <PropertyRef Name="act_id" />
+          </Key>
+          <Property Name="act_id" Type="int" Nullable="false" />
+          <Property Name="act_enf_estado" Type="varchar" MaxLength="2" />
+          <Property Name="act_enf_descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="act_enf_fecha" Type="varchar" MaxLength="10" />
+          <Property Name="act_enf_empresa" Type="varchar" MaxLength="200" />
+          <Property Name="act_acc_estado" Type="varchar" MaxLength="2" />
+          <Property Name="act_acc_descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="act_acc_capacidad" Type="varchar" MaxLength="200" />
+          <Property Name="act_acc_fecha" Type="varchar" MaxLength="10" />
+          <Property Name="act_acc_empresa" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="area">
           <Key>
             <PropertyRef Name="are_id" />
@@ -630,6 +645,20 @@
             </Principal>
             <Dependent Role="accidente">
               <PropertyRef Name="acc_paciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_actividad_paciente">
+          <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="actividad" Type="Self.actividad" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="actividad">
+              <PropertyRef Name="act_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1306,40 +1335,54 @@
         <Function Name="getReporte01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
         </Function>
         <Function Name="getReporte02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
         </Function>
         <Function Name="getReporte03" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
         </Function>
         <Function Name="getReporte04" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
         </Function>
         <Function Name="getReporte05" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
         </Function>
         <Function Name="getReporte06" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
         </Function>
         <Function Name="getReporte07" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
-          <Parameter Name="empresa" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getReporte08" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="getReporte09" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="getReporte10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="getReporte11" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="getReporte12" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="kinnemedModelStoreContainer">
           <EntitySet Name="accidente" EntityType="Self.accidente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="actividad" EntityType="Self.actividad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
@@ -1387,6 +1430,10 @@
           <AssociationSet Name="FK_accidente_paciente" Association="Self.FK_accidente_paciente">
             <End Role="paciente" EntitySet="paciente" />
             <End Role="accidente" EntitySet="accidente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_actividad_paciente" Association="Self.FK_actividad_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="actividad" EntitySet="actividad" />
           </AssociationSet>
           <AssociationSet Name="FK_audiometria_laboratorista" Association="Self.FK_audiometria_laboratorista">
             <End Role="laboratorista" EntitySet="laboratorista" />
@@ -1809,76 +1856,6 @@
             <End Role="paciente" EntitySet="paciente" />
             <End Role="personal" EntitySet="personal" />
           </AssociationSet>
-          <FunctionImport Name="getReporte01" ReturnType="Collection(kinnemedModel.getReporte01_Result)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista01" ReturnType="Collection(kinnemedModel.Lista01)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getReporte02" ReturnType="Collection(kinnemedModel.getReporte02_Result)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getReporte03" ReturnType="Collection(kinnemedModel.getReporte03_Result)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getReporte04" ReturnType="Collection(Int32)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getReporte05" ReturnType="Collection(Int32)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getReporte06" ReturnType="Collection(Int32)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getReporte07" ReturnType="Collection(Int32)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista02" ReturnType="Collection(kinnemedModel.Lista02)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista03" ReturnType="Collection(kinnemedModel.Lista03)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista04" ReturnType="Collection(kinnemedModel.Lista04)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista05" ReturnType="Collection(kinnemedModel.Lista05)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista06" ReturnType="Collection(kinnemedModel.Lista06)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLista07" ReturnType="Collection(kinnemedModel.Lista07)">
-            <Parameter Name="fecha_ini" Mode="In" Type="String" />
-            <Parameter Name="fecha_fin" Mode="In" Type="String" />
-            <Parameter Name="empresa" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="medico" EntityType="kinnemedModel.medico" />
           <EntitySet Name="registro" EntityType="kinnemedModel.registro" />
           <AssociationSet Name="FK_codigo_registro" Association="kinnemedModel.FK_codigo_registro">
@@ -1978,6 +1955,59 @@
             <End Role="paciente" EntitySet="paciente" />
             <End Role="habitos" EntitySet="habitos" />
           </AssociationSet>
+          <EntitySet Name="actividad" EntityType="kinnemedModel.actividad" />
+          <AssociationSet Name="FK_actividad_paciente" Association="kinnemedModel.FK_actividad_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="actividad" EntitySet="actividad" />
+          </AssociationSet>
+          <FunctionImport Name="getReporte08">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getReporte09">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getReporte10">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getReporte11">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getReporte12">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLista01" ReturnType="Collection(kinnemedModel.Lista01)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLista02" ReturnType="Collection(kinnemedModel.Lista02)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLista03" ReturnType="Collection(kinnemedModel.Lista03)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLista04" ReturnType="Collection(kinnemedModel.Lista04)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLista05" ReturnType="Collection(kinnemedModel.Lista05)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getLista06" ReturnType="Collection(kinnemedModel.Lista06)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getReporte07" ReturnType="Collection(kinnemedModel.Lista07)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="area">
           <Key>
@@ -2666,6 +2696,7 @@
           <NavigationProperty Name="accidente" Relationship="kinnemedModel.FK_accidente_paciente" FromRole="paciente" ToRole="accidente" />
           <NavigationProperty Name="enfermedad" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="paciente" ToRole="enfermedad" />
           <NavigationProperty Name="habitos" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="paciente" ToRole="habitos" />
+          <NavigationProperty Name="actividad" Relationship="kinnemedModel.FK_actividad_paciente" FromRole="paciente" ToRole="actividad" />
         </EntityType>
         <Association Name="FK_paciente_canton">
           <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
@@ -2805,86 +2836,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="getReporte01_Result">
-          <Property Type="Int32" Name="pac_id" Nullable="false" />
-          <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
-          <Property Type="Boolean" Name="historia" Nullable="true" />
-          <Property Type="Boolean" Name="examen" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Lista01">
-          <Property Type="Int32" Name="pac_id" Nullable="false" />
-          <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
-          <Property Type="Boolean" Name="historia" Nullable="true" />
-          <Property Type="Boolean" Name="examen" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="getReporte02_Result">
-          <Property Type="Int32" Name="pac_id" Nullable="true" />
-          <Property Type="String" Name="his_fecha" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="pac_nombres" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="pac_apellidos" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="pac_edad" Nullable="true" />
-          <Property Type="String" Name="pac_genero" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="med_nombres" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="med_apellidos" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
-          <Property Type="Boolean" Name="Laboratorio" Nullable="true" />
-          <Property Type="Boolean" Name="Audiometria" Nullable="true" />
-          <Property Type="Boolean" Name="Oftalmologia" Nullable="true" />
-          <Property Type="Boolean" Name="Espirometria" Nullable="true" />
-          <Property Type="Boolean" Name="Rayos" Nullable="true" />
-          <Property Type="Boolean" Name="Chequeo" Nullable="true" />
-          <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
-        </ComplexType>
-        <ComplexType Name="getReporte03_Result">
-          <Property Type="String" Name="exa_nombre" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Lista02">
-          <Property Type="Int32" Name="pac_id" Nullable="true" />
-          <Property Type="String" Name="his_fecha" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="pac_nombres" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="pac_apellidos" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="pac_edad" Nullable="true" />
-          <Property Type="String" Name="pac_genero" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="med_nombres" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="med_apellidos" Nullable="false" MaxLength="150" />
-          <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
-          <Property Type="Boolean" Name="Laboratorio" Nullable="true" />
-          <Property Type="Boolean" Name="Audiometria" Nullable="true" />
-          <Property Type="Boolean" Name="Oftalmologia" Nullable="true" />
-          <Property Type="Boolean" Name="Espirometria" Nullable="true" />
-          <Property Type="Boolean" Name="Rayos" Nullable="true" />
-          <Property Type="Boolean" Name="Chequeo" Nullable="true" />
-          <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
-          <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
-        </ComplexType>
-        <ComplexType Name="Lista03">
-          <Property Type="String" Name="exa_nombre" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Lista04">
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Lista05">
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Lista06">
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Lista07">
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
         <EntityType Name="medico">
           <Key>
             <PropertyRef Name="med_id" />
@@ -3370,6 +3321,106 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="actividad">
+          <Key>
+            <PropertyRef Name="act_id" />
+          </Key>
+          <Property Name="act_id" Type="Int32" Nullable="false" />
+          <Property Name="act_enf_estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="act_enf_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="act_enf_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="act_enf_empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="act_acc_estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="act_acc_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="act_acc_capacidad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="act_acc_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="act_acc_empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_actividad_paciente" FromRole="actividad" ToRole="paciente" />
+        </EntityType>
+        <Association Name="FK_actividad_paciente">
+          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.actividad" Role="actividad" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="actividad">
+              <PropertyRef Name="act_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="Lista01">
+          <Property Type="Int64" Name="id" Nullable="true" />
+          <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="historia" Nullable="true" />
+          <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+          <Property Type="Int32" Name="Audiometria" Nullable="true" />
+          <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+          <Property Type="Int32" Name="Espirometria" Nullable="true" />
+          <Property Type="Int32" Name="Rayos" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Lista02">
+          <Property Type="Int64" Name="Numero" Nullable="true" />
+          <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Paciente" Nullable="true" MaxLength="301" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Instruccion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Medico" Nullable="false" MaxLength="301" />
+          <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Enfermedad" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Accidente" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Fuma" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Alcohol" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Ejercicio" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="PapTest" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Inmunizacion" Nullable="true" />
+          <Property Type="Decimal" Name="Peso" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Talla" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="IMC" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
+          <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+          <Property Type="Int32" Name="Audiometria" Nullable="true" />
+          <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+          <Property Type="Int32" Name="Espirometria" Nullable="true" />
+          <Property Type="Int32" Name="Rayos" Nullable="true" />
+          <Property Type="Int32" Name="Chequeo" Nullable="true" />
+          <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Seguimiento" Nullable="true" MaxLength="2" />
+          <Property Type="Int32" Name="Periodicidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Lista03">
+          <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Examen" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Lista04">
+          <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Audiometrias" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Lista05">
+          <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Espirometrias" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Lista06">
+          <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Oftalmologias" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Lista07">
+          <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Rayos" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3870,130 +3921,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getReporte01" FunctionName="kinnemedModel.Store.getReporte01">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.getReporte01_Result">
-                <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-                <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-                <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-                <ScalarProperty Name="historia" ColumnName="historia" />
-                <ScalarProperty Name="examen" ColumnName="examen" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getLista01" FunctionName="kinnemedModel.Store.getReporte01">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista01">
-                <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-                <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-                <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-                <ScalarProperty Name="historia" ColumnName="historia" />
-                <ScalarProperty Name="examen" ColumnName="examen" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getReporte02" FunctionName="kinnemedModel.Store.getReporte02">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.getReporte02_Result">
-                <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-                <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
-                <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-                <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-                <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
-                <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
-                <ScalarProperty Name="med_nombres" ColumnName="med_nombres" />
-                <ScalarProperty Name="med_apellidos" ColumnName="med_apellidos" />
-                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
-                <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
-                <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
-                <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
-                <ScalarProperty Name="Rayos" ColumnName="Rayos" />
-                <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
-                <ScalarProperty Name="Certificado" ColumnName="Certificado" />
-                <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
-                <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
-                <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
-                <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getReporte03" FunctionName="kinnemedModel.Store.getReporte03">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.getReporte03_Result">
-                <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getReporte04" FunctionName="kinnemedModel.Store.getReporte04" />
-          <FunctionImportMapping FunctionImportName="getReporte05" FunctionName="kinnemedModel.Store.getReporte05" />
-          <FunctionImportMapping FunctionImportName="getReporte06" FunctionName="kinnemedModel.Store.getReporte06" />
-          <FunctionImportMapping FunctionImportName="getReporte07" FunctionName="kinnemedModel.Store.getReporte07" />
-          <FunctionImportMapping FunctionImportName="getLista02" FunctionName="kinnemedModel.Store.getReporte02">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista02">
-                <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-                <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
-                <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-                <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-                <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
-                <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
-                <ScalarProperty Name="med_nombres" ColumnName="med_nombres" />
-                <ScalarProperty Name="med_apellidos" ColumnName="med_apellidos" />
-                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
-                <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
-                <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
-                <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
-                <ScalarProperty Name="Rayos" ColumnName="Rayos" />
-                <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
-                <ScalarProperty Name="Certificado" ColumnName="Certificado" />
-                <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
-                <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
-                <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
-                <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getLista03" FunctionName="kinnemedModel.Store.getReporte03">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista03">
-                <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getLista04" FunctionName="kinnemedModel.Store.getReporte04">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista04">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getLista05" FunctionName="kinnemedModel.Store.getReporte05">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista05">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getLista06" FunctionName="kinnemedModel.Store.getReporte06">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista06">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getLista07" FunctionName="kinnemedModel.Store.getReporte07">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="kinnemedModel.Lista07">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="medico">
             <EntityTypeMapping TypeName="kinnemedModel.medico">
               <MappingFragment StoreEntitySet="medico">
@@ -4159,6 +4086,130 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="actividad">
+            <EntityTypeMapping TypeName="kinnemedModel.actividad">
+              <MappingFragment StoreEntitySet="actividad">
+                <ScalarProperty Name="act_acc_empresa" ColumnName="act_acc_empresa" />
+                <ScalarProperty Name="act_acc_fecha" ColumnName="act_acc_fecha" />
+                <ScalarProperty Name="act_acc_capacidad" ColumnName="act_acc_capacidad" />
+                <ScalarProperty Name="act_acc_descripcion" ColumnName="act_acc_descripcion" />
+                <ScalarProperty Name="act_acc_estado" ColumnName="act_acc_estado" />
+                <ScalarProperty Name="act_enf_empresa" ColumnName="act_enf_empresa" />
+                <ScalarProperty Name="act_enf_fecha" ColumnName="act_enf_fecha" />
+                <ScalarProperty Name="act_enf_descripcion" ColumnName="act_enf_descripcion" />
+                <ScalarProperty Name="act_enf_estado" ColumnName="act_enf_estado" />
+                <ScalarProperty Name="act_id" ColumnName="act_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getReporte08" FunctionName="kinnemedModel.Store.getReporte08">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getReporte09" FunctionName="kinnemedModel.Store.getReporte09">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getReporte10" FunctionName="kinnemedModel.Store.getReporte10">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getReporte11" FunctionName="kinnemedModel.Store.getReporte11">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getReporte12" FunctionName="kinnemedModel.Store.getReporte12">
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLista01" FunctionName="kinnemedModel.Store.getReporte01">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista01">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+                <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="historia" ColumnName="historia" />
+                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+                <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+                <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+                <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+                <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLista02" FunctionName="kinnemedModel.Store.getReporte02">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista02">
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Instruccion" ColumnName="Instruccion" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+                <ScalarProperty Name="Accidente" ColumnName="Accidente" />
+                <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+                <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+                <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+                <ScalarProperty Name="PapTest" ColumnName="PapTest" />
+                <ScalarProperty Name="Inmunizacion" ColumnName="Inmunizacion" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="IMC" ColumnName="IMC" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+                <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+                <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+                <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+                <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+                <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
+                <ScalarProperty Name="Certificado" ColumnName="Certificado" />
+                <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
+                <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
+                <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
+                <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
+                <ScalarProperty Name="Seguimiento" ColumnName="Seguimiento" />
+                <ScalarProperty Name="Periodicidad" ColumnName="Periodicidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLista03" FunctionName="kinnemedModel.Store.getReporte03">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista03">
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Examen" ColumnName="Examen" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLista04" FunctionName="kinnemedModel.Store.getReporte04">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista04">
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Audiometrias" ColumnName="Audiometrias" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLista05" FunctionName="kinnemedModel.Store.getReporte05">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista05">
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Espirometrias" ColumnName="Espirometrias" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLista06" FunctionName="kinnemedModel.Store.getReporte06">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista06">
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Oftalmologias" ColumnName="Oftalmologias" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getReporte07" FunctionName="kinnemedModel.Store.getReporte07">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.Lista07">
+                <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+                <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

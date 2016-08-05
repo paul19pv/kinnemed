@@ -65,6 +65,7 @@ namespace kinnemed05.Controllers
             }
                 
             ViewBag.con_id = id;
+            ViewBag.con_seguimiento = opcion();
             return PartialView();
         }
 
@@ -94,7 +95,8 @@ namespace kinnemed05.Controllers
                 ViewBag.con_resultado = res_retiro(concepto.con_resultado);
                 ViewBag.con_valor = val_retiro(concepto.con_valor);
             }
-            ViewBag.con_id = new SelectList(db.historia, "his_id", "his_motivo", concepto.con_id);
+            ViewBag.con_id = concepto.con_id;
+            ViewBag.con_seguimiento = opcion(concepto.con_seguimiento);
             return PartialView(concepto);
         }
 
@@ -121,6 +123,7 @@ namespace kinnemed05.Controllers
                 ViewBag.con_valor = val_retiro(concepto.con_valor);
             }
             ViewBag.con_id = id;
+            ViewBag.con_seguimiento = opcion(concepto.con_seguimiento);
             return PartialView(concepto);
         }
 
@@ -151,6 +154,7 @@ namespace kinnemed05.Controllers
                 ViewBag.con_valor = val_retiro(concepto.con_valor);
             }
             ViewBag.con_id = concepto.con_id;
+            ViewBag.con_seguimiento = opcion(concepto.con_seguimiento);
             return PartialView(concepto);
         }
 
@@ -235,6 +239,18 @@ namespace kinnemed05.Controllers
             //else
             resultados = new SelectList(list_resultado, "Value", "Text", resultado);
             return resultados;
+        }
+        private SelectList opcion(string valor = "")
+        {
+            List<SelectListItem> list_opcion = new List<SelectListItem>();
+            list_opcion.Add(new SelectListItem { Text = "SI", Value = "SI" });
+            list_opcion.Add(new SelectListItem { Text = "NO", Value = "NO" });
+            SelectList opciones;
+            if (valor == "")
+                opciones = new SelectList(list_opcion, "Value", "Text");
+            else
+                opciones = new SelectList(list_opcion, "Value", "Text", valor);
+            return opciones;
         }
 
         protected override void Dispose(bool disposing)

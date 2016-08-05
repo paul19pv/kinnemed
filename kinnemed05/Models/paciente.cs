@@ -50,5 +50,6 @@ namespace kinnemed05.Models
         public virtual ICollection<accidente> accidente { get; set; }
         public virtual ICollection<enfermedad> enfermedad { get; set; }
         public virtual habitos habitos { get; set; }
+        public virtual actividad actividad { get; set; }
     }
 }

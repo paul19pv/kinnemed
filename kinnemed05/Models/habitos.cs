@@ -15,13 +15,6 @@ namespace kinnemed05.Models
     public partial class habitos
     {
         public int hab_id { get; set; }
-        public string hab_fumo { get; set; }
-        public string hab_fuma { get; set; }
-        public Nullable<int> hab_cigarillos { get; set; }
-        public string hab_alcohol { get; set; }
-        public string hab_frecuencia { get; set; }
-        public string hab_drogas { get; set; }
-        public string hab_ejercicio { get; set; }
     
         public virtual paciente paciente { get; set; }
     }

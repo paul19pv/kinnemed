@@ -96,7 +96,7 @@
         else {
             $("#div_otros").hide();
         }
-
+        $('.form-group select').addClass('form-control');
     })
 </script>
 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))

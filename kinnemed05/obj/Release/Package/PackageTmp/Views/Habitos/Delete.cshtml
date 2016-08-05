@@ -1,0 +1,75 @@
+﻿@model kinnemed05.Models.habitos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>habitos</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_fumo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_fumo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_fuma)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_fuma)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_cigarillos)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_cigarillos)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_alcohol)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_alcohol)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_frecuencia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_frecuencia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_drogas)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_drogas)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hab_ejercicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hab_ejercicio)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

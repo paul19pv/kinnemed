@@ -6,6 +6,22 @@
 <script>
     $(function () {
         $('.form-group select').addClass('form-control');
+
+        $("#con_resultado").change(function () {
+            if ($(this).val() != "APTO") {
+                $("#con_resultado").show();
+            } else {
+                $("#con_resultado").hide();
+            }
+        });
+
+        $("#con_seguimiento").change(function () {
+            if ($(this).val() == "SI") {
+                $("#div_seguimiento").show();
+            } else {
+                $("#div_seguimiento").hide();
+            }
+        });
     });
 </script>
 @using (Ajax.BeginForm("Create", new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))
@@ -30,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="form-group">
+                    <div id="con_resultado" class="form-group">
                         @Html.LabelFor(model => model.con_valor, new { @class = "control-label" })
                         @Html.DropDownList("con_valor", String.Empty)
                         @Html.ValidationMessageFor(model => model.con_valor)
@@ -43,7 +59,18 @@
                         @Html.ValidationMessageFor(model => model.con_observacion)
                     </div>
                 </div>
-
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.con_seguimiento)
+                        @Html.DropDownList("con_seguimiento", String.Empty)
+                        @Html.ValidationMessageFor(model => model.con_seguimiento)
+                    </div>
+                    <div id="div_seguimiento" class="form-group" style="display:none;">
+                        @Html.LabelFor(model => model.con_periodo)
+                        @Html.TextBoxFor(model => model.con_periodo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.con_periodo)
+                    </div>
+                </div>
 
 
             </div>

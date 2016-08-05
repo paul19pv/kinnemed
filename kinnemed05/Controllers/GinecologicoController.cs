@@ -65,7 +65,7 @@ namespace kinnemed05.Controllers
             {
                 db.ginecologico.Add(ginecologico);
                 db.SaveChanges();
-                return RedirectToAction("Create", "Familiar", new { id=ginecologico.gin_id});
+                return RedirectToAction("Create", "Habitos", new { id=ginecologico.gin_id});
             }
 
             ViewBag.gin_id = ginecologico.gin_id;
@@ -107,7 +107,7 @@ namespace kinnemed05.Controllers
             {
                 db.Entry(ginecologico).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Familiar", new { id = ginecologico.gin_id });
+                return RedirectToAction("Edit", "Habitos", new { id = ginecologico.gin_id });
             }
             ViewBag.gin_id = ginecologico.gin_id;
             ViewBag.gin_ciclos = gin_ciclo();

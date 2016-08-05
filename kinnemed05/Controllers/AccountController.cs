@@ -23,7 +23,7 @@ namespace kinnemed05.Controllers
         // GET: /Account/Login
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
             UserManager usermanager = new UserManager();
             if (!usermanager.there_users()) {
@@ -36,7 +36,9 @@ namespace kinnemed05.Controllers
             //if (Request.IsAuthenticated) {
             //    return RedirectToAction("Index", "Home");
             //}
-            ViewBag.ReturnUrl = returnUrl;
+            //if (returnUrl == "Account/LogOff")
+            //    returnUrl = "";
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
             
         }

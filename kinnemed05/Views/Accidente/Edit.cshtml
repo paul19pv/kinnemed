@@ -1,0 +1,76 @@
+﻿@model kinnemed05.Models.accidente
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>accidente</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.acc_descripción)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.acc_descripción)
+            @Html.ValidationMessageFor(model => model.acc_descripción)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.acc_capacidad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.acc_capacidad)
+            @Html.ValidationMessageFor(model => model.acc_capacidad)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.acc_fecha)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.acc_fecha)
+            @Html.ValidationMessageFor(model => model.acc_fecha)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.acc_empresa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.acc_empresa)
+            @Html.ValidationMessageFor(model => model.acc_empresa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.acc_paciente, "paciente")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("acc_paciente", String.Empty)
+            @Html.ValidationMessageFor(model => model.acc_paciente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.acc_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.acc_id)
+            @Html.ValidationMessageFor(model => model.acc_id)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

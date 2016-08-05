@@ -99,6 +99,8 @@
         <AssociationConnector Association="kinnemedModel.FK_accidente_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_enfermedad_paciente" />
         <AssociationConnector Association="kinnemedModel.FK_habitos_paciente" />
+        <EntityTypeShape EntityType="kinnemedModel.actividad" Width="1.5" PointX="8.25" PointY="70.125" />
+        <AssociationConnector Association="kinnemedModel.FK_actividad_paciente" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

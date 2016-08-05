@@ -281,6 +281,7 @@ namespace kinnemed05.Controllers
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
                     historia.his_firma = ConvertBytes(path01);
+                    return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
                 }
                 else
                 {
@@ -289,7 +290,7 @@ namespace kinnemed05.Controllers
                             ModelState.AddModelError("ext", "Extensión no Válida");
                     //else if (String.IsNullOrEmpty(fileName))
                     //    ModelState.AddModelError("ext", "Debe Seleccionar un archivo");
-                    return View(historia);
+                    return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
                 }
             }
             if (ModelState.IsValid)
@@ -298,7 +299,7 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
             }
-            return View(historia);
+            return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
         }
         //
         // GET: /Historia/Delete/5
