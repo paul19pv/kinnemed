@@ -10,7 +10,7 @@
             type: 'GET',
             data: { id: $('#reg_id').val() },
             success: function (data) {
-                $('#div_form').html(data);
+                $('#div_create').html(data);
             },
             error: function (xhr, status, error) {
                 alert(error);
@@ -31,12 +31,12 @@
         });
     });
 
-    $(document).ajaxStart(function () {
-        $('#div_loading').show();
-    });
-    $(document).ajaxStop(function () {
-        $('#div_loading').hide();
-    });
+    //$(document).ajaxStart(function () {
+    //    $('#div_loading').show();
+    //});
+    //$(document).ajaxStop(function () {
+    //    $('#div_loading').hide();
+    //});
 
 </script>
 <div class="col-lg-12">
@@ -57,23 +57,7 @@
                         @Html.TextBoxFor(model => model.reg_paciente, new { @class = "form-control", @type = "hidden" })
                     </div>
                 </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-
-                        @Html.TextBoxFor(model => model.reg_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.reg_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @if (Model.reg_medico != null)
-                        {
-                            @Html.TextBox("txt_medico", Model.medico.med_nombres + " " + Model.medico.med_apellidos, new { @class = "form-control", @readonly = "readonly" })
-                        }
-                        else
-                        {
-                            @Html.TextBox("txt_medico", "", new { @class = "form-control", @readonly = "readonly" })
-                        }
-
-                        @Html.ValidationMessageFor(model => model.reg_medico)
-                    </div>
-                </div>
+                
                 <div class="col-lg-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.reg_fecha, new { @class = "control-label", @for = "inputDefault" })
@@ -91,20 +75,22 @@
                     </div>
                 </div>
 
-                <div id="div_loading" class="progress progress-striped active" style="display:none; clear:both">
-                    <div class="progress-bar" style="width: 0%"></div>
-                </div>
+                
             }
         </div>
     </div>
 </div>
 
-<div id="div_form" style="clear: both">
+<div id="div_create" style="clear: both">
 
 
 </div>
 <div id="div_index" style="clear:both">
 
+</div>
+
+<div id="div_loading" class="progress progress-striped active" style="display:none;">
+    <div class="progress-bar" style="width: 0%"></div>
 </div>
 
 <a href="@Url.Content("~/Prueba/Create")" id="link_form"></a>

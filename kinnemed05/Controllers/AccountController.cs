@@ -102,7 +102,7 @@ namespace kinnemed05.Controllers
                     WebSecurity.Login(model.UserName, model.Password);
                     UserManager usermanager = new UserManager();
                     UsersInRoles usersinroles = new UsersInRoles();
-                    usersinroles.RoleId = 1;
+                    usersinroles.RoleId = 4;
                     usersinroles.UserId = usermanager.UserId(model.UserName) ;
                     this.CreateUsersInRole(usersinroles);
                     return RedirectToAction("Index", "Home");

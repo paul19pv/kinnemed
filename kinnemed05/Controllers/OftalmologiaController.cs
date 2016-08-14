@@ -8,6 +8,12 @@ using System.Web.Mvc;
 using kinnemed05.Models;
 using kinnemed05.Filters;
 using kinnemed05.Security;
+using kinnemed05.Reports.dataset;
+using System.Configuration;
+using System.Data.SqlClient;
+using kinnemed05.Reports;
+using iTextSharp.text.pdf.parser;
+using System.IO;
 
 namespace kinnemed05.Controllers
 {
@@ -19,9 +25,30 @@ namespace kinnemed05.Controllers
         //
         // GET: /Oftalmologia/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
-        public ActionResult Index()
+        public ActionResult Index(int? id, int? paciente)
         {
-            var oftalmologia = db.oftalmologia.Include(o => o.paciente).Include(o => o.medico);
+            var oftalmologia = db.oftalmologia.Include(o => o.paciente);
+            if (id != null)
+                oftalmologia = oftalmologia.Where(o => o.oft_paciente == id);
+            if (paciente != null)
+                oftalmologia = oftalmologia.Where(o => o.oft_paciente == paciente);
+            
+            if (User.IsInRole("paciente"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
+                oftalmologia = oftalmologia.Where(o => o.oft_paciente == paciente_.pac_id);
+            }
+            if (User.IsInRole("empresa"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                empresa empresa = db.empresa.Where(o => o.emp_cedula == cedula).First();
+                oftalmologia = oftalmologia.Where(o => o.paciente.pac_empresa == empresa.emp_id);
+            }
+
+
+            if (Request.IsAjaxRequest())
+                return PartialView("Index_historia", oftalmologia.ToList());
             return View(oftalmologia.ToList());
         }
 
@@ -37,8 +64,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(oftalmologia);
         }
 
@@ -71,11 +97,19 @@ namespace kinnemed05.Controllers
         public ActionResult Create(oftalmologia oftalmologia)
         {
             string nom_pac;
-            string nom_med;
+            DateTime dd = DateTime.Now;
+            oftalmologia.oft_fecha = dd.Date.ToString("d");
             if (ModelState.IsValid)
             {
+                UserManager usermanager = new UserManager();
+                oftalmologia.oft_responsable = usermanager.get_user_id(User);
+                oftalmologia.oft_perfil = usermanager.get_perfil(User);
+                oftalmologia.oft_orden = get_orden(oftalmologia.oft_fecha);
                 db.oftalmologia.Add(oftalmologia);
                 db.SaveChanges();
+
+                
+                    notificar(oftalmologia.oft_paciente);
                 return RedirectToAction("Index");
             }
 
@@ -95,12 +129,7 @@ namespace kinnemed05.Controllers
             else
                 nom_pac = "";
             ViewBag.paciente = nom_pac;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            if (medico != null)
-                nom_med = medico.med_nombres + " " + medico.med_apellidos;
-            else
-                nom_med = "";
-            ViewBag.medico = nom_med;
+            
             return View(oftalmologia);
         }
 
@@ -116,8 +145,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
 
             ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
             ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
@@ -147,8 +175,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
 
             ViewBag.oft_con_od = get_agudeza(oftalmologia.oft_con_od);
             ViewBag.oft_con_oi = get_agudeza(oftalmologia.oft_con_oi);
@@ -175,8 +202,7 @@ namespace kinnemed05.Controllers
             }
             paciente paciente = db.paciente.Find(oftalmologia.oft_paciente);
             ViewBag.paciente = paciente.pac_nombres + " " + paciente.pac_apellidos;
-            medico medico = db.medico.Find(oftalmologia.oft_medico);
-            ViewBag.medico = medico.med_nombres + " " + medico.med_apellidos;
+            
             return View(oftalmologia);
         }
 
@@ -192,6 +218,47 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Descargar(int id)
+        {
+            try
+            {
+                //string contentType = "application/pdf";
+                dsOftalmologia dsOftalmologia = new dsOftalmologia();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                int oft_id = id;
+                string fileName = String.Empty;
+                //if (String.IsNullOrEmpty(fileName))
+                //    fileName = "firma.png";
+                //string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
+
+                string strOftalmologia = "Select * from view_oftalmologia where oft_id=" + oft_id;
+
+                SqlConnection sqlcon = new SqlConnection(conn);
+
+                SqlDataAdapter daOftalmologia = new SqlDataAdapter(strOftalmologia, sqlcon);
+
+                daOftalmologia.Fill(dsOftalmologia, "view_oftalmologia");
+                
+                RptOftalmologia_ rp = new RptOftalmologia_();
+                string reportPath = Server.MapPath("~/Reports/RptOftalmologia_.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dsOftalmologia);
+                
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", oft_id + ".pdf");
+
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+
+
 
         private SelectList get_agudeza(string agudeza = "")
         {
@@ -226,9 +293,10 @@ namespace kinnemed05.Controllers
             List<SelectListItem> list_jornada = new List<SelectListItem>();
             list_jornada.Add(new SelectListItem { Text = "NORMAL", Value = "NORMAL" });
             list_jornada.Add(new SelectListItem { Text = "ANORMAL", Value = "ANORMAL" });
+            list_jornada.Add(new SelectListItem { Text = "NO VALORADO", Value = "NO VALORADO" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text","NORMAL");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
@@ -241,9 +309,10 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "PRESENTA PROBLEMAS EN COLOR VERDE", Value = "PRESENTA PROBLEMAS EN COLOR VERDE" });
             list_jornada.Add(new SelectListItem { Text = "PRESENTA PROBLEMAS EN COLOR AMARILLO", Value = "PRESENTA PROBLEMAS EN COLOR AMARILLO" });
             list_jornada.Add(new SelectListItem { Text = "PRESENTA PROBLEMAS EN COLOR ROJO", Value = "PRESENTA PROBLEMAS EN COLOR ROJO" });
+            list_jornada.Add(new SelectListItem { Text = "NO VALORADO", Value = "NO VALORADO" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text","NORMAL");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
@@ -260,7 +329,7 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "OTROS" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text", "EMETROPE");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
@@ -275,10 +344,48 @@ namespace kinnemed05.Controllers
             list_jornada.Add(new SelectListItem { Text = "OTROS", Value = "OTROS" });
             SelectList jornadas;
             if (jornada == "")
-                jornadas = new SelectList(list_jornada, "Value", "Text","CONTROL ANUAL");
+                jornadas = new SelectList(list_jornada, "Value", "Text");
             else
                 jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
             return jornadas;
+        }
+
+        private void notificar(int pac_id)
+        {
+            string resultado = String.Empty;
+            //ModelState.AddModelError("msn", "Llego");
+            paciente paciente = db.paciente.Find(pac_id);
+            string celular = paciente.pac_celular;
+            string correo = paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular))
+            {
+
+                resultado = mensaje.enviar(celular, "Los exámenes de oftalmologia se encuentran listos. Kinnemed");
+
+
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                resultado = " " + resultado + mensaje.mail(correo, "Los exámenes de oftalmologia se encuentran listos. Kinnemed");
+            }
+            ModelState.AddModelError("notificacion", resultado);
+
+
+        }
+
+        private int get_orden(string fecha)
+        {
+            string orden = String.Empty;
+            int num = 0;
+            int num_exa = 0;
+            var consulta = db.oftalmologia.Where(r => r.oft_fecha == fecha);
+            if (consulta.Any())
+                num_exa = db.oftalmologia.Where(r => r.oft_fecha == fecha).OrderByDescending(r => r.oft_orden).First().oft_orden.GetValueOrDefault();
+            else
+                num_exa = 0;
+            num = num_exa + 1;
+            return num;
         }
 
         protected override void Dispose(bool disposing)

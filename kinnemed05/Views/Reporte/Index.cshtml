@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Filtro";
+}
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            
+            <div class="form-group">
+                @Html.Label("Fecha de Inicio", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("fec_ini", "", new { @class = "form-control"})
+                </div>
+                @Html.Label("Fecha de Fin", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("fec_fin", "", new { @class = "form-control"})
+                </div>
+                @Html.Label("Empresa", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-2">
+                    @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
+                </div>
+                <input type="submit" value="Filtrar" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>

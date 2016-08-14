@@ -15,12 +15,12 @@ namespace kinnemed05.Models
         public string pac_cedula { get; set; }
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9ñ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string pac_nombres { get; set; }
         [Display(Name = "Apellidos")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9ñ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string pac_apellidos { get; set; }
         [Display(Name = "Género")]
@@ -44,7 +44,7 @@ namespace kinnemed05.Models
         public string pac_telefono { get; set; }
         [Display(Name = "Celular")]
         [RegularExpression("^([0-9.&'-]+)$", ErrorMessage = "Solo se aceptan números")]
-        [StringLength(10, MinimumLength = 7, ErrorMessage = "La longitud debe ser de 10 caracteres")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "La longitud debe ser de 10 caracteres")]
         public string pac_celular { get; set; }
         [Display(Name = "Correo electrónico")]
         //[Required(ErrorMessage = "Campo Requerido")]
@@ -77,10 +77,10 @@ namespace kinnemed05.Models
         [Required(ErrorMessage = "Campo Requerido")]
         public int pac_empresa { get; set; }
         
-        [Display(Name = "Firma")]
-        public string pac_firma { get; set; }
-
         public bool pac_estado { get; set; }
+
+        [Display(Name = "Exámenes")]
+        public string pac_varios { get; set; }
 
     }
 }

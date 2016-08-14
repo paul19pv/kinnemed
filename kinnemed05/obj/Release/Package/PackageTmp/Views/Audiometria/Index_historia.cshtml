@@ -15,8 +15,9 @@
                     @Html.DisplayNameFor(model => model.aud_paciente)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.aud_medico)
+                    Empresa
                 </th>
+               
                 <th>
                     @Html.DisplayNameFor(model => model.aud_observacion)
                 </th>
@@ -30,13 +31,15 @@
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
+                        @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
+                   
                     <td>
                         @Html.DisplayFor(modelItem => item.aud_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
+                        @*@Html.ActionLink("Detalle", "Details", "Audiometria", new { id = item.aud_id }, new { @class = "iconb icon-detail", @title = "Detalle", @target = "_blank" })*@
+                        @Html.ActionLink("Descargar", "Descargar", "Audiometria", new { id = item.aud_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @target = "_blank" })
                     </td>
                 </tr>
             }

@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -20,7 +21,7 @@ namespace kinnemed05.Controllers
     public class MedicoController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_user = new UsersContext();
         //
         // GET: /Medico/
 
@@ -107,14 +108,15 @@ namespace kinnemed05.Controllers
                 string fileName = Path.GetFileName(file.FileName);
                 string ext = Path.GetExtension(fileName);
                 string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
-                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) >= 0))
                 {
                     Firma objfirma = new Firma();
-                    medico.med_firma = fileName;
+                    //medico.med_firma = fileName;
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
+                    medico.med_firma = ConvertBytes(path01);
                 }
                 else
                 {
@@ -123,8 +125,8 @@ namespace kinnemed05.Controllers
                             ModelState.AddModelError("ext", "Extensión no Válida");
                 }
             }
-                
-            if (ModelState.IsValid)
+
+            if (ModelState.IsValid && IsUserExist(medico.med_cedula))
             {
                 db.medico.Add(medico);
                 db.SaveChanges();
@@ -170,15 +172,17 @@ namespace kinnemed05.Controllers
                 string fileName = Path.GetFileName(file.FileName);
                 string ext = Path.GetExtension(fileName);
                 string[] formatos = new string[] { ".jpg", ".jpeg", ".bmp", ".png", ".gif", ".JPG", ".JPEG", ".BMP", ".PNG", ".GIF" };
-                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
+                if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) >= 0))
                 {
                     Firma objfirma = new Firma();
-                    medico.med_firma = fileName;
+                    //medico.med_firma = fileName;
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
 
                     objfirma.ResizeImage(path, path01, 200, 120);
+                    medico.med_firma = ConvertBytes(path01);
+                    
                 }
                 else
                 {
@@ -281,6 +285,26 @@ namespace kinnemed05.Controllers
             }
         }
 
+
+        public Byte[] ConvertBytes(String ruta)
+        {
+            FileStream foto = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Byte[] arreglo = new Byte[foto.Length];
+            BinaryReader reader = new BinaryReader(foto);
+            arreglo = reader.ReadBytes(Convert.ToInt32(foto.Length));
+            return arreglo;
+        }
+        private bool IsUserExist(string usuario)
+        {
+            bool estado = true;
+            var consulta = db_user.UserProfiles.Where(u => u.UserName == usuario);
+            if (consulta.Any())
+            {
+                estado = false;
+                ModelState.AddModelError("user", "El médico ya esta registrado con otro perfil por favor verifique la información");
+            }
+            return estado;
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

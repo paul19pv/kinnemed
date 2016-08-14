@@ -1,0 +1,812 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
+ <Targets>
+  <Target Name="C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll">
+   <Modules>
+    <Module Name="kinnemed05.dll">
+     <Namespaces>
+      <Namespace Name="kinnemed05.Controllers">
+       <Types>
+        <Type Name="AudiometriaController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_users" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="AudiometriaController.cs" Line="435">'AudiometriaController' contains field 'AudiometriaController.db_users' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'AudiometriaController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Merge(System.String,System.String[])" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="AudiometriaController.cs" Line="386">Object 'stmFile' can be disposed more than once in method 'AudiometriaController.Merge(string, string[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 386</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EmpresaController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_user" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="EmpresaController.cs" Line="146">'EmpresaController' contains field 'EmpresaController.db_user' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'EmpresaController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="EspirometriaController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_users" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="EspirometriaController.cs" Line="424">'EspirometriaController' contains field 'EspirometriaController.db_users' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'EspirometriaController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Merge(System.String,System.String[])" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="EspirometriaController.cs" Line="375">Object 'stmFile' can be disposed more than once in method 'EspirometriaController.Merge(string, string[])'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 375</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HistoriaController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_users" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="HistoriaController.cs" Line="772">'HistoriaController' contains field 'HistoriaController.db_users' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'HistoriaController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="LaboratoristaController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_user" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="LaboratoristaController.cs" Line="199">'LaboratoristaController' contains field 'LaboratoristaController.db_user' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'LaboratoristaController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="MedicoController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_user" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="MedicoController.cs" Line="309">'MedicoController' contains field 'MedicoController.db_user' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'MedicoController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExportReport(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="MedicoController.cs" Line="253">The query string passed to 'SqlDataAdapter.SqlDataAdapter(string, SqlConnection)' in 'MedicoController.ExportReport(string, int)' could contain the following variables 'filtro'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PacienteController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_user" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="PacienteController.cs" Line="726">'PacienteController' contains field 'PacienteController.db_user' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'PacienteController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ExportReport(System.String,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="PacienteController.cs" Line="641">The query string passed to 'SqlDataAdapter.SqlDataAdapter(string, SqlConnection)' in 'PacienteController.ExportReport(string, int)' could contain the following variables 'filtro'. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RayosController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_users" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="RayosController.cs" Line="347">'RayosController' contains field 'RayosController.db_users' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'RayosController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="RegistroController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_users" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="RegistroController.cs" Line="698">'RegistroController' contains field 'RegistroController.db_users' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'RegistroController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="TrabajadorController" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Dispose(System.Boolean)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="db_user" TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Controllers" File="TrabajadorController.cs" Line="146">'TrabajadorController' contains field 'TrabajadorController.db_user' that is of IDisposable type: 'UsersContext'. Change the Dispose method on 'TrabajadorController' to call Dispose or Close on this field.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="kinnemed05.Models">
+       <Types>
+        <Type Name="area" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="area.cs" Line="17">'area.area()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;area..ctor()&#xD;&#xA;area.set_codigo(ICollection&lt;codigo&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="area.cs" Line="17">'area.area()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;area..ctor()&#xD;&#xA;area.set_examen(ICollection&lt;examen&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="BarCode39" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'BarCode39' because it creates members of the following IDisposable types: 'Font'. If 'BarCode39' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="canton" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="canton.cs" Line="17">'canton.canton()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;canton..ctor()&#xD;&#xA;canton.set_paciente(ICollection&lt;paciente&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="cie10" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="cie10.cs" Line="17">'cie10.cie10()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;cie10..ctor()&#xD;&#xA;cie10.set_sub_cie10(ICollection&lt;sub_cie10&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="empresa" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="empresa.cs" Line="17">'empresa.empresa()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;empresa..ctor()&#xD;&#xA;empresa.set_paciente(ICollection&lt;paciente&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="empresa.cs" Line="17">'empresa.empresa()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;empresa..ctor()&#xD;&#xA;empresa.set_trabajador(ICollection&lt;trabajador&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="especialidad" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="especialidad.cs" Line="17">'especialidad.especialidad()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;especialidad..ctor()&#xD;&#xA;especialidad.set_medico(ICollection&lt;medico&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="examen" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="examen.cs" Line="17">'examen.examen()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;examen..ctor()&#xD;&#xA;examen.set_control(ICollection&lt;control&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="examen.cs" Line="17">'examen.examen()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;examen..ctor()&#xD;&#xA;examen.set_orden(ICollection&lt;orden&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="examen.cs" Line="17">'examen.examen()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;examen..ctor()&#xD;&#xA;examen.set_prueba(ICollection&lt;prueba&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="examen.cs" Line="17">'examen.examen()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;examen..ctor()&#xD;&#xA;examen.set_valores(ICollection&lt;valores&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Firma" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ResizeImage(System.String,System.String,System.Int32,System.Int32)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="Firma.cs" Line="90">Object 'g' can be disposed more than once in method 'Firma.ResizeImage(string, string, int, int)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 90</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="Firma.cs" Line="87">Object 'mystream' can be disposed more than once in method 'Firma.ResizeImage(string, string, int, int)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 87, 88</Issue>
+             <Issue Certainty="75" Level="Warning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="Firma.cs" Line="87">Object 'mystream' can be disposed more than once in method 'Firma.ResizeImage(string, string, int, int)'. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 87, 88</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="historia" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="historia.cs" Line="17">'historia.historia()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;historia..ctor()&#xD;&#xA;historia.set_diagnostico(ICollection&lt;diagnostico&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="historia.cs" Line="17">'historia.historia()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;historia..ctor()&#xD;&#xA;historia.set_subsecuente(ICollection&lt;subsecuente&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="laboratorista" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="laboratorista.cs" Line="17">'laboratorista.laboratorista()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;laboratorista..ctor()&#xD;&#xA;laboratorista.set_audiometria(ICollection&lt;audiometria&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="laboratorista.cs" Line="17">'laboratorista.laboratorista()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;laboratorista..ctor()&#xD;&#xA;laboratorista.set_espirometria(ICollection&lt;espirometria&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="laboratorista.cs" Line="17">'laboratorista.laboratorista()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;laboratorista..ctor()&#xD;&#xA;laboratorista.set_rayos(ICollection&lt;rayos&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="laboratorista.cs" Line="17">'laboratorista.laboratorista()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;laboratorista..ctor()&#xD;&#xA;laboratorista.set_registro(ICollection&lt;registro&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="medico" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="medico.cs" Line="17">'medico.medico()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;medico..ctor()&#xD;&#xA;medico.set_historia(ICollection&lt;historia&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ocupacional" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="ocupacional.cs" Line="17">'ocupacional.ocupacional()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;ocupacional..ctor()&#xD;&#xA;ocupacional.set_laboral(ICollection&lt;laboral&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="paciente" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_audiometria(ICollection&lt;audiometria&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_espirometria(ICollection&lt;espirometria&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_historia(ICollection&lt;historia&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_inmunizacion(ICollection&lt;inmunizacion&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_ocupacional(ICollection&lt;ocupacional&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_oftalmologia(ICollection&lt;oftalmologia&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_orden(ICollection&lt;orden&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_rayos(ICollection&lt;rayos&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="paciente.cs" Line="17">'paciente.paciente()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;paciente..ctor()&#xD;&#xA;paciente.set_registro(ICollection&lt;registro&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="pais" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="pais.cs" Line="17">'pais.pais()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;pais..ctor()&#xD;&#xA;pais.set_paciente(ICollection&lt;paciente&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="perfil" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="perfil.cs" Line="17">'perfil.perfil()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;perfil..ctor()&#xD;&#xA;perfil.set_control(ICollection&lt;control&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="profesion" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="profesion.cs" Line="17">'profesion.profesion()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;profesion..ctor()&#xD;&#xA;profesion.set_paciente(ICollection&lt;paciente&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="provincia" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="provincia.cs" Line="17">'provincia.provincia()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;provincia..ctor()&#xD;&#xA;provincia.set_canton(ICollection&lt;canton&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="registro" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="registro.cs" Line="17">'registro.registro()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;registro..ctor()&#xD;&#xA;registro.set_codigo(ICollection&lt;codigo&gt;):Void</Issue>
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="registro.cs" Line="17">'registro.registro()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;registro..ctor()&#xD;&#xA;registro.set_prueba(ICollection&lt;prueba&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="riesgo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="riesgo.cs" Line="17">'riesgo.riesgo()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;riesgo..ctor()&#xD;&#xA;riesgo.set_laboral(ICollection&lt;laboral&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="sub_cie10" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="sub_cie10.cs" Line="17">'sub_cie10.sub_cie10()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;sub_cie10..ctor()&#xD;&#xA;sub_cie10.set_diagnostico(ICollection&lt;diagnostico&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="UserManager" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="DependsOnFix">
+           <Issue Name="DependsOnFix" Certainty="95" Level="CriticalError">Implement IDisposable on 'UserManager' because it creates members of the following IDisposable types: 'UsersContext'. If 'UserManager' has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="vacuna" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalWarning" Path="c:\Users\Developer\Source\Repos\kinnemed\kinnemed05\Models" File="vacuna.cs" Line="17">'vacuna.vacuna()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;vacuna..ctor()&#xD;&#xA;vacuna.set_inmunizacion(ICollection&lt;inmunizacion&gt;):Void</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="kinnemed05.Reports.dataset">
+       <Types>
+        <Type Name="dsAudiometria" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsAudiometria'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsAudiometria+view_audiometriaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsAudiometria.view_audiometriaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado+conceptoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado.conceptoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado+empresaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado.empresaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado+historiaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado.historiaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado+medicoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado.medicoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado+ocupacionalDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado.ocupacionalDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCertificado+pacienteDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCertificado.pacienteDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCodigo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCodigo'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsCodigo+view_codigoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsCodigo.view_codigoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsConcepto" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsConcepto'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsConcepto+conceptoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsConcepto.conceptoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsDiagnostico" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsDiagnostico'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsDiagnostico+view_diagnosticoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsDiagnostico.view_diagnosticoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsEspirometria" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsEspirometria'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsEspirometria+view_espirometriaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsEspirometria.view_espirometriaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsGinecologico" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsGinecologico'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsGinecologico+ginecologicoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsGinecologico.ginecologicoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsHistoria" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsHistoria'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsHistoria+view_historiaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsHistoria.view_historiaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsHistorico" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsHistorico'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsHistorico+ocupacionalDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsHistorico.ocupacionalDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsInmunizacion" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsInmunizacion'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsInmunizacion+view_inmunizacionDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsInmunizacion.view_inmunizacionDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsMedico" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsMedico'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsMedico+especialidadDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsMedico.especialidadDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsMedico+medicoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsMedico.medicoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsOftalmologia" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsOftalmologia'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsOftalmologia+view_oftalmologiaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsOftalmologia.view_oftalmologiaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPaciente" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPaciente'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPaciente+cantonDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPaciente.cantonDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPaciente+empresaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPaciente.empresaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPaciente+pacienteDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPaciente.pacienteDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPaciente+profesionDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPaciente.profesionDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPaciente+provinciaDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPaciente.provinciaDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPruebaPaciente" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPruebaPaciente'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsPruebaPaciente+view_prueba_pacienteDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsPruebaPaciente.view_prueba_pacienteDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsRayos" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsRayos'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsRayos+view_rayosDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsRayos.view_rayosDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsReposo" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsReposo'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsReposo+view_reposoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsReposo.view_reposoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsRiesgos" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsRiesgos'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="dsRiesgos+view_riesgoDataTable" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2016-07-22 15:05:57Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Add an implementation of GetObjectData to type 'dsRiesgos.view_riesgoDataTable'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="DisposableFieldsShouldBeDisposed" Category="Microsoft.Usage" CheckId="CA2213">
+   <Name>Disposable fields should be disposed</Name>
+   <Description>If a type that implements IDisposable owns fields that also implement IDisposable, the encapsulating type's Dispose() implementation should call Dispose() on each disposable field.</Description>
+   <Resolution Name="Default">{0} contains field {1} that is of IDisposable type: {2}. Change the Dispose method on {0} to call Dispose or Close on this field.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182328.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Do not dispose objects multiple times" Category="Microsoft.Usage" CheckId="CA2202">
+   <Name>Do not dispose objects multiple times</Name>
+   <Description>A correctly implemented Dispose method can be called multiple times without throwing an exception. However, this is not guaranteed and to avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.</Description>
+   <Resolution Name="Default">Object {0} can be disposed more than once in method {1}. To avoid generating a System.ObjectDisposedException you should not call Dispose more than one time on an object.: Lines: 90</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182334.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214">
+   <Name>Do not call overridable methods in constructors</Name>
+   <Description>Virtual methods defined on the class should not be called from constructors. If a derived class has overridden the method, the derived class version will be called (before the derived class constructor is called).</Description>
+   <Resolution Name="Default">{0} contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: {1}</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182331.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240">
+   <Name>Implement ISerializable correctly</Name>
+   <Description>If a type is assignable to ISerializable, it should implement GetObjectData. For unsealed types, the GetObjectData method should be callable and overridable by derived types.</Description>
+   <Resolution Name="Default">Add an implementation of GetObjectData to type {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182342.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Review SQL queries for security vulnerabilities" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Review SQL queries for security vulnerabilities</Name>
+   <Description>A SQL command string built from user input is vulnerable to SQL injection attacks. Microsoft SQL Server and other database servers support stored procedures and parameterized SQL queries, which reduce the risk of injection attacks.</Description>
+   <Resolution Name="WithNonLiterals">The query string passed to {0} in {1} could contain the following variables {2}. If any of these variables could come from user input, consider using a stored procedure or a parameterized SQL query instead of building the query with string concatenations.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="TypesThatOwnDisposableFieldsShouldBeDisposable" Category="Microsoft.Design" CheckId="CA1001">
+   <Name>Types that own disposable fields should be disposable</Name>
+   <Description>Types that declare disposable members should also implement IDisposable. If the type does not own any unmanaged resources, do not implement a finalizer on it.</Description>
+   <Resolution Name="DependsOnFix">Implement IDisposable on {0} because it creates members of the following IDisposable types: {1}. If {0} has previously shipped, adding new members that implement IDisposable to this type is considered a breaking change to existing consumers.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182172.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="12.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+</FxCopReport>

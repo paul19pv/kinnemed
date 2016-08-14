@@ -127,14 +127,7 @@
                     </div>
                     
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.TextBoxFor(model => model.oft_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.oft_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico })
-                        @Html.ValidationMessageFor(model => model.oft_medico)
-                    </div>
-                </div>
+               
                 <div class="col-lg-4" style="clear:both">
                     <div class="form-group">
                         @Html.Label("AGUDEZA VISUAL CON CORRECIÓN")
@@ -153,25 +146,6 @@
                             @Html.ValidationMessageFor(model => model.oft_con_oi)
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.oft_biomiscroscopia)
-                        @Html.DropDownList("oft_biomiscroscopia", String.Empty)
-                        @Html.ValidationMessageFor(model => model.oft_biomiscroscopia)
-                    </div>
-                    <div id="div_biomiscroscopia" class="form-group" style="display:none">
-                        @Html.TextBoxFor(model => model.oft_bio_txt, new { @class = "form-control" })
-                    </div>
-
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.oft_diagnostico)
-                        @Html.DropDownList("oft_diagnostico", String.Empty)
-                        @Html.ValidationMessageFor(model => model.oft_diagnostico)
-                    </div>
-                    <div id="div_diagnostico" class="form-group" style="display:none">
-                        @Html.TextBoxFor(model => model.oft_dia_txt, new { @class = "form-control" })
-                    </div>
-                    
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
@@ -191,33 +165,14 @@
                             @Html.ValidationMessageFor(model => model.oft_sin_oi)
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.oft_fondo)
-                        @Html.DropDownList("oft_fondo", String.Empty)
-                        @Html.ValidationMessageFor(model => model.oft_fondo)
-                    </div>
-                    <div id="div_fondo" class="form-group" style="display:none">
-                        @Html.TextBoxFor(model => model.oft_fon_txt, new { @class = "form-control" })
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.oft_indicaciones)
-                        @Html.DropDownList("oft_indicaciones", String.Empty)
-                        @Html.ValidationMessageFor(model => model.oft_indicaciones)
-                    </div>
-                    <div id="div_indicaciones" class="form-group" style="display:none">
-                        @Html.TextBoxFor(model => model.oft_ind_txt, new { @class = "form-control" })
-                    </div>
-
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.Label("REFRACCIÓN")
                     </div>
-                    
                     <div class="col-lg-2">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.oft_ref_od, new { @class="control-label"})
+                            @Html.LabelFor(model => model.oft_ref_od, new { @class = "control-label" })
                         </div>
                     </div>
                     <div class="col-lg-10">
@@ -238,13 +193,61 @@
                             @Html.ValidationMessageFor(model => model.oft_ref_oi)
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_biomiscroscopia)
+                        @Html.DropDownList("oft_biomiscroscopia", String.Empty)
+                        @Html.ValidationMessageFor(model => model.oft_biomiscroscopia)
+                    </div>
+
+                    <div id="div_biomiscroscopia" class="form-group" style="display:none">
+                        @Html.TextBoxFor(model => model.oft_bio_txt, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_fondo)
+                        @Html.DropDownList("oft_fondo", String.Empty)
+                        @Html.ValidationMessageFor(model => model.oft_fondo)
+                    </div>
+                    <div id="div_fondo" class="form-group" style="display:none">
+                        @Html.TextBoxFor(model => model.oft_fon_txt, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.oft_colores)
                         @Html.DropDownList("oft_colores", String.Empty)
                         @Html.ValidationMessageFor(model => model.oft_colores)
                     </div>
-
-
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_otros)
+                        @Html.TextBoxFor(model => model.oft_otros, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.oft_otros)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_diagnostico)
+                        @Html.DropDownList("oft_diagnostico", String.Empty)
+                        @Html.ValidationMessageFor(model => model.oft_diagnostico)
+                    </div>
+                    <div id="div_diagnostico" class="form-group" style="display:none">
+                        @Html.TextAreaFor(model => model.oft_dia_txt, new { @class = "form-control", @rows = 3 })
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.oft_indicaciones)
+                        @Html.DropDownList("oft_indicaciones", String.Empty)
+                        @Html.ValidationMessageFor(model => model.oft_indicaciones)
+                    </div>
+                    <div id="div_indicaciones" class="form-group" style="display:none">
+                        @Html.TextAreaFor(model => model.oft_ind_txt, new { @class = "form-control", @rows = 3 })
+                    </div>
                 </div>
                 <div class="col-lg-4" style="clear:both">
                     <div class="form-group">

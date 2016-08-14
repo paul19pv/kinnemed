@@ -15,12 +15,12 @@ namespace kinnemed05.Models
         public string med_cedula { get; set; }
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string med_nombres { get; set; }
         [Display(Name = "Apellidos")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string med_apellidos { get; set; }
         [Display(Name = "CI")]
@@ -42,7 +42,7 @@ namespace kinnemed05.Models
         [StringLength(150, ErrorMessage = "La longitud máxima es 150 caracteres")]
         public string med_correo { get; set; }
         [Display(Name = "Firma")]
-        public string med_firma { get; set; }
+        public byte[] med_firma { get; set; }
 
         public bool med_estado { get; set; }
     }

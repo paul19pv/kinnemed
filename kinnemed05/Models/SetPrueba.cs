@@ -33,13 +33,28 @@ namespace kinnemed05.Models
             return valores;
 
         }
+        public SelectList val_cul(string defaul)
+        {
+            List<SelectListItem> list_valores = new List<SelectListItem>();
+            list_valores.Add(new SelectListItem { Text = "", Value = "" });
+            list_valores.Add(new SelectListItem { Text = "SENSIBLE", Value = "SENSIBLE" });
+            list_valores.Add(new SelectListItem { Text = "INTERMEDIO", Value = "INTERMEDIO" });
+            list_valores.Add(new SelectListItem { Text = "RESISTENTE", Value = "RESISTENTE" });
+            SelectList valores;
+            if (String.IsNullOrEmpty(defaul))
+                valores = new SelectList(list_valores, "Value", "Text");
+            else
+                valores = new SelectList(list_valores, "Value", "Text", defaul);
+            return valores;
+
+        }
         public SelectList col_cop(string defaul) {
             List<SelectListItem> list_valores = new List<SelectListItem>();
             list_valores.Add(new SelectListItem { Text = "CAFE", Value = "CAFE" });
             list_valores.Add(new SelectListItem { Text = "AMARILLO", Value = "AMARILLO" });
             list_valores.Add(new SelectListItem { Text = "VERDOSO", Value = "VERDOSO" });
             list_valores.Add(new SelectListItem { Text = "ROJIZO", Value = "ROJIZO" });
-            list_valores.Add(new SelectListItem { Text = "NEGRUZO", Value = "NEGRUZCO" });
+            list_valores.Add(new SelectListItem { Text = "NEGRUZCO", Value = "NEGRUZCO" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
 
@@ -52,6 +67,7 @@ namespace kinnemed05.Models
             list_valores.Add(new SelectListItem { Text = "DURA", Value = "DURA" });
             list_valores.Add(new SelectListItem { Text = "LIQUIDA", Value = "LIQUIDA" });
             list_valores.Add(new SelectListItem { Text = "SEMILIQUIDA", Value = "SEMILIQUIDA" });
+            list_valores.Add(new SelectListItem { Text = "MUCOIDEO", Value = "MUCOIDEO" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
@@ -139,6 +155,7 @@ namespace kinnemed05.Models
             List<SelectListItem> list_valores = new List<SelectListItem>();
             list_valores.Add(new SelectListItem { Text = "TRANSPARENTE", Value = "TRANSPARENTE" });
             list_valores.Add(new SelectListItem { Text = "LIGERAMENTE TURBIO", Value = "LIGERAMENTE TURBIO" });
+            list_valores.Add(new SelectListItem { Text = "TURBIO", Value = "TURBIO" });
             SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
@@ -184,6 +201,34 @@ namespace kinnemed05.Models
             return valores;
 
         }
+
+        public SelectList val_san(string defaul) {
+            List<SelectListItem> list_valores = new List<SelectListItem>();
+            list_valores.Add(new SelectListItem { Text = "GRUPO A Factor RH positivo(+)", Value = "GRUPO A Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO B Factor RH positivo(+)", Value = "GRUPO B Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO O Factor RH positivo(+)", Value = "GRUPO O Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO AB Factor RH positivo(+)", Value = "GRUPO AB Factor RH positivo(+)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO A Factor RH negativo(-)", Value = "GRUPO A Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO B Factor RH negativo(-)", Value = "GRUPO B Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO O Factor RH negativo(-)", Value = "GRUPO O Factor RH negativo(-)" });
+            list_valores.Add(new SelectListItem { Text = "GRUPO AB Factor RH negativo(-)", Value = "GRUPO AB Factor RH negativo(-)" });
+            SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
+            return valores;
+        }
+        //public SelectList agl_valor(string defaul)
+        //{
+        //    List<SelectListItem> list_valores = new List<SelectListItem>();
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA TYPHI H", Value = "SALMONELLA TYPHI H" });
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA TYPHI O", Value = "SALMONELLA TYPHI O" });
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA HA", Value = "SALMONELLA HA" });
+        //    list_valores.Add(new SelectListItem { Text = "SALMONELLA HB", Value = "SALMONELLA HB" });
+        //    list_valores.Add(new SelectListItem { Text = "PROTEUS OX19", Value = "PROTEUS OX19" });
+        //    list_valores.Add(new SelectListItem { Text = "BRUCELLA ABORTUS", Value = "BRUCELLA ABORTUS" });
+        //    SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
+        //    return valores;
+        //}
+
+
 
 
 

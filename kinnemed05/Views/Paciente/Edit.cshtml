@@ -265,24 +265,35 @@
                             @Html.TextBoxFor(model => model.pac_estado, new { @class = "form-control", Value = true, @type = "hidden" })
                         </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pac_varios, new { @class = "control-label" })
+                            @Html.TextAreaFor(model => model.pac_varios, new { @class = "form-control", @rows = "5" })
+                            @Html.ValidationMessageFor(model => model.pac_varios)
+                        </div>
 
 
-                        <div id="div_download" class="form-group">
+                        @*<div id="div_download" class="form-group">
                             @Html.LabelFor(model => model.pac_firma, new { @class = "control-label", @for = "inputDefault" })
-                            @if (Model.pac_firma != null) { 
+                            @if (Model.pac_firma != null)
+                            {
+                                string ruta = "data:image/jpg;base64," + Convert.ToBase64String((byte[])Model.lab_firma);
                                 <div class="form-group">
-                                    <img src="@Url.Content("~/Content/firmas/"+Model.pac_firma)" class="img-rounded" />
+                                    
+                                    <div class="form-group">
+
+                                        <img src="@ruta" class="img-rounded" />
+                                    </div>
                                 </div>
                             }
                             <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />
-                        </div>
-                        <div id="div_upload" class="form-group" style="display:none;">
+                        </div>*@
+                        @*<div id="div_upload" class="form-group" style="display:none;">
                             <label style="display:block;">Archivo</label>
                             <input type="file" name="Edit" id="Edit" style="display:inline">
                             <input type="button" id="btn_download" value="Mantener" class="btn btn-default" />
                             @Html.ValidationMessageFor(model => model.pac_firma)
                             @Html.ValidationMessage("ext")
-                        </div>
+                        </div>*@
 
                     </div>
                     <div class="col-lg-4" style="clear:both">

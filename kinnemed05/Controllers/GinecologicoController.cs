@@ -69,6 +69,7 @@ namespace kinnemed05.Controllers
             }
 
             ViewBag.gin_id = ginecologico.gin_id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView(ginecologico);
         }
 
@@ -91,6 +92,7 @@ namespace kinnemed05.Controllers
                 
             }
             ViewBag.gin_id = ginecologico.gin_id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView(ginecologico);
         }
 
@@ -108,6 +110,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", "Familiar", new { id = ginecologico.gin_id });
             }
             ViewBag.gin_id = ginecologico.gin_id;
+            ViewBag.gin_ciclos = gin_ciclo();
             return PartialView(ginecologico);
         }
 
@@ -142,6 +145,7 @@ namespace kinnemed05.Controllers
             List<SelectListItem> list_ciclo = new List<SelectListItem>();
             list_ciclo.Add(new SelectListItem { Text = "REGULAR", Value = "REGULAR" });
             list_ciclo.Add(new SelectListItem { Text = "IRREGULAR", Value = "IRREGULAR" });
+            list_ciclo.Add(new SelectListItem { Text = "MENOPAUSIA", Value = "MENOPAUSIA" });
             SelectList ciclos;
             if (ciclo == "")
                 ciclos = new SelectList(list_ciclo, "Value", "Text");

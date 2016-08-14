@@ -42,17 +42,54 @@
             },
             minLength: 2
         });
+
+        $('#txt_medico').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: $("#link_medico").attr("href"),
+                    type: "POST",
+                    dataType: "json",
+                    //contentType: 'application/json, charset=utf-8',
+                    data: {
+                        search: $("#txt_medico").val()
+                    },
+                    success: function (data) {
+
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.med_nombres + " " + item.med_apellidos,
+                                id: item.med_id
+                            };
+                        }));
+
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#medico").val(ui.item.id)
+            },
+            minLength: 2
+        });
     });
 </script>
+<h2>Laboratorio</h2>
 <p>
-    @Html.ActionLink("Nuevo Registro", "Create", "", new { @class = "btn btn-default" })
-    @Html.ActionLink("Registro por Pefil", "Perfil", "", new { @class = "btn btn-default" })
-    @*@Html.ActionLink("Ingresar Resultados", "Insert", "", new { @class = "btn btn-default" })*@
-    @Html.ActionLink("Cargar Resultados", "Cargar", "", new { @class = "btn btn-default" })
-    @*@Html.ActionLink("Reporte por Paciente", "Reporte", "", new { @class = "btn btn-default" })*@
-    @*@Html.ActionLink("Reporte sin Margen", "ReporteLimpio", "", new { @class = "btn btn-default" })*@
-    @Html.ActionLink("Codigos por Paciente", "Codigo", "", new { @class = "btn btn-default" })
+    @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+    {
+        @Html.ActionLink("Nuevo Registro", "Create", "", new { @class = "btn btn-default" })
+        @Html.ActionLink("Registro por Pefil", "Perfil", "", new { @class = "btn btn-default" })
+        @*@Html.ActionLink("Ingresar Resultados", "Insert", "", new { @class = "btn btn-default" })*@
+        @Html.ActionLink("Cargar Resultados", "Cargar", "", new { @class = "btn btn-default" })
+        @*@Html.ActionLink("Reporte por Paciente", "Reporte", "", new { @class = "btn btn-default" })*@
+        @Html.ActionLink("Codigos por Paciente", "Codigo", "", new { @class = "btn btn-default" })
+        
+
+    }
     @Html.ActionLink("Regresar", "Index", "Home", new { }, new { @class = "btn btn-default" })
+
 </p>
 
 <div class="panel panel-default">
@@ -60,11 +97,14 @@
         @using (Html.BeginForm())
         {
             @Html.Hidden("paciente", "", new { Value = ViewBag.paciente })
+            @Html.Hidden("medico", "", new { Value = ViewBag.medico })
             <div class="form-group">
                 @Html.Label("Paciente", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-3">
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
+                
+               
                 @Html.Label("Fecha", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-2">
                     @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
@@ -82,6 +122,9 @@
                 <th>
                     @*@Html.DisplayNameFor(model => model.paciente.pac_nombres) @Html.DisplayNameFor(model => model.paciente.pac_apellidos)*@
                     Paciente
+                </th>
+                <th>
+                    Empresa
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.reg_orden)
@@ -102,23 +145,38 @@
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem=>item.paciente.empresa.emp_nombre)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.reg_orden)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.reg_fecha)
                     </td>
                     <td>
-                        @Html.ActionLink("Ingresar", "Edit","Prueba", new { id = item.reg_id }, new { @class = "iconb icon-new", @title = "Ingresar Resultados" })
-                        @Html.ActionLink("Resultados", "Details", "Prueba", new { reg_id = item.reg_id }, new { @class = "iconb icon-table", @title = "Resultados" })
+                        @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+                        {
+                            @Html.ActionLink("Ingresar", "Edit", "Prueba", new { id = item.reg_id }, new { @class = "iconb icon-new", @title = "Ingresar Resultados" })
+                            @Html.ActionLink("Resultados", "Details", "Prueba", new { reg_id = item.reg_id }, new { @class = "iconb icon-table", @title = "Resultados" })
+                        }
+
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.reg_id }, new { @class = "iconb icon-edit", @title = "Editar" })
-                        @Html.ActionLink("Details", "Details", new { id = item.reg_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.reg_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = item.reg_id }, new { @class = "iconb icon-edit", @title = "Editar" })
+                            @Html.ActionLink("Details", "Details", new { id = item.reg_id }, new { @class = "iconb icon-detail", @title = "Detalle" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.reg_id }, new { @class = "iconb icon-delete", @title = "Borrar" })
+                        }
+
                     </td>
                     <td>
-                        @Html.ActionLink("Reporte", "Reporte", new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Normal",@target="_blank" })
-                        @Html.ActionLink("ReporteLimpio", "ReporteLimpio", new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Sin Margen", @target = "_blank" })
+                        @Html.ActionLink("Reporte", "Reporte", new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Normal", @target = "_blank" })
+                        @if (!User.IsInRole("paciente") && !User.IsInRole("trabajador") && !User.IsInRole("empresa"))
+                        {
+                            @Html.ActionLink("ReporteLimpio", "ReporteLimpio", new { id = item.reg_id }, new { @class = "iconb icon-pdf", @title = "Reporte Sin Margen", @target = "_blank" })
+                        }
+
                     </td>
                 </tr>
             }
@@ -130,7 +188,8 @@
 </div>
 
 
-<a href="@Url.Content("~/Historia/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/AutocompletePaciente")" id="link_paciente"></a>
+<a href="@Url.Content("~/Registro/AutocompleteMedico")" id="link_medico"></a>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

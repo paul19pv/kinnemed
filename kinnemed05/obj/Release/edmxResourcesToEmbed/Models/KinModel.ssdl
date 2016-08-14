@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="area">
     <Key>
       <PropertyRef Name="are_id" />
     </Key>
     <Property Name="are_id" Type="int" Nullable="false" />
     <Property Name="are_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="are_tipo" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="audiometria">
     <Key>
@@ -15,7 +16,11 @@
     <Property Name="aud_paciente" Type="int" Nullable="false" />
     <Property Name="aud_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="aud_observacion" Type="nvarchar(max)" />
-    <Property Name="aud_medico" Type="int" Nullable="false" />
+    <Property Name="aud_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="aud_responsable" Type="int" />
+    <Property Name="aud_perfil" Type="int" />
+    <Property Name="aud_laboratorista" Type="int" Nullable="false" />
+    <Property Name="aud_orden" Type="int" />
   </EntityType>
   <EntityType Name="canton">
     <Key>
@@ -33,12 +38,15 @@
     <Property Name="cie_codigo" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="cie_descripcion" Type="varchar" MaxLength="200" Nullable="false" />
   </EntityType>
-  <EntityType Name="componente">
+  <EntityType Name="codigo">
     <Key>
-      <PropertyRef Name="com_id" />
+      <PropertyRef Name="cod_id" />
     </Key>
-    <Property Name="com_id" Type="int" Nullable="false" />
-    <Property Name="com_nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cod_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cod_codigo" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="cod_imagen" Type="image" />
+    <Property Name="cod_registro" Type="int" Nullable="false" />
+    <Property Name="cod_area" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="concepto">
     <Key>
@@ -94,21 +102,26 @@
     <Property Name="esp_paciente" Type="int" Nullable="false" />
     <Property Name="esp_archivo" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="esp_observacion" Type="nvarchar(max)" />
-    <Property Name="esp_medico" Type="int" Nullable="false" />
+    <Property Name="esp_fecha" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="esp_responsable" Type="int" />
+    <Property Name="esp_perfil" Type="int" />
+    <Property Name="esp_laboratorista" Type="int" Nullable="false" />
+    <Property Name="esp_orden" Type="int" />
   </EntityType>
   <EntityType Name="examen">
     <Key>
       <PropertyRef Name="exa_id" />
     </Key>
-    <Property Name="exa_id" Type="int" Nullable="false" />
+    <Property Name="exa_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="exa_nombre" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="exa_unidad" Type="varchar" MaxLength="15" />
     <Property Name="exa_tipo" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="exa_area" Type="int" Nullable="false" />
     <Property Name="exa_item" Type="int" />
-    <Property Name="exa_valores" Type="varchar" MaxLength="500" />
+    <Property Name="exa_valores" Type="nvarchar(max)" />
     <Property Name="exa_inicial" Type="varchar" MaxLength="50" />
     <Property Name="exa_estado" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="exa_orden" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="familiar">
     <Key>
@@ -223,6 +236,7 @@
     <Property Name="his_fecha" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="his_numero" Type="int" Nullable="false" />
     <Property Name="his_medico" Type="int" Nullable="false" />
+    <Property Name="his_firma" Type="image" />
   </EntityType>
   <EntityType Name="inmunizacion">
     <Key>
@@ -252,7 +266,7 @@
     <Property Name="lab_nombres" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="lab_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="lab_correo" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="lab_firma" Type="varchar" MaxLength="256" />
+    <Property Name="lab_firma" Type="image" />
     <Property Name="lab_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="medico">
@@ -267,7 +281,7 @@
     <Property Name="med_codigo" Type="varchar" MaxLength="50" />
     <Property Name="med_especialidad" Type="int" Nullable="false" />
     <Property Name="med_correo" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="med_firma" Type="varchar" MaxLength="256" />
+    <Property Name="med_firma" Type="image" />
     <Property Name="med_estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="ocupacional">
@@ -309,10 +323,23 @@
     <Property Name="oft_fon_txt" Type="varchar" MaxLength="150" />
     <Property Name="oft_colores" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="oft_diagnostico" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="oft_dia_txt" Type="varchar" MaxLength="150" />
+    <Property Name="oft_dia_txt" Type="varchar(max)" />
     <Property Name="oft_indicaciones" Type="varchar" MaxLength="150" Nullable="false" />
-    <Property Name="oft_ind_txt" Type="varchar" MaxLength="150" />
-    <Property Name="oft_medico" Type="int" Nullable="false" />
+    <Property Name="oft_ind_txt" Type="varchar(max)" />
+    <Property Name="oft_otros" Type="varchar" MaxLength="250" />
+    <Property Name="oft_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="oft_responsable" Type="int" />
+    <Property Name="oft_perfil" Type="int" />
+    <Property Name="oft_orden" Type="int" />
+  </EntityType>
+  <EntityType Name="orden">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="int" Nullable="false" />
+    <Property Name="ord_paciente" Type="int" Nullable="false" />
+    <Property Name="ord_examen" Type="int" Nullable="false" />
+    <Property Name="ord_fecha" Type="varchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="paciente">
     <Key>
@@ -338,8 +365,8 @@
     <Property Name="pac_tipodiscapacidad" Type="varchar" MaxLength="50" />
     <Property Name="pac_porcentajediscapacidad" Type="int" />
     <Property Name="pac_empresa" Type="int" Nullable="false" />
-    <Property Name="pac_firma" Type="varchar" MaxLength="256" />
     <Property Name="pac_estado" Type="bit" Nullable="false" />
+    <Property Name="pac_varios" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="pais">
     <Key>
@@ -403,10 +430,8 @@
     <Property Name="pru_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="pru_examen" Type="int" Nullable="false" />
     <Property Name="pru_registro" Type="int" Nullable="false" />
-    <Property Name="pru_resultado" Type="varchar" MaxLength="20" />
+    <Property Name="pru_resultado" Type="varchar" MaxLength="40" />
     <Property Name="pru_valor" Type="varchar" MaxLength="20" />
-    <Property Name="pru_codigo" Type="varchar" MaxLength="12" Nullable="false" />
-    <Property Name="pru_imagen" Type="image" Nullable="false" />
     <Property Name="pru_fuera" Type="varchar" MaxLength="2" />
   </EntityType>
   <EntityType Name="rayos">
@@ -417,7 +442,11 @@
     <Property Name="ray_paciente" Type="int" Nullable="false" />
     <Property Name="ray_imagen" Type="varchar" MaxLength="256" Nullable="false" />
     <Property Name="ray_observacion" Type="nvarchar(max)" />
-    <Property Name="ray_medico" Type="int" Nullable="false" />
+    <Property Name="ray_fecha" Type="varchar" MaxLength="10" />
+    <Property Name="ray_responsable" Type="int" />
+    <Property Name="ray_perfil" Type="int" />
+    <Property Name="ray_laboratorista" Type="int" Nullable="false" />
+    <Property Name="ray_orden" Type="int" />
   </EntityType>
   <EntityType Name="registro">
     <Key>
@@ -427,9 +456,20 @@
     <Property Name="reg_paciente" Type="int" Nullable="false" />
     <Property Name="reg_orden" Type="int" Nullable="false" />
     <Property Name="reg_fecha" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="reg_medico" Type="int" Nullable="false" />
     <Property Name="reg_estado" Type="bit" />
     <Property Name="reg_laboratorista" Type="int" Nullable="false" />
+    <Property Name="reg_validacion" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="reposo">
+    <Key>
+      <PropertyRef Name="rep_id" />
+    </Key>
+    <Property Name="rep_id" Type="int" Nullable="false" />
+    <Property Name="rep_inicio" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="rep_fin" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="rep_tiempo" Type="int" Nullable="false" />
+    <Property Name="rep_ini_txt" Type="varchar" MaxLength="500" />
+    <Property Name="rep_fin_txt" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="revision">
     <Key>
@@ -537,17 +577,17 @@
     <Property Name="val_categoria" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="val_examen" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK_audiometria_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
+  <Association Name="FK_audiometria_laboratorista">
+    <End Role="laboratorista" Type="Self.laboratorista" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="audiometria" Type="Self.audiometria" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
+      <Principal Role="laboratorista">
+        <PropertyRef Name="lab_id" />
       </Principal>
       <Dependent Role="audiometria">
-        <PropertyRef Name="aud_medico" />
+        <PropertyRef Name="aud_laboratorista" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -576,6 +616,34 @@
       </Principal>
       <Dependent Role="canton">
         <PropertyRef Name="can_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_codigo_area">
+    <End Role="area" Type="Self.area" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="codigo" Type="Self.codigo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="are_id" />
+      </Principal>
+      <Dependent Role="codigo">
+        <PropertyRef Name="cod_area" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_codigo_registro">
+    <End Role="registro" Type="Self.registro" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="codigo" Type="Self.codigo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro">
+        <PropertyRef Name="reg_id" />
+      </Principal>
+      <Dependent Role="codigo">
+        <PropertyRef Name="cod_registro" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -636,7 +704,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_diagnostico_sub_cie10">
-    <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="1" />
+    <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="diagnostico" Type="Self.diagnostico" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="sub_cie10">
@@ -647,17 +717,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_espirometria_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
+  <Association Name="FK_espirometria_laboratorista">
+    <End Role="laboratorista" Type="Self.laboratorista" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="espirometria" Type="Self.espirometria" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
+      <Principal Role="laboratorista">
+        <PropertyRef Name="lab_id" />
       </Principal>
       <Dependent Role="espirometria">
-        <PropertyRef Name="esp_medico" />
+        <PropertyRef Name="esp_laboratorista" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -843,20 +913,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_oftalmologia_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="oftalmologia" Type="Self.oftalmologia" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="oftalmologia">
-        <PropertyRef Name="oft_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_oftalmologia_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -868,6 +924,34 @@
       </Principal>
       <Dependent Role="oftalmologia">
         <PropertyRef Name="oft_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_examen">
+    <End Role="examen" Type="Self.examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="orden" Type="Self.orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_paciente">
+    <End Role="paciente" Type="Self.paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="orden" Type="Self.orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_paciente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -981,17 +1065,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_rayos_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
+  <Association Name="FK_rayos_laboratorista">
+    <End Role="laboratorista" Type="Self.laboratorista" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="rayos" Type="Self.rayos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
+      <Principal Role="laboratorista">
+        <PropertyRef Name="lab_id" />
       </Principal>
       <Dependent Role="rayos">
-        <PropertyRef Name="ray_medico" />
+        <PropertyRef Name="ray_laboratorista" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1023,20 +1107,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_registro_medico">
-    <End Role="medico" Type="Self.medico" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="registro" Type="Self.registro" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="medico">
-        <PropertyRef Name="med_id" />
-      </Principal>
-      <Dependent Role="registro">
-        <PropertyRef Name="reg_medico" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_registro_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1048,6 +1118,20 @@
       </Principal>
       <Dependent Role="registro">
         <PropertyRef Name="reg_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reposo_historia">
+    <End Role="historia" Type="Self.historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="reposo" Type="Self.reposo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="reposo">
+        <PropertyRef Name="rep_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1080,7 +1164,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_sub_cie10_cie10">
-    <End Role="cie10" Type="Self.cie10" Multiplicity="1" />
+    <End Role="cie10" Type="Self.cie10" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="sub_cie10" Type="Self.sub_cie10" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="cie10">
@@ -1133,12 +1219,47 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="getReporte01" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte03" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte04" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte05" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte06" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getReporte07" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="kinnemedModelStoreContainer">
     <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="audiometria" EntityType="Self.audiometria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="canton" EntityType="Self.canton" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="cie10" EntityType="Self.cie10" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="componente" EntityType="Self.componente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="codigo" EntityType="Self.codigo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="concepto" EntityType="Self.concepto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="control" EntityType="Self.control" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="diagnostico" EntityType="Self.diagnostico" Schema="dbo" store:Type="Tables" />
@@ -1156,6 +1277,7 @@
     <EntitySet Name="medico" EntityType="Self.medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ocupacional" EntityType="Self.ocupacional" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="oftalmologia" EntityType="Self.oftalmologia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden" EntityType="Self.orden" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="paciente" EntityType="Self.paciente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="pais" EntityType="Self.pais" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="perfil" EntityType="Self.perfil" Schema="dbo" store:Type="Tables" />
@@ -1166,6 +1288,7 @@
     <EntitySet Name="prueba" EntityType="Self.prueba" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="rayos" EntityType="Self.rayos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="registro" EntityType="Self.registro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reposo" EntityType="Self.reposo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="revision" EntityType="Self.revision" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="riesgo" EntityType="Self.riesgo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="signos" EntityType="Self.signos" Schema="dbo" store:Type="Tables" />
@@ -1174,8 +1297,8 @@
     <EntitySet Name="trabajador" EntityType="Self.trabajador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="vacuna" EntityType="Self.vacuna" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="valores" EntityType="Self.valores" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_audiometria_medico" Association="Self.FK_audiometria_medico">
-      <End Role="medico" EntitySet="medico" />
+    <AssociationSet Name="FK_audiometria_laboratorista" Association="Self.FK_audiometria_laboratorista">
+      <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="audiometria" EntitySet="audiometria" />
     </AssociationSet>
     <AssociationSet Name="FK_audiometria_paciente" Association="Self.FK_audiometria_paciente">
@@ -1185,6 +1308,14 @@
     <AssociationSet Name="FK_canton_provincia" Association="Self.FK_canton_provincia">
       <End Role="provincia" EntitySet="provincia" />
       <End Role="canton" EntitySet="canton" />
+    </AssociationSet>
+    <AssociationSet Name="FK_codigo_area" Association="Self.FK_codigo_area">
+      <End Role="area" EntitySet="area" />
+      <End Role="codigo" EntitySet="codigo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_codigo_registro" Association="Self.FK_codigo_registro">
+      <End Role="registro" EntitySet="registro" />
+      <End Role="codigo" EntitySet="codigo" />
     </AssociationSet>
     <AssociationSet Name="FK_concepto_historia" Association="Self.FK_concepto_historia">
       <End Role="historia" EntitySet="historia" />
@@ -1206,8 +1337,8 @@
       <End Role="sub_cie10" EntitySet="sub_cie10" />
       <End Role="diagnostico" EntitySet="diagnostico" />
     </AssociationSet>
-    <AssociationSet Name="FK_espirometria_medico" Association="Self.FK_espirometria_medico">
-      <End Role="medico" EntitySet="medico" />
+    <AssociationSet Name="FK_espirometria_laboratorista" Association="Self.FK_espirometria_laboratorista">
+      <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="espirometria" EntitySet="espirometria" />
     </AssociationSet>
     <AssociationSet Name="FK_espirometria_paciente" Association="Self.FK_espirometria_paciente">
@@ -1262,13 +1393,17 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ocupacional" EntitySet="ocupacional" />
     </AssociationSet>
-    <AssociationSet Name="FK_oftalmologia_medico" Association="Self.FK_oftalmologia_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="oftalmologia" EntitySet="oftalmologia" />
-    </AssociationSet>
     <AssociationSet Name="FK_oftalmologia_paciente" Association="Self.FK_oftalmologia_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="oftalmologia" EntitySet="oftalmologia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_examen" Association="Self.FK_orden_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="orden" EntitySet="orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_paciente" Association="Self.FK_orden_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="orden" EntitySet="orden" />
     </AssociationSet>
     <AssociationSet Name="FK_paciente_canton" Association="Self.FK_paciente_canton">
       <End Role="canton" EntitySet="canton" />
@@ -1302,8 +1437,8 @@
       <End Role="registro" EntitySet="registro" />
       <End Role="prueba" EntitySet="prueba" />
     </AssociationSet>
-    <AssociationSet Name="FK_rayos_medico" Association="Self.FK_rayos_medico">
-      <End Role="medico" EntitySet="medico" />
+    <AssociationSet Name="FK_rayos_laboratorista" Association="Self.FK_rayos_laboratorista">
+      <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="rayos" EntitySet="rayos" />
     </AssociationSet>
     <AssociationSet Name="FK_rayos_paciente" Association="Self.FK_rayos_paciente">
@@ -1314,13 +1449,13 @@
       <End Role="laboratorista" EntitySet="laboratorista" />
       <End Role="registro" EntitySet="registro" />
     </AssociationSet>
-    <AssociationSet Name="FK_registro_medico" Association="Self.FK_registro_medico">
-      <End Role="medico" EntitySet="medico" />
-      <End Role="registro" EntitySet="registro" />
-    </AssociationSet>
     <AssociationSet Name="FK_registro_paciente" Association="Self.FK_registro_paciente">
       <End Role="paciente" EntitySet="paciente" />
       <End Role="registro" EntitySet="registro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reposo_historia" Association="Self.FK_reposo_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="reposo" EntitySet="reposo" />
     </AssociationSet>
     <AssociationSet Name="FK_revision_historia" Association="Self.FK_revision_historia">
       <End Role="historia" EntitySet="historia" />

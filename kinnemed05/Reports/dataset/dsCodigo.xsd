@@ -9,20 +9,20 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_codigoTableAdapter" GeneratorDataComponentClassName="view_codigoTableAdapter" Name="view_codigo" UserDataComponentName="view_codigoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="bd_kinnemed02.dbo.view_codigo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_codigo" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT pru_codigo, pru_imagen, pac_apellidos, pac_nombres, reg_id FROM dbo.view_codigo</CommandText>
+                    <CommandText>SELECT cod_codigo, cod_imagen, pac_nombres, pac_apellidos, reg_id FROM dbo.view_codigo</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="pru_codigo" DataSetColumn="pru_codigo" />
-              <Mapping SourceColumn="pru_imagen" DataSetColumn="pru_imagen" />
-              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="cod_codigo" DataSetColumn="cod_codigo" />
+              <Mapping SourceColumn="cod_imagen" DataSetColumn="cod_imagen" />
               <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
               <Mapping SourceColumn="reg_id" DataSetColumn="reg_id" />
             </Mappings>
             <Sources />
@@ -38,22 +38,22 @@
         <xs:element name="view_codigo" msprop:Generator_TableClassName="view_codigoDataTable" msprop:Generator_TableVarName="tableview_codigo" msprop:Generator_TablePropName="view_codigo" msprop:Generator_RowDeletingName="view_codigoRowDeleting" msprop:Generator_RowChangingName="view_codigoRowChanging" msprop:Generator_RowEvHandlerName="view_codigoRowChangeEventHandler" msprop:Generator_RowDeletedName="view_codigoRowDeleted" msprop:Generator_UserTableName="view_codigo" msprop:Generator_RowChangedName="view_codigoRowChanged" msprop:Generator_RowEvArgName="view_codigoRowChangeEvent" msprop:Generator_RowClassName="view_codigoRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="pru_codigo" msprop:Generator_ColumnVarNameInTable="columnpru_codigo" msprop:Generator_ColumnPropNameInRow="pru_codigo" msprop:Generator_ColumnPropNameInTable="pru_codigoColumn" msprop:Generator_UserColumnName="pru_codigo">
+              <xs:element name="cod_codigo" msprop:Generator_ColumnVarNameInTable="columncod_codigo" msprop:Generator_ColumnPropNameInRow="cod_codigo" msprop:Generator_ColumnPropNameInTable="cod_codigoColumn" msprop:Generator_UserColumnName="cod_codigo">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="12" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="pru_imagen" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpru_imagen" msprop:Generator_ColumnPropNameInRow="pru_imagen" msprop:Generator_ColumnPropNameInTable="pru_imagenColumn" msprop:Generator_UserColumnName="pru_imagen" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+              <xs:element name="cod_imagen" msprop:Generator_ColumnVarNameInTable="columncod_imagen" msprop:Generator_ColumnPropNameInRow="cod_imagen" msprop:Generator_ColumnPropNameInTable="cod_imagenColumn" msprop:Generator_UserColumnName="cod_imagen" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDiagnostico" targetNamespace="http://tempuri.org/dsDiagnostico.xsd" xmlns:mstns="http://tempuri.org/dsDiagnostico.xsd" xmlns="http://tempuri.org/dsDiagnostico.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_diagnosticoTableAdapter" GeneratorDataComponentClassName="view_diagnosticoTableAdapter" Name="view_diagnostico" UserDataComponentName="view_diagnosticoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_diagnostico" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT cie_codigo, sub_codigo, sub_descripcion, dia_descripcion, dia_tipo, dia_historia FROM dbo.view_diagnostico</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="cie_codigo" DataSetColumn="cie_codigo" />
+              <Mapping SourceColumn="sub_codigo" DataSetColumn="sub_codigo" />
+              <Mapping SourceColumn="sub_descripcion" DataSetColumn="sub_descripcion" />
+              <Mapping SourceColumn="dia_descripcion" DataSetColumn="dia_descripcion" />
+              <Mapping SourceColumn="dia_tipo" DataSetColumn="dia_tipo" />
+              <Mapping SourceColumn="dia_historia" DataSetColumn="dia_historia" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDiagnostico" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDiagnostico" msprop:Generator_UserDSName="dsDiagnostico">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_diagnostico" msprop:Generator_TableClassName="view_diagnosticoDataTable" msprop:Generator_TableVarName="tableview_diagnostico" msprop:Generator_TablePropName="view_diagnostico" msprop:Generator_RowDeletingName="view_diagnosticoRowDeleting" msprop:Generator_RowChangingName="view_diagnosticoRowChanging" msprop:Generator_RowEvHandlerName="view_diagnosticoRowChangeEventHandler" msprop:Generator_RowDeletedName="view_diagnosticoRowDeleted" msprop:Generator_UserTableName="view_diagnostico" msprop:Generator_RowChangedName="view_diagnosticoRowChanged" msprop:Generator_RowEvArgName="view_diagnosticoRowChangeEvent" msprop:Generator_RowClassName="view_diagnosticoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cie_codigo" msprop:Generator_ColumnVarNameInTable="columncie_codigo" msprop:Generator_ColumnPropNameInRow="cie_codigo" msprop:Generator_ColumnPropNameInTable="cie_codigoColumn" msprop:Generator_UserColumnName="cie_codigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sub_codigo" msprop:Generator_ColumnVarNameInTable="columnsub_codigo" msprop:Generator_ColumnPropNameInRow="sub_codigo" msprop:Generator_ColumnPropNameInTable="sub_codigoColumn" msprop:Generator_UserColumnName="sub_codigo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sub_descripcion" msprop:Generator_ColumnVarNameInTable="columnsub_descripcion" msprop:Generator_ColumnPropNameInRow="sub_descripcion" msprop:Generator_ColumnPropNameInTable="sub_descripcionColumn" msprop:Generator_UserColumnName="sub_descripcion">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="350" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dia_descripcion" msprop:Generator_ColumnVarNameInTable="columndia_descripcion" msprop:Generator_ColumnPropNameInRow="dia_descripcion" msprop:Generator_ColumnPropNameInTable="dia_descripcionColumn" msprop:Generator_UserColumnName="dia_descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dia_tipo" msprop:Generator_ColumnVarNameInTable="columndia_tipo" msprop:Generator_ColumnPropNameInRow="dia_tipo" msprop:Generator_ColumnPropNameInTable="dia_tipoColumn" msprop:Generator_UserColumnName="dia_tipo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dia_historia" msprop:Generator_ColumnVarNameInTable="columndia_historia" msprop:Generator_ColumnPropNameInRow="dia_historia" msprop:Generator_ColumnPropNameInTable="dia_historiaColumn" msprop:Generator_UserColumnName="dia_historia" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

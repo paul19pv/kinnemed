@@ -18,12 +18,7 @@
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", Value = @ViewBag.paciente, @readonly = "readonly" })
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.esp_medico, new { @class = "control-label", @for = "inputDefault" })
-                    @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico, @readonly = "readonly" })
-                </div>
-            </div>
+            
             <div class="col-lg-4">
                 <div class="form-group">
                     @Html.LabelFor(model => model.esp_archivo, new { @class = "control-label", @for = "inputDefault" })

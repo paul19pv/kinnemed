@@ -92,6 +92,9 @@
                 @Html.ValidationSummary(true)
                 @Html.HiddenFor(model => model.aud_id)
                 @Html.HiddenFor(model => model.aud_archivo)
+                @Html.HiddenFor(model=>model.aud_fecha)
+                @Html.HiddenFor(model=>model.aud_laboratorista)
+                @Html.HiddenFor(model=>model.aud_orden)
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.TextBoxFor(model => model.aud_paciente, new { @class = "form-control", @type = "hidden" })
@@ -100,14 +103,7 @@
                         @Html.ValidationMessageFor(model => model.aud_paciente)
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group">
-                        @Html.TextBoxFor(model => model.aud_medico, new { @class = "form-control", @type = "hidden" })
-                        @Html.LabelFor(model => model.aud_medico, new { @class = "control-label", @for = "inputDefault" })
-                        @Html.TextBox("txt_medico", "", new { @class = "form-control", Value = @ViewBag.medico })
-                        @Html.ValidationMessageFor(model => model.aud_medico)
-                    </div>
-                </div>
+              
 
 
                 <div class="col-lg-4">

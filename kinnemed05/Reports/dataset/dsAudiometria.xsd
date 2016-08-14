@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAudiometria" targetNamespace="http://tempuri.org/dsAudiometria.xsd" xmlns:mstns="http://tempuri.org/dsAudiometria.xsd" xmlns="http://tempuri.org/dsAudiometria.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="DefaultConnection" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DefaultConnection (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.DefaultConnection.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_audiometriaTableAdapter" GeneratorDataComponentClassName="view_audiometriaTableAdapter" Name="view_audiometria" UserDataComponentName="view_audiometriaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_audiometria" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT aud_id, pac_cedula, pac_nombres, pac_apellidos, pac_edad, pac_genero, emp_nombre, aud_observacion, aud_fecha, aud_responsable, aud_perfil, responsable, firma, aud_orden FROM dbo.view_audiometria</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="aud_id" DataSetColumn="aud_id" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
+              <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="pac_edad" DataSetColumn="pac_edad" />
+              <Mapping SourceColumn="pac_genero" DataSetColumn="pac_genero" />
+              <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
+              <Mapping SourceColumn="aud_observacion" DataSetColumn="aud_observacion" />
+              <Mapping SourceColumn="aud_fecha" DataSetColumn="aud_fecha" />
+              <Mapping SourceColumn="aud_responsable" DataSetColumn="aud_responsable" />
+              <Mapping SourceColumn="aud_perfil" DataSetColumn="aud_perfil" />
+              <Mapping SourceColumn="responsable" DataSetColumn="responsable" />
+              <Mapping SourceColumn="firma" DataSetColumn="firma" />
+              <Mapping SourceColumn="aud_orden" DataSetColumn="aud_orden" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAudiometria" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAudiometria" msprop:Generator_UserDSName="dsAudiometria">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_audiometria" msprop:Generator_TableClassName="view_audiometriaDataTable" msprop:Generator_TableVarName="tableview_audiometria" msprop:Generator_TablePropName="view_audiometria" msprop:Generator_RowDeletingName="view_audiometriaRowDeleting" msprop:Generator_RowChangingName="view_audiometriaRowChanging" msprop:Generator_RowEvHandlerName="view_audiometriaRowChangeEventHandler" msprop:Generator_RowDeletedName="view_audiometriaRowDeleted" msprop:Generator_UserTableName="view_audiometria" msprop:Generator_RowChangedName="view_audiometriaRowChanged" msprop:Generator_RowEvArgName="view_audiometriaRowChangeEvent" msprop:Generator_RowClassName="view_audiometriaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="aud_id" msprop:Generator_ColumnVarNameInTable="columnaud_id" msprop:Generator_ColumnPropNameInRow="aud_id" msprop:Generator_ColumnPropNameInTable="aud_idColumn" msprop:Generator_UserColumnName="aud_id" type="xs:int" />
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_edad" msprop:Generator_ColumnVarNameInTable="columnpac_edad" msprop:Generator_ColumnPropNameInRow="pac_edad" msprop:Generator_ColumnPropNameInTable="pac_edadColumn" msprop:Generator_UserColumnName="pac_edad" type="xs:int" />
+              <xs:element name="pac_genero" msprop:Generator_ColumnVarNameInTable="columnpac_genero" msprop:Generator_ColumnPropNameInRow="pac_genero" msprop:Generator_ColumnPropNameInTable="pac_generoColumn" msprop:Generator_UserColumnName="pac_genero" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="emp_nombre" msprop:Generator_ColumnVarNameInTable="columnemp_nombre" msprop:Generator_ColumnPropNameInRow="emp_nombre" msprop:Generator_ColumnPropNameInTable="emp_nombreColumn" msprop:Generator_UserColumnName="emp_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aud_observacion" msprop:Generator_ColumnVarNameInTable="columnaud_observacion" msprop:Generator_ColumnPropNameInRow="aud_observacion" msprop:Generator_ColumnPropNameInTable="aud_observacionColumn" msprop:Generator_UserColumnName="aud_observacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aud_fecha" msprop:Generator_ColumnVarNameInTable="columnaud_fecha" msprop:Generator_ColumnPropNameInRow="aud_fecha" msprop:Generator_ColumnPropNameInTable="aud_fechaColumn" msprop:Generator_UserColumnName="aud_fecha">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aud_responsable" msprop:Generator_ColumnVarNameInTable="columnaud_responsable" msprop:Generator_ColumnPropNameInRow="aud_responsable" msprop:Generator_ColumnPropNameInTable="aud_responsableColumn" msprop:Generator_UserColumnName="aud_responsable" type="xs:int" minOccurs="0" />
+              <xs:element name="aud_perfil" msprop:Generator_ColumnVarNameInTable="columnaud_perfil" msprop:Generator_ColumnPropNameInRow="aud_perfil" msprop:Generator_ColumnPropNameInTable="aud_perfilColumn" msprop:Generator_UserColumnName="aud_perfil" type="xs:int" minOccurs="0" />
+              <xs:element name="responsable" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnresponsable" msprop:Generator_ColumnPropNameInRow="responsable" msprop:Generator_ColumnPropNameInTable="responsableColumn" msprop:Generator_UserColumnName="responsable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="firma" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfirma" msprop:Generator_ColumnPropNameInRow="firma" msprop:Generator_ColumnPropNameInTable="firmaColumn" msprop:Generator_UserColumnName="firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="aud_orden" msprop:Generator_ColumnVarNameInTable="columnaud_orden" msprop:Generator_ColumnPropNameInRow="aud_orden" msprop:Generator_ColumnPropNameInTable="aud_ordenColumn" msprop:Generator_UserColumnName="aud_orden" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_audiometria" />
+      <xs:field xpath="mstns:aud_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

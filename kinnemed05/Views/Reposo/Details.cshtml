@@ -1,0 +1,43 @@
+﻿@model kinnemed05.Models.reposo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>reposo</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rep_inicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rep_inicio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rep_fin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rep_fin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.rep_tiempo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.rep_tiempo)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.historia.his_motivo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.historia.his_motivo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

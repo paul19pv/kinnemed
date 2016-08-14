@@ -25,5 +25,8 @@ namespace kinnemed05.Models
         public int his_numero { get; set; }
         [Display(Name = "Médico")]
         public int his_medico { get; set; }
+
+        [Display(Name = "Firma")]
+        public byte[] his_firma { get; set; }
     }
 }

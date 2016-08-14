@@ -16,13 +16,14 @@ namespace kinnemed05.Models
     {
         public registro()
         {
+            this.codigo = new HashSet<codigo>();
             this.prueba = new HashSet<prueba>();
         }
     
         public int reg_id { get; set; }
     
+        public virtual ICollection<codigo> codigo { get; set; }
         public virtual laboratorista laboratorista { get; set; }
-        public virtual medico medico { get; set; }
         public virtual paciente paciente { get; set; }
         public virtual ICollection<prueba> prueba { get; set; }
     }

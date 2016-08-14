@@ -21,6 +21,7 @@
                 <div class="form-group">
                     @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "Contraseña" })
                     @Html.ValidationMessageFor(model => model.Password)
+                    
                 </div>
                 <div class="col-lg-10 col-lg-offset-3">
                     <input class="btn btn-default" type="submit" value="Log in" />

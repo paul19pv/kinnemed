@@ -17,7 +17,7 @@ namespace kinnemed05.Models
         public string emp_cedula { get; set; }
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9.&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(50, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 50")]
         public string emp_nombre { get; set; }
         [Display(Name = "Dirección")]

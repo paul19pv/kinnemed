@@ -14,8 +14,9 @@
                     @Html.DisplayNameFor(model => model.esp_paciente)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.esp_medico)
+                    Empresa
                 </th>
+              
                 <th>
                     @Html.DisplayNameFor(model => model.esp_observacion)
                 </th>
@@ -29,13 +30,15 @@
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.medico.med_nombres) @Html.DisplayFor(modelItem => item.medico.med_apellidos)
+                        @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
+                 
                     <td>
                         @Html.DisplayFor(modelItem => item.esp_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.esp_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
+                        @*@Html.ActionLink("Detalle", "Details", "Espirometria", new { id = item.esp_id }, new { @class = "iconb icon-detail", @title = "Descargar" })*@
+                        @Html.ActionLink("Descargar", "Descargar", "Espirometria", new { id = item.esp_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
                     </td>
                 </tr>
             }

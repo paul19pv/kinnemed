@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    $('.iconb').tooltip()
-    $('.btn-img').tooltip()
+    $('.iconb').tooltip();
+    $('.btn-img').tooltip();
     $('.form-group select').addClass('form-control');
     //$("#pac_fechanacimiento").datepicker({
     //    changeMonth: true,
@@ -41,11 +41,11 @@
 
 $(document).ajaxStart(function () {
     $('#div_loading').show();
-    $('#div_form').hide();
+    //$('#div_form').hide();
 });
 $(document).ajaxStop(function () {
     $('#div_loading').hide();
-    $('#div_form').show();
+    //$('#div_form').show();
 });
 
 restaFechas = function (f1, f2) {

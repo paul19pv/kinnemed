@@ -25,7 +25,7 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Modificar Laboratorista</h3>
+                <h3 class="panel-title">Modificar Técnico</h3>
             </div>
             <div class="panel-body">
                 <div class="col-lg-4">
@@ -63,8 +63,10 @@
                         @Html.LabelFor(model => model.lab_firma, new { @class = "control-label", @for = "inputDefault" })
                         @if (Model.lab_firma != null)
                         {
+                            string ruta = "data:image/jpg;base64," + Convert.ToBase64String((byte[])Model.lab_firma);
                             <div class="form-group">
-                                <img src="@Url.Content("~/Content/firmas/" + Model.lab_firma)" class="img-rounded" />
+                                
+                                <img src="@ruta" class="img-rounded" />
                             </div>
                         }
                         <input type="button" id="btn_upload" value="Cambiar" class="btn btn-default" style="clear:both;float:left;" />

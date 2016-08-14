@@ -111,6 +111,7 @@
             {
                 @Html.AntiForgeryToken()
                 @Html.ValidationSummary(true)
+                @Html.ValidationMessage("user")
                 <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.pac_cedula, new { @class = "control-label", @for = "inputDefault" })
@@ -239,11 +240,17 @@
                     </div>
 
                     <div class="form-group">
+                        @Html.LabelFor(model => model.pac_varios, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.pac_varios, new { @class = "form-control", @rows = "5" })
+                        @Html.ValidationMessageFor(model => model.pac_varios)
+                    </div>
+
+                    @*<div class="form-group">
                         <label>Archivo</label>
                         <input type="file" name="Create" id="Create">
                         @Html.ValidationMessageFor(model => model.pac_firma)
                         @Html.ValidationMessage("ext")
-                    </div>
+                    </div>*@
 
                 </div>
                 <div class="form-group" style="clear:both">

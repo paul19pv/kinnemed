@@ -17,7 +17,7 @@ namespace kinnemed05.Controllers
     public class LaboratoristaController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();
-
+        private UsersContext db_user = new UsersContext();
         //
         // GET: /Laboratorista/
 
@@ -63,11 +63,12 @@ namespace kinnemed05.Controllers
                 if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
                 {
                     Firma objfirma = new Firma();
-                    laboratorista.lab_firma = fileName;
+                    //laboratorista.lab_firma = fileName;
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
+                    laboratorista.lab_firma = ConvertBytes(path01);
                 }
                 else
                 {
@@ -76,7 +77,7 @@ namespace kinnemed05.Controllers
                             ModelState.AddModelError("ext", "Extensión no Válida");
                 }
             }
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && IsUserExist(laboratorista.lab_cedula))
             {
                 db.laboratorista.Add(laboratorista);
                 db.SaveChanges();
@@ -125,11 +126,12 @@ namespace kinnemed05.Controllers
                 if (!String.IsNullOrEmpty(fileName) && (Array.IndexOf(formatos, ext) > 0))
                 {
                     Firma objfirma = new Firma();
-                    laboratorista.lab_firma = fileName;
+                    //laboratorista.lab_firma = fileName;
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
+                    laboratorista.lab_firma = ConvertBytes(path01);
                 }
                 else
                 {
@@ -174,7 +176,25 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        public Byte[] ConvertBytes(String ruta)
+        {
+            FileStream foto = new FileStream(ruta, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            Byte[] arreglo = new Byte[foto.Length];
+            BinaryReader reader = new BinaryReader(foto);
+            arreglo = reader.ReadBytes(Convert.ToInt32(foto.Length));
+            return arreglo;
+        }
+        private bool IsUserExist(string usuario)
+        {
+            bool estado = true;
+            var consulta = db_user.UserProfiles.Where(u => u.UserName == usuario);
+            if (consulta.Any())
+            {
+                estado = false;
+                ModelState.AddModelError("user", "El técnico ya esta registrado con otro perfil por favor verifique la información");
+            }
+            return estado;
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

@@ -35,6 +35,8 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Index(int? id, int? paciente, string fecha)
         {
+            
+                
             var registro = db.registro.Include(r => r.paciente);
             if (id != null)
                 registro = db.registro.Where(r => r.reg_paciente == id);
@@ -43,8 +45,23 @@ namespace kinnemed05.Controllers
             if (!String.IsNullOrEmpty(fecha))
                 registro = registro.Where(r=>r.reg_fecha == fecha);
             registro = registro.Where(r => r.reg_estado != false);
+            if (User.IsInRole("paciente"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                paciente paciente_ = db.paciente.Where(p => p.pac_cedula == cedula).First();
+                registro = registro.Where(r => r.reg_paciente == paciente_.pac_id);
+            }
+            if (User.IsInRole("empresa"))
+            {
+                string cedula = Convert.ToString(User.Identity.Name);
+                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
+                registro = registro.Where(r => r.paciente.pac_empresa == empresa.emp_id);
+            }
+
+
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia",registro.ToList());
+
             return View(registro.ToList());
         }
 
@@ -73,7 +90,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Details/5
-        
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
         public ActionResult Details(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -169,8 +186,9 @@ namespace kinnemed05.Controllers
                     prueba prueba = new prueba();
                     prueba.pru_examen = item.con_examen;
                     prueba.pru_registro = reg_id;
-                    prueba.pru_codigo = GetCodigo(reg_id, item.con_examen);
-                    prueba.pru_imagen = barcode.GenerarCodigo(prueba.pru_codigo);
+                    //prueba.pru_codigo = GetCodigo(reg_id, item.con_examen);
+                    //prueba.pru_imagen = barcode.GenerarCodigo(prueba.pru_codigo);
+                    set_codigo(prueba.pru_registro, prueba.examen.exa_area);
                     db.prueba.Add(prueba);
                     db.SaveChanges();
                 }
@@ -276,7 +294,7 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         public ActionResult Codigo() {
             DateTime dd = DateTime.Today;
             string fecha = dd.Date.ToString("d");
@@ -284,9 +302,10 @@ namespace kinnemed05.Controllers
             return View();
 
         }
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AcceptVerbs(HttpVerbs.Post)]
+        
         public ActionResult Codigo(registro registro)
         {
             var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
@@ -312,9 +331,6 @@ namespace kinnemed05.Controllers
                 rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCodigo.rpt"));
                 rp.SetDataSource(dt);
                 rp.SetParameterValue("paciente", paciente);
-                //Response.Buffer = false;
-                //Response.ClearContent();
-                //Response.ClearHeaders();
 
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -329,13 +345,8 @@ namespace kinnemed05.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult Codigo(int id)
+        public ActionResult ReporteCodigo(int id)
         {
-            //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-            //if (!consulta.Any())
-            //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" + registro.reg_fecha + registro.reg_paciente });
-
-
             string conn = ConfigurationManager.AppSettings["conexion"];
             registro registro = db.registro.Find(id);
             int reg_id = registro.reg_id;
@@ -355,9 +366,6 @@ namespace kinnemed05.Controllers
                 rp.Load(Path.Combine(Server.MapPath("~/Reports"), "RptCodigo.rpt"));
                 rp.SetDataSource(dt);
                 rp.SetParameterValue("paciente", paciente);
-                //Response.Buffer = false;
-                //Response.ClearContent();
-                //Response.ClearHeaders();
 
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -369,6 +377,28 @@ namespace kinnemed05.Controllers
             }
 
 
+        }
+
+        //Validar que un examen tenga todos los resultados y notificar al usuario
+        public ActionResult Validar(int id) {
+            registro registro = db.registro.Find(id);
+            registro.reg_validacion = "valido";
+            db.Entry(registro).State = EntityState.Modified;
+            db.SaveChanges();
+            paciente paciente = db.paciente.Find(registro.reg_paciente);
+            string celular = paciente.pac_celular;
+            string correo = paciente.pac_correo;
+            Mensaje mensaje = new Mensaje();
+            if (!string.IsNullOrEmpty(celular)) {
+                
+                mensaje.enviar(celular, "Los exámenes de laboratorio se encuentran listos. Kinnemed");
+            }
+            if (!string.IsNullOrEmpty(correo))
+            {
+                mensaje.mail(correo, "Los exámenes de laboratorio se encuentran listos. Kinnemed");
+            }
+            //if ()
+            return RedirectToAction("Index", "Registro");
         }
 
         public ActionResult Reporte()
@@ -408,12 +438,8 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                //if (!consulta.Any())
-                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
                 registro registro = db.registro.Find(id);
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
+                Session["reg_id"] = id;
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/Viewer/ViewPrueba.aspx");
                 model.ReportPath = content;
@@ -426,48 +452,13 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
-        public ActionResult ReporteLimpio()
-        {
-            DateTime dd = DateTime.Now;
-            string fecha = dd.Date.ToString("d");
-            ViewBag.fecha = fecha;
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ReporteLimpio(registro registro)
-        {
-            try
-            {
-                var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                if (!consulta.Any())
-                    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
-                ReportViewerViewModel model = new ReportViewerViewModel();
-                string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
-                model.ReportPath = content;
-                return View("ReportViewer", model);
-            }
-            catch (Exception ex)
-            {
-                ViewBag.mensaje = ex.Message;
-                //return View("Message");
-                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
-            }
-        }
-
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ReporteLimpio(int id)
         {
             try
             {
-                //var consulta = db.registro.Where(r => r.reg_paciente == registro.reg_paciente && r.reg_fecha == registro.reg_fecha && r.reg_estado == true);
-                //if (!consulta.Any())
-                //    return RedirectToAction("Message", "Home", new { mensaje = "El paciente no tiene exámenes para esta fecha" });
                 registro registro = db.registro.Find(id);
-                Session["reg_paciente"] = registro.reg_paciente;
-                Session["reg_fecha"] = registro.reg_fecha;
+                Session["reg_id"] = id;
                 ReportViewerViewModel model = new ReportViewerViewModel();
                 string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
                 model.ReportPath = content;
@@ -544,10 +535,11 @@ namespace kinnemed05.Controllers
             try
             {
                 //biometria biometria = new biometria();
-                var prueba = db.prueba.Where(p => p.pru_codigo == codigo);
-                if (prueba != null)
+                //var prueba = db.prueba.Where(p => p.pru_codigo == codigo);
+                var codigo_ = db.codigo.Where(c => c.cod_codigo == codigo);
+                if (codigo_ != null)
                 {
-                    reg_id = prueba.First().pru_registro;
+                    reg_id = codigo_.First().cod_registro;
                     List<examen> list_examen = GetExamen();
                     List<prueba> list_prueba = GetPrueba(reg_id);
                     foreach (var item in list_prueba)
@@ -629,8 +621,25 @@ namespace kinnemed05.Controllers
             num = num_exa + 1;
             return num;
         }
+        private void set_codigo(int reg_id, int exa_id)
+        {
+            barcode barcode = new barcode();
 
-        public string GetCodigo(int reg_id, int exa_id)
+            var consulta = db.codigo.Where(c => c.cod_registro == reg_id && c.cod_area == exa_id);
+            examen examen = db.examen.Find(exa_id);
+            if (!consulta.Any())
+            {
+                codigo codigo = new codigo();
+                codigo.cod_codigo = GetCodigo(reg_id, examen.exa_area);
+                codigo.cod_imagen = barcode.GenerarCodigo(codigo.cod_codigo);
+                codigo.cod_registro = reg_id;
+                codigo.cod_area = examen.exa_area;
+                db.codigo.Add(codigo);
+                db.SaveChanges();
+            }
+        }
+
+        public string GetCodigo(int reg_id, int are_id)
         {
             string codigo = String.Empty;
             string dia = String.Empty;
@@ -638,11 +647,9 @@ namespace kinnemed05.Controllers
             string num = String.Empty;
             DateTime dd = DateTime.Today;
             string date_now = dd.Date.ToString("d");
-
-
             int orden = db.registro.Where(r => r.reg_id == reg_id).First().reg_orden;
-            int area = db.examen.Where(e => e.exa_id == exa_id).First().exa_area;
-            //string prefijo = (from g in db.grupo where g.gru_id == grupo select g).First().gru_prefijo;
+            //int area = db.examen.Where(e => e.exa_id == exa_id).First().exa_area;
+            int area = are_id;
             num = orden.ToString();
             dia = dd.Day.ToString();
             if (dia.Length == 1)
@@ -664,7 +671,6 @@ namespace kinnemed05.Controllers
                     break;
             }
             codigo += area.ToString() + fecha + num;
-            //return codigo;
             return codigo;
         }
 
@@ -693,5 +699,19 @@ namespace kinnemed05.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        //public ActionResult Generar() {
+        //    List<codigo> list_codigo = db.codigo.ToList();
+        //    barcode barcode=new barcode();
+        //    foreach (var item in list_codigo) {
+        //        codigo codigo = db.codigo.Find(item.cod_id);
+        //        codigo.cod_imagen = barcode.GenerarCodigo(codigo.cod_codigo);
+        //        db.Entry(codigo).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //    }
+        //    return RedirectToAction("Message", "Home", new { mensaje = "Valio" });
+        //}
+
+
     }
 }

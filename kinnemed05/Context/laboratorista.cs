@@ -15,12 +15,12 @@ namespace kinnemed05.Models
         public string lab_cedula { get; set; }
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string lab_nombres { get; set; }
         [Display(Name = "Apellidos")]
         [Required(ErrorMessage = "Campo Requerido")]
-        [RegularExpression("^([A-Za-z0-9 .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
+        [RegularExpression("^([A-Za-z0-9Ññ .&'-]+)$", ErrorMessage = "Solo se aceptan caracteres alfabéticos")]
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string lab_apellidos { get; set; }
         [Display(Name = "Coreo")]
@@ -29,7 +29,7 @@ namespace kinnemed05.Models
         [StringLength(100, ErrorMessage = "La longitud máxima es 100 caracteres")]
         public string lab_correo { get; set; }
         [Display(Name = "Firma")]
-        public string lab_firma { get; set; }
+        public byte[] lab_firma { get; set; }
         [Display(Name = "Estado")]
         [Required(ErrorMessage = "Campo Requerido")]
         public bool lab_estado { get; set; }

@@ -14,6 +14,9 @@
                     Paciente
                 </th>
                 <th>
+                    Empresa
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.ray_observacion)
                 </th>
                 <th></th>
@@ -26,10 +29,16 @@
                         @Html.DisplayFor(modelItem => item.paciente.pac_nombres) @Html.DisplayFor(modelItem => item.paciente.pac_apellidos)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.ray_observacion)
                     </td>
                     <td>
-                        @Html.ActionLink("Descargar", "Download", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar" })
+                        @Html.ActionLink("Descargar", "Download","Rayos", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Descargar", @target="_blank" })
+                        @*@Html.ActionLink("Reporte", "Reporte", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })*@
+                        @Html.ActionLink("Reporte", "Descargar", new { id = item.ray_id }, new { @class = "iconb icon-pdf", @title = "Reporte", @target = "_blank" })
+                        @*@Html.ActionLink("Detalle", "Details", "Rayos",new { id = item.ray_id }, new { @class = "iconb icon-detail", @title = "Detalle", @target = "_blank" })*@
                     </td>
                 </tr>
             }

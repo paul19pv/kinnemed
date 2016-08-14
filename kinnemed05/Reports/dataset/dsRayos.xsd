@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsRayos" targetNamespace="http://tempuri.org/dsRayos.xsd" xmlns:mstns="http://tempuri.org/dsRayos.xsd" xmlns="http://tempuri.org/dsRayos.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_rayosTableAdapter" GeneratorDataComponentClassName="view_rayosTableAdapter" Name="view_rayos" UserDataComponentName="view_rayosTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_rayos" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT ray_id, pac_nombres, pac_apellidos, pac_genero, pac_edad, ray_observacion, ray_fecha, responsable, firma, emp_nombre, pac_cedula, ray_orden FROM dbo.view_rayos</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ray_id" DataSetColumn="ray_id" />
+              <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="pac_genero" DataSetColumn="pac_genero" />
+              <Mapping SourceColumn="pac_edad" DataSetColumn="pac_edad" />
+              <Mapping SourceColumn="ray_observacion" DataSetColumn="ray_observacion" />
+              <Mapping SourceColumn="ray_fecha" DataSetColumn="ray_fecha" />
+              <Mapping SourceColumn="responsable" DataSetColumn="responsable" />
+              <Mapping SourceColumn="firma" DataSetColumn="firma" />
+              <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
+              <Mapping SourceColumn="ray_orden" DataSetColumn="ray_orden" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsRayos" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsRayos" msprop:Generator_UserDSName="dsRayos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_rayos" msprop:Generator_TableClassName="view_rayosDataTable" msprop:Generator_TableVarName="tableview_rayos" msprop:Generator_TablePropName="view_rayos" msprop:Generator_RowDeletingName="view_rayosRowDeleting" msprop:Generator_RowChangingName="view_rayosRowChanging" msprop:Generator_RowEvHandlerName="view_rayosRowChangeEventHandler" msprop:Generator_RowDeletedName="view_rayosRowDeleted" msprop:Generator_UserTableName="view_rayos" msprop:Generator_RowChangedName="view_rayosRowChanged" msprop:Generator_RowEvArgName="view_rayosRowChangeEvent" msprop:Generator_RowClassName="view_rayosRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ray_id" msprop:Generator_ColumnVarNameInTable="columnray_id" msprop:Generator_ColumnPropNameInRow="ray_id" msprop:Generator_ColumnPropNameInTable="ray_idColumn" msprop:Generator_UserColumnName="ray_id" type="xs:int" />
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_genero" msprop:Generator_ColumnVarNameInTable="columnpac_genero" msprop:Generator_ColumnPropNameInRow="pac_genero" msprop:Generator_ColumnPropNameInTable="pac_generoColumn" msprop:Generator_UserColumnName="pac_genero" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_edad" msprop:Generator_ColumnVarNameInTable="columnpac_edad" msprop:Generator_ColumnPropNameInRow="pac_edad" msprop:Generator_ColumnPropNameInTable="pac_edadColumn" msprop:Generator_UserColumnName="pac_edad" type="xs:int" />
+              <xs:element name="ray_observacion" msprop:Generator_ColumnVarNameInTable="columnray_observacion" msprop:Generator_ColumnPropNameInRow="ray_observacion" msprop:Generator_ColumnPropNameInTable="ray_observacionColumn" msprop:Generator_UserColumnName="ray_observacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ray_fecha" msprop:Generator_ColumnVarNameInTable="columnray_fecha" msprop:Generator_ColumnPropNameInRow="ray_fecha" msprop:Generator_ColumnPropNameInTable="ray_fechaColumn" msprop:Generator_UserColumnName="ray_fecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="responsable" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnresponsable" msprop:Generator_ColumnPropNameInRow="responsable" msprop:Generator_ColumnPropNameInTable="responsableColumn" msprop:Generator_UserColumnName="responsable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="firma" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfirma" msprop:Generator_ColumnPropNameInRow="firma" msprop:Generator_ColumnPropNameInTable="firmaColumn" msprop:Generator_UserColumnName="firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="emp_nombre" msprop:Generator_ColumnVarNameInTable="columnemp_nombre" msprop:Generator_ColumnPropNameInRow="emp_nombre" msprop:Generator_ColumnPropNameInTable="emp_nombreColumn" msprop:Generator_UserColumnName="emp_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ray_orden" msprop:Generator_ColumnVarNameInTable="columnray_orden" msprop:Generator_ColumnPropNameInRow="ray_orden" msprop:Generator_ColumnPropNameInTable="ray_ordenColumn" msprop:Generator_UserColumnName="ray_orden" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_rayos" />
+      <xs:field xpath="mstns:ray_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

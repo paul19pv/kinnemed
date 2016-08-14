@@ -46,7 +46,8 @@
             var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
             var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
             var dif = fFecha1 - fFecha2;
-            dias = Math.floor(dif / (1000 * 60 * 60 * 24 * 365));
+            //dias = Math.floor(dif / (1000 * 60 * 60 * 24 * 365));
+            dias = (dif / (1000 * 60 * 60 * 24 * 365)).toFixed(2);
         }
         return dias;
     }

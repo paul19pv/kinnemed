@@ -10,11 +10,10 @@
 namespace kinnemed05.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class componente
+    public partial class getReporte03_Result
     {
-        public int com_id { get; set; }
-        public string com_nombre { get; set; }
+        public string exa_nombre { get; set; }
+        public Nullable<int> Total { get; set; }
     }
 }

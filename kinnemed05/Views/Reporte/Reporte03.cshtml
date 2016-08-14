@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Reporte03";
+}
+<script>
+    $(function () {
+        $("#fec_ini").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+        $("#fec_fin").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: "dd/mm/yy"
+        });
+    });
+</script>
+
+<h2>Reporte03</h2>
+<div class="panel panel-default">
+    <div class="panel-body">
+        @*@using (Ajax.BeginForm("ExportReport", new AjaxOptions { UpdateTargetId = "div_index", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }))*@
+        @*@using (Html.BeginForm("ExportReport", "Reporte", FormMethod.Post, new { enctype = "multipart/form-data" }))*@
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.Label("Fecha de Inicio", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("fec_ini", "", new { @class = "form-control", Value = ViewBag.fec_ini })
+                </div>
+                @Html.Label("Fecha de Fin", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-3">
+                    @Html.TextBox("fec_fin", "", new { @class = "form-control", Value = ViewBag.fec_fin })
+                </div>
+                @Html.Label("Empresa", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-2">
+                    @Html.DropDownList("empresa", String.Empty)
+                </div>
+                <input type="submit" value="Exportar" class="btn btn-primary" />
+            </div>
+        }
+    </div>
+</div>
+<div id="div_index">
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

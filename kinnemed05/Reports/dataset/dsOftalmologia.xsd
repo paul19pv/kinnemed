@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsOftalmologia" targetNamespace="http://tempuri.org/dsOftalmologia.xsd" xmlns:mstns="http://tempuri.org/dsOftalmologia.xsd" xmlns="http://tempuri.org/dsOftalmologia.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="bd_kinnemed02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="bd_kinnemed02ConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.bd_kinnemed02ConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_oftalmologiaTableAdapter" GeneratorDataComponentClassName="view_oftalmologiaTableAdapter" Name="view_oftalmologia" UserDataComponentName="view_oftalmologiaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_oftalmologia" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT oft_id, oft_con_od, oft_con_oi, oft_sin_od, oft_sin_oi, oft_ref_od, oft_ref_oi, oft_biomiscroscopia, oft_bio_txt, oft_fondo, oft_fon_txt, oft_colores, oft_diagnostico, oft_dia_txt, oft_indicaciones, oft_ind_txt, oft_fecha, oft_otros, pac_nombres, pac_apellidos, pac_genero, pac_edad, responsable, firma, emp_nombre, pac_cedula, oft_orden FROM dbo.view_oftalmologia</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="oft_id" DataSetColumn="oft_id" />
+              <Mapping SourceColumn="oft_con_od" DataSetColumn="oft_con_od" />
+              <Mapping SourceColumn="oft_con_oi" DataSetColumn="oft_con_oi" />
+              <Mapping SourceColumn="oft_sin_od" DataSetColumn="oft_sin_od" />
+              <Mapping SourceColumn="oft_sin_oi" DataSetColumn="oft_sin_oi" />
+              <Mapping SourceColumn="oft_ref_od" DataSetColumn="oft_ref_od" />
+              <Mapping SourceColumn="oft_ref_oi" DataSetColumn="oft_ref_oi" />
+              <Mapping SourceColumn="oft_biomiscroscopia" DataSetColumn="oft_biomiscroscopia" />
+              <Mapping SourceColumn="oft_bio_txt" DataSetColumn="oft_bio_txt" />
+              <Mapping SourceColumn="oft_fondo" DataSetColumn="oft_fondo" />
+              <Mapping SourceColumn="oft_fon_txt" DataSetColumn="oft_fon_txt" />
+              <Mapping SourceColumn="oft_colores" DataSetColumn="oft_colores" />
+              <Mapping SourceColumn="oft_diagnostico" DataSetColumn="oft_diagnostico" />
+              <Mapping SourceColumn="oft_dia_txt" DataSetColumn="oft_dia_txt" />
+              <Mapping SourceColumn="oft_indicaciones" DataSetColumn="oft_indicaciones" />
+              <Mapping SourceColumn="oft_ind_txt" DataSetColumn="oft_ind_txt" />
+              <Mapping SourceColumn="oft_fecha" DataSetColumn="oft_fecha" />
+              <Mapping SourceColumn="oft_otros" DataSetColumn="oft_otros" />
+              <Mapping SourceColumn="pac_nombres" DataSetColumn="pac_nombres" />
+              <Mapping SourceColumn="pac_apellidos" DataSetColumn="pac_apellidos" />
+              <Mapping SourceColumn="pac_genero" DataSetColumn="pac_genero" />
+              <Mapping SourceColumn="pac_edad" DataSetColumn="pac_edad" />
+              <Mapping SourceColumn="responsable" DataSetColumn="responsable" />
+              <Mapping SourceColumn="firma" DataSetColumn="firma" />
+              <Mapping SourceColumn="emp_nombre" DataSetColumn="emp_nombre" />
+              <Mapping SourceColumn="pac_cedula" DataSetColumn="pac_cedula" />
+              <Mapping SourceColumn="oft_orden" DataSetColumn="oft_orden" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsOftalmologia" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsOftalmologia" msprop:Generator_UserDSName="dsOftalmologia">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_oftalmologia" msprop:Generator_TableClassName="view_oftalmologiaDataTable" msprop:Generator_TableVarName="tableview_oftalmologia" msprop:Generator_TablePropName="view_oftalmologia" msprop:Generator_RowDeletingName="view_oftalmologiaRowDeleting" msprop:Generator_RowChangingName="view_oftalmologiaRowChanging" msprop:Generator_RowEvHandlerName="view_oftalmologiaRowChangeEventHandler" msprop:Generator_RowDeletedName="view_oftalmologiaRowDeleted" msprop:Generator_UserTableName="view_oftalmologia" msprop:Generator_RowChangedName="view_oftalmologiaRowChanged" msprop:Generator_RowEvArgName="view_oftalmologiaRowChangeEvent" msprop:Generator_RowClassName="view_oftalmologiaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="oft_id" msprop:Generator_ColumnVarNameInTable="columnoft_id" msprop:Generator_ColumnPropNameInRow="oft_id" msprop:Generator_ColumnPropNameInTable="oft_idColumn" msprop:Generator_UserColumnName="oft_id" type="xs:int" />
+              <xs:element name="oft_con_od" msprop:Generator_ColumnVarNameInTable="columnoft_con_od" msprop:Generator_ColumnPropNameInRow="oft_con_od" msprop:Generator_ColumnPropNameInTable="oft_con_odColumn" msprop:Generator_UserColumnName="oft_con_od">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_con_oi" msprop:Generator_ColumnVarNameInTable="columnoft_con_oi" msprop:Generator_ColumnPropNameInRow="oft_con_oi" msprop:Generator_ColumnPropNameInTable="oft_con_oiColumn" msprop:Generator_UserColumnName="oft_con_oi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_sin_od" msprop:Generator_ColumnVarNameInTable="columnoft_sin_od" msprop:Generator_ColumnPropNameInRow="oft_sin_od" msprop:Generator_ColumnPropNameInTable="oft_sin_odColumn" msprop:Generator_UserColumnName="oft_sin_od">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_sin_oi" msprop:Generator_ColumnVarNameInTable="columnoft_sin_oi" msprop:Generator_ColumnPropNameInRow="oft_sin_oi" msprop:Generator_ColumnPropNameInTable="oft_sin_oiColumn" msprop:Generator_UserColumnName="oft_sin_oi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_ref_od" msprop:Generator_ColumnVarNameInTable="columnoft_ref_od" msprop:Generator_ColumnPropNameInRow="oft_ref_od" msprop:Generator_ColumnPropNameInTable="oft_ref_odColumn" msprop:Generator_UserColumnName="oft_ref_od">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_ref_oi" msprop:Generator_ColumnVarNameInTable="columnoft_ref_oi" msprop:Generator_ColumnPropNameInRow="oft_ref_oi" msprop:Generator_ColumnPropNameInTable="oft_ref_oiColumn" msprop:Generator_UserColumnName="oft_ref_oi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_biomiscroscopia" msprop:Generator_ColumnVarNameInTable="columnoft_biomiscroscopia" msprop:Generator_ColumnPropNameInRow="oft_biomiscroscopia" msprop:Generator_ColumnPropNameInTable="oft_biomiscroscopiaColumn" msprop:Generator_UserColumnName="oft_biomiscroscopia">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_bio_txt" msprop:Generator_ColumnVarNameInTable="columnoft_bio_txt" msprop:Generator_ColumnPropNameInRow="oft_bio_txt" msprop:Generator_ColumnPropNameInTable="oft_bio_txtColumn" msprop:Generator_UserColumnName="oft_bio_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_fondo" msprop:Generator_ColumnVarNameInTable="columnoft_fondo" msprop:Generator_ColumnPropNameInRow="oft_fondo" msprop:Generator_ColumnPropNameInTable="oft_fondoColumn" msprop:Generator_UserColumnName="oft_fondo">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_fon_txt" msprop:Generator_ColumnVarNameInTable="columnoft_fon_txt" msprop:Generator_ColumnPropNameInRow="oft_fon_txt" msprop:Generator_ColumnPropNameInTable="oft_fon_txtColumn" msprop:Generator_UserColumnName="oft_fon_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_colores" msprop:Generator_ColumnVarNameInTable="columnoft_colores" msprop:Generator_ColumnPropNameInRow="oft_colores" msprop:Generator_ColumnPropNameInTable="oft_coloresColumn" msprop:Generator_UserColumnName="oft_colores">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_diagnostico" msprop:Generator_ColumnVarNameInTable="columnoft_diagnostico" msprop:Generator_ColumnPropNameInRow="oft_diagnostico" msprop:Generator_ColumnPropNameInTable="oft_diagnosticoColumn" msprop:Generator_UserColumnName="oft_diagnostico">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_dia_txt" msprop:Generator_ColumnVarNameInTable="columnoft_dia_txt" msprop:Generator_ColumnPropNameInRow="oft_dia_txt" msprop:Generator_ColumnPropNameInTable="oft_dia_txtColumn" msprop:Generator_UserColumnName="oft_dia_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_indicaciones" msprop:Generator_ColumnVarNameInTable="columnoft_indicaciones" msprop:Generator_ColumnPropNameInRow="oft_indicaciones" msprop:Generator_ColumnPropNameInTable="oft_indicacionesColumn" msprop:Generator_UserColumnName="oft_indicaciones">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_ind_txt" msprop:Generator_ColumnVarNameInTable="columnoft_ind_txt" msprop:Generator_ColumnPropNameInRow="oft_ind_txt" msprop:Generator_ColumnPropNameInTable="oft_ind_txtColumn" msprop:Generator_UserColumnName="oft_ind_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_fecha" msprop:Generator_ColumnVarNameInTable="columnoft_fecha" msprop:Generator_ColumnPropNameInRow="oft_fecha" msprop:Generator_ColumnPropNameInTable="oft_fechaColumn" msprop:Generator_UserColumnName="oft_fecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_otros" msprop:Generator_ColumnVarNameInTable="columnoft_otros" msprop:Generator_ColumnPropNameInRow="oft_otros" msprop:Generator_ColumnPropNameInTable="oft_otrosColumn" msprop:Generator_UserColumnName="oft_otros" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_nombres" msprop:Generator_ColumnVarNameInTable="columnpac_nombres" msprop:Generator_ColumnPropNameInRow="pac_nombres" msprop:Generator_ColumnPropNameInTable="pac_nombresColumn" msprop:Generator_UserColumnName="pac_nombres">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_apellidos" msprop:Generator_ColumnVarNameInTable="columnpac_apellidos" msprop:Generator_ColumnPropNameInRow="pac_apellidos" msprop:Generator_ColumnPropNameInTable="pac_apellidosColumn" msprop:Generator_UserColumnName="pac_apellidos">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_genero" msprop:Generator_ColumnVarNameInTable="columnpac_genero" msprop:Generator_ColumnPropNameInRow="pac_genero" msprop:Generator_ColumnPropNameInTable="pac_generoColumn" msprop:Generator_UserColumnName="pac_genero" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_edad" msprop:Generator_ColumnVarNameInTable="columnpac_edad" msprop:Generator_ColumnPropNameInRow="pac_edad" msprop:Generator_ColumnPropNameInTable="pac_edadColumn" msprop:Generator_UserColumnName="pac_edad" type="xs:int" />
+              <xs:element name="responsable" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnresponsable" msprop:Generator_ColumnPropNameInRow="responsable" msprop:Generator_ColumnPropNameInTable="responsableColumn" msprop:Generator_UserColumnName="responsable" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="firma" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnfirma" msprop:Generator_ColumnPropNameInRow="firma" msprop:Generator_ColumnPropNameInTable="firmaColumn" msprop:Generator_UserColumnName="firma" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="emp_nombre" msprop:Generator_ColumnVarNameInTable="columnemp_nombre" msprop:Generator_ColumnPropNameInRow="emp_nombre" msprop:Generator_ColumnPropNameInTable="emp_nombreColumn" msprop:Generator_UserColumnName="emp_nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pac_cedula" msprop:Generator_ColumnVarNameInTable="columnpac_cedula" msprop:Generator_ColumnPropNameInRow="pac_cedula" msprop:Generator_ColumnPropNameInTable="pac_cedulaColumn" msprop:Generator_UserColumnName="pac_cedula">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="oft_orden" msprop:Generator_ColumnVarNameInTable="columnoft_orden" msprop:Generator_ColumnPropNameInRow="oft_orden" msprop:Generator_ColumnPropNameInTable="oft_ordenColumn" msprop:Generator_UserColumnName="oft_orden" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:view_oftalmologia" />
+      <xs:field xpath="mstns:oft_id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
