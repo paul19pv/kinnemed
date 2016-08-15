@@ -27,16 +27,16 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte01()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
+            //ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte01(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte01(string fec_ini, string fec_fin)
         {
             try
             {
-                var lista = db.getLista01(fec_ini, fec_fin);
+                var lista = db.getReporte01(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();

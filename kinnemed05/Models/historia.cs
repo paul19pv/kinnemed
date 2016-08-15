@@ -22,7 +22,6 @@ namespace kinnemed05.Models
     
         public int his_id { get; set; }
     
-        public virtual concepto concepto { get; set; }
         public virtual ICollection<diagnostico> diagnostico { get; set; }
         public virtual fisico fisico { get; set; }
         public virtual plan plan { get; set; }
@@ -32,5 +31,6 @@ namespace kinnemed05.Models
         public virtual reposo reposo { get; set; }
         public virtual paciente paciente { get; set; }
         public virtual medico medico { get; set; }
+        public virtual concepto concepto { get; set; }
     }
 }

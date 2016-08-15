@@ -4,27 +4,7 @@
     <div class="panel-body">
         <table class="table table-striped table-hover ">
             <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.his_fecha)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pac_nombres)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pac_apellidos)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pac_edad)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.pac_genero)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.med_nombres)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.med_apellidos)
-                </th>
+                
                 <th>
                     @Html.DisplayNameFor(model => model.Puesto)
                 </th>
@@ -70,27 +50,7 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.his_fecha)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pac_nombres)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pac_apellidos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pac_edad)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.pac_genero)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.med_nombres)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.med_apellidos)
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.Puesto)
                     </td>

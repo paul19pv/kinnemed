@@ -45,7 +45,6 @@ namespace kinnemed05.Models
         public DbSet<sub_cie10> sub_cie10 { get; set; }
         public DbSet<plan> plan { get; set; }
         public DbSet<familiar> familiar { get; set; }
-        public DbSet<personal> personal { get; set; }
         public DbSet<signos> signos { get; set; }
         public DbSet<subsecuente> subsecuente { get; set; }
         public DbSet<inmunizacion> inmunizacion { get; set; }
@@ -53,7 +52,6 @@ namespace kinnemed05.Models
         public DbSet<vacuna> vacuna { get; set; }
         public DbSet<ocupacional> ocupacional { get; set; }
         public DbSet<laboral> laboral { get; set; }
-        public DbSet<concepto> concepto { get; set; }
         public DbSet<ginecologico> ginecologico { get; set; }
         public DbSet<trabajador> trabajador { get; set; }
         public DbSet<laboratorista> laboratorista { get; set; }
@@ -70,12 +68,14 @@ namespace kinnemed05.Models
         public DbSet<rayos> rayos { get; set; }
         public DbSet<examen> examen { get; set; }
         public DbSet<orden> orden { get; set; }
+        public DbSet<concepto> concepto { get; set; }
+        public DbSet<personal> personal { get; set; }
         public DbSet<accidente> accidente { get; set; }
+        public DbSet<actividad> actividad { get; set; }
         public DbSet<enfermedad> enfermedad { get; set; }
         public DbSet<habitos> habitos { get; set; }
-        public DbSet<actividad> actividad { get; set; }
     
-        public virtual int getReporte08(string fecha_ini, string fecha_fin)
+        public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -85,10 +85,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte08", fecha_iniParameter, fecha_finParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte01_Result>("getReporte01", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual int getReporte09(string fecha_ini, string fecha_fin)
+        public virtual ObjectResult<getReporte02_Result> getReporte02(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -98,10 +98,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte09", fecha_iniParameter, fecha_finParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte02_Result>("getReporte02", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual int getReporte10(string fecha_ini, string fecha_fin)
+        public virtual ObjectResult<getReporte03_Result> getReporte03(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -111,10 +111,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte10", fecha_iniParameter, fecha_finParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte03_Result>("getReporte03", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual int getReporte11(string fecha_ini, string fecha_fin)
+        public virtual ObjectResult<getReporte04_Result> getReporte04(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -124,10 +124,10 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte11", fecha_iniParameter, fecha_finParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte04_Result>("getReporte04", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual int getReporte12(string fecha_ini, string fecha_fin)
+        public virtual ObjectResult<getReporte05_Result> getReporte05(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -137,7 +137,98 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("getReporte12", fecha_iniParameter, fecha_finParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte05_Result>("getReporte05", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte06_Result> getReporte06(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte06_Result>("getReporte06", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte07_Result> getReporte07(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte07_Result>("getReporte07", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte08_Result> getReporte08(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte08_Result>("getReporte08", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte09_Result> getReporte09(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte09_Result>("getReporte09", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte10_Result> getReporte10(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte10_Result>("getReporte10", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte11_Result> getReporte11(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte11_Result>("getReporte11", fecha_iniParameter, fecha_finParameter);
+        }
+    
+        public virtual ObjectResult<getReporte12_Result> getReporte12(string fecha_ini, string fecha_fin)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte12_Result>("getReporte12", fecha_iniParameter, fecha_finParameter);
         }
     
         public virtual ObjectResult<Lista01> getLista01(string fecha_ini, string fecha_fin)
@@ -218,7 +309,7 @@ namespace kinnemed05.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista06>("getLista06", fecha_iniParameter, fecha_finParameter);
         }
     
-        public virtual ObjectResult<Lista07> getReporte07(string fecha_ini, string fecha_fin)
+        public virtual ObjectResult<Lista07> getLista07(string fecha_ini, string fecha_fin)
         {
             var fecha_iniParameter = fecha_ini != null ?
                 new ObjectParameter("fecha_ini", fecha_ini) :
@@ -228,7 +319,7 @@ namespace kinnemed05.Models
                 new ObjectParameter("fecha_fin", fecha_fin) :
                 new ObjectParameter("fecha_fin", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista07>("getReporte07", fecha_iniParameter, fecha_finParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista07>("getLista07", fecha_iniParameter, fecha_finParameter);
         }
     }
 }

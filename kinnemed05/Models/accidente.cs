@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class accidente
     {
         public int acc_id { get; set; }
-
+    
         public virtual paciente paciente { get; set; }
     }
 }
