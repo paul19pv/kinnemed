@@ -67,12 +67,12 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte02()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
+            
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte02(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte02(string fec_ini, string fec_fin)
         {
             try
             {
@@ -107,12 +107,11 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte03()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte03(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte03(string fec_ini, string fec_fin)
         {
             try
             {
@@ -147,12 +146,11 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte04()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte04(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte04(string fec_ini, string fec_fin)
         {
             try
             {
@@ -186,12 +184,11 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte05()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte05(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte05(string fec_ini, string fec_fin)
         {
             try
             {
@@ -225,12 +222,11 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte06()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte06(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte06(string fec_ini, string fec_fin)
         {
             try
             {
@@ -266,12 +262,11 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte07()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte07(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte07(string fec_ini, string fec_fin)
         {
             try
             {
@@ -308,7 +303,7 @@ namespace kinnemed05.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ExportReport(string fec_ini, string fec_fin, int empresa) {
+        public ActionResult ExportReport(string fec_ini, string fec_fin) {
 
             try
             {
