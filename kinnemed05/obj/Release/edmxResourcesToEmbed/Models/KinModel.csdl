@@ -115,7 +115,6 @@
     </AssociationSet>
     <EntitySet Name="plan" EntityType="kinnemedModel.plan" />
     <EntitySet Name="familiar" EntityType="kinnemedModel.familiar" />
-    <EntitySet Name="personal" EntityType="kinnemedModel.personal" />
     <EntitySet Name="signos" EntityType="kinnemedModel.signos" />
     <EntitySet Name="subsecuente" EntityType="kinnemedModel.subsecuente" />
     <EntitySet Name="inmunizacion" EntityType="kinnemedModel.inmunizacion" />
@@ -135,7 +134,6 @@
       <End Role="riesgo" EntitySet="riesgo" />
       <End Role="laboral" EntitySet="laboral" />
     </AssociationSet>
-    <EntitySet Name="concepto" EntityType="kinnemedModel.concepto" />
     <EntitySet Name="ginecologico" EntityType="kinnemedModel.ginecologico" />
     <EntitySet Name="trabajador" EntityType="kinnemedModel.trabajador" />
     <AssociationSet Name="FK_trabajador_empresa" Association="kinnemedModel.FK_trabajador_empresa">
@@ -144,17 +142,12 @@
     </AssociationSet>
     <EntitySet Name="laboratorista" EntityType="kinnemedModel.laboratorista" />
     <EntitySet Name="codigo" EntityType="kinnemedModel.codigo" />
-    <EntitySet Name="orden" EntityType="kinnemedModel.orden" />
     <AssociationSet Name="FK_codigo_area" Association="kinnemedModel.FK_codigo_area">
       <End Role="area" EntitySet="area" />
       <End Role="codigo" EntitySet="codigo" />
     </AssociationSet>
     <EntitySet Name="prueba" EntityType="kinnemedModel.prueba" />
     <EntitySet Name="historia" EntityType="kinnemedModel.historia" />
-    <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
-      <End Role="historia" EntitySet="historia" />
-      <End Role="concepto" EntitySet="concepto" />
-    </AssociationSet>
     <AssociationSet Name="FK_diagnostico_historia" Association="kinnemedModel.FK_diagnostico_historia">
       <End Role="historia" EntitySet="historia" />
       <End Role="diagnostico" EntitySet="diagnostico" />
@@ -213,10 +206,6 @@
       <End Role="paciente" EntitySet="paciente" />
       <End Role="ocupacional" EntitySet="ocupacional" />
     </AssociationSet>
-    <AssociationSet Name="FK_orden_paciente" Association="kinnemedModel.FK_orden_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="orden" EntitySet="orden" />
-    </AssociationSet>
     <AssociationSet Name="FK_paciente_pais" Association="kinnemedModel.FK_paciente_pais">
       <End Role="pais" EntitySet="pais" />
       <End Role="paciente" EntitySet="paciente" />
@@ -225,80 +214,6 @@
       <End Role="profesion" EntitySet="profesion" />
       <End Role="paciente" EntitySet="paciente" />
     </AssociationSet>
-    <AssociationSet Name="FK_personal_paciente" Association="kinnemedModel.FK_personal_paciente">
-      <End Role="paciente" EntitySet="paciente" />
-      <End Role="personal" EntitySet="personal" />
-    </AssociationSet>
-    <FunctionImport Name="getReporte01" ReturnType="Collection(kinnemedModel.getReporte01_Result)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista01" ReturnType="Collection(kinnemedModel.Lista01)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getReporte02" ReturnType="Collection(kinnemedModel.getReporte02_Result)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getReporte03" ReturnType="Collection(kinnemedModel.getReporte03_Result)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getReporte04" ReturnType="Collection(Int32)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getReporte05" ReturnType="Collection(Int32)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getReporte06" ReturnType="Collection(Int32)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getReporte07" ReturnType="Collection(Int32)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista02" ReturnType="Collection(kinnemedModel.Lista02)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista03" ReturnType="Collection(kinnemedModel.Lista03)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista04" ReturnType="Collection(kinnemedModel.Lista04)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista05" ReturnType="Collection(kinnemedModel.Lista05)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista06" ReturnType="Collection(kinnemedModel.Lista06)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getLista07" ReturnType="Collection(kinnemedModel.Lista07)">
-      <Parameter Name="fecha_ini" Mode="In" Type="String" />
-      <Parameter Name="fecha_fin" Mode="In" Type="String" />
-      <Parameter Name="empresa" Mode="In" Type="Int32" />
-    </FunctionImport>
     <EntitySet Name="medico" EntityType="kinnemedModel.medico" />
     <EntitySet Name="registro" EntityType="kinnemedModel.registro" />
     <AssociationSet Name="FK_codigo_registro" Association="kinnemedModel.FK_codigo_registro">
@@ -366,10 +281,6 @@
       <End Role="examen" EntitySet="examen" />
       <End Role="control" EntitySet="control" />
     </AssociationSet>
-    <AssociationSet Name="FK_orden_examen" Association="kinnemedModel.FK_orden_examen">
-      <End Role="examen" EntitySet="examen" />
-      <End Role="orden" EntitySet="orden" />
-    </AssociationSet>
     <AssociationSet Name="FK_prueba_examen" Association="kinnemedModel.FK_prueba_examen">
       <End Role="examen" EntitySet="examen" />
       <End Role="prueba" EntitySet="prueba" />
@@ -377,6 +288,121 @@
     <AssociationSet Name="FK_valores_examen" Association="kinnemedModel.FK_valores_examen">
       <End Role="examen" EntitySet="examen" />
       <End Role="valores" EntitySet="valores" />
+    </AssociationSet>
+    <EntitySet Name="orden" EntityType="kinnemedModel.orden" />
+    <AssociationSet Name="FK_orden_examen" Association="kinnemedModel.FK_orden_examen">
+      <End Role="examen" EntitySet="examen" />
+      <End Role="orden" EntitySet="orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_paciente" Association="kinnemedModel.FK_orden_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="orden" EntitySet="orden" />
+    </AssociationSet>
+    <FunctionImport Name="getReporte01" ReturnType="Collection(kinnemedModel.getReporte01_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte02" ReturnType="Collection(kinnemedModel.getReporte02_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte03" ReturnType="Collection(kinnemedModel.getReporte03_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte04" ReturnType="Collection(kinnemedModel.getReporte04_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte05" ReturnType="Collection(kinnemedModel.getReporte05_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte06" ReturnType="Collection(kinnemedModel.getReporte06_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte07" ReturnType="Collection(kinnemedModel.getReporte07_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte08" ReturnType="Collection(kinnemedModel.getReporte08_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte09" ReturnType="Collection(kinnemedModel.getReporte09_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte10" ReturnType="Collection(kinnemedModel.getReporte10_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte11" ReturnType="Collection(kinnemedModel.getReporte11_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getReporte12" ReturnType="Collection(kinnemedModel.getReporte12_Result)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista01" ReturnType="Collection(kinnemedModel.Lista01)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista02" ReturnType="Collection(kinnemedModel.Lista02)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista03" ReturnType="Collection(kinnemedModel.Lista03)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista04" ReturnType="Collection(kinnemedModel.Lista04)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista05" ReturnType="Collection(kinnemedModel.Lista05)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista06" ReturnType="Collection(kinnemedModel.Lista06)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getLista07" ReturnType="Collection(kinnemedModel.Lista07)">
+      <Parameter Name="fecha_ini" Mode="In" Type="String" />
+      <Parameter Name="fecha_fin" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="concepto" EntityType="kinnemedModel.concepto" />
+    <EntitySet Name="personal" EntityType="kinnemedModel.personal" />
+    <AssociationSet Name="FK_concepto_historia" Association="kinnemedModel.FK_concepto_historia">
+      <End Role="historia" EntitySet="historia" />
+      <End Role="concepto" EntitySet="concepto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_personal_paciente" Association="kinnemedModel.FK_personal_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="personal" EntitySet="personal" />
+    </AssociationSet>
+    <EntitySet Name="accidente" EntityType="kinnemedModel.accidente" />
+    <EntitySet Name="actividad" EntityType="kinnemedModel.actividad" />
+    <EntitySet Name="enfermedad" EntityType="kinnemedModel.enfermedad" />
+    <EntitySet Name="habitos" EntityType="kinnemedModel.habitos" />
+    <AssociationSet Name="FK_accidente_paciente" Association="kinnemedModel.FK_accidente_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="accidente" EntitySet="accidente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_actividad_paciente" Association="kinnemedModel.FK_actividad_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="actividad" EntitySet="actividad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_enfermedad_paciente" Association="kinnemedModel.FK_enfermedad_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="enfermedad" EntitySet="enfermedad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_habitos_paciente" Association="kinnemedModel.FK_habitos_paciente">
+      <End Role="paciente" EntitySet="paciente" />
+      <End Role="habitos" EntitySet="habitos" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="area">
@@ -600,25 +626,6 @@
     <Property Name="fam_hit_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_familiar_paciente" FromRole="familiar" ToRole="paciente" />
   </EntityType>
-  <EntityType Name="personal">
-    <Key>
-      <PropertyRef Name="per_id" />
-    </Key>
-    <Property Name="per_id" Type="Int32" Nullable="false" />
-    <Property Name="per_patologicas" Type="Boolean" Nullable="false" />
-    <Property Name="per_pat_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="per_quirurgicas" Type="Boolean" Nullable="false" />
-    <Property Name="per_qui_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="per_traumaticos" Type="Boolean" Nullable="false" />
-    <Property Name="per_tra_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="per_alergias" Type="Boolean" Nullable="false" />
-    <Property Name="per_ale_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="per_vacunas" Type="Boolean" Nullable="false" />
-    <Property Name="per_vac_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="per_otros" Type="Boolean" Nullable="false" />
-    <Property Name="per_otr_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_personal_paciente" FromRole="personal" ToRole="paciente" />
-  </EntityType>
   <EntityType Name="signos">
     <Key>
       <PropertyRef Name="sig_id" />
@@ -760,16 +767,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="concepto">
-    <Key>
-      <PropertyRef Name="con_id" />
-    </Key>
-    <Property Name="con_id" Type="Int32" Nullable="false" />
-    <Property Name="con_resultado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="con_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="con_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_concepto_historia" FromRole="concepto" ToRole="historia" />
-  </EntityType>
   <EntityType Name="ginecologico">
     <Key>
       <PropertyRef Name="gin_id" />
@@ -842,17 +839,6 @@
     <NavigationProperty Name="area" Relationship="kinnemedModel.FK_codigo_area" FromRole="codigo" ToRole="area" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_codigo_registro" FromRole="codigo" ToRole="registro" />
   </EntityType>
-  <EntityType Name="orden">
-    <Key>
-      <PropertyRef Name="ord_id" />
-    </Key>
-    <Property Name="ord_id" Type="Int32" Nullable="false" />
-    <Property Name="ord_paciente" Type="Int32" Nullable="false" />
-    <Property Name="ord_examen" Type="Int32" Nullable="false" />
-    <Property Name="ord_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_orden_paciente" FromRole="orden" ToRole="paciente" />
-    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_orden_examen" FromRole="orden" ToRole="examen" />
-  </EntityType>
   <Association Name="FK_codigo_area">
     <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -894,7 +880,6 @@
     <Property Name="his_numero" Type="Int32" Nullable="false" />
     <Property Name="his_medico" Type="Int32" Nullable="false" />
     <Property Name="his_firma" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <NavigationProperty Name="concepto" Relationship="kinnemedModel.FK_concepto_historia" FromRole="historia" ToRole="concepto" />
     <NavigationProperty Name="diagnostico" Relationship="kinnemedModel.FK_diagnostico_historia" FromRole="historia" ToRole="diagnostico" />
     <NavigationProperty Name="fisico" Relationship="kinnemedModel.FK_fisico_historia" FromRole="historia" ToRole="fisico" />
     <NavigationProperty Name="plan" Relationship="kinnemedModel.FK_plan_historia" FromRole="historia" ToRole="plan" />
@@ -904,21 +889,8 @@
     <NavigationProperty Name="reposo" Relationship="kinnemedModel.FK_reposo_historia" FromRole="historia" ToRole="reposo" />
     <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_historia_paciente" FromRole="historia" ToRole="paciente" />
     <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_historia_medico" FromRole="historia" ToRole="medico" />
+    <NavigationProperty Name="concepto" Relationship="kinnemedModel.FK_concepto_historia" FromRole="historia" ToRole="concepto" />
   </EntityType>
-  <Association Name="FK_concepto_historia">
-    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.concepto" Role="concepto" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="historia">
-        <PropertyRef Name="his_id" />
-      </Principal>
-      <Dependent Role="concepto">
-        <PropertyRef Name="con_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_diagnostico_historia">
     <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1062,15 +1034,19 @@
     <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_historia_paciente" FromRole="paciente" ToRole="historia" />
     <NavigationProperty Name="inmunizacion" Relationship="kinnemedModel.FK_inmunizacion_paciente" FromRole="paciente" ToRole="inmunizacion" />
     <NavigationProperty Name="ocupacional" Relationship="kinnemedModel.FK_ocupacional_paciente" FromRole="paciente" ToRole="ocupacional" />
-    <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_paciente" FromRole="paciente" ToRole="orden" />
     <NavigationProperty Name="pais" Relationship="kinnemedModel.FK_paciente_pais" FromRole="paciente" ToRole="pais" />
     <NavigationProperty Name="profesion" Relationship="kinnemedModel.FK_paciente_profesion" FromRole="paciente" ToRole="profesion" />
-    <NavigationProperty Name="personal" Relationship="kinnemedModel.FK_personal_paciente" FromRole="paciente" ToRole="personal" />
     <NavigationProperty Name="registro" Relationship="kinnemedModel.FK_registro_paciente" FromRole="paciente" ToRole="registro" />
     <NavigationProperty Name="audiometria" Relationship="kinnemedModel.FK_audiometria_paciente" FromRole="paciente" ToRole="audiometria" />
     <NavigationProperty Name="espirometria" Relationship="kinnemedModel.FK_espirometria_paciente" FromRole="paciente" ToRole="espirometria" />
     <NavigationProperty Name="oftalmologia" Relationship="kinnemedModel.FK_oftalmologia_paciente" FromRole="paciente" ToRole="oftalmologia" />
     <NavigationProperty Name="rayos" Relationship="kinnemedModel.FK_rayos_paciente" FromRole="paciente" ToRole="rayos" />
+    <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_paciente" FromRole="paciente" ToRole="orden" />
+    <NavigationProperty Name="personal" Relationship="kinnemedModel.FK_personal_paciente" FromRole="paciente" ToRole="personal" />
+    <NavigationProperty Name="accidente" Relationship="kinnemedModel.FK_accidente_paciente" FromRole="paciente" ToRole="accidente" />
+    <NavigationProperty Name="actividad" Relationship="kinnemedModel.FK_actividad_paciente" FromRole="paciente" ToRole="actividad" />
+    <NavigationProperty Name="enfermedad" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="paciente" ToRole="enfermedad" />
+    <NavigationProperty Name="habitos" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="paciente" ToRole="habitos" />
   </EntityType>
   <Association Name="FK_paciente_canton">
     <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
@@ -1170,20 +1146,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_orden_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.orden" Role="orden" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="orden">
-        <PropertyRef Name="ord_paciente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_paciente_pais">
     <End Type="kinnemedModel.pais" Role="pais" Multiplicity="0..1" />
     <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="*" />
@@ -1210,100 +1172,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_personal_paciente">
-    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.personal" Role="personal" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="paciente">
-        <PropertyRef Name="pac_id" />
-      </Principal>
-      <Dependent Role="personal">
-        <PropertyRef Name="per_id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <ComplexType Name="getReporte01_Result">
-    <Property Type="Int32" Name="pac_id" Nullable="false" />
-    <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
-    <Property Type="Boolean" Name="historia" Nullable="true" />
-    <Property Type="Boolean" Name="examen" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Lista01">
-    <Property Type="Int32" Name="pac_id" Nullable="false" />
-    <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
-    <Property Type="Boolean" Name="historia" Nullable="true" />
-    <Property Type="Boolean" Name="examen" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="getReporte02_Result">
-    <Property Type="Int32" Name="pac_id" Nullable="true" />
-    <Property Type="String" Name="his_fecha" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="pac_nombres" Nullable="true" MaxLength="150" />
-    <Property Type="String" Name="pac_apellidos" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="pac_edad" Nullable="true" />
-    <Property Type="String" Name="pac_genero" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="med_nombres" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="med_apellidos" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
-    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
-    <Property Type="Boolean" Name="Laboratorio" Nullable="true" />
-    <Property Type="Boolean" Name="Audiometria" Nullable="true" />
-    <Property Type="Boolean" Name="Oftalmologia" Nullable="true" />
-    <Property Type="Boolean" Name="Espirometria" Nullable="true" />
-    <Property Type="Boolean" Name="Rayos" Nullable="true" />
-    <Property Type="Boolean" Name="Chequeo" Nullable="true" />
-    <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
-    <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
-    <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
-    <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
-  </ComplexType>
-  <ComplexType Name="getReporte03_Result">
-    <Property Type="String" Name="exa_nombre" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="Total" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Lista02">
-    <Property Type="Int32" Name="pac_id" Nullable="true" />
-    <Property Type="String" Name="his_fecha" Nullable="false" MaxLength="10" />
-    <Property Type="String" Name="pac_nombres" Nullable="true" MaxLength="150" />
-    <Property Type="String" Name="pac_apellidos" Nullable="true" MaxLength="150" />
-    <Property Type="Int32" Name="pac_edad" Nullable="true" />
-    <Property Type="String" Name="pac_genero" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="med_nombres" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="med_apellidos" Nullable="false" MaxLength="150" />
-    <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
-    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
-    <Property Type="Boolean" Name="Laboratorio" Nullable="true" />
-    <Property Type="Boolean" Name="Audiometria" Nullable="true" />
-    <Property Type="Boolean" Name="Oftalmologia" Nullable="true" />
-    <Property Type="Boolean" Name="Espirometria" Nullable="true" />
-    <Property Type="Boolean" Name="Rayos" Nullable="true" />
-    <Property Type="Boolean" Name="Chequeo" Nullable="true" />
-    <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
-    <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
-    <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
-    <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
-    <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
-  </ComplexType>
-  <ComplexType Name="Lista03">
-    <Property Type="String" Name="exa_nombre" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="Total" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Lista04">
-    <Property Type="Int32" Name="Total" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Lista05">
-    <Property Type="Int32" Name="Total" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Lista06">
-    <Property Type="Int32" Name="Total" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="Lista07">
-    <Property Type="Int32" Name="Total" Nullable="true" />
-  </ComplexType>
   <EntityType Name="medico">
     <Key>
       <PropertyRef Name="med_id" />
@@ -1611,9 +1479,9 @@
     <Property Name="exa_orden" Type="Int32" Nullable="false" />
     <NavigationProperty Name="area" Relationship="kinnemedModel.FK_examen_area" FromRole="examen" ToRole="area" />
     <NavigationProperty Name="control" Relationship="kinnemedModel.FK_control_examen" FromRole="examen" ToRole="control" />
-    <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_examen" FromRole="examen" ToRole="orden" />
     <NavigationProperty Name="prueba" Relationship="kinnemedModel.FK_prueba_examen" FromRole="examen" ToRole="prueba" />
     <NavigationProperty Name="valores" Relationship="kinnemedModel.FK_valores_examen" FromRole="examen" ToRole="valores" />
+    <NavigationProperty Name="orden" Relationship="kinnemedModel.FK_orden_examen" FromRole="examen" ToRole="orden" />
   </EntityType>
   <Association Name="FK_examen_area">
     <End Type="kinnemedModel.area" Role="area" Multiplicity="1">
@@ -1643,20 +1511,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_orden_examen">
-    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="kinnemedModel.orden" Role="orden" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="examen">
-        <PropertyRef Name="exa_id" />
-      </Principal>
-      <Dependent Role="orden">
-        <PropertyRef Name="ord_examen" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_prueba_examen">
     <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1682,6 +1536,389 @@
       </Principal>
       <Dependent Role="valores">
         <PropertyRef Name="val_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="orden">
+    <Key>
+      <PropertyRef Name="ord_id" />
+    </Key>
+    <Property Name="ord_id" Type="Int32" Nullable="false" />
+    <Property Name="ord_paciente" Type="Int32" Nullable="false" />
+    <Property Name="ord_examen" Type="Int32" Nullable="false" />
+    <Property Name="ord_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="examen" Relationship="kinnemedModel.FK_orden_examen" FromRole="orden" ToRole="examen" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_orden_paciente" FromRole="orden" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_orden_examen">
+    <End Type="kinnemedModel.examen" Role="examen" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.orden" Role="orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="examen">
+        <PropertyRef Name="exa_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_examen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.orden" Role="orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="orden">
+        <PropertyRef Name="ord_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="getReporte01_Result">
+    <Property Type="Int64" Name="id" Nullable="true" />
+    <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="historia" Nullable="true" />
+    <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+    <Property Type="Int32" Name="Audiometria" Nullable="true" />
+    <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+    <Property Type="Int32" Name="Espirometria" Nullable="true" />
+    <Property Type="Int32" Name="Rayos" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte02_Result">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="true" MaxLength="301" />
+    <Property Type="Int32" Name="Edad" Nullable="true" />
+    <Property Type="String" Name="Genero" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Instruccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Medico" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Enfermedad" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Accidente" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Fuma" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Alcohol" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Ejercicio" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="PapTest" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Inmunizacion" Nullable="true" />
+    <Property Type="Decimal" Name="Peso" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="Talla" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="IMC" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
+    <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+    <Property Type="Int32" Name="Audiometria" Nullable="true" />
+    <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+    <Property Type="Int32" Name="Espirometria" Nullable="true" />
+    <Property Type="Int32" Name="Rayos" Nullable="true" />
+    <Property Type="Int32" Name="Chequeo" Nullable="true" />
+    <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Seguimiento" Nullable="true" MaxLength="2" />
+    <Property Type="Int32" Name="Periodicidad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte03_Result">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Examen" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte04_Result">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Audiometrias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte05_Result">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Espirometrias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte06_Result">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Oftalmologias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte07_Result">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Rayos" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getReporte08_Result">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Responsable" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getReporte09_Result">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Responsable" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getReporte10_Result">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Responsable" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getReporte11_Result">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Responsable" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getReporte12_Result">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="Fecha" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Responsable" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Lista01">
+    <Property Type="Int64" Name="id" Nullable="true" />
+    <Property Type="String" Name="pac_apellidos" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="pac_nombres" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="historia" Nullable="true" />
+    <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+    <Property Type="Int32" Name="Audiometria" Nullable="true" />
+    <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+    <Property Type="Int32" Name="Espirometria" Nullable="true" />
+    <Property Type="Int32" Name="Rayos" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista02">
+    <Property Type="Int64" Name="Numero" Nullable="true" />
+    <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="Paciente" Nullable="true" MaxLength="301" />
+    <Property Type="Int32" Name="Edad" Nullable="true" />
+    <Property Type="String" Name="Genero" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Instruccion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Medico" Nullable="false" MaxLength="301" />
+    <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Enfermedad" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Accidente" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Fuma" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Alcohol" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Ejercicio" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="PapTest" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Inmunizacion" Nullable="true" />
+    <Property Type="Decimal" Name="Peso" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="Talla" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="IMC" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
+    <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+    <Property Type="Int32" Name="Audiometria" Nullable="true" />
+    <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+    <Property Type="Int32" Name="Espirometria" Nullable="true" />
+    <Property Type="Int32" Name="Rayos" Nullable="true" />
+    <Property Type="Int32" Name="Chequeo" Nullable="true" />
+    <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="Seguimiento" Nullable="true" MaxLength="2" />
+    <Property Type="Int32" Name="Periodicidad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista03">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Examen" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista04">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Audiometrias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista05">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Espirometrias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista06">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Oftalmologias" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Lista07">
+    <Property Type="String" Name="Empresa" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Rayos" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="concepto">
+    <Key>
+      <PropertyRef Name="con_id" />
+    </Key>
+    <Property Name="con_id" Type="Int32" Nullable="false" />
+    <Property Name="con_resultado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="con_observacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="con_valor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="con_seguimiento" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="con_periodo" Type="Int32" />
+    <NavigationProperty Name="historia" Relationship="kinnemedModel.FK_concepto_historia" FromRole="concepto" ToRole="historia" />
+  </EntityType>
+  <EntityType Name="personal">
+    <Key>
+      <PropertyRef Name="per_id" />
+    </Key>
+    <Property Name="per_id" Type="Int32" Nullable="false" />
+    <Property Name="per_patologicas" Type="Boolean" Nullable="false" />
+    <Property Name="per_pat_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_quirurgicas" Type="Boolean" Nullable="false" />
+    <Property Name="per_qui_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_traumaticos" Type="Boolean" Nullable="false" />
+    <Property Name="per_tra_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_alergias" Type="Boolean" Nullable="false" />
+    <Property Name="per_ale_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_vacunas" Type="Boolean" Nullable="false" />
+    <Property Name="per_vac_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="per_lateralidad" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="per_otros" Type="Boolean" Nullable="false" />
+    <Property Name="per_otr_txt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_personal_paciente" FromRole="personal" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_concepto_historia">
+    <End Type="kinnemedModel.historia" Role="historia" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.concepto" Role="concepto" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="historia">
+        <PropertyRef Name="his_id" />
+      </Principal>
+      <Dependent Role="concepto">
+        <PropertyRef Name="con_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_personal_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.personal" Role="personal" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="personal">
+        <PropertyRef Name="per_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="accidente">
+    <Key>
+      <PropertyRef Name="acc_id" />
+    </Key>
+    <Property Name="acc_id" Type="Int32" Nullable="false" />
+    <Property Name="acc_descripción" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acc_capacidad" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acc_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="acc_empresa" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="acc_paciente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_accidente_paciente" FromRole="accidente" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="actividad">
+    <Key>
+      <PropertyRef Name="act_id" />
+    </Key>
+    <Property Name="act_id" Type="Int32" Nullable="false" />
+    <Property Name="act_enf_estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="act_enf_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="act_enf_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="act_enf_empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="act_acc_estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="act_acc_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="act_acc_capacidad" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="act_acc_fecha" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="act_acc_empresa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_actividad_paciente" FromRole="actividad" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="enfermedad">
+    <Key>
+      <PropertyRef Name="enf_id" />
+    </Key>
+    <Property Name="enf_id" Type="Int32" Nullable="false" />
+    <Property Name="enf_descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="enf_fecha" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="enf_empresa" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="enf_paciente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="enfermedad" ToRole="paciente" />
+  </EntityType>
+  <EntityType Name="habitos">
+    <Key>
+      <PropertyRef Name="hab_id" />
+    </Key>
+    <Property Name="hab_id" Type="Int32" Nullable="false" />
+    <Property Name="hab_fumo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_fuma" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_cigarillos" Type="Int32" />
+    <Property Name="hab_alcohol" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_frecuencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hab_drogas" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="hab_ejercicio" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="habitos" ToRole="paciente" />
+  </EntityType>
+  <Association Name="FK_accidente_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.accidente" Role="accidente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="accidente">
+        <PropertyRef Name="acc_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_actividad_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.actividad" Role="actividad" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="actividad">
+        <PropertyRef Name="act_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_enfermedad_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.enfermedad" Role="enfermedad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="enfermedad">
+        <PropertyRef Name="enf_paciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_habitos_paciente">
+    <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="kinnemedModel.habitos" Role="habitos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="paciente">
+        <PropertyRef Name="pac_id" />
+      </Principal>
+      <Dependent Role="habitos">
+        <PropertyRef Name="hab_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

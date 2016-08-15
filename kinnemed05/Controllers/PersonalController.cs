@@ -51,6 +51,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Edit", new { id = id });
             }
             ViewBag.per_id = id;
+            ViewBag.per_lateralidad = per_lateralidad();
             return PartialView();
         }
 
@@ -71,12 +72,13 @@ namespace kinnemed05.Controllers
                     return RedirectToAction("Create", "Ginecologico", new { id = personal.per_id });
                 }
                 else {
-                    return RedirectToAction("Create", "Familiar", new { id = personal.per_id });
+                    return RedirectToAction("Create", "Habitos", new { id = personal.per_id });
                 }
                 
             }
 
             ViewBag.per_id = personal.per_id;
+            ViewBag.per_lateralidad = per_lateralidad(personal.per_lateralidad);
             return PartialView(personal);
         }
 
@@ -92,6 +94,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Create", new { id = id });
             }
             ViewBag.per_id = id;
+            ViewBag.per_lateralidad = per_lateralidad(personal.per_lateralidad);
             return PartialView(personal);
         }
 
@@ -113,11 +116,12 @@ namespace kinnemed05.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Edit", "Familiar", new { id = personal.per_id });
+                    return RedirectToAction("Edit", "Habitos", new { id = personal.per_id });
                 }
                 //return RedirectToAction("Edit", "Ginecologico", new { id = personal.per_id });
             }
             ViewBag.per_id = personal.per_id;
+            ViewBag.per_lateralidad = per_lateralidad(personal.per_lateralidad);
             return PartialView(personal);
         }
 
@@ -145,6 +149,20 @@ namespace kinnemed05.Controllers
             db.personal.Remove(personal);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        private SelectList per_lateralidad(string jornada = "")
+        {
+            List<SelectListItem> list_jornada = new List<SelectListItem>();
+            list_jornada.Add(new SelectListItem { Text = "Diestro", Value = "Diestro" });
+            list_jornada.Add(new SelectListItem { Text = "Zurdo", Value = "Zurdo" });
+            list_jornada.Add(new SelectListItem { Text = "Ambidiestro", Value = "Ambidiestro" });
+            SelectList jornadas;
+            if (jornada == "")
+                jornadas = new SelectList(list_jornada, "Value", "Text");
+            else
+                jornadas = new SelectList(list_jornada, "Value", "Text", jornada);
+            return jornadas;
         }
 
         protected override void Dispose(bool disposing)

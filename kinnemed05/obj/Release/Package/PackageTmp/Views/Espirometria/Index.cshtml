@@ -114,7 +114,9 @@
                 <th>
                     Empresa
                 </th>
-               
+                <th>
+                    @Html.DisplayNameFor(model => model.esp_fecha)
+                </th>
                 <th>
                     @Html.DisplayNameFor(model => model.esp_observacion)
                 </th>
@@ -131,7 +133,9 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.paciente.empresa.emp_nombre)
                     </td>
-                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.esp_fecha)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.esp_observacion)
                     </td>

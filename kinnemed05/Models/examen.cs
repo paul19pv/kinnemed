@@ -17,18 +17,17 @@ namespace kinnemed05.Models
         public examen()
         {
             this.control = new HashSet<control>();
-            this.orden = new HashSet<orden>();
             this.prueba = new HashSet<prueba>();
             this.valores = new HashSet<valores>();
+            this.orden = new HashSet<orden>();
         }
     
         public int exa_id { get; set; }
-       
     
         public virtual area area { get; set; }
         public virtual ICollection<control> control { get; set; }
-        public virtual ICollection<orden> orden { get; set; }
         public virtual ICollection<prueba> prueba { get; set; }
         public virtual ICollection<valores> valores { get; set; }
+        public virtual ICollection<orden> orden { get; set; }
     }
 }

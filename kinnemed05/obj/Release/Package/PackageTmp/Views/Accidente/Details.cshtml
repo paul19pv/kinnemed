@@ -1,0 +1,57 @@
+﻿@model kinnemed05.Models.accidente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>accidente</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.acc_descripción)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.acc_descripción)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.acc_capacidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.acc_capacidad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.acc_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.acc_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.acc_empresa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.acc_empresa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.acc_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.acc_id)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

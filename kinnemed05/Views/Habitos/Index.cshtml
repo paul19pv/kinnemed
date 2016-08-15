@@ -1,0 +1,75 @@
+﻿@model IEnumerable<kinnemed05.Models.habitos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_fumo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_fuma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_cigarillos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_alcohol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_frecuencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_drogas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hab_ejercicio)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.pac_cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_fumo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_fuma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_cigarillos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_alcohol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_frecuencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_drogas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hab_ejercicio)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

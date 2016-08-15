@@ -274,5 +274,11 @@ C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.pdb
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.csprojResolveAssemblyReference.cache
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.cs
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll.CodeAnalysisLog.xml
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll.lastcodeanalysissucceeded
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptAudiometria.rpt
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.rpt
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.rpt
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptAudiometria.cs
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.cs
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.cs
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.dll
+C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.xml

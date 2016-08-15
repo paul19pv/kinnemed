@@ -33,10 +33,7 @@
                 <div class="col-lg-3">
                     @Html.TextBox("fec_fin", "", new { @class = "form-control", Value = ViewBag.fec_fin })
                 </div>
-                @Html.Label("Empresa", new { @class = "control-label col-lg-1", @for = "inputDefault" })
-                <div class="col-lg-2">
-                    @Html.DropDownList("empresa",String.Empty)
-                </div>
+                
                 <input type="submit" value="Exportar" class="btn btn-primary" />
             </div>
         }

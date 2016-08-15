@@ -1,0 +1,68 @@
+﻿@model kinnemed05.Models.enfermedad
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>enfermedad</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.enf_descripcion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.enf_descripcion)
+            @Html.ValidationMessageFor(model => model.enf_descripcion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.enf_fecha)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.enf_fecha)
+            @Html.ValidationMessageFor(model => model.enf_fecha)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.enf_empresa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.enf_empresa)
+            @Html.ValidationMessageFor(model => model.enf_empresa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.enf_paciente, "paciente")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("enf_paciente", String.Empty)
+            @Html.ValidationMessageFor(model => model.enf_paciente)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.enf_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.enf_id)
+            @Html.ValidationMessageFor(model => model.enf_id)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -13,7 +13,8 @@ namespace kinnemed05.Models
     
     public partial class getReporte03_Result
     {
-        public string exa_nombre { get; set; }
+        public string Empresa { get; set; }
+        public string Examen { get; set; }
         public Nullable<int> Total { get; set; }
     }
 }

@@ -245,25 +245,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="personal">
-      <EntityTypeMapping TypeName="kinnemedModel.personal">
-        <MappingFragment StoreEntitySet="personal">
-          <ScalarProperty Name="per_otr_txt" ColumnName="per_otr_txt" />
-          <ScalarProperty Name="per_otros" ColumnName="per_otros" />
-          <ScalarProperty Name="per_vac_txt" ColumnName="per_vac_txt" />
-          <ScalarProperty Name="per_vacunas" ColumnName="per_vacunas" />
-          <ScalarProperty Name="per_ale_txt" ColumnName="per_ale_txt" />
-          <ScalarProperty Name="per_alergias" ColumnName="per_alergias" />
-          <ScalarProperty Name="per_tra_txt" ColumnName="per_tra_txt" />
-          <ScalarProperty Name="per_traumaticos" ColumnName="per_traumaticos" />
-          <ScalarProperty Name="per_qui_txt" ColumnName="per_qui_txt" />
-          <ScalarProperty Name="per_quirurgicas" ColumnName="per_quirurgicas" />
-          <ScalarProperty Name="per_pat_txt" ColumnName="per_pat_txt" />
-          <ScalarProperty Name="per_patologicas" ColumnName="per_patologicas" />
-          <ScalarProperty Name="per_id" ColumnName="per_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="signos">
       <EntityTypeMapping TypeName="kinnemedModel.signos">
         <MappingFragment StoreEntitySet="signos">
@@ -360,16 +341,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="concepto">
-      <EntityTypeMapping TypeName="kinnemedModel.concepto">
-        <MappingFragment StoreEntitySet="concepto">
-          <ScalarProperty Name="con_valor" ColumnName="con_valor" />
-          <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
-          <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
-          <ScalarProperty Name="con_id" ColumnName="con_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="ginecologico">
       <EntityTypeMapping TypeName="kinnemedModel.ginecologico">
         <MappingFragment StoreEntitySet="ginecologico">
@@ -421,16 +392,6 @@
           <ScalarProperty Name="cod_imagen" ColumnName="cod_imagen" />
           <ScalarProperty Name="cod_codigo" ColumnName="cod_codigo" />
           <ScalarProperty Name="cod_id" ColumnName="cod_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="orden">
-      <EntityTypeMapping TypeName="kinnemedModel.orden">
-        <MappingFragment StoreEntitySet="orden">
-          <ScalarProperty Name="ord_fecha" ColumnName="ord_fecha" />
-          <ScalarProperty Name="ord_examen" ColumnName="ord_examen" />
-          <ScalarProperty Name="ord_paciente" ColumnName="ord_paciente" />
-          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -502,130 +463,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="getReporte01" FunctionName="kinnemedModel.Store.getReporte01">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.getReporte01_Result">
-          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-          <ScalarProperty Name="historia" ColumnName="historia" />
-          <ScalarProperty Name="examen" ColumnName="examen" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getLista01" FunctionName="kinnemedModel.Store.getReporte01">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista01">
-          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-          <ScalarProperty Name="historia" ColumnName="historia" />
-          <ScalarProperty Name="examen" ColumnName="examen" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getReporte02" FunctionName="kinnemedModel.Store.getReporte02">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.getReporte02_Result">
-          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
-          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-          <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
-          <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
-          <ScalarProperty Name="med_nombres" ColumnName="med_nombres" />
-          <ScalarProperty Name="med_apellidos" ColumnName="med_apellidos" />
-          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
-          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
-          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
-          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
-          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
-          <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
-          <ScalarProperty Name="Certificado" ColumnName="Certificado" />
-          <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
-          <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
-          <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
-          <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getReporte03" FunctionName="kinnemedModel.Store.getReporte03">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.getReporte03_Result">
-          <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getReporte04" FunctionName="kinnemedModel.Store.getReporte04" />
-    <FunctionImportMapping FunctionImportName="getReporte05" FunctionName="kinnemedModel.Store.getReporte05" />
-    <FunctionImportMapping FunctionImportName="getReporte06" FunctionName="kinnemedModel.Store.getReporte06" />
-    <FunctionImportMapping FunctionImportName="getReporte07" FunctionName="kinnemedModel.Store.getReporte07" />
-    <FunctionImportMapping FunctionImportName="getLista02" FunctionName="kinnemedModel.Store.getReporte02">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista02">
-          <ScalarProperty Name="pac_id" ColumnName="pac_id" />
-          <ScalarProperty Name="his_fecha" ColumnName="his_fecha" />
-          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
-          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
-          <ScalarProperty Name="pac_edad" ColumnName="pac_edad" />
-          <ScalarProperty Name="pac_genero" ColumnName="pac_genero" />
-          <ScalarProperty Name="med_nombres" ColumnName="med_nombres" />
-          <ScalarProperty Name="med_apellidos" ColumnName="med_apellidos" />
-          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
-          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
-          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
-          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
-          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
-          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
-          <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
-          <ScalarProperty Name="Certificado" ColumnName="Certificado" />
-          <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
-          <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
-          <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
-          <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getLista03" FunctionName="kinnemedModel.Store.getReporte03">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista03">
-          <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getLista04" FunctionName="kinnemedModel.Store.getReporte04">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista04">
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getLista05" FunctionName="kinnemedModel.Store.getReporte05">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista05">
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getLista06" FunctionName="kinnemedModel.Store.getReporte06">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista06">
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getLista07" FunctionName="kinnemedModel.Store.getReporte07">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="kinnemedModel.Lista07">
-          <ScalarProperty Name="Total" ColumnName="Total" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <EntitySetMapping Name="medico">
       <EntityTypeMapping TypeName="kinnemedModel.medico">
         <MappingFragment StoreEntitySet="medico">
@@ -741,6 +578,352 @@
           <ScalarProperty Name="exa_unidad" ColumnName="exa_unidad" />
           <ScalarProperty Name="exa_nombre" ColumnName="exa_nombre" />
           <ScalarProperty Name="exa_id" ColumnName="exa_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orden">
+      <EntityTypeMapping TypeName="kinnemedModel.orden">
+        <MappingFragment StoreEntitySet="orden">
+          <ScalarProperty Name="ord_fecha" ColumnName="ord_fecha" />
+          <ScalarProperty Name="ord_examen" ColumnName="ord_examen" />
+          <ScalarProperty Name="ord_paciente" ColumnName="ord_paciente" />
+          <ScalarProperty Name="ord_id" ColumnName="ord_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getReporte01" FunctionName="kinnemedModel.Store.getReporte01">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte01_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+          <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+          <ScalarProperty Name="historia" ColumnName="historia" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte02" FunctionName="kinnemedModel.Store.getReporte02">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte02_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Instruccion" ColumnName="Instruccion" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="Medico" ColumnName="Medico" />
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+          <ScalarProperty Name="Accidente" ColumnName="Accidente" />
+          <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+          <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+          <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+          <ScalarProperty Name="PapTest" ColumnName="PapTest" />
+          <ScalarProperty Name="Inmunizacion" ColumnName="Inmunizacion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Talla" ColumnName="Talla" />
+          <ScalarProperty Name="IMC" ColumnName="IMC" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+          <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
+          <ScalarProperty Name="Certificado" ColumnName="Certificado" />
+          <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
+          <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
+          <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
+          <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
+          <ScalarProperty Name="Seguimiento" ColumnName="Seguimiento" />
+          <ScalarProperty Name="Periodicidad" ColumnName="Periodicidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte03" FunctionName="kinnemedModel.Store.getReporte03">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte03_Result">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Examen" ColumnName="Examen" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte04" FunctionName="kinnemedModel.Store.getReporte04">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte04_Result">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Audiometrias" ColumnName="Audiometrias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte05" FunctionName="kinnemedModel.Store.getReporte05">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte05_Result">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Espirometrias" ColumnName="Espirometrias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte06" FunctionName="kinnemedModel.Store.getReporte06">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte06_Result">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Oftalmologias" ColumnName="Oftalmologias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte07" FunctionName="kinnemedModel.Store.getReporte07">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte07_Result">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte08" FunctionName="kinnemedModel.Store.getReporte08">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte08_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte09" FunctionName="kinnemedModel.Store.getReporte09">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte09_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte10" FunctionName="kinnemedModel.Store.getReporte10">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte10_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte11" FunctionName="kinnemedModel.Store.getReporte11">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte11_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getReporte12" FunctionName="kinnemedModel.Store.getReporte12">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte12_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista01" FunctionName="kinnemedModel.Store.getReporte01">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista01">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pac_apellidos" ColumnName="pac_apellidos" />
+          <ScalarProperty Name="pac_nombres" ColumnName="pac_nombres" />
+          <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+          <ScalarProperty Name="historia" ColumnName="historia" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista02" FunctionName="kinnemedModel.Store.getReporte02">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista02">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Instruccion" ColumnName="Instruccion" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="Medico" ColumnName="Medico" />
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+          <ScalarProperty Name="Accidente" ColumnName="Accidente" />
+          <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+          <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+          <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+          <ScalarProperty Name="PapTest" ColumnName="PapTest" />
+          <ScalarProperty Name="Inmunizacion" ColumnName="Inmunizacion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Talla" ColumnName="Talla" />
+          <ScalarProperty Name="IMC" ColumnName="IMC" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+          <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
+          <ScalarProperty Name="Certificado" ColumnName="Certificado" />
+          <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
+          <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
+          <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
+          <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
+          <ScalarProperty Name="Seguimiento" ColumnName="Seguimiento" />
+          <ScalarProperty Name="Periodicidad" ColumnName="Periodicidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista03" FunctionName="kinnemedModel.Store.getReporte03">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista03">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Examen" ColumnName="Examen" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista04" FunctionName="kinnemedModel.Store.getReporte04">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista04">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Audiometrias" ColumnName="Audiometrias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista05" FunctionName="kinnemedModel.Store.getReporte05">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista05">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Espirometrias" ColumnName="Espirometrias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista06" FunctionName="kinnemedModel.Store.getReporte06">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista06">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Oftalmologias" ColumnName="Oftalmologias" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getLista07" FunctionName="kinnemedModel.Store.getReporte07">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.Lista07">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="concepto">
+      <EntityTypeMapping TypeName="kinnemedModel.concepto">
+        <MappingFragment StoreEntitySet="concepto">
+          <ScalarProperty Name="con_periodo" ColumnName="con_periodo" />
+          <ScalarProperty Name="con_seguimiento" ColumnName="con_seguimiento" />
+          <ScalarProperty Name="con_valor" ColumnName="con_valor" />
+          <ScalarProperty Name="con_observacion" ColumnName="con_observacion" />
+          <ScalarProperty Name="con_resultado" ColumnName="con_resultado" />
+          <ScalarProperty Name="con_id" ColumnName="con_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personal">
+      <EntityTypeMapping TypeName="kinnemedModel.personal">
+        <MappingFragment StoreEntitySet="personal">
+          <ScalarProperty Name="per_otr_txt" ColumnName="per_otr_txt" />
+          <ScalarProperty Name="per_otros" ColumnName="per_otros" />
+          <ScalarProperty Name="per_lateralidad" ColumnName="per_lateralidad" />
+          <ScalarProperty Name="per_vac_txt" ColumnName="per_vac_txt" />
+          <ScalarProperty Name="per_vacunas" ColumnName="per_vacunas" />
+          <ScalarProperty Name="per_ale_txt" ColumnName="per_ale_txt" />
+          <ScalarProperty Name="per_alergias" ColumnName="per_alergias" />
+          <ScalarProperty Name="per_tra_txt" ColumnName="per_tra_txt" />
+          <ScalarProperty Name="per_traumaticos" ColumnName="per_traumaticos" />
+          <ScalarProperty Name="per_qui_txt" ColumnName="per_qui_txt" />
+          <ScalarProperty Name="per_quirurgicas" ColumnName="per_quirurgicas" />
+          <ScalarProperty Name="per_pat_txt" ColumnName="per_pat_txt" />
+          <ScalarProperty Name="per_patologicas" ColumnName="per_patologicas" />
+          <ScalarProperty Name="per_id" ColumnName="per_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accidente">
+      <EntityTypeMapping TypeName="kinnemedModel.accidente">
+        <MappingFragment StoreEntitySet="accidente">
+          <ScalarProperty Name="acc_paciente" ColumnName="acc_paciente" />
+          <ScalarProperty Name="acc_empresa" ColumnName="acc_empresa" />
+          <ScalarProperty Name="acc_fecha" ColumnName="acc_fecha" />
+          <ScalarProperty Name="acc_capacidad" ColumnName="acc_capacidad" />
+          <ScalarProperty Name="acc_descripción" ColumnName="acc_descripción" />
+          <ScalarProperty Name="acc_id" ColumnName="acc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="actividad">
+      <EntityTypeMapping TypeName="kinnemedModel.actividad">
+        <MappingFragment StoreEntitySet="actividad">
+          <ScalarProperty Name="act_acc_empresa" ColumnName="act_acc_empresa" />
+          <ScalarProperty Name="act_acc_fecha" ColumnName="act_acc_fecha" />
+          <ScalarProperty Name="act_acc_capacidad" ColumnName="act_acc_capacidad" />
+          <ScalarProperty Name="act_acc_descripcion" ColumnName="act_acc_descripcion" />
+          <ScalarProperty Name="act_acc_estado" ColumnName="act_acc_estado" />
+          <ScalarProperty Name="act_enf_empresa" ColumnName="act_enf_empresa" />
+          <ScalarProperty Name="act_enf_fecha" ColumnName="act_enf_fecha" />
+          <ScalarProperty Name="act_enf_descripcion" ColumnName="act_enf_descripcion" />
+          <ScalarProperty Name="act_enf_estado" ColumnName="act_enf_estado" />
+          <ScalarProperty Name="act_id" ColumnName="act_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="enfermedad">
+      <EntityTypeMapping TypeName="kinnemedModel.enfermedad">
+        <MappingFragment StoreEntitySet="enfermedad">
+          <ScalarProperty Name="enf_paciente" ColumnName="enf_paciente" />
+          <ScalarProperty Name="enf_empresa" ColumnName="enf_empresa" />
+          <ScalarProperty Name="enf_fecha" ColumnName="enf_fecha" />
+          <ScalarProperty Name="enf_descripcion" ColumnName="enf_descripcion" />
+          <ScalarProperty Name="enf_id" ColumnName="enf_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="habitos">
+      <EntityTypeMapping TypeName="kinnemedModel.habitos">
+        <MappingFragment StoreEntitySet="habitos">
+          <ScalarProperty Name="hab_ejercicio" ColumnName="hab_ejercicio" />
+          <ScalarProperty Name="hab_drogas" ColumnName="hab_drogas" />
+          <ScalarProperty Name="hab_frecuencia" ColumnName="hab_frecuencia" />
+          <ScalarProperty Name="hab_alcohol" ColumnName="hab_alcohol" />
+          <ScalarProperty Name="hab_cigarillos" ColumnName="hab_cigarillos" />
+          <ScalarProperty Name="hab_fuma" ColumnName="hab_fuma" />
+          <ScalarProperty Name="hab_fumo" ColumnName="hab_fumo" />
+          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

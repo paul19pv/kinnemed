@@ -281,6 +281,7 @@ namespace kinnemed05.Controllers
                     file.SaveAs(path);
                     objfirma.ResizeImage(path, path01, 200, 120);
                     historia.his_firma = ConvertBytes(path01);
+                    return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
                 }
                 else
                 {
@@ -289,7 +290,7 @@ namespace kinnemed05.Controllers
                             ModelState.AddModelError("ext", "Extensión no Válida");
                     //else if (String.IsNullOrEmpty(fileName))
                     //    ModelState.AddModelError("ext", "Debe Seleccionar un archivo");
-                    return View(historia);
+                    return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
                 }
             }
             if (ModelState.IsValid)
@@ -298,7 +299,7 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
             }
-            return View(historia);
+            return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
         }
         //
         // GET: /Historia/Delete/5
@@ -509,8 +510,8 @@ namespace kinnemed05.Controllers
                 string strHistoria = "Select * from view_historia where his_id=" + id;
                 SqlDataAdapter daHistoria = new SqlDataAdapter(strHistoria, sqlcon);
                 daHistoria.Fill(dshistoria, "view_historia");
-                RepHisGen rp = new RepHisGen();
-                string reportPath = Server.MapPath("~/Reports/RepHisGen.rpt");
+                RptHisGen rp = new RptHisGen();
+                string reportPath = Server.MapPath("~/Reports/RptHisGen.rpt");
                 rp.Load(reportPath);
                 rp.SetDataSource(dshistoria);
 
@@ -525,16 +526,12 @@ namespace kinnemed05.Controllers
                 string strInmunizacion = "Select * from view_inmunizacion where inm_paciente=" + historia.his_paciente;
                 SqlDataAdapter daInmunizacion = new SqlDataAdapter(strInmunizacion, sqlcon);
                 daInmunizacion.Fill(dsinmunizacion, "view_inmunizacion");
-                //concepto
-                dsConcepto dsconcepto = new dsConcepto();
-                string strConcepto = "Select * from concepto where con_id=" + historia.his_id;
-                SqlDataAdapter daConcepto = new SqlDataAdapter(strConcepto, sqlcon);
-                daConcepto.Fill(dsconcepto, "concepto");
+                
 
                 
                 rp.Subreports["RptDiagnostico.rpt"].SetDataSource(dsdiagnostico);
                 rp.Subreports["RptInmunizacion.rpt"].SetDataSource(dsinmunizacion);
-                rp.Subreports["RptConcepto.rpt"].SetDataSource(dsconcepto);
+                //rp.Subreports["RptConcepto.rpt"].SetDataSource(dsconcepto);
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
                 return File(stream, "application/pdf", "Reporte.pdf");

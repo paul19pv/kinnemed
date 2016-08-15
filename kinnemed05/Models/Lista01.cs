@@ -13,10 +13,15 @@ namespace kinnemed05.Models
     
     public partial class Lista01
     {
-        public int pac_id { get; set; }
-        public string pac_nombres { get; set; }
+        public Nullable<long> id { get; set; }
         public string pac_apellidos { get; set; }
-        public Nullable<bool> historia { get; set; }
-        public Nullable<bool> examen { get; set; }
+        public string pac_nombres { get; set; }
+        public string emp_nombre { get; set; }
+        public Nullable<int> historia { get; set; }
+        public Nullable<int> Laboratorio { get; set; }
+        public Nullable<int> Audiometria { get; set; }
+        public Nullable<int> Oftalmologia { get; set; }
+        public Nullable<int> Espirometria { get; set; }
+        public Nullable<int> Rayos { get; set; }
     }
 }

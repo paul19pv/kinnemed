@@ -11,61 +11,7 @@
         $('#div_loading').hide();
     });
     $(function () {
-        $("#per_patologicas").change(function () {
-            if ($(this).is(':checked')) {
-                $("#div_patologicas").show();
-                $("#per_pat_txt").val("");
-            } else {
-                $("#div_patologicas").hide();
-                $("#per_pat_txt").val("NO REFIERE");
-            }
-        });
-        $("#per_quirurgicas").change(function () {
-            if ($(this).is(':checked')) {
-                $("#div_quirurgicas").show();
-                $("#per_qui_txt").val("");
-            } else {
-                $("#div_quirurgicas").hide();
-                $("#per_qui_txt").val("NO REFIERE");
-            }
-        });
-        $("#per_traumaticos").change(function () {
-            if ($(this).is(':checked')) {
-                $("#div_traumaticos").show();
-                $("#per_tra_txt").val("");
-            } else {
-                $("#div_traumaticos").hide();
-                $("#per_tra_txt").val("NO REFIERE");
-            }
-        });
-        $("#per_alergias").change(function () {
-            if ($(this).is(':checked')) {
-                $("#div_alergias").show();
-                $("#per_ale_txt").val("");
-            } else {
-                $("#div_alergias").hide();
-                $("#per_ale_txt").val("NO REFIERE");
-            }
-        });
-        $("#per_vacunas").change(function () {
-            if ($(this).is(':checked')) {
-                $("#div_vacunas").show();
-                $("#per_vac_txt").val("");
-            } else {
-                $("#div_vacunas").hide();
-                $("#per_vac_txt").val("NO REFIERE");
-            }
-        });
-        $("#per_otros").change(function () {
-            if ($(this).is(':checked')) {
-                $("#div_otros").show();
-                $("#per_otr_txt").val("");
-            } else {
-                $("#div_otros").hide();
-                $("#per_otr_txt").val("NO REFIERE");
-            }
-        });
-
+        
         if ($('#per_patologicas').is(':checked')) {
             $("#div_patologicas").show();
         }

@@ -19,7 +19,7 @@ namespace kinnemed05.Controllers
 
         public ActionResult Index(string fecha_ini,string fecha_fin, int empresa)
         {
-            var lista = db.getLista01(fecha_ini, fecha_fin,empresa);
+            var lista = db.getLista01(fecha_ini, fecha_fin);
 
             return View(lista.ToList());
         }
@@ -27,16 +27,16 @@ namespace kinnemed05.Controllers
 
         public ActionResult Reporte01()
         {
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
+            //ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Reporte01(string fec_ini, string fec_fin, int empresa)
+        public ActionResult Reporte01(string fec_ini, string fec_fin)
         {
             try
             {
-                var lista = db.getLista01(fec_ini, fec_fin, empresa);
+                var lista = db.getReporte01(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -76,7 +76,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                var lista = db.getLista02(fec_ini, fec_fin, empresa);
+                var lista = db.getLista02(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -116,7 +116,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                var lista = db.getLista03(fec_ini, fec_fin, empresa);
+                var lista = db.getLista03(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -156,7 +156,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                var lista = db.getLista04(fec_ini, fec_fin, empresa);
+                var lista = db.getLista04(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -195,7 +195,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                var lista = db.getLista05(fec_ini, fec_fin, empresa);
+                var lista = db.getLista05(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -234,7 +234,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                var lista = db.getLista06(fec_ini, fec_fin, empresa);
+                var lista = db.getLista06(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -275,7 +275,7 @@ namespace kinnemed05.Controllers
         {
             try
             {
-                var lista = db.getLista07(fec_ini, fec_fin, empresa);
+                var lista = db.getReporte07(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -312,7 +312,7 @@ namespace kinnemed05.Controllers
 
             try
             {
-                var lista = db.getLista02(fec_ini, fec_fin, empresa);
+                var lista = db.getLista02(fec_ini, fec_fin);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
