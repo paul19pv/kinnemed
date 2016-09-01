@@ -1,5 +1,6 @@
 ﻿using kinnemed05.Models;
 using kinnemed05.Security;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -74,9 +75,9 @@ namespace kinnemed05.Controllers
         public ActionResult Mensajetxt() {
             Mensaje mensaje = new Mensaje();
             string respuesta = String.Empty;
-            //string respuesta = mensaje.enviar("0984659882","Hola mundo");
+            respuesta = mensaje.enviartxt("0984659882","Estimado paciente, sus exámenes realizados en Kinnemed están listos.");
             //string respuesta2 = mensaje.mail("juanjavierj@gmail.com", "mensaje prueba");
-            RunAsync().Wait(); ;
+            //RunAsync().Wait(); ;
             return RedirectToAction("Message", new { mensaje = respuesta });
         
         }
@@ -91,8 +92,7 @@ namespace kinnemed05.Controllers
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                                                                         Convert.ToBase64String(
                                                                             System.Text.ASCIIEncoding.ASCII.GetBytes(
-                                                                              string.Format("{0}:{1}", "FED3ADC535", "F37AEA0E3161838"))));
-
+                                                                              string.Format("{0}:{1}", "C09B2EB4BC", "4E28EE0CBD2796D"))));
 
                 string mensaje = "Mensaje titulo";
                 string[] numeros = { "593998593448", "59384659882" };
@@ -109,6 +109,41 @@ namespace kinnemed05.Controllers
                     // Get the URI of the created resource.
 
                 }
+            }
+        }
+
+
+        public async Task<ActionResult> IndexMsg()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://envia-movil.com");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                                                                        Convert.ToBase64String(
+                                                                            System.Text.ASCIIEncoding.ASCII.GetBytes(
+                                                                              string.Format("{0}:{1}", "FED3ADC535", "F37AEA0E3161838"))));
+
+                string mensaje = "Mensaje titulo";
+                string[] numeros = { "593998593448", "59384659882" };
+                string[] Mensajes = { "msj 1", "msj 2" };
+
+
+                var envio = new EnvioDTO();
+                envio.Mensaje = mensaje;
+                envio.Mensajes = Mensajes;
+                envio.Destinatarios = numeros;
+                HttpResponseMessage response = await client.PostAsJsonAsync("api/Envios", envio);
+                if (response.IsSuccessStatusCode)
+                {
+                    //var model = JsonConvert.DeserializeObject<Tweets>(content);
+                    return View();
+                }
+
+                // an error occurred => here you could log the content returned by the remote server
+                return Content("An error occurred: ");
             }
         }
 

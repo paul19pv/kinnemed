@@ -74,6 +74,7 @@ namespace kinnemed05.Models
         public DbSet<actividad> actividad { get; set; }
         public DbSet<enfermedad> enfermedad { get; set; }
         public DbSet<habitos> habitos { get; set; }
+        public DbSet<doctor> doctor { get; set; }
     
         public virtual ObjectResult<getReporte01_Result> getReporte01(string fecha_ini, string fecha_fin)
         {

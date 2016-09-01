@@ -15,6 +15,8 @@ using kinnemed05.Reports;
 using System.IO;
 using CrystalDecisions.Shared;
 
+using PagedList;
+
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
@@ -27,13 +29,51 @@ namespace kinnemed05.Controllers
         //
         // GET: /Historia/
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
-        public ActionResult Index(int tipo, int? paciente, string fecha)
+        public ActionResult Index(int tipo, int? paciente,string empresa,int? current_emp_id, string fecha, string sortOrder, int? page)
         {
+            //variables auxiliares
+            int emp_id =0;
+            //parametro de ordenacion
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.FechaSort=String.IsNullOrEmpty(sortOrder) ? "Fecha" : ""; 
+            //condicion para la paginacion
+            if (Request.HttpMethod != "GET")
+            {
+                page = 1;
+            } 
+            //ViewBag.FechaSort = sortOrder == "Fecha" ? "Fecha desc" : "Fecha"; 
             var historia = db.historia.Include(h => h.paciente).Where(h => h.his_tipo == tipo);
-            if (paciente != null)
+            //filtros de busqueda
+            if (paciente != null) {
                 historia = historia.Where(h => h.his_paciente == paciente);
+                fecha = null;
+                empresa = null;
+                emp_id = 0;
+            }
+            if (current_emp_id != null) {
+               
+                historia = historia.Where(p => p.paciente.pac_empresa==current_emp_id);
+            }
+
+            if (!String.IsNullOrEmpty(empresa))
+            {
+                emp_id = Int32.Parse(empresa);
+                current_emp_id = Int32.Parse(empresa);
+                if (emp_id != 0)
+                    historia = historia.Where(p => p.paciente.pac_empresa.Equals(emp_id));
+                fecha = null;
+                paciente = null;
+            }
             if (!String.IsNullOrEmpty(fecha))
+            {
                 historia = historia.Where(h => h.his_fecha == fecha);
+                paciente = null;
+                empresa = null;
+                emp_id = 0;
+            }
+
+                
+            //filtros por usuario
             if (User.IsInRole("trabajador"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
@@ -43,15 +83,33 @@ namespace kinnemed05.Controllers
             if (User.IsInRole("empresa"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
-                empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
-                historia = historia.Where(a => a.paciente.pac_empresa == empresa.emp_id);
+                empresa empresa_ = db.empresa.Where(e => e.emp_cedula == cedula).First();
+                historia = historia.Where(a => a.paciente.pac_empresa == empresa_.emp_id);
             }
+            //metodo de ordenacion
+            switch (sortOrder)
+            {
+                case "Fecha":
+                    historia = historia.OrderBy(s => s.his_id);
+                    break;
+                case "Fecha desc":
+                    historia = historia.OrderByDescending(s => s.his_id);
+                    break;
+                default:
+                    historia = historia.OrderByDescending(s => s.his_id);
+                    break;
+            } 
 
-            ViewBag.paciente = "";
-            ViewBag.fecha = "";
+            ViewBag.paciente = paciente;
+            ViewBag.fecha = fecha;
             ViewBag.tipo = tipo;
             ViewBag.titulo = titulo(tipo);
-            return View(historia.ToList());
+            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre",emp_id);
+            ViewBag.current_emp_id = current_emp_id;
+            int pageSize = 10;
+            int pageIndex = (page ?? 1);
+            return View(historia.ToPagedList(pageIndex, pageSize)); 
+            //return View(historia.ToList());
         }
 
         //

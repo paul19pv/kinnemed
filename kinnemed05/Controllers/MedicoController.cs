@@ -180,7 +180,7 @@ namespace kinnemed05.Controllers
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
 
-                    objfirma.ResizeImage(path, path01, 200, 120);
+                    objfirma.ResizeImage(path, path01, 300, 260);
                     medico.med_firma = ConvertBytes(path01);
                     
                 }

@@ -148,6 +148,19 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
             }
         }
+
+        public void UpdateUsersInRole(int UserId, int RoleId)
+        {
+            UsersInRoles deletuser = db.UsersInRoles.Where(d => d.UserId == UserId).First();
+            db.UsersInRoles.Remove(deletuser);
+            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                deletuser.RoleId = RoleId;
+                db.UsersInRoles.Add(deletuser);
+                db.SaveChanges();
+            }
+        }
         //
         // POST: /Account/Disassociate
 

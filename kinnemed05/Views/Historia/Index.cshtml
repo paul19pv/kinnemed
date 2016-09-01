@@ -1,5 +1,4 @@
-﻿@model IEnumerable<kinnemed05.Models.historia>
-
+﻿@model PagedList.IPagedList<kinnemed05.Models.historia>
 @{
     ViewBag.Title = "Index";
 }
@@ -67,6 +66,10 @@
                 <div class="col-lg-3">
                     @Html.TextBox("txt_paciente", "", new { @class = "form-control", placeholder = "Cédula/Nombres/Apellidos" })
                 </div>
+                @Html.Label("Empresa", new { @class = "control-label col-lg-1", @for = "inputDefault" })
+                <div class="col-lg-2">
+                    @Html.DropDownList("empresa", String.Empty)
+                </div>
                 @Html.Label("Fecha", new { @class = "control-label col-lg-1", @for = "inputDefault" })
                 <div class="col-lg-2">
                     @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
@@ -89,16 +92,14 @@
                     Empresa
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.his_motivo)
+                    Motivo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.his_problema)
+                    @Html.ActionLink("Fecha", "Index", new { sortOrder = ViewBag.FechaSort, tipo = ViewBag.tipo })
+                    @*@Html.DisplayNameFor(model => model.his_fecha)*@
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.his_fecha)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.his_numero)
+                    Número
                 </th>
                 <th></th>
                 <th></th>
@@ -115,9 +116,6 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.his_motivo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.his_problema)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.his_fecha)
@@ -157,13 +155,15 @@
                         }
                         @if (!User.IsInRole("trabajador"))
                         {
-                            if (item.his_tipo == 1) { 
+                            if (item.his_tipo == 1)
+                            {
                                 @Html.ActionLink("Descargar", "RepHisGen", new { id = item.his_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
                             }
-                            else { 
+                            else
+                            {
                                 @Html.ActionLink("Descargar", "Reporte", new { id = item.his_id }, new { @class = "iconb icon-download", @title = "Descargar", @target = "_blank" })
                             }
-                            
+
                         }
 
 
@@ -173,6 +173,77 @@
             }
 
         </table>
+
+        <div>
+            <ul class="pagination">
+
+                @if (Model.HasPreviousPage)
+                {
+                    <li>
+                        @Html.ActionLink("<<", "Index", new
+                               {
+                                   tipo = ViewBag.tipo,
+                                   page = 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   current_emp_id = ViewBag.current_emp_id,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                    <li>
+                        @Html.ActionLink("< Prev", "Index", new
+                               {
+                                   tipo = ViewBag.tipo,
+                                   page = Model.PageNumber - 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   current_emp_id = ViewBag.current_emp_id,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                }
+                else
+                {
+
+                    <li class="disabled"><a href="#"><<</a></li>
+                    <li class="disabled"><a href="#">< Prev</a></li>
+
+                }
+                <li class="active"><a href="#">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</a></li>
+                @if (Model.HasNextPage)
+                {
+                    <li>
+                        @Html.ActionLink("Next >", "Index", new
+                               {
+                                   tipo = ViewBag.tipo,
+                                   page = Model.PageNumber + 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   current_emp_id = ViewBag.current_emp_id,
+                                   fecha=ViewBag.fecha
+                               })
+                    </li>
+                    <li>
+                        @Html.ActionLink(">>", "Index", new
+                               {
+                                   tipo = ViewBag.tipo,
+                                   page = Model.PageCount,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   current_emp_id = ViewBag.current_emp_id,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                }
+                else
+                {
+
+
+                    <li class="disabled"><a href="#">Next</a></li>
+                    <li class="disabled"><a href="#">>></a></li>
+                }
+            </ul>
+        </div>
 
     </div>
 </div>

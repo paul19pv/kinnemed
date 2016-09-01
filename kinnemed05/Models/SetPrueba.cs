@@ -212,7 +212,11 @@ namespace kinnemed05.Models
             list_valores.Add(new SelectListItem { Text = "GRUPO B Factor RH negativo(-)", Value = "GRUPO B Factor RH negativo(-)" });
             list_valores.Add(new SelectListItem { Text = "GRUPO O Factor RH negativo(-)", Value = "GRUPO O Factor RH negativo(-)" });
             list_valores.Add(new SelectListItem { Text = "GRUPO AB Factor RH negativo(-)", Value = "GRUPO AB Factor RH negativo(-)" });
-            SelectList valores = new SelectList(list_valores, "Value", "Text", defaul);
+            SelectList valores;
+            if (String.IsNullOrEmpty(defaul))
+                valores = new SelectList(list_valores, "Value", "Text");
+            else
+                valores = new SelectList(list_valores, "Value", "Text", defaul);
             return valores;
         }
         //public SelectList agl_valor(string defaul)

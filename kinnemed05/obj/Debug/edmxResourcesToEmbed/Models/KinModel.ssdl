@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="kinnemedModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="accidente">
     <Key>
       <PropertyRef Name="acc_id" />
@@ -102,6 +102,20 @@
     <Property Name="dia_descripcion" Type="varchar" MaxLength="255" />
     <Property Name="dia_subcie10" Type="int" Nullable="false" />
     <Property Name="dia_tipo" Type="varchar" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="doctor">
+    <Key>
+      <PropertyRef Name="doc_id" />
+    </Key>
+    <Property Name="doc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="doc_cedula" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="doc_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="doc_codigo" Type="varchar" MaxLength="50" />
+    <Property Name="doc_especialidad" Type="int" Nullable="false" />
+    <Property Name="doc_correo" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="doc_firma" Type="image" />
+    <Property Name="doc_estado" Type="bit" Nullable="false" />
+    <Property Name="doc_empresa" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="empresa">
     <Key>
@@ -797,6 +811,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_doctor_empresa">
+    <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="empresa">
+        <PropertyRef Name="emp_id" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="doc_empresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_enfermedad_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1386,6 +1414,7 @@
     <EntitySet Name="concepto" EntityType="Self.concepto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="control" EntityType="Self.control" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="diagnostico" EntityType="Self.diagnostico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="doctor" EntityType="Self.doctor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="empresa" EntityType="Self.empresa" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="enfermedad" EntityType="Self.enfermedad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="especialidad" EntityType="Self.especialidad" Schema="dbo" store:Type="Tables" />
@@ -1469,6 +1498,10 @@
     <AssociationSet Name="FK_diagnostico_sub_cie10" Association="Self.FK_diagnostico_sub_cie10">
       <End Role="sub_cie10" EntitySet="sub_cie10" />
       <End Role="diagnostico" EntitySet="diagnostico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_doctor_empresa" Association="Self.FK_doctor_empresa">
+      <End Role="empresa" EntitySet="empresa" />
+      <End Role="doctor" EntitySet="doctor" />
     </AssociationSet>
     <AssociationSet Name="FK_enfermedad_paciente" Association="Self.FK_enfermedad_paciente">
       <End Role="paciente" EntitySet="paciente" />

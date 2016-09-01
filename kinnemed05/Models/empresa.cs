@@ -18,11 +18,13 @@ namespace kinnemed05.Models
         {
             this.trabajador = new HashSet<trabajador>();
             this.paciente = new HashSet<paciente>();
+            this.doctor = new HashSet<doctor>();
         }
     
         public int emp_id { get; set; }
     
         public virtual ICollection<trabajador> trabajador { get; set; }
         public virtual ICollection<paciente> paciente { get; set; }
+        public virtual ICollection<doctor> doctor { get; set; }
     }
 }

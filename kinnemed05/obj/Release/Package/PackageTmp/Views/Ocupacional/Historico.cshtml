@@ -143,7 +143,7 @@
         <div class="form-group" style="float:right">
 
             @Ajax.ActionLink("Anterior", "Edit", "Laboral", new { id = ViewBag.ocu_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
-            @Ajax.ActionLink("Siguiente", "Create", "Personal", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-primary" })
+            @Ajax.ActionLink("Siguiente", "Create", "Actividad", new { id = Session["pac_id"] }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-primary" })
         </div>
     </div>
 

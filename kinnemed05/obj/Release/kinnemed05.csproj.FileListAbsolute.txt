@@ -275,3 +275,5 @@ C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspiromet
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.cs
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.dll
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.xml
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\PagedList.dll
+C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\PagedList.xml

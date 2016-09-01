@@ -52,19 +52,29 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(trabajador trabajador)
         {
-            if (ModelState.IsValid && IsUserExist(trabajador.tra_cedula))
+            if (ModelState.IsValid)
             {
                 db.trabajador.Add(trabajador);
                 db.SaveChanges();
-
-                AccountController account = new AccountController();
-                account.CreateUserProfile(trabajador.tra_cedula, trabajador.tra_cedula);
-                UserManager userManager = new UserManager();
-                int Userid = userManager.UpdateTrabajador(trabajador.tra_cedula, trabajador.tra_id);
-                UsersInRoles usersinroles = new UsersInRoles();
-                usersinroles.RoleId = 6;
-                usersinroles.UserId = Userid;
-                account.CreateUsersInRole(usersinroles);
+                if (IsUserExist(trabajador.tra_cedula))
+                {
+                    AccountController account = new AccountController();
+                    account.CreateUserProfile(trabajador.tra_cedula, trabajador.tra_cedula);
+                    UserManager userManager = new UserManager();
+                    int Userid = userManager.UpdateTrabajador(trabajador.tra_cedula, trabajador.tra_id);
+                    UsersInRoles usersinroles = new UsersInRoles();
+                    usersinroles.RoleId = 6;
+                    usersinroles.UserId = Userid;
+                    account.CreateUsersInRole(usersinroles);
+                }
+                else {
+                    AccountController account = new AccountController();
+                    UserManager userManager = new UserManager();
+                    int UserId = userManager.UserId(trabajador.tra_cedula);
+                    account.UpdateUsersInRole(UserId,6);
+                    
+                }
+                
 
                 return RedirectToAction("Index");
             }

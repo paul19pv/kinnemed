@@ -208,7 +208,7 @@
 
             @if (Convert.ToInt32(Session["his_tipo"]) != 1)
             {
-                @Ajax.ActionLink("Anterior", "Historico", "Ocupacional", new { id = Model.per_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
+                @Ajax.ActionLink("Anterior", "Edit", "Actividad", new { id = Model.per_id }, new AjaxOptions { UpdateTargetId = "div_form", LoadingElementId = "div_loading", LoadingElementDuration = 100, OnFailure = "error" }, new { @class = "btn btn-default" })
             }
             else
             {

@@ -48,6 +48,9 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -195,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\accidente.cs" />
+    <Compile Include="Context\actividad.cs" />
     <Compile Include="Context\audiometria.cs" />
     <Compile Include="Context\concepto.cs" />
     <Compile Include="Context\control.cs" />
@@ -223,6 +227,7 @@
     <Compile Include="Context\subsecuente.cs" />
     <Compile Include="Context\trabajador.cs" />
     <Compile Include="Controllers\AccidenteController.cs" />
+    <Compile Include="Controllers\ActividadController.cs" />
     <Compile Include="Controllers\AudiometriaController.cs" />
     <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
@@ -283,6 +288,9 @@
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\diagnostico.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\doctor.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\empresa.cs">
@@ -1430,6 +1438,11 @@
     <Content Include="Views\Habitos\Create.cshtml" />
     <Content Include="Views\Habitos\Edit.cshtml" />
     <Content Include="Views\Habitos\Delete.cshtml" />
+    <Content Include="Views\Actividad\Index.cshtml" />
+    <Content Include="Views\Actividad\Details.cshtml" />
+    <Content Include="Views\Actividad\Create.cshtml" />
+    <Content Include="Views\Actividad\Edit.cshtml" />
+    <Content Include="Views\Actividad\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

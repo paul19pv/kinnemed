@@ -15,15 +15,6 @@ namespace kinnemed05.Models
     public partial class actividad
     {
         public int act_id { get; set; }
-        public string act_enf_estado { get; set; }
-        public string act_enf_descripcion { get; set; }
-        public string act_enf_fecha { get; set; }
-        public string act_enf_empresa { get; set; }
-        public string act_acc_estado { get; set; }
-        public string act_acc_descripcion { get; set; }
-        public string act_acc_capacidad { get; set; }
-        public string act_acc_fecha { get; set; }
-        public string act_acc_empresa { get; set; }
     
         public virtual paciente paciente { get; set; }
     }
