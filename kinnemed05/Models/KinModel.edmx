@@ -115,6 +115,7 @@
           <Property Name="doc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="doc_cedula" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="doc_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="doc_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="doc_codigo" Type="varchar" MaxLength="50" />
           <Property Name="doc_especialidad" Type="int" Nullable="false" />
           <Property Name="doc_correo" Type="varchar" MaxLength="150" Nullable="false" />
@@ -830,6 +831,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_doctor_especialidad">
+          <End Role="especialidad" Type="Self.especialidad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="especialidad">
+              <PropertyRef Name="esp_id" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="doc_especialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_enfermedad_paciente">
           <End Role="paciente" Type="Self.paciente" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1508,6 +1523,10 @@
             <End Role="empresa" EntitySet="empresa" />
             <End Role="doctor" EntitySet="doctor" />
           </AssociationSet>
+          <AssociationSet Name="FK_doctor_especialidad" Association="Self.FK_doctor_especialidad">
+            <End Role="especialidad" EntitySet="especialidad" />
+            <End Role="doctor" EntitySet="doctor" />
+          </AssociationSet>
           <AssociationSet Name="FK_enfermedad_paciente" Association="Self.FK_enfermedad_paciente">
             <End Role="paciente" EntitySet="paciente" />
             <End Role="enfermedad" EntitySet="enfermedad" />
@@ -1697,6 +1716,7 @@
           <Property Name="esp_id" Type="Int32" Nullable="false" />
           <Property Name="esp_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="medico" Relationship="kinnemedModel.FK_medico_especialidad" FromRole="especialidad" ToRole="medico" />
+          <NavigationProperty Name="doctor" Relationship="kinnemedModel.FK_doctor_especialidad" FromRole="especialidad" ToRole="doctor" />
         </EntityType>
         <EntityType Name="pais">
           <Key>
@@ -2073,6 +2093,10 @@
           <EntitySet Name="doctor" EntityType="kinnemedModel.doctor" />
           <AssociationSet Name="FK_doctor_empresa" Association="kinnemedModel.FK_doctor_empresa">
             <End Role="empresa" EntitySet="empresa" />
+            <End Role="doctor" EntitySet="doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_doctor_especialidad" Association="kinnemedModel.FK_doctor_especialidad">
+            <End Role="especialidad" EntitySet="especialidad" />
             <End Role="doctor" EntitySet="doctor" />
           </AssociationSet>
           </EntityContainer>
@@ -3600,6 +3624,7 @@
           <Property Name="doc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="doc_cedula" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="doc_nombres" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="doc_apellidos" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="doc_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="doc_especialidad" Type="Int32" Nullable="false" />
           <Property Name="doc_correo" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
@@ -3607,6 +3632,7 @@
           <Property Name="doc_estado" Type="Boolean" Nullable="false" />
           <Property Name="doc_empresa" Type="Int32" Nullable="false" />
           <NavigationProperty Name="empresa" Relationship="kinnemedModel.FK_doctor_empresa" FromRole="doctor" ToRole="empresa" />
+          <NavigationProperty Name="especialidad" Relationship="kinnemedModel.FK_doctor_especialidad" FromRole="doctor" ToRole="especialidad" />
         </EntityType>
         <Association Name="FK_doctor_empresa">
           <End Type="kinnemedModel.empresa" Role="empresa" Multiplicity="1">
@@ -3619,6 +3645,20 @@
             </Principal>
             <Dependent Role="doctor">
               <PropertyRef Name="doc_empresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_doctor_especialidad">
+          <End Type="kinnemedModel.especialidad" Role="especialidad" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.doctor" Role="doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="especialidad">
+              <PropertyRef Name="esp_id" />
+            </Principal>
+            <Dependent Role="doctor">
+              <PropertyRef Name="doc_especialidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4563,6 +4603,7 @@
                 <ScalarProperty Name="doc_correo" ColumnName="doc_correo" />
                 <ScalarProperty Name="doc_especialidad" ColumnName="doc_especialidad" />
                 <ScalarProperty Name="doc_codigo" ColumnName="doc_codigo" />
+                <ScalarProperty Name="doc_apellidos" ColumnName="doc_apellidos" />
                 <ScalarProperty Name="doc_nombres" ColumnName="doc_nombres" />
                 <ScalarProperty Name="doc_cedula" ColumnName="doc_cedula" />
                 <ScalarProperty Name="doc_id" ColumnName="doc_id" />

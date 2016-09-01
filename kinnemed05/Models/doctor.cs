@@ -15,15 +15,8 @@ namespace kinnemed05.Models
     public partial class doctor
     {
         public int doc_id { get; set; }
-        public string doc_cedula { get; set; }
-        public string doc_nombres { get; set; }
-        public string doc_codigo { get; set; }
-        public int doc_especialidad { get; set; }
-        public string doc_correo { get; set; }
-        public byte[] doc_firma { get; set; }
-        public bool doc_estado { get; set; }
-        public int doc_empresa { get; set; }
     
         public virtual empresa empresa { get; set; }
+        public virtual especialidad especialidad { get; set; }
     }
 }

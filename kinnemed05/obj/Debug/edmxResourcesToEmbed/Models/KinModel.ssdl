@@ -110,6 +110,7 @@
     <Property Name="doc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="doc_cedula" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="doc_nombres" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="doc_apellidos" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="doc_codigo" Type="varchar" MaxLength="50" />
     <Property Name="doc_especialidad" Type="int" Nullable="false" />
     <Property Name="doc_correo" Type="varchar" MaxLength="150" Nullable="false" />
@@ -825,6 +826,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_doctor_especialidad">
+    <End Role="especialidad" Type="Self.especialidad" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="doctor" Type="Self.doctor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="especialidad">
+        <PropertyRef Name="esp_id" />
+      </Principal>
+      <Dependent Role="doctor">
+        <PropertyRef Name="doc_especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_enfermedad_paciente">
     <End Role="paciente" Type="Self.paciente" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -1501,6 +1516,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_doctor_empresa" Association="Self.FK_doctor_empresa">
       <End Role="empresa" EntitySet="empresa" />
+      <End Role="doctor" EntitySet="doctor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_doctor_especialidad" Association="Self.FK_doctor_especialidad">
+      <End Role="especialidad" EntitySet="especialidad" />
       <End Role="doctor" EntitySet="doctor" />
     </AssociationSet>
     <AssociationSet Name="FK_enfermedad_paciente" Association="Self.FK_enfermedad_paciente">

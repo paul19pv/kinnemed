@@ -17,11 +17,13 @@ namespace kinnemed05.Models
         public especialidad()
         {
             this.medico = new HashSet<medico>();
+            this.doctor = new HashSet<doctor>();
         }
     
         public int esp_id { get; set; }
         public string esp_nombre { get; set; }
     
         public virtual ICollection<medico> medico { get; set; }
+        public virtual ICollection<doctor> doctor { get; set; }
     }
 }

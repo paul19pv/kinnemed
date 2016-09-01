@@ -203,6 +203,7 @@
     <Compile Include="Context\concepto.cs" />
     <Compile Include="Context\control.cs" />
     <Compile Include="Context\diagnostico.cs" />
+    <Compile Include="Context\doctor.cs" />
     <Compile Include="Context\empresa.cs" />
     <Compile Include="Context\enfermedad.cs" />
     <Compile Include="Context\espirometria.cs" />
@@ -232,6 +233,7 @@
     <Compile Include="Controllers\ConceptoController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\DiagnosticoController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\EnfermedadController.cs" />
     <Compile Include="Controllers\EspirometriaController.cs" />
     <Compile Include="Controllers\ExamenController.cs" />
@@ -803,7 +805,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MedicoController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
