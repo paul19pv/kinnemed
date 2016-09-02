@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin, UserRoles.trabajador,UserRoles.doctor)]
         public ActionResult Index(int tipo, int? paciente,string empresa,int? current_emp_id, string fecha, string sortOrder, int? page)
         {
             //variables auxiliares
@@ -114,7 +114,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -173,7 +173,7 @@ namespace kinnemed05.Controllers
         //    ViewBag.his_tipo = his_tipo();
         //    return View();
         //}
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create01(historia historia)
@@ -201,7 +201,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         public ActionResult Edit(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -224,7 +224,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(historia historia)
@@ -241,7 +241,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         public ActionResult Edit02(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -262,7 +262,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit02(historia historia)
@@ -279,7 +279,7 @@ namespace kinnemed05.Controllers
             ViewBag.tipo = historia.his_tipo;
             return PartialView(historia);
         }
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         public ActionResult Problema(int id)
         {
             historia historia = db.historia.Find(id);
@@ -293,7 +293,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Problema(historia historia)
@@ -308,7 +308,7 @@ namespace kinnemed05.Controllers
         }
 
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         public ActionResult Firma(int id)
         {
             historia historia = db.historia.Find(id);
@@ -319,7 +319,7 @@ namespace kinnemed05.Controllers
             return PartialView(historia);
         }
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Firma(historia historia)
@@ -361,7 +361,7 @@ namespace kinnemed05.Controllers
         }
         //
         // GET: /Historia/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             historia historia = db.historia.Find(id);
@@ -375,7 +375,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -758,10 +758,19 @@ namespace kinnemed05.Controllers
             int user_id = 0;
             if (Request.IsAuthenticated)
             {
-                string user_name = String.Empty;
-                user_name = User.Identity.Name;
-                UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
-                user_id = userprofile.UserMedico.GetValueOrDefault();
+                if (User.IsInRole("medico")) {
+                    string user_name = String.Empty;
+                    user_name = User.Identity.Name;
+                    UserProfile userprofile = db_users.UserProfiles.Where(u => u.UserName == user_name).First();
+                    user_id = userprofile.UserMedico.GetValueOrDefault();
+                }
+                else if (User.IsInRole("doctor")) {
+                    string user_name = String.Empty;
+                    user_name = User.Identity.Name;
+                    var doctor = db.doctor.Where(d => d.doc_cedula == user_name).First();
+                    user_id = doctor.doc_id;
+                }
+                
             }
             return user_id;
         }

@@ -6,10 +6,11 @@ using System.Reflection;
 using System.Text;
 using System.Linq.Dynamic;
 using kinnemed05.Models;
+using System.Web.Mvc;
 
 namespace kinnemed05.DataAnnotation
 {
-    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Property, AllowMultiple = false,Inherited=true)]
     public class Unique : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -72,6 +73,41 @@ namespace kinnemed05.DataAnnotation
             }
 
 
+        }
+    }
+
+
+
+    class IsUnique : ValidationAttribute
+    {
+        public IsUnique(string propertyNames)
+        {
+            this.FieldName = propertyNames;
+        }
+
+        public string FieldName { get; private set; }
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+
+            var myproperty = validationContext.ObjectType.GetProperty(FieldName);
+            //var value = myproperty.GetValue(validationContext.ObjectInstance, null);
+
+            //IEnumerable<String> properties;
+
+            List<string> propertiesList = new List<string>();
+            propertiesList.Add(myproperty.Name);
+
+            var dba = new bd_kinnemed02Entities();
+            Type entityType = validationContext.ObjectType;
+            //var result=dba.doctor.Where(FieldName + "==@0", value);
+            var result = dba.Set(entityType).Where(FieldName + "==@0", value);
+            //if (dba.doctor.Any(article => article.doc_cedula == (string)value))
+            if (result.Count()>0)
+            {
+                return new ValidationResult("La cédula ya existe" + validationContext.MemberName, propertiesList);
+            }
+            return null;
         }
     }
 }

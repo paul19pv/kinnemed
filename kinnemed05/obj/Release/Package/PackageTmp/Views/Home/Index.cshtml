@@ -18,6 +18,10 @@
                 <img src="@Url.Content("~/Content/img/iconos/doctor-icon.png")" class="img-rounded" />
                 <label>Médicos&nbsp;</label>
             </a>
+            <a class="btn btn-default btn-lg btn-img" title="Médico" href="@Url.Content("~/Doctor/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/doctor-icon.png")" class="img-rounded" />
+                <label>Méd. Emp.</label>
+            </a>
 
             <a class="btn btn-default btn-lg btn-img" title="Paciente" href="@Url.Content("~/Paciente/Index")">
                 <img src="@Url.Content("~/Content/img/iconos/patient-icon.png")" class="img-rounded" />
@@ -48,7 +52,7 @@
             </a>*@
 
         }
-        @if (!User.IsInRole("trabajador"))
+        @if (!User.IsInRole("trabajador") && !(User.IsInRole("doctor")))
         {
             <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
                 <img src="@Url.Content("~/Content/img/iconos/examen-icon.png")" class="img-rounded" />

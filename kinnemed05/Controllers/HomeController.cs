@@ -27,7 +27,7 @@ namespace kinnemed05.Controllers
     
     public class HomeController : Controller
     {
-        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.paciente, UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.paciente, UserRoles.trabajador, UserRoles.doctor)]
         public ActionResult Index(string mensaje)
         {
             //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -61,6 +61,8 @@ namespace kinnemed05.Controllers
                 perfil = "laboratorista";
             else if (User.IsInRole("trabajador"))
                 perfil = "trabajador";
+            else if (User.IsInRole("doctor"))
+                perfil = "doctor";
             return perfil;
         }
 

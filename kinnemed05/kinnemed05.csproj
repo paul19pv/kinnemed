@@ -245,6 +245,7 @@
     <Compile Include="Controllers\InmunizacionController.cs" />
     <Compile Include="Controllers\LaboralController.cs" />
     <Compile Include="Controllers\LaboratoristaController.cs" />
+    <Compile Include="Controllers\MedicoController.cs" />
     <Compile Include="Controllers\OcupacionalController.cs" />
     <Compile Include="Controllers\OftalmologiaController.cs" />
     <Compile Include="Controllers\PerfilController.cs" />
@@ -1444,6 +1445,11 @@
     <Content Include="Views\Actividad\Create.cshtml" />
     <Content Include="Views\Actividad\Edit.cshtml" />
     <Content Include="Views\Actividad\Delete.cshtml" />
+    <Content Include="Views\Doctor\Index.cshtml" />
+    <Content Include="Views\Doctor\Details.cshtml" />
+    <Content Include="Views\Doctor\Create.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
+    <Content Include="Views\Doctor\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1588,6 +1594,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptRiesgos.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

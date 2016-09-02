@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kinnemed05.DataAnnotation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace kinnemed05.Models
         [Required(ErrorMessage = "Campo Requerido")]
         [RegularExpression("^([0-9.&'-]+)$", ErrorMessage = "Solo se aceptan números")]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "La longitud debe ser de 10 caracteres")]
+        [IsUnique("med_cedula")]
         public string med_cedula { get; set; }
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Campo Requerido")]

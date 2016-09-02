@@ -927,5 +927,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="doctor">
+      <EntityTypeMapping TypeName="kinnemedModel.doctor">
+        <MappingFragment StoreEntitySet="doctor">
+          <ScalarProperty Name="doc_empresa" ColumnName="doc_empresa" />
+          <ScalarProperty Name="doc_estado" ColumnName="doc_estado" />
+          <ScalarProperty Name="doc_firma" ColumnName="doc_firma" />
+          <ScalarProperty Name="doc_correo" ColumnName="doc_correo" />
+          <ScalarProperty Name="doc_especialidad" ColumnName="doc_especialidad" />
+          <ScalarProperty Name="doc_codigo" ColumnName="doc_codigo" />
+          <ScalarProperty Name="doc_apellidos" ColumnName="doc_apellidos" />
+          <ScalarProperty Name="doc_nombres" ColumnName="doc_nombres" />
+          <ScalarProperty Name="doc_cedula" ColumnName="doc_cedula" />
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
