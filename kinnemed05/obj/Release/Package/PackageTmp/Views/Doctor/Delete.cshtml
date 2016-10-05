@@ -1,0 +1,58 @@
+﻿@model kinnemed05.Models.doctor
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="col-lg-9">
+    <div class="bs-component">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Borrar Médico</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-5">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_cedula, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_cedula, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_nombres, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_nombres, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_apellidos, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_apellidos, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_codigo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_codigo, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.especialidad.esp_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.especialidad.esp_nombre, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_correo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_correo, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.empresa.emp_nombre, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.empresa.emp_nombre, new { @class = "form-control", @readonly = "readonly" })
+                    </div>
+                    <div class="form-group">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ActionLink("Regresar", "Index", "Medico", new { @class = "btn btn-default" })
+                            <input type="submit" value="Borrar" class="btn btn-primary" />
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

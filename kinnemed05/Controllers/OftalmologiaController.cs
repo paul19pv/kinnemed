@@ -24,7 +24,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Oftalmologia/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int? id, int? paciente)
         {
             var oftalmologia = db.oftalmologia.Include(o => o.paciente);
@@ -54,7 +54,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Oftalmologia/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             oftalmologia oftalmologia = db.oftalmologia.Find(id);
@@ -361,7 +361,7 @@ namespace kinnemed05.Controllers
             if (!string.IsNullOrEmpty(celular))
             {
 
-                resultado = mensaje.enviar(celular, "Los exámenes de oftalmologia se encuentran listos. Kinnemed");
+                resultado = mensaje.enviar(celular, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
 
 
             }

@@ -75,6 +75,7 @@
                     @Html.TextBox("fecha", "", new { @class = "form-control", Value = ViewBag.fecha })
                 </div>
                 <input type="submit" value="Filtrar" class="btn btn-primary" />
+                @Html.ActionLink("Limpiar", "Index", "Historia", new {tipo=ViewBag.tipo }, new { @class = "btn btn-default" })
             </div>
         }
     </div>

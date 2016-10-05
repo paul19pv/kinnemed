@@ -1,0 +1,85 @@
+﻿@model kinnemed05.Models.doctor
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<div class="col-lg-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Crear Medico</h3>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("Create", "Doctor", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.TextBoxFor(model => model.doc_estado, new { @class = "form-control", Value = true, @type = "hidden" })
+                @Html.ValidationMessage("user")
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_cedula, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_cedula, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.doc_cedula)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_nombres, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_nombres, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.doc_nombres)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_apellidos, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_apellidos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.doc_apellidos)
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_codigo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_codigo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.doc_codigo)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_especialidad, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.DropDownList("doc_especialidad", String.Empty)
+                        @Html.ValidationMessageFor(model => model.doc_especialidad)
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_correo, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.TextBoxFor(model => model.doc_correo, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.doc_correo)
+
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.doc_empresa, new { @class = "control-label", @for = "inputDefault" })
+                        @Html.DropDownList("doc_empresa", String.Empty)
+                        @Html.ValidationMessageFor(model => model.doc_empresa)
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label>Archivo</label>
+                        <input type="file" name="Create" id="Create">
+                        @Html.ValidationMessageFor(model => model.doc_firma)
+                        @Html.ValidationMessage("ext")
+                    </div>
+
+                </div>
+                <div class="col-lg-4" style="clear:both">
+                    <div class="form-group">
+                        @Html.ActionLink("Regresar", "Index", "Medico", new { @class = "btn btn-default" })
+                        <input type="submit" value="Guardar" class="btn btn-primary" />
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

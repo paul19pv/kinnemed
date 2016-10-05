@@ -19,7 +19,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ocupacional/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int id)
         {
             var ocupacional = db.ocupacional.Include(o => o.paciente).Where(o => o.ocu_paciente == id && o.ocu_tipo == "histórico");
@@ -34,7 +34,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ocupacional/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id, int tipo)
         {
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
@@ -49,7 +49,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Create
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Create(int id)
         {
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado == true);
@@ -68,7 +68,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Create
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ocupacional ocupacional)
@@ -94,7 +94,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Create
 
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Historico(int id)
         {
             ocupacional ocupacional = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual").First();
@@ -108,7 +108,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Create
 
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Historico(ocupacional ocupacional)
@@ -131,7 +131,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Ocupacional/Edit/5
 
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Edit(int id)
         {
             var consulta = db.ocupacional.Where(o => o.ocu_paciente == id && o.ocu_tipo == "actual" && o.ocu_estado == true);
@@ -151,7 +151,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Ocupacional/Edit/5
 
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ocupacional ocupacional)
@@ -170,7 +170,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ocupacional/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Delete(int id)
         {
             ocupacional ocupacional = db.ocupacional.Find(id);
@@ -181,7 +181,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Ocupacional/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

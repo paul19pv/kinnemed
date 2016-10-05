@@ -13,7 +13,7 @@ namespace kinnemed05.Models
         [Required(ErrorMessage = "Campo Requerido")]
         [RegularExpression("^([0-9.&'-]+)$", ErrorMessage = "Solo se aceptan números")]
         [StringLength(10, MinimumLength = 10, ErrorMessage = "La longitud debe ser de 10 caracteres")]
-        [IsUnique("pac_cedula")]
+        //[IsUnique("pac_cedula")]
         public string pac_cedula { get; set; }
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Campo Requerido")]

@@ -32,7 +32,7 @@ namespace kinnemed05.Controllers
         //[InitializeSimpleMembership]
         //[CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
         //[]
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int? id, int? paciente, string fecha)
         {
             
@@ -90,7 +90,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Registro/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             registro registro = db.registro.Find(id);
@@ -390,12 +390,12 @@ namespace kinnemed05.Controllers
             string correo = paciente.pac_correo;
             Mensaje mensaje = new Mensaje();
             if (!string.IsNullOrEmpty(celular)) {
-                
-                mensaje.enviar(celular, "Los exámenes de laboratorio se encuentran listos. Kinnemed");
+
+                mensaje.enviar(celular, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
             }
             if (!string.IsNullOrEmpty(correo))
             {
-                mensaje.mail(correo, "Los exámenes de laboratorio se encuentran listos. Kinnemed");
+                mensaje.mail(correo, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
             }
             //if ()
             return RedirectToAction("Index", "Registro");

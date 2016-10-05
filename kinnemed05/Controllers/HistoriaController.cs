@@ -80,6 +80,11 @@ namespace kinnemed05.Controllers
                 trabajador trabajador = db.trabajador.Where(t => t.tra_cedula == cedula).First();
                 historia = historia.Where(a => a.paciente.pac_empresa == trabajador.tra_empresa);
             }
+            if (User.IsInRole("doctor")) {
+                string cedula = Convert.ToString(User.Identity.Name);
+                doctor doctor = db.doctor.Where(d => d.doc_cedula == cedula).First();
+                historia = historia.Where(h => h.paciente.pac_empresa == doctor.doc_empresa);
+            }
             if (User.IsInRole("empresa"))
             {
                 string cedula = Convert.ToString(User.Identity.Name);
@@ -127,7 +132,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Historia/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         public ActionResult Create(int tipo)
         {
             ViewBag.tipo = tipo;
@@ -143,7 +148,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Historia/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(historia historia)
@@ -659,11 +664,28 @@ namespace kinnemed05.Controllers
         public JsonResult AutocompletePaciente(string search)
         {
             search = search.ToUpper();
-            var result = (from p in db.paciente
-                          where p.pac_cedula.ToUpper().Contains(search) ||
+            var result = (from p in db.paciente select new { p.pac_id, p.pac_nombres, p.pac_apellidos, p.pac_edad }).Distinct();
+            //var result = (from p in db.paciente
+            //              where p.pac_cedula.ToUpper().Contains(search) ||
+            //                  p.pac_nombres.ToUpper().Contains(search) ||
+            //                  p.pac_apellidos.ToUpper().Contains(search) 
+            //              select new { p.pac_id, p.pac_nombres, p.pac_apellidos, p.pac_canton }).Distinct();
+            if (User.IsInRole("doctor"))
+            {
+                var doctor = db.doctor.Where(d => d.doc_cedula == User.Identity.Name).First();
+                result = (from p in db.paciente
+                          where (p.pac_cedula.ToUpper().Contains(search) ||
                               p.pac_nombres.ToUpper().Contains(search) ||
-                              p.pac_apellidos.ToUpper().Contains(search)
+                              p.pac_apellidos.ToUpper().Contains(search)) && p.pac_empresa == doctor.doc_empresa
                           select new { p.pac_id, p.pac_nombres, p.pac_apellidos, p.pac_edad }).Distinct();
+            }
+            else {
+                result = (from p in db.paciente
+                              where p.pac_cedula.ToUpper().Contains(search) ||
+                                  p.pac_nombres.ToUpper().Contains(search) ||
+                                  p.pac_apellidos.ToUpper().Contains(search)
+                          select new { p.pac_id, p.pac_nombres, p.pac_apellidos, p.pac_edad }).Distinct();
+            }
             if (result.Count() == 0)
             {
                 return new JsonResult() { Data = new { Data = new { pac_id = 0, pac_nombres = "Sin Datos", pac_apellidos = "", pac_edad = "" } } };

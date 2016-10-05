@@ -40,7 +40,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Concepto/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico,UserRoles.doctor)]
         public ActionResult Create(int id)
         {
             concepto concepto = db.concepto.Find(id);
@@ -71,7 +71,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Concepto/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(concepto concepto)
@@ -102,7 +102,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Concepto/Edit/5
-        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Edit(int id = 0)
         {
             concepto concepto = db.concepto.Find(id);
@@ -129,7 +129,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Concepto/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(concepto concepto)
@@ -160,7 +160,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Concepto/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             concepto concepto = db.concepto.Find(id);
@@ -173,7 +173,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Concepto/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

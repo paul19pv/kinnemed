@@ -21,7 +21,7 @@ using WebMatrix.WebData;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
-    [CustomAuthorize(UserRoles.admin, UserRoles.medico,UserRoles.laboratorista)]
+    [CustomAuthorize(UserRoles.admin, UserRoles.medico, UserRoles.laboratorista, UserRoles.doctor)]
     public class PacienteController : Controller
     {
         private bd_kinnemed02Entities db = new bd_kinnemed02Entities();

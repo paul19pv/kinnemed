@@ -19,7 +19,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Familiar/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index()
         {
             var familiar = db.familiar.Include(f => f.paciente);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Familiar/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             familiar familiar = db.familiar.Find(id);
@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Familiar/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Create(int id)
         {
             familiar familiar = db.familiar.Find(id);
@@ -55,7 +55,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Familiar/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(familiar familiar)
@@ -78,7 +78,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Familiar/Edit/5
-        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Edit(int id)
         {
             familiar familiar = db.familiar.Find(id);
@@ -92,7 +92,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Familiar/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(familiar familiar)
@@ -113,7 +113,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Familiar/Delete/5
-        [CustomAuthorize(UserRoles.medico,UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             familiar familiar = db.familiar.Find(id);
@@ -126,7 +126,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Familiar/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

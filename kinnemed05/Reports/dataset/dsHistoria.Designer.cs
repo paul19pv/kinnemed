@@ -473,6 +473,24 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnhab_ejercicio;
             
+            private global::System.Data.DataColumn columnact_enf_estado;
+            
+            private global::System.Data.DataColumn columnact_enf_descripcion;
+            
+            private global::System.Data.DataColumn columnact_enf_fecha;
+            
+            private global::System.Data.DataColumn columnact_enf_empresa;
+            
+            private global::System.Data.DataColumn columnact_acc_estado;
+            
+            private global::System.Data.DataColumn columnact_acc_descripcion;
+            
+            private global::System.Data.DataColumn columnact_acc_capacidad;
+            
+            private global::System.Data.DataColumn columnact_acc_fecha;
+            
+            private global::System.Data.DataColumn columnact_acc_empresa;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public view_historiaDataTable() {
@@ -1284,6 +1302,78 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_enf_estadoColumn {
+                get {
+                    return this.columnact_enf_estado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_enf_descripcionColumn {
+                get {
+                    return this.columnact_enf_descripcion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_enf_fechaColumn {
+                get {
+                    return this.columnact_enf_fecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_enf_empresaColumn {
+                get {
+                    return this.columnact_enf_empresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_acc_estadoColumn {
+                get {
+                    return this.columnact_acc_estado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_acc_descripcionColumn {
+                get {
+                    return this.columnact_acc_descripcion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_acc_capacidadColumn {
+                get {
+                    return this.columnact_acc_capacidad;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_acc_fechaColumn {
+                get {
+                    return this.columnact_acc_fecha;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn act_acc_empresaColumn {
+                get {
+                    return this.columnact_acc_empresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1416,7 +1506,16 @@ namespace kinnemed05.Reports.dataset {
                         string hab_alcohol, 
                         string hab_frecuencia, 
                         string hab_drogas, 
-                        string hab_ejercicio) {
+                        string hab_ejercicio, 
+                        string act_enf_estado, 
+                        string act_enf_descripcion, 
+                        string act_enf_fecha, 
+                        string act_enf_empresa, 
+                        string act_acc_estado, 
+                        string act_acc_descripcion, 
+                        string act_acc_capacidad, 
+                        string act_acc_fecha, 
+                        string act_acc_empresa) {
                 view_historiaRow rowview_historiaRow = ((view_historiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         his_id,
@@ -1515,7 +1614,16 @@ namespace kinnemed05.Reports.dataset {
                         hab_alcohol,
                         hab_frecuencia,
                         hab_drogas,
-                        hab_ejercicio};
+                        hab_ejercicio,
+                        act_enf_estado,
+                        act_enf_descripcion,
+                        act_enf_fecha,
+                        act_enf_empresa,
+                        act_acc_estado,
+                        act_acc_descripcion,
+                        act_acc_capacidad,
+                        act_acc_fecha,
+                        act_acc_empresa};
                 rowview_historiaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_historiaRow);
                 return rowview_historiaRow;
@@ -1642,6 +1750,15 @@ namespace kinnemed05.Reports.dataset {
                 this.columnhab_frecuencia = base.Columns["hab_frecuencia"];
                 this.columnhab_drogas = base.Columns["hab_drogas"];
                 this.columnhab_ejercicio = base.Columns["hab_ejercicio"];
+                this.columnact_enf_estado = base.Columns["act_enf_estado"];
+                this.columnact_enf_descripcion = base.Columns["act_enf_descripcion"];
+                this.columnact_enf_fecha = base.Columns["act_enf_fecha"];
+                this.columnact_enf_empresa = base.Columns["act_enf_empresa"];
+                this.columnact_acc_estado = base.Columns["act_acc_estado"];
+                this.columnact_acc_descripcion = base.Columns["act_acc_descripcion"];
+                this.columnact_acc_capacidad = base.Columns["act_acc_capacidad"];
+                this.columnact_acc_fecha = base.Columns["act_acc_fecha"];
+                this.columnact_acc_empresa = base.Columns["act_acc_empresa"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1841,6 +1958,24 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnhab_drogas);
                 this.columnhab_ejercicio = new global::System.Data.DataColumn("hab_ejercicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhab_ejercicio);
+                this.columnact_enf_estado = new global::System.Data.DataColumn("act_enf_estado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_enf_estado);
+                this.columnact_enf_descripcion = new global::System.Data.DataColumn("act_enf_descripcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_enf_descripcion);
+                this.columnact_enf_fecha = new global::System.Data.DataColumn("act_enf_fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_enf_fecha);
+                this.columnact_enf_empresa = new global::System.Data.DataColumn("act_enf_empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_enf_empresa);
+                this.columnact_acc_estado = new global::System.Data.DataColumn("act_acc_estado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_acc_estado);
+                this.columnact_acc_descripcion = new global::System.Data.DataColumn("act_acc_descripcion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_acc_descripcion);
+                this.columnact_acc_capacidad = new global::System.Data.DataColumn("act_acc_capacidad", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_acc_capacidad);
+                this.columnact_acc_fecha = new global::System.Data.DataColumn("act_acc_fecha", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_acc_fecha);
+                this.columnact_acc_empresa = new global::System.Data.DataColumn("act_acc_empresa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnact_acc_empresa);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnhis_id}, true));
                 this.columnhis_id.AllowDBNull = false;
@@ -1936,6 +2071,15 @@ namespace kinnemed05.Reports.dataset {
                 this.columnhab_frecuencia.MaxLength = 50;
                 this.columnhab_drogas.MaxLength = 2;
                 this.columnhab_ejercicio.MaxLength = 2;
+                this.columnact_enf_estado.MaxLength = 2;
+                this.columnact_enf_descripcion.MaxLength = 200;
+                this.columnact_enf_fecha.MaxLength = 10;
+                this.columnact_enf_empresa.MaxLength = 200;
+                this.columnact_acc_estado.MaxLength = 2;
+                this.columnact_acc_descripcion.MaxLength = 200;
+                this.columnact_acc_capacidad.MaxLength = 200;
+                this.columnact_acc_fecha.MaxLength = 10;
+                this.columnact_acc_empresa.MaxLength = 200;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3565,6 +3709,150 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_enf_estado {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_enf_estadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_enf_estado\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_enf_estadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_enf_descripcion {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_enf_descripcionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_enf_descripcion\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_enf_descripcionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_enf_fecha {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_enf_fechaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_enf_fecha\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_enf_fechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_enf_empresa {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_enf_empresaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_enf_empresa\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_enf_empresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_acc_estado {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_acc_estadoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_acc_estado\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_acc_estadoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_acc_descripcion {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_acc_descripcionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_acc_descripcion\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_acc_descripcionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_acc_capacidad {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_acc_capacidadColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_acc_capacidad\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_acc_capacidadColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_acc_fecha {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_acc_fechaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_acc_fecha\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_acc_fechaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string act_acc_empresa {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.act_acc_empresaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'act_acc_empresa\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.act_acc_empresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ispac_generoNull() {
                 return this.IsNull(this.tableview_historia.pac_generoColumn);
             }
@@ -4570,6 +4858,114 @@ namespace kinnemed05.Reports.dataset {
             public void Sethab_ejercicioNull() {
                 this[this.tableview_historia.hab_ejercicioColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_enf_estadoNull() {
+                return this.IsNull(this.tableview_historia.act_enf_estadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_enf_estadoNull() {
+                this[this.tableview_historia.act_enf_estadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_enf_descripcionNull() {
+                return this.IsNull(this.tableview_historia.act_enf_descripcionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_enf_descripcionNull() {
+                this[this.tableview_historia.act_enf_descripcionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_enf_fechaNull() {
+                return this.IsNull(this.tableview_historia.act_enf_fechaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_enf_fechaNull() {
+                this[this.tableview_historia.act_enf_fechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_enf_empresaNull() {
+                return this.IsNull(this.tableview_historia.act_enf_empresaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_enf_empresaNull() {
+                this[this.tableview_historia.act_enf_empresaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_acc_estadoNull() {
+                return this.IsNull(this.tableview_historia.act_acc_estadoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_acc_estadoNull() {
+                this[this.tableview_historia.act_acc_estadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_acc_descripcionNull() {
+                return this.IsNull(this.tableview_historia.act_acc_descripcionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_acc_descripcionNull() {
+                this[this.tableview_historia.act_acc_descripcionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_acc_capacidadNull() {
+                return this.IsNull(this.tableview_historia.act_acc_capacidadColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_acc_capacidadNull() {
+                this[this.tableview_historia.act_acc_capacidadColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_acc_fechaNull() {
+                return this.IsNull(this.tableview_historia.act_acc_fechaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_acc_fechaNull() {
+                this[this.tableview_historia.act_acc_fechaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isact_acc_empresaNull() {
+                return this.IsNull(this.tableview_historia.act_acc_empresaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setact_acc_empresaNull() {
+                this[this.tableview_historia.act_acc_empresaColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -4828,6 +5224,15 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             tableMapping.ColumnMappings.Add("hab_frecuencia", "hab_frecuencia");
             tableMapping.ColumnMappings.Add("hab_drogas", "hab_drogas");
             tableMapping.ColumnMappings.Add("hab_ejercicio", "hab_ejercicio");
+            tableMapping.ColumnMappings.Add("act_enf_estado", "act_enf_estado");
+            tableMapping.ColumnMappings.Add("act_enf_descripcion", "act_enf_descripcion");
+            tableMapping.ColumnMappings.Add("act_enf_fecha", "act_enf_fecha");
+            tableMapping.ColumnMappings.Add("act_enf_empresa", "act_enf_empresa");
+            tableMapping.ColumnMappings.Add("act_acc_estado", "act_acc_estado");
+            tableMapping.ColumnMappings.Add("act_acc_descripcion", "act_acc_descripcion");
+            tableMapping.ColumnMappings.Add("act_acc_capacidad", "act_acc_capacidad");
+            tableMapping.ColumnMappings.Add("act_acc_fecha", "act_acc_fecha");
+            tableMapping.ColumnMappings.Add("act_acc_empresa", "act_acc_empresa");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4844,7 +5249,7 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_frecuencia, hab_drogas, hab_ejercicio FROM dbo.view_historia";
+            this._commandCollection[0].CommandText = @"SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_frecuencia, hab_drogas, hab_ejercicio, act_enf_estado, act_enf_descripcion, act_enf_fecha, act_enf_empresa, act_acc_estado, act_acc_descripcion, act_acc_capacidad, act_acc_fecha, act_acc_empresa FROM dbo.view_historia";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

@@ -80,7 +80,7 @@ namespace kinnemed05.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_cedula");
+            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
             ViewBag.doc_especialidad = new SelectList(db.especialidad, "esp_id", "esp_nombre");
             return View();
         }
@@ -131,7 +131,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_cedula", doctor.doc_empresa);
+            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre", doctor.doc_empresa);
             ViewBag.doc_especialidad = new SelectList(db.especialidad, "esp_id", "esp_nombre", doctor.doc_especialidad);
             return View(doctor);
         }
@@ -146,7 +146,7 @@ namespace kinnemed05.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_cedula", doctor.doc_empresa);
+            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre", doctor.doc_empresa);
             ViewBag.doc_especialidad = new SelectList(db.especialidad, "esp_id", "esp_nombre", doctor.doc_especialidad);
             return View(doctor);
         }
@@ -189,7 +189,7 @@ namespace kinnemed05.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_cedula", doctor.doc_empresa);
+            ViewBag.doc_empresa = new SelectList(db.empresa, "emp_id", "emp_nombre", doctor.doc_empresa);
             ViewBag.doc_especialidad = new SelectList(db.especialidad, "esp_id", "esp_nombre", doctor.doc_especialidad);
             return View(doctor);
         }

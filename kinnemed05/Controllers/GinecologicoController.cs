@@ -19,7 +19,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index()
         {
             var ginecologico = db.ginecologico.Include(g => g.paciente);
@@ -28,7 +28,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             ginecologico ginecologico = db.ginecologico.Find(id);
@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Create(int id)
         {
             ginecologico ginecologico = db.ginecologico.Find(id);
@@ -56,7 +56,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Ginecologico/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ginecologico ginecologico)
@@ -75,7 +75,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Edit(int id)
         {
             ginecologico ginecologico = db.ginecologico.Find(id);
@@ -98,7 +98,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Ginecologico/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ginecologico ginecologico)
@@ -116,7 +116,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Ginecologico/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             ginecologico ginecologico = db.ginecologico.Find(id);
@@ -129,7 +129,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Ginecologico/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

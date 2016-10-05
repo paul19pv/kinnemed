@@ -27,7 +27,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int? id, int? paciente)
         {
             var espirometria = db.espirometria.Include(e => e.paciente);
@@ -56,7 +56,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Espirometria/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             espirometria espirometria = db.espirometria.Find(id);
@@ -396,7 +396,7 @@ namespace kinnemed05.Controllers
             if (!string.IsNullOrEmpty(celular))
             {
 
-                resultado = mensaje.enviar(celular, "Los exámenes de espirometria se encuentran listos. Kinnemed");
+                resultado = mensaje.enviar(celular, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
 
 
             }

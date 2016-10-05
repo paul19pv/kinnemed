@@ -26,7 +26,7 @@ namespace kinnemed05.Controllers
         private UsersContext db_users = new UsersContext();
         //
         // GET: /Audiometria/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int? id,int? paciente)
         {
             var audiometria = db.audiometria.Include(a => a.paciente);
@@ -57,7 +57,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Audiometria/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             audiometria audiometria = db.audiometria.Find(id);
@@ -407,7 +407,7 @@ namespace kinnemed05.Controllers
             if (!string.IsNullOrEmpty(celular))
             {
                 
-                resultado = mensaje.enviar(celular, "Los exámenes de audiometria se encuentran listos. Kinnemed");
+                resultado = mensaje.enviar(celular, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
                 
                
             }

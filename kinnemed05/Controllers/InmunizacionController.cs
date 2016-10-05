@@ -19,14 +19,14 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Inmunizacion/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int id)
         {
             var inmunizacion = db.inmunizacion.Include(i => i.paciente).Include(i => i.vacuna);
             inmunizacion = inmunizacion.Where(i => i.inm_paciente == id);
             return PartialView(inmunizacion.ToList());
         }
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Consulta(int id)
         {
             var inmunizacion = db.inmunizacion.Include(i => i.paciente).Include(i => i.vacuna);
@@ -36,7 +36,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Inmunizacion/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             inmunizacion inmunizacion = db.inmunizacion.Find(id);
@@ -50,7 +50,7 @@ namespace kinnemed05.Controllers
         //
         // GET: /Inmunizacion/Create
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Create()
         {
             ViewBag.inm_paciente = Session["pac_id"];
@@ -69,7 +69,7 @@ namespace kinnemed05.Controllers
         //
         // POST: /Inmunizacion/Create
 
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(inmunizacion inmunizacion)
@@ -88,7 +88,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Inmunizacion/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Edit(int id = 0)
         {
             inmunizacion inmunizacion = db.inmunizacion.Find(id);
@@ -103,7 +103,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Inmunizacion/Edit/5
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(inmunizacion inmunizacion)
@@ -121,7 +121,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Inmunizacion/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             inmunizacion inmunizacion = db.inmunizacion.Find(id);
@@ -134,7 +134,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Inmunizacion/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

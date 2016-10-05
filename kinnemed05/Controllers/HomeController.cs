@@ -41,7 +41,7 @@ namespace kinnemed05.Controllers
         public ActionResult Examen() {
             return View();
         }
-        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.trabajador)]
+        [CustomAuthorize(UserRoles.admin, UserRoles.empresa, UserRoles.medico, UserRoles.laboratorista, UserRoles.trabajador,UserRoles.doctor)]
         public ActionResult Historia() {
             return View();
         }
@@ -77,7 +77,7 @@ namespace kinnemed05.Controllers
         public ActionResult Mensajetxt() {
             Mensaje mensaje = new Mensaje();
             string respuesta = String.Empty;
-            respuesta = mensaje.enviartxt("0984659882","Estimado paciente, sus exámenes realizados en Kinnemed están listos.");
+            respuesta = mensaje.enviar("0998593448", "SR.(a) Paciente sus examenes realizados en el Centro M&aacute;dico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
             //string respuesta2 = mensaje.mail("juanjavierj@gmail.com", "mensaje prueba");
             //RunAsync().Wait(); ;
             return RedirectToAction("Message", new { mensaje = respuesta });

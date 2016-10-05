@@ -25,7 +25,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Rayos/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index(int? id, int? paciente)
         {
             var rayos = db.rayos.Include(r => r.paciente);
@@ -55,7 +55,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Rayos/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             rayos rayos = db.rayos.Find(id);
@@ -320,13 +320,13 @@ namespace kinnemed05.Controllers
             if (!string.IsNullOrEmpty(celular))
             {
 
-                resultado = mensaje.enviar(celular, "Los exámenes de rayos x se encuentran listos. Kinnemed");
+                resultado = mensaje.enviar(celular, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
 
 
             }
             if (!string.IsNullOrEmpty(correo))
             {
-                resultado = " " + resultado + mensaje.mail(correo, "Los exámenes de rayos x se encuentran listos. Kinnemed");
+                resultado = " " + resultado + mensaje.mail(correo, "Sr.(a) Paciente sus exámenes realizados en el Centro Médico Kinnmed están listos reviselos en kinnemed.com con cédula para usuario y clave");
             }
             ModelState.AddModelError("notificacion", resultado);
 

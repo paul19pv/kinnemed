@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_historia" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_frecuencia, hab_drogas, hab_ejercicio FROM dbo.view_historia</CommandText>
+                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_frecuencia, hab_drogas, hab_ejercicio, act_enf_estado, act_enf_descripcion, act_enf_fecha, act_enf_empresa, act_acc_estado, act_acc_descripcion, act_acc_capacidad, act_acc_fecha, act_acc_empresa FROM dbo.view_historia</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -116,6 +116,15 @@
               <Mapping SourceColumn="hab_frecuencia" DataSetColumn="hab_frecuencia" />
               <Mapping SourceColumn="hab_drogas" DataSetColumn="hab_drogas" />
               <Mapping SourceColumn="hab_ejercicio" DataSetColumn="hab_ejercicio" />
+              <Mapping SourceColumn="act_enf_estado" DataSetColumn="act_enf_estado" />
+              <Mapping SourceColumn="act_enf_descripcion" DataSetColumn="act_enf_descripcion" />
+              <Mapping SourceColumn="act_enf_fecha" DataSetColumn="act_enf_fecha" />
+              <Mapping SourceColumn="act_enf_empresa" DataSetColumn="act_enf_empresa" />
+              <Mapping SourceColumn="act_acc_estado" DataSetColumn="act_acc_estado" />
+              <Mapping SourceColumn="act_acc_descripcion" DataSetColumn="act_acc_descripcion" />
+              <Mapping SourceColumn="act_acc_capacidad" DataSetColumn="act_acc_capacidad" />
+              <Mapping SourceColumn="act_acc_fecha" DataSetColumn="act_acc_fecha" />
+              <Mapping SourceColumn="act_acc_empresa" DataSetColumn="act_acc_empresa" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -698,6 +707,69 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_enf_estado" msprop:Generator_ColumnVarNameInTable="columnact_enf_estado" msprop:Generator_ColumnPropNameInRow="act_enf_estado" msprop:Generator_ColumnPropNameInTable="act_enf_estadoColumn" msprop:Generator_UserColumnName="act_enf_estado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_enf_descripcion" msprop:Generator_ColumnVarNameInTable="columnact_enf_descripcion" msprop:Generator_ColumnPropNameInRow="act_enf_descripcion" msprop:Generator_ColumnPropNameInTable="act_enf_descripcionColumn" msprop:Generator_UserColumnName="act_enf_descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_enf_fecha" msprop:Generator_ColumnVarNameInTable="columnact_enf_fecha" msprop:Generator_ColumnPropNameInRow="act_enf_fecha" msprop:Generator_ColumnPropNameInTable="act_enf_fechaColumn" msprop:Generator_UserColumnName="act_enf_fecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_enf_empresa" msprop:Generator_ColumnVarNameInTable="columnact_enf_empresa" msprop:Generator_ColumnPropNameInRow="act_enf_empresa" msprop:Generator_ColumnPropNameInTable="act_enf_empresaColumn" msprop:Generator_UserColumnName="act_enf_empresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_acc_estado" msprop:Generator_ColumnVarNameInTable="columnact_acc_estado" msprop:Generator_ColumnPropNameInRow="act_acc_estado" msprop:Generator_ColumnPropNameInTable="act_acc_estadoColumn" msprop:Generator_UserColumnName="act_acc_estado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_acc_descripcion" msprop:Generator_ColumnVarNameInTable="columnact_acc_descripcion" msprop:Generator_ColumnPropNameInRow="act_acc_descripcion" msprop:Generator_ColumnPropNameInTable="act_acc_descripcionColumn" msprop:Generator_UserColumnName="act_acc_descripcion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_acc_capacidad" msprop:Generator_ColumnVarNameInTable="columnact_acc_capacidad" msprop:Generator_ColumnPropNameInRow="act_acc_capacidad" msprop:Generator_ColumnPropNameInTable="act_acc_capacidadColumn" msprop:Generator_UserColumnName="act_acc_capacidad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_acc_fecha" msprop:Generator_ColumnVarNameInTable="columnact_acc_fecha" msprop:Generator_ColumnPropNameInRow="act_acc_fecha" msprop:Generator_ColumnPropNameInTable="act_acc_fechaColumn" msprop:Generator_UserColumnName="act_acc_fecha" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="act_acc_empresa" msprop:Generator_ColumnVarNameInTable="columnact_acc_empresa" msprop:Generator_ColumnPropNameInRow="act_acc_empresa" msprop:Generator_ColumnPropNameInTable="act_acc_empresaColumn" msprop:Generator_UserColumnName="act_acc_empresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

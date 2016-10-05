@@ -16,7 +16,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Actividad/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index()
         {
             var actividad = db.actividad.Include(a => a.paciente);
@@ -25,7 +25,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Actividad/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             actividad actividad = db.actividad.Find(id);
@@ -38,7 +38,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Actividad/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Create(int id)
         {
             actividad actividad = db.actividad.Find(id);
@@ -54,7 +54,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Actividad/Create
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(actividad actividad)
@@ -74,7 +74,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Actividad/Edit/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Edit(int id = 0)
         {
             actividad actividad = db.actividad.Find(id);
@@ -90,7 +90,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Actividad/Edit/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(actividad actividad)
@@ -109,7 +109,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Actividad/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             actividad actividad = db.actividad.Find(id);
@@ -122,7 +122,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Actividad/Delete/5
-
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

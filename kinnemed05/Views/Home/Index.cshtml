@@ -19,7 +19,7 @@
                 <label>Médicos&nbsp;</label>
             </a>
             <a class="btn btn-default btn-lg btn-img" title="Médico" href="@Url.Content("~/Doctor/Index")">
-                <img src="@Url.Content("~/Content/img/iconos/doctor-icon.png")" class="img-rounded" />
+                <img src="@Url.Content("~/Content/img/iconos/doctor-company-icon.png")" class="img-rounded" />
                 <label>Méd. Emp.</label>
             </a>
 
@@ -52,6 +52,12 @@
             </a>*@
 
         }
+        @if (User.IsInRole("doctor")) { 
+            <a class="btn btn-default btn-lg btn-img" title="Paciente" href="@Url.Content("~/Paciente/Index")">
+                <img src="@Url.Content("~/Content/img/iconos/patient-icon.png")" class="img-rounded" />
+                <label>Pacientes</label>
+            </a>
+        }
         @if (!User.IsInRole("trabajador") && !(User.IsInRole("doctor")))
         {
             <a class="btn btn-default btn-lg btn-img" title="Exámenes" href="@Url.Content("~/Home/Examen")">
@@ -67,6 +73,7 @@
                 <label>Historias</label>
             </a>
         }
+        
 
 
 

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<kinnemed05.Models.actividad>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_enf_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_enf_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_enf_fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_enf_empresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_acc_estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_acc_descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_acc_capacidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_acc_fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.act_acc_empresa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.paciente.pac_cedula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_enf_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_enf_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_enf_fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_enf_empresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_acc_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_acc_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_acc_capacidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_acc_fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.act_acc_empresa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

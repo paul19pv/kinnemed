@@ -1,0 +1,89 @@
+﻿@model kinnemed05.Models.actividad
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>actividad</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.paciente.pac_cedula)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.paciente.pac_cedula)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_enf_estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_enf_estado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_enf_descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_enf_descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_enf_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_enf_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_enf_empresa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_enf_empresa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_acc_estado)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_acc_estado)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_acc_descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_acc_descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_acc_capacidad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_acc_capacidad)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_acc_fecha)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_acc_fecha)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.act_acc_empresa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.act_acc_empresa)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

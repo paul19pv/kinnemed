@@ -839,6 +839,7 @@
     <Content Include="Content\img\fondo_login.jpg" />
     <Content Include="Content\img\iconos\company-icon.png" />
     <Content Include="Content\img\iconos\delete-icon.png" />
+    <Content Include="Content\img\iconos\doctor-company-icon.png" />
     <Content Include="Content\img\iconos\doctor-icon.png" />
     <Content Include="Content\img\iconos\edit-icon.png" />
     <Content Include="Content\img\iconos\examen-icon.png" />

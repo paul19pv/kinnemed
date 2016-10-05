@@ -16,7 +16,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Habitos/
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Index()
         {
             var habitos = db.habitos.Include(h => h.paciente);
@@ -25,7 +25,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Habitos/Details/5
-        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Details(int id = 0)
         {
             habitos habitos = db.habitos.Find(id);
@@ -38,7 +38,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Habitos/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         public ActionResult Create(int id)
         {
             habitos habitos = db.habitos.Find(id);
@@ -55,7 +55,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Habitos/Create
-        [CustomAuthorize(UserRoles.medico)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(habitos habitos)
@@ -78,7 +78,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Habitos/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Edit(int id = 0)
         {
             habitos habitos = db.habitos.Find(id);
@@ -97,7 +97,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Habitos/Edit/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(habitos habitos)
@@ -118,7 +118,7 @@ namespace kinnemed05.Controllers
 
         //
         // GET: /Habitos/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
             habitos habitos = db.habitos.Find(id);
@@ -131,7 +131,7 @@ namespace kinnemed05.Controllers
 
         //
         // POST: /Habitos/Delete/5
-        [CustomAuthorize(UserRoles.medico, UserRoles.admin)]
+        [CustomAuthorize(UserRoles.medico, UserRoles.admin, UserRoles.doctor)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
