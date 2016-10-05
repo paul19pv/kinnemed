@@ -297,13 +297,19 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
+        public ActionResult Reporte13()
+        {
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Reporte13(string fec_ini, string fec_fin)
         {
             try
             {
-                var lista = db.getReporte07(fec_ini, fec_fin);
+                var doctor = db.doctor.Where(d => d.doc_cedula == User.Identity.Name).First();
+                
+                var lista = db.getReporte13(fec_ini, fec_fin,doctor.doc_empresa);
                 var grid = new GridView();
                 grid.DataSource = lista;
                 grid.DataBind();
@@ -318,7 +324,6 @@ namespace kinnemed05.Controllers
                 HtmlTextWriter htw = new HtmlTextWriter(sw);
 
                 grid.RenderControl(htw);
-
                 Response.Output.Write(sw.ToString());
                 Response.Flush();
                 Response.End();

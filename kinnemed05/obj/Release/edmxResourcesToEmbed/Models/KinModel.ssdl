@@ -1418,6 +1418,11 @@
     <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
     <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="getReporte13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+    <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+    <Parameter Name="empresa" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="kinnemedModelStoreContainer">
     <EntitySet Name="accidente" EntityType="Self.accidente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="actividad" EntityType="Self.actividad" Schema="dbo" store:Type="Tables" />

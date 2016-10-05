@@ -511,6 +511,7 @@ namespace kinnemed05.Controllers
             }
             catch (Exception ex)
             {
+                throw new Exception(ex.Message);
             }
             return csvData;
         }

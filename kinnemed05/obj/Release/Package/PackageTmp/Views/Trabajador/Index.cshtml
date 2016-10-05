@@ -48,7 +48,7 @@
                         @Html.DisplayFor(modelItem => item.tra_correo)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.tra_empresa)
+                        @Html.DisplayFor(modelItem => item.empresa.emp_nombre)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.tra_id }, new { @class = "iconb icon-edit", @title = "Editar" })

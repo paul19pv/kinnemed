@@ -51,13 +51,20 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (IsActive(model.UserName))
             {
-                return RedirectToLocal(returnUrl);
-            }
+                if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+                {
+                    return RedirectToLocal(returnUrl);
+                }
+                // If we got this far, something failed, redisplay form
+                ModelState.AddModelError("", "El nombre de usuario o contraseña son incorrectos");
 
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "El nombre de usuario o contraseña son incorrectos");
+            }
+            else {
+                ModelState.AddModelError("", "Usuario Deshabilitado");
+            }
+            
             return View(model);
         }
 
@@ -394,6 +401,16 @@ namespace kinnemed05.Controllers
 
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
+        }
+
+        public bool IsActive(string username) {
+            bool result = false;
+            var consulta = db.UserProfiles.Where(u => u.UserName == username);
+            if (consulta.Any()) {
+                if (consulta.First().UserEstado == true)
+                    result = true;
+            }
+            return result;
         }
 
         #region Helpers
