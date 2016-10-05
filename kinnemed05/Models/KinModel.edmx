@@ -1423,6 +1423,11 @@
           <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
           <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="getReporte13" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fecha_ini" Type="varchar" Mode="In" />
+          <Parameter Name="fecha_fin" Type="varchar" Mode="In" />
+          <Parameter Name="empresa" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="kinnemedModelStoreContainer">
           <EntitySet Name="accidente" EntityType="Self.accidente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="actividad" EntityType="Self.actividad" Schema="dbo" store:Type="Tables" />
@@ -2099,6 +2104,11 @@
             <End Role="especialidad" EntitySet="especialidad" />
             <End Role="doctor" EntitySet="doctor" />
           </AssociationSet>
+          <FunctionImport Name="getReporte13" ReturnType="Collection(kinnemedModel.getReporte13_Result)">
+            <Parameter Name="fecha_ini" Mode="In" Type="String" />
+            <Parameter Name="fecha_fin" Mode="In" Type="String" />
+            <Parameter Name="empresa" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="area">
           <Key>
@@ -3662,6 +3672,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="getReporte13_Result">
+          <Property Type="Int64" Name="Numero" Nullable="true" />
+          <Property Type="String" Name="emp_nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Fecha" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Paciente" Nullable="true" MaxLength="301" />
+          <Property Type="Int32" Name="Edad" Nullable="true" />
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Instruccion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EstadoCivil" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Medico" Nullable="false" MaxLength="301" />
+          <Property Type="String" Name="Puesto" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Enfermedad" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Accidente" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Fuma" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Alcohol" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="Ejercicio" Nullable="true" MaxLength="2" />
+          <Property Type="String" Name="PapTest" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="Inmunizacion" Nullable="true" />
+          <Property Type="Decimal" Name="Peso" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="Talla" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="IMC" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="String" Name="Tipo" Nullable="true" MaxLength="14" />
+          <Property Type="Int32" Name="Laboratorio" Nullable="true" />
+          <Property Type="Int32" Name="Audiometria" Nullable="true" />
+          <Property Type="Int32" Name="Oftalmologia" Nullable="true" />
+          <Property Type="Int32" Name="Espirometria" Nullable="true" />
+          <Property Type="Int32" Name="Rayos" Nullable="true" />
+          <Property Type="Int32" Name="Chequeo" Nullable="true" />
+          <Property Type="String" Name="Certificado" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Diagnostico1" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Diagnostico2" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Diagnostico3" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Diagnostico4" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="Seguimiento" Nullable="true" MaxLength="2" />
+          <Property Type="Int32" Name="Periodicidad" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4610,6 +4657,47 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getReporte13" FunctionName="kinnemedModel.Store.getReporte13">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kinnemedModel.getReporte13_Result">
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Instruccion" ColumnName="Instruccion" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Medico" ColumnName="Medico" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+                <ScalarProperty Name="Accidente" ColumnName="Accidente" />
+                <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+                <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+                <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+                <ScalarProperty Name="PapTest" ColumnName="PapTest" />
+                <ScalarProperty Name="Inmunizacion" ColumnName="Inmunizacion" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="IMC" ColumnName="IMC" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+                <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+                <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+                <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+                <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+                <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
+                <ScalarProperty Name="Certificado" ColumnName="Certificado" />
+                <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
+                <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
+                <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
+                <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
+                <ScalarProperty Name="Seguimiento" ColumnName="Seguimiento" />
+                <ScalarProperty Name="Periodicidad" ColumnName="Periodicidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

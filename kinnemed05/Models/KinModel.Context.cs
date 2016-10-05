@@ -322,5 +322,22 @@ namespace kinnemed05.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Lista07>("getLista07", fecha_iniParameter, fecha_finParameter);
         }
+    
+        public virtual ObjectResult<getReporte13_Result> getReporte13(string fecha_ini, string fecha_fin, Nullable<int> empresa)
+        {
+            var fecha_iniParameter = fecha_ini != null ?
+                new ObjectParameter("fecha_ini", fecha_ini) :
+                new ObjectParameter("fecha_ini", typeof(string));
+    
+            var fecha_finParameter = fecha_fin != null ?
+                new ObjectParameter("fecha_fin", fecha_fin) :
+                new ObjectParameter("fecha_fin", typeof(string));
+    
+            var empresaParameter = empresa.HasValue ?
+                new ObjectParameter("empresa", empresa) :
+                new ObjectParameter("empresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getReporte13_Result>("getReporte13", fecha_iniParameter, fecha_finParameter, empresaParameter);
+        }
     }
 }

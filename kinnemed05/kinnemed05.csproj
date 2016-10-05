@@ -354,6 +354,9 @@
     <Compile Include="Models\getReporte12_Result.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\getReporte13_Result.cs">
+      <DependentUpon>KinModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ginecologico.cs">
       <DependentUpon>KinModel.tt</DependentUpon>
     </Compile>

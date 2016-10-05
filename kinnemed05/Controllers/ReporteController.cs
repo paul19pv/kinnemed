@@ -297,6 +297,39 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Reporte13(string fec_ini, string fec_fin)
+        {
+            try
+            {
+                var lista = db.getReporte07(fec_ini, fec_fin);
+                var grid = new GridView();
+                grid.DataSource = lista;
+                grid.DataBind();
+
+                Response.ClearContent();
+                Response.Buffer = true;
+                Response.AddHeader("content-disposition", "attachment; filename=MyExcelFile.xls");
+                Response.ContentType = "application/ms-excel";
+
+                Response.Charset = "";
+                StringWriter sw = new StringWriter();
+                HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+                grid.RenderControl(htw);
+
+                Response.Output.Write(sw.ToString());
+                Response.Flush();
+                Response.End();
+
+                return View("Lista02", lista.ToList());
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
 
 
 
