@@ -943,5 +943,46 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getReporte13" FunctionName="kinnemedModel.Store.getReporte13">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="kinnemedModel.getReporte13_Result">
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Paciente" ColumnName="Paciente" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Instruccion" ColumnName="Instruccion" />
+          <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+          <ScalarProperty Name="Medico" ColumnName="Medico" />
+          <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Enfermedad" ColumnName="Enfermedad" />
+          <ScalarProperty Name="Accidente" ColumnName="Accidente" />
+          <ScalarProperty Name="Fuma" ColumnName="Fuma" />
+          <ScalarProperty Name="Alcohol" ColumnName="Alcohol" />
+          <ScalarProperty Name="Ejercicio" ColumnName="Ejercicio" />
+          <ScalarProperty Name="PapTest" ColumnName="PapTest" />
+          <ScalarProperty Name="Inmunizacion" ColumnName="Inmunizacion" />
+          <ScalarProperty Name="Peso" ColumnName="Peso" />
+          <ScalarProperty Name="Talla" ColumnName="Talla" />
+          <ScalarProperty Name="IMC" ColumnName="IMC" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Laboratorio" ColumnName="Laboratorio" />
+          <ScalarProperty Name="Audiometria" ColumnName="Audiometria" />
+          <ScalarProperty Name="Oftalmologia" ColumnName="Oftalmologia" />
+          <ScalarProperty Name="Espirometria" ColumnName="Espirometria" />
+          <ScalarProperty Name="Rayos" ColumnName="Rayos" />
+          <ScalarProperty Name="Chequeo" ColumnName="Chequeo" />
+          <ScalarProperty Name="Certificado" ColumnName="Certificado" />
+          <ScalarProperty Name="Diagnostico1" ColumnName="Diagnostico1" />
+          <ScalarProperty Name="Diagnostico2" ColumnName="Diagnostico2" />
+          <ScalarProperty Name="Diagnostico3" ColumnName="Diagnostico3" />
+          <ScalarProperty Name="Diagnostico4" ColumnName="Diagnostico4" />
+          <ScalarProperty Name="Seguimiento" ColumnName="Seguimiento" />
+          <ScalarProperty Name="Periodicidad" ColumnName="Periodicidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

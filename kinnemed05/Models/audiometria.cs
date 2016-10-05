@@ -15,7 +15,7 @@ namespace kinnemed05.Models
     public partial class audiometria
     {
         public int aud_id { get; set; }
-
+    
         public virtual laboratorista laboratorista { get; set; }
         public virtual paciente paciente { get; set; }
     }
