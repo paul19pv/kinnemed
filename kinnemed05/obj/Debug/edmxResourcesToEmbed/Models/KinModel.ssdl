@@ -283,10 +283,11 @@
     <Property Name="hab_id" Type="int" Nullable="false" />
     <Property Name="hab_fumo" Type="varchar" MaxLength="2" Nullable="false" />
     <Property Name="hab_fuma" Type="varchar" MaxLength="2" Nullable="false" />
-    <Property Name="hab_cigarillos" Type="int" />
+    <Property Name="hab_cigarillos" Type="varchar" MaxLength="150" />
     <Property Name="hab_alcohol" Type="varchar" MaxLength="2" Nullable="false" />
-    <Property Name="hab_frecuencia" Type="varchar" MaxLength="50" />
+    <Property Name="hab_alc_txt" Type="varchar" MaxLength="150" />
     <Property Name="hab_drogas" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="hab_dro_txt" Type="varchar" MaxLength="150" />
     <Property Name="hab_ejercicio" Type="varchar" MaxLength="2" Nullable="false" />
   </EntityType>
   <EntityType Name="historia">

@@ -913,20 +913,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="habitos">
-      <EntityTypeMapping TypeName="kinnemedModel.habitos">
-        <MappingFragment StoreEntitySet="habitos">
-          <ScalarProperty Name="hab_ejercicio" ColumnName="hab_ejercicio" />
-          <ScalarProperty Name="hab_drogas" ColumnName="hab_drogas" />
-          <ScalarProperty Name="hab_frecuencia" ColumnName="hab_frecuencia" />
-          <ScalarProperty Name="hab_alcohol" ColumnName="hab_alcohol" />
-          <ScalarProperty Name="hab_cigarillos" ColumnName="hab_cigarillos" />
-          <ScalarProperty Name="hab_fuma" ColumnName="hab_fuma" />
-          <ScalarProperty Name="hab_fumo" ColumnName="hab_fumo" />
-          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="doctor">
       <EntityTypeMapping TypeName="kinnemedModel.doctor">
         <MappingFragment StoreEntitySet="doctor">
@@ -984,5 +970,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="habitos">
+      <EntityTypeMapping TypeName="kinnemedModel.habitos">
+        <MappingFragment StoreEntitySet="habitos">
+          <ScalarProperty Name="hab_ejercicio" ColumnName="hab_ejercicio" />
+          <ScalarProperty Name="hab_dro_txt" ColumnName="hab_dro_txt" />
+          <ScalarProperty Name="hab_drogas" ColumnName="hab_drogas" />
+          <ScalarProperty Name="hab_alc_txt" ColumnName="hab_alc_txt" />
+          <ScalarProperty Name="hab_alcohol" ColumnName="hab_alcohol" />
+          <ScalarProperty Name="hab_cigarillos" ColumnName="hab_cigarillos" />
+          <ScalarProperty Name="hab_fuma" ColumnName="hab_fuma" />
+          <ScalarProperty Name="hab_fumo" ColumnName="hab_fumo" />
+          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -294,6 +294,7 @@ namespace kinnemed05.Controllers
                 SqlConnection sqlcon = new SqlConnection(conn);
                 SqlDataAdapter daRayos = new SqlDataAdapter(strRayos, sqlcon);
                 daRayos.Fill(dsRayos, "view_rayos");
+
                 RptRayos_ rp = new RptRayos_();
                 string reportPath = Server.MapPath("~/Reports/RptRayos_.rpt");
                 rp.Load(reportPath);

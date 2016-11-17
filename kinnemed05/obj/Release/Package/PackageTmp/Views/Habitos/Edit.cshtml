@@ -21,16 +21,28 @@
                 $("#div_alcohol").hide();
             }
         });
+        $("#hab_drogas").change(function () {
+            if ($(this).val() == "SI") {
+                $("#div_drpgas").show();
+            } else {
+                $("#div_drpgas").hide();
+            }
+        });
 
         if ($("#hab_fuma").val() == "SI") {
             $("#div_fuma").show();
         } else {
             $("#div_fuma").hide();
         }
-        if ($("#hab_fuma").val() == "SI") {
-            $("#div_fuma").show();
+        if ($("#hab_alcohol").val() == "SI") {
+            $("#div_alcohol").show();
         } else {
-            $("#div_fuma").hide();
+            $("#div_alcohol").hide();
+        }
+        if ($("#hab_drogas").val() == "SI") {
+            $("#div_drogas").show();
+        } else {
+            $("#div_drogas").hide();
         }
     });
 </script>
@@ -71,9 +83,9 @@
                         @Html.ValidationMessageFor(model => model.hab_alcohol)
                     </div>
                     <div id="div_alcohol" class="form-group" style="display:none;">
-                        @Html.LabelFor(model => model.hab_frecuencia)
-                        @Html.TextBoxFor(model => model.hab_frecuencia, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.hab_frecuencia)
+                        @Html.LabelFor(model => model.hab_alc_txt)
+                        @Html.TextBoxFor(model => model.hab_alc_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.hab_alc_txt)
                     </div>
 
                 </div>
@@ -83,6 +95,14 @@
                         @Html.DropDownList("hab_drogas", String.Empty)
                         @Html.ValidationMessageFor(model => model.hab_drogas)
                     </div>
+                    <div id="div_drogas" class="form-group" style="display:none;">
+                        @Html.LabelFor(model => model.hab_dro_txt)
+                        @Html.TextBoxFor(model => model.hab_dro_txt, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.hab_dro_txt)
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.hab_ejercicio)
                         @Html.DropDownList("hab_ejercicio", String.Empty)

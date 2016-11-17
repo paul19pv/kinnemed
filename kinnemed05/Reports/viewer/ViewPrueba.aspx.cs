@@ -41,14 +41,14 @@ namespace kinnemed05.Reports.viewer
             
 
             reportDocument.SetParameterValue("paciente", paciente.pac_nombres + " " + paciente.pac_apellidos);
-            reportDocument.SetParameterValue("medico", "");
+            
             reportDocument.SetParameterValue("fecha", registro.reg_fecha);
             reportDocument.SetParameterValue("edad", paciente.pac_edad);
             if(paciente.pac_genero!=null)
                 reportDocument.SetParameterValue("genero", paciente.pac_genero);
             else
                 reportDocument.SetParameterValue("genero", "");
-            reportDocument.SetParameterValue("hc", "");
+            
             reportDocument.SetParameterValue("orden", registro.reg_orden);
 
             crViewer.ReportSource = reportDocument;

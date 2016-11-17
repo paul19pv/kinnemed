@@ -12,7 +12,7 @@
               <DbSource ConnectionRef="bd_kinnemed02ConnectionString (Web.config)" DbObjectName="DB_9D0010_kinnemeddb.dbo.view_historia" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_frecuencia, hab_drogas, hab_ejercicio, act_enf_estado, act_enf_descripcion, act_enf_fecha, act_enf_empresa, act_acc_estado, act_acc_descripcion, act_acc_capacidad, act_acc_fecha, act_acc_empresa FROM dbo.view_historia</CommandText>
+                    <CommandText>SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_drogas, hab_ejercicio, act_enf_estado, act_enf_descripcion, act_enf_fecha, act_enf_empresa, act_acc_estado, act_acc_descripcion, act_acc_capacidad, act_acc_fecha, act_acc_empresa, hab_alc_txt, hab_dro_txt FROM dbo.view_historia</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -113,7 +113,6 @@
               <Mapping SourceColumn="hab_fuma" DataSetColumn="hab_fuma" />
               <Mapping SourceColumn="hab_cigarillos" DataSetColumn="hab_cigarillos" />
               <Mapping SourceColumn="hab_alcohol" DataSetColumn="hab_alcohol" />
-              <Mapping SourceColumn="hab_frecuencia" DataSetColumn="hab_frecuencia" />
               <Mapping SourceColumn="hab_drogas" DataSetColumn="hab_drogas" />
               <Mapping SourceColumn="hab_ejercicio" DataSetColumn="hab_ejercicio" />
               <Mapping SourceColumn="act_enf_estado" DataSetColumn="act_enf_estado" />
@@ -125,6 +124,8 @@
               <Mapping SourceColumn="act_acc_capacidad" DataSetColumn="act_acc_capacidad" />
               <Mapping SourceColumn="act_acc_fecha" DataSetColumn="act_acc_fecha" />
               <Mapping SourceColumn="act_acc_empresa" DataSetColumn="act_acc_empresa" />
+              <Mapping SourceColumn="hab_alc_txt" DataSetColumn="hab_alc_txt" />
+              <Mapping SourceColumn="hab_dro_txt" DataSetColumn="hab_dro_txt" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -681,18 +682,17 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="hab_cigarillos" msprop:Generator_ColumnVarNameInTable="columnhab_cigarillos" msprop:Generator_ColumnPropNameInRow="hab_cigarillos" msprop:Generator_ColumnPropNameInTable="hab_cigarillosColumn" msprop:Generator_UserColumnName="hab_cigarillos" type="xs:int" minOccurs="0" />
+              <xs:element name="hab_cigarillos" msprop:Generator_ColumnVarNameInTable="columnhab_cigarillos" msprop:Generator_ColumnPropNameInRow="hab_cigarillos" msprop:Generator_ColumnPropNameInTable="hab_cigarillosColumn" msprop:Generator_UserColumnName="hab_cigarillos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
               <xs:element name="hab_alcohol" msprop:Generator_ColumnVarNameInTable="columnhab_alcohol" msprop:Generator_ColumnPropNameInRow="hab_alcohol" msprop:Generator_ColumnPropNameInTable="hab_alcoholColumn" msprop:Generator_UserColumnName="hab_alcohol" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="hab_frecuencia" msprop:Generator_ColumnVarNameInTable="columnhab_frecuencia" msprop:Generator_ColumnPropNameInRow="hab_frecuencia" msprop:Generator_ColumnPropNameInTable="hab_frecuenciaColumn" msprop:Generator_UserColumnName="hab_frecuencia" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -770,6 +770,20 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="hab_alc_txt" msprop:Generator_ColumnVarNameInTable="columnhab_alc_txt" msprop:Generator_ColumnPropNameInRow="hab_alc_txt" msprop:Generator_ColumnPropNameInTable="hab_alc_txtColumn" msprop:Generator_UserColumnName="hab_alc_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="hab_dro_txt" msprop:Generator_ColumnVarNameInTable="columnhab_dro_txt" msprop:Generator_ColumnPropNameInRow="hab_dro_txt" msprop:Generator_ColumnPropNameInTable="hab_dro_txtColumn" msprop:Generator_UserColumnName="hab_dro_txt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

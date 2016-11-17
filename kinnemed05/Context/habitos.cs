@@ -14,16 +14,18 @@ namespace kinnemed05.Models
         [Display(Name = "Fumá")]
         [Required(ErrorMessage = "Campo requerido")]
         public string hab_fuma { get; set; }
-        [Display(Name = "Cigarillos al día")]
-        public Nullable<int> hab_cigarillos { get; set; }
+        [Display(Name = "Frecuencia")]
+        public string hab_cigarillos { get; set; }
         [Display(Name = "Alcohol")]
         [Required(ErrorMessage = "Campo requerido")]
         public string hab_alcohol { get; set; }
         [Display(Name = "Frecuencia")]
-        public string hab_frecuencia { get; set; }
+        public string hab_alc_txt { get; set; }
         [Display(Name = "Drogas")]
         [Required(ErrorMessage = "Campo requerido")]
         public string hab_drogas { get; set; }
+        [Display(Name = "Especifique")]
+        public string hab_dro_txt { get; set; }
         [Display(Name = "Ejercicio")]
         [Required(ErrorMessage = "Campo requerido")]
         public string hab_ejercicio { get; set; }

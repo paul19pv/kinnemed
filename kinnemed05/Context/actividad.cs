@@ -10,7 +10,7 @@ namespace kinnemed05.Models
     {
         [Display(Name = "Enfermedad Profesional")]
         public string act_enf_estado { get; set; }
-        [Display(Name = "Cuál")]
+        [Display(Name = "Descripción")]
         [StringLength(200, MinimumLength = 0, ErrorMessage = "La longitud máxima es 200")]
         public string act_enf_descripcion { get; set; }
         [Display(Name = "Fecha")]
@@ -20,7 +20,7 @@ namespace kinnemed05.Models
         public string act_enf_empresa { get; set; }
         [Display(Name = "Accidente de Trabajo")]
         public string act_acc_estado { get; set; }
-        [Display(Name = "Cuál")]
+        [Display(Name = "Descripción")]
         [StringLength(200, MinimumLength = 0, ErrorMessage = "La longitud máxima es 200")]
         public string act_acc_descripcion { get; set; }
         [Display(Name = "Capacidad Laboral")]

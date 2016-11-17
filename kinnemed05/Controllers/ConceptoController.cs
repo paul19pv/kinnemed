@@ -76,14 +76,15 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(concepto concepto)
         {
-            if (ModelState.IsValid)
+            historia historia = db.historia.Find(concepto.con_id);
+            if (ModelState.IsValid && validar_resultado(historia.his_tipo,concepto.con_valor))
             {
                 db.concepto.Add(concepto);
                 db.SaveChanges();
                 //return RedirectToAction("Message", "Home", new {mensaje="Proceso Finalizado" });
                 return RedirectToAction("Firma", "Historia", new { id = concepto.con_id });
             }
-            historia historia = db.historia.Find(concepto.con_id);
+            
             if (historia.his_tipo == 2 || historia.his_tipo == 3)
             {
                 ViewBag.con_resultado = res_periodica(concepto.con_resultado);
@@ -134,14 +135,15 @@ namespace kinnemed05.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(concepto concepto)
         {
-            if (ModelState.IsValid)
+            historia historia = db.historia.Find(concepto.con_id);
+            if (ModelState.IsValid && validar_resultado(historia.his_tipo, concepto.con_valor))
             {
                 db.Entry(concepto).State = EntityState.Modified;
                 db.SaveChanges();
                 //return RedirectToAction("Message", "Home", new { mensaje = "Proceso Finalizado" });
                 return RedirectToAction("Firma", "Historia", new { id = concepto.con_id });
             }
-            historia historia = db.historia.Find(concepto.con_id);
+            
             if (historia.his_tipo == 2 || historia.his_tipo == 3)
             {
                 ViewBag.con_resultado = res_periodica(concepto.con_resultado);
@@ -252,7 +254,19 @@ namespace kinnemed05.Controllers
                 opciones = new SelectList(list_opcion, "Value", "Text", valor);
             return opciones;
         }
+        private bool validar_resultado(int his_tipo, string con_valor) {
+            bool result=true;
+            if (his_tipo == 4) {
+                if (con_valor==null) {
+                    result = false;
+                    ModelState.AddModelError("valor","El campo es Obligatorio");
+                }
+                    
+                
+            }
 
+            return result;
+        }
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

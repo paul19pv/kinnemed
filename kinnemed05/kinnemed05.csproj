@@ -729,7 +729,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RptPrueba.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Reports\RptRayos.cs">
       <AutoGen>True</AutoGen>
@@ -1577,11 +1576,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptPaciente.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Reports\RptPrueba.rpt">
+    <EmbeddedResource Include="Reports\RptPrueba.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptPrueba.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <Content Include="Reports\RptRayos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptRayos.cs</LastGenOutput>

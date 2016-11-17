@@ -1,4 +1,4 @@
-﻿@model IEnumerable<kinnemed05.Models.registro>
+﻿@model PagedList.IPagedList<kinnemed05.Models.registro>
 
 @{
     ViewBag.Title = "Index";
@@ -127,10 +127,10 @@
                     Empresa
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.reg_orden)
+                    Orden
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.reg_fecha)
+                    @Html.ActionLink("Fecha", "Index", new { sortOrder = ViewBag.FechaSort })
                 </th>
                 <th></th>
                 <th></th>
@@ -182,6 +182,69 @@
             }
 
         </table>
+
+        <div>
+            <ul class="pagination">
+
+                @if (Model.HasPreviousPage)
+                {
+                    <li>
+                        @Html.ActionLink("<<", "Index", new
+                               {
+                                   page = 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                    <li>
+                        @Html.ActionLink("< Prev", "Index", new
+                               {
+                                   page = Model.PageNumber - 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                }
+                else
+                {
+
+                    <li class="disabled"><a href="#"><<</a></li>
+                    <li class="disabled"><a href="#">< Prev</a></li>
+
+                }
+                <li class="active"><a href="#">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</a></li>
+                @if (Model.HasNextPage)
+                {
+                    <li>
+                        @Html.ActionLink("Next >", "Index", new
+                               {
+                                   page = Model.PageNumber + 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                    <li>
+                        @Html.ActionLink(">>", "Index", new
+                               {
+                                   page = Model.PageCount,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   paciente = ViewBag.paciente,
+                                   fecha = ViewBag.fecha
+                               })
+                    </li>
+                }
+                else
+                {
+
+
+                    <li class="disabled"><a href="#">Next</a></li>
+                    <li class="disabled"><a href="#">>></a></li>
+                }
+            </ul>
+        </div>
 
 
     </div>

@@ -47,9 +47,17 @@
                 </div>
                 <div class="col-lg-4">
                     <div id="con_resultado" class="form-group">
-                        @Html.LabelFor(model => model.con_valor, new { @class = "control-label" })
+                        @if (Convert.ToInt32(Session["his_tipo"]) == 4)
+                        { 
+                            @Html.Label("Presenta alguna Patología", new { @class = "control-label" })
+                        }
+                        else { 
+                            @Html.LabelFor(model => model.con_valor, new { @class = "control-label" })
+                        }
+                        
                         @Html.DropDownList("con_valor", String.Empty)
                         @Html.ValidationMessageFor(model => model.con_valor)
+                        @Html.ValidationMessage("valor")
                     </div>
                 </div>
                 <div class="col-lg-12" style="clear:both">

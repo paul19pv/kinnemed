@@ -288,10 +288,11 @@
           <Property Name="hab_id" Type="int" Nullable="false" />
           <Property Name="hab_fumo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="hab_fuma" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="hab_cigarillos" Type="int" />
+          <Property Name="hab_cigarillos" Type="varchar" MaxLength="150" />
           <Property Name="hab_alcohol" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="hab_frecuencia" Type="varchar" MaxLength="50" />
+          <Property Name="hab_alc_txt" Type="varchar" MaxLength="150" />
           <Property Name="hab_drogas" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="hab_dro_txt" Type="varchar" MaxLength="150" />
           <Property Name="hab_ejercicio" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="historia">
@@ -2078,7 +2079,6 @@
           <EntitySet Name="accidente" EntityType="kinnemedModel.accidente" />
           <EntitySet Name="actividad" EntityType="kinnemedModel.actividad" />
           <EntitySet Name="enfermedad" EntityType="kinnemedModel.enfermedad" />
-          <EntitySet Name="habitos" EntityType="kinnemedModel.habitos" />
           <AssociationSet Name="FK_accidente_paciente" Association="kinnemedModel.FK_accidente_paciente">
             <End Role="paciente" EntitySet="paciente" />
             <End Role="accidente" EntitySet="accidente" />
@@ -2090,10 +2090,6 @@
           <AssociationSet Name="FK_enfermedad_paciente" Association="kinnemedModel.FK_enfermedad_paciente">
             <End Role="paciente" EntitySet="paciente" />
             <End Role="enfermedad" EntitySet="enfermedad" />
-          </AssociationSet>
-          <AssociationSet Name="FK_habitos_paciente" Association="kinnemedModel.FK_habitos_paciente">
-            <End Role="paciente" EntitySet="paciente" />
-            <End Role="habitos" EntitySet="habitos" />
           </AssociationSet>
           <EntitySet Name="doctor" EntityType="kinnemedModel.doctor" />
           <AssociationSet Name="FK_doctor_empresa" Association="kinnemedModel.FK_doctor_empresa">
@@ -2109,6 +2105,11 @@
             <Parameter Name="fecha_fin" Mode="In" Type="String" />
             <Parameter Name="empresa" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="habitos" EntityType="kinnemedModel.habitos" />
+          <AssociationSet Name="FK_habitos_paciente" Association="kinnemedModel.FK_habitos_paciente">
+            <End Role="paciente" EntitySet="paciente" />
+            <End Role="habitos" EntitySet="habitos" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="area">
           <Key>
@@ -3557,20 +3558,6 @@
           <Property Name="enf_paciente" Type="Int32" Nullable="false" />
           <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="enfermedad" ToRole="paciente" />
         </EntityType>
-        <EntityType Name="habitos">
-          <Key>
-            <PropertyRef Name="hab_id" />
-          </Key>
-          <Property Name="hab_id" Type="Int32" Nullable="false" />
-          <Property Name="hab_fumo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="hab_fuma" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="hab_cigarillos" Type="Int32" />
-          <Property Name="hab_alcohol" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="hab_frecuencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="hab_drogas" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="hab_ejercicio" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="habitos" ToRole="paciente" />
-        </EntityType>
         <Association Name="FK_accidente_paciente">
           <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -3610,20 +3597,6 @@
             </Principal>
             <Dependent Role="enfermedad">
               <PropertyRef Name="enf_paciente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_habitos_paciente">
-          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="kinnemedModel.habitos" Role="habitos" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="paciente">
-              <PropertyRef Name="pac_id" />
-            </Principal>
-            <Dependent Role="habitos">
-              <PropertyRef Name="hab_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3709,6 +3682,35 @@
           <Property Type="String" Name="Seguimiento" Nullable="true" MaxLength="2" />
           <Property Type="Int32" Name="Periodicidad" Nullable="true" />
         </ComplexType>
+        <EntityType Name="habitos">
+          <Key>
+            <PropertyRef Name="hab_id" />
+          </Key>
+          <Property Name="hab_id" Type="Int32" Nullable="false" />
+          <Property Name="hab_fumo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="hab_fuma" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="hab_cigarillos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="hab_alcohol" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="hab_alc_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="hab_drogas" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="hab_dro_txt" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="hab_ejercicio" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="paciente" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="habitos" ToRole="paciente" />
+        </EntityType>
+        <Association Name="FK_habitos_paciente">
+          <End Type="kinnemedModel.paciente" Role="paciente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="kinnemedModel.habitos" Role="habitos" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="paciente">
+              <PropertyRef Name="pac_id" />
+            </Principal>
+            <Dependent Role="habitos">
+              <PropertyRef Name="hab_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4627,20 +4629,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="habitos">
-            <EntityTypeMapping TypeName="kinnemedModel.habitos">
-              <MappingFragment StoreEntitySet="habitos">
-                <ScalarProperty Name="hab_ejercicio" ColumnName="hab_ejercicio" />
-                <ScalarProperty Name="hab_drogas" ColumnName="hab_drogas" />
-                <ScalarProperty Name="hab_frecuencia" ColumnName="hab_frecuencia" />
-                <ScalarProperty Name="hab_alcohol" ColumnName="hab_alcohol" />
-                <ScalarProperty Name="hab_cigarillos" ColumnName="hab_cigarillos" />
-                <ScalarProperty Name="hab_fuma" ColumnName="hab_fuma" />
-                <ScalarProperty Name="hab_fumo" ColumnName="hab_fumo" />
-                <ScalarProperty Name="hab_id" ColumnName="hab_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="doctor">
             <EntityTypeMapping TypeName="kinnemedModel.doctor">
               <MappingFragment StoreEntitySet="doctor">
@@ -4698,6 +4686,21 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="habitos">
+            <EntityTypeMapping TypeName="kinnemedModel.habitos">
+              <MappingFragment StoreEntitySet="habitos">
+                <ScalarProperty Name="hab_ejercicio" ColumnName="hab_ejercicio" />
+                <ScalarProperty Name="hab_dro_txt" ColumnName="hab_dro_txt" />
+                <ScalarProperty Name="hab_drogas" ColumnName="hab_drogas" />
+                <ScalarProperty Name="hab_alc_txt" ColumnName="hab_alc_txt" />
+                <ScalarProperty Name="hab_alcohol" ColumnName="hab_alcohol" />
+                <ScalarProperty Name="hab_cigarillos" ColumnName="hab_cigarillos" />
+                <ScalarProperty Name="hab_fuma" ColumnName="hab_fuma" />
+                <ScalarProperty Name="hab_fumo" ColumnName="hab_fumo" />
+                <ScalarProperty Name="hab_id" ColumnName="hab_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -467,8 +467,6 @@ namespace kinnemed05.Reports.dataset {
             
             private global::System.Data.DataColumn columnhab_alcohol;
             
-            private global::System.Data.DataColumn columnhab_frecuencia;
-            
             private global::System.Data.DataColumn columnhab_drogas;
             
             private global::System.Data.DataColumn columnhab_ejercicio;
@@ -490,6 +488,10 @@ namespace kinnemed05.Reports.dataset {
             private global::System.Data.DataColumn columnact_acc_fecha;
             
             private global::System.Data.DataColumn columnact_acc_empresa;
+            
+            private global::System.Data.DataColumn columnhab_alc_txt;
+            
+            private global::System.Data.DataColumn columnhab_dro_txt;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1278,14 +1280,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn hab_frecuenciaColumn {
-                get {
-                    return this.columnhab_frecuencia;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn hab_drogasColumn {
                 get {
                     return this.columnhab_drogas;
@@ -1369,6 +1363,22 @@ namespace kinnemed05.Reports.dataset {
             public global::System.Data.DataColumn act_acc_empresaColumn {
                 get {
                     return this.columnact_acc_empresa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn hab_alc_txtColumn {
+                get {
+                    return this.columnhab_alc_txt;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn hab_dro_txtColumn {
+                get {
+                    return this.columnhab_dro_txt;
                 }
             }
             
@@ -1502,9 +1512,8 @@ namespace kinnemed05.Reports.dataset {
                         string pac_estadocivil, 
                         string hab_fumo, 
                         string hab_fuma, 
-                        int hab_cigarillos, 
+                        string hab_cigarillos, 
                         string hab_alcohol, 
-                        string hab_frecuencia, 
                         string hab_drogas, 
                         string hab_ejercicio, 
                         string act_enf_estado, 
@@ -1515,7 +1524,9 @@ namespace kinnemed05.Reports.dataset {
                         string act_acc_descripcion, 
                         string act_acc_capacidad, 
                         string act_acc_fecha, 
-                        string act_acc_empresa) {
+                        string act_acc_empresa, 
+                        string hab_alc_txt, 
+                        string hab_dro_txt) {
                 view_historiaRow rowview_historiaRow = ((view_historiaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         his_id,
@@ -1612,7 +1623,6 @@ namespace kinnemed05.Reports.dataset {
                         hab_fuma,
                         hab_cigarillos,
                         hab_alcohol,
-                        hab_frecuencia,
                         hab_drogas,
                         hab_ejercicio,
                         act_enf_estado,
@@ -1623,7 +1633,9 @@ namespace kinnemed05.Reports.dataset {
                         act_acc_descripcion,
                         act_acc_capacidad,
                         act_acc_fecha,
-                        act_acc_empresa};
+                        act_acc_empresa,
+                        hab_alc_txt,
+                        hab_dro_txt};
                 rowview_historiaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowview_historiaRow);
                 return rowview_historiaRow;
@@ -1747,7 +1759,6 @@ namespace kinnemed05.Reports.dataset {
                 this.columnhab_fuma = base.Columns["hab_fuma"];
                 this.columnhab_cigarillos = base.Columns["hab_cigarillos"];
                 this.columnhab_alcohol = base.Columns["hab_alcohol"];
-                this.columnhab_frecuencia = base.Columns["hab_frecuencia"];
                 this.columnhab_drogas = base.Columns["hab_drogas"];
                 this.columnhab_ejercicio = base.Columns["hab_ejercicio"];
                 this.columnact_enf_estado = base.Columns["act_enf_estado"];
@@ -1759,6 +1770,8 @@ namespace kinnemed05.Reports.dataset {
                 this.columnact_acc_capacidad = base.Columns["act_acc_capacidad"];
                 this.columnact_acc_fecha = base.Columns["act_acc_fecha"];
                 this.columnact_acc_empresa = base.Columns["act_acc_empresa"];
+                this.columnhab_alc_txt = base.Columns["hab_alc_txt"];
+                this.columnhab_dro_txt = base.Columns["hab_dro_txt"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1948,12 +1961,10 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnhab_fumo);
                 this.columnhab_fuma = new global::System.Data.DataColumn("hab_fuma", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhab_fuma);
-                this.columnhab_cigarillos = new global::System.Data.DataColumn("hab_cigarillos", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnhab_cigarillos = new global::System.Data.DataColumn("hab_cigarillos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhab_cigarillos);
                 this.columnhab_alcohol = new global::System.Data.DataColumn("hab_alcohol", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhab_alcohol);
-                this.columnhab_frecuencia = new global::System.Data.DataColumn("hab_frecuencia", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnhab_frecuencia);
                 this.columnhab_drogas = new global::System.Data.DataColumn("hab_drogas", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnhab_drogas);
                 this.columnhab_ejercicio = new global::System.Data.DataColumn("hab_ejercicio", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1976,6 +1987,10 @@ namespace kinnemed05.Reports.dataset {
                 base.Columns.Add(this.columnact_acc_fecha);
                 this.columnact_acc_empresa = new global::System.Data.DataColumn("act_acc_empresa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnact_acc_empresa);
+                this.columnhab_alc_txt = new global::System.Data.DataColumn("hab_alc_txt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhab_alc_txt);
+                this.columnhab_dro_txt = new global::System.Data.DataColumn("hab_dro_txt", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhab_dro_txt);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnhis_id}, true));
                 this.columnhis_id.AllowDBNull = false;
@@ -2067,8 +2082,8 @@ namespace kinnemed05.Reports.dataset {
                 this.columnpac_estadocivil.MaxLength = 50;
                 this.columnhab_fumo.MaxLength = 2;
                 this.columnhab_fuma.MaxLength = 2;
+                this.columnhab_cigarillos.MaxLength = 150;
                 this.columnhab_alcohol.MaxLength = 2;
-                this.columnhab_frecuencia.MaxLength = 50;
                 this.columnhab_drogas.MaxLength = 2;
                 this.columnhab_ejercicio.MaxLength = 2;
                 this.columnact_enf_estado.MaxLength = 2;
@@ -2080,6 +2095,8 @@ namespace kinnemed05.Reports.dataset {
                 this.columnact_acc_capacidad.MaxLength = 200;
                 this.columnact_acc_fecha.MaxLength = 10;
                 this.columnact_acc_empresa.MaxLength = 200;
+                this.columnhab_alc_txt.MaxLength = 150;
+                this.columnhab_dro_txt.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3629,10 +3646,10 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int hab_cigarillos {
+            public string hab_cigarillos {
                 get {
                     try {
-                        return ((int)(this[this.tableview_historia.hab_cigarillosColumn]));
+                        return ((string)(this[this.tableview_historia.hab_cigarillosColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'hab_cigarillos\' in table \'view_historia\' is DBNull.", e);
@@ -3656,22 +3673,6 @@ namespace kinnemed05.Reports.dataset {
                 }
                 set {
                     this[this.tableview_historia.hab_alcoholColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string hab_frecuencia {
-                get {
-                    try {
-                        return ((string)(this[this.tableview_historia.hab_frecuenciaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'hab_frecuencia\' in table \'view_historia\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableview_historia.hab_frecuenciaColumn] = value;
                 }
             }
             
@@ -3848,6 +3849,38 @@ namespace kinnemed05.Reports.dataset {
                 }
                 set {
                     this[this.tableview_historia.act_acc_empresaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string hab_alc_txt {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.hab_alc_txtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'hab_alc_txt\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.hab_alc_txtColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string hab_dro_txt {
+                get {
+                    try {
+                        return ((string)(this[this.tableview_historia.hab_dro_txtColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'hab_dro_txt\' in table \'view_historia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableview_historia.hab_dro_txtColumn] = value;
                 }
             }
             
@@ -4825,18 +4858,6 @@ namespace kinnemed05.Reports.dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool Ishab_frecuenciaNull() {
-                return this.IsNull(this.tableview_historia.hab_frecuenciaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Sethab_frecuenciaNull() {
-                this[this.tableview_historia.hab_frecuenciaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Ishab_drogasNull() {
                 return this.IsNull(this.tableview_historia.hab_drogasColumn);
             }
@@ -4965,6 +4986,30 @@ namespace kinnemed05.Reports.dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setact_acc_empresaNull() {
                 this[this.tableview_historia.act_acc_empresaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ishab_alc_txtNull() {
+                return this.IsNull(this.tableview_historia.hab_alc_txtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sethab_alc_txtNull() {
+                this[this.tableview_historia.hab_alc_txtColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ishab_dro_txtNull() {
+                return this.IsNull(this.tableview_historia.hab_dro_txtColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Sethab_dro_txtNull() {
+                this[this.tableview_historia.hab_dro_txtColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5221,7 +5266,6 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             tableMapping.ColumnMappings.Add("hab_fuma", "hab_fuma");
             tableMapping.ColumnMappings.Add("hab_cigarillos", "hab_cigarillos");
             tableMapping.ColumnMappings.Add("hab_alcohol", "hab_alcohol");
-            tableMapping.ColumnMappings.Add("hab_frecuencia", "hab_frecuencia");
             tableMapping.ColumnMappings.Add("hab_drogas", "hab_drogas");
             tableMapping.ColumnMappings.Add("hab_ejercicio", "hab_ejercicio");
             tableMapping.ColumnMappings.Add("act_enf_estado", "act_enf_estado");
@@ -5233,6 +5277,8 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             tableMapping.ColumnMappings.Add("act_acc_capacidad", "act_acc_capacidad");
             tableMapping.ColumnMappings.Add("act_acc_fecha", "act_acc_fecha");
             tableMapping.ColumnMappings.Add("act_acc_empresa", "act_acc_empresa");
+            tableMapping.ColumnMappings.Add("hab_alc_txt", "hab_alc_txt");
+            tableMapping.ColumnMappings.Add("hab_dro_txt", "hab_dro_txt");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5249,7 +5295,7 @@ namespace kinnemed05.Reports.dataset.dsHistoriaTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_frecuencia, hab_drogas, hab_ejercicio, act_enf_estado, act_enf_descripcion, act_enf_fecha, act_enf_empresa, act_acc_estado, act_acc_descripcion, act_acc_capacidad, act_acc_fecha, act_acc_empresa FROM dbo.view_historia";
+            this._commandCollection[0].CommandText = @"SELECT his_id, pac_cedula, pac_nombres, pac_apellidos, pac_genero, pac_edad, fam_car_txt, fam_dia_txt, fam_vas_txt, fam_hip_txt, fam_can_txt, fam_tub_txt, fam_men_txt, fam_inf_txt, fam_mal_txt, fam_hit_txt, rev_org_txt, rev_res_txt, rev_car_txt, rev_dig_txt, rev_gen_txt, rev_uri_txt, rev_mus_txt, rev_end_txt, rev_lin_txt, rev_ner_txt, fam_otr_txt, per_pat_txt, per_qui_txt, per_tra_txt, per_ale_txt, per_vac_txt, per_otr_txt, fis_pie_txt, fis_cab_txt, fis_ojo_txt, fis_oid_txt, fis_nar_txt, fis_boc_txt, fis_far_txt, fis_cue_txt, fis_axi_txt, fis_tor_txt, fis_abd_txt, fis_col_txt, fis_ing_txt, fis_msp_txt, fis_mif_txt, fis_org_txt, fis_res_txt, fis_car_txt, fis_dig_txt, fis_fen_txt, fis_uri_txt, fis_esq_txt, fis_end_txt, fis_lin_txt, fis_neu_txt, sig_presion, sig_cardiaca, sig_respiratoria, sig_temperatura, sig_peso, sig_talla, sig_masa, sig_perimetro, sig_viceral, sig_corporal, sig_kilocalorias, sig_edadpeso, sig_masamuscular, pla_texto1, pla_texto2, his_problema, his_motivo, his_fecha, his_tipo, his_firma, med_firma, med_nombres, med_apellidos, med_codigo, his_numero, med_cedula, pac_fechanacimiento, pac_celular, pac_telefono, pac_instruccion, pro_nombre, pac_estadocivil, hab_fumo, hab_fuma, hab_cigarillos, hab_alcohol, hab_drogas, hab_ejercicio, act_enf_estado, act_enf_descripcion, act_enf_fecha, act_enf_empresa, act_acc_estado, act_acc_descripcion, act_acc_capacidad, act_acc_fecha, act_acc_empresa, hab_alc_txt, hab_dro_txt FROM dbo.view_historia";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

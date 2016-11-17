@@ -17,6 +17,7 @@ using System.Security.Principal;
 using Microsoft.VisualBasic.FileIO;
 using kinnemed05.Filters;
 using kinnemed05.Security;
+using PagedList;
 
 namespace kinnemed05.Controllers
 {
@@ -33,9 +34,16 @@ namespace kinnemed05.Controllers
         //[CustomAuthorize(UserRoles.admin,UserRoles.paciente)]
         //[]
         [CustomAuthorize(UserRoles.laboratorista, UserRoles.medico, UserRoles.paciente, UserRoles.empresa, UserRoles.admin, UserRoles.doctor)]
-        public ActionResult Index(int? id, int? paciente, string fecha)
+        public ActionResult Index(int? id, int? paciente, string fecha, string sortOrder, int? page)
         {
-            
+            //parametro de ordenacion
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.FechaSort = String.IsNullOrEmpty(sortOrder) ? "Fecha" : "";
+            //condicion para la paginacion
+            if (Request.HttpMethod != "GET")
+            {
+                page = 1;
+            } 
                 
             var registro = db.registro.Include(r => r.paciente);
             if (id != null)
@@ -57,12 +65,27 @@ namespace kinnemed05.Controllers
                 empresa empresa = db.empresa.Where(e => e.emp_cedula == cedula).First();
                 registro = registro.Where(r => r.paciente.pac_empresa == empresa.emp_id);
             }
+            switch (sortOrder)
+            {
+                case "Fecha":
+                    registro = registro.OrderBy(s => s.reg_id);
+                    break;
+                case "Fecha desc":
+                    registro = registro.OrderByDescending(s => s.reg_id);
+                    break;
+                default:
+                    registro = registro.OrderByDescending(s => s.reg_id);
+                    break;
+            } 
 
 
             if (Request.IsAjaxRequest())
                 return PartialView("Index_historia",registro.ToList());
 
-            return View(registro.ToList());
+            int pageSize = 10;
+            int pageIndex = (page ?? 1);
+            return View(registro.ToPagedList(pageIndex, pageSize));
+            //return View(registro.ToList());
         }
 
 
@@ -433,6 +456,38 @@ namespace kinnemed05.Controllers
             }
         }
 
+        /*[AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult Reporte(int id)
+        {
+            try
+            {
+                registro registro = db.registro.Find(id);
+                dsPruebaPaciente dsPrueba = new dsPruebaPaciente();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                string strConsulta = "Select * from view_prueba_paciente where reg_id=" + id + " order by exa_id";
+                SqlConnection sqlcon = new SqlConnection(conn);
+                SqlDataAdapter daPrueba = new SqlDataAdapter(strConsulta, sqlcon);
+                daPrueba.Fill(dsPrueba, "view_prueba_paciente");
+
+                RptPrueba rp = new RptPrueba();
+                string reportPath = Server.MapPath("~/Reports/RptRayos_.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dsPrueba);
+
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", id + ".pdf");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }
+        }
+         **
+         */
+        
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Reporte(int id)
         {
@@ -452,6 +507,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
+
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ReporteLimpio(int id)
         {
