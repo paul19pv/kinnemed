@@ -26,7 +26,7 @@ namespace kinnemed05.Models
         [StringLength(150, MinimumLength = 4, ErrorMessage = "La longitud mínima es 4 caracteres y la máxima 150")]
         public string pac_apellidos { get; set; }
         [Display(Name = "Género")]
-        //[Required(ErrorMessage = "Campo Requerido")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public string pac_genero { get; set; }
         [Display(Name = "Estado Civil")]
         //[Required(ErrorMessage = "Campo Requerido")]
@@ -67,7 +67,7 @@ namespace kinnemed05.Models
         //[Required(ErrorMessage = "Campo Requerido")]
         public string pac_instruccion { get; set; }
         [Display(Name = "Profesión/Ocupación")]
-        //[Required(ErrorMessage = "Campo Requerido")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public Nullable<int> pac_profesion { get; set; }
         [Display(Name = "Tipo de Discapacidad")]
         //[Required(ErrorMessage = "Campo Requerido")]

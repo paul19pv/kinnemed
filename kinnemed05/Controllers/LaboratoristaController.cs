@@ -130,8 +130,8 @@ namespace kinnemed05.Controllers
                     string path = Path.Combine(Server.MapPath("~/Content/firmas_"), fileName);
                     string path01 = Path.Combine(Server.MapPath("~/Content/firmas"), fileName);
                     file.SaveAs(path);
-                    objfirma.ResizeImage(path, path01, 200, 120);
-                    laboratorista.lab_firma = ConvertBytes(path01);
+                    //objfirma.ResizeImage(path, path01, 195, 130);
+                    laboratorista.lab_firma = ConvertBytes(path);
                 }
                 else
                 {

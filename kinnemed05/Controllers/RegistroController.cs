@@ -456,7 +456,7 @@ namespace kinnemed05.Controllers
             }
         }
 
-        /*[AcceptVerbs(HttpVerbs.Get)]
+        [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Reporte(int id)
         {
             try
@@ -470,9 +470,21 @@ namespace kinnemed05.Controllers
                 daPrueba.Fill(dsPrueba, "view_prueba_paciente");
 
                 RptPrueba rp = new RptPrueba();
-                string reportPath = Server.MapPath("~/Reports/RptRayos_.rpt");
+                string reportPath = Server.MapPath("~/Reports/RptPrueba.rpt");
                 rp.Load(reportPath);
                 rp.SetDataSource(dsPrueba);
+
+                var paciente = db.paciente.Where(p => p.pac_id == registro.reg_paciente).First();
+                //rp.SetParameterValue("paciente", paciente.pac_nombres + " " + paciente.pac_apellidos);
+
+                rp.SetParameterValue("fecha", registro.reg_fecha);
+                rp.SetParameterValue("edad", paciente.pac_edad);
+                if (paciente.pac_genero != null)
+                    rp.SetParameterValue("genero", paciente.pac_genero);
+                else
+                    rp.SetParameterValue("genero", "");
+
+                rp.SetParameterValue("orden", registro.reg_orden);
 
                 Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
                 stream.Seek(0, SeekOrigin.Begin);
@@ -485,9 +497,7 @@ namespace kinnemed05.Controllers
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
         }
-         **
-         */
-        
+        /*
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Reporte(int id)
         {
@@ -506,12 +516,12 @@ namespace kinnemed05.Controllers
                 //return View("Message");
                 return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
             }
-        }
+        }*/
 
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ReporteLimpio(int id)
         {
-            try
+            /*try
             {
                 registro registro = db.registro.Find(id);
                 Session["reg_id"] = id;
@@ -519,6 +529,43 @@ namespace kinnemed05.Controllers
                 string content = Url.Content("~/Reports/Viewer/ViewLimpio.aspx");
                 model.ReportPath = content;
                 return View("ReportViewer", model);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.mensaje = ex.Message;
+                //return View("Message");
+                return RedirectToAction("Message", "Home", new { mensaje = ex.Message });
+            }*/
+            try
+            {
+                registro registro = db.registro.Find(id);
+                dsPruebaPaciente dsPrueba = new dsPruebaPaciente();
+                string conn = ConfigurationManager.AppSettings["conexion"];
+                string strConsulta = "Select * from view_prueba_paciente where reg_id=" + id + " order by exa_id";
+                SqlConnection sqlcon = new SqlConnection(conn);
+                SqlDataAdapter daPrueba = new SqlDataAdapter(strConsulta, sqlcon);
+                daPrueba.Fill(dsPrueba, "view_prueba_paciente");
+
+                RptLimpio rp = new RptLimpio();
+                string reportPath = Server.MapPath("~/Reports/RptLimpio.rpt");
+                rp.Load(reportPath);
+                rp.SetDataSource(dsPrueba);
+
+                var paciente = db.paciente.Where(p => p.pac_id == registro.reg_paciente).First();
+                //rp.SetParameterValue("paciente", paciente.pac_nombres + " " + paciente.pac_apellidos);
+
+                rp.SetParameterValue("fecha", registro.reg_fecha);
+                rp.SetParameterValue("edad", paciente.pac_edad);
+                if (paciente.pac_genero != null)
+                    rp.SetParameterValue("genero", paciente.pac_genero);
+                else
+                    rp.SetParameterValue("genero", "");
+
+                rp.SetParameterValue("orden", registro.reg_orden);
+
+                Stream stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                stream.Seek(0, SeekOrigin.Begin);
+                return File(stream, "application/pdf", id + ".pdf");
             }
             catch (Exception ex)
             {

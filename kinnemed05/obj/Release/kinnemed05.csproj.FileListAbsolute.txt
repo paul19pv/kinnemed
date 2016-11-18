@@ -263,8 +263,6 @@ C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.dll
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\itextsharp.xml
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.rpt
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.cs
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptAudiometria.rpt
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.rpt
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.rpt

@@ -154,7 +154,7 @@
                         {
                             @Html.ActionLink("Certificado", "Certificado", new { id = item.his_id, pac_id = item.his_paciente }, new { @class = "iconb icon-certificate", @title = "Certificado" })
                         }
-                        @if (!User.IsInRole("trabajador"))
+                        @if (!User.IsInRole("trabajador") && !User.IsInRole("empresa"))
                         {
                             if (item.his_tipo == 1)
                             {

@@ -697,7 +697,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RptLimpio.rpt</DependentUpon>
       <SubType>Component</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Reports\RptMedico.cs">
       <AutoGen>True</AutoGen>
@@ -1559,11 +1558,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptInmunizacion.cs</LastGenOutput>
     </EmbeddedResource>
-    <Content Include="Reports\RptLimpio.rpt">
+    <EmbeddedResource Include="Reports\RptLimpio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptLimpio.cs</LastGenOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\RptOcupacional.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptOcupacional.cs</LastGenOutput>
