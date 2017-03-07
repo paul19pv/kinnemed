@@ -1063,6 +1063,7 @@
     <NavigationProperty Name="actividad" Relationship="kinnemedModel.FK_actividad_paciente" FromRole="paciente" ToRole="actividad" />
     <NavigationProperty Name="enfermedad" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="paciente" ToRole="enfermedad" />
     <NavigationProperty Name="habitos" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="paciente" ToRole="habitos" />
+    <Property Name="pac_actividad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_paciente_canton">
     <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">

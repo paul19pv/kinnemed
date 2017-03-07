@@ -67,7 +67,7 @@ namespace kinnemed05.Models
         //[Required(ErrorMessage = "Campo Requerido")]
         public string pac_instruccion { get; set; }
         [Display(Name = "Profesión/Ocupación")]
-        [Required(ErrorMessage = "Campo Requerido")]
+        //[Required(ErrorMessage = "Campo Requerido")]
         public Nullable<int> pac_profesion { get; set; }
         [Display(Name = "Tipo de Discapacidad")]
         //[Required(ErrorMessage = "Campo Requerido")]
@@ -80,6 +80,9 @@ namespace kinnemed05.Models
         public int pac_empresa { get; set; }
         
         public bool pac_estado { get; set; }
+        [Display(Name = "Profesión/Ocupación")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        public string pac_actividad { get; set; }
 
         [Display(Name = "Exámenes")]
         public string pac_varios { get; set; }

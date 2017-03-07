@@ -438,6 +438,7 @@
     <EntitySetMapping Name="paciente">
       <EntityTypeMapping TypeName="kinnemedModel.paciente">
         <MappingFragment StoreEntitySet="paciente">
+          <ScalarProperty Name="pac_actividad" ColumnName="pac_actividad" />
           <ScalarProperty Name="pac_varios" ColumnName="pac_varios" />
           <ScalarProperty Name="pac_estado" ColumnName="pac_estado" />
           <ScalarProperty Name="pac_empresa" ColumnName="pac_empresa" />

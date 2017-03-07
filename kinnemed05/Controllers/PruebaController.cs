@@ -253,9 +253,9 @@ namespace kinnemed05.Controllers
 
         private void set_codigo(int reg_id,int exa_id){
             barcode barcode = new barcode();
-            
-            var consulta = db.codigo.Where(c => c.cod_registro == reg_id && c.cod_area == exa_id);
             examen examen = db.examen.Find(exa_id);
+            var consulta = db.codigo.Where(c => c.cod_registro == reg_id && c.cod_area == examen.exa_area);
+            
             if (!consulta.Any()) {
                 codigo codigo = new codigo();
                 codigo.cod_codigo = GetCodigo(reg_id, examen.exa_area);

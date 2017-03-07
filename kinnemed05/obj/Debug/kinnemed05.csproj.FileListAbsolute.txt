@@ -182,12 +182,10 @@ C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.pdb
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptMedico.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptAudiometria.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.rpt
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptPrueba.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.rpt
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptAudiometria.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptMedico.cs
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptPrueba.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.cs
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll.config
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\kinnemed05.dll
@@ -272,8 +270,6 @@ C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\zh-Hant\System.Spatial.r
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.dll
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.pdb
 C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\obj\Debug\kinnemed05.csprojResolveAssemblyReference.cache
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.rpt
-C:\Users\Developer\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptLimpio.cs
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptAudiometria.rpt
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptEspirometria.rpt
 C:\Users\Paul Chicaiza\Source\Repos\kinnemed\kinnemed05\bin\Reports\RptRayos.rpt

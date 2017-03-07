@@ -179,30 +179,28 @@ namespace kinnemed05.Controllers
         public ActionResult Perfil(int reg_paciente,int con_perfil) {
             try
             {
-                
 
+                
                 DateTime dd = DateTime.Today;
                 string fecha = dd.Date.ToString("d");
                 var consulta = db.registro.Where(r => r.reg_fecha == fecha && r.reg_paciente == reg_paciente && r.reg_estado == true);
                 if (consulta.Any())
                     return RedirectToAction("Message", "Home", new { mensaje = "El registro ya existe, por favor seleccione la opción editar" });
-
+                
                 barcode barcode = new barcode();
                 List<control> list_control = db.control.Where(c => c.con_perfil == con_perfil).ToList();
                 
                 registro registro = new registro();
-
-
-
-
                 registro.reg_paciente = reg_paciente;
                 registro.reg_fecha = fecha;
                 registro.reg_orden = GetOrden(fecha);
+                registro.reg_estado = true;
                 registro.reg_laboratorista = get_user();
                 if (registro.reg_laboratorista == 0)
                     return RedirectToAction("Message", "Home", new { mensaje = "Su perfil de usuario no permite realizar esta acción " });
                 db.registro.Add(registro);
                 db.SaveChanges();
+                //return RedirectToAction("Message", "Home", new { mensaje = registro.reg_id.ToString()});
                 int reg_id = registro.reg_id;
                 foreach (var item in list_control)
                 {
@@ -211,7 +209,7 @@ namespace kinnemed05.Controllers
                     prueba.pru_registro = reg_id;
                     //prueba.pru_codigo = GetCodigo(reg_id, item.con_examen);
                     //prueba.pru_imagen = barcode.GenerarCodigo(prueba.pru_codigo);
-                    set_codigo(prueba.pru_registro, prueba.examen.exa_area);
+                    set_codigo(prueba.pru_registro, prueba.pru_examen);
                     db.prueba.Add(prueba);
                     db.SaveChanges();
                 }
@@ -728,9 +726,9 @@ namespace kinnemed05.Controllers
         private void set_codigo(int reg_id, int exa_id)
         {
             barcode barcode = new barcode();
-
-            var consulta = db.codigo.Where(c => c.cod_registro == reg_id && c.cod_area == exa_id);
             examen examen = db.examen.Find(exa_id);
+            var consulta = db.codigo.Where(c => c.cod_registro == reg_id && c.cod_area == examen.exa_area);
+            
             if (!consulta.Any())
             {
                 codigo codigo = new codigo();

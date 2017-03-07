@@ -434,6 +434,7 @@
     <Property Name="pac_empresa" Type="int" Nullable="false" />
     <Property Name="pac_estado" Type="bit" Nullable="false" />
     <Property Name="pac_varios" Type="varchar" MaxLength="500" />
+    <Property Name="pac_actividad" Type="varchar" MaxLength="150" />
   </EntityType>
   <EntityType Name="pais">
     <Key>

@@ -56,6 +56,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.doc_especialidad)
                     </th>
+                    <th>
+                        @Html.DisplayNameFor(model=>model.doc_empresa)
+                    </th>
 
                     <th></th>
                 </tr>
@@ -83,7 +86,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.especialidad.esp_nombre)
                         </td>
-
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.empresa.emp_nombre)
+                        </td>
                         <td>
                             @Html.ActionLink("Editar", "Edit", new { id = item.doc_id }, new { @class = "iconb icon-edit", @title = "Editar" })
                             @Html.ActionLink("Detalle", "Details", new { id = item.doc_id }, new { @class = "iconb icon-detail", @title = "Detalle" })

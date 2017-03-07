@@ -209,20 +209,26 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         public ActionResult Edit(int id = 0)
         {
+            int user_current = get_user();
             historia historia = db.historia.Find(id);
-            ViewBag.tipo = historia.his_tipo;
-            if (historia == null)
+            if (historia.his_medico == user_current && User.IsInRole("medico"))
             {
-                return HttpNotFound();
-            }
-            //if (historia.his_tipo != 1)
-            //    return RedirectToAction("Historico", "Ocupacional", new { id = historia.his_paciente });
-            if (Request.IsAjaxRequest())
-            {
-                return PartialView(historia);
-            }
+                ViewBag.tipo = historia.his_tipo;
+                if (historia == null)
+                {
+                    return HttpNotFound();
+                }
+                //if (historia.his_tipo != 1)
+                //    return RedirectToAction("Historico", "Ocupacional", new { id = historia.his_paciente });
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView(historia);
+                }
 
-            return View("Edit01", historia);
+                return View("Edit01", historia);
+            }
+            return RedirectToAction("Message", "Home", new { mensaje = "Usted no tiene permiso para editar esta historia" });
+            
         }
 
 
@@ -249,18 +255,24 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         public ActionResult Edit02(int id = 0)
         {
+            int user_current = get_user();
             historia historia = db.historia.Find(id);
-            ViewBag.his_tipo = his_tipo(historia.his_tipo);
-            ViewBag.tipo = historia.his_tipo;
-            if (historia == null)
+            if (historia.his_medico == user_current && User.IsInRole("medico"))
             {
-                return HttpNotFound();
+                ViewBag.his_tipo = his_tipo(historia.his_tipo);
+                ViewBag.tipo = historia.his_tipo;
+                if (historia == null)
+                {
+                    return HttpNotFound();
+                }
+                if (Request.IsAjaxRequest())
+                {
+                    return PartialView(historia);
+                }
+                return View("Edit03", historia);
             }
-            if (Request.IsAjaxRequest())
-            {
-                return PartialView(historia);
-            }
-            return View("Edit03", historia);
+            return RedirectToAction("Message", "Home", new { mensaje = "Usted no tiene permiso para editar esta historia" });
+            
         }
 
 
@@ -369,6 +381,7 @@ namespace kinnemed05.Controllers
         [CustomAuthorize(UserRoles.medico, UserRoles.admin,UserRoles.doctor)]
         public ActionResult Delete(int id = 0)
         {
+            
             historia historia = db.historia.Find(id);
             if (historia == null)
             {
@@ -617,7 +630,7 @@ namespace kinnemed05.Controllers
                 string conn = ConfigurationManager.AppSettings["conexion"];
                 SqlConnection sqlcon = new SqlConnection(conn);
                 historia historia = db.historia.Find(id);
-                string strReposo = "Select * from view_reposo where his_id=" + id;
+                string strReposo = "Select top 1 * from view_reposo where his_id=" + id;
                 SqlDataAdapter daReposo = new SqlDataAdapter(strReposo, sqlcon);
                 daReposo.Fill(dsReposo, "view_reposo");
                 RptReposo rp = new RptReposo();

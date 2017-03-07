@@ -439,6 +439,7 @@
           <Property Name="pac_empresa" Type="int" Nullable="false" />
           <Property Name="pac_estado" Type="bit" Nullable="false" />
           <Property Name="pac_varios" Type="varchar" MaxLength="500" />
+          <Property Name="pac_actividad" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="pais">
           <Key>
@@ -2753,6 +2754,7 @@
           <NavigationProperty Name="actividad" Relationship="kinnemedModel.FK_actividad_paciente" FromRole="paciente" ToRole="actividad" />
           <NavigationProperty Name="enfermedad" Relationship="kinnemedModel.FK_enfermedad_paciente" FromRole="paciente" ToRole="enfermedad" />
           <NavigationProperty Name="habitos" Relationship="kinnemedModel.FK_habitos_paciente" FromRole="paciente" ToRole="habitos" />
+          <Property Name="pac_actividad" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_paciente_canton">
           <End Type="kinnemedModel.canton" Role="canton" Multiplicity="0..1">
@@ -4154,6 +4156,7 @@
           <EntitySetMapping Name="paciente">
             <EntityTypeMapping TypeName="kinnemedModel.paciente">
               <MappingFragment StoreEntitySet="paciente">
+                <ScalarProperty Name="pac_actividad" ColumnName="pac_actividad" />
                 <ScalarProperty Name="pac_varios" ColumnName="pac_varios" />
                 <ScalarProperty Name="pac_estado" ColumnName="pac_estado" />
                 <ScalarProperty Name="pac_empresa" ColumnName="pac_empresa" />
