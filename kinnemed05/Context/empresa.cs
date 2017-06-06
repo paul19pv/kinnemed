@@ -13,7 +13,7 @@ namespace kinnemed05.Models
         [Required(ErrorMessage = "Campo Requerido")]
         [RegularExpression("^([0-9.&'-]+)$", ErrorMessage = "Solo se aceptan números")]
         [StringLength(13, MinimumLength = 13, ErrorMessage = "La longitud del campo debe ser 13 caracteres")]
-        [IsUnique("emp_cedula")]
+        //[IsUnique("emp_cedula")]
         public string emp_cedula { get; set; }
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "Campo Requerido")]

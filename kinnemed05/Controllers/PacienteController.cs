@@ -17,6 +17,8 @@ using System.Web.Helpers;
 using Microsoft.VisualBasic.FileIO;
 using System.Data.Entity.Validation;
 using WebMatrix.WebData;
+using PagedList;
+
 
 namespace kinnemed05.Controllers
 {
@@ -31,24 +33,30 @@ namespace kinnemed05.Controllers
         // GET: /Paciente/
         //[Authorize(Roles = "medico")]
 
-        public ActionResult Index(string sortOrder, string searchString, string exportar, string empresa)
+        public ActionResult Index(string sortOrder, string searchString, string empresa, int? current_emp_id, int? page)
         {
-            ViewBag.NombreSort = String.IsNullOrEmpty(sortOrder) ? "Nombre desc" : "";
-            ViewBag.ApellidoSort = sortOrder == "Apellido" ? "Apellido desc" : "Apellido";
-            ViewBag.SearchString = searchString;
-            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre");
-            int cod_empresa = 0;
+            
+            //condicion para la paginacion
+            if (Request.HttpMethod != "GET")
+            {
+                page = 1;
+            }
+            
+            int emp_id = 0;
             var paciente = db.paciente.Include(p => p.canton).Include(p => p.empresa).Include(p => p.pais).Include(p => p.profesion);
             if (!String.IsNullOrEmpty(searchString)) { 
                 searchString=searchString.ToUpper();
                 paciente = paciente.Where(p => p.pac_nombres.ToUpper().Contains(searchString)||p.pac_apellidos.Contains(searchString)||p.pac_cedula.Contains(searchString));
             }
-            if (!String.IsNullOrEmpty(empresa))
-                cod_empresa = Int32.Parse(empresa);
-            if (cod_empresa != 0)
-            {
-                paciente = paciente.Where(p=>p.pac_empresa.Equals(cod_empresa));
-                //ViewBag.valor = especialidad;
+            if (current_emp_id != null) {
+                paciente = paciente.Where(p => p.pac_empresa == current_emp_id);
+            }
+            if (!String.IsNullOrEmpty(empresa)){
+
+                emp_id = Int32.Parse(empresa);
+                current_emp_id = emp_id;
+                if (emp_id != 0)
+                    paciente = paciente.Where(p => p.pac_empresa == current_emp_id);
             }
             switch (sortOrder)
             {
@@ -65,12 +73,15 @@ namespace kinnemed05.Controllers
                     paciente = paciente.OrderBy(p => p.pac_nombres);
                     break;
             }
-            if (!String.IsNullOrEmpty(exportar))
-            {
-                return RedirectToAction("ExportReport", new { filtro = searchString,empresa=cod_empresa });
-            }
-
-            return View(paciente.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NombreSort = String.IsNullOrEmpty(sortOrder) ? "Nombre desc" : "";
+            ViewBag.ApellidoSort = sortOrder == "Apellido" ? "Apellido desc" : "Apellido";
+            ViewBag.SearchString = searchString;
+            ViewBag.empresa = new SelectList(db.empresa, "emp_id", "emp_nombre",emp_id);
+            ViewBag.current_emp_id = current_emp_id;
+            int pageSize = 10;
+            int pageIndex = (page ?? 1);
+            return View(paciente.ToPagedList(pageIndex, pageSize));
         }
 
         //
@@ -405,7 +416,10 @@ namespace kinnemed05.Controllers
                     paciente.pac_cedula = strArray[0].ToString();
                     paciente.pac_nombres = strArray[1].ToString();
                     paciente.pac_apellidos = strArray[2].ToString();
-                    paciente.pac_edad = Convert.ToInt32(strArray[3]);
+                    paciente.pac_fechanacimiento = strArray[3].ToString();
+                    paciente.pac_edad = calcular_edad(strArray[3].ToString());
+                    paciente.pac_actividad = strArray[4].ToString();
+                    paciente.pac_genero = strArray[5].ToString();
                     paciente.pac_estado = true;
                     paciente.pac_empresa = pac_empresa;
                     db.paciente.Add(paciente);
@@ -428,9 +442,19 @@ namespace kinnemed05.Controllers
             }
             catch (Exception ex)
             {
-                mensaje = ex.Message;
+                mensaje = ex.Message+calcular_edad(strArray[3].ToString()).ToString();
             }
             return mensaje;
+        }
+
+        public int calcular_edad(string fec_nac) {
+            int edad = 0;
+            DateTime fecha_nac = Convert.ToDateTime(fec_nac);
+            DateTime fecha_act = DateTime.Today;
+            TimeSpan resta;
+            resta = fecha_act.Subtract(fecha_nac);
+            edad = Convert.ToInt32(Math.Floor(resta.TotalDays/365));
+            return edad;
         }
 
         public SelectList genero()

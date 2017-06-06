@@ -80,6 +80,16 @@ namespace kinnemed05.Models
 
 
         }
+        public bool deleteUser(string user_name) {
+            UserProfile deleteuser = new UserProfile();
+            deleteuser = db.UserProfiles.Where(u => u.UserName == user_name).FirstOrDefault();
+            if(deleteuser!=null){
+                db.UserProfiles.Remove(deleteuser);
+                return true;
+            }
+            return false;
+                
+        }
         public bool there_users() {
             return (from u in db.UserProfiles select u).Any();
         }

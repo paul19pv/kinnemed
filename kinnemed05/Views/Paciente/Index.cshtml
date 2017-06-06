@@ -1,4 +1,4 @@
-﻿@model IEnumerable<kinnemed05.Models.paciente>
+﻿@model PagedList.IPagedList<kinnemed05.Models.paciente>
 
 @{
     ViewBag.Title = "Pacientes";
@@ -36,7 +36,7 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.pac_cedula)
+                        Cedula
                     </th>
                     <th>
                         @*@Html.DisplayNameFor(model => model.pac_nombres)*@
@@ -47,17 +47,17 @@
                         @Html.ActionLink("Apellidos", "Index", new { sortOrder = ViewBag.NombreSort })
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.pac_edad)
+                        Edad
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.pac_canton)
+                        Cantón
                     </th>
                     
                     <th>
-                        @Html.DisplayNameFor(model => model.pac_telefono)
+                        Teléfono
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.pac_actividad)
+                        Profesión/Ocupación
                     </th>
                    
                     <th></th>
@@ -101,6 +101,72 @@
             </tbody>
 
         </table>
+
+        <div>
+            <ul class="pagination">
+
+                @if (Model.HasPreviousPage)
+                {
+                    <li>
+                        @Html.ActionLink("<<", "Index", new
+                               {
+                                   page = 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   searchString = ViewBag.searchString,
+                                   current_emp_id = ViewBag.current_emp_id
+                                   
+                               })
+                    </li>
+                    <li>
+                        @Html.ActionLink("< Prev", "Index", new
+                               {
+                                   page = Model.PageNumber - 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   searchString = ViewBag.searchString,
+                                   current_emp_id = ViewBag.current_emp_id
+                               })
+                    </li>
+                }
+                else
+                {
+
+                    <li class="disabled"><a href="#"><<</a></li>
+                    <li class="disabled"><a href="#">< Prev</a></li>
+
+                }
+                <li class="active"><a href="#">@(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)</a></li>
+                @if (Model.HasNextPage)
+                {
+                    <li>
+                        @Html.ActionLink("Next >", "Index", new
+                               {
+                                   page = Model.PageNumber + 1,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   searchString = ViewBag.searchString,
+                                   current_emp_id = ViewBag.current_emp_id
+                               })
+                    </li>
+                    <li>
+                        @Html.ActionLink(">>", "Index", new
+                               {
+                                   page = Model.PageCount,
+                                   sortOrder = ViewBag.CurrentSort,
+                                   searchString = ViewBag.searchString,
+                                   current_emp_id = ViewBag.current_emp_id
+                               })
+                    </li>
+                }
+                else
+                {
+
+
+                    <li class="disabled"><a href="#">Next</a></li>
+                    <li class="disabled"><a href="#">>></a></li>
+                }
+            </ul>
+        </div>
+
+
 
         
     </div>

@@ -461,6 +461,8 @@ namespace kinnemed05.Controllers
                     rp.SetDataSource(dsCertificado);
                     rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    rp.Close();
+                    rp.Dispose();
                 }
                 else if (concepto.con_resultado == "APTO CON RESTRICCIONES PERSONALES" || concepto.con_resultado == "APTO CON RESTRICCIONES LABORALES")
                 {
@@ -469,6 +471,8 @@ namespace kinnemed05.Controllers
                     rp.SetDataSource(dsCertificado);
                     rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    rp.Close();
+                    rp.Dispose();
                 }
                 else if (concepto.con_resultado == "NO APTO")
                 {
@@ -477,6 +481,8 @@ namespace kinnemed05.Controllers
                     rp.SetDataSource(dsCertificado);
                     rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    rp.Close();
+                    rp.Dispose();
                 }
                 else if (concepto.con_resultado == "SATISFACTORIA" || concepto.con_resultado == "NO SATISFACTORIA")
                 {
@@ -491,7 +497,10 @@ namespace kinnemed05.Controllers
                     rp.SetParameterValue("nexo", nexo);
                     rp.SetParameterValue("fecha", get_fecha(historia.his_fecha));
                     stream = rp.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+                    rp.Close();
+                    rp.Dispose();
                 }
+                
                 Response.Buffer = false;
                 Response.ClearContent();
                 Response.ClearHeaders();
