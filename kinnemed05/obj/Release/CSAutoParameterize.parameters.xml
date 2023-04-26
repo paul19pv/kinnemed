@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5017.Smarterasp.net; Initial Catalog=DB_9D0010_kinnemeddb;user id=DB_9D0010_kinnemeddb_admin;password=Kinnemed2015!" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Developer\\Source\\Repos\\kinnemed\\kinnemed05\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\PChicaiza\\Documents\\Visual\ Studio\ 2013\\Projects\\kinnemed\\kinnemed05\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
   </parameter>
   <parameter name="bd_kinnemed02Entities-Web.config Connection String" description="bd_kinnemed02Entities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.KinModel.csdl|res://*/Models.KinModel.ssdl|res://*/Models.KinModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SQL5017.Smarterasp.net;initial catalog=DB_9D0010_kinnemeddb;user id=DB_9D0010_kinnemeddb_admin;password=Kinnemed2015!;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Developer\\Source\\Repos\\kinnemed\\kinnemed05\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='bd_kinnemed02Entities']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\PChicaiza\\Documents\\Visual\ Studio\ 2013\\Projects\\kinnemed\\kinnemed05\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='bd_kinnemed02Entities']/@connectionString" />
   </parameter>
   <parameter name="bd_kinnemed02ConnectionString-Web.config Connection String" description="bd_kinnemed02ConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5017.Smarterasp.net; Initial Catalog=DB_9D0010_kinnemeddb;user id=DB_9D0010_kinnemeddb_admin;password=Kinnemed2015!" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\Developer\\Source\\Repos\\kinnemed\\kinnemed05\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='bd_kinnemed02ConnectionString']/@connectionString" />
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\PChicaiza\\Documents\\Visual\ Studio\ 2013\\Projects\\kinnemed\\kinnemed05\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='bd_kinnemed02ConnectionString']/@connectionString" />
   </parameter>
 </parameters>

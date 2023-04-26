@@ -18,7 +18,7 @@ using Microsoft.VisualBasic.FileIO;
 using kinnemed05.Filters;
 using kinnemed05.Security;
 using PagedList;
-
+using kinnemed05.Controllers;
 namespace kinnemed05.Controllers
 {
     [InitializeSimpleMembership]
@@ -212,6 +212,15 @@ namespace kinnemed05.Controllers
                     set_codigo(prueba.pru_registro, prueba.pru_examen);
                     db.prueba.Add(prueba);
                     db.SaveChanges();
+                    PruebaController obj_prueba = new PruebaController();
+                    if (prueba.examen.exa_tipo == "PLANTILLA")
+                    {
+                        obj_prueba.CreatePrueba(prueba.pru_examen, prueba.pru_registro);
+                    }
+                    else
+                    {
+                        obj_prueba.CreateObservacion(prueba.pru_registro, prueba.pru_examen);
+                    }
                 }
                 return RedirectToAction("Index", "Prueba", new { id = registro.reg_id });
             }
@@ -638,7 +647,8 @@ namespace kinnemed05.Controllers
             {
                 //biometria biometria = new biometria();
                 //var prueba = db.prueba.Where(p => p.pru_codigo == codigo);
-                var codigo_ = db.codigo.Where(c => c.cod_codigo == codigo);
+                var codigo_ = db.codigo.Where(c => c.cod_codigo == codigo).OrderByDescending(c => c.cod_registro);
+                //var codigo_ = db.codigo.Where(c => c.cod_codigo == codigo);
                 if (codigo_ != null)
                 {
                     reg_id = codigo_.First().cod_registro;

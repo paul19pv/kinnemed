@@ -202,7 +202,7 @@ namespace kinnemed05.Controllers
         }
 
         
-        private void CreatePrueba(int exa_id, int reg_id) {
+        public void CreatePrueba(int exa_id, int reg_id) {
             examen examen = db.examen.Find(exa_id);
             int are_id = db.area.Where(a => a.are_nombre == examen.exa_nombre).First().are_id;
             List<examen> list_exa = new List<examen>();
@@ -222,7 +222,7 @@ namespace kinnemed05.Controllers
             db.SaveChanges();
         }
 
-        private void CreateObservacion(int reg_id, int exa_id) {
+        public void CreateObservacion(int reg_id, int exa_id) {
             try
             {
                 int are_id = db.examen.Find(exa_id).exa_area;
